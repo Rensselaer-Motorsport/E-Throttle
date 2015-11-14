@@ -1,0 +1,1469 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	windowFlag
+  18              		.bss
+  19              		.align	2
+  20              		.type	windowFlag, %object
+  21              		.size	windowFlag, 4
+  22              	windowFlag:
+  23 0000 00000000 		.space	4
+  24              		.global	dataReady
+  25              		.type	dataReady, %object
+  26              		.size	dataReady, 1
+  27              	dataReady:
+  28 0004 00       		.space	1
+  29              		.global	channelFlag
+  30              		.type	channelFlag, %object
+  31              		.size	channelFlag, 1
+  32              	channelFlag:
+  33 0005 00       		.space	1
+  34              		.global	__aeabi_i2f
+  35              		.global	__aeabi_fmul
+  36              		.global	__aeabi_f2iz
+  37 0006 0000     		.section	.text.main,"ax",%progbits
+  38              		.align	2
+  39              		.global	main
+  40              		.code	16
+  41              		.thumb_func
+  42              		.type	main, %function
+  43              	main:
+  44              	.LFB33:
+  45              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 1.00
+   5:.\main.c      **** *
+   6:.\main.c      **** * Description:
+   7:.\main.c      **** *  This example project shows how to sample four different channels using
+   8:.\main.c      **** *  SAR MUX and ADC, and send channel output to HyperTerminal (PC) using UART.
+   9:.\main.c      **** *
+  10:.\main.c      **** ********************************************************************************
+  11:.\main.c      **** * Copyright 2013, Cypress Semiconductor Corporation. All rights reserved.
+  12:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 2
+
+
+  13:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  14:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  15:.\main.c      **** * accompanying the software package from which you obtained this software.
+  16:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  17:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  18:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  19:.\main.c      **** *******************************************************************************/
+  20:.\main.c      **** 
+  21:.\main.c      **** #include <device.h>
+  22:.\main.c      **** 
+  23:.\main.c      **** /* Macro definitions */
+  24:.\main.c      **** #define LOW                 (0u)
+  25:.\main.c      **** #define HIGH                (1u)
+  26:.\main.c      **** #define CHANNEL_1           (0u)
+  27:.\main.c      **** #define CHANNEL_2           (1u)
+  28:.\main.c      **** #define CHANNEL_3           (2u)
+  29:.\main.c      **** #define CHANNEL_4           (3u)
+  30:.\main.c      **** #define NO_OF_CHANNELS      (4u)
+  31:.\main.c      **** #define CLEAR_SCREEN        (0x0C)
+  32:.\main.c      **** #define CONVERT_TO_ASCII    (0x30u)
+  33:.\main.c      **** 
+  34:.\main.c      **** /* Resistor Values and Gain */
+  35:.\main.c      **** #define RG                  (2200u)
+  36:.\main.c      **** #define R1                  (10000u)
+  37:.\main.c      **** #define GAIN                (1 + 2 * (float)R1 / RG)
+  38:.\main.c      **** 
+  39:.\main.c      **** /* Send the channel number and voltage to UART */
+  40:.\main.c      **** static void SendChannelVoltage(uint8 channel, int16 mVolts);
+  41:.\main.c      **** 
+  42:.\main.c      **** /* Interrupt prototypes */
+  43:.\main.c      **** CY_ISR_PROTO(ADC_ISR_Handler);
+  44:.\main.c      **** 
+  45:.\main.c      **** /* Global variables */
+  46:.\main.c      **** volatile uint32 windowFlag    = 0u;
+  47:.\main.c      **** volatile uint8  dataReady     = 0u;
+  48:.\main.c      **** volatile uint8  channelFlag   = 0u;
+  49:.\main.c      **** 
+  50:.\main.c      **** 
+  51:.\main.c      **** /*******************************************************************************
+  52:.\main.c      **** * Function Name: main
+  53:.\main.c      **** ********************************************************************************
+  54:.\main.c      **** *
+  55:.\main.c      **** * Summary:
+  56:.\main.c      **** *  Performs the following tasks:
+  57:.\main.c      **** *  - Start the components.
+  58:.\main.c      **** *  - Starts ADC conversion.
+  59:.\main.c      **** *  - Buffer ADC results.
+  60:.\main.c      **** *  - Sends the result to HyperTerminal (PC) using UART.
+  61:.\main.c      **** *  - Turns ON an LED when ADC input is outside the voltage 
+  62:.\main.c      **** *     window of 250mV to 750mV.
+  63:.\main.c      **** *
+  64:.\main.c      **** * Parameters:
+  65:.\main.c      **** *  None.
+  66:.\main.c      **** *
+  67:.\main.c      **** * Return:
+  68:.\main.c      **** *  None.
+  69:.\main.c      **** *
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 3
+
+
+  70:.\main.c      **** *******************************************************************************/
+  71:.\main.c      **** int main()
+  72:.\main.c      **** {
+  46              		.loc 1 72 0
+  47              		.cfi_startproc
+  48 0000 90B5     		push	{r4, r7, lr}
+  49              		.cfi_def_cfa_offset 12
+  50              		.cfi_offset 4, -12
+  51              		.cfi_offset 7, -8
+  52              		.cfi_offset 14, -4
+  53 0002 87B0     		sub	sp, sp, #28
+  54              		.cfi_def_cfa_offset 40
+  55 0004 00AF     		add	r7, sp, #0
+  56              		.cfi_def_cfa_register 7
+  73:.\main.c      ****     uint8 channel = CHANNEL_1;
+  57              		.loc 1 73 0
+  58 0006 3B1C     		mov	r3, r7
+  59 0008 1733     		add	r3, r3, #23
+  60 000a 0022     		mov	r2, #0
+  61 000c 1A70     		strb	r2, [r3]
+  74:.\main.c      ****     int16 adcVal[4u];
+  75:.\main.c      ****     int16 mVolts;
+  76:.\main.c      ****     int16 previousValue = 0;
+  62              		.loc 1 76 0
+  63 000e 3B1C     		mov	r3, r7
+  64 0010 1433     		add	r3, r3, #20
+  65 0012 0022     		mov	r2, #0
+  66 0014 1A80     		strh	r2, [r3]
+  77:.\main.c      ****     int32 adcGain;
+  78:.\main.c      ****     
+  79:.\main.c      ****     /* Start the Components */
+  80:.\main.c      ****     Opamp_1_Start();
+  67              		.loc 1 80 0
+  68 0016 FFF7FEFF 		bl	Opamp_1_Start
+  81:.\main.c      ****     Opamp_2_Start();
+  69              		.loc 1 81 0
+  70 001a FFF7FEFF 		bl	Opamp_2_Start
+  82:.\main.c      ****     UART_Start();
+  71              		.loc 1 82 0
+  72 001e FFF7FEFF 		bl	UART_Start
+  83:.\main.c      ****     ADC_Start();
+  73              		.loc 1 83 0
+  74 0022 FFF7FEFF 		bl	ADC_Start
+  84:.\main.c      ****     
+  85:.\main.c      ****     /* Start ISRs */
+  86:.\main.c      ****     ADC_IRQ_StartEx(ADC_ISR_Handler);
+  75              		.loc 1 86 0
+  76 0026 544B     		ldr	r3, .L13
+  77 0028 181C     		mov	r0, r3
+  78 002a FFF7FEFF 		bl	ADC_IRQ_StartEx
+  87:.\main.c      ****     
+  88:.\main.c      ****     /* Enable global interrupts */
+  89:.\main.c      ****     CyGlobalIntEnable;
+  79              		.loc 1 89 0
+  80              	@ 89 ".\main.c" 1
+  81 002e 62B6     		CPSIE   i
+  82              	@ 0 "" 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 4
+
+
+  90:.\main.c      **** 
+  91:.\main.c      ****     /* Start ADC conversion */
+  92:.\main.c      ****     ADC_StartConvert();
+  83              		.loc 1 92 0
+  84              		.code	16
+  85 0030 FFF7FEFF 		bl	ADC_StartConvert
+  93:.\main.c      ****     /* Calculate gain for the first channel */
+  94:.\main.c      ****     adcGain = (((int32)ADC_SAR_WRK_MAX_12BIT * ADC_10MV_COUNTS) +
+  86              		.loc 1 94 0
+  87 0034 514B     		ldr	r3, .L13+4
+  88 0036 3B61     		str	r3, [r7, #16]
+  95:.\main.c      ****               ADC_DEFAULT_VREF_MV_VALUE) / (ADC_DEFAULT_VREF_MV_VALUE * 2);
+  96:.\main.c      ****     adcGain *= GAIN;
+  89              		.loc 1 96 0
+  90 0038 3869     		ldr	r0, [r7, #16]
+  91 003a FFF7FEFF 		bl	__aeabi_i2f
+  92 003e 031C     		add	r3, r0, #0
+  93 0040 181C     		add	r0, r3, #0
+  94 0042 4F49     		ldr	r1, .L13+8
+  95 0044 FFF7FEFF 		bl	__aeabi_fmul
+  96 0048 031C     		add	r3, r0, #0
+  97 004a 181C     		add	r0, r3, #0
+  98 004c FFF7FEFF 		bl	__aeabi_f2iz
+  99 0050 031C     		mov	r3, r0
+ 100 0052 3B61     		str	r3, [r7, #16]
+  97:.\main.c      ****     ADC_SetGain(CHANNEL_1, adcGain);
+ 101              		.loc 1 97 0
+ 102 0054 3B69     		ldr	r3, [r7, #16]
+ 103 0056 0020     		mov	r0, #0
+ 104 0058 191C     		mov	r1, r3
+ 105 005a FFF7FEFF 		bl	ADC_SetGain
+ 106              	.L11:
+  98:.\main.c      ****     
+  99:.\main.c      ****     for(;;)
+ 100:.\main.c      ****     {
+ 101:.\main.c      ****         while(dataReady == 0u)
+ 107              		.loc 1 101 0
+ 108 005e C046     		mov	r8, r8
+ 109              	.L2:
+ 110              		.loc 1 101 0 is_stmt 0 discriminator 1
+ 111 0060 484B     		ldr	r3, .L13+12
+ 112 0062 1B78     		ldrb	r3, [r3]
+ 113 0064 DBB2     		uxtb	r3, r3
+ 114 0066 002B     		cmp	r3, #0
+ 115 0068 FAD0     		beq	.L2
+ 102:.\main.c      ****         {
+ 103:.\main.c      ****             ; /* Wait for ADC conversion */
+ 104:.\main.c      ****         }
+ 105:.\main.c      ****         /* Buffer the results */
+ 106:.\main.c      ****         adcVal[CHANNEL_1] = ADC_GetResult16(CHANNEL_1);
+ 116              		.loc 1 106 0 is_stmt 1
+ 117 006a 0020     		mov	r0, #0
+ 118 006c FFF7FEFF 		bl	ADC_GetResult16
+ 119 0070 031C     		mov	r3, r0
+ 120 0072 1A1C     		mov	r2, r3
+ 121 0074 3B1D     		add	r3, r7, #4
+ 122 0076 1A80     		strh	r2, [r3]
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 5
+
+
+ 107:.\main.c      ****         adcVal[CHANNEL_2] = ADC_GetResult16(CHANNEL_2);
+ 123              		.loc 1 107 0
+ 124 0078 0120     		mov	r0, #1
+ 125 007a FFF7FEFF 		bl	ADC_GetResult16
+ 126 007e 031C     		mov	r3, r0
+ 127 0080 1A1C     		mov	r2, r3
+ 128 0082 3B1D     		add	r3, r7, #4
+ 129 0084 5A80     		strh	r2, [r3, #2]
+ 108:.\main.c      ****         adcVal[CHANNEL_3] = ADC_GetResult16(CHANNEL_3);
+ 130              		.loc 1 108 0
+ 131 0086 0220     		mov	r0, #2
+ 132 0088 FFF7FEFF 		bl	ADC_GetResult16
+ 133 008c 031C     		mov	r3, r0
+ 134 008e 1A1C     		mov	r2, r3
+ 135 0090 3B1D     		add	r3, r7, #4
+ 136 0092 9A80     		strh	r2, [r3, #4]
+ 109:.\main.c      ****         adcVal[CHANNEL_4] = ADC_GetResult16(CHANNEL_4);
+ 137              		.loc 1 109 0
+ 138 0094 0320     		mov	r0, #3
+ 139 0096 FFF7FEFF 		bl	ADC_GetResult16
+ 140 009a 031C     		mov	r3, r0
+ 141 009c 1A1C     		mov	r2, r3
+ 142 009e 3B1D     		add	r3, r7, #4
+ 143 00a0 DA80     		strh	r2, [r3, #6]
+ 110:.\main.c      ****         
+ 111:.\main.c      ****         /* Check for ADC window limit interrupt */
+ 112:.\main.c      ****         if(windowFlag != 0u)
+ 144              		.loc 1 112 0
+ 145 00a2 394B     		ldr	r3, .L13+16
+ 146 00a4 1B68     		ldr	r3, [r3]
+ 147 00a6 002B     		cmp	r3, #0
+ 148 00a8 03D0     		beq	.L3
+ 113:.\main.c      ****         {
+ 114:.\main.c      ****             /* Turn ON the LED when input is outside the voltage window (250mV - 750mV) */
+ 115:.\main.c      ****             LED_Write(LOW);
+ 149              		.loc 1 115 0
+ 150 00aa 0020     		mov	r0, #0
+ 151 00ac FFF7FEFF 		bl	LED_Write
+ 152 00b0 02E0     		b	.L4
+ 153              	.L3:
+ 116:.\main.c      ****             
+ 117:.\main.c      ****             /* Note: If LED is active HIGH, then replace "LOW" with "HIGH" */
+ 118:.\main.c      ****         }
+ 119:.\main.c      ****         else
+ 120:.\main.c      ****         {
+ 121:.\main.c      ****             /* Turn OFF the LED when input is within the voltage window (250mV - 750mV) */
+ 122:.\main.c      ****             LED_Write(HIGH);
+ 154              		.loc 1 122 0
+ 155 00b2 0120     		mov	r0, #1
+ 156 00b4 FFF7FEFF 		bl	LED_Write
+ 157              	.L4:
+ 123:.\main.c      ****             
+ 124:.\main.c      ****             /* Note:If LED is active HIGH, then replace "HIGH" with "LOW" */
+ 125:.\main.c      ****         }
+ 126:.\main.c      ****         
+ 127:.\main.c      ****         /* Switch processing */
+ 128:.\main.c      ****         if(SW2_Read() == 0u)
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 6
+
+
+ 158              		.loc 1 128 0
+ 159 00b8 FFF7FEFF 		bl	SW2_Read
+ 160 00bc 031C     		mov	r3, r0
+ 161 00be 002B     		cmp	r3, #0
+ 162 00c0 20D1     		bne	.L5
+ 129:.\main.c      ****         {
+ 130:.\main.c      ****             CyDelay(5u);    /* Basic debounce delay */
+ 163              		.loc 1 130 0
+ 164 00c2 0520     		mov	r0, #5
+ 165 00c4 FFF7FEFF 		bl	CyDelay
+ 131:.\main.c      ****             if(SW2_Read() == 0u)
+ 166              		.loc 1 131 0
+ 167 00c8 FFF7FEFF 		bl	SW2_Read
+ 168 00cc 031C     		mov	r3, r0
+ 169 00ce 002B     		cmp	r3, #0
+ 170 00d0 12D1     		bne	.L6
+ 132:.\main.c      ****             {
+ 133:.\main.c      ****                 channelFlag = 1u;
+ 171              		.loc 1 133 0
+ 172 00d2 2E4B     		ldr	r3, .L13+20
+ 173 00d4 0122     		mov	r2, #1
+ 174 00d6 1A70     		strb	r2, [r3]
+ 134:.\main.c      ****                 /* Update the channel number */
+ 135:.\main.c      ****                 channel++;
+ 175              		.loc 1 135 0
+ 176 00d8 3B1C     		mov	r3, r7
+ 177 00da 1733     		add	r3, r3, #23
+ 178 00dc 1A78     		ldrb	r2, [r3]
+ 179 00de 3B1C     		mov	r3, r7
+ 180 00e0 1733     		add	r3, r3, #23
+ 181 00e2 0132     		add	r2, r2, #1
+ 182 00e4 1A70     		strb	r2, [r3]
+ 136:.\main.c      ****                 channel %= NO_OF_CHANNELS;
+ 183              		.loc 1 136 0
+ 184 00e6 3B1C     		mov	r3, r7
+ 185 00e8 1733     		add	r3, r3, #23
+ 186 00ea 3A1C     		mov	r2, r7
+ 187 00ec 1732     		add	r2, r2, #23
+ 188 00ee 1178     		ldrb	r1, [r2]
+ 189 00f0 0322     		mov	r2, #3
+ 190 00f2 0A40     		and	r2, r1
+ 191 00f4 1A70     		strb	r2, [r3]
+ 137:.\main.c      ****             }
+ 138:.\main.c      ****             while(SW2_Read() == 0u)
+ 192              		.loc 1 138 0
+ 193 00f6 FFE7     		b	.L12
+ 194              	.L6:
+ 195              	.L12:
+ 196 00f8 C046     		mov	r8, r8
+ 197              	.L7:
+ 198              		.loc 1 138 0 is_stmt 0 discriminator 1
+ 199 00fa FFF7FEFF 		bl	SW2_Read
+ 200 00fe 031C     		mov	r3, r0
+ 201 0100 002B     		cmp	r3, #0
+ 202 0102 FAD0     		beq	.L7
+ 203              	.L5:
+ 139:.\main.c      ****             {
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 7
+
+
+ 140:.\main.c      ****                 ; /* Wait till button released */
+ 141:.\main.c      ****             }
+ 142:.\main.c      ****         }
+ 143:.\main.c      **** 
+ 144:.\main.c      ****         /* Convert the ADC counts of active channel to mVolts */
+ 145:.\main.c      ****         mVolts = ADC_CountsTo_mVolts(channel, adcVal[channel]);
+ 204              		.loc 1 145 0 is_stmt 1
+ 205 0104 3B1C     		mov	r3, r7
+ 206 0106 1733     		add	r3, r3, #23
+ 207 0108 1A78     		ldrb	r2, [r3]
+ 208 010a 3B1C     		mov	r3, r7
+ 209 010c 1733     		add	r3, r3, #23
+ 210 010e 1978     		ldrb	r1, [r3]
+ 211 0110 3B1D     		add	r3, r7, #4
+ 212 0112 4900     		lsl	r1, r1, #1
+ 213 0114 CB5A     		ldrh	r3, [r1, r3]
+ 214 0116 3C1C     		mov	r4, r7
+ 215 0118 0E34     		add	r4, r4, #14
+ 216 011a 1BB2     		sxth	r3, r3
+ 217 011c 101C     		mov	r0, r2
+ 218 011e 191C     		mov	r1, r3
+ 219 0120 FFF7FEFF 		bl	ADC_CountsTo_mVolts
+ 220 0124 031C     		mov	r3, r0
+ 221 0126 2380     		strh	r3, [r4]
+ 146:.\main.c      **** 
+ 147:.\main.c      ****         /* If ADC result or channel has been changed, send the data to UART */
+ 148:.\main.c      ****         if((previousValue != mVolts) || (channelFlag != 0u))
+ 222              		.loc 1 148 0
+ 223 0128 3A1C     		mov	r2, r7
+ 224 012a 1432     		add	r2, r2, #20
+ 225 012c 3B1C     		mov	r3, r7
+ 226 012e 0E33     		add	r3, r3, #14
+ 227 0130 0021     		mov	r1, #0
+ 228 0132 525E     		ldrsh	r2, [r2, r1]
+ 229 0134 0021     		mov	r1, #0
+ 230 0136 5B5E     		ldrsh	r3, [r3, r1]
+ 231 0138 9A42     		cmp	r2, r3
+ 232 013a 04D1     		bne	.L8
+ 233              		.loc 1 148 0 is_stmt 0 discriminator 1
+ 234 013c 134B     		ldr	r3, .L13+20
+ 235 013e 1B78     		ldrb	r3, [r3]
+ 236 0140 DBB2     		uxtb	r3, r3
+ 237 0142 002B     		cmp	r3, #0
+ 238 0144 13D0     		beq	.L9
+ 239              	.L8:
+ 149:.\main.c      ****         {    
+ 150:.\main.c      ****             SendChannelVoltage(channel, mVolts);
+ 240              		.loc 1 150 0 is_stmt 1
+ 241 0146 3B1C     		mov	r3, r7
+ 242 0148 1733     		add	r3, r3, #23
+ 243 014a 1A78     		ldrb	r2, [r3]
+ 244 014c 3B1C     		mov	r3, r7
+ 245 014e 0E33     		add	r3, r3, #14
+ 246 0150 0021     		mov	r1, #0
+ 247 0152 5B5E     		ldrsh	r3, [r3, r1]
+ 248 0154 101C     		mov	r0, r2
+ 249 0156 191C     		mov	r1, r3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 8
+
+
+ 250 0158 FFF7FEFF 		bl	SendChannelVoltage
+ 151:.\main.c      ****             previousValue = mVolts;
+ 251              		.loc 1 151 0
+ 252 015c 3B1C     		mov	r3, r7
+ 253 015e 1433     		add	r3, r3, #20
+ 254 0160 3A1C     		mov	r2, r7
+ 255 0162 0E32     		add	r2, r2, #14
+ 256 0164 1288     		ldrh	r2, [r2]
+ 257 0166 1A80     		strh	r2, [r3]
+ 152:.\main.c      ****             
+ 153:.\main.c      ****             /* Clear the flag */
+ 154:.\main.c      ****             channelFlag = 0u;
+ 258              		.loc 1 154 0
+ 259 0168 084B     		ldr	r3, .L13+20
+ 260 016a 0022     		mov	r2, #0
+ 261 016c 1A70     		strb	r2, [r3]
+ 262              	.L9:
+ 155:.\main.c      ****         }
+ 156:.\main.c      ****         dataReady = 0u;
+ 263              		.loc 1 156 0
+ 264 016e 054B     		ldr	r3, .L13+12
+ 265 0170 0022     		mov	r2, #0
+ 266 0172 1A70     		strb	r2, [r3]
+ 157:.\main.c      ****     }
+ 267              		.loc 1 157 0
+ 268 0174 C046     		mov	r8, r8
+ 101:.\main.c      ****         while(dataReady == 0u)
+ 269              		.loc 1 101 0
+ 270 0176 72E7     		b	.L11
+ 271              	.L14:
+ 272              		.align	2
+ 273              	.L13:
+ 274 0178 00000000 		.word	ADC_ISR_Handler
+ 275 017c 204E0000 		.word	20000
+ 276 0180 5D742141 		.word	1092711517
+ 277 0184 00000000 		.word	dataReady
+ 278 0188 00000000 		.word	windowFlag
+ 279 018c 00000000 		.word	channelFlag
+ 280              		.cfi_endproc
+ 281              	.LFE33:
+ 282              		.size	main, .-main
+ 283              		.section	.rodata
+ 284              		.align	2
+ 285              	.LC4:
+ 286 0000 4368616E 		.ascii	"Channel \000"
+ 286      6E656C20 
+ 286      00
+ 287 0009 000000   		.align	2
+ 288              	.LC6:
+ 289 000c 203D2000 		.ascii	" = \000"
+ 290              		.align	2
+ 291              	.LC8:
+ 292 0010 2D00     		.ascii	"-\000"
+ 293              		.global	__aeabi_uidiv
+ 294              		.global	__aeabi_uidivmod
+ 295 0012 0000     		.align	2
+ 296              	.LC10:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 9
+
+
+ 297 0014 206D5600 		.ascii	" mV\000"
+ 298              		.section	.text.SendChannelVoltage,"ax",%progbits
+ 299              		.align	2
+ 300              		.code	16
+ 301              		.thumb_func
+ 302              		.type	SendChannelVoltage, %function
+ 303              	SendChannelVoltage:
+ 304              	.LFB34:
+ 158:.\main.c      **** }
+ 159:.\main.c      **** 
+ 160:.\main.c      **** /*******************************************************************************
+ 161:.\main.c      **** * Function Name: SendChannelVoltage
+ 162:.\main.c      **** ********************************************************************************
+ 163:.\main.c      **** *
+ 164:.\main.c      **** * Summary:
+ 165:.\main.c      **** *  Performs the following tasks:
+ 166:.\main.c      **** *   - Converts the channel number to ASCII character
+ 167:.\main.c      **** *   - Clears terminal screen
+ 168:.\main.c      **** *   - Sends the channel number and voltage to UART
+ 169:.\main.c      **** *
+ 170:.\main.c      **** * Parameters:
+ 171:.\main.c      **** *  uint8 channel : Channel Number
+ 172:.\main.c      **** *  int16 mVolts  : ADC counts    
+ 173:.\main.c      **** *
+ 174:.\main.c      **** * Return:
+ 175:.\main.c      **** *  None.
+ 176:.\main.c      **** *
+ 177:.\main.c      **** ********************************************************************************/
+ 178:.\main.c      **** static void SendChannelVoltage(uint8 channel, int16 mVolts)
+ 179:.\main.c      **** {
+ 305              		.loc 1 179 0
+ 306              		.cfi_startproc
+ 307 0000 80B5     		push	{r7, lr}
+ 308              		.cfi_def_cfa_offset 8
+ 309              		.cfi_offset 7, -8
+ 310              		.cfi_offset 14, -4
+ 311 0002 82B0     		sub	sp, sp, #8
+ 312              		.cfi_def_cfa_offset 16
+ 313 0004 00AF     		add	r7, sp, #0
+ 314              		.cfi_def_cfa_register 7
+ 315 0006 0A1C     		mov	r2, r1
+ 316 0008 FB1D     		add	r3, r7, #7
+ 317 000a 011C     		add	r1, r0, #0
+ 318 000c 1970     		strb	r1, [r3]
+ 319 000e 3B1D     		add	r3, r7, #4
+ 320 0010 1A80     		strh	r2, [r3]
+ 180:.\main.c      ****     /* Clear screen */ 
+ 181:.\main.c      ****     UART_UartPutChar(CLEAR_SCREEN);
+ 321              		.loc 1 181 0
+ 322 0012 0C20     		mov	r0, #12
+ 323 0014 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 182:.\main.c      ****     UART_UartPutString("Channel ");
+ 324              		.loc 1 182 0
+ 325 0018 3E4B     		ldr	r3, .L17
+ 326 001a 181C     		mov	r0, r3
+ 327 001c FFF7FEFF 		bl	UART_UartPutString
+ 183:.\main.c      ****     
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 10
+
+
+ 184:.\main.c      ****     /* Display the channel number starting from 1 */
+ 185:.\main.c      ****     channel++;
+ 328              		.loc 1 185 0
+ 329 0020 FB1D     		add	r3, r7, #7
+ 330 0022 1A78     		ldrb	r2, [r3]
+ 331 0024 FB1D     		add	r3, r7, #7
+ 332 0026 0132     		add	r2, r2, #1
+ 333 0028 1A70     		strb	r2, [r3]
+ 186:.\main.c      ****     channel += CONVERT_TO_ASCII;
+ 334              		.loc 1 186 0
+ 335 002a FB1D     		add	r3, r7, #7
+ 336 002c FA1D     		add	r2, r7, #7
+ 337 002e 1278     		ldrb	r2, [r2]
+ 338 0030 3032     		add	r2, r2, #48
+ 339 0032 1A70     		strb	r2, [r3]
+ 187:.\main.c      ****     UART_UartPutChar(channel);
+ 340              		.loc 1 187 0
+ 341 0034 FB1D     		add	r3, r7, #7
+ 342 0036 1B78     		ldrb	r3, [r3]
+ 343 0038 181C     		mov	r0, r3
+ 344 003a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 188:.\main.c      ****     UART_UartPutString(" = ");
+ 345              		.loc 1 188 0
+ 346 003e 364B     		ldr	r3, .L17+4
+ 347 0040 181C     		mov	r0, r3
+ 348 0042 FFF7FEFF 		bl	UART_UartPutString
+ 189:.\main.c      ****     
+ 190:.\main.c      ****     /* Find the sign of the result */
+ 191:.\main.c      ****     if(mVolts < 0)
+ 349              		.loc 1 191 0
+ 350 0046 3B1D     		add	r3, r7, #4
+ 351 0048 0022     		mov	r2, #0
+ 352 004a 9B5E     		ldrsh	r3, [r3, r2]
+ 353 004c 002B     		cmp	r3, #0
+ 354 004e 09DA     		bge	.L16
+ 192:.\main.c      ****     {
+ 193:.\main.c      ****         UART_UartPutString("-");
+ 355              		.loc 1 193 0
+ 356 0050 324B     		ldr	r3, .L17+8
+ 357 0052 181C     		mov	r0, r3
+ 358 0054 FFF7FEFF 		bl	UART_UartPutString
+ 194:.\main.c      ****         mVolts = -mVolts;
+ 359              		.loc 1 194 0
+ 360 0058 3B1D     		add	r3, r7, #4
+ 361 005a 1B88     		ldrh	r3, [r3]
+ 362 005c 5B42     		neg	r3, r3
+ 363 005e 9AB2     		uxth	r2, r3
+ 364 0060 3B1D     		add	r3, r7, #4
+ 365 0062 1A80     		strh	r2, [r3]
+ 366              	.L16:
+ 195:.\main.c      ****     }
+ 196:.\main.c      ****         
+ 197:.\main.c      ****     /* Send voltage to UART */
+ 198:.\main.c      ****     UART_UartPutChar((mVolts/1000u) + CONVERT_TO_ASCII);
+ 367              		.loc 1 198 0
+ 368 0064 3B1D     		add	r3, r7, #4
+ 369 0066 0022     		mov	r2, #0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 11
+
+
+ 370 0068 9B5E     		ldrsh	r3, [r3, r2]
+ 371 006a 181C     		mov	r0, r3
+ 372 006c FA23     		mov	r3, #250
+ 373 006e 9900     		lsl	r1, r3, #2
+ 374 0070 FFF7FEFF 		bl	__aeabi_uidiv
+ 375 0074 031C     		mov	r3, r0
+ 376 0076 3033     		add	r3, r3, #48
+ 377 0078 181C     		mov	r0, r3
+ 378 007a FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 199:.\main.c      ****     mVolts %= 1000u;
+ 379              		.loc 1 199 0
+ 380 007e 3B1D     		add	r3, r7, #4
+ 381 0080 0022     		mov	r2, #0
+ 382 0082 9B5E     		ldrsh	r3, [r3, r2]
+ 383 0084 181C     		mov	r0, r3
+ 384 0086 FA23     		mov	r3, #250
+ 385 0088 9900     		lsl	r1, r3, #2
+ 386 008a FFF7FEFF 		bl	__aeabi_uidivmod
+ 387 008e 0B1C     		mov	r3, r1
+ 388 0090 1A1C     		mov	r2, r3
+ 389 0092 3B1D     		add	r3, r7, #4
+ 390 0094 1A80     		strh	r2, [r3]
+ 200:.\main.c      ****     UART_UartPutChar((mVolts/100u) + CONVERT_TO_ASCII);
+ 391              		.loc 1 200 0
+ 392 0096 3B1D     		add	r3, r7, #4
+ 393 0098 0022     		mov	r2, #0
+ 394 009a 9B5E     		ldrsh	r3, [r3, r2]
+ 395 009c 181C     		mov	r0, r3
+ 396 009e 6421     		mov	r1, #100
+ 397 00a0 FFF7FEFF 		bl	__aeabi_uidiv
+ 398 00a4 031C     		mov	r3, r0
+ 399 00a6 3033     		add	r3, r3, #48
+ 400 00a8 181C     		mov	r0, r3
+ 401 00aa FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 201:.\main.c      ****     mVolts %= 100u;
+ 402              		.loc 1 201 0
+ 403 00ae 3B1D     		add	r3, r7, #4
+ 404 00b0 0022     		mov	r2, #0
+ 405 00b2 9B5E     		ldrsh	r3, [r3, r2]
+ 406 00b4 181C     		mov	r0, r3
+ 407 00b6 6421     		mov	r1, #100
+ 408 00b8 FFF7FEFF 		bl	__aeabi_uidivmod
+ 409 00bc 0B1C     		mov	r3, r1
+ 410 00be 1A1C     		mov	r2, r3
+ 411 00c0 3B1D     		add	r3, r7, #4
+ 412 00c2 1A80     		strh	r2, [r3]
+ 202:.\main.c      ****     UART_UartPutChar((mVolts/10u) + CONVERT_TO_ASCII);
+ 413              		.loc 1 202 0
+ 414 00c4 3B1D     		add	r3, r7, #4
+ 415 00c6 0022     		mov	r2, #0
+ 416 00c8 9B5E     		ldrsh	r3, [r3, r2]
+ 417 00ca 181C     		mov	r0, r3
+ 418 00cc 0A21     		mov	r1, #10
+ 419 00ce FFF7FEFF 		bl	__aeabi_uidiv
+ 420 00d2 031C     		mov	r3, r0
+ 421 00d4 3033     		add	r3, r3, #48
+ 422 00d6 181C     		mov	r0, r3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 12
+
+
+ 423 00d8 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 203:.\main.c      ****     mVolts %= 10u;
+ 424              		.loc 1 203 0
+ 425 00dc 3B1D     		add	r3, r7, #4
+ 426 00de 0022     		mov	r2, #0
+ 427 00e0 9B5E     		ldrsh	r3, [r3, r2]
+ 428 00e2 181C     		mov	r0, r3
+ 429 00e4 0A21     		mov	r1, #10
+ 430 00e6 FFF7FEFF 		bl	__aeabi_uidivmod
+ 431 00ea 0B1C     		mov	r3, r1
+ 432 00ec 1A1C     		mov	r2, r3
+ 433 00ee 3B1D     		add	r3, r7, #4
+ 434 00f0 1A80     		strh	r2, [r3]
+ 204:.\main.c      ****     UART_UartPutChar(mVolts + CONVERT_TO_ASCII);
+ 435              		.loc 1 204 0
+ 436 00f2 3B1D     		add	r3, r7, #4
+ 437 00f4 0022     		mov	r2, #0
+ 438 00f6 9B5E     		ldrsh	r3, [r3, r2]
+ 439 00f8 3033     		add	r3, r3, #48
+ 440 00fa 181C     		mov	r0, r3
+ 441 00fc FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ 205:.\main.c      ****     UART_UartPutString(" mV");
+ 442              		.loc 1 205 0
+ 443 0100 074B     		ldr	r3, .L17+12
+ 444 0102 181C     		mov	r0, r3
+ 445 0104 FFF7FEFF 		bl	UART_UartPutString
+ 206:.\main.c      ****     UART_UartPutCRLF(0u);
+ 446              		.loc 1 206 0
+ 447 0108 0020     		mov	r0, #0
+ 448 010a FFF7FEFF 		bl	UART_UartPutCRLF
+ 207:.\main.c      **** }
+ 449              		.loc 1 207 0
+ 450 010e BD46     		mov	sp, r7
+ 451 0110 02B0     		add	sp, sp, #8
+ 452              		@ sp needed
+ 453 0112 80BD     		pop	{r7, pc}
+ 454              	.L18:
+ 455              		.align	2
+ 456              	.L17:
+ 457 0114 00000000 		.word	.LC4
+ 458 0118 0C000000 		.word	.LC6
+ 459 011c 10000000 		.word	.LC8
+ 460 0120 14000000 		.word	.LC10
+ 461              		.cfi_endproc
+ 462              	.LFE34:
+ 463              		.size	SendChannelVoltage, .-SendChannelVoltage
+ 464              		.section	.text.ADC_ISR_Handler,"ax",%progbits
+ 465              		.align	2
+ 466              		.global	ADC_ISR_Handler
+ 467              		.code	16
+ 468              		.thumb_func
+ 469              		.type	ADC_ISR_Handler, %function
+ 470              	ADC_ISR_Handler:
+ 471              	.LFB35:
+ 208:.\main.c      **** 
+ 209:.\main.c      **** 
+ 210:.\main.c      **** /******************************************************************************
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 13
+
+
+ 211:.\main.c      **** * Function Name: ADC_ISR_Handler
+ 212:.\main.c      **** *******************************************************************************
+ 213:.\main.c      **** *
+ 214:.\main.c      **** * Summary:
+ 215:.\main.c      **** *  Interrupt Service Routine. Check the ADC status and sets window and data
+ 216:.\main.c      **** *  ready flags.
+ 217:.\main.c      **** *
+ 218:.\main.c      **** ******************************************************************************/
+ 219:.\main.c      **** CY_ISR(ADC_ISR_Handler)
+ 220:.\main.c      **** {
+ 472              		.loc 1 220 0
+ 473              		.cfi_startproc
+ 474 0000 80B5     		push	{r7, lr}
+ 475              		.cfi_def_cfa_offset 8
+ 476              		.cfi_offset 7, -8
+ 477              		.cfi_offset 14, -4
+ 478 0002 82B0     		sub	sp, sp, #8
+ 479              		.cfi_def_cfa_offset 16
+ 480 0004 00AF     		add	r7, sp, #0
+ 481              		.cfi_def_cfa_register 7
+ 221:.\main.c      ****     uint32 intr_status;
+ 222:.\main.c      **** 
+ 223:.\main.c      ****     /* Read interrupt status registers */
+ 224:.\main.c      ****     intr_status = ADC_SAR_INTR_MASKED_REG;
+ 482              		.loc 1 224 0
+ 483 0006 0C4B     		ldr	r3, .L21
+ 484 0008 1B68     		ldr	r3, [r3]
+ 485 000a 7B60     		str	r3, [r7, #4]
+ 225:.\main.c      ****     /* Check for End of Scan interrupt */
+ 226:.\main.c      ****     if((intr_status & ADC_EOS_MASK) != 0u)
+ 486              		.loc 1 226 0
+ 487 000c 7A68     		ldr	r2, [r7, #4]
+ 488 000e 0123     		mov	r3, #1
+ 489 0010 1340     		and	r3, r2
+ 490 0012 0AD0     		beq	.L20
+ 227:.\main.c      ****     {
+ 228:.\main.c      ****         /* Read range interrupt status and raise the flag */
+ 229:.\main.c      ****         windowFlag = ADC_SAR_RANGE_INTR_MASKED_REG;
+ 491              		.loc 1 229 0
+ 492 0014 094B     		ldr	r3, .L21+4
+ 493 0016 1A68     		ldr	r2, [r3]
+ 494 0018 094B     		ldr	r3, .L21+8
+ 495 001a 1A60     		str	r2, [r3]
+ 230:.\main.c      ****         /* Clear range detect status */
+ 231:.\main.c      ****         ADC_SAR_RANGE_INTR_REG = windowFlag;
+ 496              		.loc 1 231 0
+ 497 001c 094B     		ldr	r3, .L21+12
+ 498 001e 084A     		ldr	r2, .L21+8
+ 499 0020 1268     		ldr	r2, [r2]
+ 500 0022 1A60     		str	r2, [r3]
+ 232:.\main.c      ****         dataReady = 1u;
+ 501              		.loc 1 232 0
+ 502 0024 084B     		ldr	r3, .L21+16
+ 503 0026 0122     		mov	r2, #1
+ 504 0028 1A70     		strb	r2, [r3]
+ 505              	.L20:
+ 233:.\main.c      ****     }
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 14
+
+
+ 234:.\main.c      ****     /* Clear handled interrupt */
+ 235:.\main.c      ****     ADC_SAR_INTR_REG = intr_status;
+ 506              		.loc 1 235 0
+ 507 002a 084B     		ldr	r3, .L21+20
+ 508 002c 7A68     		ldr	r2, [r7, #4]
+ 509 002e 1A60     		str	r2, [r3]
+ 236:.\main.c      **** }
+ 510              		.loc 1 236 0
+ 511 0030 BD46     		mov	sp, r7
+ 512 0032 02B0     		add	sp, sp, #8
+ 513              		@ sp needed
+ 514 0034 80BD     		pop	{r7, pc}
+ 515              	.L22:
+ 516 0036 C046     		.align	2
+ 517              	.L21:
+ 518 0038 1C021A40 		.word	1075446300
+ 519 003c 3C021A40 		.word	1075446332
+ 520 0040 00000000 		.word	windowFlag
+ 521 0044 30021A40 		.word	1075446320
+ 522 0048 00000000 		.word	dataReady
+ 523 004c 10021A40 		.word	1075446288
+ 524              		.cfi_endproc
+ 525              	.LFE35:
+ 526              		.size	ADC_ISR_Handler, .-ADC_ISR_Handler
+ 527              		.text
+ 528              	.Letext0:
+ 529              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 530              		.section	.debug_info,"",%progbits
+ 531              	.Ldebug_info0:
+ 532 0000 BF010000 		.4byte	0x1bf
+ 533 0004 0400     		.2byte	0x4
+ 534 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 535 000a 04       		.byte	0x4
+ 536 000b 01       		.uleb128 0x1
+ 537 000c 8F000000 		.4byte	.LASF29
+ 538 0010 01       		.byte	0x1
+ 539 0011 64010000 		.4byte	.LASF30
+ 540 0015 19000000 		.4byte	.LASF31
+ 541 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 542 001d 00000000 		.4byte	0
+ 543 0021 00000000 		.4byte	.Ldebug_line0
+ 544 0025 02       		.uleb128 0x2
+ 545 0026 01       		.byte	0x1
+ 546 0027 06       		.byte	0x6
+ 547 0028 FE010000 		.4byte	.LASF0
+ 548 002c 02       		.uleb128 0x2
+ 549 002d 01       		.byte	0x1
+ 550 002e 08       		.byte	0x8
+ 551 002f 17010000 		.4byte	.LASF1
+ 552 0033 02       		.uleb128 0x2
+ 553 0034 02       		.byte	0x2
+ 554 0035 05       		.byte	0x5
+ 555 0036 E5010000 		.4byte	.LASF2
+ 556 003a 02       		.uleb128 0x2
+ 557 003b 02       		.byte	0x2
+ 558 003c 07       		.byte	0x7
+ 559 003d 66000000 		.4byte	.LASF3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 15
+
+
+ 560 0041 02       		.uleb128 0x2
+ 561 0042 04       		.byte	0x4
+ 562 0043 05       		.byte	0x5
+ 563 0044 F5010000 		.4byte	.LASF4
+ 564 0048 02       		.uleb128 0x2
+ 565 0049 04       		.byte	0x4
+ 566 004a 07       		.byte	0x7
+ 567 004b 2B010000 		.4byte	.LASF5
+ 568 004f 02       		.uleb128 0x2
+ 569 0050 08       		.byte	0x8
+ 570 0051 05       		.byte	0x5
+ 571 0052 B5010000 		.4byte	.LASF6
+ 572 0056 02       		.uleb128 0x2
+ 573 0057 08       		.byte	0x8
+ 574 0058 07       		.byte	0x7
+ 575 0059 8E010000 		.4byte	.LASF7
+ 576 005d 03       		.uleb128 0x3
+ 577 005e 04       		.byte	0x4
+ 578 005f 05       		.byte	0x5
+ 579 0060 696E7400 		.ascii	"int\000"
+ 580 0064 02       		.uleb128 0x2
+ 581 0065 04       		.byte	0x4
+ 582 0066 07       		.byte	0x7
+ 583 0067 81010000 		.4byte	.LASF8
+ 584 006b 04       		.uleb128 0x4
+ 585 006c EF010000 		.4byte	.LASF9
+ 586 0070 02       		.byte	0x2
+ 587 0071 C1       		.byte	0xc1
+ 588 0072 2C000000 		.4byte	0x2c
+ 589 0076 04       		.uleb128 0x4
+ 590 0077 75010000 		.4byte	.LASF10
+ 591 007b 02       		.byte	0x2
+ 592 007c C3       		.byte	0xc3
+ 593 007d 48000000 		.4byte	0x48
+ 594 0081 04       		.uleb128 0x4
+ 595 0082 25010000 		.4byte	.LASF11
+ 596 0086 02       		.byte	0x2
+ 597 0087 C5       		.byte	0xc5
+ 598 0088 33000000 		.4byte	0x33
+ 599 008c 04       		.uleb128 0x4
+ 600 008d 49010000 		.4byte	.LASF12
+ 601 0091 02       		.byte	0x2
+ 602 0092 C6       		.byte	0xc6
+ 603 0093 41000000 		.4byte	0x41
+ 604 0097 02       		.uleb128 0x2
+ 605 0098 04       		.byte	0x4
+ 606 0099 04       		.byte	0x4
+ 607 009a 89000000 		.4byte	.LASF13
+ 608 009e 02       		.uleb128 0x2
+ 609 009f 08       		.byte	0x8
+ 610 00a0 04       		.byte	0x4
+ 611 00a1 5D010000 		.4byte	.LASF14
+ 612 00a5 02       		.uleb128 0x2
+ 613 00a6 01       		.byte	0x1
+ 614 00a7 08       		.byte	0x8
+ 615 00a8 C3010000 		.4byte	.LASF15
+ 616 00ac 05       		.uleb128 0x5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 16
+
+
+ 617 00ad 6B000000 		.4byte	0x6b
+ 618 00b1 06       		.uleb128 0x6
+ 619 00b2 00000000 		.4byte	.LASF16
+ 620 00b6 02       		.byte	0x2
+ 621 00b7 6D01     		.2byte	0x16d
+ 622 00b9 BD000000 		.4byte	0xbd
+ 623 00bd 05       		.uleb128 0x5
+ 624 00be 76000000 		.4byte	0x76
+ 625 00c2 02       		.uleb128 0x2
+ 626 00c3 04       		.byte	0x4
+ 627 00c4 07       		.byte	0x7
+ 628 00c5 AC010000 		.4byte	.LASF17
+ 629 00c9 07       		.uleb128 0x7
+ 630 00ca 7C010000 		.4byte	.LASF23
+ 631 00ce 01       		.byte	0x1
+ 632 00cf 47       		.byte	0x47
+ 633 00d0 5D000000 		.4byte	0x5d
+ 634 00d4 00000000 		.4byte	.LFB33
+ 635 00d8 90010000 		.4byte	.LFE33-.LFB33
+ 636 00dc 01       		.uleb128 0x1
+ 637 00dd 9C       		.byte	0x9c
+ 638 00de 29010000 		.4byte	0x129
+ 639 00e2 08       		.uleb128 0x8
+ 640 00e3 06000000 		.4byte	.LASF18
+ 641 00e7 01       		.byte	0x1
+ 642 00e8 49       		.byte	0x49
+ 643 00e9 6B000000 		.4byte	0x6b
+ 644 00ed 02       		.uleb128 0x2
+ 645 00ee 91       		.byte	0x91
+ 646 00ef 6F       		.sleb128 -17
+ 647 00f0 08       		.uleb128 0x8
+ 648 00f1 5F000000 		.4byte	.LASF19
+ 649 00f5 01       		.byte	0x1
+ 650 00f6 4A       		.byte	0x4a
+ 651 00f7 29010000 		.4byte	0x129
+ 652 00fb 02       		.uleb128 0x2
+ 653 00fc 91       		.byte	0x91
+ 654 00fd 5C       		.sleb128 -36
+ 655 00fe 08       		.uleb128 0x8
+ 656 00ff A5010000 		.4byte	.LASF20
+ 657 0103 01       		.byte	0x1
+ 658 0104 4B       		.byte	0x4b
+ 659 0105 81000000 		.4byte	0x81
+ 660 0109 02       		.uleb128 0x2
+ 661 010a 91       		.byte	0x91
+ 662 010b 66       		.sleb128 -26
+ 663 010c 08       		.uleb128 0x8
+ 664 010d 4F010000 		.4byte	.LASF21
+ 665 0111 01       		.byte	0x1
+ 666 0112 4C       		.byte	0x4c
+ 667 0113 81000000 		.4byte	0x81
+ 668 0117 02       		.uleb128 0x2
+ 669 0118 91       		.byte	0x91
+ 670 0119 6C       		.sleb128 -20
+ 671 011a 08       		.uleb128 0x8
+ 672 011b 6D010000 		.4byte	.LASF22
+ 673 011f 01       		.byte	0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 17
+
+
+ 674 0120 4D       		.byte	0x4d
+ 675 0121 8C000000 		.4byte	0x8c
+ 676 0125 02       		.uleb128 0x2
+ 677 0126 91       		.byte	0x91
+ 678 0127 68       		.sleb128 -24
+ 679 0128 00       		.byte	0
+ 680 0129 09       		.uleb128 0x9
+ 681 012a 81000000 		.4byte	0x81
+ 682 012e 39010000 		.4byte	0x139
+ 683 0132 0A       		.uleb128 0xa
+ 684 0133 C2000000 		.4byte	0xc2
+ 685 0137 03       		.byte	0x3
+ 686 0138 00       		.byte	0
+ 687 0139 0B       		.uleb128 0xb
+ 688 013a C8010000 		.4byte	.LASF32
+ 689 013e 01       		.byte	0x1
+ 690 013f B2       		.byte	0xb2
+ 691 0140 00000000 		.4byte	.LFB34
+ 692 0144 24010000 		.4byte	.LFE34-.LFB34
+ 693 0148 01       		.uleb128 0x1
+ 694 0149 9C       		.byte	0x9c
+ 695 014a 6B010000 		.4byte	0x16b
+ 696 014e 0C       		.uleb128 0xc
+ 697 014f 06000000 		.4byte	.LASF18
+ 698 0153 01       		.byte	0x1
+ 699 0154 B2       		.byte	0xb2
+ 700 0155 6B000000 		.4byte	0x6b
+ 701 0159 02       		.uleb128 0x2
+ 702 015a 91       		.byte	0x91
+ 703 015b 77       		.sleb128 -9
+ 704 015c 0C       		.uleb128 0xc
+ 705 015d A5010000 		.4byte	.LASF20
+ 706 0161 01       		.byte	0x1
+ 707 0162 B2       		.byte	0xb2
+ 708 0163 81000000 		.4byte	0x81
+ 709 0167 02       		.uleb128 0x2
+ 710 0168 91       		.byte	0x91
+ 711 0169 74       		.sleb128 -12
+ 712 016a 00       		.byte	0
+ 713 016b 0D       		.uleb128 0xd
+ 714 016c 79000000 		.4byte	.LASF24
+ 715 0170 01       		.byte	0x1
+ 716 0171 DB       		.byte	0xdb
+ 717 0172 00000000 		.4byte	.LFB35
+ 718 0176 50000000 		.4byte	.LFE35-.LFB35
+ 719 017a 01       		.uleb128 0x1
+ 720 017b 9C       		.byte	0x9c
+ 721 017c 8F010000 		.4byte	0x18f
+ 722 0180 08       		.uleb128 0x8
+ 723 0181 3D010000 		.4byte	.LASF25
+ 724 0185 01       		.byte	0x1
+ 725 0186 DD       		.byte	0xdd
+ 726 0187 76000000 		.4byte	0x76
+ 727 018b 02       		.uleb128 0x2
+ 728 018c 91       		.byte	0x91
+ 729 018d 74       		.sleb128 -12
+ 730 018e 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 18
+
+
+ 731 018f 0E       		.uleb128 0xe
+ 732 0190 0E000000 		.4byte	.LASF26
+ 733 0194 01       		.byte	0x1
+ 734 0195 2E       		.byte	0x2e
+ 735 0196 BD000000 		.4byte	0xbd
+ 736 019a 05       		.uleb128 0x5
+ 737 019b 03       		.byte	0x3
+ 738 019c 00000000 		.4byte	windowFlag
+ 739 01a0 0E       		.uleb128 0xe
+ 740 01a1 DB010000 		.4byte	.LASF27
+ 741 01a5 01       		.byte	0x1
+ 742 01a6 2F       		.byte	0x2f
+ 743 01a7 AC000000 		.4byte	0xac
+ 744 01ab 05       		.uleb128 0x5
+ 745 01ac 03       		.byte	0x3
+ 746 01ad 00000000 		.4byte	dataReady
+ 747 01b1 0E       		.uleb128 0xe
+ 748 01b2 0B010000 		.4byte	.LASF28
+ 749 01b6 01       		.byte	0x1
+ 750 01b7 30       		.byte	0x30
+ 751 01b8 AC000000 		.4byte	0xac
+ 752 01bc 05       		.uleb128 0x5
+ 753 01bd 03       		.byte	0x3
+ 754 01be 00000000 		.4byte	channelFlag
+ 755 01c2 00       		.byte	0
+ 756              		.section	.debug_abbrev,"",%progbits
+ 757              	.Ldebug_abbrev0:
+ 758 0000 01       		.uleb128 0x1
+ 759 0001 11       		.uleb128 0x11
+ 760 0002 01       		.byte	0x1
+ 761 0003 25       		.uleb128 0x25
+ 762 0004 0E       		.uleb128 0xe
+ 763 0005 13       		.uleb128 0x13
+ 764 0006 0B       		.uleb128 0xb
+ 765 0007 03       		.uleb128 0x3
+ 766 0008 0E       		.uleb128 0xe
+ 767 0009 1B       		.uleb128 0x1b
+ 768 000a 0E       		.uleb128 0xe
+ 769 000b 55       		.uleb128 0x55
+ 770 000c 17       		.uleb128 0x17
+ 771 000d 11       		.uleb128 0x11
+ 772 000e 01       		.uleb128 0x1
+ 773 000f 10       		.uleb128 0x10
+ 774 0010 17       		.uleb128 0x17
+ 775 0011 00       		.byte	0
+ 776 0012 00       		.byte	0
+ 777 0013 02       		.uleb128 0x2
+ 778 0014 24       		.uleb128 0x24
+ 779 0015 00       		.byte	0
+ 780 0016 0B       		.uleb128 0xb
+ 781 0017 0B       		.uleb128 0xb
+ 782 0018 3E       		.uleb128 0x3e
+ 783 0019 0B       		.uleb128 0xb
+ 784 001a 03       		.uleb128 0x3
+ 785 001b 0E       		.uleb128 0xe
+ 786 001c 00       		.byte	0
+ 787 001d 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 19
+
+
+ 788 001e 03       		.uleb128 0x3
+ 789 001f 24       		.uleb128 0x24
+ 790 0020 00       		.byte	0
+ 791 0021 0B       		.uleb128 0xb
+ 792 0022 0B       		.uleb128 0xb
+ 793 0023 3E       		.uleb128 0x3e
+ 794 0024 0B       		.uleb128 0xb
+ 795 0025 03       		.uleb128 0x3
+ 796 0026 08       		.uleb128 0x8
+ 797 0027 00       		.byte	0
+ 798 0028 00       		.byte	0
+ 799 0029 04       		.uleb128 0x4
+ 800 002a 16       		.uleb128 0x16
+ 801 002b 00       		.byte	0
+ 802 002c 03       		.uleb128 0x3
+ 803 002d 0E       		.uleb128 0xe
+ 804 002e 3A       		.uleb128 0x3a
+ 805 002f 0B       		.uleb128 0xb
+ 806 0030 3B       		.uleb128 0x3b
+ 807 0031 0B       		.uleb128 0xb
+ 808 0032 49       		.uleb128 0x49
+ 809 0033 13       		.uleb128 0x13
+ 810 0034 00       		.byte	0
+ 811 0035 00       		.byte	0
+ 812 0036 05       		.uleb128 0x5
+ 813 0037 35       		.uleb128 0x35
+ 814 0038 00       		.byte	0
+ 815 0039 49       		.uleb128 0x49
+ 816 003a 13       		.uleb128 0x13
+ 817 003b 00       		.byte	0
+ 818 003c 00       		.byte	0
+ 819 003d 06       		.uleb128 0x6
+ 820 003e 16       		.uleb128 0x16
+ 821 003f 00       		.byte	0
+ 822 0040 03       		.uleb128 0x3
+ 823 0041 0E       		.uleb128 0xe
+ 824 0042 3A       		.uleb128 0x3a
+ 825 0043 0B       		.uleb128 0xb
+ 826 0044 3B       		.uleb128 0x3b
+ 827 0045 05       		.uleb128 0x5
+ 828 0046 49       		.uleb128 0x49
+ 829 0047 13       		.uleb128 0x13
+ 830 0048 00       		.byte	0
+ 831 0049 00       		.byte	0
+ 832 004a 07       		.uleb128 0x7
+ 833 004b 2E       		.uleb128 0x2e
+ 834 004c 01       		.byte	0x1
+ 835 004d 3F       		.uleb128 0x3f
+ 836 004e 19       		.uleb128 0x19
+ 837 004f 03       		.uleb128 0x3
+ 838 0050 0E       		.uleb128 0xe
+ 839 0051 3A       		.uleb128 0x3a
+ 840 0052 0B       		.uleb128 0xb
+ 841 0053 3B       		.uleb128 0x3b
+ 842 0054 0B       		.uleb128 0xb
+ 843 0055 49       		.uleb128 0x49
+ 844 0056 13       		.uleb128 0x13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 20
+
+
+ 845 0057 11       		.uleb128 0x11
+ 846 0058 01       		.uleb128 0x1
+ 847 0059 12       		.uleb128 0x12
+ 848 005a 06       		.uleb128 0x6
+ 849 005b 40       		.uleb128 0x40
+ 850 005c 18       		.uleb128 0x18
+ 851 005d 9642     		.uleb128 0x2116
+ 852 005f 19       		.uleb128 0x19
+ 853 0060 01       		.uleb128 0x1
+ 854 0061 13       		.uleb128 0x13
+ 855 0062 00       		.byte	0
+ 856 0063 00       		.byte	0
+ 857 0064 08       		.uleb128 0x8
+ 858 0065 34       		.uleb128 0x34
+ 859 0066 00       		.byte	0
+ 860 0067 03       		.uleb128 0x3
+ 861 0068 0E       		.uleb128 0xe
+ 862 0069 3A       		.uleb128 0x3a
+ 863 006a 0B       		.uleb128 0xb
+ 864 006b 3B       		.uleb128 0x3b
+ 865 006c 0B       		.uleb128 0xb
+ 866 006d 49       		.uleb128 0x49
+ 867 006e 13       		.uleb128 0x13
+ 868 006f 02       		.uleb128 0x2
+ 869 0070 18       		.uleb128 0x18
+ 870 0071 00       		.byte	0
+ 871 0072 00       		.byte	0
+ 872 0073 09       		.uleb128 0x9
+ 873 0074 01       		.uleb128 0x1
+ 874 0075 01       		.byte	0x1
+ 875 0076 49       		.uleb128 0x49
+ 876 0077 13       		.uleb128 0x13
+ 877 0078 01       		.uleb128 0x1
+ 878 0079 13       		.uleb128 0x13
+ 879 007a 00       		.byte	0
+ 880 007b 00       		.byte	0
+ 881 007c 0A       		.uleb128 0xa
+ 882 007d 21       		.uleb128 0x21
+ 883 007e 00       		.byte	0
+ 884 007f 49       		.uleb128 0x49
+ 885 0080 13       		.uleb128 0x13
+ 886 0081 2F       		.uleb128 0x2f
+ 887 0082 0B       		.uleb128 0xb
+ 888 0083 00       		.byte	0
+ 889 0084 00       		.byte	0
+ 890 0085 0B       		.uleb128 0xb
+ 891 0086 2E       		.uleb128 0x2e
+ 892 0087 01       		.byte	0x1
+ 893 0088 03       		.uleb128 0x3
+ 894 0089 0E       		.uleb128 0xe
+ 895 008a 3A       		.uleb128 0x3a
+ 896 008b 0B       		.uleb128 0xb
+ 897 008c 3B       		.uleb128 0x3b
+ 898 008d 0B       		.uleb128 0xb
+ 899 008e 27       		.uleb128 0x27
+ 900 008f 19       		.uleb128 0x19
+ 901 0090 11       		.uleb128 0x11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 21
+
+
+ 902 0091 01       		.uleb128 0x1
+ 903 0092 12       		.uleb128 0x12
+ 904 0093 06       		.uleb128 0x6
+ 905 0094 40       		.uleb128 0x40
+ 906 0095 18       		.uleb128 0x18
+ 907 0096 9642     		.uleb128 0x2116
+ 908 0098 19       		.uleb128 0x19
+ 909 0099 01       		.uleb128 0x1
+ 910 009a 13       		.uleb128 0x13
+ 911 009b 00       		.byte	0
+ 912 009c 00       		.byte	0
+ 913 009d 0C       		.uleb128 0xc
+ 914 009e 05       		.uleb128 0x5
+ 915 009f 00       		.byte	0
+ 916 00a0 03       		.uleb128 0x3
+ 917 00a1 0E       		.uleb128 0xe
+ 918 00a2 3A       		.uleb128 0x3a
+ 919 00a3 0B       		.uleb128 0xb
+ 920 00a4 3B       		.uleb128 0x3b
+ 921 00a5 0B       		.uleb128 0xb
+ 922 00a6 49       		.uleb128 0x49
+ 923 00a7 13       		.uleb128 0x13
+ 924 00a8 02       		.uleb128 0x2
+ 925 00a9 18       		.uleb128 0x18
+ 926 00aa 00       		.byte	0
+ 927 00ab 00       		.byte	0
+ 928 00ac 0D       		.uleb128 0xd
+ 929 00ad 2E       		.uleb128 0x2e
+ 930 00ae 01       		.byte	0x1
+ 931 00af 3F       		.uleb128 0x3f
+ 932 00b0 19       		.uleb128 0x19
+ 933 00b1 03       		.uleb128 0x3
+ 934 00b2 0E       		.uleb128 0xe
+ 935 00b3 3A       		.uleb128 0x3a
+ 936 00b4 0B       		.uleb128 0xb
+ 937 00b5 3B       		.uleb128 0x3b
+ 938 00b6 0B       		.uleb128 0xb
+ 939 00b7 27       		.uleb128 0x27
+ 940 00b8 19       		.uleb128 0x19
+ 941 00b9 11       		.uleb128 0x11
+ 942 00ba 01       		.uleb128 0x1
+ 943 00bb 12       		.uleb128 0x12
+ 944 00bc 06       		.uleb128 0x6
+ 945 00bd 40       		.uleb128 0x40
+ 946 00be 18       		.uleb128 0x18
+ 947 00bf 9742     		.uleb128 0x2117
+ 948 00c1 19       		.uleb128 0x19
+ 949 00c2 01       		.uleb128 0x1
+ 950 00c3 13       		.uleb128 0x13
+ 951 00c4 00       		.byte	0
+ 952 00c5 00       		.byte	0
+ 953 00c6 0E       		.uleb128 0xe
+ 954 00c7 34       		.uleb128 0x34
+ 955 00c8 00       		.byte	0
+ 956 00c9 03       		.uleb128 0x3
+ 957 00ca 0E       		.uleb128 0xe
+ 958 00cb 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 22
+
+
+ 959 00cc 0B       		.uleb128 0xb
+ 960 00cd 3B       		.uleb128 0x3b
+ 961 00ce 0B       		.uleb128 0xb
+ 962 00cf 49       		.uleb128 0x49
+ 963 00d0 13       		.uleb128 0x13
+ 964 00d1 3F       		.uleb128 0x3f
+ 965 00d2 19       		.uleb128 0x19
+ 966 00d3 02       		.uleb128 0x2
+ 967 00d4 18       		.uleb128 0x18
+ 968 00d5 00       		.byte	0
+ 969 00d6 00       		.byte	0
+ 970 00d7 00       		.byte	0
+ 971              		.section	.debug_aranges,"",%progbits
+ 972 0000 2C000000 		.4byte	0x2c
+ 973 0004 0200     		.2byte	0x2
+ 974 0006 00000000 		.4byte	.Ldebug_info0
+ 975 000a 04       		.byte	0x4
+ 976 000b 00       		.byte	0
+ 977 000c 0000     		.2byte	0
+ 978 000e 0000     		.2byte	0
+ 979 0010 00000000 		.4byte	.LFB33
+ 980 0014 90010000 		.4byte	.LFE33-.LFB33
+ 981 0018 00000000 		.4byte	.LFB34
+ 982 001c 24010000 		.4byte	.LFE34-.LFB34
+ 983 0020 00000000 		.4byte	.LFB35
+ 984 0024 50000000 		.4byte	.LFE35-.LFB35
+ 985 0028 00000000 		.4byte	0
+ 986 002c 00000000 		.4byte	0
+ 987              		.section	.debug_ranges,"",%progbits
+ 988              	.Ldebug_ranges0:
+ 989 0000 00000000 		.4byte	.LFB33
+ 990 0004 90010000 		.4byte	.LFE33
+ 991 0008 00000000 		.4byte	.LFB34
+ 992 000c 24010000 		.4byte	.LFE34
+ 993 0010 00000000 		.4byte	.LFB35
+ 994 0014 50000000 		.4byte	.LFE35
+ 995 0018 00000000 		.4byte	0
+ 996 001c 00000000 		.4byte	0
+ 997              		.section	.debug_line,"",%progbits
+ 998              	.Ldebug_line0:
+ 999 0000 CE000000 		.section	.debug_str,"MS",%progbits,1
+ 999      02004300 
+ 999      00000201 
+ 999      FB0E0D00 
+ 999      01010101 
+ 1000              	.LASF16:
+ 1001 0000 72656733 		.ascii	"reg32\000"
+ 1001      3200
+ 1002              	.LASF18:
+ 1003 0006 6368616E 		.ascii	"channel\000"
+ 1003      6E656C00 
+ 1004              	.LASF26:
+ 1005 000e 77696E64 		.ascii	"windowFlag\000"
+ 1005      6F77466C 
+ 1005      616700
+ 1006              	.LASF31:
+ 1007 0019 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 23
+
+
+ 1007      73657273 
+ 1007      5C6D6974 
+ 1007      6368656C 
+ 1007      6C5C446F 
+ 1008 0046 2D546872 		.ascii	"-Throttle\\Design01.cydsn\000"
+ 1008      6F74746C 
+ 1008      655C4465 
+ 1008      7369676E 
+ 1008      30312E63 
+ 1009              	.LASF19:
+ 1010 005f 61646356 		.ascii	"adcVal\000"
+ 1010      616C00
+ 1011              	.LASF3:
+ 1012 0066 73686F72 		.ascii	"short unsigned int\000"
+ 1012      7420756E 
+ 1012      7369676E 
+ 1012      65642069 
+ 1012      6E7400
+ 1013              	.LASF24:
+ 1014 0079 4144435F 		.ascii	"ADC_ISR_Handler\000"
+ 1014      4953525F 
+ 1014      48616E64 
+ 1014      6C657200 
+ 1015              	.LASF13:
+ 1016 0089 666C6F61 		.ascii	"float\000"
+ 1016      7400
+ 1017              	.LASF29:
+ 1018 008f 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1018      4320342E 
+ 1018      382E3420 
+ 1018      32303134 
+ 1018      30353236 
+ 1019 00c2 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1019      20726576 
+ 1019      6973696F 
+ 1019      6E203231 
+ 1019      31333538 
+ 1020 00f5 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 1020      66756E63 
+ 1020      74696F6E 
+ 1020      2D736563 
+ 1020      74696F6E 
+ 1021              	.LASF28:
+ 1022 010b 6368616E 		.ascii	"channelFlag\000"
+ 1022      6E656C46 
+ 1022      6C616700 
+ 1023              	.LASF1:
+ 1024 0117 756E7369 		.ascii	"unsigned char\000"
+ 1024      676E6564 
+ 1024      20636861 
+ 1024      7200
+ 1025              	.LASF11:
+ 1026 0125 696E7431 		.ascii	"int16\000"
+ 1026      3600
+ 1027              	.LASF5:
+ 1028 012b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1028      20756E73 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 24
+
+
+ 1028      69676E65 
+ 1028      6420696E 
+ 1028      7400
+ 1029              	.LASF25:
+ 1030 013d 696E7472 		.ascii	"intr_status\000"
+ 1030      5F737461 
+ 1030      74757300 
+ 1031              	.LASF12:
+ 1032 0149 696E7433 		.ascii	"int32\000"
+ 1032      3200
+ 1033              	.LASF21:
+ 1034 014f 70726576 		.ascii	"previousValue\000"
+ 1034      696F7573 
+ 1034      56616C75 
+ 1034      6500
+ 1035              	.LASF14:
+ 1036 015d 646F7562 		.ascii	"double\000"
+ 1036      6C6500
+ 1037              	.LASF30:
+ 1038 0164 2E5C6D61 		.ascii	".\\main.c\000"
+ 1038      696E2E63 
+ 1038      00
+ 1039              	.LASF22:
+ 1040 016d 61646347 		.ascii	"adcGain\000"
+ 1040      61696E00 
+ 1041              	.LASF10:
+ 1042 0175 75696E74 		.ascii	"uint32\000"
+ 1042      333200
+ 1043              	.LASF23:
+ 1044 017c 6D61696E 		.ascii	"main\000"
+ 1044      00
+ 1045              	.LASF8:
+ 1046 0181 756E7369 		.ascii	"unsigned int\000"
+ 1046      676E6564 
+ 1046      20696E74 
+ 1046      00
+ 1047              	.LASF7:
+ 1048 018e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1048      206C6F6E 
+ 1048      6720756E 
+ 1048      7369676E 
+ 1048      65642069 
+ 1049              	.LASF20:
+ 1050 01a5 6D566F6C 		.ascii	"mVolts\000"
+ 1050      747300
+ 1051              	.LASF17:
+ 1052 01ac 73697A65 		.ascii	"sizetype\000"
+ 1052      74797065 
+ 1052      00
+ 1053              	.LASF6:
+ 1054 01b5 6C6F6E67 		.ascii	"long long int\000"
+ 1054      206C6F6E 
+ 1054      6720696E 
+ 1054      7400
+ 1055              	.LASF15:
+ 1056 01c3 63686172 		.ascii	"char\000"
+ 1056      00
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccQlf2Yf.s 			page 25
+
+
+ 1057              	.LASF32:
+ 1058 01c8 53656E64 		.ascii	"SendChannelVoltage\000"
+ 1058      4368616E 
+ 1058      6E656C56 
+ 1058      6F6C7461 
+ 1058      676500
+ 1059              	.LASF27:
+ 1060 01db 64617461 		.ascii	"dataReady\000"
+ 1060      52656164 
+ 1060      7900
+ 1061              	.LASF2:
+ 1062 01e5 73686F72 		.ascii	"short int\000"
+ 1062      7420696E 
+ 1062      7400
+ 1063              	.LASF9:
+ 1064 01ef 75696E74 		.ascii	"uint8\000"
+ 1064      3800
+ 1065              	.LASF4:
+ 1066 01f5 6C6F6E67 		.ascii	"long int\000"
+ 1066      20696E74 
+ 1066      00
+ 1067              	.LASF0:
+ 1068 01fe 7369676E 		.ascii	"signed char\000"
+ 1068      65642063 
+ 1068      68617200 
+ 1069              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

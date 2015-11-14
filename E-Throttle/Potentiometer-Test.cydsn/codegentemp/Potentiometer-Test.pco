@@ -1,0 +1,15 @@
+# Potentiometer-Test
+# 2015-11-14 21:19:27Z
+
+# IO_2@[IOP=(3)][IoId=(2)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 2
+# IO_3@[IOP=(3)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 3 3
+set_location "ClockBlock" m0s8clockblockcell -1 -1 0
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "Pin_1(0)" iocell 2 3
+set_io "Pin_Red(0)" iocell 2 4
+set_io "\ADC_SAR_Seq_1:Bypass(0)\" iocell 1 7
+set_location "\ADC_SAR_Seq_1:IRQ\" interrupt -1 -1 14
+set_location "\ADC_SAR_Seq_1:cy_psoc4_sar\" p4sarcell -1 -1 0
+set_location "\PWM_1:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 0

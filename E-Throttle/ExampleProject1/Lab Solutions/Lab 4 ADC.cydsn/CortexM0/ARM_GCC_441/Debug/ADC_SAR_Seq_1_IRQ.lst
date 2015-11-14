@@ -1,0 +1,2149 @@
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"ADC_SAR_Seq_1_IRQ.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 65010000 		.text
+  19      02006900 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.section	.text.ADC_SAR_Seq_1_IRQ_Start,"ax",%progbits
+  23              		.align	2
+  24              		.global	ADC_SAR_Seq_1_IRQ_Start
+  25              		.code	16
+  26              		.thumb_func
+  27              		.type	ADC_SAR_Seq_1_IRQ_Start, %function
+  28              	ADC_SAR_Seq_1_IRQ_Start:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC4\\ADC_SAR_Seq_1_IRQ.c"
+   1:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * File Name: ADC_SAR_Seq_1_IRQ.c  
+   3:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Version 1.70
+   4:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+   5:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *  Description:
+   6:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   API for controlling the state of an interrupt.
+   7:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+   8:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+   9:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *  Note:
+  10:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  11:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  18:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  19:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** #include <CYDEVICE_TRM.H>
+  20:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** #include <CYLIB.H>
+  21:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** #include <ADC_SAR_Seq_1_IRQ.H>
+  22:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  23:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** #if !defined(ADC_SAR_Seq_1_IRQ__REMOVED) /* Check for removal by optimization */
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 2
+
+
+  24:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  25:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+  26:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *  Place your includes, defines and code here 
+  27:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************/
+  28:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /* `#START ADC_SAR_Seq_1_IRQ_intc` */
+  29:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  30:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /* `#END` */
+  31:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  32:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  33:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  34:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /* Declared in startup, used to set unused interrupts to. */
+  35:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** CY_ISR_PROTO(IntDefaultHandler);
+  36:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  37:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  38:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+  39:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_Start
+  40:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+  41:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  42:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+  43:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *  Set up the interrupt and enable it.
+  44:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  45:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:  
+  46:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+  47:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  48:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+  49:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+  50:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  51:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+  52:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_Start(void)
+  53:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+  31              		.loc 1 53 0
+  32              		.cfi_startproc
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 00AF     		add	r7, sp, #0
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_register 7
+  54:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* For all we know the interrupt is active. */
+  55:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_Disable();
+  41              		.loc 1 55 0
+  42 0004 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_Disable
+  56:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  57:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Set the ISR to point to the ADC_SAR_Seq_1_IRQ Interrupt. */
+  58:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_SetVector(&ADC_SAR_Seq_1_IRQ_Interrupt);
+  43              		.loc 1 58 0
+  44 0008 054B     		ldr	r3, .L3
+  45 000a 181C     		mov	r0, r3
+  46 000c FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_SetVector
+  59:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  60:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Set the priority. */
+  61:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_SetPriority((uint8)ADC_SAR_Seq_1_IRQ_INTC_PRIOR_NUMBER);
+  47              		.loc 1 61 0
+  48 0010 0320     		mov	r0, #3
+  49 0012 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_SetPriority
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 3
+
+
+  62:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  63:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Enable it. */
+  64:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_Enable();
+  50              		.loc 1 64 0
+  51 0016 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_Enable
+  65:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+  52              		.loc 1 65 0
+  53 001a BD46     		mov	sp, r7
+  54              		@ sp needed for prologue
+  55 001c 80BD     		pop	{r7, pc}
+  56              	.L4:
+  57 001e C046     		.align	2
+  58              	.L3:
+  59 0020 00000000 		.word	ADC_SAR_Seq_1_IRQ_Interrupt
+  60              		.cfi_endproc
+  61              	.LFE0:
+  62              		.size	ADC_SAR_Seq_1_IRQ_Start, .-ADC_SAR_Seq_1_IRQ_Start
+  63              		.section	.text.ADC_SAR_Seq_1_IRQ_StartEx,"ax",%progbits
+  64              		.align	2
+  65              		.global	ADC_SAR_Seq_1_IRQ_StartEx
+  66              		.code	16
+  67              		.thumb_func
+  68              		.type	ADC_SAR_Seq_1_IRQ_StartEx, %function
+  69              	ADC_SAR_Seq_1_IRQ_StartEx:
+  70              	.LFB1:
+  66:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  67:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  68:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+  69:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_StartEx
+  70:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+  71:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  72:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+  73:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *  Set up the interrupt and enable it.
+  74:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  75:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:  
+  76:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  77:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  78:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+  79:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+  80:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+  81:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+  82:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_StartEx(cyisraddress address)
+  83:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+  71              		.loc 1 83 0
+  72              		.cfi_startproc
+  73 0000 80B5     		push	{r7, lr}
+  74              	.LCFI2:
+  75              		.cfi_def_cfa_offset 8
+  76              		.cfi_offset 7, -8
+  77              		.cfi_offset 14, -4
+  78 0002 82B0     		sub	sp, sp, #8
+  79              	.LCFI3:
+  80              		.cfi_def_cfa_offset 16
+  81 0004 00AF     		add	r7, sp, #0
+  82              	.LCFI4:
+  83              		.cfi_def_cfa_register 7
+  84 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 4
+
+
+  84:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* For all we know the interrupt is active. */
+  85:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_Disable();
+  85              		.loc 1 85 0
+  86 0008 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_Disable
+  86:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  87:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Set the ISR to point to the ADC_SAR_Seq_1_IRQ Interrupt. */
+  88:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_SetVector(address);
+  87              		.loc 1 88 0
+  88 000c 7B68     		ldr	r3, [r7, #4]
+  89 000e 181C     		mov	r0, r3
+  90 0010 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_SetVector
+  89:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  90:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Set the priority. */
+  91:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_SetPriority((uint8)ADC_SAR_Seq_1_IRQ_INTC_PRIOR_NUMBER);
+  91              		.loc 1 91 0
+  92 0014 0320     		mov	r0, #3
+  93 0016 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_SetPriority
+  92:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  93:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Enable it. */
+  94:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_Enable();
+  94              		.loc 1 94 0
+  95 001a FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_Enable
+  95:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+  96              		.loc 1 95 0
+  97 001e BD46     		mov	sp, r7
+  98 0020 02B0     		add	sp, sp, #8
+  99              		@ sp needed for prologue
+ 100 0022 80BD     		pop	{r7, pc}
+ 101              		.cfi_endproc
+ 102              	.LFE1:
+ 103              		.size	ADC_SAR_Seq_1_IRQ_StartEx, .-ADC_SAR_Seq_1_IRQ_StartEx
+ 104              		.section	.text.ADC_SAR_Seq_1_IRQ_Stop,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	ADC_SAR_Seq_1_IRQ_Stop
+ 107              		.code	16
+ 108              		.thumb_func
+ 109              		.type	ADC_SAR_Seq_1_IRQ_Stop, %function
+ 110              	ADC_SAR_Seq_1_IRQ_Stop:
+ 111              	.LFB2:
+  96:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  97:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+  98:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+  99:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_Stop
+ 100:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 101:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 102:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 103:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Disables and removes the interrupt.
+ 104:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 105:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:  
+ 106:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 107:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 108:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 109:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 110:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 111:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_Stop(void)
+ 112:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 112              		.loc 1 112 0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 5
+
+
+ 113              		.cfi_startproc
+ 114 0000 80B5     		push	{r7, lr}
+ 115              	.LCFI5:
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 7, -8
+ 118              		.cfi_offset 14, -4
+ 119 0002 00AF     		add	r7, sp, #0
+ 120              	.LCFI6:
+ 121              		.cfi_def_cfa_register 7
+ 113:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Disable this interrupt. */
+ 114:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_Disable();
+ 122              		.loc 1 114 0
+ 123 0004 FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_Disable
+ 115:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 116:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Set the ISR to point to the passive one. */
+ 117:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     ADC_SAR_Seq_1_IRQ_SetVector(&IntDefaultHandler);
+ 124              		.loc 1 117 0
+ 125 0008 024B     		ldr	r3, .L9
+ 126 000a 181C     		mov	r0, r3
+ 127 000c FFF7FEFF 		bl	ADC_SAR_Seq_1_IRQ_SetVector
+ 118:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 128              		.loc 1 118 0
+ 129 0010 BD46     		mov	sp, r7
+ 130              		@ sp needed for prologue
+ 131 0012 80BD     		pop	{r7, pc}
+ 132              	.L10:
+ 133              		.align	2
+ 134              	.L9:
+ 135 0014 00000000 		.word	IntDefaultHandler
+ 136              		.cfi_endproc
+ 137              	.LFE2:
+ 138              		.size	ADC_SAR_Seq_1_IRQ_Stop, .-ADC_SAR_Seq_1_IRQ_Stop
+ 139              		.section	.text.ADC_SAR_Seq_1_IRQ_Interrupt,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	ADC_SAR_Seq_1_IRQ_Interrupt
+ 142              		.code	16
+ 143              		.thumb_func
+ 144              		.type	ADC_SAR_Seq_1_IRQ_Interrupt, %function
+ 145              	ADC_SAR_Seq_1_IRQ_Interrupt:
+ 146              	.LFB3:
+ 119:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 120:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 121:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 122:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_Interrupt
+ 123:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 124:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 125:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 126:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   The default Interrupt Service Routine for ADC_SAR_Seq_1_IRQ.
+ 127:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 128:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Add custom code between the coments to keep the next version of this file
+ 129:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   from over writting your code.
+ 130:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 131:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:  
+ 132:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 133:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 134:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 135:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 6
+
+
+ 136:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 137:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 138:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** CY_ISR(ADC_SAR_Seq_1_IRQ_Interrupt)
+ 139:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 147              		.loc 1 139 0
+ 148              		.cfi_startproc
+ 149 0000 80B5     		push	{r7, lr}
+ 150              	.LCFI7:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 00AF     		add	r7, sp, #0
+ 155              	.LCFI8:
+ 156              		.cfi_def_cfa_register 7
+ 140:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /*  Place your Interrupt code here. */
+ 141:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* `#START ADC_SAR_Seq_1_IRQ_Interrupt` */
+ 142:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 143:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* `#END` */
+ 144:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 157              		.loc 1 144 0
+ 158 0004 BD46     		mov	sp, r7
+ 159              		@ sp needed for prologue
+ 160 0006 80BD     		pop	{r7, pc}
+ 161              		.cfi_endproc
+ 162              	.LFE3:
+ 163              		.size	ADC_SAR_Seq_1_IRQ_Interrupt, .-ADC_SAR_Seq_1_IRQ_Interrupt
+ 164              		.section	.text.ADC_SAR_Seq_1_IRQ_SetVector,"ax",%progbits
+ 165              		.align	2
+ 166              		.global	ADC_SAR_Seq_1_IRQ_SetVector
+ 167              		.code	16
+ 168              		.thumb_func
+ 169              		.type	ADC_SAR_Seq_1_IRQ_SetVector, %function
+ 170              	ADC_SAR_Seq_1_IRQ_SetVector:
+ 171              	.LFB4:
+ 145:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 146:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 147:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 148:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_SetVector
+ 149:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 150:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 151:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 152:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Change the ISR vector for the Interrupt. Note calling ADC_SAR_Seq_1_IRQ_Start
+ 153:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   will override any effect this method would have had. To set the vector 
+ 154:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   before the component has been started use ADC_SAR_Seq_1_IRQ_StartEx instead.
+ 155:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 156:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 157:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 158:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 159:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 160:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 161:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 162:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 163:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_SetVector(cyisraddress address)
+ 164:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 172              		.loc 1 164 0
+ 173              		.cfi_startproc
+ 174 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 7
+
+
+ 175              	.LCFI9:
+ 176              		.cfi_def_cfa_offset 8
+ 177              		.cfi_offset 7, -8
+ 178              		.cfi_offset 14, -4
+ 179 0002 82B0     		sub	sp, sp, #8
+ 180              	.LCFI10:
+ 181              		.cfi_def_cfa_offset 16
+ 182 0004 00AF     		add	r7, sp, #0
+ 183              	.LCFI11:
+ 184              		.cfi_def_cfa_register 7
+ 185 0006 7860     		str	r0, [r7, #4]
+ 165:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     CyRamVectors[CYINT_IRQ_BASE + ADC_SAR_Seq_1_IRQ__INTC_NUMBER] = address;
+ 186              		.loc 1 165 0
+ 187 0008 024B     		ldr	r3, .L15
+ 188 000a 7A68     		ldr	r2, [r7, #4]
+ 189 000c 9A67     		str	r2, [r3, #120]
+ 166:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 190              		.loc 1 166 0
+ 191 000e BD46     		mov	sp, r7
+ 192 0010 02B0     		add	sp, sp, #8
+ 193              		@ sp needed for prologue
+ 194 0012 80BD     		pop	{r7, pc}
+ 195              	.L16:
+ 196              		.align	2
+ 197              	.L15:
+ 198 0014 00000000 		.word	CyRamVectors
+ 199              		.cfi_endproc
+ 200              	.LFE4:
+ 201              		.size	ADC_SAR_Seq_1_IRQ_SetVector, .-ADC_SAR_Seq_1_IRQ_SetVector
+ 202              		.section	.text.ADC_SAR_Seq_1_IRQ_GetVector,"ax",%progbits
+ 203              		.align	2
+ 204              		.global	ADC_SAR_Seq_1_IRQ_GetVector
+ 205              		.code	16
+ 206              		.thumb_func
+ 207              		.type	ADC_SAR_Seq_1_IRQ_GetVector, %function
+ 208              	ADC_SAR_Seq_1_IRQ_GetVector:
+ 209              	.LFB5:
+ 167:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 168:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 169:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 170:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_GetVector
+ 171:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 172:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 173:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 174:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 175:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 176:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 177:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 178:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 179:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 180:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Address of the ISR in the interrupt vector table.
+ 181:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 182:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 183:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** cyisraddress ADC_SAR_Seq_1_IRQ_GetVector(void)
+ 184:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 210              		.loc 1 184 0
+ 211              		.cfi_startproc
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 8
+
+
+ 212 0000 80B5     		push	{r7, lr}
+ 213              	.LCFI12:
+ 214              		.cfi_def_cfa_offset 8
+ 215              		.cfi_offset 7, -8
+ 216              		.cfi_offset 14, -4
+ 217 0002 00AF     		add	r7, sp, #0
+ 218              	.LCFI13:
+ 219              		.cfi_def_cfa_register 7
+ 185:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     return CyRamVectors[CYINT_IRQ_BASE + ADC_SAR_Seq_1_IRQ__INTC_NUMBER];
+ 220              		.loc 1 185 0
+ 221 0004 024B     		ldr	r3, .L19
+ 222 0006 9B6F     		ldr	r3, [r3, #120]
+ 186:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 223              		.loc 1 186 0
+ 224 0008 181C     		mov	r0, r3
+ 225 000a BD46     		mov	sp, r7
+ 226              		@ sp needed for prologue
+ 227 000c 80BD     		pop	{r7, pc}
+ 228              	.L20:
+ 229 000e C046     		.align	2
+ 230              	.L19:
+ 231 0010 00000000 		.word	CyRamVectors
+ 232              		.cfi_endproc
+ 233              	.LFE5:
+ 234              		.size	ADC_SAR_Seq_1_IRQ_GetVector, .-ADC_SAR_Seq_1_IRQ_GetVector
+ 235              		.section	.text.ADC_SAR_Seq_1_IRQ_SetPriority,"ax",%progbits
+ 236              		.align	2
+ 237              		.global	ADC_SAR_Seq_1_IRQ_SetPriority
+ 238              		.code	16
+ 239              		.thumb_func
+ 240              		.type	ADC_SAR_Seq_1_IRQ_SetPriority, %function
+ 241              	ADC_SAR_Seq_1_IRQ_SetPriority:
+ 242              	.LFB6:
+ 187:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 188:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 189:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 190:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_SetPriority
+ 191:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 192:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 193:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 194:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Sets the Priority of the Interrupt. Note calling ADC_SAR_Seq_1_IRQ_Start
+ 195:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   or ADC_SAR_Seq_1_IRQ_StartEx will override any effect this method would 
+ 196:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   have had. This method should only be called after ADC_SAR_Seq_1_IRQ_Start or 
+ 197:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   ADC_SAR_Seq_1_IRQ_StartEx has been called. To set the initial
+ 198:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   priority for the component use the cydwr file in the tool.
+ 199:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 200:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 201:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   priority: Priority of the interrupt. 0 - 3, 0 being the highest.
+ 202:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 203:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 204:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 205:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 206:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 207:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_SetPriority(uint8 priority)
+ 208:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 243              		.loc 1 208 0
+ 244              		.cfi_startproc
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 9
+
+
+ 245 0000 90B5     		push	{r4, r7, lr}
+ 246              	.LCFI14:
+ 247              		.cfi_def_cfa_offset 12
+ 248              		.cfi_offset 4, -12
+ 249              		.cfi_offset 7, -8
+ 250              		.cfi_offset 14, -4
+ 251 0002 85B0     		sub	sp, sp, #20
+ 252              	.LCFI15:
+ 253              		.cfi_def_cfa_offset 32
+ 254 0004 00AF     		add	r7, sp, #0
+ 255              	.LCFI16:
+ 256              		.cfi_def_cfa_register 7
+ 257 0006 021C     		mov	r2, r0
+ 258 0008 FB1D     		add	r3, r7, #7
+ 259 000a 1A70     		strb	r2, [r3]
+ 209:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 	uint8 interruptState;
+ 210:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     uint32 priorityOffset = ((ADC_SAR_Seq_1_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 260              		.loc 1 210 0
+ 261 000c 1623     		mov	r3, #22
+ 262 000e FB60     		str	r3, [r7, #12]
+ 211:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     
+ 212:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 	interruptState = CyEnterCriticalSection();
+ 263              		.loc 1 212 0
+ 264 0010 FFF7FEFF 		bl	CyEnterCriticalSection
+ 265 0014 031C     		mov	r3, r0
+ 266 0016 1A1C     		mov	r2, r3
+ 267 0018 3B1C     		mov	r3, r7
+ 268 001a 0B33     		add	r3, r3, #11
+ 269 001c 1A70     		strb	r2, [r3]
+ 213:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     *ADC_SAR_Seq_1_IRQ_INTC_PRIOR = (*ADC_SAR_Seq_1_IRQ_INTC_PRIOR & (uint32)(~ADC_SAR_Seq_1_IRQ__I
+ 270              		.loc 1 213 0
+ 271 001e 0B4B     		ldr	r3, .L23
+ 272 0020 0A4A     		ldr	r2, .L23
+ 273 0022 1168     		ldr	r1, [r2]
+ 274 0024 0A4A     		ldr	r2, .L23+4
+ 275 0026 1140     		and	r1, r1, r2
+ 214:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****                                     ((uint32)priority << priorityOffset);
+ 276              		.loc 1 214 0
+ 277 0028 FA1D     		add	r2, r7, #7
+ 278 002a 1078     		ldrb	r0, [r2]
+ 279 002c FA68     		ldr	r2, [r7, #12]
+ 280 002e 041C     		mov	r4, r0
+ 281 0030 9440     		lsl	r4, r4, r2
+ 282 0032 221C     		mov	r2, r4
+ 283              		.loc 1 213 0
+ 284 0034 0A43     		orr	r2, r2, r1
+ 285 0036 1A60     		str	r2, [r3]
+ 215:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 	CyExitCriticalSection(interruptState);
+ 286              		.loc 1 215 0
+ 287 0038 3B1C     		mov	r3, r7
+ 288 003a 0B33     		add	r3, r3, #11
+ 289 003c 1B78     		ldrb	r3, [r3]
+ 290 003e 181C     		mov	r0, r3
+ 291 0040 FFF7FEFF 		bl	CyExitCriticalSection
+ 216:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 292              		.loc 1 216 0
+ 293 0044 BD46     		mov	sp, r7
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 10
+
+
+ 294 0046 05B0     		add	sp, sp, #20
+ 295              		@ sp needed for prologue
+ 296 0048 90BD     		pop	{r4, r7, pc}
+ 297              	.L24:
+ 298 004a C046     		.align	2
+ 299              	.L23:
+ 300 004c 0CE400E0 		.word	-536812532
+ 301 0050 FFFF3FFF 		.word	-12582913
+ 302              		.cfi_endproc
+ 303              	.LFE6:
+ 304              		.size	ADC_SAR_Seq_1_IRQ_SetPriority, .-ADC_SAR_Seq_1_IRQ_SetPriority
+ 305              		.section	.text.ADC_SAR_Seq_1_IRQ_GetPriority,"ax",%progbits
+ 306              		.align	2
+ 307              		.global	ADC_SAR_Seq_1_IRQ_GetPriority
+ 308              		.code	16
+ 309              		.thumb_func
+ 310              		.type	ADC_SAR_Seq_1_IRQ_GetPriority, %function
+ 311              	ADC_SAR_Seq_1_IRQ_GetPriority:
+ 312              	.LFB7:
+ 217:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 218:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 219:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 220:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_GetPriority
+ 221:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 222:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 223:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 224:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Gets the Priority of the Interrupt.
+ 225:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 226:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 227:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 228:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 229:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 230:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Priority of the interrupt. 0 - 3, 0 being the highest.
+ 231:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 232:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 233:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** uint8 ADC_SAR_Seq_1_IRQ_GetPriority(void)
+ 234:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 313              		.loc 1 234 0
+ 314              		.cfi_startproc
+ 315 0000 80B5     		push	{r7, lr}
+ 316              	.LCFI17:
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 7, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 82B0     		sub	sp, sp, #8
+ 321              	.LCFI18:
+ 322              		.cfi_def_cfa_offset 16
+ 323 0004 00AF     		add	r7, sp, #0
+ 324              	.LCFI19:
+ 325              		.cfi_def_cfa_register 7
+ 235:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     uint32 priority;
+ 236:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 	uint32 priorityOffset = ((ADC_SAR_Seq_1_IRQ__INTC_NUMBER % 4u) * 8u) + 6u;
+ 326              		.loc 1 236 0
+ 327 0006 1623     		mov	r3, #22
+ 328 0008 7B60     		str	r3, [r7, #4]
+ 237:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 238:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     priority = (*ADC_SAR_Seq_1_IRQ_INTC_PRIOR & ADC_SAR_Seq_1_IRQ__INTC_PRIOR_MASK) >> priorityOffs
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 11
+
+
+ 329              		.loc 1 238 0
+ 330 000a 084B     		ldr	r3, .L27
+ 331 000c 1A68     		ldr	r2, [r3]
+ 332 000e C023     		mov	r3, #192
+ 333 0010 1B04     		lsl	r3, r3, #16
+ 334 0012 1A40     		and	r2, r2, r3
+ 335 0014 7B68     		ldr	r3, [r7, #4]
+ 336 0016 111C     		mov	r1, r2
+ 337 0018 D940     		lsr	r1, r1, r3
+ 338 001a 0B1C     		mov	r3, r1
+ 339 001c 3B60     		str	r3, [r7]
+ 239:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 240:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     return (uint8)priority;
+ 340              		.loc 1 240 0
+ 341 001e 3B68     		ldr	r3, [r7]
+ 342 0020 DBB2     		uxtb	r3, r3
+ 241:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 343              		.loc 1 241 0
+ 344 0022 181C     		mov	r0, r3
+ 345 0024 BD46     		mov	sp, r7
+ 346 0026 02B0     		add	sp, sp, #8
+ 347              		@ sp needed for prologue
+ 348 0028 80BD     		pop	{r7, pc}
+ 349              	.L28:
+ 350 002a C046     		.align	2
+ 351              	.L27:
+ 352 002c 0CE400E0 		.word	-536812532
+ 353              		.cfi_endproc
+ 354              	.LFE7:
+ 355              		.size	ADC_SAR_Seq_1_IRQ_GetPriority, .-ADC_SAR_Seq_1_IRQ_GetPriority
+ 356              		.section	.text.ADC_SAR_Seq_1_IRQ_Enable,"ax",%progbits
+ 357              		.align	2
+ 358              		.global	ADC_SAR_Seq_1_IRQ_Enable
+ 359              		.code	16
+ 360              		.thumb_func
+ 361              		.type	ADC_SAR_Seq_1_IRQ_Enable, %function
+ 362              	ADC_SAR_Seq_1_IRQ_Enable:
+ 363              	.LFB8:
+ 242:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 243:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 244:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 245:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_Enable
+ 246:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 247:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 248:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 249:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Enables the interrupt.
+ 250:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 251:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 252:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 253:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 254:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 255:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 256:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 257:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 258:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_Enable(void)
+ 259:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 364              		.loc 1 259 0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 12
+
+
+ 365              		.cfi_startproc
+ 366 0000 80B5     		push	{r7, lr}
+ 367              	.LCFI20:
+ 368              		.cfi_def_cfa_offset 8
+ 369              		.cfi_offset 7, -8
+ 370              		.cfi_offset 14, -4
+ 371 0002 00AF     		add	r7, sp, #0
+ 372              	.LCFI21:
+ 373              		.cfi_def_cfa_register 7
+ 260:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Enable the general interrupt. */
+ 261:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     *ADC_SAR_Seq_1_IRQ_INTC_SET_EN = ADC_SAR_Seq_1_IRQ__INTC_MASK;
+ 374              		.loc 1 261 0
+ 375 0004 024A     		ldr	r2, .L31
+ 376 0006 8023     		mov	r3, #128
+ 377 0008 DB01     		lsl	r3, r3, #7
+ 378 000a 1360     		str	r3, [r2]
+ 262:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 379              		.loc 1 262 0
+ 380 000c BD46     		mov	sp, r7
+ 381              		@ sp needed for prologue
+ 382 000e 80BD     		pop	{r7, pc}
+ 383              	.L32:
+ 384              		.align	2
+ 385              	.L31:
+ 386 0010 00E100E0 		.word	-536813312
+ 387              		.cfi_endproc
+ 388              	.LFE8:
+ 389              		.size	ADC_SAR_Seq_1_IRQ_Enable, .-ADC_SAR_Seq_1_IRQ_Enable
+ 390              		.section	.text.ADC_SAR_Seq_1_IRQ_GetState,"ax",%progbits
+ 391              		.align	2
+ 392              		.global	ADC_SAR_Seq_1_IRQ_GetState
+ 393              		.code	16
+ 394              		.thumb_func
+ 395              		.type	ADC_SAR_Seq_1_IRQ_GetState, %function
+ 396              	ADC_SAR_Seq_1_IRQ_GetState:
+ 397              	.LFB9:
+ 263:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 264:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 265:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 266:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_GetState
+ 267:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 268:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 269:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 270:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 271:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 272:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 273:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 274:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 275:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 276:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   1 if enabled, 0 if disabled.
+ 277:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 278:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 279:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** uint8 ADC_SAR_Seq_1_IRQ_GetState(void)
+ 280:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 398              		.loc 1 280 0
+ 399              		.cfi_startproc
+ 400 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 13
+
+
+ 401              	.LCFI22:
+ 402              		.cfi_def_cfa_offset 8
+ 403              		.cfi_offset 7, -8
+ 404              		.cfi_offset 14, -4
+ 405 0002 00AF     		add	r7, sp, #0
+ 406              	.LCFI23:
+ 407              		.cfi_def_cfa_register 7
+ 281:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Get the state of the general interrupt. */
+ 282:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     return ((*ADC_SAR_Seq_1_IRQ_INTC_SET_EN & (uint32)ADC_SAR_Seq_1_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 408              		.loc 1 282 0
+ 409 0004 064B     		ldr	r3, .L37
+ 410 0006 1A68     		ldr	r2, [r3]
+ 411 0008 8023     		mov	r3, #128
+ 412 000a DB01     		lsl	r3, r3, #7
+ 413 000c 1340     		and	r3, r3, r2
+ 414 000e 002B     		cmp	r3, #0
+ 415 0010 01D0     		beq	.L34
+ 416 0012 0123     		mov	r3, #1
+ 417 0014 00E0     		b	.L35
+ 418              	.L34:
+ 419 0016 0023     		mov	r3, #0
+ 420              	.L35:
+ 283:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 421              		.loc 1 283 0
+ 422 0018 181C     		mov	r0, r3
+ 423 001a BD46     		mov	sp, r7
+ 424              		@ sp needed for prologue
+ 425 001c 80BD     		pop	{r7, pc}
+ 426              	.L38:
+ 427 001e C046     		.align	2
+ 428              	.L37:
+ 429 0020 00E100E0 		.word	-536813312
+ 430              		.cfi_endproc
+ 431              	.LFE9:
+ 432              		.size	ADC_SAR_Seq_1_IRQ_GetState, .-ADC_SAR_Seq_1_IRQ_GetState
+ 433              		.section	.text.ADC_SAR_Seq_1_IRQ_Disable,"ax",%progbits
+ 434              		.align	2
+ 435              		.global	ADC_SAR_Seq_1_IRQ_Disable
+ 436              		.code	16
+ 437              		.thumb_func
+ 438              		.type	ADC_SAR_Seq_1_IRQ_Disable, %function
+ 439              	ADC_SAR_Seq_1_IRQ_Disable:
+ 440              	.LFB10:
+ 284:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 285:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 286:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 287:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_Disable
+ 288:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 289:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 290:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 291:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Disables the Interrupt.
+ 292:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 293:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 294:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 295:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 296:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 297:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 14
+
+
+ 298:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 299:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 300:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_Disable(void)
+ 301:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 441              		.loc 1 301 0
+ 442              		.cfi_startproc
+ 443 0000 80B5     		push	{r7, lr}
+ 444              	.LCFI24:
+ 445              		.cfi_def_cfa_offset 8
+ 446              		.cfi_offset 7, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 00AF     		add	r7, sp, #0
+ 449              	.LCFI25:
+ 450              		.cfi_def_cfa_register 7
+ 302:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     /* Disable the general interrupt. */
+ 303:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     *ADC_SAR_Seq_1_IRQ_INTC_CLR_EN = ADC_SAR_Seq_1_IRQ__INTC_MASK;
+ 451              		.loc 1 303 0
+ 452 0004 024A     		ldr	r2, .L41
+ 453 0006 8023     		mov	r3, #128
+ 454 0008 DB01     		lsl	r3, r3, #7
+ 455 000a 1360     		str	r3, [r2]
+ 304:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 456              		.loc 1 304 0
+ 457 000c BD46     		mov	sp, r7
+ 458              		@ sp needed for prologue
+ 459 000e 80BD     		pop	{r7, pc}
+ 460              	.L42:
+ 461              		.align	2
+ 462              	.L41:
+ 463 0010 80E100E0 		.word	-536813184
+ 464              		.cfi_endproc
+ 465              	.LFE10:
+ 466              		.size	ADC_SAR_Seq_1_IRQ_Disable, .-ADC_SAR_Seq_1_IRQ_Disable
+ 467              		.section	.text.ADC_SAR_Seq_1_IRQ_SetPending,"ax",%progbits
+ 468              		.align	2
+ 469              		.global	ADC_SAR_Seq_1_IRQ_SetPending
+ 470              		.code	16
+ 471              		.thumb_func
+ 472              		.type	ADC_SAR_Seq_1_IRQ_SetPending, %function
+ 473              	ADC_SAR_Seq_1_IRQ_SetPending:
+ 474              	.LFB11:
+ 305:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 306:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 307:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 308:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_SetPending
+ 309:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 310:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 311:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 312:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 313:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   generating the interrupt.
+ 314:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 315:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 316:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 317:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 318:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 319:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 320:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 15
+
+
+ 321:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 322:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_SetPending(void)
+ 323:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ 475              		.loc 1 323 0
+ 476              		.cfi_startproc
+ 477 0000 80B5     		push	{r7, lr}
+ 478              	.LCFI26:
+ 479              		.cfi_def_cfa_offset 8
+ 480              		.cfi_offset 7, -8
+ 481              		.cfi_offset 14, -4
+ 482 0002 00AF     		add	r7, sp, #0
+ 483              	.LCFI27:
+ 484              		.cfi_def_cfa_register 7
+ 324:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     *ADC_SAR_Seq_1_IRQ_INTC_SET_PD = ADC_SAR_Seq_1_IRQ__INTC_MASK;
+ 485              		.loc 1 324 0
+ 486 0004 024A     		ldr	r2, .L45
+ 487 0006 8023     		mov	r3, #128
+ 488 0008 DB01     		lsl	r3, r3, #7
+ 489 000a 1360     		str	r3, [r2]
+ 325:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 490              		.loc 1 325 0
+ 491 000c BD46     		mov	sp, r7
+ 492              		@ sp needed for prologue
+ 493 000e 80BD     		pop	{r7, pc}
+ 494              	.L46:
+ 495              		.align	2
+ 496              	.L45:
+ 497 0010 00E200E0 		.word	-536813056
+ 498              		.cfi_endproc
+ 499              	.LFE11:
+ 500              		.size	ADC_SAR_Seq_1_IRQ_SetPending, .-ADC_SAR_Seq_1_IRQ_SetPending
+ 501              		.section	.text.ADC_SAR_Seq_1_IRQ_ClearPending,"ax",%progbits
+ 502              		.align	2
+ 503              		.global	ADC_SAR_Seq_1_IRQ_ClearPending
+ 504              		.code	16
+ 505              		.thumb_func
+ 506              		.type	ADC_SAR_Seq_1_IRQ_ClearPending, %function
+ 507              	ADC_SAR_Seq_1_IRQ_ClearPending:
+ 508              	.LFB12:
+ 326:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 327:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** 
+ 328:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** /*******************************************************************************
+ 329:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Function Name: ADC_SAR_Seq_1_IRQ_ClearPending
+ 330:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** ********************************************************************************
+ 331:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 332:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Summary:
+ 333:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   Clears a pending interrupt.
+ 334:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 335:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Parameters:
+ 336:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 337:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 338:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** * Return:
+ 339:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *   None
+ 340:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *
+ 341:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** *******************************************************************************/
+ 342:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** void ADC_SAR_Seq_1_IRQ_ClearPending(void)
+ 343:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** {
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 16
+
+
+ 509              		.loc 1 343 0
+ 510              		.cfi_startproc
+ 511 0000 80B5     		push	{r7, lr}
+ 512              	.LCFI28:
+ 513              		.cfi_def_cfa_offset 8
+ 514              		.cfi_offset 7, -8
+ 515              		.cfi_offset 14, -4
+ 516 0002 00AF     		add	r7, sp, #0
+ 517              	.LCFI29:
+ 518              		.cfi_def_cfa_register 7
+ 344:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c ****     *ADC_SAR_Seq_1_IRQ_INTC_CLR_PD = ADC_SAR_Seq_1_IRQ__INTC_MASK;
+ 519              		.loc 1 344 0
+ 520 0004 024A     		ldr	r2, .L49
+ 521 0006 8023     		mov	r3, #128
+ 522 0008 DB01     		lsl	r3, r3, #7
+ 523 000a 1360     		str	r3, [r2]
+ 345:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_IRQ.c **** }
+ 524              		.loc 1 345 0
+ 525 000c BD46     		mov	sp, r7
+ 526              		@ sp needed for prologue
+ 527 000e 80BD     		pop	{r7, pc}
+ 528              	.L50:
+ 529              		.align	2
+ 530              	.L49:
+ 531 0010 80E200E0 		.word	-536812928
+ 532              		.cfi_endproc
+ 533              	.LFE12:
+ 534              		.size	ADC_SAR_Seq_1_IRQ_ClearPending, .-ADC_SAR_Seq_1_IRQ_ClearPending
+ 535              		.text
+ 536              	.Letext0:
+ 537              		.section	.debug_loc,"",%progbits
+ 538              	.Ldebug_loc0:
+ 539              	.LLST0:
+ 540 0000 00000000 		.4byte	.LFB0
+ 541 0004 02000000 		.4byte	.LCFI0
+ 542 0008 0100     		.2byte	0x1
+ 543 000a 5D       		.byte	0x5d
+ 544 000b 02000000 		.4byte	.LCFI0
+ 545 000f 04000000 		.4byte	.LCFI1
+ 546 0013 0200     		.2byte	0x2
+ 547 0015 7D       		.byte	0x7d
+ 548 0016 08       		.sleb128 8
+ 549 0017 04000000 		.4byte	.LCFI1
+ 550 001b 24000000 		.4byte	.LFE0
+ 551 001f 0200     		.2byte	0x2
+ 552 0021 77       		.byte	0x77
+ 553 0022 08       		.sleb128 8
+ 554 0023 00000000 		.4byte	0x0
+ 555 0027 00000000 		.4byte	0x0
+ 556              	.LLST1:
+ 557 002b 00000000 		.4byte	.LFB1
+ 558 002f 02000000 		.4byte	.LCFI2
+ 559 0033 0100     		.2byte	0x1
+ 560 0035 5D       		.byte	0x5d
+ 561 0036 02000000 		.4byte	.LCFI2
+ 562 003a 04000000 		.4byte	.LCFI3
+ 563 003e 0200     		.2byte	0x2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 17
+
+
+ 564 0040 7D       		.byte	0x7d
+ 565 0041 08       		.sleb128 8
+ 566 0042 04000000 		.4byte	.LCFI3
+ 567 0046 06000000 		.4byte	.LCFI4
+ 568 004a 0200     		.2byte	0x2
+ 569 004c 7D       		.byte	0x7d
+ 570 004d 10       		.sleb128 16
+ 571 004e 06000000 		.4byte	.LCFI4
+ 572 0052 24000000 		.4byte	.LFE1
+ 573 0056 0200     		.2byte	0x2
+ 574 0058 77       		.byte	0x77
+ 575 0059 10       		.sleb128 16
+ 576 005a 00000000 		.4byte	0x0
+ 577 005e 00000000 		.4byte	0x0
+ 578              	.LLST2:
+ 579 0062 00000000 		.4byte	.LFB2
+ 580 0066 02000000 		.4byte	.LCFI5
+ 581 006a 0100     		.2byte	0x1
+ 582 006c 5D       		.byte	0x5d
+ 583 006d 02000000 		.4byte	.LCFI5
+ 584 0071 04000000 		.4byte	.LCFI6
+ 585 0075 0200     		.2byte	0x2
+ 586 0077 7D       		.byte	0x7d
+ 587 0078 08       		.sleb128 8
+ 588 0079 04000000 		.4byte	.LCFI6
+ 589 007d 18000000 		.4byte	.LFE2
+ 590 0081 0200     		.2byte	0x2
+ 591 0083 77       		.byte	0x77
+ 592 0084 08       		.sleb128 8
+ 593 0085 00000000 		.4byte	0x0
+ 594 0089 00000000 		.4byte	0x0
+ 595              	.LLST3:
+ 596 008d 00000000 		.4byte	.LFB3
+ 597 0091 02000000 		.4byte	.LCFI7
+ 598 0095 0100     		.2byte	0x1
+ 599 0097 5D       		.byte	0x5d
+ 600 0098 02000000 		.4byte	.LCFI7
+ 601 009c 04000000 		.4byte	.LCFI8
+ 602 00a0 0200     		.2byte	0x2
+ 603 00a2 7D       		.byte	0x7d
+ 604 00a3 08       		.sleb128 8
+ 605 00a4 04000000 		.4byte	.LCFI8
+ 606 00a8 08000000 		.4byte	.LFE3
+ 607 00ac 0200     		.2byte	0x2
+ 608 00ae 77       		.byte	0x77
+ 609 00af 08       		.sleb128 8
+ 610 00b0 00000000 		.4byte	0x0
+ 611 00b4 00000000 		.4byte	0x0
+ 612              	.LLST4:
+ 613 00b8 00000000 		.4byte	.LFB4
+ 614 00bc 02000000 		.4byte	.LCFI9
+ 615 00c0 0100     		.2byte	0x1
+ 616 00c2 5D       		.byte	0x5d
+ 617 00c3 02000000 		.4byte	.LCFI9
+ 618 00c7 04000000 		.4byte	.LCFI10
+ 619 00cb 0200     		.2byte	0x2
+ 620 00cd 7D       		.byte	0x7d
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 18
+
+
+ 621 00ce 08       		.sleb128 8
+ 622 00cf 04000000 		.4byte	.LCFI10
+ 623 00d3 06000000 		.4byte	.LCFI11
+ 624 00d7 0200     		.2byte	0x2
+ 625 00d9 7D       		.byte	0x7d
+ 626 00da 10       		.sleb128 16
+ 627 00db 06000000 		.4byte	.LCFI11
+ 628 00df 18000000 		.4byte	.LFE4
+ 629 00e3 0200     		.2byte	0x2
+ 630 00e5 77       		.byte	0x77
+ 631 00e6 10       		.sleb128 16
+ 632 00e7 00000000 		.4byte	0x0
+ 633 00eb 00000000 		.4byte	0x0
+ 634              	.LLST5:
+ 635 00ef 00000000 		.4byte	.LFB5
+ 636 00f3 02000000 		.4byte	.LCFI12
+ 637 00f7 0100     		.2byte	0x1
+ 638 00f9 5D       		.byte	0x5d
+ 639 00fa 02000000 		.4byte	.LCFI12
+ 640 00fe 04000000 		.4byte	.LCFI13
+ 641 0102 0200     		.2byte	0x2
+ 642 0104 7D       		.byte	0x7d
+ 643 0105 08       		.sleb128 8
+ 644 0106 04000000 		.4byte	.LCFI13
+ 645 010a 14000000 		.4byte	.LFE5
+ 646 010e 0200     		.2byte	0x2
+ 647 0110 77       		.byte	0x77
+ 648 0111 08       		.sleb128 8
+ 649 0112 00000000 		.4byte	0x0
+ 650 0116 00000000 		.4byte	0x0
+ 651              	.LLST6:
+ 652 011a 00000000 		.4byte	.LFB6
+ 653 011e 02000000 		.4byte	.LCFI14
+ 654 0122 0100     		.2byte	0x1
+ 655 0124 5D       		.byte	0x5d
+ 656 0125 02000000 		.4byte	.LCFI14
+ 657 0129 04000000 		.4byte	.LCFI15
+ 658 012d 0200     		.2byte	0x2
+ 659 012f 7D       		.byte	0x7d
+ 660 0130 0C       		.sleb128 12
+ 661 0131 04000000 		.4byte	.LCFI15
+ 662 0135 06000000 		.4byte	.LCFI16
+ 663 0139 0200     		.2byte	0x2
+ 664 013b 7D       		.byte	0x7d
+ 665 013c 20       		.sleb128 32
+ 666 013d 06000000 		.4byte	.LCFI16
+ 667 0141 54000000 		.4byte	.LFE6
+ 668 0145 0200     		.2byte	0x2
+ 669 0147 77       		.byte	0x77
+ 670 0148 20       		.sleb128 32
+ 671 0149 00000000 		.4byte	0x0
+ 672 014d 00000000 		.4byte	0x0
+ 673              	.LLST7:
+ 674 0151 00000000 		.4byte	.LFB7
+ 675 0155 02000000 		.4byte	.LCFI17
+ 676 0159 0100     		.2byte	0x1
+ 677 015b 5D       		.byte	0x5d
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 19
+
+
+ 678 015c 02000000 		.4byte	.LCFI17
+ 679 0160 04000000 		.4byte	.LCFI18
+ 680 0164 0200     		.2byte	0x2
+ 681 0166 7D       		.byte	0x7d
+ 682 0167 08       		.sleb128 8
+ 683 0168 04000000 		.4byte	.LCFI18
+ 684 016c 06000000 		.4byte	.LCFI19
+ 685 0170 0200     		.2byte	0x2
+ 686 0172 7D       		.byte	0x7d
+ 687 0173 10       		.sleb128 16
+ 688 0174 06000000 		.4byte	.LCFI19
+ 689 0178 30000000 		.4byte	.LFE7
+ 690 017c 0200     		.2byte	0x2
+ 691 017e 77       		.byte	0x77
+ 692 017f 10       		.sleb128 16
+ 693 0180 00000000 		.4byte	0x0
+ 694 0184 00000000 		.4byte	0x0
+ 695              	.LLST8:
+ 696 0188 00000000 		.4byte	.LFB8
+ 697 018c 02000000 		.4byte	.LCFI20
+ 698 0190 0100     		.2byte	0x1
+ 699 0192 5D       		.byte	0x5d
+ 700 0193 02000000 		.4byte	.LCFI20
+ 701 0197 04000000 		.4byte	.LCFI21
+ 702 019b 0200     		.2byte	0x2
+ 703 019d 7D       		.byte	0x7d
+ 704 019e 08       		.sleb128 8
+ 705 019f 04000000 		.4byte	.LCFI21
+ 706 01a3 14000000 		.4byte	.LFE8
+ 707 01a7 0200     		.2byte	0x2
+ 708 01a9 77       		.byte	0x77
+ 709 01aa 08       		.sleb128 8
+ 710 01ab 00000000 		.4byte	0x0
+ 711 01af 00000000 		.4byte	0x0
+ 712              	.LLST9:
+ 713 01b3 00000000 		.4byte	.LFB9
+ 714 01b7 02000000 		.4byte	.LCFI22
+ 715 01bb 0100     		.2byte	0x1
+ 716 01bd 5D       		.byte	0x5d
+ 717 01be 02000000 		.4byte	.LCFI22
+ 718 01c2 04000000 		.4byte	.LCFI23
+ 719 01c6 0200     		.2byte	0x2
+ 720 01c8 7D       		.byte	0x7d
+ 721 01c9 08       		.sleb128 8
+ 722 01ca 04000000 		.4byte	.LCFI23
+ 723 01ce 24000000 		.4byte	.LFE9
+ 724 01d2 0200     		.2byte	0x2
+ 725 01d4 77       		.byte	0x77
+ 726 01d5 08       		.sleb128 8
+ 727 01d6 00000000 		.4byte	0x0
+ 728 01da 00000000 		.4byte	0x0
+ 729              	.LLST10:
+ 730 01de 00000000 		.4byte	.LFB10
+ 731 01e2 02000000 		.4byte	.LCFI24
+ 732 01e6 0100     		.2byte	0x1
+ 733 01e8 5D       		.byte	0x5d
+ 734 01e9 02000000 		.4byte	.LCFI24
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 20
+
+
+ 735 01ed 04000000 		.4byte	.LCFI25
+ 736 01f1 0200     		.2byte	0x2
+ 737 01f3 7D       		.byte	0x7d
+ 738 01f4 08       		.sleb128 8
+ 739 01f5 04000000 		.4byte	.LCFI25
+ 740 01f9 14000000 		.4byte	.LFE10
+ 741 01fd 0200     		.2byte	0x2
+ 742 01ff 77       		.byte	0x77
+ 743 0200 08       		.sleb128 8
+ 744 0201 00000000 		.4byte	0x0
+ 745 0205 00000000 		.4byte	0x0
+ 746              	.LLST11:
+ 747 0209 00000000 		.4byte	.LFB11
+ 748 020d 02000000 		.4byte	.LCFI26
+ 749 0211 0100     		.2byte	0x1
+ 750 0213 5D       		.byte	0x5d
+ 751 0214 02000000 		.4byte	.LCFI26
+ 752 0218 04000000 		.4byte	.LCFI27
+ 753 021c 0200     		.2byte	0x2
+ 754 021e 7D       		.byte	0x7d
+ 755 021f 08       		.sleb128 8
+ 756 0220 04000000 		.4byte	.LCFI27
+ 757 0224 14000000 		.4byte	.LFE11
+ 758 0228 0200     		.2byte	0x2
+ 759 022a 77       		.byte	0x77
+ 760 022b 08       		.sleb128 8
+ 761 022c 00000000 		.4byte	0x0
+ 762 0230 00000000 		.4byte	0x0
+ 763              	.LLST12:
+ 764 0234 00000000 		.4byte	.LFB12
+ 765 0238 02000000 		.4byte	.LCFI28
+ 766 023c 0100     		.2byte	0x1
+ 767 023e 5D       		.byte	0x5d
+ 768 023f 02000000 		.4byte	.LCFI28
+ 769 0243 04000000 		.4byte	.LCFI29
+ 770 0247 0200     		.2byte	0x2
+ 771 0249 7D       		.byte	0x7d
+ 772 024a 08       		.sleb128 8
+ 773 024b 04000000 		.4byte	.LCFI29
+ 774 024f 14000000 		.4byte	.LFE12
+ 775 0253 0200     		.2byte	0x2
+ 776 0255 77       		.byte	0x77
+ 777 0256 08       		.sleb128 8
+ 778 0257 00000000 		.4byte	0x0
+ 779 025b 00000000 		.4byte	0x0
+ 780              		.file 2 "./Generated_Source/PSoC4/cytypes.h"
+ 781              		.section	.debug_info
+ 782 0000 62020000 		.4byte	0x262
+ 783 0004 0200     		.2byte	0x2
+ 784 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 785 000a 04       		.byte	0x4
+ 786 000b 01       		.uleb128 0x1
+ 787 000c A4010000 		.4byte	.LASF31
+ 788 0010 01       		.byte	0x1
+ 789 0011 E4000000 		.4byte	.LASF32
+ 790 0015 B0010000 		.4byte	.LASF33
+ 791 0019 00000000 		.4byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 21
+
+
+ 792 001d 00000000 		.4byte	0x0
+ 793 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 794 0025 00000000 		.4byte	.Ldebug_line0
+ 795 0029 02       		.uleb128 0x2
+ 796 002a 01       		.byte	0x1
+ 797 002b 06       		.byte	0x6
+ 798 002c BC020000 		.4byte	.LASF0
+ 799 0030 02       		.uleb128 0x2
+ 800 0031 01       		.byte	0x1
+ 801 0032 08       		.byte	0x8
+ 802 0033 D6000000 		.4byte	.LASF1
+ 803 0037 02       		.uleb128 0x2
+ 804 0038 02       		.byte	0x2
+ 805 0039 05       		.byte	0x5
+ 806 003a 0E020000 		.4byte	.LASF2
+ 807 003e 02       		.uleb128 0x2
+ 808 003f 02       		.byte	0x2
+ 809 0040 07       		.byte	0x7
+ 810 0041 55000000 		.4byte	.LASF3
+ 811 0045 02       		.uleb128 0x2
+ 812 0046 04       		.byte	0x4
+ 813 0047 05       		.byte	0x5
+ 814 0048 43020000 		.4byte	.LASF4
+ 815 004c 02       		.uleb128 0x2
+ 816 004d 04       		.byte	0x4
+ 817 004e 07       		.byte	0x7
+ 818 004f 20010000 		.4byte	.LASF5
+ 819 0053 02       		.uleb128 0x2
+ 820 0054 08       		.byte	0x8
+ 821 0055 05       		.byte	0x5
+ 822 0056 00000000 		.4byte	.LASF6
+ 823 005a 02       		.uleb128 0x2
+ 824 005b 08       		.byte	0x8
+ 825 005c 07       		.byte	0x7
+ 826 005d 80010000 		.4byte	.LASF7
+ 827 0061 03       		.uleb128 0x3
+ 828 0062 04       		.byte	0x4
+ 829 0063 05       		.byte	0x5
+ 830 0064 696E7400 		.ascii	"int\000"
+ 831 0068 02       		.uleb128 0x2
+ 832 0069 04       		.byte	0x4
+ 833 006a 07       		.byte	0x7
+ 834 006b 6B010000 		.4byte	.LASF8
+ 835 006f 04       		.uleb128 0x4
+ 836 0070 4E010000 		.4byte	.LASF9
+ 837 0074 02       		.byte	0x2
+ 838 0075 4C       		.byte	0x4c
+ 839 0076 30000000 		.4byte	0x30
+ 840 007a 04       		.uleb128 0x4
+ 841 007b 64010000 		.4byte	.LASF10
+ 842 007f 02       		.byte	0x2
+ 843 0080 4E       		.byte	0x4e
+ 844 0081 4C000000 		.4byte	0x4c
+ 845 0085 02       		.uleb128 0x2
+ 846 0086 04       		.byte	0x4
+ 847 0087 04       		.byte	0x4
+ 848 0088 D0000000 		.4byte	.LASF11
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 22
+
+
+ 849 008c 02       		.uleb128 0x2
+ 850 008d 08       		.byte	0x8
+ 851 008e 04       		.byte	0x4
+ 852 008f 5D010000 		.4byte	.LASF12
+ 853 0093 02       		.uleb128 0x2
+ 854 0094 01       		.byte	0x1
+ 855 0095 08       		.byte	0x8
+ 856 0096 29000000 		.4byte	.LASF13
+ 857 009a 04       		.uleb128 0x4
+ 858 009b 97010000 		.4byte	.LASF14
+ 859 009f 02       		.byte	0x2
+ 860 00a0 EB       		.byte	0xeb
+ 861 00a1 A5000000 		.4byte	0xa5
+ 862 00a5 05       		.uleb128 0x5
+ 863 00a6 04       		.byte	0x4
+ 864 00a7 AB000000 		.4byte	0xab
+ 865 00ab 06       		.uleb128 0x6
+ 866 00ac 01       		.byte	0x1
+ 867 00ad 07       		.uleb128 0x7
+ 868 00ae 04       		.byte	0x4
+ 869 00af 07       		.byte	0x7
+ 870 00b0 08       		.uleb128 0x8
+ 871 00b1 01       		.byte	0x1
+ 872 00b2 9C000000 		.4byte	.LASF15
+ 873 00b6 01       		.byte	0x1
+ 874 00b7 34       		.byte	0x34
+ 875 00b8 01       		.byte	0x1
+ 876 00b9 00000000 		.4byte	.LFB0
+ 877 00bd 24000000 		.4byte	.LFE0
+ 878 00c1 00000000 		.4byte	.LLST0
+ 879 00c5 09       		.uleb128 0x9
+ 880 00c6 01       		.byte	0x1
+ 881 00c7 6A020000 		.4byte	.LASF18
+ 882 00cb 01       		.byte	0x1
+ 883 00cc 52       		.byte	0x52
+ 884 00cd 01       		.byte	0x1
+ 885 00ce 00000000 		.4byte	.LFB1
+ 886 00d2 24000000 		.4byte	.LFE1
+ 887 00d6 2B000000 		.4byte	.LLST1
+ 888 00da ED000000 		.4byte	0xed
+ 889 00de 0A       		.uleb128 0xa
+ 890 00df 78010000 		.4byte	.LASF20
+ 891 00e3 01       		.byte	0x1
+ 892 00e4 52       		.byte	0x52
+ 893 00e5 9A000000 		.4byte	0x9a
+ 894 00e9 02       		.byte	0x2
+ 895 00ea 91       		.byte	0x91
+ 896 00eb 74       		.sleb128 -12
+ 897 00ec 00       		.byte	0x0
+ 898 00ed 08       		.uleb128 0x8
+ 899 00ee 01       		.byte	0x1
+ 900 00ef 85000000 		.4byte	.LASF16
+ 901 00f3 01       		.byte	0x1
+ 902 00f4 6F       		.byte	0x6f
+ 903 00f5 01       		.byte	0x1
+ 904 00f6 00000000 		.4byte	.LFB2
+ 905 00fa 18000000 		.4byte	.LFE2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 23
+
+
+ 906 00fe 62000000 		.4byte	.LLST2
+ 907 0102 08       		.uleb128 0x8
+ 908 0103 01       		.byte	0x1
+ 909 0104 18020000 		.4byte	.LASF17
+ 910 0108 01       		.byte	0x1
+ 911 0109 8A       		.byte	0x8a
+ 912 010a 01       		.byte	0x1
+ 913 010b 00000000 		.4byte	.LFB3
+ 914 010f 08000000 		.4byte	.LFE3
+ 915 0113 8D000000 		.4byte	.LLST3
+ 916 0117 09       		.uleb128 0x9
+ 917 0118 01       		.byte	0x1
+ 918 0119 32010000 		.4byte	.LASF19
+ 919 011d 01       		.byte	0x1
+ 920 011e A3       		.byte	0xa3
+ 921 011f 01       		.byte	0x1
+ 922 0120 00000000 		.4byte	.LFB4
+ 923 0124 18000000 		.4byte	.LFE4
+ 924 0128 B8000000 		.4byte	.LLST4
+ 925 012c 3F010000 		.4byte	0x13f
+ 926 0130 0A       		.uleb128 0xa
+ 927 0131 78010000 		.4byte	.LASF20
+ 928 0135 01       		.byte	0x1
+ 929 0136 A3       		.byte	0xa3
+ 930 0137 9A000000 		.4byte	0x9a
+ 931 013b 02       		.byte	0x2
+ 932 013c 91       		.byte	0x91
+ 933 013d 74       		.sleb128 -12
+ 934 013e 00       		.byte	0x0
+ 935 013f 0B       		.uleb128 0xb
+ 936 0140 01       		.byte	0x1
+ 937 0141 B4000000 		.4byte	.LASF26
+ 938 0145 01       		.byte	0x1
+ 939 0146 B7       		.byte	0xb7
+ 940 0147 01       		.byte	0x1
+ 941 0148 9A000000 		.4byte	0x9a
+ 942 014c 00000000 		.4byte	.LFB5
+ 943 0150 14000000 		.4byte	.LFE5
+ 944 0154 EF000000 		.4byte	.LLST5
+ 945 0158 09       		.uleb128 0x9
+ 946 0159 01       		.byte	0x1
+ 947 015a C8020000 		.4byte	.LASF21
+ 948 015e 01       		.byte	0x1
+ 949 015f CF       		.byte	0xcf
+ 950 0160 01       		.byte	0x1
+ 951 0161 00000000 		.4byte	.LFB6
+ 952 0165 54000000 		.4byte	.LFE6
+ 953 0169 1A010000 		.4byte	.LLST6
+ 954 016d 9C010000 		.4byte	0x19c
+ 955 0171 0A       		.uleb128 0xa
+ 956 0172 54010000 		.4byte	.LASF22
+ 957 0176 01       		.byte	0x1
+ 958 0177 CF       		.byte	0xcf
+ 959 0178 6F000000 		.4byte	0x6f
+ 960 017c 02       		.byte	0x2
+ 961 017d 91       		.byte	0x91
+ 962 017e 67       		.sleb128 -25
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 24
+
+
+ 963 017f 0C       		.uleb128 0xc
+ 964 0180 11010000 		.4byte	.LASF23
+ 965 0184 01       		.byte	0x1
+ 966 0185 D1       		.byte	0xd1
+ 967 0186 6F000000 		.4byte	0x6f
+ 968 018a 02       		.byte	0x2
+ 969 018b 91       		.byte	0x91
+ 970 018c 6B       		.sleb128 -21
+ 971 018d 0C       		.uleb128 0xc
+ 972 018e 34020000 		.4byte	.LASF24
+ 973 0192 01       		.byte	0x1
+ 974 0193 D2       		.byte	0xd2
+ 975 0194 7A000000 		.4byte	0x7a
+ 976 0198 02       		.byte	0x2
+ 977 0199 91       		.byte	0x91
+ 978 019a 6C       		.sleb128 -20
+ 979 019b 00       		.byte	0x0
+ 980 019c 0D       		.uleb128 0xd
+ 981 019d 01       		.byte	0x1
+ 982 019e 4C020000 		.4byte	.LASF34
+ 983 01a2 01       		.byte	0x1
+ 984 01a3 E9       		.byte	0xe9
+ 985 01a4 01       		.byte	0x1
+ 986 01a5 6F000000 		.4byte	0x6f
+ 987 01a9 00000000 		.4byte	.LFB7
+ 988 01ad 30000000 		.4byte	.LFE7
+ 989 01b1 51010000 		.4byte	.LLST7
+ 990 01b5 D6010000 		.4byte	0x1d6
+ 991 01b9 0C       		.uleb128 0xc
+ 992 01ba 54010000 		.4byte	.LASF22
+ 993 01be 01       		.byte	0x1
+ 994 01bf EB       		.byte	0xeb
+ 995 01c0 7A000000 		.4byte	0x7a
+ 996 01c4 02       		.byte	0x2
+ 997 01c5 91       		.byte	0x91
+ 998 01c6 70       		.sleb128 -16
+ 999 01c7 0C       		.uleb128 0xc
+ 1000 01c8 34020000 		.4byte	.LASF24
+ 1001 01cc 01       		.byte	0x1
+ 1002 01cd EC       		.byte	0xec
+ 1003 01ce 7A000000 		.4byte	0x7a
+ 1004 01d2 02       		.byte	0x2
+ 1005 01d3 91       		.byte	0x91
+ 1006 01d4 74       		.sleb128 -12
+ 1007 01d5 00       		.byte	0x0
+ 1008 01d6 0E       		.uleb128 0xe
+ 1009 01d7 01       		.byte	0x1
+ 1010 01d8 84020000 		.4byte	.LASF25
+ 1011 01dc 01       		.byte	0x1
+ 1012 01dd 0201     		.2byte	0x102
+ 1013 01df 01       		.byte	0x1
+ 1014 01e0 00000000 		.4byte	.LFB8
+ 1015 01e4 14000000 		.4byte	.LFE8
+ 1016 01e8 88010000 		.4byte	.LLST8
+ 1017 01ec 0F       		.uleb128 0xf
+ 1018 01ed 01       		.byte	0x1
+ 1019 01ee 0E000000 		.4byte	.LASF27
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 25
+
+
+ 1020 01f2 01       		.byte	0x1
+ 1021 01f3 1701     		.2byte	0x117
+ 1022 01f5 01       		.byte	0x1
+ 1023 01f6 6F000000 		.4byte	0x6f
+ 1024 01fa 00000000 		.4byte	.LFB9
+ 1025 01fe 24000000 		.4byte	.LFE9
+ 1026 0202 B3010000 		.4byte	.LLST9
+ 1027 0206 0E       		.uleb128 0xe
+ 1028 0207 01       		.byte	0x1
+ 1029 0208 2E000000 		.4byte	.LASF28
+ 1030 020c 01       		.byte	0x1
+ 1031 020d 2C01     		.2byte	0x12c
+ 1032 020f 01       		.byte	0x1
+ 1033 0210 00000000 		.4byte	.LFB10
+ 1034 0214 14000000 		.4byte	.LFE10
+ 1035 0218 DE010000 		.4byte	.LLST10
+ 1036 021c 0E       		.uleb128 0xe
+ 1037 021d 01       		.byte	0x1
+ 1038 021e 68000000 		.4byte	.LASF29
+ 1039 0222 01       		.byte	0x1
+ 1040 0223 4201     		.2byte	0x142
+ 1041 0225 01       		.byte	0x1
+ 1042 0226 00000000 		.4byte	.LFB11
+ 1043 022a 14000000 		.4byte	.LFE11
+ 1044 022e 09020000 		.4byte	.LLST11
+ 1045 0232 0E       		.uleb128 0xe
+ 1046 0233 01       		.byte	0x1
+ 1047 0234 9D020000 		.4byte	.LASF30
+ 1048 0238 01       		.byte	0x1
+ 1049 0239 5601     		.2byte	0x156
+ 1050 023b 01       		.byte	0x1
+ 1051 023c 00000000 		.4byte	.LFB12
+ 1052 0240 14000000 		.4byte	.LFE12
+ 1053 0244 34020000 		.4byte	.LLST12
+ 1054 0248 10       		.uleb128 0x10
+ 1055 0249 9A000000 		.4byte	0x9a
+ 1056 024d 58020000 		.4byte	0x258
+ 1057 0251 11       		.uleb128 0x11
+ 1058 0252 AD000000 		.4byte	0xad
+ 1059 0256 2F       		.byte	0x2f
+ 1060 0257 00       		.byte	0x0
+ 1061 0258 12       		.uleb128 0x12
+ 1062 0259 48000000 		.4byte	.LASF35
+ 1063 025d 01       		.byte	0x1
+ 1064 025e 20       		.byte	0x20
+ 1065 025f 48020000 		.4byte	0x248
+ 1066 0263 01       		.byte	0x1
+ 1067 0264 01       		.byte	0x1
+ 1068 0265 00       		.byte	0x0
+ 1069              		.section	.debug_abbrev
+ 1070 0000 01       		.uleb128 0x1
+ 1071 0001 11       		.uleb128 0x11
+ 1072 0002 01       		.byte	0x1
+ 1073 0003 25       		.uleb128 0x25
+ 1074 0004 0E       		.uleb128 0xe
+ 1075 0005 13       		.uleb128 0x13
+ 1076 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 26
+
+
+ 1077 0007 03       		.uleb128 0x3
+ 1078 0008 0E       		.uleb128 0xe
+ 1079 0009 1B       		.uleb128 0x1b
+ 1080 000a 0E       		.uleb128 0xe
+ 1081 000b 11       		.uleb128 0x11
+ 1082 000c 01       		.uleb128 0x1
+ 1083 000d 52       		.uleb128 0x52
+ 1084 000e 01       		.uleb128 0x1
+ 1085 000f 55       		.uleb128 0x55
+ 1086 0010 06       		.uleb128 0x6
+ 1087 0011 10       		.uleb128 0x10
+ 1088 0012 06       		.uleb128 0x6
+ 1089 0013 00       		.byte	0x0
+ 1090 0014 00       		.byte	0x0
+ 1091 0015 02       		.uleb128 0x2
+ 1092 0016 24       		.uleb128 0x24
+ 1093 0017 00       		.byte	0x0
+ 1094 0018 0B       		.uleb128 0xb
+ 1095 0019 0B       		.uleb128 0xb
+ 1096 001a 3E       		.uleb128 0x3e
+ 1097 001b 0B       		.uleb128 0xb
+ 1098 001c 03       		.uleb128 0x3
+ 1099 001d 0E       		.uleb128 0xe
+ 1100 001e 00       		.byte	0x0
+ 1101 001f 00       		.byte	0x0
+ 1102 0020 03       		.uleb128 0x3
+ 1103 0021 24       		.uleb128 0x24
+ 1104 0022 00       		.byte	0x0
+ 1105 0023 0B       		.uleb128 0xb
+ 1106 0024 0B       		.uleb128 0xb
+ 1107 0025 3E       		.uleb128 0x3e
+ 1108 0026 0B       		.uleb128 0xb
+ 1109 0027 03       		.uleb128 0x3
+ 1110 0028 08       		.uleb128 0x8
+ 1111 0029 00       		.byte	0x0
+ 1112 002a 00       		.byte	0x0
+ 1113 002b 04       		.uleb128 0x4
+ 1114 002c 16       		.uleb128 0x16
+ 1115 002d 00       		.byte	0x0
+ 1116 002e 03       		.uleb128 0x3
+ 1117 002f 0E       		.uleb128 0xe
+ 1118 0030 3A       		.uleb128 0x3a
+ 1119 0031 0B       		.uleb128 0xb
+ 1120 0032 3B       		.uleb128 0x3b
+ 1121 0033 0B       		.uleb128 0xb
+ 1122 0034 49       		.uleb128 0x49
+ 1123 0035 13       		.uleb128 0x13
+ 1124 0036 00       		.byte	0x0
+ 1125 0037 00       		.byte	0x0
+ 1126 0038 05       		.uleb128 0x5
+ 1127 0039 0F       		.uleb128 0xf
+ 1128 003a 00       		.byte	0x0
+ 1129 003b 0B       		.uleb128 0xb
+ 1130 003c 0B       		.uleb128 0xb
+ 1131 003d 49       		.uleb128 0x49
+ 1132 003e 13       		.uleb128 0x13
+ 1133 003f 00       		.byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 27
+
+
+ 1134 0040 00       		.byte	0x0
+ 1135 0041 06       		.uleb128 0x6
+ 1136 0042 15       		.uleb128 0x15
+ 1137 0043 00       		.byte	0x0
+ 1138 0044 27       		.uleb128 0x27
+ 1139 0045 0C       		.uleb128 0xc
+ 1140 0046 00       		.byte	0x0
+ 1141 0047 00       		.byte	0x0
+ 1142 0048 07       		.uleb128 0x7
+ 1143 0049 24       		.uleb128 0x24
+ 1144 004a 00       		.byte	0x0
+ 1145 004b 0B       		.uleb128 0xb
+ 1146 004c 0B       		.uleb128 0xb
+ 1147 004d 3E       		.uleb128 0x3e
+ 1148 004e 0B       		.uleb128 0xb
+ 1149 004f 00       		.byte	0x0
+ 1150 0050 00       		.byte	0x0
+ 1151 0051 08       		.uleb128 0x8
+ 1152 0052 2E       		.uleb128 0x2e
+ 1153 0053 00       		.byte	0x0
+ 1154 0054 3F       		.uleb128 0x3f
+ 1155 0055 0C       		.uleb128 0xc
+ 1156 0056 03       		.uleb128 0x3
+ 1157 0057 0E       		.uleb128 0xe
+ 1158 0058 3A       		.uleb128 0x3a
+ 1159 0059 0B       		.uleb128 0xb
+ 1160 005a 3B       		.uleb128 0x3b
+ 1161 005b 0B       		.uleb128 0xb
+ 1162 005c 27       		.uleb128 0x27
+ 1163 005d 0C       		.uleb128 0xc
+ 1164 005e 11       		.uleb128 0x11
+ 1165 005f 01       		.uleb128 0x1
+ 1166 0060 12       		.uleb128 0x12
+ 1167 0061 01       		.uleb128 0x1
+ 1168 0062 40       		.uleb128 0x40
+ 1169 0063 06       		.uleb128 0x6
+ 1170 0064 00       		.byte	0x0
+ 1171 0065 00       		.byte	0x0
+ 1172 0066 09       		.uleb128 0x9
+ 1173 0067 2E       		.uleb128 0x2e
+ 1174 0068 01       		.byte	0x1
+ 1175 0069 3F       		.uleb128 0x3f
+ 1176 006a 0C       		.uleb128 0xc
+ 1177 006b 03       		.uleb128 0x3
+ 1178 006c 0E       		.uleb128 0xe
+ 1179 006d 3A       		.uleb128 0x3a
+ 1180 006e 0B       		.uleb128 0xb
+ 1181 006f 3B       		.uleb128 0x3b
+ 1182 0070 0B       		.uleb128 0xb
+ 1183 0071 27       		.uleb128 0x27
+ 1184 0072 0C       		.uleb128 0xc
+ 1185 0073 11       		.uleb128 0x11
+ 1186 0074 01       		.uleb128 0x1
+ 1187 0075 12       		.uleb128 0x12
+ 1188 0076 01       		.uleb128 0x1
+ 1189 0077 40       		.uleb128 0x40
+ 1190 0078 06       		.uleb128 0x6
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 28
+
+
+ 1191 0079 01       		.uleb128 0x1
+ 1192 007a 13       		.uleb128 0x13
+ 1193 007b 00       		.byte	0x0
+ 1194 007c 00       		.byte	0x0
+ 1195 007d 0A       		.uleb128 0xa
+ 1196 007e 05       		.uleb128 0x5
+ 1197 007f 00       		.byte	0x0
+ 1198 0080 03       		.uleb128 0x3
+ 1199 0081 0E       		.uleb128 0xe
+ 1200 0082 3A       		.uleb128 0x3a
+ 1201 0083 0B       		.uleb128 0xb
+ 1202 0084 3B       		.uleb128 0x3b
+ 1203 0085 0B       		.uleb128 0xb
+ 1204 0086 49       		.uleb128 0x49
+ 1205 0087 13       		.uleb128 0x13
+ 1206 0088 02       		.uleb128 0x2
+ 1207 0089 0A       		.uleb128 0xa
+ 1208 008a 00       		.byte	0x0
+ 1209 008b 00       		.byte	0x0
+ 1210 008c 0B       		.uleb128 0xb
+ 1211 008d 2E       		.uleb128 0x2e
+ 1212 008e 00       		.byte	0x0
+ 1213 008f 3F       		.uleb128 0x3f
+ 1214 0090 0C       		.uleb128 0xc
+ 1215 0091 03       		.uleb128 0x3
+ 1216 0092 0E       		.uleb128 0xe
+ 1217 0093 3A       		.uleb128 0x3a
+ 1218 0094 0B       		.uleb128 0xb
+ 1219 0095 3B       		.uleb128 0x3b
+ 1220 0096 0B       		.uleb128 0xb
+ 1221 0097 27       		.uleb128 0x27
+ 1222 0098 0C       		.uleb128 0xc
+ 1223 0099 49       		.uleb128 0x49
+ 1224 009a 13       		.uleb128 0x13
+ 1225 009b 11       		.uleb128 0x11
+ 1226 009c 01       		.uleb128 0x1
+ 1227 009d 12       		.uleb128 0x12
+ 1228 009e 01       		.uleb128 0x1
+ 1229 009f 40       		.uleb128 0x40
+ 1230 00a0 06       		.uleb128 0x6
+ 1231 00a1 00       		.byte	0x0
+ 1232 00a2 00       		.byte	0x0
+ 1233 00a3 0C       		.uleb128 0xc
+ 1234 00a4 34       		.uleb128 0x34
+ 1235 00a5 00       		.byte	0x0
+ 1236 00a6 03       		.uleb128 0x3
+ 1237 00a7 0E       		.uleb128 0xe
+ 1238 00a8 3A       		.uleb128 0x3a
+ 1239 00a9 0B       		.uleb128 0xb
+ 1240 00aa 3B       		.uleb128 0x3b
+ 1241 00ab 0B       		.uleb128 0xb
+ 1242 00ac 49       		.uleb128 0x49
+ 1243 00ad 13       		.uleb128 0x13
+ 1244 00ae 02       		.uleb128 0x2
+ 1245 00af 0A       		.uleb128 0xa
+ 1246 00b0 00       		.byte	0x0
+ 1247 00b1 00       		.byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 29
+
+
+ 1248 00b2 0D       		.uleb128 0xd
+ 1249 00b3 2E       		.uleb128 0x2e
+ 1250 00b4 01       		.byte	0x1
+ 1251 00b5 3F       		.uleb128 0x3f
+ 1252 00b6 0C       		.uleb128 0xc
+ 1253 00b7 03       		.uleb128 0x3
+ 1254 00b8 0E       		.uleb128 0xe
+ 1255 00b9 3A       		.uleb128 0x3a
+ 1256 00ba 0B       		.uleb128 0xb
+ 1257 00bb 3B       		.uleb128 0x3b
+ 1258 00bc 0B       		.uleb128 0xb
+ 1259 00bd 27       		.uleb128 0x27
+ 1260 00be 0C       		.uleb128 0xc
+ 1261 00bf 49       		.uleb128 0x49
+ 1262 00c0 13       		.uleb128 0x13
+ 1263 00c1 11       		.uleb128 0x11
+ 1264 00c2 01       		.uleb128 0x1
+ 1265 00c3 12       		.uleb128 0x12
+ 1266 00c4 01       		.uleb128 0x1
+ 1267 00c5 40       		.uleb128 0x40
+ 1268 00c6 06       		.uleb128 0x6
+ 1269 00c7 01       		.uleb128 0x1
+ 1270 00c8 13       		.uleb128 0x13
+ 1271 00c9 00       		.byte	0x0
+ 1272 00ca 00       		.byte	0x0
+ 1273 00cb 0E       		.uleb128 0xe
+ 1274 00cc 2E       		.uleb128 0x2e
+ 1275 00cd 00       		.byte	0x0
+ 1276 00ce 3F       		.uleb128 0x3f
+ 1277 00cf 0C       		.uleb128 0xc
+ 1278 00d0 03       		.uleb128 0x3
+ 1279 00d1 0E       		.uleb128 0xe
+ 1280 00d2 3A       		.uleb128 0x3a
+ 1281 00d3 0B       		.uleb128 0xb
+ 1282 00d4 3B       		.uleb128 0x3b
+ 1283 00d5 05       		.uleb128 0x5
+ 1284 00d6 27       		.uleb128 0x27
+ 1285 00d7 0C       		.uleb128 0xc
+ 1286 00d8 11       		.uleb128 0x11
+ 1287 00d9 01       		.uleb128 0x1
+ 1288 00da 12       		.uleb128 0x12
+ 1289 00db 01       		.uleb128 0x1
+ 1290 00dc 40       		.uleb128 0x40
+ 1291 00dd 06       		.uleb128 0x6
+ 1292 00de 00       		.byte	0x0
+ 1293 00df 00       		.byte	0x0
+ 1294 00e0 0F       		.uleb128 0xf
+ 1295 00e1 2E       		.uleb128 0x2e
+ 1296 00e2 00       		.byte	0x0
+ 1297 00e3 3F       		.uleb128 0x3f
+ 1298 00e4 0C       		.uleb128 0xc
+ 1299 00e5 03       		.uleb128 0x3
+ 1300 00e6 0E       		.uleb128 0xe
+ 1301 00e7 3A       		.uleb128 0x3a
+ 1302 00e8 0B       		.uleb128 0xb
+ 1303 00e9 3B       		.uleb128 0x3b
+ 1304 00ea 05       		.uleb128 0x5
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 30
+
+
+ 1305 00eb 27       		.uleb128 0x27
+ 1306 00ec 0C       		.uleb128 0xc
+ 1307 00ed 49       		.uleb128 0x49
+ 1308 00ee 13       		.uleb128 0x13
+ 1309 00ef 11       		.uleb128 0x11
+ 1310 00f0 01       		.uleb128 0x1
+ 1311 00f1 12       		.uleb128 0x12
+ 1312 00f2 01       		.uleb128 0x1
+ 1313 00f3 40       		.uleb128 0x40
+ 1314 00f4 06       		.uleb128 0x6
+ 1315 00f5 00       		.byte	0x0
+ 1316 00f6 00       		.byte	0x0
+ 1317 00f7 10       		.uleb128 0x10
+ 1318 00f8 01       		.uleb128 0x1
+ 1319 00f9 01       		.byte	0x1
+ 1320 00fa 49       		.uleb128 0x49
+ 1321 00fb 13       		.uleb128 0x13
+ 1322 00fc 01       		.uleb128 0x1
+ 1323 00fd 13       		.uleb128 0x13
+ 1324 00fe 00       		.byte	0x0
+ 1325 00ff 00       		.byte	0x0
+ 1326 0100 11       		.uleb128 0x11
+ 1327 0101 21       		.uleb128 0x21
+ 1328 0102 00       		.byte	0x0
+ 1329 0103 49       		.uleb128 0x49
+ 1330 0104 13       		.uleb128 0x13
+ 1331 0105 2F       		.uleb128 0x2f
+ 1332 0106 0B       		.uleb128 0xb
+ 1333 0107 00       		.byte	0x0
+ 1334 0108 00       		.byte	0x0
+ 1335 0109 12       		.uleb128 0x12
+ 1336 010a 34       		.uleb128 0x34
+ 1337 010b 00       		.byte	0x0
+ 1338 010c 03       		.uleb128 0x3
+ 1339 010d 0E       		.uleb128 0xe
+ 1340 010e 3A       		.uleb128 0x3a
+ 1341 010f 0B       		.uleb128 0xb
+ 1342 0110 3B       		.uleb128 0x3b
+ 1343 0111 0B       		.uleb128 0xb
+ 1344 0112 49       		.uleb128 0x49
+ 1345 0113 13       		.uleb128 0x13
+ 1346 0114 3F       		.uleb128 0x3f
+ 1347 0115 0C       		.uleb128 0xc
+ 1348 0116 3C       		.uleb128 0x3c
+ 1349 0117 0C       		.uleb128 0xc
+ 1350 0118 00       		.byte	0x0
+ 1351 0119 00       		.byte	0x0
+ 1352 011a 00       		.byte	0x0
+ 1353              		.section	.debug_pubnames,"",%progbits
+ 1354 0000 A5010000 		.4byte	0x1a5
+ 1355 0004 0200     		.2byte	0x2
+ 1356 0006 00000000 		.4byte	.Ldebug_info0
+ 1357 000a 66020000 		.4byte	0x266
+ 1358 000e B0000000 		.4byte	0xb0
+ 1359 0012 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Start\000"
+ 1359      5341525F 
+ 1359      5365715F 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 31
+
+
+ 1359      315F4952 
+ 1359      515F5374 
+ 1360 002a C5000000 		.4byte	0xc5
+ 1361 002e 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_StartEx\000"
+ 1361      5341525F 
+ 1361      5365715F 
+ 1361      315F4952 
+ 1361      515F5374 
+ 1362 0048 ED000000 		.4byte	0xed
+ 1363 004c 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Stop\000"
+ 1363      5341525F 
+ 1363      5365715F 
+ 1363      315F4952 
+ 1363      515F5374 
+ 1364 0063 02010000 		.4byte	0x102
+ 1365 0067 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Interrupt\000"
+ 1365      5341525F 
+ 1365      5365715F 
+ 1365      315F4952 
+ 1365      515F496E 
+ 1366 0083 17010000 		.4byte	0x117
+ 1367 0087 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetVector\000"
+ 1367      5341525F 
+ 1367      5365715F 
+ 1367      315F4952 
+ 1367      515F5365 
+ 1368 00a3 3F010000 		.4byte	0x13f
+ 1369 00a7 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetVector\000"
+ 1369      5341525F 
+ 1369      5365715F 
+ 1369      315F4952 
+ 1369      515F4765 
+ 1370 00c3 58010000 		.4byte	0x158
+ 1371 00c7 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetPriority\000"
+ 1371      5341525F 
+ 1371      5365715F 
+ 1371      315F4952 
+ 1371      515F5365 
+ 1372 00e5 9C010000 		.4byte	0x19c
+ 1373 00e9 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetPriority\000"
+ 1373      5341525F 
+ 1373      5365715F 
+ 1373      315F4952 
+ 1373      515F4765 
+ 1374 0107 D6010000 		.4byte	0x1d6
+ 1375 010b 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Enable\000"
+ 1375      5341525F 
+ 1375      5365715F 
+ 1375      315F4952 
+ 1375      515F456E 
+ 1376 0124 EC010000 		.4byte	0x1ec
+ 1377 0128 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetState\000"
+ 1377      5341525F 
+ 1377      5365715F 
+ 1377      315F4952 
+ 1377      515F4765 
+ 1378 0143 06020000 		.4byte	0x206
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 32
+
+
+ 1379 0147 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Disable\000"
+ 1379      5341525F 
+ 1379      5365715F 
+ 1379      315F4952 
+ 1379      515F4469 
+ 1380 0161 1C020000 		.4byte	0x21c
+ 1381 0165 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetPending\000"
+ 1381      5341525F 
+ 1381      5365715F 
+ 1381      315F4952 
+ 1381      515F5365 
+ 1382 0182 32020000 		.4byte	0x232
+ 1383 0186 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_ClearPending\000"
+ 1383      5341525F 
+ 1383      5365715F 
+ 1383      315F4952 
+ 1383      515F436C 
+ 1384 01a5 00000000 		.4byte	0x0
+ 1385              		.section	.debug_aranges,"",%progbits
+ 1386 0000 7C000000 		.4byte	0x7c
+ 1387 0004 0200     		.2byte	0x2
+ 1388 0006 00000000 		.4byte	.Ldebug_info0
+ 1389 000a 04       		.byte	0x4
+ 1390 000b 00       		.byte	0x0
+ 1391 000c 0000     		.2byte	0x0
+ 1392 000e 0000     		.2byte	0x0
+ 1393 0010 00000000 		.4byte	.LFB0
+ 1394 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1395 0018 00000000 		.4byte	.LFB1
+ 1396 001c 24000000 		.4byte	.LFE1-.LFB1
+ 1397 0020 00000000 		.4byte	.LFB2
+ 1398 0024 18000000 		.4byte	.LFE2-.LFB2
+ 1399 0028 00000000 		.4byte	.LFB3
+ 1400 002c 08000000 		.4byte	.LFE3-.LFB3
+ 1401 0030 00000000 		.4byte	.LFB4
+ 1402 0034 18000000 		.4byte	.LFE4-.LFB4
+ 1403 0038 00000000 		.4byte	.LFB5
+ 1404 003c 14000000 		.4byte	.LFE5-.LFB5
+ 1405 0040 00000000 		.4byte	.LFB6
+ 1406 0044 54000000 		.4byte	.LFE6-.LFB6
+ 1407 0048 00000000 		.4byte	.LFB7
+ 1408 004c 30000000 		.4byte	.LFE7-.LFB7
+ 1409 0050 00000000 		.4byte	.LFB8
+ 1410 0054 14000000 		.4byte	.LFE8-.LFB8
+ 1411 0058 00000000 		.4byte	.LFB9
+ 1412 005c 24000000 		.4byte	.LFE9-.LFB9
+ 1413 0060 00000000 		.4byte	.LFB10
+ 1414 0064 14000000 		.4byte	.LFE10-.LFB10
+ 1415 0068 00000000 		.4byte	.LFB11
+ 1416 006c 14000000 		.4byte	.LFE11-.LFB11
+ 1417 0070 00000000 		.4byte	.LFB12
+ 1418 0074 14000000 		.4byte	.LFE12-.LFB12
+ 1419 0078 00000000 		.4byte	0x0
+ 1420 007c 00000000 		.4byte	0x0
+ 1421              		.section	.debug_ranges,"",%progbits
+ 1422              	.Ldebug_ranges0:
+ 1423 0000 00000000 		.4byte	.Ltext0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 33
+
+
+ 1424 0004 00000000 		.4byte	.Letext0
+ 1425 0008 00000000 		.4byte	.LFB0
+ 1426 000c 24000000 		.4byte	.LFE0
+ 1427 0010 00000000 		.4byte	.LFB1
+ 1428 0014 24000000 		.4byte	.LFE1
+ 1429 0018 00000000 		.4byte	.LFB2
+ 1430 001c 18000000 		.4byte	.LFE2
+ 1431 0020 00000000 		.4byte	.LFB3
+ 1432 0024 08000000 		.4byte	.LFE3
+ 1433 0028 00000000 		.4byte	.LFB4
+ 1434 002c 18000000 		.4byte	.LFE4
+ 1435 0030 00000000 		.4byte	.LFB5
+ 1436 0034 14000000 		.4byte	.LFE5
+ 1437 0038 00000000 		.4byte	.LFB6
+ 1438 003c 54000000 		.4byte	.LFE6
+ 1439 0040 00000000 		.4byte	.LFB7
+ 1440 0044 30000000 		.4byte	.LFE7
+ 1441 0048 00000000 		.4byte	.LFB8
+ 1442 004c 14000000 		.4byte	.LFE8
+ 1443 0050 00000000 		.4byte	.LFB9
+ 1444 0054 24000000 		.4byte	.LFE9
+ 1445 0058 00000000 		.4byte	.LFB10
+ 1446 005c 14000000 		.4byte	.LFE10
+ 1447 0060 00000000 		.4byte	.LFB11
+ 1448 0064 14000000 		.4byte	.LFE11
+ 1449 0068 00000000 		.4byte	.LFB12
+ 1450 006c 14000000 		.4byte	.LFE12
+ 1451 0070 00000000 		.4byte	0x0
+ 1452 0074 00000000 		.4byte	0x0
+ 1453              		.section	.debug_str,"MS",%progbits,1
+ 1454              	.LASF6:
+ 1455 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1455      206C6F6E 
+ 1455      6720696E 
+ 1455      7400
+ 1456              	.LASF27:
+ 1457 000e 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetState\000"
+ 1457      5341525F 
+ 1457      5365715F 
+ 1457      315F4952 
+ 1457      515F4765 
+ 1458              	.LASF13:
+ 1459 0029 63686172 		.ascii	"char\000"
+ 1459      00
+ 1460              	.LASF28:
+ 1461 002e 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Disable\000"
+ 1461      5341525F 
+ 1461      5365715F 
+ 1461      315F4952 
+ 1461      515F4469 
+ 1462              	.LASF35:
+ 1463 0048 43795261 		.ascii	"CyRamVectors\000"
+ 1463      6D566563 
+ 1463      746F7273 
+ 1463      00
+ 1464              	.LASF3:
+ 1465 0055 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 34
+
+
+ 1465      7420756E 
+ 1465      7369676E 
+ 1465      65642069 
+ 1465      6E7400
+ 1466              	.LASF29:
+ 1467 0068 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetPending\000"
+ 1467      5341525F 
+ 1467      5365715F 
+ 1467      315F4952 
+ 1467      515F5365 
+ 1468              	.LASF16:
+ 1469 0085 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Stop\000"
+ 1469      5341525F 
+ 1469      5365715F 
+ 1469      315F4952 
+ 1469      515F5374 
+ 1470              	.LASF15:
+ 1471 009c 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Start\000"
+ 1471      5341525F 
+ 1471      5365715F 
+ 1471      315F4952 
+ 1471      515F5374 
+ 1472              	.LASF26:
+ 1473 00b4 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetVector\000"
+ 1473      5341525F 
+ 1473      5365715F 
+ 1473      315F4952 
+ 1473      515F4765 
+ 1474              	.LASF11:
+ 1475 00d0 666C6F61 		.ascii	"float\000"
+ 1475      7400
+ 1476              	.LASF1:
+ 1477 00d6 756E7369 		.ascii	"unsigned char\000"
+ 1477      676E6564 
+ 1477      20636861 
+ 1477      7200
+ 1478              	.LASF32:
+ 1479 00e4 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\ADC_SAR_Seq_1_IRQ.c\000"
+ 1479      6E657261 
+ 1479      7465645F 
+ 1479      536F7572 
+ 1479      63655C50 
+ 1480              	.LASF23:
+ 1481 0111 696E7465 		.ascii	"interruptState\000"
+ 1481      72727570 
+ 1481      74537461 
+ 1481      746500
+ 1482              	.LASF5:
+ 1483 0120 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1483      20756E73 
+ 1483      69676E65 
+ 1483      6420696E 
+ 1483      7400
+ 1484              	.LASF19:
+ 1485 0132 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetVector\000"
+ 1485      5341525F 
+ 1485      5365715F 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 35
+
+
+ 1485      315F4952 
+ 1485      515F5365 
+ 1486              	.LASF9:
+ 1487 014e 75696E74 		.ascii	"uint8\000"
+ 1487      3800
+ 1488              	.LASF22:
+ 1489 0154 7072696F 		.ascii	"priority\000"
+ 1489      72697479 
+ 1489      00
+ 1490              	.LASF12:
+ 1491 015d 646F7562 		.ascii	"double\000"
+ 1491      6C6500
+ 1492              	.LASF10:
+ 1493 0164 75696E74 		.ascii	"uint32\000"
+ 1493      333200
+ 1494              	.LASF8:
+ 1495 016b 756E7369 		.ascii	"unsigned int\000"
+ 1495      676E6564 
+ 1495      20696E74 
+ 1495      00
+ 1496              	.LASF20:
+ 1497 0178 61646472 		.ascii	"address\000"
+ 1497      65737300 
+ 1498              	.LASF7:
+ 1499 0180 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1499      206C6F6E 
+ 1499      6720756E 
+ 1499      7369676E 
+ 1499      65642069 
+ 1500              	.LASF14:
+ 1501 0197 63796973 		.ascii	"cyisraddress\000"
+ 1501      72616464 
+ 1501      72657373 
+ 1501      00
+ 1502              	.LASF31:
+ 1503 01a4 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 1503      4320342E 
+ 1503      342E3100 
+ 1504              	.LASF33:
+ 1505 01b0 433A5C55 		.ascii	"C:\\Users\\maxk\\Desktop\\PSoC 4A\\FAE Workshop\\La"
+ 1505      73657273 
+ 1505      5C6D6178 
+ 1505      6B5C4465 
+ 1505      736B746F 
+ 1506 01dd 62205072 		.ascii	"b Projects\\Lab working directory\\Lab 4 ADC.cydsn\000"
+ 1506      6F6A6563 
+ 1506      74735C4C 
+ 1506      61622077 
+ 1506      6F726B69 
+ 1507              	.LASF2:
+ 1508 020e 73686F72 		.ascii	"short int\000"
+ 1508      7420696E 
+ 1508      7400
+ 1509              	.LASF17:
+ 1510 0218 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Interrupt\000"
+ 1510      5341525F 
+ 1510      5365715F 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccSRBNZe.s 			page 36
+
+
+ 1510      315F4952 
+ 1510      515F496E 
+ 1511              	.LASF24:
+ 1512 0234 7072696F 		.ascii	"priorityOffset\000"
+ 1512      72697479 
+ 1512      4F666673 
+ 1512      657400
+ 1513              	.LASF4:
+ 1514 0243 6C6F6E67 		.ascii	"long int\000"
+ 1514      20696E74 
+ 1514      00
+ 1515              	.LASF34:
+ 1516 024c 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_GetPriority\000"
+ 1516      5341525F 
+ 1516      5365715F 
+ 1516      315F4952 
+ 1516      515F4765 
+ 1517              	.LASF18:
+ 1518 026a 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_StartEx\000"
+ 1518      5341525F 
+ 1518      5365715F 
+ 1518      315F4952 
+ 1518      515F5374 
+ 1519              	.LASF25:
+ 1520 0284 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_Enable\000"
+ 1520      5341525F 
+ 1520      5365715F 
+ 1520      315F4952 
+ 1520      515F456E 
+ 1521              	.LASF30:
+ 1522 029d 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_ClearPending\000"
+ 1522      5341525F 
+ 1522      5365715F 
+ 1522      315F4952 
+ 1522      515F436C 
+ 1523              	.LASF0:
+ 1524 02bc 7369676E 		.ascii	"signed char\000"
+ 1524      65642063 
+ 1524      68617200 
+ 1525              	.LASF21:
+ 1526 02c8 4144435F 		.ascii	"ADC_SAR_Seq_1_IRQ_SetPriority\000"
+ 1526      5341525F 
+ 1526      5365715F 
+ 1526      315F4952 
+ 1526      515F5365 
+ 1527              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

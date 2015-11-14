@@ -1,0 +1,468 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.main,"ax",%progbits
+  18              		.align	2
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** #include <device.h>
+   2:.\main.c      **** #include <LED_RGB.h>
+   3:.\main.c      **** 
+   4:.\main.c      **** void main()
+   5:.\main.c      **** {
+  26              		.loc 1 5 0
+  27              		.cfi_startproc
+  28 0000 90B5     		push	{r4, r7, lr}
+  29              		.cfi_def_cfa_offset 12
+  30              		.cfi_offset 4, -12
+  31              		.cfi_offset 7, -8
+  32              		.cfi_offset 14, -4
+  33 0002 83B0     		sub	sp, sp, #12
+  34              		.cfi_def_cfa_offset 24
+  35 0004 00AF     		add	r7, sp, #0
+  36              		.cfi_def_cfa_register 7
+   6:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+   7:.\main.c      ****     uint16 CapSensePosition;
+   8:.\main.c      ****     LED_RGB_Start();
+  37              		.loc 1 8 0
+  38 0006 FFF7FEFF 		bl	LED_RGB_Start
+   9:.\main.c      ****     CyGlobalIntEnable;
+  39              		.loc 1 9 0
+  40              	@ 9 ".\main.c" 1
+  41 000a 62B6     		CPSIE   i
+  42              	@ 0 "" 2
+  10:.\main.c      ****     CapSense_1_Start();
+  43              		.loc 1 10 0
+  44              		.code	16
+  45 000c FFF7FEFF 		bl	CapSense_1_Start
+  11:.\main.c      ****     CapSense_1_InitializeAllBaselines();
+  46              		.loc 1 11 0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 2
+
+
+  47 0010 FFF7FEFF 		bl	CapSense_1_InitializeAllBaselines
+  12:.\main.c      ****     UART_1_Start();
+  48              		.loc 1 12 0
+  49 0014 FFF7FEFF 		bl	UART_1_Start
+  50              	.L3:
+  13:.\main.c      ****      
+  14:.\main.c      ****     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+  15:.\main.c      ****     for(;;)
+  16:.\main.c      ****     {
+  17:.\main.c      ****         /* Place your application code here. */
+  18:.\main.c      ****         CapSense_1_UpdateEnabledBaselines();
+  51              		.loc 1 18 0
+  52 0018 FFF7FEFF 		bl	CapSense_1_UpdateEnabledBaselines
+  19:.\main.c      ****         CapSense_1_ScanEnabledWidgets();
+  53              		.loc 1 19 0
+  54 001c FFF7FEFF 		bl	CapSense_1_ScanEnabledWidgets
+  20:.\main.c      ****         while(CapSense_1_IsBusy() != 0);
+  55              		.loc 1 20 0
+  56 0020 C046     		mov	r8, r8
+  57              	.L2:
+  58              		.loc 1 20 0 is_stmt 0 discriminator 1
+  59 0022 FFF7FEFF 		bl	CapSense_1_IsBusy
+  60 0026 031C     		mov	r3, r0
+  61 0028 002B     		cmp	r3, #0
+  62 002a FAD1     		bne	.L2
+  21:.\main.c      ****         CapSensePosition = CapSense_1_GetCentroidPos(CapSense_1_LINEARSLIDER0__LS);
+  63              		.loc 1 21 0 is_stmt 1
+  64 002c BC1D     		add	r4, r7, #6
+  65 002e 0020     		mov	r0, #0
+  66 0030 FFF7FEFF 		bl	CapSense_1_GetCentroidPos
+  67 0034 031C     		mov	r3, r0
+  68 0036 2380     		strh	r3, [r4]
+  22:.\main.c      ****         LED_RGB_SetColorCircle(255 * CapSensePosition);
+  69              		.loc 1 22 0
+  70 0038 BB1D     		add	r3, r7, #6
+  71 003a 1B88     		ldrh	r3, [r3]
+  72 003c 1A1C     		add	r2, r3, #0
+  73 003e 1202     		lsl	r2, r2, #8
+  74 0040 D31A     		sub	r3, r2, r3
+  75 0042 9BB2     		uxth	r3, r3
+  76 0044 181C     		mov	r0, r3
+  77 0046 FFF7FEFF 		bl	LED_RGB_SetColorCircle
+  23:.\main.c      ****         UART_1_UartPutChar(CapSensePosition);
+  78              		.loc 1 23 0
+  79 004a BB1D     		add	r3, r7, #6
+  80 004c 1B88     		ldrh	r3, [r3]
+  81 004e 181C     		mov	r0, r3
+  82 0050 FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  24:.\main.c      ****         CyDelay(10);
+  83              		.loc 1 24 0
+  84 0054 0A20     		mov	r0, #10
+  85 0056 FFF7FEFF 		bl	CyDelay
+  25:.\main.c      ****     }
+  86              		.loc 1 25 0
+  87 005a DDE7     		b	.L3
+  88              		.cfi_endproc
+  89              	.LFE33:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 3
+
+
+  90              		.size	main, .-main
+  91              		.text
+  92              	.Letext0:
+  93              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+  94              		.section	.debug_info,"",%progbits
+  95              	.Ldebug_info0:
+  96 0000 BA000000 		.4byte	0xba
+  97 0004 0400     		.2byte	0x4
+  98 0006 00000000 		.4byte	.Ldebug_abbrev0
+  99 000a 04       		.byte	0x4
+ 100 000b 01       		.uleb128 0x1
+ 101 000c 61000000 		.4byte	.LASF15
+ 102 0010 01       		.byte	0x1
+ 103 0011 9E010000 		.4byte	.LASF16
+ 104 0015 DD000000 		.4byte	.LASF17
+ 105 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 106 001d 00000000 		.4byte	0
+ 107 0021 00000000 		.4byte	.Ldebug_line0
+ 108 0025 02       		.uleb128 0x2
+ 109 0026 01       		.byte	0x1
+ 110 0027 06       		.byte	0x6
+ 111 0028 8C010000 		.4byte	.LASF0
+ 112 002c 02       		.uleb128 0x2
+ 113 002d 01       		.byte	0x1
+ 114 002e 08       		.byte	0x8
+ 115 002f 4C010000 		.4byte	.LASF1
+ 116 0033 02       		.uleb128 0x2
+ 117 0034 02       		.byte	0x2
+ 118 0035 05       		.byte	0x5
+ 119 0036 68010000 		.4byte	.LASF2
+ 120 003a 02       		.uleb128 0x2
+ 121 003b 02       		.byte	0x2
+ 122 003c 07       		.byte	0x7
+ 123 003d 79010000 		.4byte	.LASF3
+ 124 0041 02       		.uleb128 0x2
+ 125 0042 04       		.byte	0x4
+ 126 0043 05       		.byte	0x5
+ 127 0044 5F010000 		.4byte	.LASF4
+ 128 0048 02       		.uleb128 0x2
+ 129 0049 04       		.byte	0x4
+ 130 004a 07       		.byte	0x7
+ 131 004b 27000000 		.4byte	.LASF5
+ 132 004f 02       		.uleb128 0x2
+ 133 0050 08       		.byte	0x8
+ 134 0051 05       		.byte	0x5
+ 135 0052 00000000 		.4byte	.LASF6
+ 136 0056 02       		.uleb128 0x2
+ 137 0057 08       		.byte	0x8
+ 138 0058 07       		.byte	0x7
+ 139 0059 39000000 		.4byte	.LASF7
+ 140 005d 03       		.uleb128 0x3
+ 141 005e 04       		.byte	0x4
+ 142 005f 05       		.byte	0x5
+ 143 0060 696E7400 		.ascii	"int\000"
+ 144 0064 02       		.uleb128 0x2
+ 145 0065 04       		.byte	0x4
+ 146 0066 07       		.byte	0x7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 4
+
+
+ 147 0067 15000000 		.4byte	.LASF8
+ 148 006b 04       		.uleb128 0x4
+ 149 006c A7010000 		.4byte	.LASF9
+ 150 0070 02       		.byte	0x2
+ 151 0071 C2       		.byte	0xc2
+ 152 0072 3A000000 		.4byte	0x3a
+ 153 0076 04       		.uleb128 0x4
+ 154 0077 0E000000 		.4byte	.LASF10
+ 155 007b 02       		.byte	0x2
+ 156 007c C3       		.byte	0xc3
+ 157 007d 48000000 		.4byte	0x48
+ 158 0081 02       		.uleb128 0x2
+ 159 0082 04       		.byte	0x4
+ 160 0083 04       		.byte	0x4
+ 161 0084 98010000 		.4byte	.LASF11
+ 162 0088 02       		.uleb128 0x2
+ 163 0089 08       		.byte	0x8
+ 164 008a 04       		.byte	0x4
+ 165 008b 72010000 		.4byte	.LASF12
+ 166 008f 02       		.uleb128 0x2
+ 167 0090 01       		.byte	0x1
+ 168 0091 08       		.byte	0x8
+ 169 0092 5A010000 		.4byte	.LASF13
+ 170 0096 02       		.uleb128 0x2
+ 171 0097 04       		.byte	0x4
+ 172 0098 07       		.byte	0x7
+ 173 0099 AE010000 		.4byte	.LASF14
+ 174 009d 05       		.uleb128 0x5
+ 175 009e 22000000 		.4byte	.LASF18
+ 176 00a2 01       		.byte	0x1
+ 177 00a3 04       		.byte	0x4
+ 178 00a4 00000000 		.4byte	.LFB33
+ 179 00a8 5C000000 		.4byte	.LFE33-.LFB33
+ 180 00ac 01       		.uleb128 0x1
+ 181 00ad 9C       		.byte	0x9c
+ 182 00ae 06       		.uleb128 0x6
+ 183 00af 50000000 		.4byte	.LASF19
+ 184 00b3 01       		.byte	0x1
+ 185 00b4 07       		.byte	0x7
+ 186 00b5 6B000000 		.4byte	0x6b
+ 187 00b9 02       		.uleb128 0x2
+ 188 00ba 91       		.byte	0x91
+ 189 00bb 6E       		.sleb128 -18
+ 190 00bc 00       		.byte	0
+ 191 00bd 00       		.byte	0
+ 192              		.section	.debug_abbrev,"",%progbits
+ 193              	.Ldebug_abbrev0:
+ 194 0000 01       		.uleb128 0x1
+ 195 0001 11       		.uleb128 0x11
+ 196 0002 01       		.byte	0x1
+ 197 0003 25       		.uleb128 0x25
+ 198 0004 0E       		.uleb128 0xe
+ 199 0005 13       		.uleb128 0x13
+ 200 0006 0B       		.uleb128 0xb
+ 201 0007 03       		.uleb128 0x3
+ 202 0008 0E       		.uleb128 0xe
+ 203 0009 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 5
+
+
+ 204 000a 0E       		.uleb128 0xe
+ 205 000b 55       		.uleb128 0x55
+ 206 000c 17       		.uleb128 0x17
+ 207 000d 11       		.uleb128 0x11
+ 208 000e 01       		.uleb128 0x1
+ 209 000f 10       		.uleb128 0x10
+ 210 0010 17       		.uleb128 0x17
+ 211 0011 00       		.byte	0
+ 212 0012 00       		.byte	0
+ 213 0013 02       		.uleb128 0x2
+ 214 0014 24       		.uleb128 0x24
+ 215 0015 00       		.byte	0
+ 216 0016 0B       		.uleb128 0xb
+ 217 0017 0B       		.uleb128 0xb
+ 218 0018 3E       		.uleb128 0x3e
+ 219 0019 0B       		.uleb128 0xb
+ 220 001a 03       		.uleb128 0x3
+ 221 001b 0E       		.uleb128 0xe
+ 222 001c 00       		.byte	0
+ 223 001d 00       		.byte	0
+ 224 001e 03       		.uleb128 0x3
+ 225 001f 24       		.uleb128 0x24
+ 226 0020 00       		.byte	0
+ 227 0021 0B       		.uleb128 0xb
+ 228 0022 0B       		.uleb128 0xb
+ 229 0023 3E       		.uleb128 0x3e
+ 230 0024 0B       		.uleb128 0xb
+ 231 0025 03       		.uleb128 0x3
+ 232 0026 08       		.uleb128 0x8
+ 233 0027 00       		.byte	0
+ 234 0028 00       		.byte	0
+ 235 0029 04       		.uleb128 0x4
+ 236 002a 16       		.uleb128 0x16
+ 237 002b 00       		.byte	0
+ 238 002c 03       		.uleb128 0x3
+ 239 002d 0E       		.uleb128 0xe
+ 240 002e 3A       		.uleb128 0x3a
+ 241 002f 0B       		.uleb128 0xb
+ 242 0030 3B       		.uleb128 0x3b
+ 243 0031 0B       		.uleb128 0xb
+ 244 0032 49       		.uleb128 0x49
+ 245 0033 13       		.uleb128 0x13
+ 246 0034 00       		.byte	0
+ 247 0035 00       		.byte	0
+ 248 0036 05       		.uleb128 0x5
+ 249 0037 2E       		.uleb128 0x2e
+ 250 0038 01       		.byte	0x1
+ 251 0039 3F       		.uleb128 0x3f
+ 252 003a 19       		.uleb128 0x19
+ 253 003b 03       		.uleb128 0x3
+ 254 003c 0E       		.uleb128 0xe
+ 255 003d 3A       		.uleb128 0x3a
+ 256 003e 0B       		.uleb128 0xb
+ 257 003f 3B       		.uleb128 0x3b
+ 258 0040 0B       		.uleb128 0xb
+ 259 0041 11       		.uleb128 0x11
+ 260 0042 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 6
+
+
+ 261 0043 12       		.uleb128 0x12
+ 262 0044 06       		.uleb128 0x6
+ 263 0045 40       		.uleb128 0x40
+ 264 0046 18       		.uleb128 0x18
+ 265 0047 9642     		.uleb128 0x2116
+ 266 0049 19       		.uleb128 0x19
+ 267 004a 00       		.byte	0
+ 268 004b 00       		.byte	0
+ 269 004c 06       		.uleb128 0x6
+ 270 004d 34       		.uleb128 0x34
+ 271 004e 00       		.byte	0
+ 272 004f 03       		.uleb128 0x3
+ 273 0050 0E       		.uleb128 0xe
+ 274 0051 3A       		.uleb128 0x3a
+ 275 0052 0B       		.uleb128 0xb
+ 276 0053 3B       		.uleb128 0x3b
+ 277 0054 0B       		.uleb128 0xb
+ 278 0055 49       		.uleb128 0x49
+ 279 0056 13       		.uleb128 0x13
+ 280 0057 02       		.uleb128 0x2
+ 281 0058 18       		.uleb128 0x18
+ 282 0059 00       		.byte	0
+ 283 005a 00       		.byte	0
+ 284 005b 00       		.byte	0
+ 285              		.section	.debug_aranges,"",%progbits
+ 286 0000 1C000000 		.4byte	0x1c
+ 287 0004 0200     		.2byte	0x2
+ 288 0006 00000000 		.4byte	.Ldebug_info0
+ 289 000a 04       		.byte	0x4
+ 290 000b 00       		.byte	0
+ 291 000c 0000     		.2byte	0
+ 292 000e 0000     		.2byte	0
+ 293 0010 00000000 		.4byte	.LFB33
+ 294 0014 5C000000 		.4byte	.LFE33-.LFB33
+ 295 0018 00000000 		.4byte	0
+ 296 001c 00000000 		.4byte	0
+ 297              		.section	.debug_ranges,"",%progbits
+ 298              	.Ldebug_ranges0:
+ 299 0000 00000000 		.4byte	.LFB33
+ 300 0004 5C000000 		.4byte	.LFE33
+ 301 0008 00000000 		.4byte	0
+ 302 000c 00000000 		.4byte	0
+ 303              		.section	.debug_line,"",%progbits
+ 304              	.Ldebug_line0:
+ 305 0000 6A000000 		.section	.debug_str,"MS",%progbits,1
+ 305      02004300 
+ 305      00000201 
+ 305      FB0E0D00 
+ 305      01010101 
+ 306              	.LASF6:
+ 307 0000 6C6F6E67 		.ascii	"long long int\000"
+ 307      206C6F6E 
+ 307      6720696E 
+ 307      7400
+ 308              	.LASF10:
+ 309 000e 75696E74 		.ascii	"uint32\000"
+ 309      333200
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 7
+
+
+ 310              	.LASF8:
+ 311 0015 756E7369 		.ascii	"unsigned int\000"
+ 311      676E6564 
+ 311      20696E74 
+ 311      00
+ 312              	.LASF18:
+ 313 0022 6D61696E 		.ascii	"main\000"
+ 313      00
+ 314              	.LASF5:
+ 315 0027 6C6F6E67 		.ascii	"long unsigned int\000"
+ 315      20756E73 
+ 315      69676E65 
+ 315      6420696E 
+ 315      7400
+ 316              	.LASF7:
+ 317 0039 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 317      206C6F6E 
+ 317      6720756E 
+ 317      7369676E 
+ 317      65642069 
+ 318              	.LASF19:
+ 319 0050 43617053 		.ascii	"CapSensePosition\000"
+ 319      656E7365 
+ 319      506F7369 
+ 319      74696F6E 
+ 319      00
+ 320              	.LASF15:
+ 321 0061 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 321      4320342E 
+ 321      382E3420 
+ 321      32303134 
+ 321      30353236 
+ 322 0094 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 322      20726576 
+ 322      6973696F 
+ 322      6E203231 
+ 322      31333538 
+ 323 00c7 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 323      66756E63 
+ 323      74696F6E 
+ 323      2D736563 
+ 323      74696F6E 
+ 324              	.LASF17:
+ 325 00dd 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
+ 325      73657273 
+ 325      5C6D6974 
+ 325      6368656C 
+ 325      6C5C446F 
+ 326 010a 2D546872 		.ascii	"-Throttle\\ExampleProject1\\Lab Solutions\\Lab 3 Ca"
+ 326      6F74746C 
+ 326      655C4578 
+ 326      616D706C 
+ 326      6550726F 
+ 327 013a 7053656E 		.ascii	"pSense UART.cydsn\000"
+ 327      73652055 
+ 327      4152542E 
+ 327      63796473 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cclgfPsa.s 			page 8
+
+
+ 327      6E00
+ 328              	.LASF1:
+ 329 014c 756E7369 		.ascii	"unsigned char\000"
+ 329      676E6564 
+ 329      20636861 
+ 329      7200
+ 330              	.LASF13:
+ 331 015a 63686172 		.ascii	"char\000"
+ 331      00
+ 332              	.LASF4:
+ 333 015f 6C6F6E67 		.ascii	"long int\000"
+ 333      20696E74 
+ 333      00
+ 334              	.LASF2:
+ 335 0168 73686F72 		.ascii	"short int\000"
+ 335      7420696E 
+ 335      7400
+ 336              	.LASF12:
+ 337 0172 646F7562 		.ascii	"double\000"
+ 337      6C6500
+ 338              	.LASF3:
+ 339 0179 73686F72 		.ascii	"short unsigned int\000"
+ 339      7420756E 
+ 339      7369676E 
+ 339      65642069 
+ 339      6E7400
+ 340              	.LASF0:
+ 341 018c 7369676E 		.ascii	"signed char\000"
+ 341      65642063 
+ 341      68617200 
+ 342              	.LASF11:
+ 343 0198 666C6F61 		.ascii	"float\000"
+ 343      7400
+ 344              	.LASF16:
+ 345 019e 2E5C6D61 		.ascii	".\\main.c\000"
+ 345      696E2E63 
+ 345      00
+ 346              	.LASF9:
+ 347 01a7 75696E74 		.ascii	"uint16\000"
+ 347      313600
+ 348              	.LASF14:
+ 349 01ae 73697A65 		.ascii	"sizetype\000"
+ 349      74797065 
+ 349      00
+ 350              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

@@ -1,0 +1,1057 @@
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"Pin_1.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 C1000000 		.text
+  19      02005E00 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.section	.text.Pin_1_Write,"ax",%progbits
+  23              		.align	2
+  24              		.global	Pin_1_Write
+  25              		.code	16
+  26              		.thumb_func
+  27              		.type	Pin_1_Write, %function
+  28              	Pin_1_Write:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC4\\Pin_1.c"
+   1:.\Generated_Source\PSoC4/Pin_1.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/Pin_1.c **** * File Name: Pin_1.c  
+   3:.\Generated_Source\PSoC4/Pin_1.c **** * Version 1.90
+   4:.\Generated_Source\PSoC4/Pin_1.c **** *
+   5:.\Generated_Source\PSoC4/Pin_1.c **** * Description:
+   6:.\Generated_Source\PSoC4/Pin_1.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/Pin_1.c **** *
+   8:.\Generated_Source\PSoC4/Pin_1.c **** * Note:
+   9:.\Generated_Source\PSoC4/Pin_1.c **** *
+  10:.\Generated_Source\PSoC4/Pin_1.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/Pin_1.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/Pin_1.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/Pin_1.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/Pin_1.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/Pin_1.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/Pin_1.c **** 
+  17:.\Generated_Source\PSoC4/Pin_1.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC4/Pin_1.c **** #include "Pin_1.h"
+  19:.\Generated_Source\PSoC4/Pin_1.c **** 
+  20:.\Generated_Source\PSoC4/Pin_1.c **** #define SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/Pin_1.c ****     do { \
+  22:.\Generated_Source\PSoC4/Pin_1.c ****         Pin_1_PC =   (Pin_1_PC & \
+  23:.\Generated_Source\PSoC4/Pin_1.c ****                                 (uint32)(~(uint32)(Pin_1_DRIVE_MODE_IND_MASK << (Pin_1_DRIVE_MODE_B
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 2
+
+
+  24:.\Generated_Source\PSoC4/Pin_1.c ****                                 (uint32)((uint32)(mode) << (Pin_1_DRIVE_MODE_BITS * (shift))); \
+  25:.\Generated_Source\PSoC4/Pin_1.c ****     } while (0)
+  26:.\Generated_Source\PSoC4/Pin_1.c **** 
+  27:.\Generated_Source\PSoC4/Pin_1.c **** 
+  28:.\Generated_Source\PSoC4/Pin_1.c **** /*******************************************************************************
+  29:.\Generated_Source\PSoC4/Pin_1.c **** * Function Name: Pin_1_Write
+  30:.\Generated_Source\PSoC4/Pin_1.c **** ********************************************************************************
+  31:.\Generated_Source\PSoC4/Pin_1.c **** *
+  32:.\Generated_Source\PSoC4/Pin_1.c **** * Summary:
+  33:.\Generated_Source\PSoC4/Pin_1.c **** *  Assign a new value to the digital port's data output register.  
+  34:.\Generated_Source\PSoC4/Pin_1.c **** *
+  35:.\Generated_Source\PSoC4/Pin_1.c **** * Parameters:  
+  36:.\Generated_Source\PSoC4/Pin_1.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  37:.\Generated_Source\PSoC4/Pin_1.c **** *
+  38:.\Generated_Source\PSoC4/Pin_1.c **** * Return: 
+  39:.\Generated_Source\PSoC4/Pin_1.c **** *  None 
+  40:.\Generated_Source\PSoC4/Pin_1.c **** *  
+  41:.\Generated_Source\PSoC4/Pin_1.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/Pin_1.c **** void Pin_1_Write(uint8 value) 
+  43:.\Generated_Source\PSoC4/Pin_1.c **** {
+  31              		.loc 1 43 0
+  32              		.cfi_startproc
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 84B0     		sub	sp, sp, #16
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 021C     		mov	r2, r0
+  45 0008 FB1D     		add	r3, r7, #7
+  46 000a 1A70     		strb	r2, [r3]
+  44:.\Generated_Source\PSoC4/Pin_1.c ****     uint8 drVal = (uint8)(Pin_1_DR & (uint8)(~Pin_1_MASK));
+  47              		.loc 1 44 0
+  48 000c 0D4B     		ldr	r3, .L3
+  49 000e 1B68     		ldr	r3, [r3]
+  50 0010 DAB2     		uxtb	r2, r3
+  51 0012 3B1C     		mov	r3, r7
+  52 0014 0F33     		add	r3, r3, #15
+  53 0016 0121     		mov	r1, #1
+  54 0018 8A43     		bic	r2, r2, r1
+  55 001a 1A70     		strb	r2, [r3]
+  45:.\Generated_Source\PSoC4/Pin_1.c ****     drVal = (drVal | ((uint8)(value << Pin_1_SHIFT) & Pin_1_MASK));
+  56              		.loc 1 45 0
+  57 001c FB1D     		add	r3, r7, #7
+  58 001e 1B78     		ldrb	r3, [r3]
+  59 0020 0122     		mov	r2, #1
+  60 0022 1340     		and	r3, r3, r2
+  61 0024 3A1C     		mov	r2, r7
+  62 0026 0F32     		add	r2, r2, #15
+  63 0028 391C     		mov	r1, r7
+  64 002a 0F31     		add	r1, r1, #15
+  65 002c 0978     		ldrb	r1, [r1]
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 3
+
+
+  66 002e 0B43     		orr	r3, r3, r1
+  67 0030 1370     		strb	r3, [r2]
+  46:.\Generated_Source\PSoC4/Pin_1.c ****     Pin_1_DR = (uint32)drVal;
+  68              		.loc 1 46 0
+  69 0032 044B     		ldr	r3, .L3
+  70 0034 3A1C     		mov	r2, r7
+  71 0036 0F32     		add	r2, r2, #15
+  72 0038 1278     		ldrb	r2, [r2]
+  73 003a 1A60     		str	r2, [r3]
+  47:.\Generated_Source\PSoC4/Pin_1.c **** }
+  74              		.loc 1 47 0
+  75 003c BD46     		mov	sp, r7
+  76 003e 04B0     		add	sp, sp, #16
+  77              		@ sp needed for prologue
+  78 0040 80BD     		pop	{r7, pc}
+  79              	.L4:
+  80 0042 C046     		.align	2
+  81              	.L3:
+  82 0044 00020440 		.word	1074004480
+  83              		.cfi_endproc
+  84              	.LFE0:
+  85              		.size	Pin_1_Write, .-Pin_1_Write
+  86              		.section	.text.Pin_1_SetDriveMode,"ax",%progbits
+  87              		.align	2
+  88              		.global	Pin_1_SetDriveMode
+  89              		.code	16
+  90              		.thumb_func
+  91              		.type	Pin_1_SetDriveMode, %function
+  92              	Pin_1_SetDriveMode:
+  93              	.LFB1:
+  48:.\Generated_Source\PSoC4/Pin_1.c **** 
+  49:.\Generated_Source\PSoC4/Pin_1.c **** 
+  50:.\Generated_Source\PSoC4/Pin_1.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC4/Pin_1.c **** * Function Name: Pin_1_SetDriveMode
+  52:.\Generated_Source\PSoC4/Pin_1.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC4/Pin_1.c **** *
+  54:.\Generated_Source\PSoC4/Pin_1.c **** * Summary:
+  55:.\Generated_Source\PSoC4/Pin_1.c **** *  Change the drive mode on the pins of the port.
+  56:.\Generated_Source\PSoC4/Pin_1.c **** * 
+  57:.\Generated_Source\PSoC4/Pin_1.c **** * Parameters:  
+  58:.\Generated_Source\PSoC4/Pin_1.c **** *  mode:  Change the pins to this drive mode.
+  59:.\Generated_Source\PSoC4/Pin_1.c **** *
+  60:.\Generated_Source\PSoC4/Pin_1.c **** * Return: 
+  61:.\Generated_Source\PSoC4/Pin_1.c **** *  None
+  62:.\Generated_Source\PSoC4/Pin_1.c **** *
+  63:.\Generated_Source\PSoC4/Pin_1.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC4/Pin_1.c **** void Pin_1_SetDriveMode(uint8 mode) 
+  65:.\Generated_Source\PSoC4/Pin_1.c **** {
+  94              		.loc 1 65 0
+  95              		.cfi_startproc
+  96 0000 80B5     		push	{r7, lr}
+  97              	.LCFI3:
+  98              		.cfi_def_cfa_offset 8
+  99              		.cfi_offset 7, -8
+ 100              		.cfi_offset 14, -4
+ 101 0002 82B0     		sub	sp, sp, #8
+ 102              	.LCFI4:
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 4
+
+
+ 103              		.cfi_def_cfa_offset 16
+ 104 0004 00AF     		add	r7, sp, #0
+ 105              	.LCFI5:
+ 106              		.cfi_def_cfa_register 7
+ 107 0006 021C     		mov	r2, r0
+ 108 0008 FB1D     		add	r3, r7, #7
+ 109 000a 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC4/Pin_1.c **** 	SetP4PinDriveMode(Pin_1__0__SHIFT, mode);
+ 110              		.loc 1 66 0
+ 111 000c 064B     		ldr	r3, .L7
+ 112 000e 064A     		ldr	r2, .L7
+ 113 0010 1268     		ldr	r2, [r2]
+ 114 0012 0721     		mov	r1, #7
+ 115 0014 101C     		mov	r0, r2
+ 116 0016 8843     		bic	r0, r0, r1
+ 117 0018 011C     		mov	r1, r0
+ 118 001a FA1D     		add	r2, r7, #7
+ 119 001c 1278     		ldrb	r2, [r2]
+ 120 001e 0A43     		orr	r2, r2, r1
+ 121 0020 1A60     		str	r2, [r3]
+  67:.\Generated_Source\PSoC4/Pin_1.c **** }
+ 122              		.loc 1 67 0
+ 123 0022 BD46     		mov	sp, r7
+ 124 0024 02B0     		add	sp, sp, #8
+ 125              		@ sp needed for prologue
+ 126 0026 80BD     		pop	{r7, pc}
+ 127              	.L8:
+ 128              		.align	2
+ 129              	.L7:
+ 130 0028 08020440 		.word	1074004488
+ 131              		.cfi_endproc
+ 132              	.LFE1:
+ 133              		.size	Pin_1_SetDriveMode, .-Pin_1_SetDriveMode
+ 134              		.section	.text.Pin_1_Read,"ax",%progbits
+ 135              		.align	2
+ 136              		.global	Pin_1_Read
+ 137              		.code	16
+ 138              		.thumb_func
+ 139              		.type	Pin_1_Read, %function
+ 140              	Pin_1_Read:
+ 141              	.LFB2:
+  68:.\Generated_Source\PSoC4/Pin_1.c **** 
+  69:.\Generated_Source\PSoC4/Pin_1.c **** 
+  70:.\Generated_Source\PSoC4/Pin_1.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC4/Pin_1.c **** * Function Name: Pin_1_Read
+  72:.\Generated_Source\PSoC4/Pin_1.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC4/Pin_1.c **** *
+  74:.\Generated_Source\PSoC4/Pin_1.c **** * Summary:
+  75:.\Generated_Source\PSoC4/Pin_1.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  76:.\Generated_Source\PSoC4/Pin_1.c **** *  form.
+  77:.\Generated_Source\PSoC4/Pin_1.c **** *
+  78:.\Generated_Source\PSoC4/Pin_1.c **** * Parameters:  
+  79:.\Generated_Source\PSoC4/Pin_1.c **** *  None 
+  80:.\Generated_Source\PSoC4/Pin_1.c **** *
+  81:.\Generated_Source\PSoC4/Pin_1.c **** * Return: 
+  82:.\Generated_Source\PSoC4/Pin_1.c **** *  Returns the current value of the Digital Port as a right justified number
+  83:.\Generated_Source\PSoC4/Pin_1.c **** *  
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 5
+
+
+  84:.\Generated_Source\PSoC4/Pin_1.c **** * Note:
+  85:.\Generated_Source\PSoC4/Pin_1.c **** *  Macro Pin_1_ReadPS calls this function. 
+  86:.\Generated_Source\PSoC4/Pin_1.c **** *  
+  87:.\Generated_Source\PSoC4/Pin_1.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/Pin_1.c **** uint8 Pin_1_Read(void) 
+  89:.\Generated_Source\PSoC4/Pin_1.c **** {
+ 142              		.loc 1 89 0
+ 143              		.cfi_startproc
+ 144 0000 80B5     		push	{r7, lr}
+ 145              	.LCFI6:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 00AF     		add	r7, sp, #0
+ 150              	.LCFI7:
+ 151              		.cfi_def_cfa_register 7
+  90:.\Generated_Source\PSoC4/Pin_1.c ****     return (uint8)((Pin_1_PS & Pin_1_MASK) >> Pin_1_SHIFT);
+ 152              		.loc 1 90 0
+ 153 0004 034B     		ldr	r3, .L11
+ 154 0006 1B68     		ldr	r3, [r3]
+ 155 0008 DBB2     		uxtb	r3, r3
+ 156 000a 0122     		mov	r2, #1
+ 157 000c 1340     		and	r3, r3, r2
+  91:.\Generated_Source\PSoC4/Pin_1.c **** }
+ 158              		.loc 1 91 0
+ 159 000e 181C     		mov	r0, r3
+ 160 0010 BD46     		mov	sp, r7
+ 161              		@ sp needed for prologue
+ 162 0012 80BD     		pop	{r7, pc}
+ 163              	.L12:
+ 164              		.align	2
+ 165              	.L11:
+ 166 0014 04020440 		.word	1074004484
+ 167              		.cfi_endproc
+ 168              	.LFE2:
+ 169              		.size	Pin_1_Read, .-Pin_1_Read
+ 170              		.section	.text.Pin_1_ReadDataReg,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	Pin_1_ReadDataReg
+ 173              		.code	16
+ 174              		.thumb_func
+ 175              		.type	Pin_1_ReadDataReg, %function
+ 176              	Pin_1_ReadDataReg:
+ 177              	.LFB3:
+  92:.\Generated_Source\PSoC4/Pin_1.c **** 
+  93:.\Generated_Source\PSoC4/Pin_1.c **** 
+  94:.\Generated_Source\PSoC4/Pin_1.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC4/Pin_1.c **** * Function Name: Pin_1_ReadDataReg
+  96:.\Generated_Source\PSoC4/Pin_1.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC4/Pin_1.c **** *
+  98:.\Generated_Source\PSoC4/Pin_1.c **** * Summary:
+  99:.\Generated_Source\PSoC4/Pin_1.c **** *  Read the current value assigned to a Digital Port's data output register
+ 100:.\Generated_Source\PSoC4/Pin_1.c **** *
+ 101:.\Generated_Source\PSoC4/Pin_1.c **** * Parameters:  
+ 102:.\Generated_Source\PSoC4/Pin_1.c **** *  None 
+ 103:.\Generated_Source\PSoC4/Pin_1.c **** *
+ 104:.\Generated_Source\PSoC4/Pin_1.c **** * Return: 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 6
+
+
+ 105:.\Generated_Source\PSoC4/Pin_1.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 106:.\Generated_Source\PSoC4/Pin_1.c **** *  
+ 107:.\Generated_Source\PSoC4/Pin_1.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/Pin_1.c **** uint8 Pin_1_ReadDataReg(void) 
+ 109:.\Generated_Source\PSoC4/Pin_1.c **** {
+ 178              		.loc 1 109 0
+ 179              		.cfi_startproc
+ 180 0000 80B5     		push	{r7, lr}
+ 181              	.LCFI8:
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 7, -8
+ 184              		.cfi_offset 14, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              	.LCFI9:
+ 187              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/Pin_1.c ****     return (uint8)((Pin_1_DR & Pin_1_MASK) >> Pin_1_SHIFT);
+ 188              		.loc 1 110 0
+ 189 0004 034B     		ldr	r3, .L15
+ 190 0006 1B68     		ldr	r3, [r3]
+ 191 0008 DBB2     		uxtb	r3, r3
+ 192 000a 0122     		mov	r2, #1
+ 193 000c 1340     		and	r3, r3, r2
+ 111:.\Generated_Source\PSoC4/Pin_1.c **** }
+ 194              		.loc 1 111 0
+ 195 000e 181C     		mov	r0, r3
+ 196 0010 BD46     		mov	sp, r7
+ 197              		@ sp needed for prologue
+ 198 0012 80BD     		pop	{r7, pc}
+ 199              	.L16:
+ 200              		.align	2
+ 201              	.L15:
+ 202 0014 00020440 		.word	1074004480
+ 203              		.cfi_endproc
+ 204              	.LFE3:
+ 205              		.size	Pin_1_ReadDataReg, .-Pin_1_ReadDataReg
+ 206              		.section	.text.Pin_1_ClearInterrupt,"ax",%progbits
+ 207              		.align	2
+ 208              		.global	Pin_1_ClearInterrupt
+ 209              		.code	16
+ 210              		.thumb_func
+ 211              		.type	Pin_1_ClearInterrupt, %function
+ 212              	Pin_1_ClearInterrupt:
+ 213              	.LFB4:
+ 112:.\Generated_Source\PSoC4/Pin_1.c **** 
+ 113:.\Generated_Source\PSoC4/Pin_1.c **** 
+ 114:.\Generated_Source\PSoC4/Pin_1.c **** /* If Interrupts Are Enabled for this Pins component */ 
+ 115:.\Generated_Source\PSoC4/Pin_1.c **** #if defined(Pin_1_INTSTAT) 
+ 116:.\Generated_Source\PSoC4/Pin_1.c **** 
+ 117:.\Generated_Source\PSoC4/Pin_1.c ****     /*******************************************************************************
+ 118:.\Generated_Source\PSoC4/Pin_1.c ****     * Function Name: Pin_1_ClearInterrupt
+ 119:.\Generated_Source\PSoC4/Pin_1.c ****     ********************************************************************************
+ 120:.\Generated_Source\PSoC4/Pin_1.c ****     *
+ 121:.\Generated_Source\PSoC4/Pin_1.c ****     * Summary:
+ 122:.\Generated_Source\PSoC4/Pin_1.c ****     *  Clears any active interrupts attached to port and returns the value of the 
+ 123:.\Generated_Source\PSoC4/Pin_1.c ****     *  interrupt status register.
+ 124:.\Generated_Source\PSoC4/Pin_1.c ****     *
+ 125:.\Generated_Source\PSoC4/Pin_1.c ****     * Parameters:  
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 7
+
+
+ 126:.\Generated_Source\PSoC4/Pin_1.c ****     *  None 
+ 127:.\Generated_Source\PSoC4/Pin_1.c ****     *
+ 128:.\Generated_Source\PSoC4/Pin_1.c ****     * Return: 
+ 129:.\Generated_Source\PSoC4/Pin_1.c ****     *  Returns the value of the interrupt status register
+ 130:.\Generated_Source\PSoC4/Pin_1.c ****     *  
+ 131:.\Generated_Source\PSoC4/Pin_1.c ****     *******************************************************************************/
+ 132:.\Generated_Source\PSoC4/Pin_1.c ****     uint8 Pin_1_ClearInterrupt(void) 
+ 133:.\Generated_Source\PSoC4/Pin_1.c ****     {
+ 214              		.loc 1 133 0
+ 215              		.cfi_startproc
+ 216 0000 80B5     		push	{r7, lr}
+ 217              	.LCFI10:
+ 218              		.cfi_def_cfa_offset 8
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 82B0     		sub	sp, sp, #8
+ 222              	.LCFI11:
+ 223              		.cfi_def_cfa_offset 16
+ 224 0004 00AF     		add	r7, sp, #0
+ 225              	.LCFI12:
+ 226              		.cfi_def_cfa_register 7
+ 134:.\Generated_Source\PSoC4/Pin_1.c **** 		uint8 maskedStatus = (uint8)(Pin_1_INTSTAT & Pin_1_MASK);
+ 227              		.loc 1 134 0
+ 228 0006 084B     		ldr	r3, .L19
+ 229 0008 1B68     		ldr	r3, [r3]
+ 230 000a D9B2     		uxtb	r1, r3
+ 231 000c FB1D     		add	r3, r7, #7
+ 232 000e 0122     		mov	r2, #1
+ 233 0010 0A40     		and	r2, r2, r1
+ 234 0012 1A70     		strb	r2, [r3]
+ 135:.\Generated_Source\PSoC4/Pin_1.c **** 		Pin_1_INTSTAT = maskedStatus;
+ 235              		.loc 1 135 0
+ 236 0014 044B     		ldr	r3, .L19
+ 237 0016 FA1D     		add	r2, r7, #7
+ 238 0018 1278     		ldrb	r2, [r2]
+ 239 001a 1A60     		str	r2, [r3]
+ 136:.\Generated_Source\PSoC4/Pin_1.c ****         return maskedStatus >> Pin_1_SHIFT;
+ 240              		.loc 1 136 0
+ 241 001c FB1D     		add	r3, r7, #7
+ 242 001e 1B78     		ldrb	r3, [r3]
+ 137:.\Generated_Source\PSoC4/Pin_1.c ****     }
+ 243              		.loc 1 137 0
+ 244 0020 181C     		mov	r0, r3
+ 245 0022 BD46     		mov	sp, r7
+ 246 0024 02B0     		add	sp, sp, #8
+ 247              		@ sp needed for prologue
+ 248 0026 80BD     		pop	{r7, pc}
+ 249              	.L20:
+ 250              		.align	2
+ 251              	.L19:
+ 252 0028 10020440 		.word	1074004496
+ 253              		.cfi_endproc
+ 254              	.LFE4:
+ 255              		.size	Pin_1_ClearInterrupt, .-Pin_1_ClearInterrupt
+ 256              		.text
+ 257              	.Letext0:
+ 258              		.section	.debug_loc,"",%progbits
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 8
+
+
+ 259              	.Ldebug_loc0:
+ 260              	.LLST0:
+ 261 0000 00000000 		.4byte	.LFB0
+ 262 0004 02000000 		.4byte	.LCFI0
+ 263 0008 0100     		.2byte	0x1
+ 264 000a 5D       		.byte	0x5d
+ 265 000b 02000000 		.4byte	.LCFI0
+ 266 000f 04000000 		.4byte	.LCFI1
+ 267 0013 0200     		.2byte	0x2
+ 268 0015 7D       		.byte	0x7d
+ 269 0016 08       		.sleb128 8
+ 270 0017 04000000 		.4byte	.LCFI1
+ 271 001b 06000000 		.4byte	.LCFI2
+ 272 001f 0200     		.2byte	0x2
+ 273 0021 7D       		.byte	0x7d
+ 274 0022 18       		.sleb128 24
+ 275 0023 06000000 		.4byte	.LCFI2
+ 276 0027 48000000 		.4byte	.LFE0
+ 277 002b 0200     		.2byte	0x2
+ 278 002d 77       		.byte	0x77
+ 279 002e 18       		.sleb128 24
+ 280 002f 00000000 		.4byte	0x0
+ 281 0033 00000000 		.4byte	0x0
+ 282              	.LLST1:
+ 283 0037 00000000 		.4byte	.LFB1
+ 284 003b 02000000 		.4byte	.LCFI3
+ 285 003f 0100     		.2byte	0x1
+ 286 0041 5D       		.byte	0x5d
+ 287 0042 02000000 		.4byte	.LCFI3
+ 288 0046 04000000 		.4byte	.LCFI4
+ 289 004a 0200     		.2byte	0x2
+ 290 004c 7D       		.byte	0x7d
+ 291 004d 08       		.sleb128 8
+ 292 004e 04000000 		.4byte	.LCFI4
+ 293 0052 06000000 		.4byte	.LCFI5
+ 294 0056 0200     		.2byte	0x2
+ 295 0058 7D       		.byte	0x7d
+ 296 0059 10       		.sleb128 16
+ 297 005a 06000000 		.4byte	.LCFI5
+ 298 005e 2C000000 		.4byte	.LFE1
+ 299 0062 0200     		.2byte	0x2
+ 300 0064 77       		.byte	0x77
+ 301 0065 10       		.sleb128 16
+ 302 0066 00000000 		.4byte	0x0
+ 303 006a 00000000 		.4byte	0x0
+ 304              	.LLST2:
+ 305 006e 00000000 		.4byte	.LFB2
+ 306 0072 02000000 		.4byte	.LCFI6
+ 307 0076 0100     		.2byte	0x1
+ 308 0078 5D       		.byte	0x5d
+ 309 0079 02000000 		.4byte	.LCFI6
+ 310 007d 04000000 		.4byte	.LCFI7
+ 311 0081 0200     		.2byte	0x2
+ 312 0083 7D       		.byte	0x7d
+ 313 0084 08       		.sleb128 8
+ 314 0085 04000000 		.4byte	.LCFI7
+ 315 0089 18000000 		.4byte	.LFE2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 9
+
+
+ 316 008d 0200     		.2byte	0x2
+ 317 008f 77       		.byte	0x77
+ 318 0090 08       		.sleb128 8
+ 319 0091 00000000 		.4byte	0x0
+ 320 0095 00000000 		.4byte	0x0
+ 321              	.LLST3:
+ 322 0099 00000000 		.4byte	.LFB3
+ 323 009d 02000000 		.4byte	.LCFI8
+ 324 00a1 0100     		.2byte	0x1
+ 325 00a3 5D       		.byte	0x5d
+ 326 00a4 02000000 		.4byte	.LCFI8
+ 327 00a8 04000000 		.4byte	.LCFI9
+ 328 00ac 0200     		.2byte	0x2
+ 329 00ae 7D       		.byte	0x7d
+ 330 00af 08       		.sleb128 8
+ 331 00b0 04000000 		.4byte	.LCFI9
+ 332 00b4 18000000 		.4byte	.LFE3
+ 333 00b8 0200     		.2byte	0x2
+ 334 00ba 77       		.byte	0x77
+ 335 00bb 08       		.sleb128 8
+ 336 00bc 00000000 		.4byte	0x0
+ 337 00c0 00000000 		.4byte	0x0
+ 338              	.LLST4:
+ 339 00c4 00000000 		.4byte	.LFB4
+ 340 00c8 02000000 		.4byte	.LCFI10
+ 341 00cc 0100     		.2byte	0x1
+ 342 00ce 5D       		.byte	0x5d
+ 343 00cf 02000000 		.4byte	.LCFI10
+ 344 00d3 04000000 		.4byte	.LCFI11
+ 345 00d7 0200     		.2byte	0x2
+ 346 00d9 7D       		.byte	0x7d
+ 347 00da 08       		.sleb128 8
+ 348 00db 04000000 		.4byte	.LCFI11
+ 349 00df 06000000 		.4byte	.LCFI12
+ 350 00e3 0200     		.2byte	0x2
+ 351 00e5 7D       		.byte	0x7d
+ 352 00e6 10       		.sleb128 16
+ 353 00e7 06000000 		.4byte	.LCFI12
+ 354 00eb 2C000000 		.4byte	.LFE4
+ 355 00ef 0200     		.2byte	0x2
+ 356 00f1 77       		.byte	0x77
+ 357 00f2 10       		.sleb128 16
+ 358 00f3 00000000 		.4byte	0x0
+ 359 00f7 00000000 		.4byte	0x0
+ 360              		.file 2 ".\\Generated_Source\\PSoC4\\/cytypes.h"
+ 361              		.section	.debug_info
+ 362 0000 44010000 		.4byte	0x144
+ 363 0004 0200     		.2byte	0x2
+ 364 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 365 000a 04       		.byte	0x4
+ 366 000b 01       		.uleb128 0x1
+ 367 000c C2000000 		.4byte	.LASF21
+ 368 0010 01       		.byte	0x1
+ 369 0011 53000000 		.4byte	.LASF22
+ 370 0015 DB000000 		.4byte	.LASF23
+ 371 0019 00000000 		.4byte	0x0
+ 372 001d 00000000 		.4byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 10
+
+
+ 373 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 374 0025 00000000 		.4byte	.Ldebug_line0
+ 375 0029 02       		.uleb128 0x2
+ 376 002a 01       		.byte	0x1
+ 377 002b 06       		.byte	0x6
+ 378 002c 69010000 		.4byte	.LASF0
+ 379 0030 02       		.uleb128 0x2
+ 380 0031 01       		.byte	0x1
+ 381 0032 08       		.byte	0x8
+ 382 0033 1A000000 		.4byte	.LASF1
+ 383 0037 02       		.uleb128 0x2
+ 384 0038 02       		.byte	0x2
+ 385 0039 05       		.byte	0x5
+ 386 003a 39010000 		.4byte	.LASF2
+ 387 003e 02       		.uleb128 0x2
+ 388 003f 02       		.byte	0x2
+ 389 0040 07       		.byte	0x7
+ 390 0041 40000000 		.4byte	.LASF3
+ 391 0045 02       		.uleb128 0x2
+ 392 0046 04       		.byte	0x4
+ 393 0047 05       		.byte	0x5
+ 394 0048 5B010000 		.4byte	.LASF4
+ 395 004c 02       		.uleb128 0x2
+ 396 004d 04       		.byte	0x4
+ 397 004e 07       		.byte	0x7
+ 398 004f 2E000000 		.4byte	.LASF5
+ 399 0053 02       		.uleb128 0x2
+ 400 0054 08       		.byte	0x8
+ 401 0055 05       		.byte	0x5
+ 402 0056 00000000 		.4byte	.LASF6
+ 403 005a 02       		.uleb128 0x2
+ 404 005b 08       		.byte	0x8
+ 405 005c 07       		.byte	0x7
+ 406 005d 9B000000 		.4byte	.LASF7
+ 407 0061 03       		.uleb128 0x3
+ 408 0062 04       		.byte	0x4
+ 409 0063 05       		.byte	0x5
+ 410 0064 696E7400 		.ascii	"int\000"
+ 411 0068 02       		.uleb128 0x2
+ 412 0069 04       		.byte	0x4
+ 413 006a 07       		.byte	0x7
+ 414 006b 8E000000 		.4byte	.LASF8
+ 415 006f 04       		.uleb128 0x4
+ 416 0070 43010000 		.4byte	.LASF24
+ 417 0074 02       		.byte	0x2
+ 418 0075 4C       		.byte	0x4c
+ 419 0076 30000000 		.4byte	0x30
+ 420 007a 02       		.uleb128 0x2
+ 421 007b 04       		.byte	0x4
+ 422 007c 04       		.byte	0x4
+ 423 007d 14000000 		.4byte	.LASF9
+ 424 0081 02       		.uleb128 0x2
+ 425 0082 08       		.byte	0x8
+ 426 0083 04       		.byte	0x4
+ 427 0084 74000000 		.4byte	.LASF10
+ 428 0088 02       		.uleb128 0x2
+ 429 0089 01       		.byte	0x1
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 11
+
+
+ 430 008a 08       		.byte	0x8
+ 431 008b 64010000 		.4byte	.LASF11
+ 432 008f 05       		.uleb128 0x5
+ 433 0090 01       		.byte	0x1
+ 434 0091 75010000 		.4byte	.LASF12
+ 435 0095 01       		.byte	0x1
+ 436 0096 2A       		.byte	0x2a
+ 437 0097 01       		.byte	0x1
+ 438 0098 00000000 		.4byte	.LFB0
+ 439 009c 48000000 		.4byte	.LFE0
+ 440 00a0 00000000 		.4byte	.LLST0
+ 441 00a4 C5000000 		.4byte	0xc5
+ 442 00a8 06       		.uleb128 0x6
+ 443 00a9 0E000000 		.4byte	.LASF14
+ 444 00ad 01       		.byte	0x1
+ 445 00ae 2A       		.byte	0x2a
+ 446 00af 6F000000 		.4byte	0x6f
+ 447 00b3 02       		.byte	0x2
+ 448 00b4 91       		.byte	0x91
+ 449 00b5 6F       		.sleb128 -17
+ 450 00b6 07       		.uleb128 0x7
+ 451 00b7 28000000 		.4byte	.LASF19
+ 452 00bb 01       		.byte	0x1
+ 453 00bc 2C       		.byte	0x2c
+ 454 00bd 6F000000 		.4byte	0x6f
+ 455 00c1 02       		.byte	0x2
+ 456 00c2 91       		.byte	0x91
+ 457 00c3 77       		.sleb128 -9
+ 458 00c4 00       		.byte	0x0
+ 459 00c5 05       		.uleb128 0x5
+ 460 00c6 01       		.byte	0x1
+ 461 00c7 7B000000 		.4byte	.LASF13
+ 462 00cb 01       		.byte	0x1
+ 463 00cc 40       		.byte	0x40
+ 464 00cd 01       		.byte	0x1
+ 465 00ce 00000000 		.4byte	.LFB1
+ 466 00d2 2C000000 		.4byte	.LFE1
+ 467 00d6 37000000 		.4byte	.LLST1
+ 468 00da ED000000 		.4byte	0xed
+ 469 00de 06       		.uleb128 0x6
+ 470 00df B2000000 		.4byte	.LASF15
+ 471 00e3 01       		.byte	0x1
+ 472 00e4 40       		.byte	0x40
+ 473 00e5 6F000000 		.4byte	0x6f
+ 474 00e9 02       		.byte	0x2
+ 475 00ea 91       		.byte	0x91
+ 476 00eb 77       		.sleb128 -9
+ 477 00ec 00       		.byte	0x0
+ 478 00ed 08       		.uleb128 0x8
+ 479 00ee 01       		.byte	0x1
+ 480 00ef B7000000 		.4byte	.LASF16
+ 481 00f3 01       		.byte	0x1
+ 482 00f4 58       		.byte	0x58
+ 483 00f5 01       		.byte	0x1
+ 484 00f6 6F000000 		.4byte	0x6f
+ 485 00fa 00000000 		.4byte	.LFB2
+ 486 00fe 18000000 		.4byte	.LFE2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 12
+
+
+ 487 0102 6E000000 		.4byte	.LLST2
+ 488 0106 08       		.uleb128 0x8
+ 489 0107 01       		.byte	0x1
+ 490 0108 49010000 		.4byte	.LASF17
+ 491 010c 01       		.byte	0x1
+ 492 010d 6C       		.byte	0x6c
+ 493 010e 01       		.byte	0x1
+ 494 010f 6F000000 		.4byte	0x6f
+ 495 0113 00000000 		.4byte	.LFB3
+ 496 0117 18000000 		.4byte	.LFE3
+ 497 011b 99000000 		.4byte	.LLST3
+ 498 011f 09       		.uleb128 0x9
+ 499 0120 01       		.byte	0x1
+ 500 0121 81010000 		.4byte	.LASF18
+ 501 0125 01       		.byte	0x1
+ 502 0126 84       		.byte	0x84
+ 503 0127 01       		.byte	0x1
+ 504 0128 6F000000 		.4byte	0x6f
+ 505 012c 00000000 		.4byte	.LFB4
+ 506 0130 2C000000 		.4byte	.LFE4
+ 507 0134 C4000000 		.4byte	.LLST4
+ 508 0138 07       		.uleb128 0x7
+ 509 0139 CE000000 		.4byte	.LASF20
+ 510 013d 01       		.byte	0x1
+ 511 013e 86       		.byte	0x86
+ 512 013f 6F000000 		.4byte	0x6f
+ 513 0143 02       		.byte	0x2
+ 514 0144 91       		.byte	0x91
+ 515 0145 77       		.sleb128 -9
+ 516 0146 00       		.byte	0x0
+ 517 0147 00       		.byte	0x0
+ 518              		.section	.debug_abbrev
+ 519 0000 01       		.uleb128 0x1
+ 520 0001 11       		.uleb128 0x11
+ 521 0002 01       		.byte	0x1
+ 522 0003 25       		.uleb128 0x25
+ 523 0004 0E       		.uleb128 0xe
+ 524 0005 13       		.uleb128 0x13
+ 525 0006 0B       		.uleb128 0xb
+ 526 0007 03       		.uleb128 0x3
+ 527 0008 0E       		.uleb128 0xe
+ 528 0009 1B       		.uleb128 0x1b
+ 529 000a 0E       		.uleb128 0xe
+ 530 000b 11       		.uleb128 0x11
+ 531 000c 01       		.uleb128 0x1
+ 532 000d 52       		.uleb128 0x52
+ 533 000e 01       		.uleb128 0x1
+ 534 000f 55       		.uleb128 0x55
+ 535 0010 06       		.uleb128 0x6
+ 536 0011 10       		.uleb128 0x10
+ 537 0012 06       		.uleb128 0x6
+ 538 0013 00       		.byte	0x0
+ 539 0014 00       		.byte	0x0
+ 540 0015 02       		.uleb128 0x2
+ 541 0016 24       		.uleb128 0x24
+ 542 0017 00       		.byte	0x0
+ 543 0018 0B       		.uleb128 0xb
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 13
+
+
+ 544 0019 0B       		.uleb128 0xb
+ 545 001a 3E       		.uleb128 0x3e
+ 546 001b 0B       		.uleb128 0xb
+ 547 001c 03       		.uleb128 0x3
+ 548 001d 0E       		.uleb128 0xe
+ 549 001e 00       		.byte	0x0
+ 550 001f 00       		.byte	0x0
+ 551 0020 03       		.uleb128 0x3
+ 552 0021 24       		.uleb128 0x24
+ 553 0022 00       		.byte	0x0
+ 554 0023 0B       		.uleb128 0xb
+ 555 0024 0B       		.uleb128 0xb
+ 556 0025 3E       		.uleb128 0x3e
+ 557 0026 0B       		.uleb128 0xb
+ 558 0027 03       		.uleb128 0x3
+ 559 0028 08       		.uleb128 0x8
+ 560 0029 00       		.byte	0x0
+ 561 002a 00       		.byte	0x0
+ 562 002b 04       		.uleb128 0x4
+ 563 002c 16       		.uleb128 0x16
+ 564 002d 00       		.byte	0x0
+ 565 002e 03       		.uleb128 0x3
+ 566 002f 0E       		.uleb128 0xe
+ 567 0030 3A       		.uleb128 0x3a
+ 568 0031 0B       		.uleb128 0xb
+ 569 0032 3B       		.uleb128 0x3b
+ 570 0033 0B       		.uleb128 0xb
+ 571 0034 49       		.uleb128 0x49
+ 572 0035 13       		.uleb128 0x13
+ 573 0036 00       		.byte	0x0
+ 574 0037 00       		.byte	0x0
+ 575 0038 05       		.uleb128 0x5
+ 576 0039 2E       		.uleb128 0x2e
+ 577 003a 01       		.byte	0x1
+ 578 003b 3F       		.uleb128 0x3f
+ 579 003c 0C       		.uleb128 0xc
+ 580 003d 03       		.uleb128 0x3
+ 581 003e 0E       		.uleb128 0xe
+ 582 003f 3A       		.uleb128 0x3a
+ 583 0040 0B       		.uleb128 0xb
+ 584 0041 3B       		.uleb128 0x3b
+ 585 0042 0B       		.uleb128 0xb
+ 586 0043 27       		.uleb128 0x27
+ 587 0044 0C       		.uleb128 0xc
+ 588 0045 11       		.uleb128 0x11
+ 589 0046 01       		.uleb128 0x1
+ 590 0047 12       		.uleb128 0x12
+ 591 0048 01       		.uleb128 0x1
+ 592 0049 40       		.uleb128 0x40
+ 593 004a 06       		.uleb128 0x6
+ 594 004b 01       		.uleb128 0x1
+ 595 004c 13       		.uleb128 0x13
+ 596 004d 00       		.byte	0x0
+ 597 004e 00       		.byte	0x0
+ 598 004f 06       		.uleb128 0x6
+ 599 0050 05       		.uleb128 0x5
+ 600 0051 00       		.byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 14
+
+
+ 601 0052 03       		.uleb128 0x3
+ 602 0053 0E       		.uleb128 0xe
+ 603 0054 3A       		.uleb128 0x3a
+ 604 0055 0B       		.uleb128 0xb
+ 605 0056 3B       		.uleb128 0x3b
+ 606 0057 0B       		.uleb128 0xb
+ 607 0058 49       		.uleb128 0x49
+ 608 0059 13       		.uleb128 0x13
+ 609 005a 02       		.uleb128 0x2
+ 610 005b 0A       		.uleb128 0xa
+ 611 005c 00       		.byte	0x0
+ 612 005d 00       		.byte	0x0
+ 613 005e 07       		.uleb128 0x7
+ 614 005f 34       		.uleb128 0x34
+ 615 0060 00       		.byte	0x0
+ 616 0061 03       		.uleb128 0x3
+ 617 0062 0E       		.uleb128 0xe
+ 618 0063 3A       		.uleb128 0x3a
+ 619 0064 0B       		.uleb128 0xb
+ 620 0065 3B       		.uleb128 0x3b
+ 621 0066 0B       		.uleb128 0xb
+ 622 0067 49       		.uleb128 0x49
+ 623 0068 13       		.uleb128 0x13
+ 624 0069 02       		.uleb128 0x2
+ 625 006a 0A       		.uleb128 0xa
+ 626 006b 00       		.byte	0x0
+ 627 006c 00       		.byte	0x0
+ 628 006d 08       		.uleb128 0x8
+ 629 006e 2E       		.uleb128 0x2e
+ 630 006f 00       		.byte	0x0
+ 631 0070 3F       		.uleb128 0x3f
+ 632 0071 0C       		.uleb128 0xc
+ 633 0072 03       		.uleb128 0x3
+ 634 0073 0E       		.uleb128 0xe
+ 635 0074 3A       		.uleb128 0x3a
+ 636 0075 0B       		.uleb128 0xb
+ 637 0076 3B       		.uleb128 0x3b
+ 638 0077 0B       		.uleb128 0xb
+ 639 0078 27       		.uleb128 0x27
+ 640 0079 0C       		.uleb128 0xc
+ 641 007a 49       		.uleb128 0x49
+ 642 007b 13       		.uleb128 0x13
+ 643 007c 11       		.uleb128 0x11
+ 644 007d 01       		.uleb128 0x1
+ 645 007e 12       		.uleb128 0x12
+ 646 007f 01       		.uleb128 0x1
+ 647 0080 40       		.uleb128 0x40
+ 648 0081 06       		.uleb128 0x6
+ 649 0082 00       		.byte	0x0
+ 650 0083 00       		.byte	0x0
+ 651 0084 09       		.uleb128 0x9
+ 652 0085 2E       		.uleb128 0x2e
+ 653 0086 01       		.byte	0x1
+ 654 0087 3F       		.uleb128 0x3f
+ 655 0088 0C       		.uleb128 0xc
+ 656 0089 03       		.uleb128 0x3
+ 657 008a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 15
+
+
+ 658 008b 3A       		.uleb128 0x3a
+ 659 008c 0B       		.uleb128 0xb
+ 660 008d 3B       		.uleb128 0x3b
+ 661 008e 0B       		.uleb128 0xb
+ 662 008f 27       		.uleb128 0x27
+ 663 0090 0C       		.uleb128 0xc
+ 664 0091 49       		.uleb128 0x49
+ 665 0092 13       		.uleb128 0x13
+ 666 0093 11       		.uleb128 0x11
+ 667 0094 01       		.uleb128 0x1
+ 668 0095 12       		.uleb128 0x12
+ 669 0096 01       		.uleb128 0x1
+ 670 0097 40       		.uleb128 0x40
+ 671 0098 06       		.uleb128 0x6
+ 672 0099 00       		.byte	0x0
+ 673 009a 00       		.byte	0x0
+ 674 009b 00       		.byte	0x0
+ 675              		.section	.debug_pubnames,"",%progbits
+ 676 0000 73000000 		.4byte	0x73
+ 677 0004 0200     		.2byte	0x2
+ 678 0006 00000000 		.4byte	.Ldebug_info0
+ 679 000a 48010000 		.4byte	0x148
+ 680 000e 8F000000 		.4byte	0x8f
+ 681 0012 50696E5F 		.ascii	"Pin_1_Write\000"
+ 681      315F5772 
+ 681      69746500 
+ 682 001e C5000000 		.4byte	0xc5
+ 683 0022 50696E5F 		.ascii	"Pin_1_SetDriveMode\000"
+ 683      315F5365 
+ 683      74447269 
+ 683      76654D6F 
+ 683      646500
+ 684 0035 ED000000 		.4byte	0xed
+ 685 0039 50696E5F 		.ascii	"Pin_1_Read\000"
+ 685      315F5265 
+ 685      616400
+ 686 0044 06010000 		.4byte	0x106
+ 687 0048 50696E5F 		.ascii	"Pin_1_ReadDataReg\000"
+ 687      315F5265 
+ 687      61644461 
+ 687      74615265 
+ 687      6700
+ 688 005a 1F010000 		.4byte	0x11f
+ 689 005e 50696E5F 		.ascii	"Pin_1_ClearInterrupt\000"
+ 689      315F436C 
+ 689      65617249 
+ 689      6E746572 
+ 689      72757074 
+ 690 0073 00000000 		.4byte	0x0
+ 691              		.section	.debug_aranges,"",%progbits
+ 692 0000 3C000000 		.4byte	0x3c
+ 693 0004 0200     		.2byte	0x2
+ 694 0006 00000000 		.4byte	.Ldebug_info0
+ 695 000a 04       		.byte	0x4
+ 696 000b 00       		.byte	0x0
+ 697 000c 0000     		.2byte	0x0
+ 698 000e 0000     		.2byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 16
+
+
+ 699 0010 00000000 		.4byte	.LFB0
+ 700 0014 48000000 		.4byte	.LFE0-.LFB0
+ 701 0018 00000000 		.4byte	.LFB1
+ 702 001c 2C000000 		.4byte	.LFE1-.LFB1
+ 703 0020 00000000 		.4byte	.LFB2
+ 704 0024 18000000 		.4byte	.LFE2-.LFB2
+ 705 0028 00000000 		.4byte	.LFB3
+ 706 002c 18000000 		.4byte	.LFE3-.LFB3
+ 707 0030 00000000 		.4byte	.LFB4
+ 708 0034 2C000000 		.4byte	.LFE4-.LFB4
+ 709 0038 00000000 		.4byte	0x0
+ 710 003c 00000000 		.4byte	0x0
+ 711              		.section	.debug_ranges,"",%progbits
+ 712              	.Ldebug_ranges0:
+ 713 0000 00000000 		.4byte	.Ltext0
+ 714 0004 00000000 		.4byte	.Letext0
+ 715 0008 00000000 		.4byte	.LFB0
+ 716 000c 48000000 		.4byte	.LFE0
+ 717 0010 00000000 		.4byte	.LFB1
+ 718 0014 2C000000 		.4byte	.LFE1
+ 719 0018 00000000 		.4byte	.LFB2
+ 720 001c 18000000 		.4byte	.LFE2
+ 721 0020 00000000 		.4byte	.LFB3
+ 722 0024 18000000 		.4byte	.LFE3
+ 723 0028 00000000 		.4byte	.LFB4
+ 724 002c 2C000000 		.4byte	.LFE4
+ 725 0030 00000000 		.4byte	0x0
+ 726 0034 00000000 		.4byte	0x0
+ 727              		.section	.debug_str,"MS",%progbits,1
+ 728              	.LASF6:
+ 729 0000 6C6F6E67 		.ascii	"long long int\000"
+ 729      206C6F6E 
+ 729      6720696E 
+ 729      7400
+ 730              	.LASF14:
+ 731 000e 76616C75 		.ascii	"value\000"
+ 731      6500
+ 732              	.LASF9:
+ 733 0014 666C6F61 		.ascii	"float\000"
+ 733      7400
+ 734              	.LASF1:
+ 735 001a 756E7369 		.ascii	"unsigned char\000"
+ 735      676E6564 
+ 735      20636861 
+ 735      7200
+ 736              	.LASF19:
+ 737 0028 64725661 		.ascii	"drVal\000"
+ 737      6C00
+ 738              	.LASF5:
+ 739 002e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 739      20756E73 
+ 739      69676E65 
+ 739      6420696E 
+ 739      7400
+ 740              	.LASF3:
+ 741 0040 73686F72 		.ascii	"short unsigned int\000"
+ 741      7420756E 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 17
+
+
+ 741      7369676E 
+ 741      65642069 
+ 741      6E7400
+ 742              	.LASF22:
+ 743 0053 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\Pin_1.c\000"
+ 743      6E657261 
+ 743      7465645F 
+ 743      536F7572 
+ 743      63655C50 
+ 744              	.LASF10:
+ 745 0074 646F7562 		.ascii	"double\000"
+ 745      6C6500
+ 746              	.LASF13:
+ 747 007b 50696E5F 		.ascii	"Pin_1_SetDriveMode\000"
+ 747      315F5365 
+ 747      74447269 
+ 747      76654D6F 
+ 747      646500
+ 748              	.LASF8:
+ 749 008e 756E7369 		.ascii	"unsigned int\000"
+ 749      676E6564 
+ 749      20696E74 
+ 749      00
+ 750              	.LASF7:
+ 751 009b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 751      206C6F6E 
+ 751      6720756E 
+ 751      7369676E 
+ 751      65642069 
+ 752              	.LASF15:
+ 753 00b2 6D6F6465 		.ascii	"mode\000"
+ 753      00
+ 754              	.LASF16:
+ 755 00b7 50696E5F 		.ascii	"Pin_1_Read\000"
+ 755      315F5265 
+ 755      616400
+ 756              	.LASF21:
+ 757 00c2 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 757      4320342E 
+ 757      342E3100 
+ 758              	.LASF20:
+ 759 00ce 6D61736B 		.ascii	"maskedStatus\000"
+ 759      65645374 
+ 759      61747573 
+ 759      00
+ 760              	.LASF23:
+ 761 00db 433A5C55 		.ascii	"C:\\Users\\maxk\\Desktop\\PSoC 4A\\FAE Workshop\\La"
+ 761      73657273 
+ 761      5C6D6178 
+ 761      6B5C4465 
+ 761      736B746F 
+ 762 0108 62205072 		.ascii	"b Projects\\Lab working directory\\Lab 4 ADC.cydsn\000"
+ 762      6F6A6563 
+ 762      74735C4C 
+ 762      61622077 
+ 762      6F726B69 
+ 763              	.LASF2:
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccAwTnN3.s 			page 18
+
+
+ 764 0139 73686F72 		.ascii	"short int\000"
+ 764      7420696E 
+ 764      7400
+ 765              	.LASF24:
+ 766 0143 75696E74 		.ascii	"uint8\000"
+ 766      3800
+ 767              	.LASF17:
+ 768 0149 50696E5F 		.ascii	"Pin_1_ReadDataReg\000"
+ 768      315F5265 
+ 768      61644461 
+ 768      74615265 
+ 768      6700
+ 769              	.LASF4:
+ 770 015b 6C6F6E67 		.ascii	"long int\000"
+ 770      20696E74 
+ 770      00
+ 771              	.LASF11:
+ 772 0164 63686172 		.ascii	"char\000"
+ 772      00
+ 773              	.LASF0:
+ 774 0169 7369676E 		.ascii	"signed char\000"
+ 774      65642063 
+ 774      68617200 
+ 775              	.LASF12:
+ 776 0175 50696E5F 		.ascii	"Pin_1_Write\000"
+ 776      315F5772 
+ 776      69746500 
+ 777              	.LASF18:
+ 778 0181 50696E5F 		.ascii	"Pin_1_ClearInterrupt\000"
+ 778      315F436C 
+ 778      65617249 
+ 778      6E746572 
+ 778      72757074 
+ 779              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

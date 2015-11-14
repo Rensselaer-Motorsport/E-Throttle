@@ -1,0 +1,927 @@
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"ADC_SAR_Seq_1_PM.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 D2000000 		.text
+  19      02007C00 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.bss
+  23              		.align	2
+  24              	ADC_SAR_Seq_1_backup:
+  25 0000 00       		.space	1
+  26 0001 000000   		.section	.text.ADC_SAR_Seq_1_SaveConfig,"ax",%progbits
+  27              		.align	2
+  28              		.global	ADC_SAR_Seq_1_SaveConfig
+  29              		.code	16
+  30              		.thumb_func
+  31              		.type	ADC_SAR_Seq_1_SaveConfig, %function
+  32              	ADC_SAR_Seq_1_SaveConfig:
+  33              	.LFB0:
+  34              		.file 1 ".\\Generated_Source\\PSoC4\\ADC_SAR_Seq_1_PM.c"
+   1:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * File Name: ADC_SAR_Seq_1_PM.c
+   3:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Version 1.0
+   4:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+   5:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+   8:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Note:
+   9:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  10:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  17:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** #include "CyLib.h"
+  18:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** #include "ADC_SAR_Seq_1.h"
+  19:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 2
+
+
+  20:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  21:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /***************************************
+  22:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Local data allocation
+  23:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ***************************************/
+  24:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  25:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** static ADC_SAR_Seq_1_BACKUP_STRUCT  ADC_SAR_Seq_1_backup =
+  26:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** {
+  27:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     ADC_SAR_Seq_1_DISABLED
+  28:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** };
+  29:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  30:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  31:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /*******************************************************************************
+  32:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Function Name: ADC_SAR_Seq_1_SaveConfig
+  33:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ********************************************************************************
+  34:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  35:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Summary:
+  36:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  Saves the current user configuration.
+  37:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  38:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Parameters:
+  39:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+  40:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  41:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Return:
+  42:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+  43:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  44:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *******************************************************************************/
+  45:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** void ADC_SAR_Seq_1_SaveConfig(void)
+  46:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** {
+  35              		.loc 1 46 0
+  36              		.cfi_startproc
+  37 0000 80B5     		push	{r7, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_register 7
+  47:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     /* All configuration registers are marked as [reset_all_retention] */
+  48:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** }
+  45              		.loc 1 48 0
+  46 0004 BD46     		mov	sp, r7
+  47              		@ sp needed for prologue
+  48 0006 80BD     		pop	{r7, pc}
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	ADC_SAR_Seq_1_SaveConfig, .-ADC_SAR_Seq_1_SaveConfig
+  52              		.section	.text.ADC_SAR_Seq_1_RestoreConfig,"ax",%progbits
+  53              		.align	2
+  54              		.global	ADC_SAR_Seq_1_RestoreConfig
+  55              		.code	16
+  56              		.thumb_func
+  57              		.type	ADC_SAR_Seq_1_RestoreConfig, %function
+  58              	ADC_SAR_Seq_1_RestoreConfig:
+  59              	.LFB1:
+  49:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  50:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  51:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /*******************************************************************************
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 3
+
+
+  52:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Function Name: ADC_SAR_Seq_1_RestoreConfig
+  53:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ********************************************************************************
+  54:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  55:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Summary:
+  56:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  Restores the current user configuration.
+  57:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  58:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Parameters:
+  59:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+  60:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  61:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Return:
+  62:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+  63:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  64:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *******************************************************************************/
+  65:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** void ADC_SAR_Seq_1_RestoreConfig(void)
+  66:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** {
+  60              		.loc 1 66 0
+  61              		.cfi_startproc
+  62 0000 80B5     		push	{r7, lr}
+  63              	.LCFI2:
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 7, -8
+  66              		.cfi_offset 14, -4
+  67 0002 00AF     		add	r7, sp, #0
+  68              	.LCFI3:
+  69              		.cfi_def_cfa_register 7
+  67:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     /* All congiguration registers are marked as [reset_all_retention] */
+  68:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** }
+  70              		.loc 1 68 0
+  71 0004 BD46     		mov	sp, r7
+  72              		@ sp needed for prologue
+  73 0006 80BD     		pop	{r7, pc}
+  74              		.cfi_endproc
+  75              	.LFE1:
+  76              		.size	ADC_SAR_Seq_1_RestoreConfig, .-ADC_SAR_Seq_1_RestoreConfig
+  77              		.section	.text.ADC_SAR_Seq_1_Sleep,"ax",%progbits
+  78              		.align	2
+  79              		.global	ADC_SAR_Seq_1_Sleep
+  80              		.code	16
+  81              		.thumb_func
+  82              		.type	ADC_SAR_Seq_1_Sleep, %function
+  83              	ADC_SAR_Seq_1_Sleep:
+  84              	.LFB2:
+  69:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  70:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+  71:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /*******************************************************************************
+  72:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Function Name: ADC_SAR_Seq_1_Sleep
+  73:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ********************************************************************************
+  74:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  75:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Summary:
+  76:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  Stops the ADC operation and saves the configuration registers and component
+  77:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  enable state. Should be called just prior to entering sleep.
+  78:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  79:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Parameters:
+  80:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+  81:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  82:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Return:
+  83:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 4
+
+
+  84:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  85:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Global Variables:
+  86:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  ADC_SAR_Seq_1_backup - modified.
+  87:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+  88:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *******************************************************************************/
+  89:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** void ADC_SAR_Seq_1_Sleep(void)
+  90:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** {
+  85              		.loc 1 90 0
+  86              		.cfi_startproc
+  87 0000 80B5     		push	{r7, lr}
+  88              	.LCFI4:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  92 0002 00AF     		add	r7, sp, #0
+  93              	.LCFI5:
+  94              		.cfi_def_cfa_register 7
+  91:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     /* During deepsleep/ hibernate mode keep SARMUX active, i.e. do not open
+  92:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     *   all switches (disconnect), to be used for ADFT
+  93:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     */
+  94:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     ADC_SAR_Seq_1_SAR_DFT_CTRL_REG |= ADC_SAR_Seq_1_ADFT_OVERRIDE;
+  95              		.loc 1 94 0
+  96 0004 114A     		ldr	r2, .L11
+  97 0006 114B     		ldr	r3, .L11
+  98 0008 1968     		ldr	r1, [r3]
+  99 000a 8023     		mov	r3, #128
+ 100 000c 1B06     		lsl	r3, r3, #24
+ 101 000e 0B43     		orr	r3, r3, r1
+ 102 0010 1360     		str	r3, [r2]
+  95:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     if((ADC_SAR_Seq_1_SAR_CTRL_REG  & ADC_SAR_Seq_1_ENABLE) != 0u)
+ 103              		.loc 1 95 0
+ 104 0012 0F4B     		ldr	r3, .L11+4
+ 105 0014 1B68     		ldr	r3, [r3]
+ 106 0016 002B     		cmp	r3, #0
+ 107 0018 12DA     		bge	.L6
+  96:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     {
+  97:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         if((ADC_SAR_Seq_1_SAR_SAMPLE_CTRL_REG & ADC_SAR_Seq_1_CONTINUOUS_EN) != 0u)
+ 108              		.loc 1 97 0
+ 109 001a 0E4B     		ldr	r3, .L11+8
+ 110 001c 1A68     		ldr	r2, [r3]
+ 111 001e 8023     		mov	r3, #128
+ 112 0020 5B02     		lsl	r3, r3, #9
+ 113 0022 1340     		and	r3, r3, r2
+ 114 0024 002B     		cmp	r3, #0
+ 115 0026 03D0     		beq	.L7
+  98:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         {
+  99:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****             ADC_SAR_Seq_1_backup.enableState = ADC_SAR_Seq_1_ENABLED | ADC_SAR_Seq_1_STARTED;
+ 116              		.loc 1 99 0
+ 117 0028 0B4B     		ldr	r3, .L11+12
+ 118 002a 0322     		mov	r2, #3
+ 119 002c 1A70     		strb	r2, [r3]
+ 120 002e 02E0     		b	.L8
+ 121              	.L7:
+ 100:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         }
+ 101:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         else
+ 102:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         {
+ 103:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****             ADC_SAR_Seq_1_backup.enableState = ADC_SAR_Seq_1_ENABLED;
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 5
+
+
+ 122              		.loc 1 103 0
+ 123 0030 094B     		ldr	r3, .L11+12
+ 124 0032 0122     		mov	r2, #1
+ 125 0034 1A70     		strb	r2, [r3]
+ 126              	.L8:
+ 104:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         }
+ 105:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         ADC_SAR_Seq_1_StopConvert();
+ 127              		.loc 1 105 0
+ 128 0036 FFF7FEFF 		bl	ADC_SAR_Seq_1_StopConvert
+ 106:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         ADC_SAR_Seq_1_Stop();
+ 129              		.loc 1 106 0
+ 130 003a FFF7FEFF 		bl	ADC_SAR_Seq_1_Stop
+ 131 003e 02E0     		b	.L10
+ 132              	.L6:
+ 107:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     }
+ 108:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     else
+ 109:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     {
+ 110:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         ADC_SAR_Seq_1_backup.enableState = ADC_SAR_Seq_1_DISABLED;
+ 133              		.loc 1 110 0
+ 134 0040 054B     		ldr	r3, .L11+12
+ 135 0042 0022     		mov	r2, #0
+ 136 0044 1A70     		strb	r2, [r3]
+ 137              	.L10:
+ 111:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     }
+ 112:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** }
+ 138              		.loc 1 112 0
+ 139 0046 BD46     		mov	sp, r7
+ 140              		@ sp needed for prologue
+ 141 0048 80BD     		pop	{r7, pc}
+ 142              	.L12:
+ 143 004a C046     		.align	2
+ 144              	.L11:
+ 145 004c 30001A40 		.word	1075445808
+ 146 0050 00001A40 		.word	1075445760
+ 147 0054 04001A40 		.word	1075445764
+ 148 0058 00000000 		.word	ADC_SAR_Seq_1_backup
+ 149              		.cfi_endproc
+ 150              	.LFE2:
+ 151              		.size	ADC_SAR_Seq_1_Sleep, .-ADC_SAR_Seq_1_Sleep
+ 152              		.section	.text.ADC_SAR_Seq_1_Wakeup,"ax",%progbits
+ 153              		.align	2
+ 154              		.global	ADC_SAR_Seq_1_Wakeup
+ 155              		.code	16
+ 156              		.thumb_func
+ 157              		.type	ADC_SAR_Seq_1_Wakeup, %function
+ 158              	ADC_SAR_Seq_1_Wakeup:
+ 159              	.LFB3:
+ 113:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+ 114:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** 
+ 115:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** /*******************************************************************************
+ 116:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Function Name: ADC_SAR_Seq_1_Wakeup
+ 117:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** ********************************************************************************
+ 118:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+ 119:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Summary:
+ 120:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  Restores the component enable state and configuration registers.
+ 121:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  This should be called just after awaking from sleep mode.
+ 122:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 6
+
+
+ 123:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Parameters:
+ 124:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+ 125:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+ 126:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Return:
+ 127:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  None.
+ 128:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+ 129:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** * Global Variables:
+ 130:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *  ADC_SAR_Seq_1_backup - used.
+ 131:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *
+ 132:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** *******************************************************************************/
+ 133:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** void ADC_SAR_Seq_1_Wakeup(void)
+ 134:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** {
+ 160              		.loc 1 134 0
+ 161              		.cfi_startproc
+ 162 0000 80B5     		push	{r7, lr}
+ 163              	.LCFI6:
+ 164              		.cfi_def_cfa_offset 8
+ 165              		.cfi_offset 7, -8
+ 166              		.cfi_offset 14, -4
+ 167 0002 00AF     		add	r7, sp, #0
+ 168              	.LCFI7:
+ 169              		.cfi_def_cfa_register 7
+ 135:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     ADC_SAR_Seq_1_SAR_DFT_CTRL_REG &= (uint32)~ADC_SAR_Seq_1_ADFT_OVERRIDE;
+ 170              		.loc 1 135 0
+ 171 0004 0B4B     		ldr	r3, .L16
+ 172 0006 0B4A     		ldr	r2, .L16
+ 173 0008 1268     		ldr	r2, [r2]
+ 174 000a 5200     		lsl	r2, r2, #1
+ 175 000c 5208     		lsr	r2, r2, #1
+ 176 000e 1A60     		str	r2, [r3]
+ 136:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     if(ADC_SAR_Seq_1_backup.enableState != ADC_SAR_Seq_1_DISABLED)
+ 177              		.loc 1 136 0
+ 178 0010 094B     		ldr	r3, .L16+4
+ 179 0012 1B78     		ldrb	r3, [r3]
+ 180 0014 002B     		cmp	r3, #0
+ 181 0016 0AD0     		beq	.L15
+ 137:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     {
+ 138:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         ADC_SAR_Seq_1_Start();
+ 182              		.loc 1 138 0
+ 183 0018 FFF7FEFF 		bl	ADC_SAR_Seq_1_Start
+ 139:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         if((ADC_SAR_Seq_1_backup.enableState & ADC_SAR_Seq_1_STARTED) != 0u)
+ 184              		.loc 1 139 0
+ 185 001c 064B     		ldr	r3, .L16+4
+ 186 001e 1B78     		ldrb	r3, [r3]
+ 187 0020 1A1C     		mov	r2, r3
+ 188 0022 0223     		mov	r3, #2
+ 189 0024 1340     		and	r3, r3, r2
+ 190 0026 002B     		cmp	r3, #0
+ 191 0028 01D0     		beq	.L15
+ 140:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         {
+ 141:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****             ADC_SAR_Seq_1_StartConvert();
+ 192              		.loc 1 141 0
+ 193 002a FFF7FEFF 		bl	ADC_SAR_Seq_1_StartConvert
+ 194              	.L15:
+ 142:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****         }
+ 143:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c ****     }
+ 144:.\Generated_Source\PSoC4/ADC_SAR_Seq_1_PM.c **** }
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 7
+
+
+ 195              		.loc 1 144 0
+ 196 002e BD46     		mov	sp, r7
+ 197              		@ sp needed for prologue
+ 198 0030 80BD     		pop	{r7, pc}
+ 199              	.L17:
+ 200 0032 C046     		.align	2
+ 201              	.L16:
+ 202 0034 30001A40 		.word	1075445808
+ 203 0038 00000000 		.word	ADC_SAR_Seq_1_backup
+ 204              		.cfi_endproc
+ 205              	.LFE3:
+ 206              		.size	ADC_SAR_Seq_1_Wakeup, .-ADC_SAR_Seq_1_Wakeup
+ 207              		.text
+ 208              	.Letext0:
+ 209              		.section	.debug_loc,"",%progbits
+ 210              	.Ldebug_loc0:
+ 211              	.LLST0:
+ 212 0000 00000000 		.4byte	.LFB0
+ 213 0004 02000000 		.4byte	.LCFI0
+ 214 0008 0100     		.2byte	0x1
+ 215 000a 5D       		.byte	0x5d
+ 216 000b 02000000 		.4byte	.LCFI0
+ 217 000f 04000000 		.4byte	.LCFI1
+ 218 0013 0200     		.2byte	0x2
+ 219 0015 7D       		.byte	0x7d
+ 220 0016 08       		.sleb128 8
+ 221 0017 04000000 		.4byte	.LCFI1
+ 222 001b 08000000 		.4byte	.LFE0
+ 223 001f 0200     		.2byte	0x2
+ 224 0021 77       		.byte	0x77
+ 225 0022 08       		.sleb128 8
+ 226 0023 00000000 		.4byte	0x0
+ 227 0027 00000000 		.4byte	0x0
+ 228              	.LLST1:
+ 229 002b 00000000 		.4byte	.LFB1
+ 230 002f 02000000 		.4byte	.LCFI2
+ 231 0033 0100     		.2byte	0x1
+ 232 0035 5D       		.byte	0x5d
+ 233 0036 02000000 		.4byte	.LCFI2
+ 234 003a 04000000 		.4byte	.LCFI3
+ 235 003e 0200     		.2byte	0x2
+ 236 0040 7D       		.byte	0x7d
+ 237 0041 08       		.sleb128 8
+ 238 0042 04000000 		.4byte	.LCFI3
+ 239 0046 08000000 		.4byte	.LFE1
+ 240 004a 0200     		.2byte	0x2
+ 241 004c 77       		.byte	0x77
+ 242 004d 08       		.sleb128 8
+ 243 004e 00000000 		.4byte	0x0
+ 244 0052 00000000 		.4byte	0x0
+ 245              	.LLST2:
+ 246 0056 00000000 		.4byte	.LFB2
+ 247 005a 02000000 		.4byte	.LCFI4
+ 248 005e 0100     		.2byte	0x1
+ 249 0060 5D       		.byte	0x5d
+ 250 0061 02000000 		.4byte	.LCFI4
+ 251 0065 04000000 		.4byte	.LCFI5
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 8
+
+
+ 252 0069 0200     		.2byte	0x2
+ 253 006b 7D       		.byte	0x7d
+ 254 006c 08       		.sleb128 8
+ 255 006d 04000000 		.4byte	.LCFI5
+ 256 0071 5C000000 		.4byte	.LFE2
+ 257 0075 0200     		.2byte	0x2
+ 258 0077 77       		.byte	0x77
+ 259 0078 08       		.sleb128 8
+ 260 0079 00000000 		.4byte	0x0
+ 261 007d 00000000 		.4byte	0x0
+ 262              	.LLST3:
+ 263 0081 00000000 		.4byte	.LFB3
+ 264 0085 02000000 		.4byte	.LCFI6
+ 265 0089 0100     		.2byte	0x1
+ 266 008b 5D       		.byte	0x5d
+ 267 008c 02000000 		.4byte	.LCFI6
+ 268 0090 04000000 		.4byte	.LCFI7
+ 269 0094 0200     		.2byte	0x2
+ 270 0096 7D       		.byte	0x7d
+ 271 0097 08       		.sleb128 8
+ 272 0098 04000000 		.4byte	.LCFI7
+ 273 009c 3C000000 		.4byte	.LFE3
+ 274 00a0 0200     		.2byte	0x2
+ 275 00a2 77       		.byte	0x77
+ 276 00a3 08       		.sleb128 8
+ 277 00a4 00000000 		.4byte	0x0
+ 278 00a8 00000000 		.4byte	0x0
+ 279              		.file 2 ".\\Generated_Source\\PSoC4\\/cytypes.h"
+ 280              		.file 3 ".\\Generated_Source\\PSoC4\\/ADC_SAR_Seq_1.h"
+ 281              		.section	.debug_info
+ 282 0000 16010000 		.4byte	0x116
+ 283 0004 0200     		.2byte	0x2
+ 284 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 285 000a 04       		.byte	0x4
+ 286 000b 01       		.uleb128 0x1
+ 287 000c F9000000 		.4byte	.LASF18
+ 288 0010 01       		.byte	0x1
+ 289 0011 21010000 		.4byte	.LASF19
+ 290 0015 87000000 		.4byte	.LASF20
+ 291 0019 00000000 		.4byte	0x0
+ 292 001d 00000000 		.4byte	0x0
+ 293 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 294 0025 00000000 		.4byte	.Ldebug_line0
+ 295 0029 02       		.uleb128 0x2
+ 296 002a 01       		.byte	0x1
+ 297 002b 06       		.byte	0x6
+ 298 002c 67010000 		.4byte	.LASF0
+ 299 0030 02       		.uleb128 0x2
+ 300 0031 01       		.byte	0x1
+ 301 0032 08       		.byte	0x8
+ 302 0033 05010000 		.4byte	.LASF1
+ 303 0037 02       		.uleb128 0x2
+ 304 0038 02       		.byte	0x2
+ 305 0039 05       		.byte	0x5
+ 306 003a A7010000 		.4byte	.LASF2
+ 307 003e 02       		.uleb128 0x2
+ 308 003f 02       		.byte	0x2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 9
+
+
+ 309 0040 07       		.byte	0x7
+ 310 0041 54010000 		.4byte	.LASF3
+ 311 0045 02       		.uleb128 0x2
+ 312 0046 04       		.byte	0x4
+ 313 0047 05       		.byte	0x5
+ 314 0048 18010000 		.4byte	.LASF4
+ 315 004c 02       		.uleb128 0x2
+ 316 004d 04       		.byte	0x4
+ 317 004e 07       		.byte	0x7
+ 318 004f 5E000000 		.4byte	.LASF5
+ 319 0053 02       		.uleb128 0x2
+ 320 0054 08       		.byte	0x8
+ 321 0055 05       		.byte	0x5
+ 322 0056 00000000 		.4byte	.LASF6
+ 323 005a 02       		.uleb128 0x2
+ 324 005b 08       		.byte	0x8
+ 325 005c 07       		.byte	0x7
+ 326 005d 70000000 		.4byte	.LASF7
+ 327 0061 03       		.uleb128 0x3
+ 328 0062 04       		.byte	0x4
+ 329 0063 05       		.byte	0x5
+ 330 0064 696E7400 		.ascii	"int\000"
+ 331 0068 02       		.uleb128 0x2
+ 332 0069 04       		.byte	0x4
+ 333 006a 07       		.byte	0x7
+ 334 006b 1A000000 		.4byte	.LASF8
+ 335 006f 04       		.uleb128 0x4
+ 336 0070 58000000 		.4byte	.LASF12
+ 337 0074 02       		.byte	0x2
+ 338 0075 4C       		.byte	0x4c
+ 339 0076 30000000 		.4byte	0x30
+ 340 007a 02       		.uleb128 0x2
+ 341 007b 04       		.byte	0x4
+ 342 007c 04       		.byte	0x4
+ 343 007d 8C010000 		.4byte	.LASF9
+ 344 0081 02       		.uleb128 0x2
+ 345 0082 08       		.byte	0x8
+ 346 0083 04       		.byte	0x4
+ 347 0084 4D010000 		.4byte	.LASF10
+ 348 0088 02       		.uleb128 0x2
+ 349 0089 01       		.byte	0x1
+ 350 008a 08       		.byte	0x8
+ 351 008b 13010000 		.4byte	.LASF11
+ 352 008f 05       		.uleb128 0x5
+ 353 0090 04       		.byte	0x4
+ 354 0091 07       		.byte	0x7
+ 355 0092 06       		.uleb128 0x6
+ 356 0093 01       		.byte	0x1
+ 357 0094 03       		.byte	0x3
+ 358 0095 1C       		.byte	0x1c
+ 359 0096 A9000000 		.4byte	0xa9
+ 360 009a 07       		.uleb128 0x7
+ 361 009b 0E000000 		.4byte	.LASF21
+ 362 009f 03       		.byte	0x3
+ 363 00a0 1D       		.byte	0x1d
+ 364 00a1 6F000000 		.4byte	0x6f
+ 365 00a5 02       		.byte	0x2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 10
+
+
+ 366 00a6 23       		.byte	0x23
+ 367 00a7 00       		.uleb128 0x0
+ 368 00a8 00       		.byte	0x0
+ 369 00a9 04       		.uleb128 0x4
+ 370 00aa 27000000 		.4byte	.LASF13
+ 371 00ae 03       		.byte	0x3
+ 372 00af 1E       		.byte	0x1e
+ 373 00b0 92000000 		.4byte	0x92
+ 374 00b4 08       		.uleb128 0x8
+ 375 00b5 01       		.byte	0x1
+ 376 00b6 73010000 		.4byte	.LASF14
+ 377 00ba 01       		.byte	0x1
+ 378 00bb 2D       		.byte	0x2d
+ 379 00bc 01       		.byte	0x1
+ 380 00bd 00000000 		.4byte	.LFB0
+ 381 00c1 08000000 		.4byte	.LFE0
+ 382 00c5 00000000 		.4byte	.LLST0
+ 383 00c9 08       		.uleb128 0x8
+ 384 00ca 01       		.byte	0x1
+ 385 00cb B1010000 		.4byte	.LASF15
+ 386 00cf 01       		.byte	0x1
+ 387 00d0 41       		.byte	0x41
+ 388 00d1 01       		.byte	0x1
+ 389 00d2 00000000 		.4byte	.LFB1
+ 390 00d6 08000000 		.4byte	.LFE1
+ 391 00da 2B000000 		.4byte	.LLST1
+ 392 00de 08       		.uleb128 0x8
+ 393 00df 01       		.byte	0x1
+ 394 00e0 E5000000 		.4byte	.LASF16
+ 395 00e4 01       		.byte	0x1
+ 396 00e5 59       		.byte	0x59
+ 397 00e6 01       		.byte	0x1
+ 398 00e7 00000000 		.4byte	.LFB2
+ 399 00eb 5C000000 		.4byte	.LFE2
+ 400 00ef 56000000 		.4byte	.LLST2
+ 401 00f3 08       		.uleb128 0x8
+ 402 00f4 01       		.byte	0x1
+ 403 00f5 92010000 		.4byte	.LASF17
+ 404 00f9 01       		.byte	0x1
+ 405 00fa 85       		.byte	0x85
+ 406 00fb 01       		.byte	0x1
+ 407 00fc 00000000 		.4byte	.LFB3
+ 408 0100 3C000000 		.4byte	.LFE3
+ 409 0104 81000000 		.4byte	.LLST3
+ 410 0108 09       		.uleb128 0x9
+ 411 0109 43000000 		.4byte	.LASF22
+ 412 010d 01       		.byte	0x1
+ 413 010e 19       		.byte	0x19
+ 414 010f A9000000 		.4byte	0xa9
+ 415 0113 05       		.byte	0x5
+ 416 0114 03       		.byte	0x3
+ 417 0115 00000000 		.4byte	ADC_SAR_Seq_1_backup
+ 418 0119 00       		.byte	0x0
+ 419              		.section	.debug_abbrev
+ 420 0000 01       		.uleb128 0x1
+ 421 0001 11       		.uleb128 0x11
+ 422 0002 01       		.byte	0x1
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 11
+
+
+ 423 0003 25       		.uleb128 0x25
+ 424 0004 0E       		.uleb128 0xe
+ 425 0005 13       		.uleb128 0x13
+ 426 0006 0B       		.uleb128 0xb
+ 427 0007 03       		.uleb128 0x3
+ 428 0008 0E       		.uleb128 0xe
+ 429 0009 1B       		.uleb128 0x1b
+ 430 000a 0E       		.uleb128 0xe
+ 431 000b 11       		.uleb128 0x11
+ 432 000c 01       		.uleb128 0x1
+ 433 000d 52       		.uleb128 0x52
+ 434 000e 01       		.uleb128 0x1
+ 435 000f 55       		.uleb128 0x55
+ 436 0010 06       		.uleb128 0x6
+ 437 0011 10       		.uleb128 0x10
+ 438 0012 06       		.uleb128 0x6
+ 439 0013 00       		.byte	0x0
+ 440 0014 00       		.byte	0x0
+ 441 0015 02       		.uleb128 0x2
+ 442 0016 24       		.uleb128 0x24
+ 443 0017 00       		.byte	0x0
+ 444 0018 0B       		.uleb128 0xb
+ 445 0019 0B       		.uleb128 0xb
+ 446 001a 3E       		.uleb128 0x3e
+ 447 001b 0B       		.uleb128 0xb
+ 448 001c 03       		.uleb128 0x3
+ 449 001d 0E       		.uleb128 0xe
+ 450 001e 00       		.byte	0x0
+ 451 001f 00       		.byte	0x0
+ 452 0020 03       		.uleb128 0x3
+ 453 0021 24       		.uleb128 0x24
+ 454 0022 00       		.byte	0x0
+ 455 0023 0B       		.uleb128 0xb
+ 456 0024 0B       		.uleb128 0xb
+ 457 0025 3E       		.uleb128 0x3e
+ 458 0026 0B       		.uleb128 0xb
+ 459 0027 03       		.uleb128 0x3
+ 460 0028 08       		.uleb128 0x8
+ 461 0029 00       		.byte	0x0
+ 462 002a 00       		.byte	0x0
+ 463 002b 04       		.uleb128 0x4
+ 464 002c 16       		.uleb128 0x16
+ 465 002d 00       		.byte	0x0
+ 466 002e 03       		.uleb128 0x3
+ 467 002f 0E       		.uleb128 0xe
+ 468 0030 3A       		.uleb128 0x3a
+ 469 0031 0B       		.uleb128 0xb
+ 470 0032 3B       		.uleb128 0x3b
+ 471 0033 0B       		.uleb128 0xb
+ 472 0034 49       		.uleb128 0x49
+ 473 0035 13       		.uleb128 0x13
+ 474 0036 00       		.byte	0x0
+ 475 0037 00       		.byte	0x0
+ 476 0038 05       		.uleb128 0x5
+ 477 0039 24       		.uleb128 0x24
+ 478 003a 00       		.byte	0x0
+ 479 003b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 12
+
+
+ 480 003c 0B       		.uleb128 0xb
+ 481 003d 3E       		.uleb128 0x3e
+ 482 003e 0B       		.uleb128 0xb
+ 483 003f 00       		.byte	0x0
+ 484 0040 00       		.byte	0x0
+ 485 0041 06       		.uleb128 0x6
+ 486 0042 13       		.uleb128 0x13
+ 487 0043 01       		.byte	0x1
+ 488 0044 0B       		.uleb128 0xb
+ 489 0045 0B       		.uleb128 0xb
+ 490 0046 3A       		.uleb128 0x3a
+ 491 0047 0B       		.uleb128 0xb
+ 492 0048 3B       		.uleb128 0x3b
+ 493 0049 0B       		.uleb128 0xb
+ 494 004a 01       		.uleb128 0x1
+ 495 004b 13       		.uleb128 0x13
+ 496 004c 00       		.byte	0x0
+ 497 004d 00       		.byte	0x0
+ 498 004e 07       		.uleb128 0x7
+ 499 004f 0D       		.uleb128 0xd
+ 500 0050 00       		.byte	0x0
+ 501 0051 03       		.uleb128 0x3
+ 502 0052 0E       		.uleb128 0xe
+ 503 0053 3A       		.uleb128 0x3a
+ 504 0054 0B       		.uleb128 0xb
+ 505 0055 3B       		.uleb128 0x3b
+ 506 0056 0B       		.uleb128 0xb
+ 507 0057 49       		.uleb128 0x49
+ 508 0058 13       		.uleb128 0x13
+ 509 0059 38       		.uleb128 0x38
+ 510 005a 0A       		.uleb128 0xa
+ 511 005b 00       		.byte	0x0
+ 512 005c 00       		.byte	0x0
+ 513 005d 08       		.uleb128 0x8
+ 514 005e 2E       		.uleb128 0x2e
+ 515 005f 00       		.byte	0x0
+ 516 0060 3F       		.uleb128 0x3f
+ 517 0061 0C       		.uleb128 0xc
+ 518 0062 03       		.uleb128 0x3
+ 519 0063 0E       		.uleb128 0xe
+ 520 0064 3A       		.uleb128 0x3a
+ 521 0065 0B       		.uleb128 0xb
+ 522 0066 3B       		.uleb128 0x3b
+ 523 0067 0B       		.uleb128 0xb
+ 524 0068 27       		.uleb128 0x27
+ 525 0069 0C       		.uleb128 0xc
+ 526 006a 11       		.uleb128 0x11
+ 527 006b 01       		.uleb128 0x1
+ 528 006c 12       		.uleb128 0x12
+ 529 006d 01       		.uleb128 0x1
+ 530 006e 40       		.uleb128 0x40
+ 531 006f 06       		.uleb128 0x6
+ 532 0070 00       		.byte	0x0
+ 533 0071 00       		.byte	0x0
+ 534 0072 09       		.uleb128 0x9
+ 535 0073 34       		.uleb128 0x34
+ 536 0074 00       		.byte	0x0
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 13
+
+
+ 537 0075 03       		.uleb128 0x3
+ 538 0076 0E       		.uleb128 0xe
+ 539 0077 3A       		.uleb128 0x3a
+ 540 0078 0B       		.uleb128 0xb
+ 541 0079 3B       		.uleb128 0x3b
+ 542 007a 0B       		.uleb128 0xb
+ 543 007b 49       		.uleb128 0x49
+ 544 007c 13       		.uleb128 0x13
+ 545 007d 02       		.uleb128 0x2
+ 546 007e 0A       		.uleb128 0xa
+ 547 007f 00       		.byte	0x0
+ 548 0080 00       		.byte	0x0
+ 549 0081 00       		.byte	0x0
+ 550              		.section	.debug_pubnames,"",%progbits
+ 551 0000 7C000000 		.4byte	0x7c
+ 552 0004 0200     		.2byte	0x2
+ 553 0006 00000000 		.4byte	.Ldebug_info0
+ 554 000a 1A010000 		.4byte	0x11a
+ 555 000e B4000000 		.4byte	0xb4
+ 556 0012 4144435F 		.ascii	"ADC_SAR_Seq_1_SaveConfig\000"
+ 556      5341525F 
+ 556      5365715F 
+ 556      315F5361 
+ 556      7665436F 
+ 557 002b C9000000 		.4byte	0xc9
+ 558 002f 4144435F 		.ascii	"ADC_SAR_Seq_1_RestoreConfig\000"
+ 558      5341525F 
+ 558      5365715F 
+ 558      315F5265 
+ 558      73746F72 
+ 559 004b DE000000 		.4byte	0xde
+ 560 004f 4144435F 		.ascii	"ADC_SAR_Seq_1_Sleep\000"
+ 560      5341525F 
+ 560      5365715F 
+ 560      315F536C 
+ 560      65657000 
+ 561 0063 F3000000 		.4byte	0xf3
+ 562 0067 4144435F 		.ascii	"ADC_SAR_Seq_1_Wakeup\000"
+ 562      5341525F 
+ 562      5365715F 
+ 562      315F5761 
+ 562      6B657570 
+ 563 007c 00000000 		.4byte	0x0
+ 564              		.section	.debug_aranges,"",%progbits
+ 565 0000 34000000 		.4byte	0x34
+ 566 0004 0200     		.2byte	0x2
+ 567 0006 00000000 		.4byte	.Ldebug_info0
+ 568 000a 04       		.byte	0x4
+ 569 000b 00       		.byte	0x0
+ 570 000c 0000     		.2byte	0x0
+ 571 000e 0000     		.2byte	0x0
+ 572 0010 00000000 		.4byte	.LFB0
+ 573 0014 08000000 		.4byte	.LFE0-.LFB0
+ 574 0018 00000000 		.4byte	.LFB1
+ 575 001c 08000000 		.4byte	.LFE1-.LFB1
+ 576 0020 00000000 		.4byte	.LFB2
+ 577 0024 5C000000 		.4byte	.LFE2-.LFB2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 14
+
+
+ 578 0028 00000000 		.4byte	.LFB3
+ 579 002c 3C000000 		.4byte	.LFE3-.LFB3
+ 580 0030 00000000 		.4byte	0x0
+ 581 0034 00000000 		.4byte	0x0
+ 582              		.section	.debug_ranges,"",%progbits
+ 583              	.Ldebug_ranges0:
+ 584 0000 00000000 		.4byte	.Ltext0
+ 585 0004 00000000 		.4byte	.Letext0
+ 586 0008 00000000 		.4byte	.LFB0
+ 587 000c 08000000 		.4byte	.LFE0
+ 588 0010 00000000 		.4byte	.LFB1
+ 589 0014 08000000 		.4byte	.LFE1
+ 590 0018 00000000 		.4byte	.LFB2
+ 591 001c 5C000000 		.4byte	.LFE2
+ 592 0020 00000000 		.4byte	.LFB3
+ 593 0024 3C000000 		.4byte	.LFE3
+ 594 0028 00000000 		.4byte	0x0
+ 595 002c 00000000 		.4byte	0x0
+ 596              		.section	.debug_str,"MS",%progbits,1
+ 597              	.LASF6:
+ 598 0000 6C6F6E67 		.ascii	"long long int\000"
+ 598      206C6F6E 
+ 598      6720696E 
+ 598      7400
+ 599              	.LASF21:
+ 600 000e 656E6162 		.ascii	"enableState\000"
+ 600      6C655374 
+ 600      61746500 
+ 601              	.LASF8:
+ 602 001a 756E7369 		.ascii	"unsigned int\000"
+ 602      676E6564 
+ 602      20696E74 
+ 602      00
+ 603              	.LASF13:
+ 604 0027 4144435F 		.ascii	"ADC_SAR_Seq_1_BACKUP_STRUCT\000"
+ 604      5341525F 
+ 604      5365715F 
+ 604      315F4241 
+ 604      434B5550 
+ 605              	.LASF22:
+ 606 0043 4144435F 		.ascii	"ADC_SAR_Seq_1_backup\000"
+ 606      5341525F 
+ 606      5365715F 
+ 606      315F6261 
+ 606      636B7570 
+ 607              	.LASF12:
+ 608 0058 75696E74 		.ascii	"uint8\000"
+ 608      3800
+ 609              	.LASF5:
+ 610 005e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 610      20756E73 
+ 610      69676E65 
+ 610      6420696E 
+ 610      7400
+ 611              	.LASF7:
+ 612 0070 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 612      206C6F6E 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 15
+
+
+ 612      6720756E 
+ 612      7369676E 
+ 612      65642069 
+ 613              	.LASF20:
+ 614 0087 433A5C55 		.ascii	"C:\\Users\\maxk\\Desktop\\PSoC 4A\\FAE Workshop\\La"
+ 614      73657273 
+ 614      5C6D6178 
+ 614      6B5C4465 
+ 614      736B746F 
+ 615 00b4 62205072 		.ascii	"b Projects\\Lab working directory\\Lab 4 ADC.cydsn\000"
+ 615      6F6A6563 
+ 615      74735C4C 
+ 615      61622077 
+ 615      6F726B69 
+ 616              	.LASF16:
+ 617 00e5 4144435F 		.ascii	"ADC_SAR_Seq_1_Sleep\000"
+ 617      5341525F 
+ 617      5365715F 
+ 617      315F536C 
+ 617      65657000 
+ 618              	.LASF18:
+ 619 00f9 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 619      4320342E 
+ 619      342E3100 
+ 620              	.LASF1:
+ 621 0105 756E7369 		.ascii	"unsigned char\000"
+ 621      676E6564 
+ 621      20636861 
+ 621      7200
+ 622              	.LASF11:
+ 623 0113 63686172 		.ascii	"char\000"
+ 623      00
+ 624              	.LASF4:
+ 625 0118 6C6F6E67 		.ascii	"long int\000"
+ 625      20696E74 
+ 625      00
+ 626              	.LASF19:
+ 627 0121 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\ADC_SAR_Seq_1_PM.c\000"
+ 627      6E657261 
+ 627      7465645F 
+ 627      536F7572 
+ 627      63655C50 
+ 628              	.LASF10:
+ 629 014d 646F7562 		.ascii	"double\000"
+ 629      6C6500
+ 630              	.LASF3:
+ 631 0154 73686F72 		.ascii	"short unsigned int\000"
+ 631      7420756E 
+ 631      7369676E 
+ 631      65642069 
+ 631      6E7400
+ 632              	.LASF0:
+ 633 0167 7369676E 		.ascii	"signed char\000"
+ 633      65642063 
+ 633      68617200 
+ 634              	.LASF14:
+ 635 0173 4144435F 		.ascii	"ADC_SAR_Seq_1_SaveConfig\000"
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\ccab1BcQ.s 			page 16
+
+
+ 635      5341525F 
+ 635      5365715F 
+ 635      315F5361 
+ 635      7665436F 
+ 636              	.LASF9:
+ 637 018c 666C6F61 		.ascii	"float\000"
+ 637      7400
+ 638              	.LASF17:
+ 639 0192 4144435F 		.ascii	"ADC_SAR_Seq_1_Wakeup\000"
+ 639      5341525F 
+ 639      5365715F 
+ 639      315F5761 
+ 639      6B657570 
+ 640              	.LASF2:
+ 641 01a7 73686F72 		.ascii	"short int\000"
+ 641      7420696E 
+ 641      7400
+ 642              	.LASF15:
+ 643 01b1 4144435F 		.ascii	"ADC_SAR_Seq_1_RestoreConfig\000"
+ 643      5341525F 
+ 643      5365715F 
+ 643      315F5265 
+ 643      73746F72 
+ 644              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

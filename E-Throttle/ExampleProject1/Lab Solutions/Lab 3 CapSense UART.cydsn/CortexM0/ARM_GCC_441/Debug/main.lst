@@ -1,0 +1,489 @@
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"main.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 65000000 		.text
+  19      02004500 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.section	.text.main,"ax",%progbits
+  23              		.align	2
+  24              		.global	main
+  25              		.code	16
+  26              		.thumb_func
+  27              		.type	main, %function
+  28              	main:
+  29              	.LFB20:
+  30              		.file 1 ".\\main.c"
+   1:.\main.c      **** #include <device.h>
+   2:.\main.c      **** #include <LED_RGB.h>
+   3:.\main.c      **** 
+   4:.\main.c      **** void main()
+   5:.\main.c      **** {
+  31              		.loc 1 5 0
+  32              		.cfi_startproc
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 82B0     		sub	sp, sp, #8
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 16
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+   6:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+   7:.\main.c      ****     uint16 CapSensePosition;
+   8:.\main.c      ****     LED_RGB_Start();
+  44              		.loc 1 8 0
+  45 0006 FFF7FEFF 		bl	LED_RGB_Start
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 2
+
+
+   9:.\main.c      ****     CyGlobalIntEnable;
+  46              		.loc 1 9 0
+  47              	@ 9 ".\main.c" 1
+  48 000a 62B6     		CPSIE   i
+  49              	@ 0 "" 2
+  10:.\main.c      ****     CapSense_1_Start();
+  50              		.loc 1 10 0
+  51              		.code	16
+  52 000c FFF7FEFF 		bl	CapSense_1_Start
+  11:.\main.c      ****     CapSense_1_InitializeAllBaselines();
+  53              		.loc 1 11 0
+  54 0010 FFF7FEFF 		bl	CapSense_1_InitializeAllBaselines
+  12:.\main.c      ****     UART_1_Start();
+  55              		.loc 1 12 0
+  56 0014 FFF7FEFF 		bl	UART_1_Start
+  57              	.L3:
+  13:.\main.c      ****      
+  14:.\main.c      ****     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+  15:.\main.c      ****     for(;;)
+  16:.\main.c      ****     {
+  17:.\main.c      ****         /* Place your application code here. */
+  18:.\main.c      ****         CapSense_1_UpdateEnabledBaselines();
+  58              		.loc 1 18 0
+  59 0018 FFF7FEFF 		bl	CapSense_1_UpdateEnabledBaselines
+  19:.\main.c      ****         CapSense_1_ScanEnabledWidgets();
+  60              		.loc 1 19 0
+  61 001c FFF7FEFF 		bl	CapSense_1_ScanEnabledWidgets
+  62              	.L2:
+  20:.\main.c      ****         while(CapSense_1_IsBusy() != 0);
+  63              		.loc 1 20 0
+  64 0020 FFF7FEFF 		bl	CapSense_1_IsBusy
+  65 0024 031C     		mov	r3, r0
+  66 0026 002B     		cmp	r3, #0
+  67 0028 FAD1     		bne	.L2
+  21:.\main.c      ****         CapSensePosition = CapSense_1_GetCentroidPos(CapSense_1_LINEARSLIDER0__LS);
+  68              		.loc 1 21 0
+  69 002a 0020     		mov	r0, #0
+  70 002c FFF7FEFF 		bl	CapSense_1_GetCentroidPos
+  71 0030 031C     		mov	r3, r0
+  72 0032 1A1C     		mov	r2, r3
+  73 0034 BB1D     		add	r3, r7, #6
+  74 0036 1A80     		strh	r2, [r3]
+  22:.\main.c      ****         LED_RGB_SetColorCircle(255 * CapSensePosition);
+  75              		.loc 1 22 0
+  76 0038 BB1D     		add	r3, r7, #6
+  77 003a 1B88     		ldrh	r3, [r3]
+  78 003c 1A1C     		add	r2, r3, #0
+  79 003e 1202     		lsl	r2, r2, #8
+  80 0040 D31A     		sub	r3, r2, r3
+  81 0042 9BB2     		uxth	r3, r3
+  82 0044 181C     		mov	r0, r3
+  83 0046 FFF7FEFF 		bl	LED_RGB_SetColorCircle
+  23:.\main.c      ****         UART_1_UartPutChar(CapSensePosition);
+  84              		.loc 1 23 0
+  85 004a BB1D     		add	r3, r7, #6
+  86 004c 1B88     		ldrh	r3, [r3]
+  87 004e 181C     		mov	r0, r3
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 3
+
+
+  88 0050 FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  24:.\main.c      ****         CyDelay(10);
+  89              		.loc 1 24 0
+  90 0054 0A20     		mov	r0, #10
+  91 0056 FFF7FEFF 		bl	CyDelay
+  25:.\main.c      ****     }
+  92              		.loc 1 25 0
+  93 005a DDE7     		b	.L3
+  94              		.cfi_endproc
+  95              	.LFE20:
+  96              		.size	main, .-main
+  97              		.text
+  98              	.Letext0:
+  99              		.section	.debug_loc,"",%progbits
+ 100              	.Ldebug_loc0:
+ 101              	.LLST0:
+ 102 0000 00000000 		.4byte	.LFB20
+ 103 0004 02000000 		.4byte	.LCFI0
+ 104 0008 0100     		.2byte	0x1
+ 105 000a 5D       		.byte	0x5d
+ 106 000b 02000000 		.4byte	.LCFI0
+ 107 000f 04000000 		.4byte	.LCFI1
+ 108 0013 0200     		.2byte	0x2
+ 109 0015 7D       		.byte	0x7d
+ 110 0016 08       		.sleb128 8
+ 111 0017 04000000 		.4byte	.LCFI1
+ 112 001b 06000000 		.4byte	.LCFI2
+ 113 001f 0200     		.2byte	0x2
+ 114 0021 7D       		.byte	0x7d
+ 115 0022 10       		.sleb128 16
+ 116 0023 06000000 		.4byte	.LCFI2
+ 117 0027 5C000000 		.4byte	.LFE20
+ 118 002b 0200     		.2byte	0x2
+ 119 002d 77       		.byte	0x77
+ 120 002e 10       		.sleb128 16
+ 121 002f 00000000 		.4byte	0x0
+ 122 0033 00000000 		.4byte	0x0
+ 123              		.file 2 "./Generated_Source/PSoC4/cytypes.h"
+ 124              		.section	.debug_info
+ 125 0000 B2000000 		.4byte	0xb2
+ 126 0004 0200     		.2byte	0x2
+ 127 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 128 000a 04       		.byte	0x4
+ 129 000b 01       		.uleb128 0x1
+ 130 000c BA000000 		.4byte	.LASF12
+ 131 0010 01       		.byte	0x1
+ 132 0011 18010000 		.4byte	.LASF13
+ 133 0015 49000000 		.4byte	.LASF14
+ 134 0019 00000000 		.4byte	0x0
+ 135 001d 00000000 		.4byte	0x0
+ 136 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 137 0025 00000000 		.4byte	.Ldebug_line0
+ 138 0029 02       		.uleb128 0x2
+ 139 002a 01       		.byte	0x1
+ 140 002b 06       		.byte	0x6
+ 141 002c 06010000 		.4byte	.LASF0
+ 142 0030 02       		.uleb128 0x2
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 4
+
+
+ 143 0031 01       		.byte	0x1
+ 144 0032 08       		.byte	0x8
+ 145 0033 C6000000 		.4byte	.LASF1
+ 146 0037 02       		.uleb128 0x2
+ 147 0038 02       		.byte	0x2
+ 148 0039 05       		.byte	0x5
+ 149 003a E2000000 		.4byte	.LASF2
+ 150 003e 02       		.uleb128 0x2
+ 151 003f 02       		.byte	0x2
+ 152 0040 07       		.byte	0x7
+ 153 0041 F3000000 		.4byte	.LASF3
+ 154 0045 02       		.uleb128 0x2
+ 155 0046 04       		.byte	0x4
+ 156 0047 05       		.byte	0x5
+ 157 0048 D9000000 		.4byte	.LASF4
+ 158 004c 02       		.uleb128 0x2
+ 159 004d 04       		.byte	0x4
+ 160 004e 07       		.byte	0x7
+ 161 004f 20000000 		.4byte	.LASF5
+ 162 0053 02       		.uleb128 0x2
+ 163 0054 08       		.byte	0x8
+ 164 0055 05       		.byte	0x5
+ 165 0056 00000000 		.4byte	.LASF6
+ 166 005a 02       		.uleb128 0x2
+ 167 005b 08       		.byte	0x8
+ 168 005c 07       		.byte	0x7
+ 169 005d 32000000 		.4byte	.LASF7
+ 170 0061 03       		.uleb128 0x3
+ 171 0062 04       		.byte	0x4
+ 172 0063 05       		.byte	0x5
+ 173 0064 696E7400 		.ascii	"int\000"
+ 174 0068 02       		.uleb128 0x2
+ 175 0069 04       		.byte	0x4
+ 176 006a 07       		.byte	0x7
+ 177 006b 0E000000 		.4byte	.LASF8
+ 178 006f 04       		.uleb128 0x4
+ 179 0070 21010000 		.4byte	.LASF15
+ 180 0074 02       		.byte	0x2
+ 181 0075 4D       		.byte	0x4d
+ 182 0076 3E000000 		.4byte	0x3e
+ 183 007a 02       		.uleb128 0x2
+ 184 007b 04       		.byte	0x4
+ 185 007c 04       		.byte	0x4
+ 186 007d 12010000 		.4byte	.LASF9
+ 187 0081 02       		.uleb128 0x2
+ 188 0082 08       		.byte	0x8
+ 189 0083 04       		.byte	0x4
+ 190 0084 EC000000 		.4byte	.LASF10
+ 191 0088 02       		.uleb128 0x2
+ 192 0089 01       		.byte	0x1
+ 193 008a 08       		.byte	0x8
+ 194 008b D4000000 		.4byte	.LASF11
+ 195 008f 05       		.uleb128 0x5
+ 196 0090 04       		.byte	0x4
+ 197 0091 07       		.byte	0x7
+ 198 0092 06       		.uleb128 0x6
+ 199 0093 01       		.byte	0x1
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 5
+
+
+ 200 0094 1B000000 		.4byte	.LASF16
+ 201 0098 01       		.byte	0x1
+ 202 0099 04       		.byte	0x4
+ 203 009a 00000000 		.4byte	.LFB20
+ 204 009e 5C000000 		.4byte	.LFE20
+ 205 00a2 00000000 		.4byte	.LLST0
+ 206 00a6 07       		.uleb128 0x7
+ 207 00a7 A9000000 		.4byte	.LASF17
+ 208 00ab 01       		.byte	0x1
+ 209 00ac 07       		.byte	0x7
+ 210 00ad 6F000000 		.4byte	0x6f
+ 211 00b1 02       		.byte	0x2
+ 212 00b2 91       		.byte	0x91
+ 213 00b3 76       		.sleb128 -10
+ 214 00b4 00       		.byte	0x0
+ 215 00b5 00       		.byte	0x0
+ 216              		.section	.debug_abbrev
+ 217 0000 01       		.uleb128 0x1
+ 218 0001 11       		.uleb128 0x11
+ 219 0002 01       		.byte	0x1
+ 220 0003 25       		.uleb128 0x25
+ 221 0004 0E       		.uleb128 0xe
+ 222 0005 13       		.uleb128 0x13
+ 223 0006 0B       		.uleb128 0xb
+ 224 0007 03       		.uleb128 0x3
+ 225 0008 0E       		.uleb128 0xe
+ 226 0009 1B       		.uleb128 0x1b
+ 227 000a 0E       		.uleb128 0xe
+ 228 000b 11       		.uleb128 0x11
+ 229 000c 01       		.uleb128 0x1
+ 230 000d 52       		.uleb128 0x52
+ 231 000e 01       		.uleb128 0x1
+ 232 000f 55       		.uleb128 0x55
+ 233 0010 06       		.uleb128 0x6
+ 234 0011 10       		.uleb128 0x10
+ 235 0012 06       		.uleb128 0x6
+ 236 0013 00       		.byte	0x0
+ 237 0014 00       		.byte	0x0
+ 238 0015 02       		.uleb128 0x2
+ 239 0016 24       		.uleb128 0x24
+ 240 0017 00       		.byte	0x0
+ 241 0018 0B       		.uleb128 0xb
+ 242 0019 0B       		.uleb128 0xb
+ 243 001a 3E       		.uleb128 0x3e
+ 244 001b 0B       		.uleb128 0xb
+ 245 001c 03       		.uleb128 0x3
+ 246 001d 0E       		.uleb128 0xe
+ 247 001e 00       		.byte	0x0
+ 248 001f 00       		.byte	0x0
+ 249 0020 03       		.uleb128 0x3
+ 250 0021 24       		.uleb128 0x24
+ 251 0022 00       		.byte	0x0
+ 252 0023 0B       		.uleb128 0xb
+ 253 0024 0B       		.uleb128 0xb
+ 254 0025 3E       		.uleb128 0x3e
+ 255 0026 0B       		.uleb128 0xb
+ 256 0027 03       		.uleb128 0x3
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 6
+
+
+ 257 0028 08       		.uleb128 0x8
+ 258 0029 00       		.byte	0x0
+ 259 002a 00       		.byte	0x0
+ 260 002b 04       		.uleb128 0x4
+ 261 002c 16       		.uleb128 0x16
+ 262 002d 00       		.byte	0x0
+ 263 002e 03       		.uleb128 0x3
+ 264 002f 0E       		.uleb128 0xe
+ 265 0030 3A       		.uleb128 0x3a
+ 266 0031 0B       		.uleb128 0xb
+ 267 0032 3B       		.uleb128 0x3b
+ 268 0033 0B       		.uleb128 0xb
+ 269 0034 49       		.uleb128 0x49
+ 270 0035 13       		.uleb128 0x13
+ 271 0036 00       		.byte	0x0
+ 272 0037 00       		.byte	0x0
+ 273 0038 05       		.uleb128 0x5
+ 274 0039 24       		.uleb128 0x24
+ 275 003a 00       		.byte	0x0
+ 276 003b 0B       		.uleb128 0xb
+ 277 003c 0B       		.uleb128 0xb
+ 278 003d 3E       		.uleb128 0x3e
+ 279 003e 0B       		.uleb128 0xb
+ 280 003f 00       		.byte	0x0
+ 281 0040 00       		.byte	0x0
+ 282 0041 06       		.uleb128 0x6
+ 283 0042 2E       		.uleb128 0x2e
+ 284 0043 01       		.byte	0x1
+ 285 0044 3F       		.uleb128 0x3f
+ 286 0045 0C       		.uleb128 0xc
+ 287 0046 03       		.uleb128 0x3
+ 288 0047 0E       		.uleb128 0xe
+ 289 0048 3A       		.uleb128 0x3a
+ 290 0049 0B       		.uleb128 0xb
+ 291 004a 3B       		.uleb128 0x3b
+ 292 004b 0B       		.uleb128 0xb
+ 293 004c 11       		.uleb128 0x11
+ 294 004d 01       		.uleb128 0x1
+ 295 004e 12       		.uleb128 0x12
+ 296 004f 01       		.uleb128 0x1
+ 297 0050 40       		.uleb128 0x40
+ 298 0051 06       		.uleb128 0x6
+ 299 0052 00       		.byte	0x0
+ 300 0053 00       		.byte	0x0
+ 301 0054 07       		.uleb128 0x7
+ 302 0055 34       		.uleb128 0x34
+ 303 0056 00       		.byte	0x0
+ 304 0057 03       		.uleb128 0x3
+ 305 0058 0E       		.uleb128 0xe
+ 306 0059 3A       		.uleb128 0x3a
+ 307 005a 0B       		.uleb128 0xb
+ 308 005b 3B       		.uleb128 0x3b
+ 309 005c 0B       		.uleb128 0xb
+ 310 005d 49       		.uleb128 0x49
+ 311 005e 13       		.uleb128 0x13
+ 312 005f 02       		.uleb128 0x2
+ 313 0060 0A       		.uleb128 0xa
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 7
+
+
+ 314 0061 00       		.byte	0x0
+ 315 0062 00       		.byte	0x0
+ 316 0063 00       		.byte	0x0
+ 317              		.section	.debug_pubnames,"",%progbits
+ 318 0000 17000000 		.4byte	0x17
+ 319 0004 0200     		.2byte	0x2
+ 320 0006 00000000 		.4byte	.Ldebug_info0
+ 321 000a B6000000 		.4byte	0xb6
+ 322 000e 92000000 		.4byte	0x92
+ 323 0012 6D61696E 		.ascii	"main\000"
+ 323      00
+ 324 0017 00000000 		.4byte	0x0
+ 325              		.section	.debug_aranges,"",%progbits
+ 326 0000 1C000000 		.4byte	0x1c
+ 327 0004 0200     		.2byte	0x2
+ 328 0006 00000000 		.4byte	.Ldebug_info0
+ 329 000a 04       		.byte	0x4
+ 330 000b 00       		.byte	0x0
+ 331 000c 0000     		.2byte	0x0
+ 332 000e 0000     		.2byte	0x0
+ 333 0010 00000000 		.4byte	.LFB20
+ 334 0014 5C000000 		.4byte	.LFE20-.LFB20
+ 335 0018 00000000 		.4byte	0x0
+ 336 001c 00000000 		.4byte	0x0
+ 337              		.section	.debug_ranges,"",%progbits
+ 338              	.Ldebug_ranges0:
+ 339 0000 00000000 		.4byte	.Ltext0
+ 340 0004 00000000 		.4byte	.Letext0
+ 341 0008 00000000 		.4byte	.LFB20
+ 342 000c 5C000000 		.4byte	.LFE20
+ 343 0010 00000000 		.4byte	0x0
+ 344 0014 00000000 		.4byte	0x0
+ 345              		.section	.debug_str,"MS",%progbits,1
+ 346              	.LASF6:
+ 347 0000 6C6F6E67 		.ascii	"long long int\000"
+ 347      206C6F6E 
+ 347      6720696E 
+ 347      7400
+ 348              	.LASF8:
+ 349 000e 756E7369 		.ascii	"unsigned int\000"
+ 349      676E6564 
+ 349      20696E74 
+ 349      00
+ 350              	.LASF16:
+ 351 001b 6D61696E 		.ascii	"main\000"
+ 351      00
+ 352              	.LASF5:
+ 353 0020 6C6F6E67 		.ascii	"long unsigned int\000"
+ 353      20756E73 
+ 353      69676E65 
+ 353      6420696E 
+ 353      7400
+ 354              	.LASF7:
+ 355 0032 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 355      206C6F6E 
+ 355      6720756E 
+ 355      7369676E 
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 8
+
+
+ 355      65642069 
+ 356              	.LASF14:
+ 357 0049 433A5C55 		.ascii	"C:\\Users\\maxk\\Desktop\\PSoC 4A\\FAE Workshop\\La"
+ 357      73657273 
+ 357      5C6D6178 
+ 357      6B5C4465 
+ 357      736B746F 
+ 358 0076 62205072 		.ascii	"b Projects\\Lab Solutions\\Lab 3 CapSense UART.cyds"
+ 358      6F6A6563 
+ 358      74735C4C 
+ 358      61622053 
+ 358      6F6C7574 
+ 359 00a7 6E00     		.ascii	"n\000"
+ 360              	.LASF17:
+ 361 00a9 43617053 		.ascii	"CapSensePosition\000"
+ 361      656E7365 
+ 361      506F7369 
+ 361      74696F6E 
+ 361      00
+ 362              	.LASF12:
+ 363 00ba 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 363      4320342E 
+ 363      342E3100 
+ 364              	.LASF1:
+ 365 00c6 756E7369 		.ascii	"unsigned char\000"
+ 365      676E6564 
+ 365      20636861 
+ 365      7200
+ 366              	.LASF11:
+ 367 00d4 63686172 		.ascii	"char\000"
+ 367      00
+ 368              	.LASF4:
+ 369 00d9 6C6F6E67 		.ascii	"long int\000"
+ 369      20696E74 
+ 369      00
+ 370              	.LASF2:
+ 371 00e2 73686F72 		.ascii	"short int\000"
+ 371      7420696E 
+ 371      7400
+ 372              	.LASF10:
+ 373 00ec 646F7562 		.ascii	"double\000"
+ 373      6C6500
+ 374              	.LASF3:
+ 375 00f3 73686F72 		.ascii	"short unsigned int\000"
+ 375      7420756E 
+ 375      7369676E 
+ 375      65642069 
+ 375      6E7400
+ 376              	.LASF0:
+ 377 0106 7369676E 		.ascii	"signed char\000"
+ 377      65642063 
+ 377      68617200 
+ 378              	.LASF9:
+ 379 0112 666C6F61 		.ascii	"float\000"
+ 379      7400
+ 380              	.LASF13:
+ 381 0118 2E5C6D61 		.ascii	".\\main.c\000"
+ARM GAS  C:\Users\maxk\AppData\Local\Temp\cccgew2j.s 			page 9
+
+
+ 381      696E2E63 
+ 381      00
+ 382              	.LASF15:
+ 383 0121 75696E74 		.ascii	"uint16\000"
+ 383      313600
+ 384              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"
