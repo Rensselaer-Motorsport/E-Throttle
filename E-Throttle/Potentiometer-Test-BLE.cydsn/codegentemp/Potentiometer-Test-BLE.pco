@@ -1,5 +1,5 @@
 # Potentiometer-Test-BLE
-# 2015-11-14 22:19:37Z
+# 2015-11-14 23:45:10Z
 
 # IO_6@[IOP=(0)][IoId=(6)] is reserved: SWDDebugEnabled
 dont_use_io iocell 0 6
@@ -16,4 +16,7 @@ set_io "Pin_Red(0)" iocell 3 7
 set_location "\ADC_SAR_Seq_1:IRQ\" interrupt -1 -1 15
 set_location "\ADC_SAR_Seq_1:cy_psoc4_sar\" p4sarcell -1 -1 0
 set_location "\PWM_1:cy_m0s8_tcpwm_1\" m0s8tcpwmcell -1 -1 0
+set_location "\UART_1:SCB\" m0s8scbcell -1 -1 0
+set_io "\UART_1:rx(0)\" iocell 0 4
+set_io "\UART_1:tx(0)\" iocell 0 5
 set_location "__ONE__" 0 1 0 0
