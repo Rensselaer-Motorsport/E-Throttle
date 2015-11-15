@@ -15,7 +15,6 @@ int main()
 {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
     uint16 ADCResult;
-    uint16 PWMCompare = 0;
     
     PWM_1_Start();
     UART_1_Start();

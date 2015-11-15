@@ -1,0 +1,17 @@
+# E-Throttle-Mainboard
+# 2015-11-15 03:03:23Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+set_io "APPS_1(0)" iocell 3 5
+set_io "APPS_2(0)" iocell 3 1
+set_io "APPS_3(0)" iocell 15 1
+set_io "TPS_0(0)" iocell 0 4
+set_io "TPS_1(0)" iocell 4 4
+set_io "TPS_2(0)" iocell 4 0
+set_location "\APPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 1
+set_location "\TPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 0
