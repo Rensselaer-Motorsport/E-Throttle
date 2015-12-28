@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: TPS_2.h  
+* File Name: APPS_0.h  
 * Version 2.10
 *
 * Description:
@@ -14,8 +14,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_TPS_2_ALIASES_H) /* Pins TPS_2_ALIASES_H */
-#define CY_PINS_TPS_2_ALIASES_H
+#if !defined(CY_PINS_APPS_0_ALIASES_H) /* Pins APPS_0_ALIASES_H */
+#define CY_PINS_APPS_0_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,8 +25,8 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define TPS_2_0		(TPS_2__0__PC)
+#define APPS_0_0		(APPS_0__0__PC)
 
-#endif /* End Pins TPS_2_ALIASES_H */
+#endif /* End Pins APPS_0_ALIASES_H */
 
 /* [] END OF FILE */

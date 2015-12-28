@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   29:.\Generated_Source\PSoC5/APPS_1.c **** * Summary:
   30:.\Generated_Source\PSoC5/APPS_1.c **** *  Assign a new value to the digital port's data output register.  
   31:.\Generated_Source\PSoC5/APPS_1.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/APPS_1.c **** * Parameters:  
@@ -80,13 +80,13 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   33              		.loc 1 41 0
   34 0000 044B     		ldr	r3, .L2
   35 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
-  36 0004 02F0DF02 		and	r2, r2, #223
+  36 0004 02F0F702 		and	r2, r2, #247
   37              	.LVL1:
   42:.\Generated_Source\PSoC5/APPS_1.c ****     APPS_1_DR = staticBits | ((uint8)(value << APPS_1_SHIFT) & APPS_1_MASK);
   38              		.loc 1 42 0
-  39 0008 4001     		lsls	r0, r0, #5
+  39 0008 C000     		lsls	r0, r0, #3
   40              	.LVL2:
-  41 000a 00F02000 		and	r0, r0, #32
+  41 000a 00F00800 		and	r0, r0, #8
   42 000e 0243     		orrs	r2, r2, r0
   43              	.LVL3:
   44 0010 1A70     		strb	r2, [r3]
@@ -94,7 +94,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   46              	.L3:
   47              		.align	2
   48              	.L2:
-  49 0014 30510040 		.word	1073762608
+  49 0014 00510040 		.word	1073762560
   50              		.cfi_endproc
   51              	.LFE0:
   52              		.size	APPS_1_Write, .-APPS_1_Write
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   52:.\Generated_Source\PSoC5/APPS_1.c **** * 
   53:.\Generated_Source\PSoC5/APPS_1.c **** * Parameters:  
   54:.\Generated_Source\PSoC5/APPS_1.c **** *  mode:  Change the pins to one of the following drive modes.
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 3
 
 
   55:.\Generated_Source\PSoC5/APPS_1.c **** *
@@ -156,7 +156,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   76              	.L6:
   77 0012 00BF     		.align	2
   78              	.L5:
-  79 0014 1D500040 		.word	1073762333
+  79 0014 03500040 		.word	1073762307
   80              		.cfi_endproc
   81              	.LFE1:
   82              		.size	APPS_1_SetDriveMode, .-APPS_1_SetDriveMode
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   79:.\Generated_Source\PSoC5/APPS_1.c **** * Summary:
   80:.\Generated_Source\PSoC5/APPS_1.c **** *  Read the current value on the pins of the Digital Port in right justified 
   81:.\Generated_Source\PSoC5/APPS_1.c **** *  form.
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 4
 
 
   82:.\Generated_Source\PSoC5/APPS_1.c **** *
@@ -205,12 +205,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
   98 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
   96:.\Generated_Source\PSoC5/APPS_1.c **** }
   99              		.loc 1 96 0
- 100 0004 C0F34010 		ubfx	r0, r0, #5, #1
+ 100 0004 C0F3C000 		ubfx	r0, r0, #3, #1
  101 0008 7047     		bx	lr
  102              	.L9:
  103 000a 00BF     		.align	2
  104              	.L8:
- 105 000c 31510040 		.word	1073762609
+ 105 000c 01510040 		.word	1073762561
  106              		.cfi_endproc
  107              	.LFE2:
  108              		.size	APPS_1_Read, .-APPS_1_Read
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  110:.\Generated_Source\PSoC5/APPS_1.c **** *  Returns the current value assigned to the Digital Port's data output register
  111:.\Generated_Source\PSoC5/APPS_1.c **** *  
  112:.\Generated_Source\PSoC5/APPS_1.c **** *******************************************************************************/
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 5
 
 
  113:.\Generated_Source\PSoC5/APPS_1.c **** uint8 APPS_1_ReadDataReg(void) 
@@ -254,12 +254,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  124 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  116:.\Generated_Source\PSoC5/APPS_1.c **** }
  125              		.loc 1 116 0
- 126 0004 C0F34010 		ubfx	r0, r0, #5, #1
+ 126 0004 C0F3C000 		ubfx	r0, r0, #3, #1
  127 0008 7047     		bx	lr
  128              	.L12:
  129 000a 00BF     		.align	2
  130              	.L11:
- 131 000c 30510040 		.word	1073762608
+ 131 000c 00510040 		.word	1073762560
  132              		.cfi_endproc
  133              	.LFE3:
  134              		.size	APPS_1_ReadDataReg, .-APPS_1_ReadDataReg
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  167 003d 3C000000 		.4byte	.LASF3
  168 0041 02       		.uleb128 0x2
  169 0042 04       		.byte	0x4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 6
 
 
  170 0043 05       		.byte	0x5
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  224 00ad D0000000 		.4byte	0xd0
  225 00b1 08       		.uleb128 0x8
  226 00b2 00000000 		.4byte	.LASF16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 7
 
 
  227 00b6 01       		.byte	0x1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  281 0006 0B       		.uleb128 0xb
  282 0007 03       		.uleb128 0x3
  283 0008 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 8
 
 
  284 0009 1B       		.uleb128 0x1b
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  338 003f 49       		.uleb128 0x49
  339 0040 13       		.uleb128 0x13
  340 0041 00       		.byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 9
 
 
  341 0042 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  395 0079 0B       		.uleb128 0xb
  396 007a 3B       		.uleb128 0x3b
  397 007b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 10
 
 
  398 007c 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  452 0030 00000000 		.4byte	0
  453              	.LLST2:
  454 0034 00000000 		.4byte	.LVL4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 11
 
 
  455 0038 0C000000 		.4byte	.LVL5
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  503      69634269 
  503      747300
  504              	.LASF9:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 12
 
 
  505 0011 666C6F61 		.ascii	"float\000"
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  526      32303134 
  526      30353236 
  527 0104 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 13
 
 
  527      20726576 
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 1
  550 01c5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\APPS_1.c\000"
  550      6E657261 
  550      7465645F 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccRxQLP8.s 			page 14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccna0tIS.s 			page 14
 
 
  550      536F7572 

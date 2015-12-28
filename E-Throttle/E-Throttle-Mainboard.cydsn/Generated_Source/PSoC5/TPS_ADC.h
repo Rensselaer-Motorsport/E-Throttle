@@ -26,7 +26,7 @@
 #include "TPS_ADC_FinalBuf_dma.h"
 #include "TPS_ADC_SAR.h"
 
-#define TPS_ADC_NUMBER_OF_CHANNELS    (3u)
+#define TPS_ADC_NUMBER_OF_CHANNELS    (2u)
 #define TPS_ADC_SAMPLE_MODE           (0u)
 #define TPS_ADC_CLOCK_SOURCE          (0u)
 

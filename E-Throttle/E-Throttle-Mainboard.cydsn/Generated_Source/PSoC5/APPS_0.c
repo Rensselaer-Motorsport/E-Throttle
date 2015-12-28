@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: TPS_2.c  
+* File Name: APPS_0.c  
 * Version 2.10
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "TPS_2.h"
+#include "APPS_0.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 TPS_2__PORT == 15 && ((TPS_2__MASK & 0xC0) != 0))
+	 APPS_0__PORT == 15 && ((APPS_0__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: TPS_2_Write
+* Function Name: APPS_0_Write
 ********************************************************************************
 *
 * Summary:
@@ -36,15 +36,15 @@
 *  None
 *  
 *******************************************************************************/
-void TPS_2_Write(uint8 value) 
+void APPS_0_Write(uint8 value) 
 {
-    uint8 staticBits = (TPS_2_DR & (uint8)(~TPS_2_MASK));
-    TPS_2_DR = staticBits | ((uint8)(value << TPS_2_SHIFT) & TPS_2_MASK);
+    uint8 staticBits = (APPS_0_DR & (uint8)(~APPS_0_MASK));
+    APPS_0_DR = staticBits | ((uint8)(value << APPS_0_SHIFT) & APPS_0_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: TPS_2_SetDriveMode
+* Function Name: APPS_0_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,27 +53,27 @@ void TPS_2_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  TPS_2_DM_STRONG     Strong Drive 
-*  TPS_2_DM_OD_HI      Open Drain, Drives High 
-*  TPS_2_DM_OD_LO      Open Drain, Drives Low 
-*  TPS_2_DM_RES_UP     Resistive Pull Up 
-*  TPS_2_DM_RES_DWN    Resistive Pull Down 
-*  TPS_2_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  TPS_2_DM_DIG_HIZ    High Impedance Digital 
-*  TPS_2_DM_ALG_HIZ    High Impedance Analog 
+*  APPS_0_DM_STRONG     Strong Drive 
+*  APPS_0_DM_OD_HI      Open Drain, Drives High 
+*  APPS_0_DM_OD_LO      Open Drain, Drives Low 
+*  APPS_0_DM_RES_UP     Resistive Pull Up 
+*  APPS_0_DM_RES_DWN    Resistive Pull Down 
+*  APPS_0_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  APPS_0_DM_DIG_HIZ    High Impedance Digital 
+*  APPS_0_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void TPS_2_SetDriveMode(uint8 mode) 
+void APPS_0_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(TPS_2_0, mode);
+	CyPins_SetPinDriveMode(APPS_0_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: TPS_2_Read
+* Function Name: APPS_0_Read
 ********************************************************************************
 *
 * Summary:
@@ -87,17 +87,17 @@ void TPS_2_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro TPS_2_ReadPS calls this function. 
+*  Macro APPS_0_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 TPS_2_Read(void) 
+uint8 APPS_0_Read(void) 
 {
-    return (TPS_2_PS & TPS_2_MASK) >> TPS_2_SHIFT;
+    return (APPS_0_PS & APPS_0_MASK) >> APPS_0_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: TPS_2_ReadDataReg
+* Function Name: APPS_0_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -110,17 +110,17 @@ uint8 TPS_2_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 TPS_2_ReadDataReg(void) 
+uint8 APPS_0_ReadDataReg(void) 
 {
-    return (TPS_2_DR & TPS_2_MASK) >> TPS_2_SHIFT;
+    return (APPS_0_DR & APPS_0_MASK) >> APPS_0_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(TPS_2_INTSTAT) 
+#if defined(APPS_0_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: TPS_2_ClearInterrupt
+    * Function Name: APPS_0_ClearInterrupt
     ********************************************************************************
     * Summary:
     *  Clears any active interrupts attached to port and returns the value of the 
@@ -133,9 +133,9 @@ uint8 TPS_2_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 TPS_2_ClearInterrupt(void) 
+    uint8 APPS_0_ClearInterrupt(void) 
     {
-        return (TPS_2_INTSTAT & TPS_2_MASK) >> TPS_2_SHIFT;
+        return (APPS_0_INTSTAT & APPS_0_MASK) >> APPS_0_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: APPS_2.c  
+* File Name: SERVO_OUT.c  
 * Version 2.10
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "APPS_2.h"
+#include "SERVO_OUT.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 APPS_2__PORT == 15 && ((APPS_2__MASK & 0xC0) != 0))
+	 SERVO_OUT__PORT == 15 && ((SERVO_OUT__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: APPS_2_Write
+* Function Name: SERVO_OUT_Write
 ********************************************************************************
 *
 * Summary:
@@ -36,15 +36,15 @@
 *  None
 *  
 *******************************************************************************/
-void APPS_2_Write(uint8 value) 
+void SERVO_OUT_Write(uint8 value) 
 {
-    uint8 staticBits = (APPS_2_DR & (uint8)(~APPS_2_MASK));
-    APPS_2_DR = staticBits | ((uint8)(value << APPS_2_SHIFT) & APPS_2_MASK);
+    uint8 staticBits = (SERVO_OUT_DR & (uint8)(~SERVO_OUT_MASK));
+    SERVO_OUT_DR = staticBits | ((uint8)(value << SERVO_OUT_SHIFT) & SERVO_OUT_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: APPS_2_SetDriveMode
+* Function Name: SERVO_OUT_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,27 +53,27 @@ void APPS_2_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  APPS_2_DM_STRONG     Strong Drive 
-*  APPS_2_DM_OD_HI      Open Drain, Drives High 
-*  APPS_2_DM_OD_LO      Open Drain, Drives Low 
-*  APPS_2_DM_RES_UP     Resistive Pull Up 
-*  APPS_2_DM_RES_DWN    Resistive Pull Down 
-*  APPS_2_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  APPS_2_DM_DIG_HIZ    High Impedance Digital 
-*  APPS_2_DM_ALG_HIZ    High Impedance Analog 
+*  SERVO_OUT_DM_STRONG     Strong Drive 
+*  SERVO_OUT_DM_OD_HI      Open Drain, Drives High 
+*  SERVO_OUT_DM_OD_LO      Open Drain, Drives Low 
+*  SERVO_OUT_DM_RES_UP     Resistive Pull Up 
+*  SERVO_OUT_DM_RES_DWN    Resistive Pull Down 
+*  SERVO_OUT_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  SERVO_OUT_DM_DIG_HIZ    High Impedance Digital 
+*  SERVO_OUT_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void APPS_2_SetDriveMode(uint8 mode) 
+void SERVO_OUT_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(APPS_2_0, mode);
+	CyPins_SetPinDriveMode(SERVO_OUT_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: APPS_2_Read
+* Function Name: SERVO_OUT_Read
 ********************************************************************************
 *
 * Summary:
@@ -87,17 +87,17 @@ void APPS_2_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro APPS_2_ReadPS calls this function. 
+*  Macro SERVO_OUT_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 APPS_2_Read(void) 
+uint8 SERVO_OUT_Read(void) 
 {
-    return (APPS_2_PS & APPS_2_MASK) >> APPS_2_SHIFT;
+    return (SERVO_OUT_PS & SERVO_OUT_MASK) >> SERVO_OUT_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: APPS_2_ReadDataReg
+* Function Name: SERVO_OUT_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -110,17 +110,17 @@ uint8 APPS_2_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 APPS_2_ReadDataReg(void) 
+uint8 SERVO_OUT_ReadDataReg(void) 
 {
-    return (APPS_2_DR & APPS_2_MASK) >> APPS_2_SHIFT;
+    return (SERVO_OUT_DR & SERVO_OUT_MASK) >> SERVO_OUT_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(APPS_2_INTSTAT) 
+#if defined(SERVO_OUT_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: APPS_2_ClearInterrupt
+    * Function Name: SERVO_OUT_ClearInterrupt
     ********************************************************************************
     * Summary:
     *  Clears any active interrupts attached to port and returns the value of the 
@@ -133,9 +133,9 @@ uint8 APPS_2_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 APPS_2_ClearInterrupt(void) 
+    uint8 SERVO_OUT_ClearInterrupt(void) 
     {
-        return (APPS_2_INTSTAT & APPS_2_MASK) >> APPS_2_SHIFT;
+        return (SERVO_OUT_INTSTAT & SERVO_OUT_MASK) >> SERVO_OUT_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: APPS_2.h  
+* File Name: SERVO_OUT.h  
 * Version 2.10
 *
 * Description:
@@ -14,8 +14,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_APPS_2_ALIASES_H) /* Pins APPS_2_ALIASES_H */
-#define CY_PINS_APPS_2_ALIASES_H
+#if !defined(CY_PINS_SERVO_OUT_ALIASES_H) /* Pins SERVO_OUT_ALIASES_H */
+#define CY_PINS_SERVO_OUT_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,8 +25,8 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define APPS_2_0		(APPS_2__0__PC)
+#define SERVO_OUT_0		(SERVO_OUT__0__PC)
 
-#endif /* End Pins APPS_2_ALIASES_H */
+#endif /* End Pins SERVO_OUT_ALIASES_H */
 
 /* [] END OF FILE */
