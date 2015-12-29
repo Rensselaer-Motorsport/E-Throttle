@@ -18,7 +18,6 @@ See "LICENSE" for more information.
 int main(){
     // INITIALIZATION
     
-    
     // RUN LOOP
     for (;;) {
         
