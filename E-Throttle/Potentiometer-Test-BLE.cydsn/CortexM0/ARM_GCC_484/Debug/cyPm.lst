@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
   30:.\Generated_Source\PSoC4/cyPm.c **** *  its main clock can be removed. It is identical to Active from a peripheral
   31:.\Generated_Source\PSoC4/cyPm.c **** *  point of view. Any enabled interrupts can cause wakeup from the  Sleep mode.
   32:.\Generated_Source\PSoC4/cyPm.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 2
 
 
   33:.\Generated_Source\PSoC4/cyPm.c **** * Parameters:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
   59              		.size	CySysPmSleep, .-CySysPmSleep
   60              		.section	.text.CySysPmDeepSleep,"ax",%progbits
   61              		.align	2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 3
 
 
   62              		.global	CySysPmDeepSleep
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
   88:.\Generated_Source\PSoC4/cyPm.c ****         /* Device enters DeepSleep mode when CPU asserts SLEEPDEEP signal */
   89:.\Generated_Source\PSoC4/cyPm.c ****         CY_PM_PWR_CONTROL_REG &= (uint32) (~CY_PM_PWR_CONTROL_HIBERNATE);
   82              		.loc 1 89 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 4
 
 
   83 000a 0E4B     		ldr	r3, .L5
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  113:.\Generated_Source\PSoC4/cyPm.c ****     #if(CY_IP_SRSSV2)
  114:.\Generated_Source\PSoC4/cyPm.c ****         /* Restore system clock configuration */
  115:.\Generated_Source\PSoC4/cyPm.c ****         CY_SYS_CLK_SELECT_REG = clkSelectReg;
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 5
 
 
  114              		.loc 1 115 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  138:.\Generated_Source\PSoC4/cyPm.c ****     *  CySysPmFreezeIo() function before the call to this function. If this is
  139:.\Generated_Source\PSoC4/cyPm.c ****     *  omitted, the IO-cells will be frozen in the same way as they are
  140:.\Generated_Source\PSoC4/cyPm.c ****     *  in the Active to Deep Sleep transition, but will lose their state on wake up
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 6
 
 
  141:.\Generated_Source\PSoC4/cyPm.c ****     *  (because of the reset occurring at that time).
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  173:.\Generated_Source\PSoC4/cyPm.c ****         CY_PM_CM0_SCR_REG |= CY_PM_CM0_SCR_SLEEPDEEP;
  168              		.loc 1 173 0
  169 001c 0A4B     		ldr	r3, .L8+12
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 7
 
 
  170 001e 1968     		ldr	r1, [r3]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  208              		.code	16
  209              		.thumb_func
  210              		.type	CySysPmSetWakeupPolarity, %function
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 8
 
 
  211              	CySysPmSetWakeupPolarity:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  242:.\Generated_Source\PSoC4/cyPm.c ****         /* Should never get to this WFI instruction */
  243:.\Generated_Source\PSoC4/cyPm.c ****         CY_PM_WFI;
  244:.\Generated_Source\PSoC4/cyPm.c **** 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 9
 
 
  245:.\Generated_Source\PSoC4/cyPm.c ****         /* Wakeup from Stop is performed by toggling of Wakeup pin,
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  232 0014 1A43     		orr	r2, r3
  233 0016 03E0     		b	.L12
  234              	.L11:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 10
 
 
  280:.\Generated_Source\PSoC4/cyPm.c ****                             (CY_PM_PWR_STOP_REG & (uint32) (~CY_PM_PWR_STOP_POLARITY));
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  299:.\Generated_Source\PSoC4/cyPm.c ****     *  Reset reason.
  300:.\Generated_Source\PSoC4/cyPm.c ****     *  CY_PM_RESET_REASON_UNKN        - unknown
  301:.\Generated_Source\PSoC4/cyPm.c ****     *  CY_PM_RESET_REASON_XRES        - transition from OFF/XRES to RESET
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 11
 
 
  302:.\Generated_Source\PSoC4/cyPm.c ****     *  CY_PM_RESET_REASON_WAKEUP_HIB  - transition/wakeup from HIBERNATE to RESET
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  297              	.LVL17:
  298              	.L20:
  314:.\Generated_Source\PSoC4/cyPm.c ****             reason = CY_PM_RESET_REASON_XRES;
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 12
 
 
  299              		.loc 1 314 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  324              		.cfi_def_cfa_offset 8
  325              		.cfi_offset 3, -8
  326              		.cfi_offset 14, -4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 13
 
 
  355:.\Generated_Source\PSoC4/cyPm.c ****         uint8 interruptState;
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  353 0024 FFF7FEFF 		bl	CyExitCriticalSection
  354              	.LVL20:
  382:.\Generated_Source\PSoC4/cyPm.c ****     }
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 14
 
 
  355              		.loc 1 382 0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  403              	@ 239 ".\Generated_Source\PSoC4\cyPm.c" 1
  404 0024 C046     		NOP
  405              	
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 15
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 15
 
 
  406              	@ 0 "" 2
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  404:.\Generated_Source\PSoC4/cyPm.c ****     * Return:
  405:.\Generated_Source\PSoC4/cyPm.c ****     *  None
  406:.\Generated_Source\PSoC4/cyPm.c ****     *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 16
 
 
  407:.\Generated_Source\PSoC4/cyPm.c ****     *******************************************************************************/
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  430:.\Generated_Source\PSoC4/cyPm.c ****     }
  466              		.loc 1 430 0
  467              		@ sp needed
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 17
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 17
 
 
  468 0024 10BD     		pop	{r4, pc}
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  522 0052 2B020000 		.4byte	.LASF6
  523 0056 02       		.uleb128 0x2
  524 0057 08       		.byte	0x8
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 18
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 18
 
 
  525 0058 07       		.byte	0x7
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  579 00c6 22020000 		.4byte	.LASF17
  580 00ca 07       		.uleb128 0x7
  581 00cb 25000000 		.4byte	.LASF18
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 19
 
 
  582 00cf 01       		.byte	0x1
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  636 014d 32       		.byte	0x32
  637 014e 00       		.byte	0
  638 014f 0D       		.uleb128 0xd
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 20
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 20
 
 
  639 0150 40000000 		.4byte	.LVL6
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  693 01ce 08000000 		.4byte	.LVL11
  694 01d2 A5020000 		.4byte	0x2a5
  695 01d6 09       		.uleb128 0x9
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 21
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 21
 
 
  696 01d7 28000000 		.4byte	.LVL12
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  750 0262 09       		.uleb128 0x9
  751 0263 1A000000 		.4byte	.LVL22
  752 0267 0B020000 		.4byte	0x20b
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 22
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 22
 
 
  753 026b 00       		.byte	0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  807 0008 0E       		.uleb128 0xe
  808 0009 1B       		.uleb128 0x1b
  809 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 23
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 23
 
 
  810 000b 55       		.uleb128 0x55
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  864 0041 00       		.byte	0
  865 0042 00       		.byte	0
  866 0043 06       		.uleb128 0x6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 24
 
 
  867 0044 35       		.uleb128 0x35
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  921 007d 00       		.byte	0
  922 007e 0A       		.uleb128 0xa
  923 007f 34       		.uleb128 0x34
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 25
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 25
 
 
  924 0080 00       		.byte	0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  978 00bd 19       		.uleb128 0x19
  979 00be 11       		.uleb128 0x11
  980 00bf 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 26
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 26
 
 
  981 00c0 12       		.uleb128 0x12
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1035 00f7 13       		.uleb128 0x13
  1036 00f8 11       		.uleb128 0x11
  1037 00f9 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 27
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 27
 
 
  1038 00fa 12       		.uleb128 0x12
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1092 0131 00       		.byte	0
  1093 0132 15       		.uleb128 0x15
  1094 0133 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 28
 
 
  1095 0134 01       		.byte	0x1
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1149 0062 0400     		.2byte	0x4
  1150 0064 F3       		.byte	0xf3
  1151 0065 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 29
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 29
 
 
  1152 0066 50       		.byte	0x50
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1206 0004 0200     		.2byte	0x2
  1207 0006 00000000 		.4byte	.Ldebug_info0
  1208 000a 04       		.byte	0x4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 30
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 30
 
 
  1209 000b 00       		.byte	0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1257              	.LASF23:
  1258 000c 43795379 		.ascii	"CySysPmSetWakeupPolarity\000"
  1258      73506D53 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 31
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 31
 
 
  1258      65745761 
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1277      6420696E 
  1277      7400
  1278              	.LASF9:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 32
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 32
 
 
  1279 00f6 75696E74 		.ascii	"uint8\000"
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1300      31333538 
  1301 01e6 67202D66 		.ascii	"g -ffunction-sections\000"
  1301      66756E63 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 33
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 33
 
 
  1301      74696F6E 
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 1
  1325 028f 7369676E 		.ascii	"signed char\000"
  1325      65642063 
  1325      68617200 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccY5F4dw.s 			page 34
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccZdyK7t.s 			page 34
 
 
  1326              	.LASF25:

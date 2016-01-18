@@ -1,0 +1,1057 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"APPS_ADC_FinalBuf_dma.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.APPS_ADC_FinalBuf_DmaInitialize,"ax",%progbits
+  19              		.align	2
+  20              		.global	APPS_ADC_FinalBuf_DmaInitialize
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	APPS_ADC_FinalBuf_DmaInitialize, %function
+  24              	APPS_ADC_FinalBuf_DmaInitialize:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\APPS_ADC_FinalBuf_dma.c"
+   1:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** /***************************************************************************
+   2:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * File Name: APPS_ADC_FinalBuf_dma.c  
+   3:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Version 1.70
+   4:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+   5:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *  Description:
+   6:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   Provides an API for the DMAC component. The API includes functions
+   7:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   for the DMA controller, DMA channels and Transfer Descriptors.
+   8:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+   9:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  10:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   Note:
+  11:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *     This module requires the developer to finish or fill in the auto
+  12:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *     generated funcions and setup the dma channel and TD's.
+  13:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  14:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** ********************************************************************************
+  15:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  16:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  17:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  18:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * the software package with which this file was provided.
+  19:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** ********************************************************************************/
+  20:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** #include <CYLIB.H>
+  21:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** #include <CYDMAC.H>
+  22:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** #include <APPS_ADC_FinalBuf_dma.H>
+  23:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  24:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  25:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  26:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** /****************************************************************************
+  27:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  28:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * The following defines are available in Cyfitter.h
+  29:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  30:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  31:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__DRQ_CTL_REG
+  33:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  34:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  35:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__DRQ_NUMBER
+  36:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  37:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Number of TD's used by this channel.
+  38:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__NUMBEROF_TDS
+  39:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  40:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Priority of this channel.
+  41:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__PRIORITY
+  42:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  43:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * True if APPS_ADC_FinalBuf_TERMIN_SEL is used.
+  44:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMIN_EN
+  45:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  46:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * TERMIN interrupt line to signal terminate.
+  47:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMIN_SEL
+  48:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  49:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  50:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * True if APPS_ADC_FinalBuf_TERMOUT0_SEL is used.
+  51:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMOUT0_EN
+  52:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  53:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  54:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * TERMOUT0 interrupt line to signal completion.
+  55:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMOUT0_SEL
+  56:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  57:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  58:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * True if APPS_ADC_FinalBuf_TERMOUT1_SEL is used.
+  59:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMOUT1_EN
+  60:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  61:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  62:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * TERMOUT1 interrupt line to signal completion.
+  63:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * APPS_ADC_FinalBuf__TERMOUT1_SEL
+  64:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * 
+  65:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** ****************************************************************************/
+  66:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  67:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  68:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** /* Zero based index of APPS_ADC_FinalBuf dma channel */
+  69:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** uint8 APPS_ADC_FinalBuf_DmaHandle = DMA_INVALID_CHANNEL;
+  70:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+  71:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** /*********************************************************************
+  72:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Function Name: uint8 APPS_ADC_FinalBuf_DmaInitalize
+  73:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** **********************************************************************
+  74:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Summary:
+  75:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   Allocates and initialises a channel of the DMAC to be used by the
+  76:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   caller.
+  77:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  78:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Parameters:
+  79:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   BurstCount.
+  80:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  81:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  82:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   ReqestPerBurst.
+  83:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  84:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  85:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   UpperSrcAddress.
+  86:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  87:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  88:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   UpperDestAddress.
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *       
+  90:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  91:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Return:
+  92:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   The channel that can be used by the caller for DMA activity.
+  93:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   DMA_INVALID_CHANNEL (0xFF) if there are no channels left. 
+  94:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  95:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+  96:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *******************************************************************/
+  97:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** uint8 APPS_ADC_FinalBuf_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddres
+  98:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** {
+  27              		.loc 1 98 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  33              		.cfi_def_cfa_offset 20
+  34              		.cfi_offset 4, -20
+  35              		.cfi_offset 5, -16
+  36              		.cfi_offset 6, -12
+  37              		.cfi_offset 7, -8
+  38              		.cfi_offset 14, -4
+  39 0002 83B0     		sub	sp, sp, #12
+  40              		.cfi_def_cfa_offset 32
+  41 0004 8646     		mov	lr, r0
+  42 0006 0F46     		mov	r7, r1
+  43 0008 1646     		mov	r6, r2
+  44 000a 1D46     		mov	r5, r3
+  99:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+ 100:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     /* Allocate a DMA channel. */
+ 101:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     APPS_ADC_FinalBuf_DmaHandle = (uint8)APPS_ADC_FinalBuf__DRQ_NUMBER;
+  45              		.loc 1 101 0
+  46 000c 0A4C     		ldr	r4, .L2
+  47 000e 0023     		movs	r3, #0
+  48              	.LVL1:
+  49 0010 2370     		strb	r3, [r4]
+ 102:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+ 103:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     /* Configure the channel. */
+ 104:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     (void)CyDmaChSetConfiguration(APPS_ADC_FinalBuf_DmaHandle,
+  50              		.loc 1 104 0
+  51 0012 0093     		str	r3, [sp]
+  52 0014 0193     		str	r3, [sp, #4]
+  53 0016 1846     		mov	r0, r3
+  54              	.LVL2:
+  55 0018 7146     		mov	r1, lr
+  56              	.LVL3:
+  57 001a 3A46     		mov	r2, r7
+  58              	.LVL4:
+  59 001c FFF7FEFF 		bl	CyDmaChSetConfiguration
+  60              	.LVL5:
+ 105:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****                                   BurstCount,
+ 106:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****                                   ReqestPerBurst,
+ 107:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****                                   (uint8)APPS_ADC_FinalBuf__TERMOUT0_SEL,
+ 108:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****                                   (uint8)APPS_ADC_FinalBuf__TERMOUT1_SEL,
+ 109:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****                                   (uint8)APPS_ADC_FinalBuf__TERMIN_SEL);
+ 110:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+ 111:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     /* Set the extended address for the transfers */
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 4
+
+
+ 112:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     (void)CyDmaChSetExtendedAddress(APPS_ADC_FinalBuf_DmaHandle, UpperSrcAddress, UpperDestAddress)
+  61              		.loc 1 112 0
+  62 0020 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+  63 0022 3146     		mov	r1, r6
+  64 0024 2A46     		mov	r2, r5
+  65 0026 FFF7FEFF 		bl	CyDmaChSetExtendedAddress
+  66              	.LVL6:
+ 113:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+ 114:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     /* Set the priority for this channel */
+ 115:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     (void)CyDmaChPriority(APPS_ADC_FinalBuf_DmaHandle, (uint8)APPS_ADC_FinalBuf__PRIORITY);
+  67              		.loc 1 115 0
+  68 002a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+  69 002c 0221     		movs	r1, #2
+  70 002e FFF7FEFF 		bl	CyDmaChPriority
+  71              	.LVL7:
+ 116:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     
+ 117:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     return APPS_ADC_FinalBuf_DmaHandle;
+ 118:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** }
+  72              		.loc 1 118 0
+  73 0032 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+  74 0034 03B0     		add	sp, sp, #12
+  75              		@ sp needed
+  76 0036 F0BD     		pop	{r4, r5, r6, r7, pc}
+  77              	.L3:
+  78              		.align	2
+  79              	.L2:
+  80 0038 00000000 		.word	.LANCHOR0
+  81              		.cfi_endproc
+  82              	.LFE0:
+  83              		.size	APPS_ADC_FinalBuf_DmaInitialize, .-APPS_ADC_FinalBuf_DmaInitialize
+  84              		.section	.text.APPS_ADC_FinalBuf_DmaRelease,"ax",%progbits
+  85              		.align	2
+  86              		.global	APPS_ADC_FinalBuf_DmaRelease
+  87              		.thumb
+  88              		.thumb_func
+  89              		.type	APPS_ADC_FinalBuf_DmaRelease, %function
+  90              	APPS_ADC_FinalBuf_DmaRelease:
+  91              	.LFB1:
+ 119:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** 
+ 120:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** /*********************************************************************
+ 121:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Function Name: void APPS_ADC_FinalBuf_DmaRelease
+ 122:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** **********************************************************************
+ 123:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Summary:
+ 124:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   Frees the channel associated with APPS_ADC_FinalBuf.
+ 125:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 126:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 127:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Parameters:
+ 128:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   void.
+ 129:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 130:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 131:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 132:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** * Return:
+ 133:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *   void.
+ 134:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *
+ 135:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** *******************************************************************/
+ 136:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** void APPS_ADC_FinalBuf_DmaRelease(void) 
+ 137:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c **** {
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 5
+
+
+  92              		.loc 1 137 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 08B5     		push	{r3, lr}
+  97              		.cfi_def_cfa_offset 8
+  98              		.cfi_offset 3, -8
+  99              		.cfi_offset 14, -4
+ 138:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     /* Disable the channel */
+ 139:.\Generated_Source\PSoC5/APPS_ADC_FinalBuf_dma.c ****     (void)CyDmaChDisable(APPS_ADC_FinalBuf_DmaHandle);
+ 100              		.loc 1 139 0
+ 101 0002 024B     		ldr	r3, .L5
+ 102 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 103 0006 FFF7FEFF 		bl	CyDmaChDisable
+ 104              	.LVL8:
+ 105 000a 08BD     		pop	{r3, pc}
+ 106              	.L6:
+ 107              		.align	2
+ 108              	.L5:
+ 109 000c 00000000 		.word	.LANCHOR0
+ 110              		.cfi_endproc
+ 111              	.LFE1:
+ 112              		.size	APPS_ADC_FinalBuf_DmaRelease, .-APPS_ADC_FinalBuf_DmaRelease
+ 113              		.global	APPS_ADC_FinalBuf_DmaHandle
+ 114              		.data
+ 115              		.set	.LANCHOR0,. + 0
+ 116              		.type	APPS_ADC_FinalBuf_DmaHandle, %object
+ 117              		.size	APPS_ADC_FinalBuf_DmaHandle, 1
+ 118              	APPS_ADC_FinalBuf_DmaHandle:
+ 119 0000 FF       		.byte	-1
+ 120              		.text
+ 121              	.Letext0:
+ 122              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 123              		.file 3 "Generated_Source\\PSoC5/CYDMAC.H"
+ 124              		.section	.debug_info,"",%progbits
+ 125              	.Ldebug_info0:
+ 126 0000 F7010000 		.4byte	0x1f7
+ 127 0004 0400     		.2byte	0x4
+ 128 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 129 000a 04       		.byte	0x4
+ 130 000b 01       		.uleb128 0x1
+ 131 000c 21010000 		.4byte	.LASF23
+ 132 0010 01       		.byte	0x1
+ 133 0011 62000000 		.4byte	.LASF24
+ 134 0015 01020000 		.4byte	.LASF25
+ 135 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 136 001d 00000000 		.4byte	0
+ 137 0021 00000000 		.4byte	.Ldebug_line0
+ 138 0025 02       		.uleb128 0x2
+ 139 0026 04       		.byte	0x4
+ 140 0027 05       		.byte	0x5
+ 141 0028 696E7400 		.ascii	"int\000"
+ 142 002c 03       		.uleb128 0x3
+ 143 002d 04       		.byte	0x4
+ 144 002e 07       		.byte	0x7
+ 145 002f FD000000 		.4byte	.LASF0
+ 146 0033 03       		.uleb128 0x3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 6
+
+
+ 147 0034 01       		.byte	0x1
+ 148 0035 06       		.byte	0x6
+ 149 0036 71020000 		.4byte	.LASF1
+ 150 003a 03       		.uleb128 0x3
+ 151 003b 01       		.byte	0x1
+ 152 003c 08       		.byte	0x8
+ 153 003d 99000000 		.4byte	.LASF2
+ 154 0041 03       		.uleb128 0x3
+ 155 0042 02       		.byte	0x2
+ 156 0043 05       		.byte	0x5
+ 157 0044 5E020000 		.4byte	.LASF3
+ 158 0048 03       		.uleb128 0x3
+ 159 0049 02       		.byte	0x2
+ 160 004a 07       		.byte	0x7
+ 161 004b 4F000000 		.4byte	.LASF4
+ 162 004f 03       		.uleb128 0x3
+ 163 0050 04       		.byte	0x4
+ 164 0051 05       		.byte	0x5
+ 165 0052 68020000 		.4byte	.LASF5
+ 166 0056 03       		.uleb128 0x3
+ 167 0057 04       		.byte	0x4
+ 168 0058 07       		.byte	0x7
+ 169 0059 B2000000 		.4byte	.LASF6
+ 170 005d 03       		.uleb128 0x3
+ 171 005e 08       		.byte	0x8
+ 172 005f 05       		.byte	0x5
+ 173 0060 CB010000 		.4byte	.LASF7
+ 174 0064 03       		.uleb128 0x3
+ 175 0065 08       		.byte	0x8
+ 176 0066 07       		.byte	0x7
+ 177 0067 0A010000 		.4byte	.LASF8
+ 178 006b 03       		.uleb128 0x3
+ 179 006c 04       		.byte	0x4
+ 180 006d 07       		.byte	0x7
+ 181 006e D9010000 		.4byte	.LASF9
+ 182 0072 03       		.uleb128 0x3
+ 183 0073 01       		.byte	0x1
+ 184 0074 08       		.byte	0x8
+ 185 0075 FC010000 		.4byte	.LASF10
+ 186 0079 04       		.uleb128 0x4
+ 187 007a C4000000 		.4byte	.LASF11
+ 188 007e 02       		.byte	0x2
+ 189 007f B4       		.byte	0xb4
+ 190 0080 3A000000 		.4byte	0x3a
+ 191 0084 04       		.uleb128 0x4
+ 192 0085 ED000000 		.4byte	.LASF12
+ 193 0089 02       		.byte	0x2
+ 194 008a B5       		.byte	0xb5
+ 195 008b 48000000 		.4byte	0x48
+ 196 008f 03       		.uleb128 0x3
+ 197 0090 04       		.byte	0x4
+ 198 0091 04       		.byte	0x4
+ 199 0092 93000000 		.4byte	.LASF13
+ 200 0096 03       		.uleb128 0x3
+ 201 0097 08       		.byte	0x8
+ 202 0098 04       		.byte	0x4
+ 203 0099 E6000000 		.4byte	.LASF14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 7
+
+
+ 204 009d 05       		.uleb128 0x5
+ 205 009e F4000000 		.4byte	.LASF15
+ 206 00a2 02       		.byte	0x2
+ 207 00a3 5601     		.2byte	0x156
+ 208 00a5 56000000 		.4byte	0x56
+ 209 00a9 06       		.uleb128 0x6
+ 210 00aa 00000000 		.4byte	.LASF26
+ 211 00ae 01       		.byte	0x1
+ 212 00af 61       		.byte	0x61
+ 213 00b0 79000000 		.4byte	0x79
+ 214 00b4 00000000 		.4byte	.LFB0
+ 215 00b8 3C000000 		.4byte	.LFE0-.LFB0
+ 216 00bc 01       		.uleb128 0x1
+ 217 00bd 9C       		.byte	0x9c
+ 218 00be 52010000 		.4byte	0x152
+ 219 00c2 07       		.uleb128 0x7
+ 220 00c3 A7000000 		.4byte	.LASF16
+ 221 00c7 01       		.byte	0x1
+ 222 00c8 61       		.byte	0x61
+ 223 00c9 79000000 		.4byte	0x79
+ 224 00cd 00000000 		.4byte	.LLST0
+ 225 00d1 07       		.uleb128 0x7
+ 226 00d2 40000000 		.4byte	.LASF17
+ 227 00d6 01       		.byte	0x1
+ 228 00d7 61       		.byte	0x61
+ 229 00d8 79000000 		.4byte	0x79
+ 230 00dc 21000000 		.4byte	.LLST1
+ 231 00e0 07       		.uleb128 0x7
+ 232 00e1 20000000 		.4byte	.LASF18
+ 233 00e5 01       		.byte	0x1
+ 234 00e6 61       		.byte	0x61
+ 235 00e7 84000000 		.4byte	0x84
+ 236 00eb 42000000 		.4byte	.LLST2
+ 237 00ef 07       		.uleb128 0x7
+ 238 00f0 9D010000 		.4byte	.LASF19
+ 239 00f4 01       		.byte	0x1
+ 240 00f5 61       		.byte	0x61
+ 241 00f6 84000000 		.4byte	0x84
+ 242 00fa 63000000 		.4byte	.LLST3
+ 243 00fe 08       		.uleb128 0x8
+ 244 00ff 20000000 		.4byte	.LVL5
+ 245 0103 82010000 		.4byte	0x182
+ 246 0107 28010000 		.4byte	0x128
+ 247 010b 09       		.uleb128 0x9
+ 248 010c 01       		.uleb128 0x1
+ 249 010d 53       		.byte	0x53
+ 250 010e 01       		.uleb128 0x1
+ 251 010f 30       		.byte	0x30
+ 252 0110 09       		.uleb128 0x9
+ 253 0111 01       		.uleb128 0x1
+ 254 0112 52       		.byte	0x52
+ 255 0113 02       		.uleb128 0x2
+ 256 0114 77       		.byte	0x77
+ 257 0115 00       		.sleb128 0
+ 258 0116 09       		.uleb128 0x9
+ 259 0117 01       		.uleb128 0x1
+ 260 0118 50       		.byte	0x50
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 8
+
+
+ 261 0119 01       		.uleb128 0x1
+ 262 011a 30       		.byte	0x30
+ 263 011b 09       		.uleb128 0x9
+ 264 011c 02       		.uleb128 0x2
+ 265 011d 7D       		.byte	0x7d
+ 266 011e 04       		.sleb128 4
+ 267 011f 01       		.uleb128 0x1
+ 268 0120 30       		.byte	0x30
+ 269 0121 09       		.uleb128 0x9
+ 270 0122 02       		.uleb128 0x2
+ 271 0123 7D       		.byte	0x7d
+ 272 0124 00       		.sleb128 0
+ 273 0125 01       		.uleb128 0x1
+ 274 0126 30       		.byte	0x30
+ 275 0127 00       		.byte	0
+ 276 0128 08       		.uleb128 0x8
+ 277 0129 2A000000 		.4byte	.LVL6
+ 278 012d B0010000 		.4byte	0x1b0
+ 279 0131 42010000 		.4byte	0x142
+ 280 0135 09       		.uleb128 0x9
+ 281 0136 01       		.uleb128 0x1
+ 282 0137 52       		.byte	0x52
+ 283 0138 02       		.uleb128 0x2
+ 284 0139 75       		.byte	0x75
+ 285 013a 00       		.sleb128 0
+ 286 013b 09       		.uleb128 0x9
+ 287 013c 01       		.uleb128 0x1
+ 288 013d 51       		.byte	0x51
+ 289 013e 02       		.uleb128 0x2
+ 290 013f 76       		.byte	0x76
+ 291 0140 00       		.sleb128 0
+ 292 0141 00       		.byte	0
+ 293 0142 0A       		.uleb128 0xa
+ 294 0143 32000000 		.4byte	.LVL7
+ 295 0147 CF010000 		.4byte	0x1cf
+ 296 014b 09       		.uleb128 0x9
+ 297 014c 01       		.uleb128 0x1
+ 298 014d 51       		.byte	0x51
+ 299 014e 01       		.uleb128 0x1
+ 300 014f 32       		.byte	0x32
+ 301 0150 00       		.byte	0
+ 302 0151 00       		.byte	0
+ 303 0152 0B       		.uleb128 0xb
+ 304 0153 AE010000 		.4byte	.LASF27
+ 305 0157 01       		.byte	0x1
+ 306 0158 88       		.byte	0x88
+ 307 0159 00000000 		.4byte	.LFB1
+ 308 015d 10000000 		.4byte	.LFE1-.LFB1
+ 309 0161 01       		.uleb128 0x1
+ 310 0162 9C       		.byte	0x9c
+ 311 0163 71010000 		.4byte	0x171
+ 312 0167 0C       		.uleb128 0xc
+ 313 0168 0A000000 		.4byte	.LVL8
+ 314 016c E9010000 		.4byte	0x1e9
+ 315 0170 00       		.byte	0
+ 316 0171 0D       		.uleb128 0xd
+ 317 0172 CA000000 		.4byte	.LASF28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 9
+
+
+ 318 0176 01       		.byte	0x1
+ 319 0177 45       		.byte	0x45
+ 320 0178 79000000 		.4byte	0x79
+ 321 017c 05       		.uleb128 0x5
+ 322 017d 03       		.byte	0x3
+ 323 017e 00000000 		.4byte	APPS_ADC_FinalBuf_DmaHandle
+ 324 0182 0E       		.uleb128 0xe
+ 325 0183 8C020000 		.4byte	.LASF20
+ 326 0187 03       		.byte	0x3
+ 327 0188 34       		.byte	0x34
+ 328 0189 9D000000 		.4byte	0x9d
+ 329 018d B0010000 		.4byte	0x1b0
+ 330 0191 0F       		.uleb128 0xf
+ 331 0192 79000000 		.4byte	0x79
+ 332 0196 0F       		.uleb128 0xf
+ 333 0197 79000000 		.4byte	0x79
+ 334 019b 0F       		.uleb128 0xf
+ 335 019c 79000000 		.4byte	0x79
+ 336 01a0 0F       		.uleb128 0xf
+ 337 01a1 79000000 		.4byte	0x79
+ 338 01a5 0F       		.uleb128 0xf
+ 339 01a6 79000000 		.4byte	0x79
+ 340 01aa 0F       		.uleb128 0xf
+ 341 01ab 79000000 		.4byte	0x79
+ 342 01af 00       		.byte	0
+ 343 01b0 0E       		.uleb128 0xe
+ 344 01b1 E2010000 		.4byte	.LASF21
+ 345 01b5 03       		.byte	0x3
+ 346 01b6 2E       		.byte	0x2e
+ 347 01b7 9D000000 		.4byte	0x9d
+ 348 01bb CF010000 		.4byte	0x1cf
+ 349 01bf 0F       		.uleb128 0xf
+ 350 01c0 79000000 		.4byte	0x79
+ 351 01c4 0F       		.uleb128 0xf
+ 352 01c5 84000000 		.4byte	0x84
+ 353 01c9 0F       		.uleb128 0xf
+ 354 01ca 84000000 		.4byte	0x84
+ 355 01ce 00       		.byte	0
+ 356 01cf 0E       		.uleb128 0xe
+ 357 01d0 30000000 		.4byte	.LASF22
+ 358 01d4 03       		.byte	0x3
+ 359 01d5 2D       		.byte	0x2d
+ 360 01d6 9D000000 		.4byte	0x9d
+ 361 01da E9010000 		.4byte	0x1e9
+ 362 01de 0F       		.uleb128 0xf
+ 363 01df 79000000 		.4byte	0x79
+ 364 01e3 0F       		.uleb128 0xf
+ 365 01e4 79000000 		.4byte	0x79
+ 366 01e8 00       		.byte	0
+ 367 01e9 10       		.uleb128 0x10
+ 368 01ea 7D020000 		.4byte	.LASF29
+ 369 01ee 03       		.byte	0x3
+ 370 01ef 2B       		.byte	0x2b
+ 371 01f0 9D000000 		.4byte	0x9d
+ 372 01f4 0F       		.uleb128 0xf
+ 373 01f5 79000000 		.4byte	0x79
+ 374 01f9 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 10
+
+
+ 375 01fa 00       		.byte	0
+ 376              		.section	.debug_abbrev,"",%progbits
+ 377              	.Ldebug_abbrev0:
+ 378 0000 01       		.uleb128 0x1
+ 379 0001 11       		.uleb128 0x11
+ 380 0002 01       		.byte	0x1
+ 381 0003 25       		.uleb128 0x25
+ 382 0004 0E       		.uleb128 0xe
+ 383 0005 13       		.uleb128 0x13
+ 384 0006 0B       		.uleb128 0xb
+ 385 0007 03       		.uleb128 0x3
+ 386 0008 0E       		.uleb128 0xe
+ 387 0009 1B       		.uleb128 0x1b
+ 388 000a 0E       		.uleb128 0xe
+ 389 000b 55       		.uleb128 0x55
+ 390 000c 17       		.uleb128 0x17
+ 391 000d 11       		.uleb128 0x11
+ 392 000e 01       		.uleb128 0x1
+ 393 000f 10       		.uleb128 0x10
+ 394 0010 17       		.uleb128 0x17
+ 395 0011 00       		.byte	0
+ 396 0012 00       		.byte	0
+ 397 0013 02       		.uleb128 0x2
+ 398 0014 24       		.uleb128 0x24
+ 399 0015 00       		.byte	0
+ 400 0016 0B       		.uleb128 0xb
+ 401 0017 0B       		.uleb128 0xb
+ 402 0018 3E       		.uleb128 0x3e
+ 403 0019 0B       		.uleb128 0xb
+ 404 001a 03       		.uleb128 0x3
+ 405 001b 08       		.uleb128 0x8
+ 406 001c 00       		.byte	0
+ 407 001d 00       		.byte	0
+ 408 001e 03       		.uleb128 0x3
+ 409 001f 24       		.uleb128 0x24
+ 410 0020 00       		.byte	0
+ 411 0021 0B       		.uleb128 0xb
+ 412 0022 0B       		.uleb128 0xb
+ 413 0023 3E       		.uleb128 0x3e
+ 414 0024 0B       		.uleb128 0xb
+ 415 0025 03       		.uleb128 0x3
+ 416 0026 0E       		.uleb128 0xe
+ 417 0027 00       		.byte	0
+ 418 0028 00       		.byte	0
+ 419 0029 04       		.uleb128 0x4
+ 420 002a 16       		.uleb128 0x16
+ 421 002b 00       		.byte	0
+ 422 002c 03       		.uleb128 0x3
+ 423 002d 0E       		.uleb128 0xe
+ 424 002e 3A       		.uleb128 0x3a
+ 425 002f 0B       		.uleb128 0xb
+ 426 0030 3B       		.uleb128 0x3b
+ 427 0031 0B       		.uleb128 0xb
+ 428 0032 49       		.uleb128 0x49
+ 429 0033 13       		.uleb128 0x13
+ 430 0034 00       		.byte	0
+ 431 0035 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 11
+
+
+ 432 0036 05       		.uleb128 0x5
+ 433 0037 16       		.uleb128 0x16
+ 434 0038 00       		.byte	0
+ 435 0039 03       		.uleb128 0x3
+ 436 003a 0E       		.uleb128 0xe
+ 437 003b 3A       		.uleb128 0x3a
+ 438 003c 0B       		.uleb128 0xb
+ 439 003d 3B       		.uleb128 0x3b
+ 440 003e 05       		.uleb128 0x5
+ 441 003f 49       		.uleb128 0x49
+ 442 0040 13       		.uleb128 0x13
+ 443 0041 00       		.byte	0
+ 444 0042 00       		.byte	0
+ 445 0043 06       		.uleb128 0x6
+ 446 0044 2E       		.uleb128 0x2e
+ 447 0045 01       		.byte	0x1
+ 448 0046 3F       		.uleb128 0x3f
+ 449 0047 19       		.uleb128 0x19
+ 450 0048 03       		.uleb128 0x3
+ 451 0049 0E       		.uleb128 0xe
+ 452 004a 3A       		.uleb128 0x3a
+ 453 004b 0B       		.uleb128 0xb
+ 454 004c 3B       		.uleb128 0x3b
+ 455 004d 0B       		.uleb128 0xb
+ 456 004e 27       		.uleb128 0x27
+ 457 004f 19       		.uleb128 0x19
+ 458 0050 49       		.uleb128 0x49
+ 459 0051 13       		.uleb128 0x13
+ 460 0052 11       		.uleb128 0x11
+ 461 0053 01       		.uleb128 0x1
+ 462 0054 12       		.uleb128 0x12
+ 463 0055 06       		.uleb128 0x6
+ 464 0056 40       		.uleb128 0x40
+ 465 0057 18       		.uleb128 0x18
+ 466 0058 9742     		.uleb128 0x2117
+ 467 005a 19       		.uleb128 0x19
+ 468 005b 01       		.uleb128 0x1
+ 469 005c 13       		.uleb128 0x13
+ 470 005d 00       		.byte	0
+ 471 005e 00       		.byte	0
+ 472 005f 07       		.uleb128 0x7
+ 473 0060 05       		.uleb128 0x5
+ 474 0061 00       		.byte	0
+ 475 0062 03       		.uleb128 0x3
+ 476 0063 0E       		.uleb128 0xe
+ 477 0064 3A       		.uleb128 0x3a
+ 478 0065 0B       		.uleb128 0xb
+ 479 0066 3B       		.uleb128 0x3b
+ 480 0067 0B       		.uleb128 0xb
+ 481 0068 49       		.uleb128 0x49
+ 482 0069 13       		.uleb128 0x13
+ 483 006a 02       		.uleb128 0x2
+ 484 006b 17       		.uleb128 0x17
+ 485 006c 00       		.byte	0
+ 486 006d 00       		.byte	0
+ 487 006e 08       		.uleb128 0x8
+ 488 006f 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 12
+
+
+ 489 0072 01       		.byte	0x1
+ 490 0073 11       		.uleb128 0x11
+ 491 0074 01       		.uleb128 0x1
+ 492 0075 31       		.uleb128 0x31
+ 493 0076 13       		.uleb128 0x13
+ 494 0077 01       		.uleb128 0x1
+ 495 0078 13       		.uleb128 0x13
+ 496 0079 00       		.byte	0
+ 497 007a 00       		.byte	0
+ 498 007b 09       		.uleb128 0x9
+ 499 007c 8A8201   		.uleb128 0x410a
+ 500 007f 00       		.byte	0
+ 501 0080 02       		.uleb128 0x2
+ 502 0081 18       		.uleb128 0x18
+ 503 0082 9142     		.uleb128 0x2111
+ 504 0084 18       		.uleb128 0x18
+ 505 0085 00       		.byte	0
+ 506 0086 00       		.byte	0
+ 507 0087 0A       		.uleb128 0xa
+ 508 0088 898201   		.uleb128 0x4109
+ 509 008b 01       		.byte	0x1
+ 510 008c 11       		.uleb128 0x11
+ 511 008d 01       		.uleb128 0x1
+ 512 008e 31       		.uleb128 0x31
+ 513 008f 13       		.uleb128 0x13
+ 514 0090 00       		.byte	0
+ 515 0091 00       		.byte	0
+ 516 0092 0B       		.uleb128 0xb
+ 517 0093 2E       		.uleb128 0x2e
+ 518 0094 01       		.byte	0x1
+ 519 0095 3F       		.uleb128 0x3f
+ 520 0096 19       		.uleb128 0x19
+ 521 0097 03       		.uleb128 0x3
+ 522 0098 0E       		.uleb128 0xe
+ 523 0099 3A       		.uleb128 0x3a
+ 524 009a 0B       		.uleb128 0xb
+ 525 009b 3B       		.uleb128 0x3b
+ 526 009c 0B       		.uleb128 0xb
+ 527 009d 27       		.uleb128 0x27
+ 528 009e 19       		.uleb128 0x19
+ 529 009f 11       		.uleb128 0x11
+ 530 00a0 01       		.uleb128 0x1
+ 531 00a1 12       		.uleb128 0x12
+ 532 00a2 06       		.uleb128 0x6
+ 533 00a3 40       		.uleb128 0x40
+ 534 00a4 18       		.uleb128 0x18
+ 535 00a5 9742     		.uleb128 0x2117
+ 536 00a7 19       		.uleb128 0x19
+ 537 00a8 01       		.uleb128 0x1
+ 538 00a9 13       		.uleb128 0x13
+ 539 00aa 00       		.byte	0
+ 540 00ab 00       		.byte	0
+ 541 00ac 0C       		.uleb128 0xc
+ 542 00ad 898201   		.uleb128 0x4109
+ 543 00b0 00       		.byte	0
+ 544 00b1 11       		.uleb128 0x11
+ 545 00b2 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 13
+
+
+ 546 00b3 31       		.uleb128 0x31
+ 547 00b4 13       		.uleb128 0x13
+ 548 00b5 00       		.byte	0
+ 549 00b6 00       		.byte	0
+ 550 00b7 0D       		.uleb128 0xd
+ 551 00b8 34       		.uleb128 0x34
+ 552 00b9 00       		.byte	0
+ 553 00ba 03       		.uleb128 0x3
+ 554 00bb 0E       		.uleb128 0xe
+ 555 00bc 3A       		.uleb128 0x3a
+ 556 00bd 0B       		.uleb128 0xb
+ 557 00be 3B       		.uleb128 0x3b
+ 558 00bf 0B       		.uleb128 0xb
+ 559 00c0 49       		.uleb128 0x49
+ 560 00c1 13       		.uleb128 0x13
+ 561 00c2 3F       		.uleb128 0x3f
+ 562 00c3 19       		.uleb128 0x19
+ 563 00c4 02       		.uleb128 0x2
+ 564 00c5 18       		.uleb128 0x18
+ 565 00c6 00       		.byte	0
+ 566 00c7 00       		.byte	0
+ 567 00c8 0E       		.uleb128 0xe
+ 568 00c9 2E       		.uleb128 0x2e
+ 569 00ca 01       		.byte	0x1
+ 570 00cb 3F       		.uleb128 0x3f
+ 571 00cc 19       		.uleb128 0x19
+ 572 00cd 03       		.uleb128 0x3
+ 573 00ce 0E       		.uleb128 0xe
+ 574 00cf 3A       		.uleb128 0x3a
+ 575 00d0 0B       		.uleb128 0xb
+ 576 00d1 3B       		.uleb128 0x3b
+ 577 00d2 0B       		.uleb128 0xb
+ 578 00d3 27       		.uleb128 0x27
+ 579 00d4 19       		.uleb128 0x19
+ 580 00d5 49       		.uleb128 0x49
+ 581 00d6 13       		.uleb128 0x13
+ 582 00d7 3C       		.uleb128 0x3c
+ 583 00d8 19       		.uleb128 0x19
+ 584 00d9 01       		.uleb128 0x1
+ 585 00da 13       		.uleb128 0x13
+ 586 00db 00       		.byte	0
+ 587 00dc 00       		.byte	0
+ 588 00dd 0F       		.uleb128 0xf
+ 589 00de 05       		.uleb128 0x5
+ 590 00df 00       		.byte	0
+ 591 00e0 49       		.uleb128 0x49
+ 592 00e1 13       		.uleb128 0x13
+ 593 00e2 00       		.byte	0
+ 594 00e3 00       		.byte	0
+ 595 00e4 10       		.uleb128 0x10
+ 596 00e5 2E       		.uleb128 0x2e
+ 597 00e6 01       		.byte	0x1
+ 598 00e7 3F       		.uleb128 0x3f
+ 599 00e8 19       		.uleb128 0x19
+ 600 00e9 03       		.uleb128 0x3
+ 601 00ea 0E       		.uleb128 0xe
+ 602 00eb 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 14
+
+
+ 603 00ec 0B       		.uleb128 0xb
+ 604 00ed 3B       		.uleb128 0x3b
+ 605 00ee 0B       		.uleb128 0xb
+ 606 00ef 27       		.uleb128 0x27
+ 607 00f0 19       		.uleb128 0x19
+ 608 00f1 49       		.uleb128 0x49
+ 609 00f2 13       		.uleb128 0x13
+ 610 00f3 3C       		.uleb128 0x3c
+ 611 00f4 19       		.uleb128 0x19
+ 612 00f5 00       		.byte	0
+ 613 00f6 00       		.byte	0
+ 614 00f7 00       		.byte	0
+ 615              		.section	.debug_loc,"",%progbits
+ 616              	.Ldebug_loc0:
+ 617              	.LLST0:
+ 618 0000 00000000 		.4byte	.LVL0
+ 619 0004 18000000 		.4byte	.LVL2
+ 620 0008 0100     		.2byte	0x1
+ 621 000a 50       		.byte	0x50
+ 622 000b 18000000 		.4byte	.LVL2
+ 623 000f 3C000000 		.4byte	.LFE0
+ 624 0013 0400     		.2byte	0x4
+ 625 0015 F3       		.byte	0xf3
+ 626 0016 01       		.uleb128 0x1
+ 627 0017 50       		.byte	0x50
+ 628 0018 9F       		.byte	0x9f
+ 629 0019 00000000 		.4byte	0
+ 630 001d 00000000 		.4byte	0
+ 631              	.LLST1:
+ 632 0021 00000000 		.4byte	.LVL0
+ 633 0025 1A000000 		.4byte	.LVL3
+ 634 0029 0100     		.2byte	0x1
+ 635 002b 51       		.byte	0x51
+ 636 002c 1A000000 		.4byte	.LVL3
+ 637 0030 3C000000 		.4byte	.LFE0
+ 638 0034 0400     		.2byte	0x4
+ 639 0036 F3       		.byte	0xf3
+ 640 0037 01       		.uleb128 0x1
+ 641 0038 51       		.byte	0x51
+ 642 0039 9F       		.byte	0x9f
+ 643 003a 00000000 		.4byte	0
+ 644 003e 00000000 		.4byte	0
+ 645              	.LLST2:
+ 646 0042 00000000 		.4byte	.LVL0
+ 647 0046 1C000000 		.4byte	.LVL4
+ 648 004a 0100     		.2byte	0x1
+ 649 004c 52       		.byte	0x52
+ 650 004d 1C000000 		.4byte	.LVL4
+ 651 0051 3C000000 		.4byte	.LFE0
+ 652 0055 0400     		.2byte	0x4
+ 653 0057 F3       		.byte	0xf3
+ 654 0058 01       		.uleb128 0x1
+ 655 0059 52       		.byte	0x52
+ 656 005a 9F       		.byte	0x9f
+ 657 005b 00000000 		.4byte	0
+ 658 005f 00000000 		.4byte	0
+ 659              	.LLST3:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 15
+
+
+ 660 0063 00000000 		.4byte	.LVL0
+ 661 0067 10000000 		.4byte	.LVL1
+ 662 006b 0100     		.2byte	0x1
+ 663 006d 53       		.byte	0x53
+ 664 006e 10000000 		.4byte	.LVL1
+ 665 0072 3C000000 		.4byte	.LFE0
+ 666 0076 0400     		.2byte	0x4
+ 667 0078 F3       		.byte	0xf3
+ 668 0079 01       		.uleb128 0x1
+ 669 007a 53       		.byte	0x53
+ 670 007b 9F       		.byte	0x9f
+ 671 007c 00000000 		.4byte	0
+ 672 0080 00000000 		.4byte	0
+ 673              		.section	.debug_aranges,"",%progbits
+ 674 0000 24000000 		.4byte	0x24
+ 675 0004 0200     		.2byte	0x2
+ 676 0006 00000000 		.4byte	.Ldebug_info0
+ 677 000a 04       		.byte	0x4
+ 678 000b 00       		.byte	0
+ 679 000c 0000     		.2byte	0
+ 680 000e 0000     		.2byte	0
+ 681 0010 00000000 		.4byte	.LFB0
+ 682 0014 3C000000 		.4byte	.LFE0-.LFB0
+ 683 0018 00000000 		.4byte	.LFB1
+ 684 001c 10000000 		.4byte	.LFE1-.LFB1
+ 685 0020 00000000 		.4byte	0
+ 686 0024 00000000 		.4byte	0
+ 687              		.section	.debug_ranges,"",%progbits
+ 688              	.Ldebug_ranges0:
+ 689 0000 00000000 		.4byte	.LFB0
+ 690 0004 3C000000 		.4byte	.LFE0
+ 691 0008 00000000 		.4byte	.LFB1
+ 692 000c 10000000 		.4byte	.LFE1
+ 693 0010 00000000 		.4byte	0
+ 694 0014 00000000 		.4byte	0
+ 695              		.section	.debug_line,"",%progbits
+ 696              	.Ldebug_line0:
+ 697 0000 A3000000 		.section	.debug_str,"MS",%progbits,1
+ 697      02007700 
+ 697      00000201 
+ 697      FB0E0D00 
+ 697      01010101 
+ 698              	.LASF26:
+ 699 0000 41505053 		.ascii	"APPS_ADC_FinalBuf_DmaInitialize\000"
+ 699      5F414443 
+ 699      5F46696E 
+ 699      616C4275 
+ 699      665F446D 
+ 700              	.LASF18:
+ 701 0020 55707065 		.ascii	"UpperSrcAddress\000"
+ 701      72537263 
+ 701      41646472 
+ 701      65737300 
+ 702              	.LASF22:
+ 703 0030 4379446D 		.ascii	"CyDmaChPriority\000"
+ 703      61436850 
+ 703      72696F72 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 16
+
+
+ 703      69747900 
+ 704              	.LASF17:
+ 705 0040 52657165 		.ascii	"ReqestPerBurst\000"
+ 705      73745065 
+ 705      72427572 
+ 705      737400
+ 706              	.LASF4:
+ 707 004f 73686F72 		.ascii	"short unsigned int\000"
+ 707      7420756E 
+ 707      7369676E 
+ 707      65642069 
+ 707      6E7400
+ 708              	.LASF24:
+ 709 0062 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\APPS_ADC_FinalBuf_dma.c"
+ 709      6E657261 
+ 709      7465645F 
+ 709      536F7572 
+ 709      63655C50 
+ 710 0092 00       		.ascii	"\000"
+ 711              	.LASF13:
+ 712 0093 666C6F61 		.ascii	"float\000"
+ 712      7400
+ 713              	.LASF2:
+ 714 0099 756E7369 		.ascii	"unsigned char\000"
+ 714      676E6564 
+ 714      20636861 
+ 714      7200
+ 715              	.LASF16:
+ 716 00a7 42757273 		.ascii	"BurstCount\000"
+ 716      74436F75 
+ 716      6E7400
+ 717              	.LASF6:
+ 718 00b2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 718      20756E73 
+ 718      69676E65 
+ 718      6420696E 
+ 718      7400
+ 719              	.LASF11:
+ 720 00c4 75696E74 		.ascii	"uint8\000"
+ 720      3800
+ 721              	.LASF28:
+ 722 00ca 41505053 		.ascii	"APPS_ADC_FinalBuf_DmaHandle\000"
+ 722      5F414443 
+ 722      5F46696E 
+ 722      616C4275 
+ 722      665F446D 
+ 723              	.LASF14:
+ 724 00e6 646F7562 		.ascii	"double\000"
+ 724      6C6500
+ 725              	.LASF12:
+ 726 00ed 75696E74 		.ascii	"uint16\000"
+ 726      313600
+ 727              	.LASF15:
+ 728 00f4 63797374 		.ascii	"cystatus\000"
+ 728      61747573 
+ 728      00
+ 729              	.LASF0:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 17
+
+
+ 730 00fd 756E7369 		.ascii	"unsigned int\000"
+ 730      676E6564 
+ 730      20696E74 
+ 730      00
+ 731              	.LASF8:
+ 732 010a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 732      206C6F6E 
+ 732      6720756E 
+ 732      7369676E 
+ 732      65642069 
+ 733              	.LASF23:
+ 734 0121 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 734      4320342E 
+ 734      382E3420 
+ 734      32303134 
+ 734      30353236 
+ 735 0154 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 735      20726576 
+ 735      6973696F 
+ 735      6E203231 
+ 735      31333538 
+ 736 0187 67202D66 		.ascii	"g -ffunction-sections\000"
+ 736      66756E63 
+ 736      74696F6E 
+ 736      2D736563 
+ 736      74696F6E 
+ 737              	.LASF19:
+ 738 019d 55707065 		.ascii	"UpperDestAddress\000"
+ 738      72446573 
+ 738      74416464 
+ 738      72657373 
+ 738      00
+ 739              	.LASF27:
+ 740 01ae 41505053 		.ascii	"APPS_ADC_FinalBuf_DmaRelease\000"
+ 740      5F414443 
+ 740      5F46696E 
+ 740      616C4275 
+ 740      665F446D 
+ 741              	.LASF7:
+ 742 01cb 6C6F6E67 		.ascii	"long long int\000"
+ 742      206C6F6E 
+ 742      6720696E 
+ 742      7400
+ 743              	.LASF9:
+ 744 01d9 73697A65 		.ascii	"sizetype\000"
+ 744      74797065 
+ 744      00
+ 745              	.LASF21:
+ 746 01e2 4379446D 		.ascii	"CyDmaChSetExtendedAddress\000"
+ 746      61436853 
+ 746      65744578 
+ 746      74656E64 
+ 746      65644164 
+ 747              	.LASF10:
+ 748 01fc 63686172 		.ascii	"char\000"
+ 748      00
+ 749              	.LASF25:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccOLacvP.s 			page 18
+
+
+ 750 0201 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
+ 750      73657273 
+ 750      5C6D6974 
+ 750      6368656C 
+ 750      6C5C446F 
+ 751 022e 2D546872 		.ascii	"-Throttle\\E-Throttle-Mainboard-Deprecated.cydsn\000"
+ 751      6F74746C 
+ 751      655C452D 
+ 751      5468726F 
+ 751      74746C65 
+ 752              	.LASF3:
+ 753 025e 73686F72 		.ascii	"short int\000"
+ 753      7420696E 
+ 753      7400
+ 754              	.LASF5:
+ 755 0268 6C6F6E67 		.ascii	"long int\000"
+ 755      20696E74 
+ 755      00
+ 756              	.LASF1:
+ 757 0271 7369676E 		.ascii	"signed char\000"
+ 757      65642063 
+ 757      68617200 
+ 758              	.LASF29:
+ 759 027d 4379446D 		.ascii	"CyDmaChDisable\000"
+ 759      61436844 
+ 759      69736162 
+ 759      6C6500
+ 760              	.LASF20:
+ 761 028c 4379446D 		.ascii	"CyDmaChSetConfiguration\000"
+ 761      61436853 
+ 761      6574436F 
+ 761      6E666967 
+ 761      75726174 
+ 762              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

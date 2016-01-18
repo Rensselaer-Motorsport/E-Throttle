@@ -1,0 +1,976 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.outputNum,"ax",%progbits
+  19              		.align	2
+  20              		.global	outputNum
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	outputNum, %function
+  24              	outputNum:
+  25              	.LFB64:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** void outputNum(char*);
+  15:.\main.c      **** 
+  16:.\main.c      **** int main()
+  17:.\main.c      **** {
+  18:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  19:.\main.c      ****     
+  20:.\main.c      ****     UART_1_Start();
+  21:.\main.c      ****     ADC_DelSig_Start();
+  22:.\main.c      ****     
+  23:.\main.c      ****     union {
+  24:.\main.c      ****         char str[4];
+  25:.\main.c      ****         int num;
+  26:.\main.c      ****     } pot_0;
+  27:.\main.c      ****     
+  28:.\main.c      ****     
+  29:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  30:.\main.c      **** 
+  31:.\main.c      ****     for(;;)
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 2
+
+
+  32:.\main.c      ****     { 
+  33:.\main.c      ****         // Run an ADC convert and store the values in the pot_0/pot_1.num
+  34:.\main.c      ****         //ADC_DelSig_StartConvert();
+  35:.\main.c      ****         //ADC_DelSig_IsEndConversion(ADC_DelSig_WAIT_FOR_RESULT);
+  36:.\main.c      ****         //pot_0.num = ADC_DelSig_GetResult16();
+  37:.\main.c      ****         
+  38:.\main.c      ****         pot_0.num = ADC_DelSig_Read16();
+  39:.\main.c      ****         
+  40:.\main.c      ****         outputNum(pot_0.str);
+  41:.\main.c      ****                 
+  42:.\main.c      ****         CyDelay(100);
+  43:.\main.c      ****     }
+  44:.\main.c      **** }
+  45:.\main.c      **** 
+  46:.\main.c      **** void outputNum(char* num) {
+  27              		.loc 1 46 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 0446     		mov	r4, r0
+  47:.\main.c      ****     UART_1_PutChar(num[0]);
+  37              		.loc 1 47 0
+  38 0004 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+  39              	.LVL1:
+  40 0006 FFF7FEFF 		bl	UART_1_PutChar
+  41              	.LVL2:
+  48:.\main.c      ****     UART_1_PutChar(num[1]);
+  42              		.loc 1 48 0
+  43 000a 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
+  44 000c FFF7FEFF 		bl	UART_1_PutChar
+  45              	.LVL3:
+  49:.\main.c      ****     UART_1_PutChar(num[2]);
+  46              		.loc 1 49 0
+  47 0010 A078     		ldrb	r0, [r4, #2]	@ zero_extendqisi2
+  48 0012 FFF7FEFF 		bl	UART_1_PutChar
+  49              	.LVL4:
+  50:.\main.c      ****     UART_1_PutChar(num[3]);
+  50              		.loc 1 50 0
+  51 0016 E078     		ldrb	r0, [r4, #3]	@ zero_extendqisi2
+  52 0018 FFF7FEFF 		bl	UART_1_PutChar
+  53              	.LVL5:
+  54 001c 10BD     		pop	{r4, pc}
+  55              		.cfi_endproc
+  56              	.LFE64:
+  57              		.size	outputNum, .-outputNum
+  58 001e 00BF     		.section	.text.main,"ax",%progbits
+  59              		.align	2
+  60              		.global	main
+  61              		.thumb
+  62              		.thumb_func
+  63              		.type	main, %function
+  64              	main:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 3
+
+
+  65              	.LFB63:
+  17:.\main.c      **** {
+  66              		.loc 1 17 0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 8
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70 0000 10B5     		push	{r4, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 4, -8
+  73              		.cfi_offset 14, -4
+  74 0002 82B0     		sub	sp, sp, #8
+  75              		.cfi_def_cfa_offset 16
+  18:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  76              		.loc 1 18 0
+  77              	@ 18 ".\main.c" 1
+  78 0004 62B6     		CPSIE   i
+  79              	@ 0 "" 2
+  20:.\main.c      ****     UART_1_Start();
+  80              		.loc 1 20 0
+  81              		.thumb
+  82 0006 FFF7FEFF 		bl	UART_1_Start
+  83              	.LVL6:
+  21:.\main.c      ****     ADC_DelSig_Start();
+  84              		.loc 1 21 0
+  85 000a FFF7FEFF 		bl	ADC_DelSig_Start
+  86              	.LVL7:
+  42:.\main.c      ****         CyDelay(100);
+  87              		.loc 1 42 0
+  88 000e 6424     		movs	r4, #100
+  89              	.L3:
+  38:.\main.c      ****         pot_0.num = ADC_DelSig_Read16();
+  90              		.loc 1 38 0 discriminator 1
+  91 0010 FFF7FEFF 		bl	ADC_DelSig_Read16
+  92              	.LVL8:
+  93 0014 0190     		str	r0, [sp, #4]
+  40:.\main.c      ****         outputNum(pot_0.str);
+  94              		.loc 1 40 0 discriminator 1
+  95 0016 01A8     		add	r0, sp, #4
+  96 0018 FFF7FEFF 		bl	outputNum
+  97              	.LVL9:
+  42:.\main.c      ****         CyDelay(100);
+  98              		.loc 1 42 0 discriminator 1
+  99 001c 2046     		mov	r0, r4
+ 100 001e FFF7FEFF 		bl	CyDelay
+ 101              	.LVL10:
+ 102 0022 F5E7     		b	.L3
+ 103              		.cfi_endproc
+ 104              	.LFE63:
+ 105              		.size	main, .-main
+ 106              		.text
+ 107              	.Letext0:
+ 108              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 109              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.2\\psoc creator\\import\\gnu\\arm\\4.8.
+ 110              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 111              		.file 5 "Generated_Source\\PSoC5/UART_1.h"
+ 112              		.file 6 "Generated_Source\\PSoC5/ADC_DelSig.h"
+ 113              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 4
+
+
+ 114              		.file 8 "Generated_Source\\PSoC5/CyLib.h"
+ 115              		.section	.debug_info,"",%progbits
+ 116              	.Ldebug_info0:
+ 117 0000 E8010000 		.4byte	0x1e8
+ 118 0004 0400     		.2byte	0x4
+ 119 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 120 000a 04       		.byte	0x4
+ 121 000b 01       		.uleb128 0x1
+ 122 000c DC000000 		.4byte	.LASF22
+ 123 0010 01       		.byte	0x1
+ 124 0011 4F000000 		.4byte	.LASF23
+ 125 0015 74010000 		.4byte	.LASF24
+ 126 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 127 001d 00000000 		.4byte	0
+ 128 0021 00000000 		.4byte	.Ldebug_line0
+ 129 0025 02       		.uleb128 0x2
+ 130 0026 01       		.byte	0x1
+ 131 0027 06       		.byte	0x6
+ 132 0028 E8010000 		.4byte	.LASF0
+ 133 002c 02       		.uleb128 0x2
+ 134 002d 01       		.byte	0x1
+ 135 002e 08       		.byte	0x8
+ 136 002f 41000000 		.4byte	.LASF1
+ 137 0033 02       		.uleb128 0x2
+ 138 0034 02       		.byte	0x2
+ 139 0035 05       		.byte	0x5
+ 140 0036 BE010000 		.4byte	.LASF2
+ 141 003a 02       		.uleb128 0x2
+ 142 003b 02       		.byte	0x2
+ 143 003c 07       		.byte	0x7
+ 144 003d 70000000 		.4byte	.LASF3
+ 145 0041 03       		.uleb128 0x3
+ 146 0042 17000000 		.4byte	.LASF9
+ 147 0046 02       		.byte	0x2
+ 148 0047 37       		.byte	0x37
+ 149 0048 4C000000 		.4byte	0x4c
+ 150 004c 02       		.uleb128 0x2
+ 151 004d 04       		.byte	0x4
+ 152 004e 05       		.byte	0x5
+ 153 004f DF010000 		.4byte	.LASF4
+ 154 0053 02       		.uleb128 0x2
+ 155 0054 04       		.byte	0x4
+ 156 0055 07       		.byte	0x7
+ 157 0056 5E000000 		.4byte	.LASF5
+ 158 005a 02       		.uleb128 0x2
+ 159 005b 08       		.byte	0x8
+ 160 005c 05       		.byte	0x5
+ 161 005d 61010000 		.4byte	.LASF6
+ 162 0061 02       		.uleb128 0x2
+ 163 0062 08       		.byte	0x8
+ 164 0063 07       		.byte	0x7
+ 165 0064 C5000000 		.4byte	.LASF7
+ 166 0068 04       		.uleb128 0x4
+ 167 0069 04       		.byte	0x4
+ 168 006a 05       		.byte	0x5
+ 169 006b 696E7400 		.ascii	"int\000"
+ 170 006f 02       		.uleb128 0x2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 5
+
+
+ 171 0070 04       		.byte	0x4
+ 172 0071 07       		.byte	0x7
+ 173 0072 B8000000 		.4byte	.LASF8
+ 174 0076 03       		.uleb128 0x3
+ 175 0077 33000000 		.4byte	.LASF10
+ 176 007b 03       		.byte	0x3
+ 177 007c 41       		.byte	0x41
+ 178 007d 41000000 		.4byte	0x41
+ 179 0081 03       		.uleb128 0x3
+ 180 0082 C8010000 		.4byte	.LASF11
+ 181 0086 04       		.byte	0x4
+ 182 0087 B4       		.byte	0xb4
+ 183 0088 2C000000 		.4byte	0x2c
+ 184 008c 03       		.uleb128 0x3
+ 185 008d 9D000000 		.4byte	.LASF12
+ 186 0091 04       		.byte	0x4
+ 187 0092 B6       		.byte	0xb6
+ 188 0093 53000000 		.4byte	0x53
+ 189 0097 03       		.uleb128 0x3
+ 190 0098 58000000 		.4byte	.LASF13
+ 191 009c 04       		.byte	0x4
+ 192 009d B8       		.byte	0xb8
+ 193 009e 33000000 		.4byte	0x33
+ 194 00a2 02       		.uleb128 0x2
+ 195 00a3 04       		.byte	0x4
+ 196 00a4 04       		.byte	0x4
+ 197 00a5 3B000000 		.4byte	.LASF14
+ 198 00a9 02       		.uleb128 0x2
+ 199 00aa 08       		.byte	0x8
+ 200 00ab 04       		.byte	0x4
+ 201 00ac 90000000 		.4byte	.LASF15
+ 202 00b0 02       		.uleb128 0x2
+ 203 00b1 01       		.byte	0x1
+ 204 00b2 08       		.byte	0x8
+ 205 00b3 6F010000 		.4byte	.LASF16
+ 206 00b7 02       		.uleb128 0x2
+ 207 00b8 04       		.byte	0x4
+ 208 00b9 07       		.byte	0x7
+ 209 00ba 58010000 		.4byte	.LASF17
+ 210 00be 05       		.uleb128 0x5
+ 211 00bf 04       		.byte	0x4
+ 212 00c0 B0000000 		.4byte	0xb0
+ 213 00c4 06       		.uleb128 0x6
+ 214 00c5 0D000000 		.4byte	.LASF18
+ 215 00c9 01       		.byte	0x1
+ 216 00ca 2E       		.byte	0x2e
+ 217 00cb 00000000 		.4byte	.LFB64
+ 218 00cf 1E000000 		.4byte	.LFE64-.LFB64
+ 219 00d3 01       		.uleb128 0x1
+ 220 00d4 9C       		.byte	0x9c
+ 221 00d5 0D010000 		.4byte	0x10d
+ 222 00d9 07       		.uleb128 0x7
+ 223 00da 6E756D00 		.ascii	"num\000"
+ 224 00de 01       		.byte	0x1
+ 225 00df 2E       		.byte	0x2e
+ 226 00e0 BE000000 		.4byte	0xbe
+ 227 00e4 00000000 		.4byte	.LLST0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 6
+
+
+ 228 00e8 08       		.uleb128 0x8
+ 229 00e9 0A000000 		.4byte	.LVL2
+ 230 00ed B4010000 		.4byte	0x1b4
+ 231 00f1 08       		.uleb128 0x8
+ 232 00f2 10000000 		.4byte	.LVL3
+ 233 00f6 B4010000 		.4byte	0x1b4
+ 234 00fa 08       		.uleb128 0x8
+ 235 00fb 16000000 		.4byte	.LVL4
+ 236 00ff B4010000 		.4byte	0x1b4
+ 237 0103 08       		.uleb128 0x8
+ 238 0104 1C000000 		.4byte	.LVL5
+ 239 0108 B4010000 		.4byte	0x1b4
+ 240 010c 00       		.byte	0
+ 241 010d 09       		.uleb128 0x9
+ 242 010e A4000000 		.4byte	.LASF19
+ 243 0112 01       		.byte	0x1
+ 244 0113 10       		.byte	0x10
+ 245 0114 68000000 		.4byte	0x68
+ 246 0118 00000000 		.4byte	.LFB63
+ 247 011c 24000000 		.4byte	.LFE63-.LFB63
+ 248 0120 01       		.uleb128 0x1
+ 249 0121 9C       		.byte	0x9c
+ 250 0122 93010000 		.4byte	0x193
+ 251 0126 0A       		.uleb128 0xa
+ 252 0127 04       		.byte	0x4
+ 253 0128 01       		.byte	0x1
+ 254 0129 17       		.byte	0x17
+ 255 012a 45010000 		.4byte	0x145
+ 256 012e 0B       		.uleb128 0xb
+ 257 012f 73747200 		.ascii	"str\000"
+ 258 0133 01       		.byte	0x1
+ 259 0134 18       		.byte	0x18
+ 260 0135 93010000 		.4byte	0x193
+ 261 0139 0B       		.uleb128 0xb
+ 262 013a 6E756D00 		.ascii	"num\000"
+ 263 013e 01       		.byte	0x1
+ 264 013f 19       		.byte	0x19
+ 265 0140 68000000 		.4byte	0x68
+ 266 0144 00       		.byte	0
+ 267 0145 0C       		.uleb128 0xc
+ 268 0146 97000000 		.4byte	.LASF25
+ 269 014a 01       		.byte	0x1
+ 270 014b 1A       		.byte	0x1a
+ 271 014c 26010000 		.4byte	0x126
+ 272 0150 02       		.uleb128 0x2
+ 273 0151 91       		.byte	0x91
+ 274 0152 74       		.sleb128 -12
+ 275 0153 08       		.uleb128 0x8
+ 276 0154 0A000000 		.4byte	.LVL6
+ 277 0158 C5010000 		.4byte	0x1c5
+ 278 015c 08       		.uleb128 0x8
+ 279 015d 0E000000 		.4byte	.LVL7
+ 280 0161 CC010000 		.4byte	0x1cc
+ 281 0165 08       		.uleb128 0x8
+ 282 0166 14000000 		.4byte	.LVL8
+ 283 016a D3010000 		.4byte	0x1d3
+ 284 016e 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 7
+
+
+ 285 016f 1C000000 		.4byte	.LVL9
+ 286 0173 C4000000 		.4byte	0xc4
+ 287 0177 82010000 		.4byte	0x182
+ 288 017b 0E       		.uleb128 0xe
+ 289 017c 01       		.uleb128 0x1
+ 290 017d 50       		.byte	0x50
+ 291 017e 02       		.uleb128 0x2
+ 292 017f 91       		.byte	0x91
+ 293 0180 74       		.sleb128 -12
+ 294 0181 00       		.byte	0
+ 295 0182 0F       		.uleb128 0xf
+ 296 0183 22000000 		.4byte	.LVL10
+ 297 0187 DE010000 		.4byte	0x1de
+ 298 018b 0E       		.uleb128 0xe
+ 299 018c 01       		.uleb128 0x1
+ 300 018d 50       		.byte	0x50
+ 301 018e 02       		.uleb128 0x2
+ 302 018f 74       		.byte	0x74
+ 303 0190 00       		.sleb128 0
+ 304 0191 00       		.byte	0
+ 305 0192 00       		.byte	0
+ 306 0193 10       		.uleb128 0x10
+ 307 0194 B0000000 		.4byte	0xb0
+ 308 0198 A3010000 		.4byte	0x1a3
+ 309 019c 11       		.uleb128 0x11
+ 310 019d B7000000 		.4byte	0xb7
+ 311 01a1 03       		.byte	0x3
+ 312 01a2 00       		.byte	0
+ 313 01a3 12       		.uleb128 0x12
+ 314 01a4 83000000 		.4byte	.LASF26
+ 315 01a8 07       		.byte	0x7
+ 316 01a9 2A06     		.2byte	0x62a
+ 317 01ab AF010000 		.4byte	0x1af
+ 318 01af 13       		.uleb128 0x13
+ 319 01b0 76000000 		.4byte	0x76
+ 320 01b4 14       		.uleb128 0x14
+ 321 01b5 A9000000 		.4byte	.LASF27
+ 322 01b9 05       		.byte	0x5
+ 323 01ba 8A       		.byte	0x8a
+ 324 01bb C5010000 		.4byte	0x1c5
+ 325 01bf 15       		.uleb128 0x15
+ 326 01c0 81000000 		.4byte	0x81
+ 327 01c4 00       		.byte	0
+ 328 01c5 16       		.uleb128 0x16
+ 329 01c6 00000000 		.4byte	.LASF20
+ 330 01ca 05       		.byte	0x5
+ 331 01cb 54       		.byte	0x54
+ 332 01cc 16       		.uleb128 0x16
+ 333 01cd CE010000 		.4byte	.LASF21
+ 334 01d1 06       		.byte	0x6
+ 335 01d2 3A       		.byte	0x3a
+ 336 01d3 17       		.uleb128 0x17
+ 337 01d4 21000000 		.4byte	.LASF28
+ 338 01d8 06       		.byte	0x6
+ 339 01d9 55       		.byte	0x55
+ 340 01da 97000000 		.4byte	0x97
+ 341 01de 18       		.uleb128 0x18
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 8
+
+
+ 342 01df F4010000 		.4byte	.LASF29
+ 343 01e3 08       		.byte	0x8
+ 344 01e4 77       		.byte	0x77
+ 345 01e5 15       		.uleb128 0x15
+ 346 01e6 8C000000 		.4byte	0x8c
+ 347 01ea 00       		.byte	0
+ 348 01eb 00       		.byte	0
+ 349              		.section	.debug_abbrev,"",%progbits
+ 350              	.Ldebug_abbrev0:
+ 351 0000 01       		.uleb128 0x1
+ 352 0001 11       		.uleb128 0x11
+ 353 0002 01       		.byte	0x1
+ 354 0003 25       		.uleb128 0x25
+ 355 0004 0E       		.uleb128 0xe
+ 356 0005 13       		.uleb128 0x13
+ 357 0006 0B       		.uleb128 0xb
+ 358 0007 03       		.uleb128 0x3
+ 359 0008 0E       		.uleb128 0xe
+ 360 0009 1B       		.uleb128 0x1b
+ 361 000a 0E       		.uleb128 0xe
+ 362 000b 55       		.uleb128 0x55
+ 363 000c 17       		.uleb128 0x17
+ 364 000d 11       		.uleb128 0x11
+ 365 000e 01       		.uleb128 0x1
+ 366 000f 10       		.uleb128 0x10
+ 367 0010 17       		.uleb128 0x17
+ 368 0011 00       		.byte	0
+ 369 0012 00       		.byte	0
+ 370 0013 02       		.uleb128 0x2
+ 371 0014 24       		.uleb128 0x24
+ 372 0015 00       		.byte	0
+ 373 0016 0B       		.uleb128 0xb
+ 374 0017 0B       		.uleb128 0xb
+ 375 0018 3E       		.uleb128 0x3e
+ 376 0019 0B       		.uleb128 0xb
+ 377 001a 03       		.uleb128 0x3
+ 378 001b 0E       		.uleb128 0xe
+ 379 001c 00       		.byte	0
+ 380 001d 00       		.byte	0
+ 381 001e 03       		.uleb128 0x3
+ 382 001f 16       		.uleb128 0x16
+ 383 0020 00       		.byte	0
+ 384 0021 03       		.uleb128 0x3
+ 385 0022 0E       		.uleb128 0xe
+ 386 0023 3A       		.uleb128 0x3a
+ 387 0024 0B       		.uleb128 0xb
+ 388 0025 3B       		.uleb128 0x3b
+ 389 0026 0B       		.uleb128 0xb
+ 390 0027 49       		.uleb128 0x49
+ 391 0028 13       		.uleb128 0x13
+ 392 0029 00       		.byte	0
+ 393 002a 00       		.byte	0
+ 394 002b 04       		.uleb128 0x4
+ 395 002c 24       		.uleb128 0x24
+ 396 002d 00       		.byte	0
+ 397 002e 0B       		.uleb128 0xb
+ 398 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 9
+
+
+ 399 0030 3E       		.uleb128 0x3e
+ 400 0031 0B       		.uleb128 0xb
+ 401 0032 03       		.uleb128 0x3
+ 402 0033 08       		.uleb128 0x8
+ 403 0034 00       		.byte	0
+ 404 0035 00       		.byte	0
+ 405 0036 05       		.uleb128 0x5
+ 406 0037 0F       		.uleb128 0xf
+ 407 0038 00       		.byte	0
+ 408 0039 0B       		.uleb128 0xb
+ 409 003a 0B       		.uleb128 0xb
+ 410 003b 49       		.uleb128 0x49
+ 411 003c 13       		.uleb128 0x13
+ 412 003d 00       		.byte	0
+ 413 003e 00       		.byte	0
+ 414 003f 06       		.uleb128 0x6
+ 415 0040 2E       		.uleb128 0x2e
+ 416 0041 01       		.byte	0x1
+ 417 0042 3F       		.uleb128 0x3f
+ 418 0043 19       		.uleb128 0x19
+ 419 0044 03       		.uleb128 0x3
+ 420 0045 0E       		.uleb128 0xe
+ 421 0046 3A       		.uleb128 0x3a
+ 422 0047 0B       		.uleb128 0xb
+ 423 0048 3B       		.uleb128 0x3b
+ 424 0049 0B       		.uleb128 0xb
+ 425 004a 27       		.uleb128 0x27
+ 426 004b 19       		.uleb128 0x19
+ 427 004c 11       		.uleb128 0x11
+ 428 004d 01       		.uleb128 0x1
+ 429 004e 12       		.uleb128 0x12
+ 430 004f 06       		.uleb128 0x6
+ 431 0050 40       		.uleb128 0x40
+ 432 0051 18       		.uleb128 0x18
+ 433 0052 9742     		.uleb128 0x2117
+ 434 0054 19       		.uleb128 0x19
+ 435 0055 01       		.uleb128 0x1
+ 436 0056 13       		.uleb128 0x13
+ 437 0057 00       		.byte	0
+ 438 0058 00       		.byte	0
+ 439 0059 07       		.uleb128 0x7
+ 440 005a 05       		.uleb128 0x5
+ 441 005b 00       		.byte	0
+ 442 005c 03       		.uleb128 0x3
+ 443 005d 08       		.uleb128 0x8
+ 444 005e 3A       		.uleb128 0x3a
+ 445 005f 0B       		.uleb128 0xb
+ 446 0060 3B       		.uleb128 0x3b
+ 447 0061 0B       		.uleb128 0xb
+ 448 0062 49       		.uleb128 0x49
+ 449 0063 13       		.uleb128 0x13
+ 450 0064 02       		.uleb128 0x2
+ 451 0065 17       		.uleb128 0x17
+ 452 0066 00       		.byte	0
+ 453 0067 00       		.byte	0
+ 454 0068 08       		.uleb128 0x8
+ 455 0069 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 10
+
+
+ 456 006c 00       		.byte	0
+ 457 006d 11       		.uleb128 0x11
+ 458 006e 01       		.uleb128 0x1
+ 459 006f 31       		.uleb128 0x31
+ 460 0070 13       		.uleb128 0x13
+ 461 0071 00       		.byte	0
+ 462 0072 00       		.byte	0
+ 463 0073 09       		.uleb128 0x9
+ 464 0074 2E       		.uleb128 0x2e
+ 465 0075 01       		.byte	0x1
+ 466 0076 3F       		.uleb128 0x3f
+ 467 0077 19       		.uleb128 0x19
+ 468 0078 03       		.uleb128 0x3
+ 469 0079 0E       		.uleb128 0xe
+ 470 007a 3A       		.uleb128 0x3a
+ 471 007b 0B       		.uleb128 0xb
+ 472 007c 3B       		.uleb128 0x3b
+ 473 007d 0B       		.uleb128 0xb
+ 474 007e 49       		.uleb128 0x49
+ 475 007f 13       		.uleb128 0x13
+ 476 0080 11       		.uleb128 0x11
+ 477 0081 01       		.uleb128 0x1
+ 478 0082 12       		.uleb128 0x12
+ 479 0083 06       		.uleb128 0x6
+ 480 0084 40       		.uleb128 0x40
+ 481 0085 18       		.uleb128 0x18
+ 482 0086 9742     		.uleb128 0x2117
+ 483 0088 19       		.uleb128 0x19
+ 484 0089 01       		.uleb128 0x1
+ 485 008a 13       		.uleb128 0x13
+ 486 008b 00       		.byte	0
+ 487 008c 00       		.byte	0
+ 488 008d 0A       		.uleb128 0xa
+ 489 008e 17       		.uleb128 0x17
+ 490 008f 01       		.byte	0x1
+ 491 0090 0B       		.uleb128 0xb
+ 492 0091 0B       		.uleb128 0xb
+ 493 0092 3A       		.uleb128 0x3a
+ 494 0093 0B       		.uleb128 0xb
+ 495 0094 3B       		.uleb128 0x3b
+ 496 0095 0B       		.uleb128 0xb
+ 497 0096 01       		.uleb128 0x1
+ 498 0097 13       		.uleb128 0x13
+ 499 0098 00       		.byte	0
+ 500 0099 00       		.byte	0
+ 501 009a 0B       		.uleb128 0xb
+ 502 009b 0D       		.uleb128 0xd
+ 503 009c 00       		.byte	0
+ 504 009d 03       		.uleb128 0x3
+ 505 009e 08       		.uleb128 0x8
+ 506 009f 3A       		.uleb128 0x3a
+ 507 00a0 0B       		.uleb128 0xb
+ 508 00a1 3B       		.uleb128 0x3b
+ 509 00a2 0B       		.uleb128 0xb
+ 510 00a3 49       		.uleb128 0x49
+ 511 00a4 13       		.uleb128 0x13
+ 512 00a5 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 11
+
+
+ 513 00a6 00       		.byte	0
+ 514 00a7 0C       		.uleb128 0xc
+ 515 00a8 34       		.uleb128 0x34
+ 516 00a9 00       		.byte	0
+ 517 00aa 03       		.uleb128 0x3
+ 518 00ab 0E       		.uleb128 0xe
+ 519 00ac 3A       		.uleb128 0x3a
+ 520 00ad 0B       		.uleb128 0xb
+ 521 00ae 3B       		.uleb128 0x3b
+ 522 00af 0B       		.uleb128 0xb
+ 523 00b0 49       		.uleb128 0x49
+ 524 00b1 13       		.uleb128 0x13
+ 525 00b2 02       		.uleb128 0x2
+ 526 00b3 18       		.uleb128 0x18
+ 527 00b4 00       		.byte	0
+ 528 00b5 00       		.byte	0
+ 529 00b6 0D       		.uleb128 0xd
+ 530 00b7 898201   		.uleb128 0x4109
+ 531 00ba 01       		.byte	0x1
+ 532 00bb 11       		.uleb128 0x11
+ 533 00bc 01       		.uleb128 0x1
+ 534 00bd 31       		.uleb128 0x31
+ 535 00be 13       		.uleb128 0x13
+ 536 00bf 01       		.uleb128 0x1
+ 537 00c0 13       		.uleb128 0x13
+ 538 00c1 00       		.byte	0
+ 539 00c2 00       		.byte	0
+ 540 00c3 0E       		.uleb128 0xe
+ 541 00c4 8A8201   		.uleb128 0x410a
+ 542 00c7 00       		.byte	0
+ 543 00c8 02       		.uleb128 0x2
+ 544 00c9 18       		.uleb128 0x18
+ 545 00ca 9142     		.uleb128 0x2111
+ 546 00cc 18       		.uleb128 0x18
+ 547 00cd 00       		.byte	0
+ 548 00ce 00       		.byte	0
+ 549 00cf 0F       		.uleb128 0xf
+ 550 00d0 898201   		.uleb128 0x4109
+ 551 00d3 01       		.byte	0x1
+ 552 00d4 11       		.uleb128 0x11
+ 553 00d5 01       		.uleb128 0x1
+ 554 00d6 31       		.uleb128 0x31
+ 555 00d7 13       		.uleb128 0x13
+ 556 00d8 00       		.byte	0
+ 557 00d9 00       		.byte	0
+ 558 00da 10       		.uleb128 0x10
+ 559 00db 01       		.uleb128 0x1
+ 560 00dc 01       		.byte	0x1
+ 561 00dd 49       		.uleb128 0x49
+ 562 00de 13       		.uleb128 0x13
+ 563 00df 01       		.uleb128 0x1
+ 564 00e0 13       		.uleb128 0x13
+ 565 00e1 00       		.byte	0
+ 566 00e2 00       		.byte	0
+ 567 00e3 11       		.uleb128 0x11
+ 568 00e4 21       		.uleb128 0x21
+ 569 00e5 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 12
+
+
+ 570 00e6 49       		.uleb128 0x49
+ 571 00e7 13       		.uleb128 0x13
+ 572 00e8 2F       		.uleb128 0x2f
+ 573 00e9 0B       		.uleb128 0xb
+ 574 00ea 00       		.byte	0
+ 575 00eb 00       		.byte	0
+ 576 00ec 12       		.uleb128 0x12
+ 577 00ed 34       		.uleb128 0x34
+ 578 00ee 00       		.byte	0
+ 579 00ef 03       		.uleb128 0x3
+ 580 00f0 0E       		.uleb128 0xe
+ 581 00f1 3A       		.uleb128 0x3a
+ 582 00f2 0B       		.uleb128 0xb
+ 583 00f3 3B       		.uleb128 0x3b
+ 584 00f4 05       		.uleb128 0x5
+ 585 00f5 49       		.uleb128 0x49
+ 586 00f6 13       		.uleb128 0x13
+ 587 00f7 3F       		.uleb128 0x3f
+ 588 00f8 19       		.uleb128 0x19
+ 589 00f9 3C       		.uleb128 0x3c
+ 590 00fa 19       		.uleb128 0x19
+ 591 00fb 00       		.byte	0
+ 592 00fc 00       		.byte	0
+ 593 00fd 13       		.uleb128 0x13
+ 594 00fe 35       		.uleb128 0x35
+ 595 00ff 00       		.byte	0
+ 596 0100 49       		.uleb128 0x49
+ 597 0101 13       		.uleb128 0x13
+ 598 0102 00       		.byte	0
+ 599 0103 00       		.byte	0
+ 600 0104 14       		.uleb128 0x14
+ 601 0105 2E       		.uleb128 0x2e
+ 602 0106 01       		.byte	0x1
+ 603 0107 3F       		.uleb128 0x3f
+ 604 0108 19       		.uleb128 0x19
+ 605 0109 03       		.uleb128 0x3
+ 606 010a 0E       		.uleb128 0xe
+ 607 010b 3A       		.uleb128 0x3a
+ 608 010c 0B       		.uleb128 0xb
+ 609 010d 3B       		.uleb128 0x3b
+ 610 010e 0B       		.uleb128 0xb
+ 611 010f 27       		.uleb128 0x27
+ 612 0110 19       		.uleb128 0x19
+ 613 0111 3C       		.uleb128 0x3c
+ 614 0112 19       		.uleb128 0x19
+ 615 0113 01       		.uleb128 0x1
+ 616 0114 13       		.uleb128 0x13
+ 617 0115 00       		.byte	0
+ 618 0116 00       		.byte	0
+ 619 0117 15       		.uleb128 0x15
+ 620 0118 05       		.uleb128 0x5
+ 621 0119 00       		.byte	0
+ 622 011a 49       		.uleb128 0x49
+ 623 011b 13       		.uleb128 0x13
+ 624 011c 00       		.byte	0
+ 625 011d 00       		.byte	0
+ 626 011e 16       		.uleb128 0x16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 13
+
+
+ 627 011f 2E       		.uleb128 0x2e
+ 628 0120 00       		.byte	0
+ 629 0121 3F       		.uleb128 0x3f
+ 630 0122 19       		.uleb128 0x19
+ 631 0123 03       		.uleb128 0x3
+ 632 0124 0E       		.uleb128 0xe
+ 633 0125 3A       		.uleb128 0x3a
+ 634 0126 0B       		.uleb128 0xb
+ 635 0127 3B       		.uleb128 0x3b
+ 636 0128 0B       		.uleb128 0xb
+ 637 0129 27       		.uleb128 0x27
+ 638 012a 19       		.uleb128 0x19
+ 639 012b 3C       		.uleb128 0x3c
+ 640 012c 19       		.uleb128 0x19
+ 641 012d 00       		.byte	0
+ 642 012e 00       		.byte	0
+ 643 012f 17       		.uleb128 0x17
+ 644 0130 2E       		.uleb128 0x2e
+ 645 0131 00       		.byte	0
+ 646 0132 3F       		.uleb128 0x3f
+ 647 0133 19       		.uleb128 0x19
+ 648 0134 03       		.uleb128 0x3
+ 649 0135 0E       		.uleb128 0xe
+ 650 0136 3A       		.uleb128 0x3a
+ 651 0137 0B       		.uleb128 0xb
+ 652 0138 3B       		.uleb128 0x3b
+ 653 0139 0B       		.uleb128 0xb
+ 654 013a 27       		.uleb128 0x27
+ 655 013b 19       		.uleb128 0x19
+ 656 013c 49       		.uleb128 0x49
+ 657 013d 13       		.uleb128 0x13
+ 658 013e 3C       		.uleb128 0x3c
+ 659 013f 19       		.uleb128 0x19
+ 660 0140 00       		.byte	0
+ 661 0141 00       		.byte	0
+ 662 0142 18       		.uleb128 0x18
+ 663 0143 2E       		.uleb128 0x2e
+ 664 0144 01       		.byte	0x1
+ 665 0145 3F       		.uleb128 0x3f
+ 666 0146 19       		.uleb128 0x19
+ 667 0147 03       		.uleb128 0x3
+ 668 0148 0E       		.uleb128 0xe
+ 669 0149 3A       		.uleb128 0x3a
+ 670 014a 0B       		.uleb128 0xb
+ 671 014b 3B       		.uleb128 0x3b
+ 672 014c 0B       		.uleb128 0xb
+ 673 014d 27       		.uleb128 0x27
+ 674 014e 19       		.uleb128 0x19
+ 675 014f 3C       		.uleb128 0x3c
+ 676 0150 19       		.uleb128 0x19
+ 677 0151 00       		.byte	0
+ 678 0152 00       		.byte	0
+ 679 0153 00       		.byte	0
+ 680              		.section	.debug_loc,"",%progbits
+ 681              	.Ldebug_loc0:
+ 682              	.LLST0:
+ 683 0000 00000000 		.4byte	.LVL0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 14
+
+
+ 684 0004 06000000 		.4byte	.LVL1
+ 685 0008 0100     		.2byte	0x1
+ 686 000a 50       		.byte	0x50
+ 687 000b 06000000 		.4byte	.LVL1
+ 688 000f 1E000000 		.4byte	.LFE64
+ 689 0013 0100     		.2byte	0x1
+ 690 0015 54       		.byte	0x54
+ 691 0016 00000000 		.4byte	0
+ 692 001a 00000000 		.4byte	0
+ 693              		.section	.debug_aranges,"",%progbits
+ 694 0000 24000000 		.4byte	0x24
+ 695 0004 0200     		.2byte	0x2
+ 696 0006 00000000 		.4byte	.Ldebug_info0
+ 697 000a 04       		.byte	0x4
+ 698 000b 00       		.byte	0
+ 699 000c 0000     		.2byte	0
+ 700 000e 0000     		.2byte	0
+ 701 0010 00000000 		.4byte	.LFB64
+ 702 0014 1E000000 		.4byte	.LFE64-.LFB64
+ 703 0018 00000000 		.4byte	.LFB63
+ 704 001c 24000000 		.4byte	.LFE63-.LFB63
+ 705 0020 00000000 		.4byte	0
+ 706 0024 00000000 		.4byte	0
+ 707              		.section	.debug_ranges,"",%progbits
+ 708              	.Ldebug_ranges0:
+ 709 0000 00000000 		.4byte	.LFB64
+ 710 0004 1E000000 		.4byte	.LFE64
+ 711 0008 00000000 		.4byte	.LFB63
+ 712 000c 24000000 		.4byte	.LFE63
+ 713 0010 00000000 		.4byte	0
+ 714 0014 00000000 		.4byte	0
+ 715              		.section	.debug_line,"",%progbits
+ 716              	.Ldebug_line0:
+ 717 0000 AD010000 		.section	.debug_str,"MS",%progbits,1
+ 717      02007001 
+ 717      00000201 
+ 717      FB0E0D00 
+ 717      01010101 
+ 718              	.LASF20:
+ 719 0000 55415254 		.ascii	"UART_1_Start\000"
+ 719      5F315F53 
+ 719      74617274 
+ 719      00
+ 720              	.LASF18:
+ 721 000d 6F757470 		.ascii	"outputNum\000"
+ 721      75744E75 
+ 721      6D00
+ 722              	.LASF9:
+ 723 0017 5F5F696E 		.ascii	"__int32_t\000"
+ 723      7433325F 
+ 723      7400
+ 724              	.LASF28:
+ 725 0021 4144435F 		.ascii	"ADC_DelSig_Read16\000"
+ 725      44656C53 
+ 725      69675F52 
+ 725      65616431 
+ 725      3600
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 15
+
+
+ 726              	.LASF10:
+ 727 0033 696E7433 		.ascii	"int32_t\000"
+ 727      325F7400 
+ 728              	.LASF14:
+ 729 003b 666C6F61 		.ascii	"float\000"
+ 729      7400
+ 730              	.LASF1:
+ 731 0041 756E7369 		.ascii	"unsigned char\000"
+ 731      676E6564 
+ 731      20636861 
+ 731      7200
+ 732              	.LASF23:
+ 733 004f 2E5C6D61 		.ascii	".\\main.c\000"
+ 733      696E2E63 
+ 733      00
+ 734              	.LASF13:
+ 735 0058 696E7431 		.ascii	"int16\000"
+ 735      3600
+ 736              	.LASF5:
+ 737 005e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 737      20756E73 
+ 737      69676E65 
+ 737      6420696E 
+ 737      7400
+ 738              	.LASF3:
+ 739 0070 73686F72 		.ascii	"short unsigned int\000"
+ 739      7420756E 
+ 739      7369676E 
+ 739      65642069 
+ 739      6E7400
+ 740              	.LASF26:
+ 741 0083 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 741      52784275 
+ 741      66666572 
+ 741      00
+ 742              	.LASF15:
+ 743 0090 646F7562 		.ascii	"double\000"
+ 743      6C6500
+ 744              	.LASF25:
+ 745 0097 706F745F 		.ascii	"pot_0\000"
+ 745      3000
+ 746              	.LASF12:
+ 747 009d 75696E74 		.ascii	"uint32\000"
+ 747      333200
+ 748              	.LASF19:
+ 749 00a4 6D61696E 		.ascii	"main\000"
+ 749      00
+ 750              	.LASF27:
+ 751 00a9 55415254 		.ascii	"UART_1_PutChar\000"
+ 751      5F315F50 
+ 751      75744368 
+ 751      617200
+ 752              	.LASF8:
+ 753 00b8 756E7369 		.ascii	"unsigned int\000"
+ 753      676E6564 
+ 753      20696E74 
+ 753      00
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 16
+
+
+ 754              	.LASF7:
+ 755 00c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 755      206C6F6E 
+ 755      6720756E 
+ 755      7369676E 
+ 755      65642069 
+ 756              	.LASF22:
+ 757 00dc 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 757      4320342E 
+ 757      382E3420 
+ 757      32303134 
+ 757      30353236 
+ 758 010f 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 758      20726576 
+ 758      6973696F 
+ 758      6E203231 
+ 758      31333538 
+ 759 0142 67202D66 		.ascii	"g -ffunction-sections\000"
+ 759      66756E63 
+ 759      74696F6E 
+ 759      2D736563 
+ 759      74696F6E 
+ 760              	.LASF17:
+ 761 0158 73697A65 		.ascii	"sizetype\000"
+ 761      74797065 
+ 761      00
+ 762              	.LASF6:
+ 763 0161 6C6F6E67 		.ascii	"long long int\000"
+ 763      206C6F6E 
+ 763      6720696E 
+ 763      7400
+ 764              	.LASF16:
+ 765 016f 63686172 		.ascii	"char\000"
+ 765      00
+ 766              	.LASF24:
+ 767 0174 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
+ 767      73657273 
+ 767      5C6D6974 
+ 767      6368656C 
+ 767      6C5C446F 
+ 768 01a1 2D546872 		.ascii	"-Throttle\\Test-Project.cydsn\000"
+ 768      6F74746C 
+ 768      655C5465 
+ 768      73742D50 
+ 768      726F6A65 
+ 769              	.LASF2:
+ 770 01be 73686F72 		.ascii	"short int\000"
+ 770      7420696E 
+ 770      7400
+ 771              	.LASF11:
+ 772 01c8 75696E74 		.ascii	"uint8\000"
+ 772      3800
+ 773              	.LASF21:
+ 774 01ce 4144435F 		.ascii	"ADC_DelSig_Start\000"
+ 774      44656C53 
+ 774      69675F53 
+ 774      74617274 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccB63cDR.s 			page 17
+
+
+ 774      00
+ 775              	.LASF4:
+ 776 01df 6C6F6E67 		.ascii	"long int\000"
+ 776      20696E74 
+ 776      00
+ 777              	.LASF0:
+ 778 01e8 7369676E 		.ascii	"signed char\000"
+ 778      65642063 
+ 778      68617200 
+ 779              	.LASF29:
+ 780 01f4 43794465 		.ascii	"CyDelay\000"
+ 780      6C617900 
+ 781              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
