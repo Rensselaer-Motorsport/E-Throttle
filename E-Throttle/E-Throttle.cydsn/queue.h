@@ -14,25 +14,28 @@
 
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
-    
+
     /* Imports */
     #include <stdlib.h>
-    
+
     /* Typedefs */
     typedef void (*enqueueFunc)(float);
     typedef float (*dequeueFunc)();
-    
+    typedef int (*isEmptyFunc)();
+
     /* Struct Initialization */
     typedef struct Queue {
         enqueueFunc enq;
         dequeueFunc deq;
+        isEmptyFunc isEmpty;
     } Queue;
-    
+
     /* Function Declarations */
     Queue * createQueue(int);
     void enq(float);
     float deq();
-    
+    int isEmpty();
+
 #endif
 
 /* [] END OF FILE */

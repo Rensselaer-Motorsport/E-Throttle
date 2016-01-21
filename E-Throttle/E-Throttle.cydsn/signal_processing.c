@@ -23,9 +23,9 @@ return:     A percentage of the maximum possible count
             If the type is not defined it will return 0.0
 */
 float convertToPercent(uint16 count, sensor type) {
-    /* TODO:    check bounds on these percents, 
-                expecially the BRAKE case (sigdel 
-                ADC gave a little over MAX_BRAKE_COUNT 
+    /* TODO:    check bounds on these percents,
+                expecially the BRAKE case (sigdel
+                ADC gave a little over MAX_BRAKE_COUNT
                 in prelim. test)
     */
     float percent;
@@ -47,7 +47,7 @@ float convertToPercent(uint16 count, sensor type) {
 /*
 parameters: s0 - Percent that sensor 0 is open
             s1 - Percent that sensor 1 is open
-effect:     Checks for implausibility, then averages 
+effect:     Checks for implausibility, then averages
             the values
 return:     ERROR if there is an implausibility,
             The average of the sensors otherwise
@@ -69,14 +69,14 @@ return:     ERROR if there is an implausibility, the next
             desired servo position otherwise.
 */
 
-float nextThrottlePosition(float requested_pos, float curr_pos, 
+float nextThrottlePosition(float requested_pos, float curr_pos,
                            float prev_request, Error_Buffer * errs) {
     if (globalImplausibility(curr_pos, prev_request, errs) == ERROR) {
         return ERROR;
     }
     return requested_pos;
 }
-                        
+
 /*
 return: An Error_Buffer initialized with all 0.0s
 */
@@ -99,10 +99,10 @@ void updateErrorBuffer(Error_Buffer * eb, float newErr) {
     // Add newErr to sum
     eb->errQ->enq(newErr);
     eb->sum += newErr;
-    
+
     // Subtract the least recent error
     eb->sum -= eb->errQ->deq();
-    
+
     // Update average
     eb->avg = eb->sum / ERROR_BUFFER_SIZE;
 }
@@ -110,7 +110,7 @@ void updateErrorBuffer(Error_Buffer * eb, float newErr) {
 /*
 parameter:  sens_0 - The first sensor
             sens_1 - The second sensor
-effect:     Checks to make sure both sensors are within 10% 
+effect:     Checks to make sure both sensors are within 10%
             of each other
 return:     ERROR if there is an error, a non-error output
             otherwise
@@ -133,7 +133,7 @@ effect:     Checks to make average error between current and
 return:     ERROR if there is an error, a non-error output
             otherwise
 */
-int globalImplausibility(float curr_tps, float expected_tps, 
+int globalImplausibility(float curr_tps, float expected_tps,
                             Error_Buffer * eb) {
     float newErr = fabs(curr_tps - expected_tps);
     updateErrorBuffer(eb, newErr);
@@ -143,6 +143,6 @@ int globalImplausibility(float curr_tps, float expected_tps,
         return 1;
     }
 }
-    
+
 
 /* [] END OF FILE */

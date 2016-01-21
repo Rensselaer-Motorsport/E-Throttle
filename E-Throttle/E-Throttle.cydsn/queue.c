@@ -33,6 +33,7 @@ Queue * createQueue(int size) {
     Queue * q = (Queue*)malloc(sizeof(Queue));
     q->enq = enq;
     q->deq = deq;
+    q->isEmpty = isEmpty;
     front = back = NULL;
     int i;
     for (i = 0; i < size; ++i) {
@@ -40,7 +41,7 @@ Queue * createQueue(int size) {
     }
     return q;
 }
-    
+
 /*
 parameter:  val - The value to add to the queue
 effect:     Adds val to the back of the queue
@@ -64,11 +65,12 @@ void enq(float val) {
 /*
 effect: Removes the next element in the queue
 return: the value of the next element in the queue
+        -1.0 if there is no elements
 */
 float deq() {
     float toReturn;
     if (front == NULL) {
-        toReturn = 0.0;
+        toReturn = -1.0;
     } else {
         toReturn = front->data;
         Node * oldFront = front;
@@ -80,6 +82,18 @@ float deq() {
     }
     return toReturn;
 }
-        
+
+/*
+return: 1 if the queue is empty (front == back == NULL)
+        0 if the queue is NOT empty
+*/
+int isEmpty() {
+    if (front == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 
 /* [] END OF FILE */
