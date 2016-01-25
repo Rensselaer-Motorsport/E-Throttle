@@ -1,0 +1,1858 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"TPS_ADC_IRQ.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.TPS_ADC_IRQ_Interrupt,"ax",%progbits
+  19              		.align	2
+  20              		.global	TPS_ADC_IRQ_Interrupt
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	TPS_ADC_IRQ_Interrupt, %function
+  24              	TPS_ADC_IRQ_Interrupt:
+  25              	.LFB3:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\TPS_ADC_IRQ.c"
+   1:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * File Name: TPS_ADC_IRQ.c  
+   3:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Version 1.70
+   4:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+   5:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Description:
+   6:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   API for controlling the state of an interrupt.
+   7:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+   8:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+   9:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Note:
+  10:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  11:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  18:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  19:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #include <cydevice_trm.h>
+  20:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #include <CyLib.h>
+  21:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #include <TPS_ADC_IRQ.h>
+  22:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  23:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #if !defined(TPS_ADC_IRQ__REMOVED) /* Check for removal by optimization */
+  24:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  25:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+  26:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Place your includes, defines and code here 
+  27:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************/
+  28:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /* `#START TPS_ADC_IRQ_intc` */
+  29:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  30:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /* `#END` */
+  31:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #ifndef CYINT_IRQ_BASE
+  33:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #define CYINT_IRQ_BASE      16
+  34:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #endif /* CYINT_IRQ_BASE */
+  35:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #ifndef CYINT_VECT_TABLE
+  36:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #define CYINT_VECT_TABLE    ((cyisraddress **) CYREG_NVIC_VECT_OFFSET)
+  37:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** #endif /* CYINT_VECT_TABLE */
+  38:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  39:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /* Declared in startup, used to set unused interrupts to. */
+  40:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** CY_ISR_PROTO(IntDefaultHandler);
+  41:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  42:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  43:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+  44:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_Start
+  45:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+  46:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  47:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+  48:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  49:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  50:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  51:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  interrupt controller.
+  52:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  53:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:  
+  54:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+  55:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  56:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+  57:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+  58:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  59:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+  60:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_Start(void)
+  61:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+  62:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* For all we know the interrupt is active. */
+  63:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+  64:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  65:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Set the ISR to point to the TPS_ADC_IRQ Interrupt. */
+  66:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(&TPS_ADC_IRQ_Interrupt);
+  67:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  68:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Set the priority. */
+  69:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetPriority((uint8)TPS_ADC_IRQ_INTC_PRIOR_NUMBER);
+  70:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  71:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Enable it. */
+  72:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Enable();
+  73:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+  74:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  75:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+  76:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+  77:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_StartEx
+  78:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+  79:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  80:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+  81:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  82:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  83:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  84:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  the interrupt to the interrupt controller.
+  85:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  
+  86:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  87:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  used to provide consistent definition across compilers:
+  88:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *  Function definition example:
+  90:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   CY_ISR(MyISR)
+  91:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   {
+  92:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   }
+  93:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Function prototype example:
+  94:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   CY_ISR_PROTO(MyISR);
+  95:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  96:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:  
+  97:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  98:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+  99:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 100:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 101:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 102:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 103:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_StartEx(cyisraddress address)
+ 104:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 105:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* For all we know the interrupt is active. */
+ 106:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+ 107:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 108:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Set the ISR to point to the TPS_ADC_IRQ Interrupt. */
+ 109:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(address);
+ 110:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 111:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Set the priority. */
+ 112:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetPriority((uint8)TPS_ADC_IRQ_INTC_PRIOR_NUMBER);
+ 113:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 114:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Enable it. */
+ 115:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Enable();
+ 116:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 117:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 118:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 119:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 120:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_Stop
+ 121:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 122:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 123:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 124:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Disables and removes the interrupt.
+ 125:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 126:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:  
+ 127:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 128:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 129:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 130:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 131:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 132:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 133:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_Stop(void)
+ 134:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 135:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Disable this interrupt. */
+ 136:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+ 137:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 138:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Set the ISR to point to the passive one. */
+ 139:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(&IntDefaultHandler);
+ 140:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 141:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 142:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 143:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 144:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_Interrupt
+ 145:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 4
+
+
+ 146:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 147:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 148:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   The default Interrupt Service Routine for TPS_ADC_IRQ.
+ 149:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 150:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Add custom code between the coments to keep the next version of this file
+ 151:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   from over writting your code.
+ 152:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 153:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:  
+ 154:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 155:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 156:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 157:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 158:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 159:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** CY_ISR(TPS_ADC_IRQ_Interrupt)
+ 160:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+  27              		.loc 1 160 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE3:
+  35              		.size	TPS_ADC_IRQ_Interrupt, .-TPS_ADC_IRQ_Interrupt
+  36 0002 00BF     		.section	.text.TPS_ADC_IRQ_SetVector,"ax",%progbits
+  37              		.align	2
+  38              		.global	TPS_ADC_IRQ_SetVector
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	TPS_ADC_IRQ_SetVector, %function
+  42              	TPS_ADC_IRQ_SetVector:
+  43              	.LFB4:
+ 161:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /*  Place your Interrupt code here. */
+ 162:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* `#START TPS_ADC_IRQ_Interrupt` */
+ 163:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 164:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* `#END` */
+ 165:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 166:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 167:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 168:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 169:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_SetVector
+ 170:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 171:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 172:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 173:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Change the ISR vector for the Interrupt. Note calling TPS_ADC_IRQ_Start
+ 174:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   will override any effect this method would have had. To set the vector 
+ 175:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   before the component has been started use TPS_ADC_IRQ_StartEx instead.
+ 176:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * 
+ 177:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 178:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   used to provide consistent definition across compilers:
+ 179:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 180:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Function definition example:
+ 181:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   CY_ISR(MyISR)
+ 182:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   {
+ 183:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   }
+ 184:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 185:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Function prototype example:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 5
+
+
+ 186:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *     CY_ISR_PROTO(MyISR);
+ 187:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 188:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 189:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 190:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 191:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 192:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 193:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 194:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 195:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_SetVector(cyisraddress address)
+ 196:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+  44              		.loc 1 196 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49              	.LVL0:
+ 197:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     cyisraddress * ramVectorTable;
+ 198:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 199:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  50              		.loc 1 199 0
+  51 0000 014B     		ldr	r3, .L3
+  52 0002 1B68     		ldr	r3, [r3]
+  53              	.LVL1:
+ 200:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 201:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     ramVectorTable[CYINT_IRQ_BASE + (uint32)TPS_ADC_IRQ__INTC_NUMBER] = address;
+  54              		.loc 1 201 0
+  55 0004 5864     		str	r0, [r3, #68]
+  56 0006 7047     		bx	lr
+  57              	.L4:
+  58              		.align	2
+  59              	.L3:
+  60 0008 08ED00E0 		.word	-536810232
+  61              		.cfi_endproc
+  62              	.LFE4:
+  63              		.size	TPS_ADC_IRQ_SetVector, .-TPS_ADC_IRQ_SetVector
+  64              		.section	.text.TPS_ADC_IRQ_GetVector,"ax",%progbits
+  65              		.align	2
+  66              		.global	TPS_ADC_IRQ_GetVector
+  67              		.thumb
+  68              		.thumb_func
+  69              		.type	TPS_ADC_IRQ_GetVector, %function
+  70              	TPS_ADC_IRQ_GetVector:
+  71              	.LFB5:
+ 202:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 203:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 204:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 205:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 206:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_GetVector
+ 207:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 208:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 209:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 210:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 212:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 213:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 214:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 6
+
+
+ 215:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 216:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Address of the ISR in the interrupt vector table.
+ 217:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 218:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 219:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** cyisraddress TPS_ADC_IRQ_GetVector(void)
+ 220:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+  72              		.loc 1 220 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+ 221:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     cyisraddress * ramVectorTable;
+ 222:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 223:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
+  77              		.loc 1 223 0
+  78 0000 014B     		ldr	r3, .L6
+  79 0002 1B68     		ldr	r3, [r3]
+  80              	.LVL2:
+ 224:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 225:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     return ramVectorTable[CYINT_IRQ_BASE + (uint32)TPS_ADC_IRQ__INTC_NUMBER];
+ 226:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+  81              		.loc 1 226 0
+  82 0004 586C     		ldr	r0, [r3, #68]
+  83 0006 7047     		bx	lr
+  84              	.L7:
+  85              		.align	2
+  86              	.L6:
+  87 0008 08ED00E0 		.word	-536810232
+  88              		.cfi_endproc
+  89              	.LFE5:
+  90              		.size	TPS_ADC_IRQ_GetVector, .-TPS_ADC_IRQ_GetVector
+  91              		.section	.text.TPS_ADC_IRQ_SetPriority,"ax",%progbits
+  92              		.align	2
+  93              		.global	TPS_ADC_IRQ_SetPriority
+  94              		.thumb
+  95              		.thumb_func
+  96              		.type	TPS_ADC_IRQ_SetPriority, %function
+  97              	TPS_ADC_IRQ_SetPriority:
+  98              	.LFB6:
+ 227:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 228:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 229:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 230:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_SetPriority
+ 231:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 232:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 233:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 234:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Sets the Priority of the Interrupt. 
+ 235:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 236:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Note calling TPS_ADC_IRQ_Start or TPS_ADC_IRQ_StartEx will 
+ 237:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   override any effect this API would have had. This API should only be called
+ 238:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   after TPS_ADC_IRQ_Start or TPS_ADC_IRQ_StartEx has been called. 
+ 239:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 240:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Interrupt Editor.
+ 241:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 242:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 243:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 244:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 7
+
+
+ 245:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 246:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 247:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *             PSoC 4: Priority is from 0 to 3.
+ 248:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 249:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 250:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 251:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 252:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 253:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_SetPriority(uint8 priority)
+ 254:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+  99              		.loc 1 254 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 104              	.LVL3:
+ 255:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     *TPS_ADC_IRQ_INTC_PRIOR = priority << 5;
+ 105              		.loc 1 255 0
+ 106 0000 4001     		lsls	r0, r0, #5
+ 107              	.LVL4:
+ 108 0002 C0B2     		uxtb	r0, r0
+ 109 0004 014B     		ldr	r3, .L9
+ 110 0006 1870     		strb	r0, [r3]
+ 111 0008 7047     		bx	lr
+ 112              	.L10:
+ 113 000a 00BF     		.align	2
+ 114              	.L9:
+ 115 000c 01E400E0 		.word	-536812543
+ 116              		.cfi_endproc
+ 117              	.LFE6:
+ 118              		.size	TPS_ADC_IRQ_SetPriority, .-TPS_ADC_IRQ_SetPriority
+ 119              		.section	.text.TPS_ADC_IRQ_GetPriority,"ax",%progbits
+ 120              		.align	2
+ 121              		.global	TPS_ADC_IRQ_GetPriority
+ 122              		.thumb
+ 123              		.thumb_func
+ 124              		.type	TPS_ADC_IRQ_GetPriority, %function
+ 125              	TPS_ADC_IRQ_GetPriority:
+ 126              	.LFB7:
+ 256:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 257:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 258:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 259:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 260:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_GetPriority
+ 261:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 262:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 263:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 264:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Gets the Priority of the Interrupt.
+ 265:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 266:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 267:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 268:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 269:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 270:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Priority of the interrupt, 0 being the highest priority
+ 271:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 272:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *    PSoC 4: Priority is from 0 to 3.
+ 273:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 8
+
+
+ 274:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 275:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** uint8 TPS_ADC_IRQ_GetPriority(void)
+ 276:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 127              		.loc 1 276 0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 277:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     uint8 priority;
+ 278:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 279:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 280:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     priority = *TPS_ADC_IRQ_INTC_PRIOR >> 5;
+ 132              		.loc 1 280 0
+ 133 0000 014B     		ldr	r3, .L12
+ 134 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 135              	.LVL5:
+ 281:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 282:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     return priority;
+ 283:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 136              		.loc 1 283 0
+ 137 0004 4009     		lsrs	r0, r0, #5
+ 138              	.LVL6:
+ 139 0006 7047     		bx	lr
+ 140              	.L13:
+ 141              		.align	2
+ 142              	.L12:
+ 143 0008 01E400E0 		.word	-536812543
+ 144              		.cfi_endproc
+ 145              	.LFE7:
+ 146              		.size	TPS_ADC_IRQ_GetPriority, .-TPS_ADC_IRQ_GetPriority
+ 147              		.section	.text.TPS_ADC_IRQ_Enable,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	TPS_ADC_IRQ_Enable
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.type	TPS_ADC_IRQ_Enable, %function
+ 153              	TPS_ADC_IRQ_Enable:
+ 154              	.LFB8:
+ 284:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 285:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 286:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 287:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_Enable
+ 288:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 289:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 290:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 291:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 292:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 293:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   function, which sets the vector and the priority, has been called.
+ 294:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 295:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 296:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 297:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 298:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 299:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 300:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 301:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 302:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_Enable(void)
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 9
+
+
+ 303:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 155              		.loc 1 303 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+ 304:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Enable the general interrupt. */
+ 305:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     *TPS_ADC_IRQ_INTC_SET_EN = TPS_ADC_IRQ__INTC_MASK;
+ 160              		.loc 1 305 0
+ 161 0000 0222     		movs	r2, #2
+ 162 0002 014B     		ldr	r3, .L15
+ 163 0004 1A60     		str	r2, [r3]
+ 164 0006 7047     		bx	lr
+ 165              	.L16:
+ 166              		.align	2
+ 167              	.L15:
+ 168 0008 00E100E0 		.word	-536813312
+ 169              		.cfi_endproc
+ 170              	.LFE8:
+ 171              		.size	TPS_ADC_IRQ_Enable, .-TPS_ADC_IRQ_Enable
+ 172              		.section	.text.TPS_ADC_IRQ_GetState,"ax",%progbits
+ 173              		.align	2
+ 174              		.global	TPS_ADC_IRQ_GetState
+ 175              		.thumb
+ 176              		.thumb_func
+ 177              		.type	TPS_ADC_IRQ_GetState, %function
+ 178              	TPS_ADC_IRQ_GetState:
+ 179              	.LFB9:
+ 306:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 307:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 308:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 309:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 310:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_GetState
+ 311:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 312:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 313:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 314:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 315:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 316:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 317:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 318:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 319:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 320:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   1 if enabled, 0 if disabled.
+ 321:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 322:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 323:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** uint8 TPS_ADC_IRQ_GetState(void)
+ 324:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 180              		.loc 1 324 0
+ 181              		.cfi_startproc
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 325:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Get the state of the general interrupt. */
+ 326:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     return ((*TPS_ADC_IRQ_INTC_SET_EN & (uint32)TPS_ADC_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 185              		.loc 1 326 0
+ 186 0000 044B     		ldr	r3, .L20
+ 187 0002 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 10
+
+
+ 188 0004 13F0020F 		tst	r3, #2
+ 189 0008 01D0     		beq	.L19
+ 190 000a 0120     		movs	r0, #1
+ 191 000c 7047     		bx	lr
+ 192              	.L19:
+ 193 000e 0020     		movs	r0, #0
+ 327:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 194              		.loc 1 327 0
+ 195 0010 7047     		bx	lr
+ 196              	.L21:
+ 197 0012 00BF     		.align	2
+ 198              	.L20:
+ 199 0014 00E100E0 		.word	-536813312
+ 200              		.cfi_endproc
+ 201              	.LFE9:
+ 202              		.size	TPS_ADC_IRQ_GetState, .-TPS_ADC_IRQ_GetState
+ 203              		.section	.text.TPS_ADC_IRQ_Disable,"ax",%progbits
+ 204              		.align	2
+ 205              		.global	TPS_ADC_IRQ_Disable
+ 206              		.thumb
+ 207              		.thumb_func
+ 208              		.type	TPS_ADC_IRQ_Disable, %function
+ 209              	TPS_ADC_IRQ_Disable:
+ 210              	.LFB10:
+ 328:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 329:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 330:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 331:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_Disable
+ 332:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 333:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 334:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 335:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Disables the Interrupt in the interrupt controller.
+ 336:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 337:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 338:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 339:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 340:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 341:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 342:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 343:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 344:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_Disable(void)
+ 345:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 211              		.loc 1 345 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215              		@ link register save eliminated.
+ 346:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     /* Disable the general interrupt. */
+ 347:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     *TPS_ADC_IRQ_INTC_CLR_EN = TPS_ADC_IRQ__INTC_MASK;
+ 216              		.loc 1 347 0
+ 217 0000 0222     		movs	r2, #2
+ 218 0002 014B     		ldr	r3, .L23
+ 219 0004 1A60     		str	r2, [r3]
+ 220 0006 7047     		bx	lr
+ 221              	.L24:
+ 222              		.align	2
+ 223              	.L23:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 11
+
+
+ 224 0008 80E100E0 		.word	-536813184
+ 225              		.cfi_endproc
+ 226              	.LFE10:
+ 227              		.size	TPS_ADC_IRQ_Disable, .-TPS_ADC_IRQ_Disable
+ 228              		.section	.text.TPS_ADC_IRQ_Start,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	TPS_ADC_IRQ_Start
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	TPS_ADC_IRQ_Start, %function
+ 234              	TPS_ADC_IRQ_Start:
+ 235              	.LFB0:
+  61:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 236              		.loc 1 61 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240 0000 08B5     		push	{r3, lr}
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 3, -8
+ 243              		.cfi_offset 14, -4
+  63:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+ 244              		.loc 1 63 0
+ 245 0002 FFF7FEFF 		bl	TPS_ADC_IRQ_Disable
+ 246              	.LVL7:
+  66:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(&TPS_ADC_IRQ_Interrupt);
+ 247              		.loc 1 66 0
+ 248 0006 0448     		ldr	r0, .L26
+ 249 0008 FFF7FEFF 		bl	TPS_ADC_IRQ_SetVector
+ 250              	.LVL8:
+  69:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetPriority((uint8)TPS_ADC_IRQ_INTC_PRIOR_NUMBER);
+ 251              		.loc 1 69 0
+ 252 000c 0720     		movs	r0, #7
+ 253 000e FFF7FEFF 		bl	TPS_ADC_IRQ_SetPriority
+ 254              	.LVL9:
+  72:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Enable();
+ 255              		.loc 1 72 0
+ 256 0012 FFF7FEFF 		bl	TPS_ADC_IRQ_Enable
+ 257              	.LVL10:
+ 258 0016 08BD     		pop	{r3, pc}
+ 259              	.L27:
+ 260              		.align	2
+ 261              	.L26:
+ 262 0018 00000000 		.word	TPS_ADC_IRQ_Interrupt
+ 263              		.cfi_endproc
+ 264              	.LFE0:
+ 265              		.size	TPS_ADC_IRQ_Start, .-TPS_ADC_IRQ_Start
+ 266              		.section	.text.TPS_ADC_IRQ_StartEx,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	TPS_ADC_IRQ_StartEx
+ 269              		.thumb
+ 270              		.thumb_func
+ 271              		.type	TPS_ADC_IRQ_StartEx, %function
+ 272              	TPS_ADC_IRQ_StartEx:
+ 273              	.LFB1:
+ 104:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 274              		.loc 1 104 0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 12
+
+
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              	.LVL11:
+ 279 0000 10B5     		push	{r4, lr}
+ 280              		.cfi_def_cfa_offset 8
+ 281              		.cfi_offset 4, -8
+ 282              		.cfi_offset 14, -4
+ 283 0002 0446     		mov	r4, r0
+ 106:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+ 284              		.loc 1 106 0
+ 285 0004 FFF7FEFF 		bl	TPS_ADC_IRQ_Disable
+ 286              	.LVL12:
+ 109:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(address);
+ 287              		.loc 1 109 0
+ 288 0008 2046     		mov	r0, r4
+ 289 000a FFF7FEFF 		bl	TPS_ADC_IRQ_SetVector
+ 290              	.LVL13:
+ 112:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetPriority((uint8)TPS_ADC_IRQ_INTC_PRIOR_NUMBER);
+ 291              		.loc 1 112 0
+ 292 000e 0720     		movs	r0, #7
+ 293 0010 FFF7FEFF 		bl	TPS_ADC_IRQ_SetPriority
+ 294              	.LVL14:
+ 115:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Enable();
+ 295              		.loc 1 115 0
+ 296 0014 FFF7FEFF 		bl	TPS_ADC_IRQ_Enable
+ 297              	.LVL15:
+ 298 0018 10BD     		pop	{r4, pc}
+ 299              		.cfi_endproc
+ 300              	.LFE1:
+ 301              		.size	TPS_ADC_IRQ_StartEx, .-TPS_ADC_IRQ_StartEx
+ 302 001a 00BF     		.section	.text.TPS_ADC_IRQ_Stop,"ax",%progbits
+ 303              		.align	2
+ 304              		.global	TPS_ADC_IRQ_Stop
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.type	TPS_ADC_IRQ_Stop, %function
+ 308              	TPS_ADC_IRQ_Stop:
+ 309              	.LFB2:
+ 134:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 310              		.loc 1 134 0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314 0000 08B5     		push	{r3, lr}
+ 315              		.cfi_def_cfa_offset 8
+ 316              		.cfi_offset 3, -8
+ 317              		.cfi_offset 14, -4
+ 136:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_Disable();
+ 318              		.loc 1 136 0
+ 319 0002 FFF7FEFF 		bl	TPS_ADC_IRQ_Disable
+ 320              	.LVL16:
+ 139:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     TPS_ADC_IRQ_SetVector(&IntDefaultHandler);
+ 321              		.loc 1 139 0
+ 322 0006 0248     		ldr	r0, .L30
+ 323 0008 FFF7FEFF 		bl	TPS_ADC_IRQ_SetVector
+ 324              	.LVL17:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 13
+
+
+ 325 000c 08BD     		pop	{r3, pc}
+ 326              	.L31:
+ 327 000e 00BF     		.align	2
+ 328              	.L30:
+ 329 0010 00000000 		.word	IntDefaultHandler
+ 330              		.cfi_endproc
+ 331              	.LFE2:
+ 332              		.size	TPS_ADC_IRQ_Stop, .-TPS_ADC_IRQ_Stop
+ 333              		.section	.text.TPS_ADC_IRQ_SetPending,"ax",%progbits
+ 334              		.align	2
+ 335              		.global	TPS_ADC_IRQ_SetPending
+ 336              		.thumb
+ 337              		.thumb_func
+ 338              		.type	TPS_ADC_IRQ_SetPending, %function
+ 339              	TPS_ADC_IRQ_SetPending:
+ 340              	.LFB11:
+ 348:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 349:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 350:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 351:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 352:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_SetPending
+ 353:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 354:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 355:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 356:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 357:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   generating the interrupt.
+ 358:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 359:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 360:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 361:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 362:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 363:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 364:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 365:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Side Effects:
+ 366:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 367:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 368:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   interrupts).
+ 369:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 370:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 371:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_SetPending(void)
+ 372:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 341              		.loc 1 372 0
+ 342              		.cfi_startproc
+ 343              		@ args = 0, pretend = 0, frame = 0
+ 344              		@ frame_needed = 0, uses_anonymous_args = 0
+ 345              		@ link register save eliminated.
+ 373:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     *TPS_ADC_IRQ_INTC_SET_PD = TPS_ADC_IRQ__INTC_MASK;
+ 346              		.loc 1 373 0
+ 347 0000 0222     		movs	r2, #2
+ 348 0002 014B     		ldr	r3, .L33
+ 349 0004 1A60     		str	r2, [r3]
+ 350 0006 7047     		bx	lr
+ 351              	.L34:
+ 352              		.align	2
+ 353              	.L33:
+ 354 0008 00E200E0 		.word	-536813056
+ 355              		.cfi_endproc
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 14
+
+
+ 356              	.LFE11:
+ 357              		.size	TPS_ADC_IRQ_SetPending, .-TPS_ADC_IRQ_SetPending
+ 358              		.section	.text.TPS_ADC_IRQ_ClearPending,"ax",%progbits
+ 359              		.align	2
+ 360              		.global	TPS_ADC_IRQ_ClearPending
+ 361              		.thumb
+ 362              		.thumb_func
+ 363              		.type	TPS_ADC_IRQ_ClearPending, %function
+ 364              	TPS_ADC_IRQ_ClearPending:
+ 365              	.LFB12:
+ 374:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** }
+ 375:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 376:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** 
+ 377:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** /*******************************************************************************
+ 378:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Function Name: TPS_ADC_IRQ_ClearPending
+ 379:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** ********************************************************************************
+ 380:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 381:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Summary:
+ 382:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Clears a pending interrupt in the interrupt controller.
+ 383:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 384:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 385:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 386:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 387:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 388:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 389:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Parameters:
+ 390:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 391:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 392:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** * Return:
+ 393:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *   None
+ 394:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *
+ 395:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** *******************************************************************************/
+ 396:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** void TPS_ADC_IRQ_ClearPending(void)
+ 397:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c **** {
+ 366              		.loc 1 397 0
+ 367              		.cfi_startproc
+ 368              		@ args = 0, pretend = 0, frame = 0
+ 369              		@ frame_needed = 0, uses_anonymous_args = 0
+ 370              		@ link register save eliminated.
+ 398:.\Generated_Source\PSoC5/TPS_ADC_IRQ.c ****     *TPS_ADC_IRQ_INTC_CLR_PD = TPS_ADC_IRQ__INTC_MASK;
+ 371              		.loc 1 398 0
+ 372 0000 0222     		movs	r2, #2
+ 373 0002 014B     		ldr	r3, .L36
+ 374 0004 1A60     		str	r2, [r3]
+ 375 0006 7047     		bx	lr
+ 376              	.L37:
+ 377              		.align	2
+ 378              	.L36:
+ 379 0008 80E200E0 		.word	-536812928
+ 380              		.cfi_endproc
+ 381              	.LFE12:
+ 382              		.size	TPS_ADC_IRQ_ClearPending, .-TPS_ADC_IRQ_ClearPending
+ 383              		.text
+ 384              	.Letext0:
+ 385              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 386              		.section	.debug_info,"",%progbits
+ 387              	.Ldebug_info0:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 15
+
+
+ 388 0000 C3020000 		.4byte	0x2c3
+ 389 0004 0400     		.2byte	0x4
+ 390 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 391 000a 04       		.byte	0x4
+ 392 000b 01       		.uleb128 0x1
+ 393 000c 9A010000 		.4byte	.LASF33
+ 394 0010 01       		.byte	0x1
+ 395 0011 43000000 		.4byte	.LASF34
+ 396 0015 53020000 		.4byte	.LASF35
+ 397 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 398 001d 00000000 		.4byte	0
+ 399 0021 00000000 		.4byte	.Ldebug_line0
+ 400 0025 02       		.uleb128 0x2
+ 401 0026 04       		.byte	0x4
+ 402 0027 05       		.byte	0x5
+ 403 0028 696E7400 		.ascii	"int\000"
+ 404 002c 03       		.uleb128 0x3
+ 405 002d 04       		.byte	0x4
+ 406 002e 07       		.byte	0x7
+ 407 002f 3A010000 		.4byte	.LASF0
+ 408 0033 03       		.uleb128 0x3
+ 409 0034 01       		.byte	0x1
+ 410 0035 06       		.byte	0x6
+ 411 0036 D8020000 		.4byte	.LASF1
+ 412 003a 03       		.uleb128 0x3
+ 413 003b 01       		.byte	0x1
+ 414 003c 08       		.byte	0x8
+ 415 003d 70000000 		.4byte	.LASF2
+ 416 0041 03       		.uleb128 0x3
+ 417 0042 02       		.byte	0x2
+ 418 0043 05       		.byte	0x5
+ 419 0044 F9000000 		.4byte	.LASF3
+ 420 0048 03       		.uleb128 0x3
+ 421 0049 02       		.byte	0x2
+ 422 004a 07       		.byte	0x7
+ 423 004b 30000000 		.4byte	.LASF4
+ 424 004f 03       		.uleb128 0x3
+ 425 0050 04       		.byte	0x4
+ 426 0051 05       		.byte	0x5
+ 427 0052 B9020000 		.4byte	.LASF5
+ 428 0056 03       		.uleb128 0x3
+ 429 0057 04       		.byte	0x4
+ 430 0058 07       		.byte	0x7
+ 431 0059 83000000 		.4byte	.LASF6
+ 432 005d 03       		.uleb128 0x3
+ 433 005e 08       		.byte	0x8
+ 434 005f 05       		.byte	0x5
+ 435 0060 31020000 		.4byte	.LASF7
+ 436 0064 03       		.uleb128 0x3
+ 437 0065 08       		.byte	0x8
+ 438 0066 07       		.byte	0x7
+ 439 0067 4F010000 		.4byte	.LASF8
+ 440 006b 03       		.uleb128 0x3
+ 441 006c 04       		.byte	0x4
+ 442 006d 07       		.byte	0x7
+ 443 006e 28020000 		.4byte	.LASF9
+ 444 0072 04       		.uleb128 0x4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 16
+
+
+ 445 0073 04       		.byte	0x4
+ 446 0074 78000000 		.4byte	0x78
+ 447 0078 05       		.uleb128 0x5
+ 448 0079 03       		.uleb128 0x3
+ 449 007a 01       		.byte	0x1
+ 450 007b 08       		.byte	0x8
+ 451 007c 3F020000 		.4byte	.LASF10
+ 452 0080 06       		.uleb128 0x6
+ 453 0081 B3020000 		.4byte	.LASF11
+ 454 0085 02       		.byte	0x2
+ 455 0086 B4       		.byte	0xb4
+ 456 0087 3A000000 		.4byte	0x3a
+ 457 008b 06       		.uleb128 0x6
+ 458 008c 33010000 		.4byte	.LASF12
+ 459 0090 02       		.byte	0x2
+ 460 0091 B6       		.byte	0xb6
+ 461 0092 56000000 		.4byte	0x56
+ 462 0096 03       		.uleb128 0x3
+ 463 0097 04       		.byte	0x4
+ 464 0098 04       		.byte	0x4
+ 465 0099 6A000000 		.4byte	.LASF13
+ 466 009d 03       		.uleb128 0x3
+ 467 009e 08       		.byte	0x8
+ 468 009f 04       		.byte	0x4
+ 469 00a0 DB000000 		.4byte	.LASF14
+ 470 00a4 07       		.uleb128 0x7
+ 471 00a5 7E000000 		.4byte	.LASF15
+ 472 00a9 02       		.byte	0x2
+ 473 00aa 5E01     		.2byte	0x15e
+ 474 00ac B0000000 		.4byte	0xb0
+ 475 00b0 08       		.uleb128 0x8
+ 476 00b1 80000000 		.4byte	0x80
+ 477 00b5 07       		.uleb128 0x7
+ 478 00b6 00000000 		.4byte	.LASF16
+ 479 00ba 02       		.byte	0x2
+ 480 00bb 6001     		.2byte	0x160
+ 481 00bd C1000000 		.4byte	0xc1
+ 482 00c1 08       		.uleb128 0x8
+ 483 00c2 8B000000 		.4byte	0x8b
+ 484 00c6 07       		.uleb128 0x7
+ 485 00c7 79010000 		.4byte	.LASF17
+ 486 00cb 02       		.byte	0x2
+ 487 00cc 7001     		.2byte	0x170
+ 488 00ce 72000000 		.4byte	0x72
+ 489 00d2 09       		.uleb128 0x9
+ 490 00d3 C2020000 		.4byte	.LASF25
+ 491 00d7 01       		.byte	0x1
+ 492 00d8 9F       		.byte	0x9f
+ 493 00d9 00000000 		.4byte	.LFB3
+ 494 00dd 02000000 		.4byte	.LFE3-.LFB3
+ 495 00e1 01       		.uleb128 0x1
+ 496 00e2 9C       		.byte	0x9c
+ 497 00e3 0A       		.uleb128 0xa
+ 498 00e4 1A000000 		.4byte	.LASF19
+ 499 00e8 01       		.byte	0x1
+ 500 00e9 C3       		.byte	0xc3
+ 501 00ea 00000000 		.4byte	.LFB4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 17
+
+
+ 502 00ee 0C000000 		.4byte	.LFE4-.LFB4
+ 503 00f2 01       		.uleb128 0x1
+ 504 00f3 9C       		.byte	0x9c
+ 505 00f4 13010000 		.4byte	0x113
+ 506 00f8 0B       		.uleb128 0xb
+ 507 00f9 47010000 		.4byte	.LASF21
+ 508 00fd 01       		.byte	0x1
+ 509 00fe C3       		.byte	0xc3
+ 510 00ff C6000000 		.4byte	0xc6
+ 511 0103 01       		.uleb128 0x1
+ 512 0104 50       		.byte	0x50
+ 513 0105 0C       		.uleb128 0xc
+ 514 0106 44020000 		.4byte	.LASF18
+ 515 010a 01       		.byte	0x1
+ 516 010b C5       		.byte	0xc5
+ 517 010c 13010000 		.4byte	0x113
+ 518 0110 01       		.uleb128 0x1
+ 519 0111 53       		.byte	0x53
+ 520 0112 00       		.byte	0
+ 521 0113 04       		.uleb128 0x4
+ 522 0114 04       		.byte	0x4
+ 523 0115 C6000000 		.4byte	0xc6
+ 524 0119 0D       		.uleb128 0xd
+ 525 011a 0C010000 		.4byte	.LASF23
+ 526 011e 01       		.byte	0x1
+ 527 011f DB       		.byte	0xdb
+ 528 0120 C6000000 		.4byte	0xc6
+ 529 0124 00000000 		.4byte	.LFB5
+ 530 0128 0C000000 		.4byte	.LFE5-.LFB5
+ 531 012c 01       		.uleb128 0x1
+ 532 012d 9C       		.byte	0x9c
+ 533 012e 40010000 		.4byte	0x140
+ 534 0132 0C       		.uleb128 0xc
+ 535 0133 44020000 		.4byte	.LASF18
+ 536 0137 01       		.byte	0x1
+ 537 0138 DD       		.byte	0xdd
+ 538 0139 13010000 		.4byte	0x113
+ 539 013d 01       		.uleb128 0x1
+ 540 013e 53       		.byte	0x53
+ 541 013f 00       		.byte	0
+ 542 0140 0A       		.uleb128 0xa
+ 543 0141 9B020000 		.4byte	.LASF20
+ 544 0145 01       		.byte	0x1
+ 545 0146 FD       		.byte	0xfd
+ 546 0147 00000000 		.4byte	.LFB6
+ 547 014b 10000000 		.4byte	.LFE6-.LFB6
+ 548 014f 01       		.uleb128 0x1
+ 549 0150 9C       		.byte	0x9c
+ 550 0151 65010000 		.4byte	0x165
+ 551 0155 0E       		.uleb128 0xe
+ 552 0156 03010000 		.4byte	.LASF22
+ 553 015a 01       		.byte	0x1
+ 554 015b FD       		.byte	0xfd
+ 555 015c 80000000 		.4byte	0x80
+ 556 0160 00000000 		.4byte	.LLST0
+ 557 0164 00       		.byte	0
+ 558 0165 0F       		.uleb128 0xf
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 18
+
+
+ 559 0166 AA000000 		.4byte	.LASF24
+ 560 016a 01       		.byte	0x1
+ 561 016b 1301     		.2byte	0x113
+ 562 016d 80000000 		.4byte	0x80
+ 563 0171 00000000 		.4byte	.LFB7
+ 564 0175 0C000000 		.4byte	.LFE7-.LFB7
+ 565 0179 01       		.uleb128 0x1
+ 566 017a 9C       		.byte	0x9c
+ 567 017b 90010000 		.4byte	0x190
+ 568 017f 10       		.uleb128 0x10
+ 569 0180 03010000 		.4byte	.LASF22
+ 570 0184 01       		.byte	0x1
+ 571 0185 1501     		.2byte	0x115
+ 572 0187 80000000 		.4byte	0x80
+ 573 018b 21000000 		.4byte	.LLST1
+ 574 018f 00       		.byte	0
+ 575 0190 11       		.uleb128 0x11
+ 576 0191 66010000 		.4byte	.LASF26
+ 577 0195 01       		.byte	0x1
+ 578 0196 2E01     		.2byte	0x12e
+ 579 0198 00000000 		.4byte	.LFB8
+ 580 019c 0C000000 		.4byte	.LFE8-.LFB8
+ 581 01a0 01       		.uleb128 0x1
+ 582 01a1 9C       		.byte	0x9c
+ 583 01a2 12       		.uleb128 0x12
+ 584 01a3 95000000 		.4byte	.LASF36
+ 585 01a7 01       		.byte	0x1
+ 586 01a8 4301     		.2byte	0x143
+ 587 01aa 80000000 		.4byte	0x80
+ 588 01ae 00000000 		.4byte	.LFB9
+ 589 01b2 18000000 		.4byte	.LFE9-.LFB9
+ 590 01b6 01       		.uleb128 0x1
+ 591 01b7 9C       		.byte	0x9c
+ 592 01b8 11       		.uleb128 0x11
+ 593 01b9 86010000 		.4byte	.LASF27
+ 594 01bd 01       		.byte	0x1
+ 595 01be 5801     		.2byte	0x158
+ 596 01c0 00000000 		.4byte	.LFB10
+ 597 01c4 0C000000 		.4byte	.LFE10-.LFB10
+ 598 01c8 01       		.uleb128 0x1
+ 599 01c9 9C       		.byte	0x9c
+ 600 01ca 0A       		.uleb128 0xa
+ 601 01cb 16020000 		.4byte	.LASF28
+ 602 01cf 01       		.byte	0x1
+ 603 01d0 3C       		.byte	0x3c
+ 604 01d1 00000000 		.4byte	.LFB0
+ 605 01d5 1C000000 		.4byte	.LFE0-.LFB0
+ 606 01d9 01       		.uleb128 0x1
+ 607 01da 9C       		.byte	0x9c
+ 608 01db 1C020000 		.4byte	0x21c
+ 609 01df 13       		.uleb128 0x13
+ 610 01e0 06000000 		.4byte	.LVL7
+ 611 01e4 B8010000 		.4byte	0x1b8
+ 612 01e8 14       		.uleb128 0x14
+ 613 01e9 0C000000 		.4byte	.LVL8
+ 614 01ed E3000000 		.4byte	0xe3
+ 615 01f1 FF010000 		.4byte	0x1ff
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 19
+
+
+ 616 01f5 15       		.uleb128 0x15
+ 617 01f6 01       		.uleb128 0x1
+ 618 01f7 50       		.byte	0x50
+ 619 01f8 05       		.uleb128 0x5
+ 620 01f9 03       		.byte	0x3
+ 621 01fa 00000000 		.4byte	TPS_ADC_IRQ_Interrupt
+ 622 01fe 00       		.byte	0
+ 623 01ff 14       		.uleb128 0x14
+ 624 0200 12000000 		.4byte	.LVL9
+ 625 0204 40010000 		.4byte	0x140
+ 626 0208 12020000 		.4byte	0x212
+ 627 020c 15       		.uleb128 0x15
+ 628 020d 01       		.uleb128 0x1
+ 629 020e 50       		.byte	0x50
+ 630 020f 01       		.uleb128 0x1
+ 631 0210 37       		.byte	0x37
+ 632 0211 00       		.byte	0
+ 633 0212 13       		.uleb128 0x13
+ 634 0213 16000000 		.4byte	.LVL10
+ 635 0217 90010000 		.4byte	0x190
+ 636 021b 00       		.byte	0
+ 637 021c 0A       		.uleb128 0xa
+ 638 021d 06000000 		.4byte	.LASF29
+ 639 0221 01       		.byte	0x1
+ 640 0222 67       		.byte	0x67
+ 641 0223 00000000 		.4byte	.LFB1
+ 642 0227 1A000000 		.4byte	.LFE1-.LFB1
+ 643 022b 01       		.uleb128 0x1
+ 644 022c 9C       		.byte	0x9c
+ 645 022d 7A020000 		.4byte	0x27a
+ 646 0231 0E       		.uleb128 0xe
+ 647 0232 47010000 		.4byte	.LASF21
+ 648 0236 01       		.byte	0x1
+ 649 0237 67       		.byte	0x67
+ 650 0238 C6000000 		.4byte	0xc6
+ 651 023c 38000000 		.4byte	.LLST2
+ 652 0240 13       		.uleb128 0x13
+ 653 0241 08000000 		.4byte	.LVL12
+ 654 0245 B8010000 		.4byte	0x1b8
+ 655 0249 14       		.uleb128 0x14
+ 656 024a 0E000000 		.4byte	.LVL13
+ 657 024e E3000000 		.4byte	0xe3
+ 658 0252 5D020000 		.4byte	0x25d
+ 659 0256 15       		.uleb128 0x15
+ 660 0257 01       		.uleb128 0x1
+ 661 0258 50       		.byte	0x50
+ 662 0259 02       		.uleb128 0x2
+ 663 025a 74       		.byte	0x74
+ 664 025b 00       		.sleb128 0
+ 665 025c 00       		.byte	0
+ 666 025d 14       		.uleb128 0x14
+ 667 025e 14000000 		.4byte	.LVL14
+ 668 0262 40010000 		.4byte	0x140
+ 669 0266 70020000 		.4byte	0x270
+ 670 026a 15       		.uleb128 0x15
+ 671 026b 01       		.uleb128 0x1
+ 672 026c 50       		.byte	0x50
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 20
+
+
+ 673 026d 01       		.uleb128 0x1
+ 674 026e 37       		.byte	0x37
+ 675 026f 00       		.byte	0
+ 676 0270 13       		.uleb128 0x13
+ 677 0271 18000000 		.4byte	.LVL15
+ 678 0275 90010000 		.4byte	0x190
+ 679 0279 00       		.byte	0
+ 680 027a 0A       		.uleb128 0xa
+ 681 027b 22010000 		.4byte	.LASF30
+ 682 027f 01       		.byte	0x1
+ 683 0280 85       		.byte	0x85
+ 684 0281 00000000 		.4byte	.LFB2
+ 685 0285 14000000 		.4byte	.LFE2-.LFB2
+ 686 0289 01       		.uleb128 0x1
+ 687 028a 9C       		.byte	0x9c
+ 688 028b A2020000 		.4byte	0x2a2
+ 689 028f 13       		.uleb128 0x13
+ 690 0290 06000000 		.4byte	.LVL16
+ 691 0294 B8010000 		.4byte	0x1b8
+ 692 0298 13       		.uleb128 0x13
+ 693 0299 0C000000 		.4byte	.LVL17
+ 694 029d E3000000 		.4byte	0xe3
+ 695 02a1 00       		.byte	0
+ 696 02a2 11       		.uleb128 0x11
+ 697 02a3 E2000000 		.4byte	.LASF31
+ 698 02a7 01       		.byte	0x1
+ 699 02a8 7301     		.2byte	0x173
+ 700 02aa 00000000 		.4byte	.LFB11
+ 701 02ae 0C000000 		.4byte	.LFE11-.LFB11
+ 702 02b2 01       		.uleb128 0x1
+ 703 02b3 9C       		.byte	0x9c
+ 704 02b4 11       		.uleb128 0x11
+ 705 02b5 C2000000 		.4byte	.LASF32
+ 706 02b9 01       		.byte	0x1
+ 707 02ba 8C01     		.2byte	0x18c
+ 708 02bc 00000000 		.4byte	.LFB12
+ 709 02c0 0C000000 		.4byte	.LFE12-.LFB12
+ 710 02c4 01       		.uleb128 0x1
+ 711 02c5 9C       		.byte	0x9c
+ 712 02c6 00       		.byte	0
+ 713              		.section	.debug_abbrev,"",%progbits
+ 714              	.Ldebug_abbrev0:
+ 715 0000 01       		.uleb128 0x1
+ 716 0001 11       		.uleb128 0x11
+ 717 0002 01       		.byte	0x1
+ 718 0003 25       		.uleb128 0x25
+ 719 0004 0E       		.uleb128 0xe
+ 720 0005 13       		.uleb128 0x13
+ 721 0006 0B       		.uleb128 0xb
+ 722 0007 03       		.uleb128 0x3
+ 723 0008 0E       		.uleb128 0xe
+ 724 0009 1B       		.uleb128 0x1b
+ 725 000a 0E       		.uleb128 0xe
+ 726 000b 55       		.uleb128 0x55
+ 727 000c 17       		.uleb128 0x17
+ 728 000d 11       		.uleb128 0x11
+ 729 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 21
+
+
+ 730 000f 10       		.uleb128 0x10
+ 731 0010 17       		.uleb128 0x17
+ 732 0011 00       		.byte	0
+ 733 0012 00       		.byte	0
+ 734 0013 02       		.uleb128 0x2
+ 735 0014 24       		.uleb128 0x24
+ 736 0015 00       		.byte	0
+ 737 0016 0B       		.uleb128 0xb
+ 738 0017 0B       		.uleb128 0xb
+ 739 0018 3E       		.uleb128 0x3e
+ 740 0019 0B       		.uleb128 0xb
+ 741 001a 03       		.uleb128 0x3
+ 742 001b 08       		.uleb128 0x8
+ 743 001c 00       		.byte	0
+ 744 001d 00       		.byte	0
+ 745 001e 03       		.uleb128 0x3
+ 746 001f 24       		.uleb128 0x24
+ 747 0020 00       		.byte	0
+ 748 0021 0B       		.uleb128 0xb
+ 749 0022 0B       		.uleb128 0xb
+ 750 0023 3E       		.uleb128 0x3e
+ 751 0024 0B       		.uleb128 0xb
+ 752 0025 03       		.uleb128 0x3
+ 753 0026 0E       		.uleb128 0xe
+ 754 0027 00       		.byte	0
+ 755 0028 00       		.byte	0
+ 756 0029 04       		.uleb128 0x4
+ 757 002a 0F       		.uleb128 0xf
+ 758 002b 00       		.byte	0
+ 759 002c 0B       		.uleb128 0xb
+ 760 002d 0B       		.uleb128 0xb
+ 761 002e 49       		.uleb128 0x49
+ 762 002f 13       		.uleb128 0x13
+ 763 0030 00       		.byte	0
+ 764 0031 00       		.byte	0
+ 765 0032 05       		.uleb128 0x5
+ 766 0033 15       		.uleb128 0x15
+ 767 0034 00       		.byte	0
+ 768 0035 27       		.uleb128 0x27
+ 769 0036 19       		.uleb128 0x19
+ 770 0037 00       		.byte	0
+ 771 0038 00       		.byte	0
+ 772 0039 06       		.uleb128 0x6
+ 773 003a 16       		.uleb128 0x16
+ 774 003b 00       		.byte	0
+ 775 003c 03       		.uleb128 0x3
+ 776 003d 0E       		.uleb128 0xe
+ 777 003e 3A       		.uleb128 0x3a
+ 778 003f 0B       		.uleb128 0xb
+ 779 0040 3B       		.uleb128 0x3b
+ 780 0041 0B       		.uleb128 0xb
+ 781 0042 49       		.uleb128 0x49
+ 782 0043 13       		.uleb128 0x13
+ 783 0044 00       		.byte	0
+ 784 0045 00       		.byte	0
+ 785 0046 07       		.uleb128 0x7
+ 786 0047 16       		.uleb128 0x16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 22
+
+
+ 787 0048 00       		.byte	0
+ 788 0049 03       		.uleb128 0x3
+ 789 004a 0E       		.uleb128 0xe
+ 790 004b 3A       		.uleb128 0x3a
+ 791 004c 0B       		.uleb128 0xb
+ 792 004d 3B       		.uleb128 0x3b
+ 793 004e 05       		.uleb128 0x5
+ 794 004f 49       		.uleb128 0x49
+ 795 0050 13       		.uleb128 0x13
+ 796 0051 00       		.byte	0
+ 797 0052 00       		.byte	0
+ 798 0053 08       		.uleb128 0x8
+ 799 0054 35       		.uleb128 0x35
+ 800 0055 00       		.byte	0
+ 801 0056 49       		.uleb128 0x49
+ 802 0057 13       		.uleb128 0x13
+ 803 0058 00       		.byte	0
+ 804 0059 00       		.byte	0
+ 805 005a 09       		.uleb128 0x9
+ 806 005b 2E       		.uleb128 0x2e
+ 807 005c 00       		.byte	0
+ 808 005d 3F       		.uleb128 0x3f
+ 809 005e 19       		.uleb128 0x19
+ 810 005f 03       		.uleb128 0x3
+ 811 0060 0E       		.uleb128 0xe
+ 812 0061 3A       		.uleb128 0x3a
+ 813 0062 0B       		.uleb128 0xb
+ 814 0063 3B       		.uleb128 0x3b
+ 815 0064 0B       		.uleb128 0xb
+ 816 0065 27       		.uleb128 0x27
+ 817 0066 19       		.uleb128 0x19
+ 818 0067 11       		.uleb128 0x11
+ 819 0068 01       		.uleb128 0x1
+ 820 0069 12       		.uleb128 0x12
+ 821 006a 06       		.uleb128 0x6
+ 822 006b 40       		.uleb128 0x40
+ 823 006c 18       		.uleb128 0x18
+ 824 006d 9742     		.uleb128 0x2117
+ 825 006f 19       		.uleb128 0x19
+ 826 0070 00       		.byte	0
+ 827 0071 00       		.byte	0
+ 828 0072 0A       		.uleb128 0xa
+ 829 0073 2E       		.uleb128 0x2e
+ 830 0074 01       		.byte	0x1
+ 831 0075 3F       		.uleb128 0x3f
+ 832 0076 19       		.uleb128 0x19
+ 833 0077 03       		.uleb128 0x3
+ 834 0078 0E       		.uleb128 0xe
+ 835 0079 3A       		.uleb128 0x3a
+ 836 007a 0B       		.uleb128 0xb
+ 837 007b 3B       		.uleb128 0x3b
+ 838 007c 0B       		.uleb128 0xb
+ 839 007d 27       		.uleb128 0x27
+ 840 007e 19       		.uleb128 0x19
+ 841 007f 11       		.uleb128 0x11
+ 842 0080 01       		.uleb128 0x1
+ 843 0081 12       		.uleb128 0x12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 23
+
+
+ 844 0082 06       		.uleb128 0x6
+ 845 0083 40       		.uleb128 0x40
+ 846 0084 18       		.uleb128 0x18
+ 847 0085 9742     		.uleb128 0x2117
+ 848 0087 19       		.uleb128 0x19
+ 849 0088 01       		.uleb128 0x1
+ 850 0089 13       		.uleb128 0x13
+ 851 008a 00       		.byte	0
+ 852 008b 00       		.byte	0
+ 853 008c 0B       		.uleb128 0xb
+ 854 008d 05       		.uleb128 0x5
+ 855 008e 00       		.byte	0
+ 856 008f 03       		.uleb128 0x3
+ 857 0090 0E       		.uleb128 0xe
+ 858 0091 3A       		.uleb128 0x3a
+ 859 0092 0B       		.uleb128 0xb
+ 860 0093 3B       		.uleb128 0x3b
+ 861 0094 0B       		.uleb128 0xb
+ 862 0095 49       		.uleb128 0x49
+ 863 0096 13       		.uleb128 0x13
+ 864 0097 02       		.uleb128 0x2
+ 865 0098 18       		.uleb128 0x18
+ 866 0099 00       		.byte	0
+ 867 009a 00       		.byte	0
+ 868 009b 0C       		.uleb128 0xc
+ 869 009c 34       		.uleb128 0x34
+ 870 009d 00       		.byte	0
+ 871 009e 03       		.uleb128 0x3
+ 872 009f 0E       		.uleb128 0xe
+ 873 00a0 3A       		.uleb128 0x3a
+ 874 00a1 0B       		.uleb128 0xb
+ 875 00a2 3B       		.uleb128 0x3b
+ 876 00a3 0B       		.uleb128 0xb
+ 877 00a4 49       		.uleb128 0x49
+ 878 00a5 13       		.uleb128 0x13
+ 879 00a6 02       		.uleb128 0x2
+ 880 00a7 18       		.uleb128 0x18
+ 881 00a8 00       		.byte	0
+ 882 00a9 00       		.byte	0
+ 883 00aa 0D       		.uleb128 0xd
+ 884 00ab 2E       		.uleb128 0x2e
+ 885 00ac 01       		.byte	0x1
+ 886 00ad 3F       		.uleb128 0x3f
+ 887 00ae 19       		.uleb128 0x19
+ 888 00af 03       		.uleb128 0x3
+ 889 00b0 0E       		.uleb128 0xe
+ 890 00b1 3A       		.uleb128 0x3a
+ 891 00b2 0B       		.uleb128 0xb
+ 892 00b3 3B       		.uleb128 0x3b
+ 893 00b4 0B       		.uleb128 0xb
+ 894 00b5 27       		.uleb128 0x27
+ 895 00b6 19       		.uleb128 0x19
+ 896 00b7 49       		.uleb128 0x49
+ 897 00b8 13       		.uleb128 0x13
+ 898 00b9 11       		.uleb128 0x11
+ 899 00ba 01       		.uleb128 0x1
+ 900 00bb 12       		.uleb128 0x12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 24
+
+
+ 901 00bc 06       		.uleb128 0x6
+ 902 00bd 40       		.uleb128 0x40
+ 903 00be 18       		.uleb128 0x18
+ 904 00bf 9742     		.uleb128 0x2117
+ 905 00c1 19       		.uleb128 0x19
+ 906 00c2 01       		.uleb128 0x1
+ 907 00c3 13       		.uleb128 0x13
+ 908 00c4 00       		.byte	0
+ 909 00c5 00       		.byte	0
+ 910 00c6 0E       		.uleb128 0xe
+ 911 00c7 05       		.uleb128 0x5
+ 912 00c8 00       		.byte	0
+ 913 00c9 03       		.uleb128 0x3
+ 914 00ca 0E       		.uleb128 0xe
+ 915 00cb 3A       		.uleb128 0x3a
+ 916 00cc 0B       		.uleb128 0xb
+ 917 00cd 3B       		.uleb128 0x3b
+ 918 00ce 0B       		.uleb128 0xb
+ 919 00cf 49       		.uleb128 0x49
+ 920 00d0 13       		.uleb128 0x13
+ 921 00d1 02       		.uleb128 0x2
+ 922 00d2 17       		.uleb128 0x17
+ 923 00d3 00       		.byte	0
+ 924 00d4 00       		.byte	0
+ 925 00d5 0F       		.uleb128 0xf
+ 926 00d6 2E       		.uleb128 0x2e
+ 927 00d7 01       		.byte	0x1
+ 928 00d8 3F       		.uleb128 0x3f
+ 929 00d9 19       		.uleb128 0x19
+ 930 00da 03       		.uleb128 0x3
+ 931 00db 0E       		.uleb128 0xe
+ 932 00dc 3A       		.uleb128 0x3a
+ 933 00dd 0B       		.uleb128 0xb
+ 934 00de 3B       		.uleb128 0x3b
+ 935 00df 05       		.uleb128 0x5
+ 936 00e0 27       		.uleb128 0x27
+ 937 00e1 19       		.uleb128 0x19
+ 938 00e2 49       		.uleb128 0x49
+ 939 00e3 13       		.uleb128 0x13
+ 940 00e4 11       		.uleb128 0x11
+ 941 00e5 01       		.uleb128 0x1
+ 942 00e6 12       		.uleb128 0x12
+ 943 00e7 06       		.uleb128 0x6
+ 944 00e8 40       		.uleb128 0x40
+ 945 00e9 18       		.uleb128 0x18
+ 946 00ea 9742     		.uleb128 0x2117
+ 947 00ec 19       		.uleb128 0x19
+ 948 00ed 01       		.uleb128 0x1
+ 949 00ee 13       		.uleb128 0x13
+ 950 00ef 00       		.byte	0
+ 951 00f0 00       		.byte	0
+ 952 00f1 10       		.uleb128 0x10
+ 953 00f2 34       		.uleb128 0x34
+ 954 00f3 00       		.byte	0
+ 955 00f4 03       		.uleb128 0x3
+ 956 00f5 0E       		.uleb128 0xe
+ 957 00f6 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 25
+
+
+ 958 00f7 0B       		.uleb128 0xb
+ 959 00f8 3B       		.uleb128 0x3b
+ 960 00f9 05       		.uleb128 0x5
+ 961 00fa 49       		.uleb128 0x49
+ 962 00fb 13       		.uleb128 0x13
+ 963 00fc 02       		.uleb128 0x2
+ 964 00fd 17       		.uleb128 0x17
+ 965 00fe 00       		.byte	0
+ 966 00ff 00       		.byte	0
+ 967 0100 11       		.uleb128 0x11
+ 968 0101 2E       		.uleb128 0x2e
+ 969 0102 00       		.byte	0
+ 970 0103 3F       		.uleb128 0x3f
+ 971 0104 19       		.uleb128 0x19
+ 972 0105 03       		.uleb128 0x3
+ 973 0106 0E       		.uleb128 0xe
+ 974 0107 3A       		.uleb128 0x3a
+ 975 0108 0B       		.uleb128 0xb
+ 976 0109 3B       		.uleb128 0x3b
+ 977 010a 05       		.uleb128 0x5
+ 978 010b 27       		.uleb128 0x27
+ 979 010c 19       		.uleb128 0x19
+ 980 010d 11       		.uleb128 0x11
+ 981 010e 01       		.uleb128 0x1
+ 982 010f 12       		.uleb128 0x12
+ 983 0110 06       		.uleb128 0x6
+ 984 0111 40       		.uleb128 0x40
+ 985 0112 18       		.uleb128 0x18
+ 986 0113 9742     		.uleb128 0x2117
+ 987 0115 19       		.uleb128 0x19
+ 988 0116 00       		.byte	0
+ 989 0117 00       		.byte	0
+ 990 0118 12       		.uleb128 0x12
+ 991 0119 2E       		.uleb128 0x2e
+ 992 011a 00       		.byte	0
+ 993 011b 3F       		.uleb128 0x3f
+ 994 011c 19       		.uleb128 0x19
+ 995 011d 03       		.uleb128 0x3
+ 996 011e 0E       		.uleb128 0xe
+ 997 011f 3A       		.uleb128 0x3a
+ 998 0120 0B       		.uleb128 0xb
+ 999 0121 3B       		.uleb128 0x3b
+ 1000 0122 05       		.uleb128 0x5
+ 1001 0123 27       		.uleb128 0x27
+ 1002 0124 19       		.uleb128 0x19
+ 1003 0125 49       		.uleb128 0x49
+ 1004 0126 13       		.uleb128 0x13
+ 1005 0127 11       		.uleb128 0x11
+ 1006 0128 01       		.uleb128 0x1
+ 1007 0129 12       		.uleb128 0x12
+ 1008 012a 06       		.uleb128 0x6
+ 1009 012b 40       		.uleb128 0x40
+ 1010 012c 18       		.uleb128 0x18
+ 1011 012d 9742     		.uleb128 0x2117
+ 1012 012f 19       		.uleb128 0x19
+ 1013 0130 00       		.byte	0
+ 1014 0131 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 26
+
+
+ 1015 0132 13       		.uleb128 0x13
+ 1016 0133 898201   		.uleb128 0x4109
+ 1017 0136 00       		.byte	0
+ 1018 0137 11       		.uleb128 0x11
+ 1019 0138 01       		.uleb128 0x1
+ 1020 0139 31       		.uleb128 0x31
+ 1021 013a 13       		.uleb128 0x13
+ 1022 013b 00       		.byte	0
+ 1023 013c 00       		.byte	0
+ 1024 013d 14       		.uleb128 0x14
+ 1025 013e 898201   		.uleb128 0x4109
+ 1026 0141 01       		.byte	0x1
+ 1027 0142 11       		.uleb128 0x11
+ 1028 0143 01       		.uleb128 0x1
+ 1029 0144 31       		.uleb128 0x31
+ 1030 0145 13       		.uleb128 0x13
+ 1031 0146 01       		.uleb128 0x1
+ 1032 0147 13       		.uleb128 0x13
+ 1033 0148 00       		.byte	0
+ 1034 0149 00       		.byte	0
+ 1035 014a 15       		.uleb128 0x15
+ 1036 014b 8A8201   		.uleb128 0x410a
+ 1037 014e 00       		.byte	0
+ 1038 014f 02       		.uleb128 0x2
+ 1039 0150 18       		.uleb128 0x18
+ 1040 0151 9142     		.uleb128 0x2111
+ 1041 0153 18       		.uleb128 0x18
+ 1042 0154 00       		.byte	0
+ 1043 0155 00       		.byte	0
+ 1044 0156 00       		.byte	0
+ 1045              		.section	.debug_loc,"",%progbits
+ 1046              	.Ldebug_loc0:
+ 1047              	.LLST0:
+ 1048 0000 00000000 		.4byte	.LVL3
+ 1049 0004 02000000 		.4byte	.LVL4
+ 1050 0008 0100     		.2byte	0x1
+ 1051 000a 50       		.byte	0x50
+ 1052 000b 02000000 		.4byte	.LVL4
+ 1053 000f 10000000 		.4byte	.LFE6
+ 1054 0013 0400     		.2byte	0x4
+ 1055 0015 F3       		.byte	0xf3
+ 1056 0016 01       		.uleb128 0x1
+ 1057 0017 50       		.byte	0x50
+ 1058 0018 9F       		.byte	0x9f
+ 1059 0019 00000000 		.4byte	0
+ 1060 001d 00000000 		.4byte	0
+ 1061              	.LLST1:
+ 1062 0021 04000000 		.4byte	.LVL5
+ 1063 0025 06000000 		.4byte	.LVL6
+ 1064 0029 0500     		.2byte	0x5
+ 1065 002b 70       		.byte	0x70
+ 1066 002c 00       		.sleb128 0
+ 1067 002d 35       		.byte	0x35
+ 1068 002e 25       		.byte	0x25
+ 1069 002f 9F       		.byte	0x9f
+ 1070 0030 00000000 		.4byte	0
+ 1071 0034 00000000 		.4byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 27
+
+
+ 1072              	.LLST2:
+ 1073 0038 00000000 		.4byte	.LVL11
+ 1074 003c 07000000 		.4byte	.LVL12-1
+ 1075 0040 0100     		.2byte	0x1
+ 1076 0042 50       		.byte	0x50
+ 1077 0043 07000000 		.4byte	.LVL12-1
+ 1078 0047 1A000000 		.4byte	.LFE1
+ 1079 004b 0100     		.2byte	0x1
+ 1080 004d 54       		.byte	0x54
+ 1081 004e 00000000 		.4byte	0
+ 1082 0052 00000000 		.4byte	0
+ 1083              		.section	.debug_aranges,"",%progbits
+ 1084 0000 7C000000 		.4byte	0x7c
+ 1085 0004 0200     		.2byte	0x2
+ 1086 0006 00000000 		.4byte	.Ldebug_info0
+ 1087 000a 04       		.byte	0x4
+ 1088 000b 00       		.byte	0
+ 1089 000c 0000     		.2byte	0
+ 1090 000e 0000     		.2byte	0
+ 1091 0010 00000000 		.4byte	.LFB3
+ 1092 0014 02000000 		.4byte	.LFE3-.LFB3
+ 1093 0018 00000000 		.4byte	.LFB4
+ 1094 001c 0C000000 		.4byte	.LFE4-.LFB4
+ 1095 0020 00000000 		.4byte	.LFB5
+ 1096 0024 0C000000 		.4byte	.LFE5-.LFB5
+ 1097 0028 00000000 		.4byte	.LFB6
+ 1098 002c 10000000 		.4byte	.LFE6-.LFB6
+ 1099 0030 00000000 		.4byte	.LFB7
+ 1100 0034 0C000000 		.4byte	.LFE7-.LFB7
+ 1101 0038 00000000 		.4byte	.LFB8
+ 1102 003c 0C000000 		.4byte	.LFE8-.LFB8
+ 1103 0040 00000000 		.4byte	.LFB9
+ 1104 0044 18000000 		.4byte	.LFE9-.LFB9
+ 1105 0048 00000000 		.4byte	.LFB10
+ 1106 004c 0C000000 		.4byte	.LFE10-.LFB10
+ 1107 0050 00000000 		.4byte	.LFB0
+ 1108 0054 1C000000 		.4byte	.LFE0-.LFB0
+ 1109 0058 00000000 		.4byte	.LFB1
+ 1110 005c 1A000000 		.4byte	.LFE1-.LFB1
+ 1111 0060 00000000 		.4byte	.LFB2
+ 1112 0064 14000000 		.4byte	.LFE2-.LFB2
+ 1113 0068 00000000 		.4byte	.LFB11
+ 1114 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1115 0070 00000000 		.4byte	.LFB12
+ 1116 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1117 0078 00000000 		.4byte	0
+ 1118 007c 00000000 		.4byte	0
+ 1119              		.section	.debug_ranges,"",%progbits
+ 1120              	.Ldebug_ranges0:
+ 1121 0000 00000000 		.4byte	.LFB3
+ 1122 0004 02000000 		.4byte	.LFE3
+ 1123 0008 00000000 		.4byte	.LFB4
+ 1124 000c 0C000000 		.4byte	.LFE4
+ 1125 0010 00000000 		.4byte	.LFB5
+ 1126 0014 0C000000 		.4byte	.LFE5
+ 1127 0018 00000000 		.4byte	.LFB6
+ 1128 001c 10000000 		.4byte	.LFE6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 28
+
+
+ 1129 0020 00000000 		.4byte	.LFB7
+ 1130 0024 0C000000 		.4byte	.LFE7
+ 1131 0028 00000000 		.4byte	.LFB8
+ 1132 002c 0C000000 		.4byte	.LFE8
+ 1133 0030 00000000 		.4byte	.LFB9
+ 1134 0034 18000000 		.4byte	.LFE9
+ 1135 0038 00000000 		.4byte	.LFB10
+ 1136 003c 0C000000 		.4byte	.LFE10
+ 1137 0040 00000000 		.4byte	.LFB0
+ 1138 0044 1C000000 		.4byte	.LFE0
+ 1139 0048 00000000 		.4byte	.LFB1
+ 1140 004c 1A000000 		.4byte	.LFE1
+ 1141 0050 00000000 		.4byte	.LFB2
+ 1142 0054 14000000 		.4byte	.LFE2
+ 1143 0058 00000000 		.4byte	.LFB11
+ 1144 005c 0C000000 		.4byte	.LFE11
+ 1145 0060 00000000 		.4byte	.LFB12
+ 1146 0064 0C000000 		.4byte	.LFE12
+ 1147 0068 00000000 		.4byte	0
+ 1148 006c 00000000 		.4byte	0
+ 1149              		.section	.debug_line,"",%progbits
+ 1150              	.Ldebug_line0:
+ 1151 0000 4D010000 		.section	.debug_str,"MS",%progbits,1
+ 1151      02006100 
+ 1151      00000201 
+ 1151      FB0E0D00 
+ 1151      01010101 
+ 1152              	.LASF16:
+ 1153 0000 72656733 		.ascii	"reg32\000"
+ 1153      3200
+ 1154              	.LASF29:
+ 1155 0006 5450535F 		.ascii	"TPS_ADC_IRQ_StartEx\000"
+ 1155      4144435F 
+ 1155      4952515F 
+ 1155      53746172 
+ 1155      74457800 
+ 1156              	.LASF19:
+ 1157 001a 5450535F 		.ascii	"TPS_ADC_IRQ_SetVector\000"
+ 1157      4144435F 
+ 1157      4952515F 
+ 1157      53657456 
+ 1157      6563746F 
+ 1158              	.LASF4:
+ 1159 0030 73686F72 		.ascii	"short unsigned int\000"
+ 1159      7420756E 
+ 1159      7369676E 
+ 1159      65642069 
+ 1159      6E7400
+ 1160              	.LASF34:
+ 1161 0043 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\TPS_ADC_IRQ.c\000"
+ 1161      6E657261 
+ 1161      7465645F 
+ 1161      536F7572 
+ 1161      63655C50 
+ 1162              	.LASF13:
+ 1163 006a 666C6F61 		.ascii	"float\000"
+ 1163      7400
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 29
+
+
+ 1164              	.LASF2:
+ 1165 0070 756E7369 		.ascii	"unsigned char\000"
+ 1165      676E6564 
+ 1165      20636861 
+ 1165      7200
+ 1166              	.LASF15:
+ 1167 007e 72656738 		.ascii	"reg8\000"
+ 1167      00
+ 1168              	.LASF6:
+ 1169 0083 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1169      20756E73 
+ 1169      69676E65 
+ 1169      6420696E 
+ 1169      7400
+ 1170              	.LASF36:
+ 1171 0095 5450535F 		.ascii	"TPS_ADC_IRQ_GetState\000"
+ 1171      4144435F 
+ 1171      4952515F 
+ 1171      47657453 
+ 1171      74617465 
+ 1172              	.LASF24:
+ 1173 00aa 5450535F 		.ascii	"TPS_ADC_IRQ_GetPriority\000"
+ 1173      4144435F 
+ 1173      4952515F 
+ 1173      47657450 
+ 1173      72696F72 
+ 1174              	.LASF32:
+ 1175 00c2 5450535F 		.ascii	"TPS_ADC_IRQ_ClearPending\000"
+ 1175      4144435F 
+ 1175      4952515F 
+ 1175      436C6561 
+ 1175      7250656E 
+ 1176              	.LASF14:
+ 1177 00db 646F7562 		.ascii	"double\000"
+ 1177      6C6500
+ 1178              	.LASF31:
+ 1179 00e2 5450535F 		.ascii	"TPS_ADC_IRQ_SetPending\000"
+ 1179      4144435F 
+ 1179      4952515F 
+ 1179      53657450 
+ 1179      656E6469 
+ 1180              	.LASF3:
+ 1181 00f9 73686F72 		.ascii	"short int\000"
+ 1181      7420696E 
+ 1181      7400
+ 1182              	.LASF22:
+ 1183 0103 7072696F 		.ascii	"priority\000"
+ 1183      72697479 
+ 1183      00
+ 1184              	.LASF23:
+ 1185 010c 5450535F 		.ascii	"TPS_ADC_IRQ_GetVector\000"
+ 1185      4144435F 
+ 1185      4952515F 
+ 1185      47657456 
+ 1185      6563746F 
+ 1186              	.LASF30:
+ 1187 0122 5450535F 		.ascii	"TPS_ADC_IRQ_Stop\000"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 30
+
+
+ 1187      4144435F 
+ 1187      4952515F 
+ 1187      53746F70 
+ 1187      00
+ 1188              	.LASF12:
+ 1189 0133 75696E74 		.ascii	"uint32\000"
+ 1189      333200
+ 1190              	.LASF0:
+ 1191 013a 756E7369 		.ascii	"unsigned int\000"
+ 1191      676E6564 
+ 1191      20696E74 
+ 1191      00
+ 1192              	.LASF21:
+ 1193 0147 61646472 		.ascii	"address\000"
+ 1193      65737300 
+ 1194              	.LASF8:
+ 1195 014f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1195      206C6F6E 
+ 1195      6720756E 
+ 1195      7369676E 
+ 1195      65642069 
+ 1196              	.LASF26:
+ 1197 0166 5450535F 		.ascii	"TPS_ADC_IRQ_Enable\000"
+ 1197      4144435F 
+ 1197      4952515F 
+ 1197      456E6162 
+ 1197      6C6500
+ 1198              	.LASF17:
+ 1199 0179 63796973 		.ascii	"cyisraddress\000"
+ 1199      72616464 
+ 1199      72657373 
+ 1199      00
+ 1200              	.LASF27:
+ 1201 0186 5450535F 		.ascii	"TPS_ADC_IRQ_Disable\000"
+ 1201      4144435F 
+ 1201      4952515F 
+ 1201      44697361 
+ 1201      626C6500 
+ 1202              	.LASF33:
+ 1203 019a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1203      4320342E 
+ 1203      382E3420 
+ 1203      32303134 
+ 1203      30353236 
+ 1204 01cd 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 1204      20726576 
+ 1204      6973696F 
+ 1204      6E203231 
+ 1204      31333538 
+ 1205 0200 67202D66 		.ascii	"g -ffunction-sections\000"
+ 1205      66756E63 
+ 1205      74696F6E 
+ 1205      2D736563 
+ 1205      74696F6E 
+ 1206              	.LASF28:
+ 1207 0216 5450535F 		.ascii	"TPS_ADC_IRQ_Start\000"
+ 1207      4144435F 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccON7zpn.s 			page 31
+
+
+ 1207      4952515F 
+ 1207      53746172 
+ 1207      7400
+ 1208              	.LASF9:
+ 1209 0228 73697A65 		.ascii	"sizetype\000"
+ 1209      74797065 
+ 1209      00
+ 1210              	.LASF7:
+ 1211 0231 6C6F6E67 		.ascii	"long long int\000"
+ 1211      206C6F6E 
+ 1211      6720696E 
+ 1211      7400
+ 1212              	.LASF10:
+ 1213 023f 63686172 		.ascii	"char\000"
+ 1213      00
+ 1214              	.LASF18:
+ 1215 0244 72616D56 		.ascii	"ramVectorTable\000"
+ 1215      6563746F 
+ 1215      72546162 
+ 1215      6C6500
+ 1216              	.LASF35:
+ 1217 0253 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
+ 1217      73657273 
+ 1217      5C6D6974 
+ 1217      6368656C 
+ 1217      6C5C446F 
+ 1218 0280 2D546872 		.ascii	"-Throttle\\E-Throttle.cydsn\000"
+ 1218      6F74746C 
+ 1218      655C452D 
+ 1218      5468726F 
+ 1218      74746C65 
+ 1219              	.LASF20:
+ 1220 029b 5450535F 		.ascii	"TPS_ADC_IRQ_SetPriority\000"
+ 1220      4144435F 
+ 1220      4952515F 
+ 1220      53657450 
+ 1220      72696F72 
+ 1221              	.LASF11:
+ 1222 02b3 75696E74 		.ascii	"uint8\000"
+ 1222      3800
+ 1223              	.LASF5:
+ 1224 02b9 6C6F6E67 		.ascii	"long int\000"
+ 1224      20696E74 
+ 1224      00
+ 1225              	.LASF25:
+ 1226 02c2 5450535F 		.ascii	"TPS_ADC_IRQ_Interrupt\000"
+ 1226      4144435F 
+ 1226      4952515F 
+ 1226      496E7465 
+ 1226      72727570 
+ 1227              	.LASF1:
+ 1228 02d8 7369676E 		.ascii	"signed char\000"
+ 1228      65642063 
+ 1228      68617200 
+ 1229              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

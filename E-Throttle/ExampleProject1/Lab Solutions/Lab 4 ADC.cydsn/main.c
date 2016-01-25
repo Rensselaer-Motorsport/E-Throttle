@@ -15,6 +15,14 @@ void main()
     
     for(;;)
     {
+        while (!DC_SAR_Seq_1_IsEndConversion(ADC_SAR_Seq_1_WAIT_FOR_RESULT)){}
+        uint32 a = ADC_SAR_Seq_1_GetResult16(0);
+        int b = ADC_SAR_Seq_1_GetResult16(1);
+        
+        
+        
+        
+        
         /* Place your application code here. */
         ADCResult = ADC_SAR_Seq_1_GetResult16(0);
         LED_RGB_SetColorRGB(ADCResult * (65535 / 2048), 0, 0);
