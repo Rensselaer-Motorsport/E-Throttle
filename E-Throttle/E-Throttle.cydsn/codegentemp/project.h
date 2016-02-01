@@ -36,6 +36,8 @@
 #include "BRAKE_ADC.h"
 #include "Brake_aliases.h"
 #include "Brake.h"
+#include "timer_clock.h"
+#include "Timer.h"
 #include "TPS_ADC_SAR.h"
 #include "TPS_ADC_IntClock.h"
 #include "TPS_ADC_TempBuf_dma.h"

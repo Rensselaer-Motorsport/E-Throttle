@@ -17,24 +17,26 @@
 
     /* Imports */
     #include <stdlib.h>
+    #include "project.h"
 
-    /* Typedefs */
-    typedef void (*enqueueFunc)(float);
-    typedef float (*dequeueFunc)();
-    typedef int (*isEmptyFunc)();
-
-    /* Struct Initialization */
+    /* NODE Struct Initialization */
+    typedef struct Node {
+        float brake_error;
+        float TPS_APPS_error;
+        uint32 time_count;
+        struct Node * next;
+    } Node;
+    
+    /* QUEUE Struct Initialization */  
     typedef struct Queue {
-        enqueueFunc enq;
-        dequeueFunc deq;
-        isEmptyFunc isEmpty;
+        Node * head, * tail;
     } Queue;
 
     /* Function Declarations */
-    Queue * createQueue(int);
-    void enq(float);
-    float deq();
-    int isEmpty();
+    Queue * createQueue();
+    void enqueue(Queue *, float, float, int);
+    Node * dequeue(Queue *);
+    uint32 headTime(Queue *);
 
 #endif
 

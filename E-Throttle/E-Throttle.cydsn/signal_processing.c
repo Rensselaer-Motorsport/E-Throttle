@@ -82,9 +82,12 @@ return: An Error_Buffer initialized with all 0.0s
 */
 Error_Buffer * createErrorBuffer() {
     Error_Buffer * eb = (Error_Buffer*)malloc(sizeof(Error_Buffer));
-    eb->errQ = createQueue(ERROR_BUFFER_SIZE);
-    eb->sum = 0.0;
-    eb->avg = 0.0;
+    eb->error_queue = createQueue(ERROR_BUFFER_SIZE);
+    eb->brake_sum = 0.0;
+    eb->brake_avg = 0.0;
+    eb->TPS_APPS_avg = 0.0;
+    eb->TPS_APPS_sum = 0.0;
+    eb->size = 0;
     return eb;
 }
 
@@ -95,16 +98,21 @@ effect:     Adds the new error to the start of the queue
             Removes the least recent error
             Updates the sum and average accordingly
 */
-void updateErrorBuffer(Error_Buffer * eb, float newErr) {
-    // Add newErr to sum
-    eb->errQ->enq(newErr);
-    eb->sum += newErr;
-
-    // Subtract the least recent error
-    eb->sum -= eb->errQ->deq();
-
-    // Update average
-    eb->avg = eb->sum / ERROR_BUFFER_SIZE;
+void updateErrorBuffer(Error_Buffer * eb, float brake_err, float TPS_APPS_err) {
+    Queue * q = eb->error_queue;
+    int curr_time = Timer_ReadCounter();
+    enqueue(q, brake_err, TPS_APPS_err, curr_time);
+    eb->brake_sum += brake_err;
+    eb->TPS_APPS_sum += TPS_APPS_err;
+    eb->size++;
+    while (headTime(q) - curr_time > 1.0) {
+        Node * toRemove = dequeue(q);
+        eb->brake_sum -= toRemove->brake_error;
+        eb->TPS_APPS_sum -= toRemove->TPS_APPS_error;
+        eb->size--;
+    }
+    eb->TPS_APPS_avg = eb->TPS_APPS_sum / ((float)eb->size);
+    eb->brake_avg = eb->brake_sum / ((float)eb->size);
 }
 
 /*
@@ -136,12 +144,13 @@ return:     ERROR if there is an error, a non-error output
 int globalImplausibility(float curr_tps, float expected_tps,
                             Error_Buffer * eb) {
     float newErr = fabs(curr_tps - expected_tps);
-    updateErrorBuffer(eb, newErr);
+    /* FIX THIS!! updateErrorBuffer(eb, newErr); FIX THIS!!!
     if (eb->avg > 0.10) {
         return ERROR;
     } else {
         return 1;
-    }
+    } FIX THIS!!! */
+    return 0;
 }
 
 

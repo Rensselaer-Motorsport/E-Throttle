@@ -1,6 +1,6 @@
 -- ======================================================================
 -- E-Throttle.ctl generated from E-Throttle
--- 01/17/2016 at 23:41
+-- 02/01/2016 at 04:25
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

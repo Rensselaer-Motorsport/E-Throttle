@@ -17,7 +17,7 @@
 #define _SIGNAL_PROCESSING_H_
 
     /* Imports */
-    //#include <cytypes.h>
+    #include <cytypes.h>
     #include "queue.h"
     #include <math.h>
 
@@ -27,6 +27,7 @@
     #define MAX_BRAKE_COUNT 16383.0 /* 14-bit resolution */
     #define ERROR -1
     #define ERROR_BUFFER_SIZE 5
+    #define TIMER_FREQ 75000 /* 75 kHz */
 
     /* Enumerations */
     typedef enum sensor {
@@ -37,15 +38,10 @@
 
     /* Struct Declaration */
     typedef struct Error_Buffer {
-        /* DONE:    Test and verify queue
-                    data type and error buffer
-                    effectiveness
-
-           TODO:   Figure out error buffer timing
-        */
-        struct Queue * errQ;
-        float sum;
-        float avg;
+        /* TODO:   Figure out error buffer timing */
+        struct Queue * error_queue;
+        float brake_sum, brake_avg, TPS_APPS_sum, TPS_APPS_avg;
+        int size;
     } Error_Buffer;
 
     /* Function Declarations */
@@ -53,9 +49,9 @@
     float average(float, float);
     float nextThrottlePosition(float, float, float, Error_Buffer*);
     Error_Buffer * createErrorBuffer();
-    void updateErrorBuffer(Error_Buffer *, float);
+    void updateErrorBuffer(Error_Buffer *, float, float);
     int localImplausibility(float, float);
     int globalImplausibility(float, float, Error_Buffer *);
-
+    int brakeCheck(float, float, Error_Buffer *);
 
 #endif
