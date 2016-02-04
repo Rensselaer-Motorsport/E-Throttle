@@ -18,10 +18,14 @@
     /* Imports */
     #include <stdlib.h>
     #include "project.h"
+    
+    /* Constant Definitions */
+    #define BRAKE_ERROR 1 /* This should remain 1 */
+    #define BRAKE_GOOD 0 /* This should remain 0 */
 
     /* NODE Struct Initialization */
     typedef struct Node {
-        float brake_error;
+        unsigned char brake_error;
         float TPS_APPS_error;
         uint32 time_count;
         struct Node * next;
@@ -34,7 +38,7 @@
 
     /* Function Declarations */
     Queue * createQueue();
-    void enqueue(Queue *, float, float, int);
+    void enqueue(Queue *, unsigned char, float, int);
     Node * dequeue(Queue *);
     uint32 headTime(Queue *);
 
