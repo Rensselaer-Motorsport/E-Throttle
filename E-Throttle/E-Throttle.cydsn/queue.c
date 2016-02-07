@@ -14,86 +14,85 @@
 
 #include "queue.h"
 
-typedef struct Node {
-    float data;
-    struct Node * next;
-} Node;
-Node *front, *back;
 
-/* Note that nodes are inserted at the back and
-   removed at the front */
+/* Note that nodes are inserted at the back/tail and
+   removed at the front/head */
 
 /*
 parameter:  size - The initial size of the queue
-effect:     Creates an linked list queue of size
-            'size', with each element initialized
-            to 0.0
+effect:     Creates an empty linked list based
+            queue
 */
-Queue * createQueue(int size) {
+Queue * createQueue() {
+    // Initialize Queue
     Queue * q = (Queue*)malloc(sizeof(Queue));
-    q->enq = enq;
-    q->deq = deq;
-    q->isEmpty = isEmpty;
-    front = back = NULL;
+    q->head = q->tail = NULL;
     int i;
-    for (i = 0; i < size; ++i) {
-        q->enq(0.0);
-    }
     return q;
 }
 
 /*
 parameter:  val - The value to add to the queue
-effect:     Adds val to the back of the queue
+effect:     Creates and adds a tail to the back of Queue q
 modifies:   back & (front if (back == NULL))
 */
-void enq(float val) {
-    if (back == NULL) {
-        back = (Node *)malloc(sizeof(Node));
-        back->next = NULL;
-        back->data = val;
-        front = back;
+void enqueue(Queue * q, unsigned char brake_stat, float TPS_APPS_err, int time) {
+    if (q->tail == NULL) {
+        /* Queue is empty */
+        q->tail = (Node *)malloc(sizeof(Node));
+        q->tail->next = NULL;
+        q->tail->brake_error = brake_stat;
+        q->tail->TPS_APPS_error = TPS_APPS_err;
+        q->tail->time_count = time;
+        q->head = q->tail;
     } else {
+        /* Queue is not empty */
         Node *temp = (Node *)malloc(sizeof(Node));
-        back->next = temp;
-        temp->data = val;
         temp->next = NULL;
-        back = temp;
+        temp->brake_error = brake_stat;
+        temp->TPS_APPS_error = TPS_APPS_err;
+        temp->time_count = time;
+        q->tail->next = temp;
+        q->tail = temp;
     }
 }
 
 /*
-effect: Removes the next element in the queue
-return: the value of the next element in the queue
-        -1.0 if there is no elements
+effect: Removes the head element in the queue
+return: The least recent node (head)
 */
-float deq() {
-    float toReturn;
-    if (front == NULL) {
-        toReturn = -1.0;
+Node * dequeue(Queue * q) {
+    Node * toReturn;
+    if (q->head == NULL) {
+        /* Queue is empty */
+        toReturn = NULL;
     } else {
-        toReturn = front->data;
-        Node * oldFront = front;
-        front = front->next;
-        free(oldFront);
-        if (front == NULL) {
-            back = NULL;
+        /* Queue is not empty */
+        toReturn = q->head;
+        Node * oldHead = q->head;
+        q->head = q->head->next;
+        free(oldHead);
+        if (q->head == NULL) {
+            /* If dequeueing last element */
+            q->tail = NULL;
         }
     }
     return toReturn;
 }
 
 /*
-return: 1 if the queue is empty (front == back == NULL)
-        0 if the queue is NOT empty
+return: The time_count value from the queue's head node
+        This will be the least recent time in the queue
 */
-int isEmpty() {
-    if (front == NULL) {
-        return 1;
+uint32 headTime(Queue * q) {
+    if (q->head == NULL) {
+        /* queue is empty */
+        return -1;
     } else {
-        return 0;
+        return q->head->time_count;
     }
 }
+
 
 
 /* [] END OF FILE */

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
   29:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
   30:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** /*******************************************************************************
   31:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Function Name: BRAKE_ADC_theACLK_Start
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
   55:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
   56:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
   57:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Summary:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 3
 
 
   58:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  Stops the clock and returns immediately. This API does not require the
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
   81:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
   82:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** /*******************************************************************************
   83:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Function Name: BRAKE_ADC_theACLK_StopBlock
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 4
 
 
   84:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  116:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** #endif /* BRAKE_ADC_theACLK__CFG3 */
  117:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
  118:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         /* Clear mask of bus clock. */
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 5
 
 
  119:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  136:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         CY_SET_REG16(BRAKE_ADC_theACLK_DIV_PTR, oldDivider);
  148              		.loc 1 136 0
  149 0058 FF33     		adds	r3, r3, #255
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 6
 
 
  150 005a 1980     		strh	r1, [r3]	@ movhi
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  160:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     {
  161:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         BRAKE_ADC_theACLK_CLKSTBY &= (uint8)(~BRAKE_ADC_theACLK_CLKSTBY_MASK);
  181              		.loc 1 161 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 7
 
 
  182 0002 064B     		ldr	r3, .L16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  189:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
  190:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  None
  191:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 8
 
 
  192:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  246:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  247:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 9
 
 
  249:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     /* Wait for clock to be disabled */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  213              		@ link register save eliminated.
  299:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     return CY_GET_REG16(BRAKE_ADC_theACLK_DIV_PTR);
  214              		.loc 1 299 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 10
 
 
  215 0000 014B     		ldr	r3, .L19
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  235              		.loc 1 333 0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 11
 
 
  238              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  362:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
  363:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
  364:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  None
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 12
 
 
  365:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  388:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** uint8 BRAKE_ADC_theACLK_GetModeRegister(void) 
  389:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** {
  295              		.loc 1 389 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 13
 
 
  296              		.cfi_startproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  419:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** void BRAKE_ADC_theACLK_SetSourceRegister(uint8 clkSource) 
  420:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** {
  421:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     uint16 currDiv = BRAKE_ADC_theACLK_GetDividerRegister();
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 14
 
 
  422:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     uint8 oldSrc = BRAKE_ADC_theACLK_GetSourceRegister();
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  329              		.loc 1 467 0
  330 0004 00F00700 		and	r0, r0, #7
  331 0008 7047     		bx	lr
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 15
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 15
 
 
  332              	.L32:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  205:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         if ((currSrc == (uint8)CYCLK_SRC_SEL_CLK_SYNC_D) && ((oldDivider == 0u) || (clkDivider == 0
  380              		.loc 1 205 0 is_stmt 0 discriminator 1
  381 0020 00B1     		cbz	r0, .L36
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 16
 
 
  382 0022 84B9     		cbnz	r4, .L35
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  426 005c 00F07F00 		and	r0, r0, #127
  427 0060 1070     		strb	r0, [r2]
  243:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                 if (((BRAKE_ADC_theACLK_MOD_SRC & CYCLK_SYNC) == 0u) || (clkDivider == 0u))
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 17
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 17
 
 
  428              		.loc 1 243 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  472 00a6 00E0     		b	.L42
  473              	.L44:
  474 00a8 0122     		movs	r2, #1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 18
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 18
 
 
  475              	.L42:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  523              	.LVL19:
  524 0000 38B5     		push	{r3, r4, r5, lr}
  525              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 19
 
 
  526              		.cfi_offset 3, -16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  568 0034 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
  438:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         BRAKE_ADC_theACLK_MOD_SRC =
  569              		.loc 1 438 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 20
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 20
 
 
  570 0036 02F0F802 		and	r2, r2, #248
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  485:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
  486:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *   produces a 10ns delay.
  487:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 21
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 21
 
 
  488:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  631              		.loc 1 514 0
  632              		.cfi_startproc
  633              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 22
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 22
 
 
  634              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  686 0048 02       		.uleb128 0x2
  687 0049 04       		.byte	0x4
  688 004a 07       		.byte	0x7
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 23
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 23
 
 
  689 004b 0E030000 		.4byte	.LASF5
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  743 00b9 D5000000 		.4byte	.LASF16
  744 00bd 01       		.byte	0x1
  745 00be 2D       		.byte	0x2d
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 24
 
 
  746 00bf 00000000 		.4byte	.LFB0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  800 0138 00000000 		.4byte	.LFB5
  801 013c 0C000000 		.4byte	.LFE5-.LFB5
  802 0140 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 25
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 25
 
 
  803 0141 9C       		.byte	0x9c
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  857 01c2 C1       		.byte	0xc1
  858 01c3 00000000 		.4byte	.LFB4
  859 01c7 E4000000 		.4byte	.LFE4-.LFB4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 26
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 26
 
 
  860 01cb 01       		.uleb128 0x1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  914 0251 E6000000 		.4byte	.LLST8
  915 0255 11       		.uleb128 0x11
  916 0256 48000000 		.4byte	.LASF35
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 27
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 27
 
 
  917 025a 01       		.byte	0x1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  971 0008 0E       		.uleb128 0xe
  972 0009 1B       		.uleb128 0x1b
  973 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 28
 
 
  974 000b 55       		.uleb128 0x55
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1028 0041 00       		.byte	0
  1029 0042 00       		.byte	0
  1030 0043 06       		.uleb128 0x6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 29
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 29
 
 
  1031 0044 35       		.uleb128 0x35
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1085 007c 09       		.uleb128 0x9
  1086 007d 0B       		.uleb128 0xb
  1087 007e 01       		.byte	0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 30
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 30
 
 
  1088 007f 11       		.uleb128 0x11
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1142 00b5 06       		.uleb128 0x6
  1143 00b6 40       		.uleb128 0x40
  1144 00b7 18       		.uleb128 0x18
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 31
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 31
 
 
  1145 00b8 9742     		.uleb128 0x2117
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1199 00f0 13       		.uleb128 0x13
  1200 00f1 02       		.uleb128 0x2
  1201 00f2 17       		.uleb128 0x17
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 32
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 32
 
 
  1202 00f3 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1256 001b 0100     		.2byte	0x1
  1257 001d 50       		.byte	0x50
  1258 001e 08000000 		.4byte	.LVL4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 33
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 33
 
 
  1259 0022 14000000 		.4byte	.LFE6
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1313 00a1 51       		.byte	0x51
  1314 00a2 00000000 		.4byte	0
  1315 00a6 00000000 		.4byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 34
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 34
 
 
  1316              	.LLST6:
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1370 0138 0400     		.2byte	0x4
  1371 013a F3       		.byte	0xf3
  1372 013b 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 35
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 35
 
 
  1373 013c 50       		.byte	0x50
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1427 0030 00000000 		.4byte	.LFB7
  1428 0034 18000000 		.4byte	.LFE7
  1429 0038 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 36
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 36
 
 
  1430 003c 10000000 		.4byte	.LFE8
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1460 00a9 75696E74 		.ascii	"uint16\000"
  1460      313600
  1461              	.LASF24:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 37
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 37
 
 
  1462 00b0 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetDividerRegister\000"
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1482      00
  1483              	.LASF25:
  1484 01c2 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetModeRegister\000"
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 38
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 38
 
 
  1484      455F4144 
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1507              	.LASF8:
  1508 02b3 756E7369 		.ascii	"unsigned int\000"
  1508      676E6564 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 39
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 39
 
 
  1508      20696E74 
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 1
  1532      455F4144 
  1532      435F7468 
  1532      6541434C 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cckB5E2j.s 			page 40
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccKFvXhQ.s 			page 40
 
 
  1532      4B5F5365 
