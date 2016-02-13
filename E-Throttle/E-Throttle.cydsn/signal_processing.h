@@ -1,4 +1,4 @@
- /* ========================================
+/* ========================================
     A collection of functions that do the brunt
     of the I/O processing and calculation work
     needed for the E-Throttle.
@@ -25,12 +25,14 @@
     #define MAX_TPS_COUNT 4095.0 /* 12-bit resolution */
     #define MAX_APPS_COUNT 4095.0 /* 12-bit resolution */
     #define MAX_BRAKE_COUNT 16383.0 /* 14-bit resolution */
+    #define OPEN_SHORT_CIRCUIT 0 /* TODO: confirm count is 0 iff open/short circuit achieved */
     #define ERROR 0
+    #define fERROR 0.0
     #define NO_ERROR 1 /* must be different from ERROR */
-    #define TIMER_FREQ 75000 /* 75 kHz */
+    #define TIMER_FREQ 32000 /* 75 kHz */
     #define TP_ERR_CUTOFF 10.0 /* should be 10.0 by rule IC1.15.2 */
     #define BRAKE_ERR_CUTOFF 90.0 /* percentage of brake implausibilities
-                                     in the last second to warrant a shut-off */
+                                     during the previous second to warrant a shut-off */
 
     /* Enumerations */
     typedef enum sensor {
@@ -44,20 +46,19 @@
         /* TODO:   Figure out error buffer timing */
         struct Queue * error_queue;
         float TPS_APPS_sum, TPS_APPS_avg, percent_brake_errs;
-        int num_brake_errs, size;
+        int num_brake_errs, size, total_time;
     } Error_Buffer;
 
     /* Function Declarations */
     float convertToPercent(uint16, sensor);
     float average(float, float);
-    /*
-    I need to change this...
-    float nextThrottlePosition(float, float, float, Error_Buffer*);
-    */
+    float nextThrottlePosition(float, float, float, float, Error_Buffer*);
     Error_Buffer * createErrorBuffer();
     void updateErrorBuffer(Error_Buffer *, unsigned char, float);
+    unsigned char signalCheck(uint16, uint16, uint16, uint16, uint16);
     unsigned char localImplausibility(float, float);
     unsigned char globalImplausibility(float, float, float, Error_Buffer *);
     unsigned char brakeErrorCheck(float, float);
+    void handleError(); /* TODO: Implement handleError */
 
 #endif

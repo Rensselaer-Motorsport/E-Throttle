@@ -29,12 +29,12 @@ extern uint8 SERVO_PWM_initVar;
 * Conditional Compilation Parameters
 ***************************************/
 #define SERVO_PWM_Resolution                     (8u)
-#define SERVO_PWM_UsingFixedFunction             (0u)
+#define SERVO_PWM_UsingFixedFunction             (1u)
 #define SERVO_PWM_DeadBandMode                   (0u)
 #define SERVO_PWM_KillModeMinTime                (0u)
-#define SERVO_PWM_KillMode                       (0u)
-#define SERVO_PWM_PWMMode                        (3u)
-#define SERVO_PWM_PWMModeIsCenterAligned         (1u)
+#define SERVO_PWM_KillMode                       (1u)
+#define SERVO_PWM_PWMMode                        (0u)
+#define SERVO_PWM_PWMModeIsCenterAligned         (0u)
 #define SERVO_PWM_DeadBandUsed                   (0u)
 #define SERVO_PWM_DeadBand2_4                    (0u)
 

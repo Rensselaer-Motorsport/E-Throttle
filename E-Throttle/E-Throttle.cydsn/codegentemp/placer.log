@@ -6,7 +6,7 @@
 
 #Build Date:         May  8 2015 09:27:37
 
-#File Generated:     Feb 4 2016 02:21:51
+#File Generated:     Feb 13 2016 00:26:22
 
 #Purpose:            
 
@@ -44,18 +44,18 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	10
-    Number of Sequential MCs    	:	156
-    Number of DPs               	:	5
-    Number of Controls          	:	6
+    Number of Combinational MCs 	:	15
+    Number of Sequential MCs    	:	166
+    Number of DPs               	:	3
+    Number of Controls          	:	5
     Number of Status            	:	4
     Number of SyncCells         	:	2
-    Number of count7cells       	:	2
+    Number of count7cells       	:	3
 
 Device Utilization Summary after Packing
-    Macrocells                  :	166/192
+    Macrocells                  :	181/192
     UDBS                        :	24/24
-    IOs                         :	6/72
+    IOs                         :	8/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,70 +79,74 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
-Clock: APPS_ADC_IntClock    | Frequency:  23.4 MHz | Target:   1.6 MHz
+Number of clocks: 18
+Clock: APPS_ADC_IntClock    | Frequency:  30.2 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  54.0 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:  62.1 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:  46.4 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: TPS_ADC_IntClock     | Frequency:  24.2 MHz | Target:   1.6 MHz
+Clock: TPS_ADC_IntClock     | Frequency:  29.5 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:  46.4 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
 
-D2088: Phase 6, elapsed time : 0.1 (sec)
+D2088: Phase 6, elapsed time : 0.2 (sec)
 
 Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 18
 Clock: APPS_ADC_IntClock    | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  36.0 MHz | Target:  12.0 MHz
 Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: TPS_ADC_IntClock     | Frequency:   2.8 MHz | Target:   1.6 MHz
+Clock: TPS_ADC_IntClock     | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.9 (sec)
+D2088: Phase 7, elapsed time : 1.3 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	10
-    Number of Sequential MCs    	:	156
-    Number of DPs               	:	5
-    Number of Controls          	:	6
+    Number of Combinational MCs 	:	15
+    Number of Sequential MCs    	:	166
+    Number of DPs               	:	3
+    Number of Controls          	:	5
     Number of Status            	:	4
     Number of SyncCells         	:	2
-    Number of count7cells       	:	2
-    Number of IOs       	:	6
+    Number of count7cells       	:	3
+    Number of IOs       	:	8
 
 Device Utilization Summary
-    Macrocells                  :	166/192
-    IOs                         :	6/72
+    Macrocells                  :	181/192
+    IOs                         :	8/72
 
 
 
@@ -158,23 +162,25 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 18
 Clock: APPS_ADC_IntClock    | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  36.0 MHz | Target:  12.0 MHz
 Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: TPS_ADC_IntClock     | Frequency:   2.8 MHz | Target:   1.6 MHz
+Clock: TPS_ADC_IntClock     | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:   2.8 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -193,23 +199,25 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 18
 Clock: APPS_ADC_IntClock    | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  54.0 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: TPS_ADC_IntClock     | Frequency:   2.8 MHz | Target:   1.6 MHz
+Clock: TPS_ADC_IntClock     | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:   2.7 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -221,42 +229,44 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 18
 Clock: APPS_ADC_IntClock    | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  54.0 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.8 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   2.9 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: TPS_ADC_IntClock     | Frequency:   2.8 MHz | Target:   1.6 MHz
+Clock: TPS_ADC_IntClock     | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:   2.9 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 5.8 (sec)
+D2088: Phase 7, elapsed time : 5.5 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	10
-    Number of Sequential MCs    	:	156
-    Number of DPs               	:	5
-    Number of Controls          	:	6
+    Number of Combinational MCs 	:	15
+    Number of Sequential MCs    	:	166
+    Number of DPs               	:	3
+    Number of Controls          	:	5
     Number of Status            	:	4
     Number of SyncCells         	:	2
-    Number of count7cells       	:	2
-    Number of IOs       	:	6
+    Number of count7cells       	:	3
+    Number of IOs       	:	8
 
 Device Utilization Summary
-    Macrocells                  :	166/192
-    IOs                         :	6/72
+    Macrocells                  :	181/192
+    IOs                         :	8/72
 
 
 
@@ -272,23 +282,25 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 18
 Clock: APPS_ADC_IntClock    | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: APPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
 Clock: BRAKE_ADC_theACLK    | Frequency: N/A       | Target:   2.2 MHz
 Clock: BRAKE_ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: Clock_1              | Frequency:  51.0 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency:   3.0 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK            | Frequency:   2.9 MHz | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: TPS_ADC_IntClock     | Frequency:   3.0 MHz | Target:   1.6 MHz
 Clock: TPS_ADC_IntClock(routed) | Frequency: N/A       | Target:   1.6 MHz
+Clock: UART_1_IntClock      | Frequency:   2.9 MHz | Target:   0.5 MHz
 Clock: \BRAKE_ADC:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  35.7 MHz | Target:   0.1 MHz
+Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
+Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -299,5 +311,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 7.9 sec.
+I2076: Total run-time: 8.0 sec.
 

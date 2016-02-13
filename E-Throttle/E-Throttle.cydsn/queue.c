@@ -27,7 +27,6 @@ Queue * createQueue() {
     // Initialize Queue
     Queue * q = (Queue*)malloc(sizeof(Queue));
     q->head = q->tail = NULL;
-    int i;
     return q;
 }
 
