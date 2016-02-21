@@ -4,7 +4,7 @@
 Everything related to the throtttle-by-wire system designed for RM21.
 
 ###Folders:
-Board - Diptrace and related files for E-Throttle PCB board design
+Board - Diptrace, KiCAD and related files for E-Throttle PCB board design
 
 Communication - Python Scripts and stuff that will allow us to get data from/send instructions to the mainboard
 
