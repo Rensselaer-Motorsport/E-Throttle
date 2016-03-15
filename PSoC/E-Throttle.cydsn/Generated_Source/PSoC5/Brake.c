@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Brake.c  
+* File Name: BRAKE.c  
 * Version 2.10
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "Brake.h"
+#include "BRAKE.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 Brake__PORT == 15 && ((Brake__MASK & 0xC0) != 0))
+	 BRAKE__PORT == 15 && ((BRAKE__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: Brake_Write
+* Function Name: BRAKE_Write
 ********************************************************************************
 *
 * Summary:
@@ -36,15 +36,15 @@
 *  None
 *  
 *******************************************************************************/
-void Brake_Write(uint8 value) 
+void BRAKE_Write(uint8 value) 
 {
-    uint8 staticBits = (Brake_DR & (uint8)(~Brake_MASK));
-    Brake_DR = staticBits | ((uint8)(value << Brake_SHIFT) & Brake_MASK);
+    uint8 staticBits = (BRAKE_DR & (uint8)(~BRAKE_MASK));
+    BRAKE_DR = staticBits | ((uint8)(value << BRAKE_SHIFT) & BRAKE_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: Brake_SetDriveMode
+* Function Name: BRAKE_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,27 +53,27 @@ void Brake_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  Brake_DM_STRONG     Strong Drive 
-*  Brake_DM_OD_HI      Open Drain, Drives High 
-*  Brake_DM_OD_LO      Open Drain, Drives Low 
-*  Brake_DM_RES_UP     Resistive Pull Up 
-*  Brake_DM_RES_DWN    Resistive Pull Down 
-*  Brake_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  Brake_DM_DIG_HIZ    High Impedance Digital 
-*  Brake_DM_ALG_HIZ    High Impedance Analog 
+*  BRAKE_DM_STRONG     Strong Drive 
+*  BRAKE_DM_OD_HI      Open Drain, Drives High 
+*  BRAKE_DM_OD_LO      Open Drain, Drives Low 
+*  BRAKE_DM_RES_UP     Resistive Pull Up 
+*  BRAKE_DM_RES_DWN    Resistive Pull Down 
+*  BRAKE_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  BRAKE_DM_DIG_HIZ    High Impedance Digital 
+*  BRAKE_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void Brake_SetDriveMode(uint8 mode) 
+void BRAKE_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(Brake_0, mode);
+	CyPins_SetPinDriveMode(BRAKE_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: Brake_Read
+* Function Name: BRAKE_Read
 ********************************************************************************
 *
 * Summary:
@@ -87,17 +87,17 @@ void Brake_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro Brake_ReadPS calls this function. 
+*  Macro BRAKE_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 Brake_Read(void) 
+uint8 BRAKE_Read(void) 
 {
-    return (Brake_PS & Brake_MASK) >> Brake_SHIFT;
+    return (BRAKE_PS & BRAKE_MASK) >> BRAKE_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: Brake_ReadDataReg
+* Function Name: BRAKE_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -110,17 +110,17 @@ uint8 Brake_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 Brake_ReadDataReg(void) 
+uint8 BRAKE_ReadDataReg(void) 
 {
-    return (Brake_DR & Brake_MASK) >> Brake_SHIFT;
+    return (BRAKE_DR & BRAKE_MASK) >> BRAKE_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(Brake_INTSTAT) 
+#if defined(BRAKE_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: Brake_ClearInterrupt
+    * Function Name: BRAKE_ClearInterrupt
     ********************************************************************************
     * Summary:
     *  Clears any active interrupts attached to port and returns the value of the 
@@ -133,9 +133,9 @@ uint8 Brake_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 Brake_ClearInterrupt(void) 
+    uint8 BRAKE_ClearInterrupt(void) 
     {
-        return (Brake_INTSTAT & Brake_MASK) >> Brake_SHIFT;
+        return (BRAKE_INTSTAT & BRAKE_MASK) >> BRAKE_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

@@ -1,0 +1,1061 @@
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"CLOCK.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 C1000000 		.text
+  19      02005E00 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.section	.text.CLOCK_Write,"ax",%progbits
+  23              		.align	2
+  24              		.global	CLOCK_Write
+  25              		.code	16
+  26              		.thumb_func
+  27              		.type	CLOCK_Write, %function
+  28              	CLOCK_Write:
+  29              	.LFB0:
+  30              		.file 1 ".\\Generated_Source\\PSoC4\\CLOCK.c"
+   1:.\Generated_Source\PSoC4/CLOCK.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/CLOCK.c **** * File Name: CLOCK.c  
+   3:.\Generated_Source\PSoC4/CLOCK.c **** * Version 1.90
+   4:.\Generated_Source\PSoC4/CLOCK.c **** *
+   5:.\Generated_Source\PSoC4/CLOCK.c **** * Description:
+   6:.\Generated_Source\PSoC4/CLOCK.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:.\Generated_Source\PSoC4/CLOCK.c **** *
+   8:.\Generated_Source\PSoC4/CLOCK.c **** * Note:
+   9:.\Generated_Source\PSoC4/CLOCK.c **** *
+  10:.\Generated_Source\PSoC4/CLOCK.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC4/CLOCK.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC4/CLOCK.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC4/CLOCK.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC4/CLOCK.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC4/CLOCK.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC4/CLOCK.c **** 
+  17:.\Generated_Source\PSoC4/CLOCK.c **** #include "cytypes.h"
+  18:.\Generated_Source\PSoC4/CLOCK.c **** #include "CLOCK.h"
+  19:.\Generated_Source\PSoC4/CLOCK.c **** 
+  20:.\Generated_Source\PSoC4/CLOCK.c **** #define SetP4PinDriveMode(shift, mode)  \
+  21:.\Generated_Source\PSoC4/CLOCK.c ****     do { \
+  22:.\Generated_Source\PSoC4/CLOCK.c ****         CLOCK_PC =   (CLOCK_PC & \
+  23:.\Generated_Source\PSoC4/CLOCK.c ****                                 (uint32)(~(uint32)(CLOCK_DRIVE_MODE_IND_MASK << (CLOCK_DRIVE_MODE_B
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 2
+
+
+  24:.\Generated_Source\PSoC4/CLOCK.c ****                                 (uint32)((uint32)(mode) << (CLOCK_DRIVE_MODE_BITS * (shift))); \
+  25:.\Generated_Source\PSoC4/CLOCK.c ****     } while (0)
+  26:.\Generated_Source\PSoC4/CLOCK.c **** 
+  27:.\Generated_Source\PSoC4/CLOCK.c **** 
+  28:.\Generated_Source\PSoC4/CLOCK.c **** /*******************************************************************************
+  29:.\Generated_Source\PSoC4/CLOCK.c **** * Function Name: CLOCK_Write
+  30:.\Generated_Source\PSoC4/CLOCK.c **** ********************************************************************************
+  31:.\Generated_Source\PSoC4/CLOCK.c **** *
+  32:.\Generated_Source\PSoC4/CLOCK.c **** * Summary:
+  33:.\Generated_Source\PSoC4/CLOCK.c **** *  Assign a new value to the digital port's data output register.  
+  34:.\Generated_Source\PSoC4/CLOCK.c **** *
+  35:.\Generated_Source\PSoC4/CLOCK.c **** * Parameters:  
+  36:.\Generated_Source\PSoC4/CLOCK.c **** *  prtValue:  The value to be assigned to the Digital Port. 
+  37:.\Generated_Source\PSoC4/CLOCK.c **** *
+  38:.\Generated_Source\PSoC4/CLOCK.c **** * Return: 
+  39:.\Generated_Source\PSoC4/CLOCK.c **** *  None 
+  40:.\Generated_Source\PSoC4/CLOCK.c **** *  
+  41:.\Generated_Source\PSoC4/CLOCK.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/CLOCK.c **** void CLOCK_Write(uint8 value) 
+  43:.\Generated_Source\PSoC4/CLOCK.c **** {
+  31              		.loc 1 43 0
+  32              		.cfi_startproc
+  33 0000 80B5     		push	{r7, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 84B0     		sub	sp, sp, #16
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 021C     		mov	r2, r0
+  45 0008 FB1D     		add	r3, r7, #7
+  46 000a 1A70     		strb	r2, [r3]
+  44:.\Generated_Source\PSoC4/CLOCK.c ****     uint8 drVal = (uint8)(CLOCK_DR & (uint8)(~CLOCK_MASK));
+  47              		.loc 1 44 0
+  48 000c 0D4B     		ldr	r3, .L3
+  49 000e 1B68     		ldr	r3, [r3]
+  50 0010 D9B2     		uxtb	r1, r3
+  51 0012 3B1C     		mov	r3, r7
+  52 0014 0F33     		add	r3, r3, #15
+  53 0016 7F22     		mov	r2, #127
+  54 0018 0A40     		and	r2, r2, r1
+  55 001a 1A70     		strb	r2, [r3]
+  45:.\Generated_Source\PSoC4/CLOCK.c ****     drVal = (drVal | ((uint8)(value << CLOCK_SHIFT) & CLOCK_MASK));
+  56              		.loc 1 45 0
+  57 001c FB1D     		add	r3, r7, #7
+  58 001e 1B78     		ldrb	r3, [r3]
+  59 0020 DB01     		lsl	r3, r3, #7
+  60 0022 D9B2     		uxtb	r1, r3
+  61 0024 3B1C     		mov	r3, r7
+  62 0026 0F33     		add	r3, r3, #15
+  63 0028 3A1C     		mov	r2, r7
+  64 002a 0F32     		add	r2, r2, #15
+  65 002c 1278     		ldrb	r2, [r2]
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 3
+
+
+  66 002e 0A43     		orr	r2, r2, r1
+  67 0030 1A70     		strb	r2, [r3]
+  46:.\Generated_Source\PSoC4/CLOCK.c ****     CLOCK_DR = (uint32)drVal;
+  68              		.loc 1 46 0
+  69 0032 044B     		ldr	r3, .L3
+  70 0034 3A1C     		mov	r2, r7
+  71 0036 0F32     		add	r2, r2, #15
+  72 0038 1278     		ldrb	r2, [r2]
+  73 003a 1A60     		str	r2, [r3]
+  47:.\Generated_Source\PSoC4/CLOCK.c **** }
+  74              		.loc 1 47 0
+  75 003c BD46     		mov	sp, r7
+  76 003e 04B0     		add	sp, sp, #16
+  77              		@ sp needed for prologue
+  78 0040 80BD     		pop	{r7, pc}
+  79              	.L4:
+  80 0042 C046     		.align	2
+  81              	.L3:
+  82 0044 00020440 		.word	1074004480
+  83              		.cfi_endproc
+  84              	.LFE0:
+  85              		.size	CLOCK_Write, .-CLOCK_Write
+  86              		.section	.text.CLOCK_SetDriveMode,"ax",%progbits
+  87              		.align	2
+  88              		.global	CLOCK_SetDriveMode
+  89              		.code	16
+  90              		.thumb_func
+  91              		.type	CLOCK_SetDriveMode, %function
+  92              	CLOCK_SetDriveMode:
+  93              	.LFB1:
+  48:.\Generated_Source\PSoC4/CLOCK.c **** 
+  49:.\Generated_Source\PSoC4/CLOCK.c **** 
+  50:.\Generated_Source\PSoC4/CLOCK.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC4/CLOCK.c **** * Function Name: CLOCK_SetDriveMode
+  52:.\Generated_Source\PSoC4/CLOCK.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC4/CLOCK.c **** *
+  54:.\Generated_Source\PSoC4/CLOCK.c **** * Summary:
+  55:.\Generated_Source\PSoC4/CLOCK.c **** *  Change the drive mode on the pins of the port.
+  56:.\Generated_Source\PSoC4/CLOCK.c **** * 
+  57:.\Generated_Source\PSoC4/CLOCK.c **** * Parameters:  
+  58:.\Generated_Source\PSoC4/CLOCK.c **** *  mode:  Change the pins to this drive mode.
+  59:.\Generated_Source\PSoC4/CLOCK.c **** *
+  60:.\Generated_Source\PSoC4/CLOCK.c **** * Return: 
+  61:.\Generated_Source\PSoC4/CLOCK.c **** *  None
+  62:.\Generated_Source\PSoC4/CLOCK.c **** *
+  63:.\Generated_Source\PSoC4/CLOCK.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC4/CLOCK.c **** void CLOCK_SetDriveMode(uint8 mode) 
+  65:.\Generated_Source\PSoC4/CLOCK.c **** {
+  94              		.loc 1 65 0
+  95              		.cfi_startproc
+  96 0000 80B5     		push	{r7, lr}
+  97              	.LCFI3:
+  98              		.cfi_def_cfa_offset 8
+  99              		.cfi_offset 7, -8
+ 100              		.cfi_offset 14, -4
+ 101 0002 82B0     		sub	sp, sp, #8
+ 102              	.LCFI4:
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 4
+
+
+ 103              		.cfi_def_cfa_offset 16
+ 104 0004 00AF     		add	r7, sp, #0
+ 105              	.LCFI5:
+ 106              		.cfi_def_cfa_register 7
+ 107 0006 021C     		mov	r2, r0
+ 108 0008 FB1D     		add	r3, r7, #7
+ 109 000a 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC4/CLOCK.c **** 	SetP4PinDriveMode(CLOCK__0__SHIFT, mode);
+ 110              		.loc 1 66 0
+ 111 000c 064B     		ldr	r3, .L7
+ 112 000e 064A     		ldr	r2, .L7
+ 113 0010 1168     		ldr	r1, [r2]
+ 114 0012 064A     		ldr	r2, .L7+4
+ 115 0014 1140     		and	r1, r1, r2
+ 116 0016 FA1D     		add	r2, r7, #7
+ 117 0018 1278     		ldrb	r2, [r2]
+ 118 001a 5205     		lsl	r2, r2, #21
+ 119 001c 0A43     		orr	r2, r2, r1
+ 120 001e 1A60     		str	r2, [r3]
+  67:.\Generated_Source\PSoC4/CLOCK.c **** }
+ 121              		.loc 1 67 0
+ 122 0020 BD46     		mov	sp, r7
+ 123 0022 02B0     		add	sp, sp, #8
+ 124              		@ sp needed for prologue
+ 125 0024 80BD     		pop	{r7, pc}
+ 126              	.L8:
+ 127 0026 C046     		.align	2
+ 128              	.L7:
+ 129 0028 08020440 		.word	1074004488
+ 130 002c FFFF1FFF 		.word	-14680065
+ 131              		.cfi_endproc
+ 132              	.LFE1:
+ 133              		.size	CLOCK_SetDriveMode, .-CLOCK_SetDriveMode
+ 134              		.section	.text.CLOCK_Read,"ax",%progbits
+ 135              		.align	2
+ 136              		.global	CLOCK_Read
+ 137              		.code	16
+ 138              		.thumb_func
+ 139              		.type	CLOCK_Read, %function
+ 140              	CLOCK_Read:
+ 141              	.LFB2:
+  68:.\Generated_Source\PSoC4/CLOCK.c **** 
+  69:.\Generated_Source\PSoC4/CLOCK.c **** 
+  70:.\Generated_Source\PSoC4/CLOCK.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC4/CLOCK.c **** * Function Name: CLOCK_Read
+  72:.\Generated_Source\PSoC4/CLOCK.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC4/CLOCK.c **** *
+  74:.\Generated_Source\PSoC4/CLOCK.c **** * Summary:
+  75:.\Generated_Source\PSoC4/CLOCK.c **** *  Read the current value on the pins of the Digital Port in right justified 
+  76:.\Generated_Source\PSoC4/CLOCK.c **** *  form.
+  77:.\Generated_Source\PSoC4/CLOCK.c **** *
+  78:.\Generated_Source\PSoC4/CLOCK.c **** * Parameters:  
+  79:.\Generated_Source\PSoC4/CLOCK.c **** *  None 
+  80:.\Generated_Source\PSoC4/CLOCK.c **** *
+  81:.\Generated_Source\PSoC4/CLOCK.c **** * Return: 
+  82:.\Generated_Source\PSoC4/CLOCK.c **** *  Returns the current value of the Digital Port as a right justified number
+  83:.\Generated_Source\PSoC4/CLOCK.c **** *  
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 5
+
+
+  84:.\Generated_Source\PSoC4/CLOCK.c **** * Note:
+  85:.\Generated_Source\PSoC4/CLOCK.c **** *  Macro CLOCK_ReadPS calls this function. 
+  86:.\Generated_Source\PSoC4/CLOCK.c **** *  
+  87:.\Generated_Source\PSoC4/CLOCK.c **** *******************************************************************************/
+  88:.\Generated_Source\PSoC4/CLOCK.c **** uint8 CLOCK_Read(void) 
+  89:.\Generated_Source\PSoC4/CLOCK.c **** {
+ 142              		.loc 1 89 0
+ 143              		.cfi_startproc
+ 144 0000 80B5     		push	{r7, lr}
+ 145              	.LCFI6:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 7, -8
+ 148              		.cfi_offset 14, -4
+ 149 0002 00AF     		add	r7, sp, #0
+ 150              	.LCFI7:
+ 151              		.cfi_def_cfa_register 7
+  90:.\Generated_Source\PSoC4/CLOCK.c ****     return (uint8)((CLOCK_PS & CLOCK_MASK) >> CLOCK_SHIFT);
+ 152              		.loc 1 90 0
+ 153 0004 044B     		ldr	r3, .L11
+ 154 0006 1A68     		ldr	r2, [r3]
+ 155 0008 8023     		mov	r3, #128
+ 156 000a 1340     		and	r3, r3, r2
+ 157 000c DB09     		lsr	r3, r3, #7
+ 158 000e DBB2     		uxtb	r3, r3
+  91:.\Generated_Source\PSoC4/CLOCK.c **** }
+ 159              		.loc 1 91 0
+ 160 0010 181C     		mov	r0, r3
+ 161 0012 BD46     		mov	sp, r7
+ 162              		@ sp needed for prologue
+ 163 0014 80BD     		pop	{r7, pc}
+ 164              	.L12:
+ 165 0016 C046     		.align	2
+ 166              	.L11:
+ 167 0018 04020440 		.word	1074004484
+ 168              		.cfi_endproc
+ 169              	.LFE2:
+ 170              		.size	CLOCK_Read, .-CLOCK_Read
+ 171              		.section	.text.CLOCK_ReadDataReg,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	CLOCK_ReadDataReg
+ 174              		.code	16
+ 175              		.thumb_func
+ 176              		.type	CLOCK_ReadDataReg, %function
+ 177              	CLOCK_ReadDataReg:
+ 178              	.LFB3:
+  92:.\Generated_Source\PSoC4/CLOCK.c **** 
+  93:.\Generated_Source\PSoC4/CLOCK.c **** 
+  94:.\Generated_Source\PSoC4/CLOCK.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC4/CLOCK.c **** * Function Name: CLOCK_ReadDataReg
+  96:.\Generated_Source\PSoC4/CLOCK.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC4/CLOCK.c **** *
+  98:.\Generated_Source\PSoC4/CLOCK.c **** * Summary:
+  99:.\Generated_Source\PSoC4/CLOCK.c **** *  Read the current value assigned to a Digital Port's data output register
+ 100:.\Generated_Source\PSoC4/CLOCK.c **** *
+ 101:.\Generated_Source\PSoC4/CLOCK.c **** * Parameters:  
+ 102:.\Generated_Source\PSoC4/CLOCK.c **** *  None 
+ 103:.\Generated_Source\PSoC4/CLOCK.c **** *
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 6
+
+
+ 104:.\Generated_Source\PSoC4/CLOCK.c **** * Return: 
+ 105:.\Generated_Source\PSoC4/CLOCK.c **** *  Returns the current value assigned to the Digital Port's data output register
+ 106:.\Generated_Source\PSoC4/CLOCK.c **** *  
+ 107:.\Generated_Source\PSoC4/CLOCK.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/CLOCK.c **** uint8 CLOCK_ReadDataReg(void) 
+ 109:.\Generated_Source\PSoC4/CLOCK.c **** {
+ 179              		.loc 1 109 0
+ 180              		.cfi_startproc
+ 181 0000 80B5     		push	{r7, lr}
+ 182              	.LCFI8:
+ 183              		.cfi_def_cfa_offset 8
+ 184              		.cfi_offset 7, -8
+ 185              		.cfi_offset 14, -4
+ 186 0002 00AF     		add	r7, sp, #0
+ 187              	.LCFI9:
+ 188              		.cfi_def_cfa_register 7
+ 110:.\Generated_Source\PSoC4/CLOCK.c ****     return (uint8)((CLOCK_DR & CLOCK_MASK) >> CLOCK_SHIFT);
+ 189              		.loc 1 110 0
+ 190 0004 044B     		ldr	r3, .L15
+ 191 0006 1A68     		ldr	r2, [r3]
+ 192 0008 8023     		mov	r3, #128
+ 193 000a 1340     		and	r3, r3, r2
+ 194 000c DB09     		lsr	r3, r3, #7
+ 195 000e DBB2     		uxtb	r3, r3
+ 111:.\Generated_Source\PSoC4/CLOCK.c **** }
+ 196              		.loc 1 111 0
+ 197 0010 181C     		mov	r0, r3
+ 198 0012 BD46     		mov	sp, r7
+ 199              		@ sp needed for prologue
+ 200 0014 80BD     		pop	{r7, pc}
+ 201              	.L16:
+ 202 0016 C046     		.align	2
+ 203              	.L15:
+ 204 0018 00020440 		.word	1074004480
+ 205              		.cfi_endproc
+ 206              	.LFE3:
+ 207              		.size	CLOCK_ReadDataReg, .-CLOCK_ReadDataReg
+ 208              		.section	.text.CLOCK_ClearInterrupt,"ax",%progbits
+ 209              		.align	2
+ 210              		.global	CLOCK_ClearInterrupt
+ 211              		.code	16
+ 212              		.thumb_func
+ 213              		.type	CLOCK_ClearInterrupt, %function
+ 214              	CLOCK_ClearInterrupt:
+ 215              	.LFB4:
+ 112:.\Generated_Source\PSoC4/CLOCK.c **** 
+ 113:.\Generated_Source\PSoC4/CLOCK.c **** 
+ 114:.\Generated_Source\PSoC4/CLOCK.c **** /* If Interrupts Are Enabled for this Pins component */ 
+ 115:.\Generated_Source\PSoC4/CLOCK.c **** #if defined(CLOCK_INTSTAT) 
+ 116:.\Generated_Source\PSoC4/CLOCK.c **** 
+ 117:.\Generated_Source\PSoC4/CLOCK.c ****     /*******************************************************************************
+ 118:.\Generated_Source\PSoC4/CLOCK.c ****     * Function Name: CLOCK_ClearInterrupt
+ 119:.\Generated_Source\PSoC4/CLOCK.c ****     ********************************************************************************
+ 120:.\Generated_Source\PSoC4/CLOCK.c ****     *
+ 121:.\Generated_Source\PSoC4/CLOCK.c ****     * Summary:
+ 122:.\Generated_Source\PSoC4/CLOCK.c ****     *  Clears any active interrupts attached to port and returns the value of the 
+ 123:.\Generated_Source\PSoC4/CLOCK.c ****     *  interrupt status register.
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 7
+
+
+ 124:.\Generated_Source\PSoC4/CLOCK.c ****     *
+ 125:.\Generated_Source\PSoC4/CLOCK.c ****     * Parameters:  
+ 126:.\Generated_Source\PSoC4/CLOCK.c ****     *  None 
+ 127:.\Generated_Source\PSoC4/CLOCK.c ****     *
+ 128:.\Generated_Source\PSoC4/CLOCK.c ****     * Return: 
+ 129:.\Generated_Source\PSoC4/CLOCK.c ****     *  Returns the value of the interrupt status register
+ 130:.\Generated_Source\PSoC4/CLOCK.c ****     *  
+ 131:.\Generated_Source\PSoC4/CLOCK.c ****     *******************************************************************************/
+ 132:.\Generated_Source\PSoC4/CLOCK.c ****     uint8 CLOCK_ClearInterrupt(void) 
+ 133:.\Generated_Source\PSoC4/CLOCK.c ****     {
+ 216              		.loc 1 133 0
+ 217              		.cfi_startproc
+ 218 0000 80B5     		push	{r7, lr}
+ 219              	.LCFI10:
+ 220              		.cfi_def_cfa_offset 8
+ 221              		.cfi_offset 7, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 82B0     		sub	sp, sp, #8
+ 224              	.LCFI11:
+ 225              		.cfi_def_cfa_offset 16
+ 226 0004 00AF     		add	r7, sp, #0
+ 227              	.LCFI12:
+ 228              		.cfi_def_cfa_register 7
+ 134:.\Generated_Source\PSoC4/CLOCK.c **** 		uint8 maskedStatus = (uint8)(CLOCK_INTSTAT & CLOCK_MASK);
+ 229              		.loc 1 134 0
+ 230 0006 094B     		ldr	r3, .L19
+ 231 0008 1B68     		ldr	r3, [r3]
+ 232 000a DAB2     		uxtb	r2, r3
+ 233 000c FB1D     		add	r3, r7, #7
+ 234 000e 7F21     		mov	r1, #127
+ 235 0010 8A43     		bic	r2, r2, r1
+ 236 0012 1A70     		strb	r2, [r3]
+ 135:.\Generated_Source\PSoC4/CLOCK.c **** 		CLOCK_INTSTAT = maskedStatus;
+ 237              		.loc 1 135 0
+ 238 0014 054B     		ldr	r3, .L19
+ 239 0016 FA1D     		add	r2, r7, #7
+ 240 0018 1278     		ldrb	r2, [r2]
+ 241 001a 1A60     		str	r2, [r3]
+ 136:.\Generated_Source\PSoC4/CLOCK.c ****         return maskedStatus >> CLOCK_SHIFT;
+ 242              		.loc 1 136 0
+ 243 001c FB1D     		add	r3, r7, #7
+ 244 001e 1B78     		ldrb	r3, [r3]
+ 245 0020 DB09     		lsr	r3, r3, #7
+ 246 0022 DBB2     		uxtb	r3, r3
+ 137:.\Generated_Source\PSoC4/CLOCK.c ****     }
+ 247              		.loc 1 137 0
+ 248 0024 181C     		mov	r0, r3
+ 249 0026 BD46     		mov	sp, r7
+ 250 0028 02B0     		add	sp, sp, #8
+ 251              		@ sp needed for prologue
+ 252 002a 80BD     		pop	{r7, pc}
+ 253              	.L20:
+ 254              		.align	2
+ 255              	.L19:
+ 256 002c 10020440 		.word	1074004496
+ 257              		.cfi_endproc
+ 258              	.LFE4:
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 8
+
+
+ 259              		.size	CLOCK_ClearInterrupt, .-CLOCK_ClearInterrupt
+ 260              		.text
+ 261              	.Letext0:
+ 262              		.section	.debug_loc,"",%progbits
+ 263              	.Ldebug_loc0:
+ 264              	.LLST0:
+ 265 0000 00000000 		.4byte	.LFB0
+ 266 0004 02000000 		.4byte	.LCFI0
+ 267 0008 0100     		.2byte	0x1
+ 268 000a 5D       		.byte	0x5d
+ 269 000b 02000000 		.4byte	.LCFI0
+ 270 000f 04000000 		.4byte	.LCFI1
+ 271 0013 0200     		.2byte	0x2
+ 272 0015 7D       		.byte	0x7d
+ 273 0016 08       		.sleb128 8
+ 274 0017 04000000 		.4byte	.LCFI1
+ 275 001b 06000000 		.4byte	.LCFI2
+ 276 001f 0200     		.2byte	0x2
+ 277 0021 7D       		.byte	0x7d
+ 278 0022 18       		.sleb128 24
+ 279 0023 06000000 		.4byte	.LCFI2
+ 280 0027 48000000 		.4byte	.LFE0
+ 281 002b 0200     		.2byte	0x2
+ 282 002d 77       		.byte	0x77
+ 283 002e 18       		.sleb128 24
+ 284 002f 00000000 		.4byte	0x0
+ 285 0033 00000000 		.4byte	0x0
+ 286              	.LLST1:
+ 287 0037 00000000 		.4byte	.LFB1
+ 288 003b 02000000 		.4byte	.LCFI3
+ 289 003f 0100     		.2byte	0x1
+ 290 0041 5D       		.byte	0x5d
+ 291 0042 02000000 		.4byte	.LCFI3
+ 292 0046 04000000 		.4byte	.LCFI4
+ 293 004a 0200     		.2byte	0x2
+ 294 004c 7D       		.byte	0x7d
+ 295 004d 08       		.sleb128 8
+ 296 004e 04000000 		.4byte	.LCFI4
+ 297 0052 06000000 		.4byte	.LCFI5
+ 298 0056 0200     		.2byte	0x2
+ 299 0058 7D       		.byte	0x7d
+ 300 0059 10       		.sleb128 16
+ 301 005a 06000000 		.4byte	.LCFI5
+ 302 005e 30000000 		.4byte	.LFE1
+ 303 0062 0200     		.2byte	0x2
+ 304 0064 77       		.byte	0x77
+ 305 0065 10       		.sleb128 16
+ 306 0066 00000000 		.4byte	0x0
+ 307 006a 00000000 		.4byte	0x0
+ 308              	.LLST2:
+ 309 006e 00000000 		.4byte	.LFB2
+ 310 0072 02000000 		.4byte	.LCFI6
+ 311 0076 0100     		.2byte	0x1
+ 312 0078 5D       		.byte	0x5d
+ 313 0079 02000000 		.4byte	.LCFI6
+ 314 007d 04000000 		.4byte	.LCFI7
+ 315 0081 0200     		.2byte	0x2
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 9
+
+
+ 316 0083 7D       		.byte	0x7d
+ 317 0084 08       		.sleb128 8
+ 318 0085 04000000 		.4byte	.LCFI7
+ 319 0089 1C000000 		.4byte	.LFE2
+ 320 008d 0200     		.2byte	0x2
+ 321 008f 77       		.byte	0x77
+ 322 0090 08       		.sleb128 8
+ 323 0091 00000000 		.4byte	0x0
+ 324 0095 00000000 		.4byte	0x0
+ 325              	.LLST3:
+ 326 0099 00000000 		.4byte	.LFB3
+ 327 009d 02000000 		.4byte	.LCFI8
+ 328 00a1 0100     		.2byte	0x1
+ 329 00a3 5D       		.byte	0x5d
+ 330 00a4 02000000 		.4byte	.LCFI8
+ 331 00a8 04000000 		.4byte	.LCFI9
+ 332 00ac 0200     		.2byte	0x2
+ 333 00ae 7D       		.byte	0x7d
+ 334 00af 08       		.sleb128 8
+ 335 00b0 04000000 		.4byte	.LCFI9
+ 336 00b4 1C000000 		.4byte	.LFE3
+ 337 00b8 0200     		.2byte	0x2
+ 338 00ba 77       		.byte	0x77
+ 339 00bb 08       		.sleb128 8
+ 340 00bc 00000000 		.4byte	0x0
+ 341 00c0 00000000 		.4byte	0x0
+ 342              	.LLST4:
+ 343 00c4 00000000 		.4byte	.LFB4
+ 344 00c8 02000000 		.4byte	.LCFI10
+ 345 00cc 0100     		.2byte	0x1
+ 346 00ce 5D       		.byte	0x5d
+ 347 00cf 02000000 		.4byte	.LCFI10
+ 348 00d3 04000000 		.4byte	.LCFI11
+ 349 00d7 0200     		.2byte	0x2
+ 350 00d9 7D       		.byte	0x7d
+ 351 00da 08       		.sleb128 8
+ 352 00db 04000000 		.4byte	.LCFI11
+ 353 00df 06000000 		.4byte	.LCFI12
+ 354 00e3 0200     		.2byte	0x2
+ 355 00e5 7D       		.byte	0x7d
+ 356 00e6 10       		.sleb128 16
+ 357 00e7 06000000 		.4byte	.LCFI12
+ 358 00eb 30000000 		.4byte	.LFE4
+ 359 00ef 0200     		.2byte	0x2
+ 360 00f1 77       		.byte	0x77
+ 361 00f2 10       		.sleb128 16
+ 362 00f3 00000000 		.4byte	0x0
+ 363 00f7 00000000 		.4byte	0x0
+ 364              		.file 2 ".\\Generated_Source\\PSoC4\\/cytypes.h"
+ 365              		.section	.debug_info
+ 366 0000 44010000 		.4byte	0x144
+ 367 0004 0200     		.2byte	0x2
+ 368 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 369 000a 04       		.byte	0x4
+ 370 000b 01       		.uleb128 0x1
+ 371 000c 09010000 		.4byte	.LASF21
+ 372 0010 01       		.byte	0x1
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 10
+
+
+ 373 0011 E3000000 		.4byte	.LASF22
+ 374 0015 9D000000 		.4byte	.LASF23
+ 375 0019 00000000 		.4byte	0x0
+ 376 001d 00000000 		.4byte	0x0
+ 377 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 378 0025 00000000 		.4byte	.Ldebug_line0
+ 379 0029 02       		.uleb128 0x2
+ 380 002a 01       		.byte	0x1
+ 381 002b 06       		.byte	0x6
+ 382 002c 4B010000 		.4byte	.LASF0
+ 383 0030 02       		.uleb128 0x2
+ 384 0031 01       		.byte	0x1
+ 385 0032 08       		.byte	0x8
+ 386 0033 1A000000 		.4byte	.LASF1
+ 387 0037 02       		.uleb128 0x2
+ 388 0038 02       		.byte	0x2
+ 389 0039 05       		.byte	0x5
+ 390 003a 27010000 		.4byte	.LASF2
+ 391 003e 02       		.uleb128 0x2
+ 392 003f 02       		.byte	0x2
+ 393 0040 07       		.byte	0x7
+ 394 0041 53000000 		.4byte	.LASF3
+ 395 0045 02       		.uleb128 0x2
+ 396 0046 04       		.byte	0x4
+ 397 0047 05       		.byte	0x5
+ 398 0048 37010000 		.4byte	.LASF4
+ 399 004c 02       		.uleb128 0x2
+ 400 004d 04       		.byte	0x4
+ 401 004e 07       		.byte	0x7
+ 402 004f 41000000 		.4byte	.LASF5
+ 403 0053 02       		.uleb128 0x2
+ 404 0054 08       		.byte	0x8
+ 405 0055 05       		.byte	0x5
+ 406 0056 00000000 		.4byte	.LASF6
+ 407 005a 02       		.uleb128 0x2
+ 408 005b 08       		.byte	0x8
+ 409 005c 07       		.byte	0x7
+ 410 005d 86000000 		.4byte	.LASF7
+ 411 0061 03       		.uleb128 0x3
+ 412 0062 04       		.byte	0x4
+ 413 0063 05       		.byte	0x5
+ 414 0064 696E7400 		.ascii	"int\000"
+ 415 0068 02       		.uleb128 0x2
+ 416 0069 04       		.byte	0x4
+ 417 006a 07       		.byte	0x7
+ 418 006b 79000000 		.4byte	.LASF8
+ 419 006f 04       		.uleb128 0x4
+ 420 0070 31010000 		.4byte	.LASF24
+ 421 0074 02       		.byte	0x2
+ 422 0075 4C       		.byte	0x4c
+ 423 0076 30000000 		.4byte	0x30
+ 424 007a 02       		.uleb128 0x2
+ 425 007b 04       		.byte	0x4
+ 426 007c 04       		.byte	0x4
+ 427 007d 14000000 		.4byte	.LASF9
+ 428 0081 02       		.uleb128 0x2
+ 429 0082 08       		.byte	0x8
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 11
+
+
+ 430 0083 04       		.byte	0x4
+ 431 0084 66000000 		.4byte	.LASF10
+ 432 0088 02       		.uleb128 0x2
+ 433 0089 01       		.byte	0x1
+ 434 008a 08       		.byte	0x8
+ 435 008b 22010000 		.4byte	.LASF11
+ 436 008f 05       		.uleb128 0x5
+ 437 0090 01       		.byte	0x1
+ 438 0091 6D000000 		.4byte	.LASF12
+ 439 0095 01       		.byte	0x1
+ 440 0096 2A       		.byte	0x2a
+ 441 0097 01       		.byte	0x1
+ 442 0098 00000000 		.4byte	.LFB0
+ 443 009c 48000000 		.4byte	.LFE0
+ 444 00a0 00000000 		.4byte	.LLST0
+ 445 00a4 C5000000 		.4byte	0xc5
+ 446 00a8 06       		.uleb128 0x6
+ 447 00a9 0E000000 		.4byte	.LASF14
+ 448 00ad 01       		.byte	0x1
+ 449 00ae 2A       		.byte	0x2a
+ 450 00af 6F000000 		.4byte	0x6f
+ 451 00b3 02       		.byte	0x2
+ 452 00b4 91       		.byte	0x91
+ 453 00b5 6F       		.sleb128 -17
+ 454 00b6 07       		.uleb128 0x7
+ 455 00b7 3B000000 		.4byte	.LASF19
+ 456 00bb 01       		.byte	0x1
+ 457 00bc 2C       		.byte	0x2c
+ 458 00bd 6F000000 		.4byte	0x6f
+ 459 00c1 02       		.byte	0x2
+ 460 00c2 91       		.byte	0x91
+ 461 00c3 77       		.sleb128 -9
+ 462 00c4 00       		.byte	0x0
+ 463 00c5 05       		.uleb128 0x5
+ 464 00c6 01       		.byte	0x1
+ 465 00c7 28000000 		.4byte	.LASF13
+ 466 00cb 01       		.byte	0x1
+ 467 00cc 40       		.byte	0x40
+ 468 00cd 01       		.byte	0x1
+ 469 00ce 00000000 		.4byte	.LFB1
+ 470 00d2 30000000 		.4byte	.LFE1
+ 471 00d6 37000000 		.4byte	.LLST1
+ 472 00da ED000000 		.4byte	0xed
+ 473 00de 06       		.uleb128 0x6
+ 474 00df 04010000 		.4byte	.LASF15
+ 475 00e3 01       		.byte	0x1
+ 476 00e4 40       		.byte	0x40
+ 477 00e5 6F000000 		.4byte	0x6f
+ 478 00e9 02       		.byte	0x2
+ 479 00ea 91       		.byte	0x91
+ 480 00eb 77       		.sleb128 -9
+ 481 00ec 00       		.byte	0x0
+ 482 00ed 08       		.uleb128 0x8
+ 483 00ee 01       		.byte	0x1
+ 484 00ef 40010000 		.4byte	.LASF16
+ 485 00f3 01       		.byte	0x1
+ 486 00f4 58       		.byte	0x58
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 12
+
+
+ 487 00f5 01       		.byte	0x1
+ 488 00f6 6F000000 		.4byte	0x6f
+ 489 00fa 00000000 		.4byte	.LFB2
+ 490 00fe 1C000000 		.4byte	.LFE2
+ 491 0102 6E000000 		.4byte	.LLST2
+ 492 0106 08       		.uleb128 0x8
+ 493 0107 01       		.byte	0x1
+ 494 0108 57010000 		.4byte	.LASF17
+ 495 010c 01       		.byte	0x1
+ 496 010d 6C       		.byte	0x6c
+ 497 010e 01       		.byte	0x1
+ 498 010f 6F000000 		.4byte	0x6f
+ 499 0113 00000000 		.4byte	.LFB3
+ 500 0117 1C000000 		.4byte	.LFE3
+ 501 011b 99000000 		.4byte	.LLST3
+ 502 011f 09       		.uleb128 0x9
+ 503 0120 01       		.byte	0x1
+ 504 0121 69010000 		.4byte	.LASF18
+ 505 0125 01       		.byte	0x1
+ 506 0126 84       		.byte	0x84
+ 507 0127 01       		.byte	0x1
+ 508 0128 6F000000 		.4byte	0x6f
+ 509 012c 00000000 		.4byte	.LFB4
+ 510 0130 30000000 		.4byte	.LFE4
+ 511 0134 C4000000 		.4byte	.LLST4
+ 512 0138 07       		.uleb128 0x7
+ 513 0139 15010000 		.4byte	.LASF20
+ 514 013d 01       		.byte	0x1
+ 515 013e 86       		.byte	0x86
+ 516 013f 6F000000 		.4byte	0x6f
+ 517 0143 02       		.byte	0x2
+ 518 0144 91       		.byte	0x91
+ 519 0145 77       		.sleb128 -9
+ 520 0146 00       		.byte	0x0
+ 521 0147 00       		.byte	0x0
+ 522              		.section	.debug_abbrev
+ 523 0000 01       		.uleb128 0x1
+ 524 0001 11       		.uleb128 0x11
+ 525 0002 01       		.byte	0x1
+ 526 0003 25       		.uleb128 0x25
+ 527 0004 0E       		.uleb128 0xe
+ 528 0005 13       		.uleb128 0x13
+ 529 0006 0B       		.uleb128 0xb
+ 530 0007 03       		.uleb128 0x3
+ 531 0008 0E       		.uleb128 0xe
+ 532 0009 1B       		.uleb128 0x1b
+ 533 000a 0E       		.uleb128 0xe
+ 534 000b 11       		.uleb128 0x11
+ 535 000c 01       		.uleb128 0x1
+ 536 000d 52       		.uleb128 0x52
+ 537 000e 01       		.uleb128 0x1
+ 538 000f 55       		.uleb128 0x55
+ 539 0010 06       		.uleb128 0x6
+ 540 0011 10       		.uleb128 0x10
+ 541 0012 06       		.uleb128 0x6
+ 542 0013 00       		.byte	0x0
+ 543 0014 00       		.byte	0x0
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 13
+
+
+ 544 0015 02       		.uleb128 0x2
+ 545 0016 24       		.uleb128 0x24
+ 546 0017 00       		.byte	0x0
+ 547 0018 0B       		.uleb128 0xb
+ 548 0019 0B       		.uleb128 0xb
+ 549 001a 3E       		.uleb128 0x3e
+ 550 001b 0B       		.uleb128 0xb
+ 551 001c 03       		.uleb128 0x3
+ 552 001d 0E       		.uleb128 0xe
+ 553 001e 00       		.byte	0x0
+ 554 001f 00       		.byte	0x0
+ 555 0020 03       		.uleb128 0x3
+ 556 0021 24       		.uleb128 0x24
+ 557 0022 00       		.byte	0x0
+ 558 0023 0B       		.uleb128 0xb
+ 559 0024 0B       		.uleb128 0xb
+ 560 0025 3E       		.uleb128 0x3e
+ 561 0026 0B       		.uleb128 0xb
+ 562 0027 03       		.uleb128 0x3
+ 563 0028 08       		.uleb128 0x8
+ 564 0029 00       		.byte	0x0
+ 565 002a 00       		.byte	0x0
+ 566 002b 04       		.uleb128 0x4
+ 567 002c 16       		.uleb128 0x16
+ 568 002d 00       		.byte	0x0
+ 569 002e 03       		.uleb128 0x3
+ 570 002f 0E       		.uleb128 0xe
+ 571 0030 3A       		.uleb128 0x3a
+ 572 0031 0B       		.uleb128 0xb
+ 573 0032 3B       		.uleb128 0x3b
+ 574 0033 0B       		.uleb128 0xb
+ 575 0034 49       		.uleb128 0x49
+ 576 0035 13       		.uleb128 0x13
+ 577 0036 00       		.byte	0x0
+ 578 0037 00       		.byte	0x0
+ 579 0038 05       		.uleb128 0x5
+ 580 0039 2E       		.uleb128 0x2e
+ 581 003a 01       		.byte	0x1
+ 582 003b 3F       		.uleb128 0x3f
+ 583 003c 0C       		.uleb128 0xc
+ 584 003d 03       		.uleb128 0x3
+ 585 003e 0E       		.uleb128 0xe
+ 586 003f 3A       		.uleb128 0x3a
+ 587 0040 0B       		.uleb128 0xb
+ 588 0041 3B       		.uleb128 0x3b
+ 589 0042 0B       		.uleb128 0xb
+ 590 0043 27       		.uleb128 0x27
+ 591 0044 0C       		.uleb128 0xc
+ 592 0045 11       		.uleb128 0x11
+ 593 0046 01       		.uleb128 0x1
+ 594 0047 12       		.uleb128 0x12
+ 595 0048 01       		.uleb128 0x1
+ 596 0049 40       		.uleb128 0x40
+ 597 004a 06       		.uleb128 0x6
+ 598 004b 01       		.uleb128 0x1
+ 599 004c 13       		.uleb128 0x13
+ 600 004d 00       		.byte	0x0
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 14
+
+
+ 601 004e 00       		.byte	0x0
+ 602 004f 06       		.uleb128 0x6
+ 603 0050 05       		.uleb128 0x5
+ 604 0051 00       		.byte	0x0
+ 605 0052 03       		.uleb128 0x3
+ 606 0053 0E       		.uleb128 0xe
+ 607 0054 3A       		.uleb128 0x3a
+ 608 0055 0B       		.uleb128 0xb
+ 609 0056 3B       		.uleb128 0x3b
+ 610 0057 0B       		.uleb128 0xb
+ 611 0058 49       		.uleb128 0x49
+ 612 0059 13       		.uleb128 0x13
+ 613 005a 02       		.uleb128 0x2
+ 614 005b 0A       		.uleb128 0xa
+ 615 005c 00       		.byte	0x0
+ 616 005d 00       		.byte	0x0
+ 617 005e 07       		.uleb128 0x7
+ 618 005f 34       		.uleb128 0x34
+ 619 0060 00       		.byte	0x0
+ 620 0061 03       		.uleb128 0x3
+ 621 0062 0E       		.uleb128 0xe
+ 622 0063 3A       		.uleb128 0x3a
+ 623 0064 0B       		.uleb128 0xb
+ 624 0065 3B       		.uleb128 0x3b
+ 625 0066 0B       		.uleb128 0xb
+ 626 0067 49       		.uleb128 0x49
+ 627 0068 13       		.uleb128 0x13
+ 628 0069 02       		.uleb128 0x2
+ 629 006a 0A       		.uleb128 0xa
+ 630 006b 00       		.byte	0x0
+ 631 006c 00       		.byte	0x0
+ 632 006d 08       		.uleb128 0x8
+ 633 006e 2E       		.uleb128 0x2e
+ 634 006f 00       		.byte	0x0
+ 635 0070 3F       		.uleb128 0x3f
+ 636 0071 0C       		.uleb128 0xc
+ 637 0072 03       		.uleb128 0x3
+ 638 0073 0E       		.uleb128 0xe
+ 639 0074 3A       		.uleb128 0x3a
+ 640 0075 0B       		.uleb128 0xb
+ 641 0076 3B       		.uleb128 0x3b
+ 642 0077 0B       		.uleb128 0xb
+ 643 0078 27       		.uleb128 0x27
+ 644 0079 0C       		.uleb128 0xc
+ 645 007a 49       		.uleb128 0x49
+ 646 007b 13       		.uleb128 0x13
+ 647 007c 11       		.uleb128 0x11
+ 648 007d 01       		.uleb128 0x1
+ 649 007e 12       		.uleb128 0x12
+ 650 007f 01       		.uleb128 0x1
+ 651 0080 40       		.uleb128 0x40
+ 652 0081 06       		.uleb128 0x6
+ 653 0082 00       		.byte	0x0
+ 654 0083 00       		.byte	0x0
+ 655 0084 09       		.uleb128 0x9
+ 656 0085 2E       		.uleb128 0x2e
+ 657 0086 01       		.byte	0x1
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 15
+
+
+ 658 0087 3F       		.uleb128 0x3f
+ 659 0088 0C       		.uleb128 0xc
+ 660 0089 03       		.uleb128 0x3
+ 661 008a 0E       		.uleb128 0xe
+ 662 008b 3A       		.uleb128 0x3a
+ 663 008c 0B       		.uleb128 0xb
+ 664 008d 3B       		.uleb128 0x3b
+ 665 008e 0B       		.uleb128 0xb
+ 666 008f 27       		.uleb128 0x27
+ 667 0090 0C       		.uleb128 0xc
+ 668 0091 49       		.uleb128 0x49
+ 669 0092 13       		.uleb128 0x13
+ 670 0093 11       		.uleb128 0x11
+ 671 0094 01       		.uleb128 0x1
+ 672 0095 12       		.uleb128 0x12
+ 673 0096 01       		.uleb128 0x1
+ 674 0097 40       		.uleb128 0x40
+ 675 0098 06       		.uleb128 0x6
+ 676 0099 00       		.byte	0x0
+ 677 009a 00       		.byte	0x0
+ 678 009b 00       		.byte	0x0
+ 679              		.section	.debug_pubnames,"",%progbits
+ 680 0000 73000000 		.4byte	0x73
+ 681 0004 0200     		.2byte	0x2
+ 682 0006 00000000 		.4byte	.Ldebug_info0
+ 683 000a 48010000 		.4byte	0x148
+ 684 000e 8F000000 		.4byte	0x8f
+ 685 0012 434C4F43 		.ascii	"CLOCK_Write\000"
+ 685      4B5F5772 
+ 685      69746500 
+ 686 001e C5000000 		.4byte	0xc5
+ 687 0022 434C4F43 		.ascii	"CLOCK_SetDriveMode\000"
+ 687      4B5F5365 
+ 687      74447269 
+ 687      76654D6F 
+ 687      646500
+ 688 0035 ED000000 		.4byte	0xed
+ 689 0039 434C4F43 		.ascii	"CLOCK_Read\000"
+ 689      4B5F5265 
+ 689      616400
+ 690 0044 06010000 		.4byte	0x106
+ 691 0048 434C4F43 		.ascii	"CLOCK_ReadDataReg\000"
+ 691      4B5F5265 
+ 691      61644461 
+ 691      74615265 
+ 691      6700
+ 692 005a 1F010000 		.4byte	0x11f
+ 693 005e 434C4F43 		.ascii	"CLOCK_ClearInterrupt\000"
+ 693      4B5F436C 
+ 693      65617249 
+ 693      6E746572 
+ 693      72757074 
+ 694 0073 00000000 		.4byte	0x0
+ 695              		.section	.debug_aranges,"",%progbits
+ 696 0000 3C000000 		.4byte	0x3c
+ 697 0004 0200     		.2byte	0x2
+ 698 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 16
+
+
+ 699 000a 04       		.byte	0x4
+ 700 000b 00       		.byte	0x0
+ 701 000c 0000     		.2byte	0x0
+ 702 000e 0000     		.2byte	0x0
+ 703 0010 00000000 		.4byte	.LFB0
+ 704 0014 48000000 		.4byte	.LFE0-.LFB0
+ 705 0018 00000000 		.4byte	.LFB1
+ 706 001c 30000000 		.4byte	.LFE1-.LFB1
+ 707 0020 00000000 		.4byte	.LFB2
+ 708 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 709 0028 00000000 		.4byte	.LFB3
+ 710 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 711 0030 00000000 		.4byte	.LFB4
+ 712 0034 30000000 		.4byte	.LFE4-.LFB4
+ 713 0038 00000000 		.4byte	0x0
+ 714 003c 00000000 		.4byte	0x0
+ 715              		.section	.debug_ranges,"",%progbits
+ 716              	.Ldebug_ranges0:
+ 717 0000 00000000 		.4byte	.Ltext0
+ 718 0004 00000000 		.4byte	.Letext0
+ 719 0008 00000000 		.4byte	.LFB0
+ 720 000c 48000000 		.4byte	.LFE0
+ 721 0010 00000000 		.4byte	.LFB1
+ 722 0014 30000000 		.4byte	.LFE1
+ 723 0018 00000000 		.4byte	.LFB2
+ 724 001c 1C000000 		.4byte	.LFE2
+ 725 0020 00000000 		.4byte	.LFB3
+ 726 0024 1C000000 		.4byte	.LFE3
+ 727 0028 00000000 		.4byte	.LFB4
+ 728 002c 30000000 		.4byte	.LFE4
+ 729 0030 00000000 		.4byte	0x0
+ 730 0034 00000000 		.4byte	0x0
+ 731              		.section	.debug_str,"MS",%progbits,1
+ 732              	.LASF6:
+ 733 0000 6C6F6E67 		.ascii	"long long int\000"
+ 733      206C6F6E 
+ 733      6720696E 
+ 733      7400
+ 734              	.LASF14:
+ 735 000e 76616C75 		.ascii	"value\000"
+ 735      6500
+ 736              	.LASF9:
+ 737 0014 666C6F61 		.ascii	"float\000"
+ 737      7400
+ 738              	.LASF1:
+ 739 001a 756E7369 		.ascii	"unsigned char\000"
+ 739      676E6564 
+ 739      20636861 
+ 739      7200
+ 740              	.LASF13:
+ 741 0028 434C4F43 		.ascii	"CLOCK_SetDriveMode\000"
+ 741      4B5F5365 
+ 741      74447269 
+ 741      76654D6F 
+ 741      646500
+ 742              	.LASF19:
+ 743 003b 64725661 		.ascii	"drVal\000"
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 17
+
+
+ 743      6C00
+ 744              	.LASF5:
+ 745 0041 6C6F6E67 		.ascii	"long unsigned int\000"
+ 745      20756E73 
+ 745      69676E65 
+ 745      6420696E 
+ 745      7400
+ 746              	.LASF3:
+ 747 0053 73686F72 		.ascii	"short unsigned int\000"
+ 747      7420756E 
+ 747      7369676E 
+ 747      65642069 
+ 747      6E7400
+ 748              	.LASF10:
+ 749 0066 646F7562 		.ascii	"double\000"
+ 749      6C6500
+ 750              	.LASF12:
+ 751 006d 434C4F43 		.ascii	"CLOCK_Write\000"
+ 751      4B5F5772 
+ 751      69746500 
+ 752              	.LASF8:
+ 753 0079 756E7369 		.ascii	"unsigned int\000"
+ 753      676E6564 
+ 753      20696E74 
+ 753      00
+ 754              	.LASF7:
+ 755 0086 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 755      206C6F6E 
+ 755      6720756E 
+ 755      7369676E 
+ 755      65642069 
+ 756              	.LASF23:
+ 757 009d 433A5C6D 		.ascii	"C:\\myProjects\\Hobby\\100_day_100_projects\\Mine\\"
+ 757      7950726F 
+ 757      6A656374 
+ 757      735C486F 
+ 757      6262795C 
+ 758 00cb 50536F43 		.ascii	"PSoC_Eye\\PSoC_Eye.cydsn\000"
+ 758      5F457965 
+ 758      5C50536F 
+ 758      435F4579 
+ 758      652E6379 
+ 759              	.LASF22:
+ 760 00e3 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\CLOCK.c\000"
+ 760      6E657261 
+ 760      7465645F 
+ 760      536F7572 
+ 760      63655C50 
+ 761              	.LASF15:
+ 762 0104 6D6F6465 		.ascii	"mode\000"
+ 762      00
+ 763              	.LASF21:
+ 764 0109 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 764      4320342E 
+ 764      342E3100 
+ 765              	.LASF20:
+ 766 0115 6D61736B 		.ascii	"maskedStatus\000"
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\cciuIGSG.s 			page 18
+
+
+ 766      65645374 
+ 766      61747573 
+ 766      00
+ 767              	.LASF11:
+ 768 0122 63686172 		.ascii	"char\000"
+ 768      00
+ 769              	.LASF2:
+ 770 0127 73686F72 		.ascii	"short int\000"
+ 770      7420696E 
+ 770      7400
+ 771              	.LASF24:
+ 772 0131 75696E74 		.ascii	"uint8\000"
+ 772      3800
+ 773              	.LASF4:
+ 774 0137 6C6F6E67 		.ascii	"long int\000"
+ 774      20696E74 
+ 774      00
+ 775              	.LASF16:
+ 776 0140 434C4F43 		.ascii	"CLOCK_Read\000"
+ 776      4B5F5265 
+ 776      616400
+ 777              	.LASF0:
+ 778 014b 7369676E 		.ascii	"signed char\000"
+ 778      65642063 
+ 778      68617200 
+ 779              	.LASF17:
+ 780 0157 434C4F43 		.ascii	"CLOCK_ReadDataReg\000"
+ 780      4B5F5265 
+ 780      61644461 
+ 780      74615265 
+ 780      6700
+ 781              	.LASF18:
+ 782 0169 434C4F43 		.ascii	"CLOCK_ClearInterrupt\000"
+ 782      4B5F436C 
+ 782      65617249 
+ 782      6E746572 
+ 782      72757074 
+ 783              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

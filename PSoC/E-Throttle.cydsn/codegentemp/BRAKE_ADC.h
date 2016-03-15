@@ -98,14 +98,14 @@ CY_ISR_PROTO(BRAKE_ADC_ISR4);
 /* Default configuration values from user parameters */
 #define BRAKE_ADC_CFG1_RESOLUTION         (14u )
 #define BRAKE_ADC_CFG1_INPUT_RANGE        (2u)
-#define BRAKE_ADC_CFG1_SRATE              (10576u)
+#define BRAKE_ADC_CFG1_SRATE              (10000u)
 #define BRAKE_ADC_CFG1_REFERENCE          (5u)
 #define BRAKE_ADC_CFG1_BUFFER_GAIN        (1u)
-#define BRAKE_ADC_CFG1_CONV_MODE          (0u)
+#define BRAKE_ADC_CFG1_CONV_MODE          (2u)
 #define BRAKE_ADC_CFG1_INPUT_RANGE_VALUE  (5)
 #define BRAKE_ADC_DEFAULT_STROBE                     (0u)
 #define BRAKE_ADC_DEFAULT_INTERNAL_CLK               (1u)
-#define BRAKE_ADC_DEFAULT_NUM_CONFIGS                (1u)
+#define BRAKE_ADC_DEFAULT_NUM_CONFIGS                (4u)
 #define BRAKE_ADC_DEFAULT_CHARGE_PUMP_CLOCK          (1u)
 #define BRAKE_ADC_DEFAULT_INPUT_MODE                 (1u)
 #define BRAKE_ADC_IRQ_REMOVE                         (0u)          /* Removes internal interrupt */
@@ -1337,16 +1337,16 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 
 /* Default register settings for the Config 1 */
 /* Default Config
-* BRAKE_ADC_CFG1 Sample Rate: 10576 Samples per Second
-* BRAKE_ADC_CFG1 Conversion Mode: 0
+* BRAKE_ADC_CFG1 Sample Rate: 10000 Samples per Second
+* BRAKE_ADC_CFG1 Conversion Mode: 2
 * BRAKE_ADC_CFG1 Input Buffer Gain: 1
 * BRAKE_ADC_CFG1 Reference: 5
 * BRAKE_ADC_CFG1 Input Range: 2
 * BRAKE_ADC_CFG1 Resolution: 14 bits
-* BRAKE_ADC_CFG1 Clock: 2199808 Hz
+* BRAKE_ADC_CFG1 Clock: 460000 Hz
 */
 
-#define BRAKE_ADC_CFG1_DEC_CR             (0x30u)
+#define BRAKE_ADC_CFG1_DEC_CR             (0x38u)
 #define BRAKE_ADC_CFG1_DEC_SR             (0x14u)
 #define BRAKE_ADC_CFG1_DEC_SHIFT1         (0x05u)
 #define BRAKE_ADC_CFG1_DEC_SHIFT2         (0x07u)
@@ -1375,10 +1375,10 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG1_DSM_CR11           (0x48u)
 #define BRAKE_ADC_CFG1_DSM_CR12           (0x01u)
 #define BRAKE_ADC_CFG1_DSM_CR13           (0x00u)
-#define BRAKE_ADC_CFG1_DSM_CR14           (0x02u)
-#define BRAKE_ADC_CFG1_DSM_CR15           (0x22u)
-#define BRAKE_ADC_CFG1_DSM_CR16           (0x28u)
-#define BRAKE_ADC_CFG1_DSM_CR17           (0xEBu)
+#define BRAKE_ADC_CFG1_DSM_CR14           (0x01u)
+#define BRAKE_ADC_CFG1_DSM_CR15           (0x11u)
+#define BRAKE_ADC_CFG1_DSM_CR16           (0x19u)
+#define BRAKE_ADC_CFG1_DSM_CR17           (0x97u)
 #define BRAKE_ADC_CFG1_DSM_REF0           (0x52u)
 #define BRAKE_ADC_CFG1_DSM_REF1           (0x00u)
 #define BRAKE_ADC_CFG1_DSM_REF2           (0x58u)
@@ -1394,17 +1394,17 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG1_DSM_OUT0           (0x00u)
 #define BRAKE_ADC_CFG1_DSM_OUT1           (0x00u)
 #define BRAKE_ADC_CFG1_DSM_SW3            (0x40u)
-#define BRAKE_ADC_CFG1_CLOCKS_PER_SAMPLE  (0x00D0u)
-#define BRAKE_ADC_CFG1_CLOCK_FREQ         (2199808u)
-#define BRAKE_ADC_CFG1_CP_CLOCK_FREQ      (8799232u)
+#define BRAKE_ADC_CFG1_CLOCKS_PER_SAMPLE  (0x002Eu)
+#define BRAKE_ADC_CFG1_CLOCK_FREQ         (460000u)
+#define BRAKE_ADC_CFG1_CP_CLOCK_FREQ      (1840000u)
 #define BRAKE_ADC_CFG1_REFERENCE_VOLTAGE  (1.2500)
 #define BRAKE_ADC_CFG1_COUNTS_PER_VOLT    (3277)
 #define BRAKE_ADC_CFG1_IDEAL_DEC_GAIN     (0x8D6Bu)
 #define BRAKE_ADC_CFG1_IDEAL_ODDDEC_GAIN  (0x77E9u)
 
 #define BRAKE_ADC_CFG1_ALIGNMENT          (0u)
-#define BRAKE_ADC_CFG1_ADC_CLK_DIVIDER    (10u)
-#define BRAKE_ADC_CFG1_CP_CLK_DIVIDER     (2u)
+#define BRAKE_ADC_CFG1_ADC_CLK_DIVIDER    (51u)
+#define BRAKE_ADC_CFG1_CP_CLK_DIVIDER     (12u)
 
 /* Input and DAC Cap values in pF */
 #define BRAKE_ADC_CFG1_IPCAP1VALUE        (0x01F0u)
@@ -1441,7 +1441,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 * BRAKE_ADC_CFG2 Conversion Mode: 2
 * BRAKE_ADC_CFG2 Input Buffer Gain: 1
 * BRAKE_ADC_CFG2 Reference: 0
-* BRAKE_ADC_CFG2 Input Range: 4
+* BRAKE_ADC_CFG2 Input Range: 0
 * BRAKE_ADC_CFG2 Resolution: 16 bits
 * BRAKE_ADC_CFG2 Clock: 640000 Hz
 */
@@ -1449,7 +1449,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG2_DEC_CR             (0x38u)
 #define BRAKE_ADC_CFG2_DEC_SR             (0x14u)
 #define BRAKE_ADC_CFG2_DEC_SHIFT1         (0x04u)
-#define BRAKE_ADC_CFG2_DEC_SHIFT2         (0x07u)
+#define BRAKE_ADC_CFG2_DEC_SHIFT2         (0x06u)
 #define BRAKE_ADC_CFG2_DEC_DIV            (0)
 #define BRAKE_ADC_CFG2_DEC_DR2            (0x00u)
 #define BRAKE_ADC_CFG2_DEC_DR2H           (0x00u)
@@ -1490,17 +1490,17 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG2_DSM_BUF3           (0x00u)
 #define BRAKE_ADC_CFG2_DSM_OUT0           (0x00u)
 #define BRAKE_ADC_CFG2_DSM_OUT1           (0x00u)
-#define BRAKE_ADC_CFG2_DSM_SW3            (0x00u)
+#define BRAKE_ADC_CFG2_DSM_SW3            (0x40u)
 #define BRAKE_ADC_CFG2_SRATE              (10000u )
 #define BRAKE_ADC_CFG2_CLOCKS_PER_SAMPLE  (0x0040u)
 #define BRAKE_ADC_CFG2_CLOCK_FREQ         (640000u)
 #define BRAKE_ADC_CFG2_CP_CLOCK_FREQ      (2560000u)
 #define BRAKE_ADC_CFG2_REFERENCE_VOLTAGE  (1.0240)
-#define BRAKE_ADC_CFG2_COUNTS_PER_VOLT    (32000)
+#define BRAKE_ADC_CFG2_COUNTS_PER_VOLT    (64000)
 #define BRAKE_ADC_CFG2_RESOLUTION         (16u)
 #define BRAKE_ADC_CFG2_CONV_MODE          (2u)
 #define BRAKE_ADC_CFG2_IDEAL_DEC_GAIN     (0x90DAu)
-#define BRAKE_ADC_CFG2_INPUT_RANGE        (4u)
+#define BRAKE_ADC_CFG2_INPUT_RANGE        (0u)
 #define BRAKE_ADC_CFG2_INPUT_RANGE_VALUE  (1.024)
 
 #define BRAKE_ADC_CFG2_REFERENCE          (0u)
@@ -1545,7 +1545,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 * BRAKE_ADC_CFG3 Conversion Mode: 2
 * BRAKE_ADC_CFG3 Input Buffer Gain: 1
 * BRAKE_ADC_CFG3 Reference: 0
-* BRAKE_ADC_CFG3 Input Range: 4
+* BRAKE_ADC_CFG3 Input Range: 0
 * BRAKE_ADC_CFG3 Resolution: 16 bits
 * BRAKE_ADC_CFG3 Clock: 640000 Hz
 */
@@ -1553,7 +1553,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG3_DEC_CR             (0x38u)
 #define BRAKE_ADC_CFG3_DEC_SR             (0x14u)
 #define BRAKE_ADC_CFG3_DEC_SHIFT1         (0x04u)
-#define BRAKE_ADC_CFG3_DEC_SHIFT2         (0x07u)
+#define BRAKE_ADC_CFG3_DEC_SHIFT2         (0x06u)
 #define BRAKE_ADC_CFG3_DEC_DIV            (0)
 #define BRAKE_ADC_CFG3_DEC_DR2            (0x00u)
 #define BRAKE_ADC_CFG3_DEC_DR2H           (0x00u)
@@ -1594,17 +1594,17 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG3_DSM_BUF3           (0x00u)
 #define BRAKE_ADC_CFG3_DSM_OUT0           (0x00u)
 #define BRAKE_ADC_CFG3_DSM_OUT1           (0x00u)
-#define BRAKE_ADC_CFG3_DSM_SW3            (0x00u)
+#define BRAKE_ADC_CFG3_DSM_SW3            (0x40u)
 #define BRAKE_ADC_CFG3_SRATE              (10000u)
 #define BRAKE_ADC_CFG3_CLOCKS_PER_SAMPLE  (0x0040u)
 #define BRAKE_ADC_CFG3_CLOCK_FREQ         (640000u)
 #define BRAKE_ADC_CFG3_CP_CLOCK_FREQ      (2560000u)
 #define BRAKE_ADC_CFG3_REFERENCE_VOLTAGE  (1.0240)
-#define BRAKE_ADC_CFG3_COUNTS_PER_VOLT    (32000)
+#define BRAKE_ADC_CFG3_COUNTS_PER_VOLT    (64000)
 #define BRAKE_ADC_CFG3_RESOLUTION         (16u)
 #define BRAKE_ADC_CFG3_CONV_MODE          (2u)
 #define BRAKE_ADC_CFG3_IDEAL_DEC_GAIN     (0x90DAu)
-#define BRAKE_ADC_CFG3_INPUT_RANGE        (4u)
+#define BRAKE_ADC_CFG3_INPUT_RANGE        (0u)
 #define BRAKE_ADC_CFG3_REFERENCE          (0u)
 #define BRAKE_ADC_CFG3_BUFFER_GAIN        (1u)
 #define BRAKE_ADC_CFG3_INPUT_RANGE_VALUE  (1.024)
@@ -1648,7 +1648,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 * BRAKE_ADC_CFG4 Conversion Mode: 2
 * BRAKE_ADC_CFG4 Input Buffer Gain: 1
 * BRAKE_ADC_CFG4 Reference: 0
-* BRAKE_ADC_CFG4 Input Range: 4
+* BRAKE_ADC_CFG4 Input Range: 0
 * BRAKE_ADC_CFG4 Resolution: 16 bits
 * BRAKE_ADC_CFG4 Clock: 640000 Hz
 */
@@ -1656,7 +1656,7 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG4_DEC_CR             (0x38u)
 #define BRAKE_ADC_CFG4_DEC_SR             (0x14u)
 #define BRAKE_ADC_CFG4_DEC_SHIFT1         (0x04u)
-#define BRAKE_ADC_CFG4_DEC_SHIFT2         (0x07u)
+#define BRAKE_ADC_CFG4_DEC_SHIFT2         (0x06u)
 #define BRAKE_ADC_CFG4_DEC_DIV            (0)
 #define BRAKE_ADC_CFG4_DEC_DR2            (0x00u)
 #define BRAKE_ADC_CFG4_DEC_DR2H           (0x00u)
@@ -1697,17 +1697,17 @@ extern volatile int32 BRAKE_ADC_CountsPerVolt;
 #define BRAKE_ADC_CFG4_DSM_BUF3           (0x00u)
 #define BRAKE_ADC_CFG4_DSM_OUT0           (0x00u)
 #define BRAKE_ADC_CFG4_DSM_OUT1           (0x00u)
-#define BRAKE_ADC_CFG4_DSM_SW3            (0x00u)
+#define BRAKE_ADC_CFG4_DSM_SW3            (0x40u)
 #define BRAKE_ADC_CFG4_SRATE              (10000u)
 #define BRAKE_ADC_CFG4_CLOCKS_PER_SAMPLE  (0x0040u)
 #define BRAKE_ADC_CFG4_CLOCK_FREQ         (640000u)
 #define BRAKE_ADC_CFG4_CP_CLOCK_FREQ      (2560000u)
 #define BRAKE_ADC_CFG4_REFERENCE_VOLTAGE  (1.0240)
-#define BRAKE_ADC_CFG4_COUNTS_PER_VOLT    (32000)
+#define BRAKE_ADC_CFG4_COUNTS_PER_VOLT    (64000)
 #define BRAKE_ADC_CFG4_RESOLUTION         (16u)
 #define BRAKE_ADC_CFG4_CONV_MODE          (2u)
 #define BRAKE_ADC_CFG4_IDEAL_DEC_GAIN     (0x90DAu)
-#define BRAKE_ADC_CFG4_INPUT_RANGE        (4u)
+#define BRAKE_ADC_CFG4_INPUT_RANGE        (0u)
 #define BRAKE_ADC_CFG4_REFERENCE          (0u)
 #define BRAKE_ADC_CFG4_BUFFER_GAIN        (1u)
 #define BRAKE_ADC_CFG4_INPUT_RANGE_VALUE  (1.024)

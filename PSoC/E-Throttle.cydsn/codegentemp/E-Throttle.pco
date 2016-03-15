@@ -1,5 +1,5 @@
 # E-Throttle
-# 2016-02-13 05:26:30Z
+# 2016-03-15 08:31:35Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -9,218 +9,218 @@ dont_use_io iocell 1 1
 dont_use_io iocell 1 3
 set_io "APPS_0(0)" iocell 2 0
 set_io "APPS_1(0)" iocell 2 1
-set_io "Brake(0)" iocell 2 2
+set_io "BRAKE(0)" iocell 2 2
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_location "Net_102" 3 5 0 3
-set_location "Net_334" 1 3 1 2
-set_location "Net_4" 1 3 0 3
+set_location "Net_102" 1 4 0 3
+set_location "Net_334" 0 2 0 2
+set_location "Net_4" 2 0 0 3
 set_io "Rx_1(0)" iocell 12 6
-set_io "SERVO_OUT(0)" iocell 0 0
+set_io "SERVO_OUT(0)" iocell 1 6
 set_io "TPS_0(0)" iocell 15 4
 set_io "TPS_1(0)" iocell 15 5
 set_io "Tx_1(0)" iocell 12 7
-set_location "\APPS_ADC:AMuxHw_2_Decoder_is_active\" 1 5 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_is_active_split\" 1 4 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_0\" 2 4 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_1\" 1 4 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_2\" 1 5 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_3\" 1 5 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_4\" 2 5 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_5\" 1 5 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_0\" 0 4 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_10\" 2 2 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_11\" 0 4 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_12\" 0 5 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_13\" 1 1 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_14\" 1 4 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_15\" 0 4 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_16\" 0 3 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_17\" 1 5 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_18\" 0 3 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_19\" 1 4 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_1\" 0 4 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_20\" 0 1 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_21\" 2 4 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_22\" 2 5 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_23\" 2 5 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_24\" 2 5 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_25\" 2 3 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_26\" 1 1 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_27\" 0 1 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_28\" 2 3 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_29\" 1 2 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_2\" 1 5 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_30\" 2 5 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_31\" 2 4 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_32\" 0 1 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_33\" 0 5 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_34\" 1 4 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_35\" 1 1 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_36\" 0 5 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_37\" 2 1 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_38\" 2 5 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_39\" 0 3 1 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_3\" 2 4 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_40\" 2 5 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_41\" 1 1 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_42\" 1 2 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_43\" 2 2 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_44\" 0 5 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_45\" 0 5 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_46\" 2 1 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_47\" 0 4 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_48\" 2 3 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_49\" 0 5 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_4\" 2 5 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_50\" 2 4 1 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_51\" 1 5 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_52\" 0 4 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_53\" 2 4 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_54\" 0 1 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_55\" 1 2 0 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_56\" 0 4 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_57\" 2 1 1 2
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_58\" 0 5 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_59\" 2 3 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_5\" 2 4 0 0
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_60\" 2 1 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_61\" 2 4 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_62\" 0 5 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_63\" 0 3 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_is_active\" 2 5 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_is_active_split\" 1 5 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_0\" 1 5 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_1\" 1 5 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_2\" 2 4 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_3\" 2 4 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_4\" 2 5 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_old_id_5\" 2 4 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_0\" 0 4 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_10\" 3 4 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_11\" 0 5 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_12\" 2 4 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_13\" 2 5 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_14\" 0 5 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_15\" 2 5 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_16\" 1 5 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_17\" 0 5 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_18\" 0 5 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_19\" 3 4 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_1\" 0 4 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_20\" 2 5 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_21\" 3 4 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_22\" 1 3 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_23\" 0 5 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_24\" 2 5 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_25\" 3 3 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_26\" 0 5 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_27\" 1 1 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_28\" 1 2 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_29\" 3 4 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_2\" 0 4 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_30\" 2 4 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_31\" 2 4 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_32\" 1 3 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_33\" 1 1 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_34\" 2 4 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_35\" 1 2 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_36\" 2 5 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_37\" 3 4 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_38\" 3 3 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_39\" 0 5 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_3\" 3 5 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_40\" 3 5 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_41\" 3 4 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_42\" 1 1 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_43\" 1 3 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_44\" 1 3 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_45\" 3 4 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_46\" 0 4 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_47\" 3 5 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_48\" 3 3 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_49\" 3 5 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_4\" 1 3 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_50\" 2 4 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_51\" 1 2 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_52\" 3 5 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_53\" 3 5 1 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_54\" 0 4 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_55\" 1 3 0 0
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_56\" 1 3 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_57\" 1 2 1 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_58\" 2 5 1 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_59\" 3 5 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_5\" 0 4 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_60\" 0 5 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_61\" 1 5 0 3
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_62\" 3 4 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_63\" 1 3 0 3
 set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_6\" 0 4 1 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_7\" 2 2 0 3
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_8\" 2 2 0 1
-set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_9\" 1 5 0 1
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_7\" 0 4 1 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_8\" 3 3 0 2
+set_location "\APPS_ADC:AMuxHw_2_Decoder_one_hot_9\" 3 5 1 1
 set_location "\APPS_ADC:FinalBuf\" drqcell -1 -1 0
 set_location "\APPS_ADC:IRQ\" interrupt -1 -1 0
-set_location "\APPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 1
-set_location "\APPS_ADC:Sync:genblk1[0]:INST\" 2 5 5 0
+set_location "\APPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 0
+set_location "\APPS_ADC:Sync:genblk1[0]:INST\" 0 3 5 0
 set_location "\APPS_ADC:TempBuf\" drqcell -1 -1 1
-set_location "\APPS_ADC:bSAR_SEQ:ChannelCounter\" 2 4 7
-set_location "\APPS_ADC:bSAR_SEQ:CtrlReg\" 3 5 6
-set_location "\APPS_ADC:bSAR_SEQ:EOCSts\" 3 4 3
-set_location "\APPS_ADC:bSAR_SEQ:bus_clk_nrq_reg\" 3 5 1 0
-set_location "\APPS_ADC:bSAR_SEQ:cnt_enable\" 3 5 1 1
-set_location "\APPS_ADC:bSAR_SEQ:nrq_reg\" 3 5 0 2
-set_location "\APPS_ADC:bSAR_SEQ:state_1\" 3 5 0 1
-set_location "\APPS_ADC:soc_out\" 3 5 0 0
+set_location "\APPS_ADC:bSAR_SEQ:ChannelCounter\" 1 4 7
+set_location "\APPS_ADC:bSAR_SEQ:CtrlReg\" 1 3 6
+set_location "\APPS_ADC:bSAR_SEQ:EOCSts\" 1 5 3
+set_location "\APPS_ADC:bSAR_SEQ:bus_clk_nrq_reg\" 1 4 1 0
+set_location "\APPS_ADC:bSAR_SEQ:cnt_enable\" 1 4 1 1
+set_location "\APPS_ADC:bSAR_SEQ:nrq_reg\" 1 4 0 2
+set_location "\APPS_ADC:bSAR_SEQ:state_1\" 1 4 0 1
+set_location "\APPS_ADC:soc_out\" 1 4 0 0
 set_location "\BRAKE_ADC:DEC\" decimatorcell -1 -1 0
 set_location "\BRAKE_ADC:DSM\" dsmodcell -1 -1 0
 set_location "\BRAKE_ADC:IRQ\" interrupt -1 -1 29
 set_location "\SERVO_PWM:PWMHW\" timercell -1 -1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_is_active\" 3 3 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_is_active_split\" 3 2 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_0\" 3 2 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_1\" 3 1 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_2\" 3 3 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_3\" 2 3 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_4\" 3 3 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_5\" 3 3 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_0\" 0 3 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_10\" 3 2 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_11\" 3 4 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_12\" 2 2 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_13\" 2 2 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_14\" 0 1 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_15\" 0 0 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_16\" 0 0 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_17\" 3 1 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_18\" 3 4 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_19\" 3 4 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_1\" 0 3 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_20\" 0 2 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_21\" 1 2 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_22\" 3 4 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_23\" 3 4 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_24\" 3 0 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_25\" 3 0 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_26\" 3 1 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_27\" 0 3 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_28\" 3 0 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_29\" 3 1 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_2\" 2 2 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_30\" 0 2 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_31\" 0 0 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_32\" 3 0 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_33\" 0 0 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_34\" 3 1 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_35\" 0 3 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_36\" 2 3 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_37\" 3 4 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_38\" 1 2 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_39\" 0 1 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_3\" 0 1 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_40\" 2 2 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_41\" 0 0 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_42\" 0 2 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_43\" 1 2 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_44\" 0 2 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_45\" 3 0 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_46\" 0 1 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_47\" 3 3 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_48\" 2 3 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_49\" 0 2 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_4\" 3 3 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_50\" 3 0 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_51\" 3 0 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_52\" 3 0 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_53\" 0 2 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_is_active\" 2 3 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_is_active_split\" 2 2 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_0\" 2 1 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_1\" 2 2 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_2\" 2 3 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_3\" 2 3 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_4\" 2 3 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_old_id_5\" 2 2 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_0\" 0 3 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_10\" 0 3 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_11\" 3 2 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_12\" 3 0 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_13\" 3 1 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_14\" 3 1 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_15\" 3 1 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_16\" 3 2 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_17\" 2 3 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_18\" 3 0 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_19\" 2 1 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_1\" 0 3 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_20\" 2 1 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_21\" 0 3 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_22\" 0 3 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_23\" 0 1 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_24\" 3 3 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_25\" 3 1 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_26\" 3 0 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_27\" 2 3 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_28\" 3 3 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_29\" 0 1 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_2\" 2 3 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_30\" 2 3 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_31\" 0 0 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_32\" 0 0 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_33\" 3 0 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_34\" 0 1 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_35\" 3 0 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_36\" 3 1 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_37\" 0 0 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_38\" 2 1 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_39\" 2 1 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_3\" 3 0 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_40\" 0 0 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_41\" 3 1 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_42\" 2 1 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_43\" 0 0 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_44\" 2 2 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_45\" 0 0 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_46\" 0 0 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_47\" 3 0 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_48\" 0 1 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_49\" 0 3 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_4\" 0 1 0 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_50\" 0 1 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_51\" 3 2 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_52\" 3 2 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_53\" 3 3 1 0
 set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_54\" 3 1 1 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_55\" 0 0 1 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_56\" 0 0 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_57\" 0 0 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_58\" 0 2 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_59\" 3 4 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_5\" 0 2 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_60\" 3 3 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_61\" 3 3 0 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_62\" 3 2 0 1
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_63\" 3 1 1 3
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_6\" 3 1 0 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_7\" 2 3 1 2
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_8\" 3 2 0 0
-set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_9\" 3 4 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_55\" 3 0 0 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_56\" 2 1 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_57\" 2 1 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_58\" 2 2 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_59\" 0 1 1 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_5\" 0 3 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_60\" 3 2 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_61\" 0 0 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_62\" 3 2 1 2
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_63\" 3 3 1 1
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_6\" 3 2 0 3
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_7\" 0 1 1 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_8\" 3 1 0 0
+set_location "\TPS_ADC:AMuxHw_2_Decoder_one_hot_9\" 3 2 0 2
 set_location "\TPS_ADC:FinalBuf\" drqcell -1 -1 2
 set_location "\TPS_ADC:IRQ\" interrupt -1 -1 1
-set_location "\TPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 0
-set_location "\TPS_ADC:Sync:genblk1[0]:INST\" 0 3 5 0
+set_location "\TPS_ADC:SAR:ADC_SAR\" sarcell -1 -1 1
+set_location "\TPS_ADC:Sync:genblk1[0]:INST\" 3 0 5 0
 set_location "\TPS_ADC:TempBuf\" drqcell -1 -1 3
-set_location "\TPS_ADC:bSAR_SEQ:ChannelCounter\" 3 2 7
-set_location "\TPS_ADC:bSAR_SEQ:CtrlReg\" 1 3 6
-set_location "\TPS_ADC:bSAR_SEQ:EOCSts\" 1 4 3
-set_location "\TPS_ADC:bSAR_SEQ:bus_clk_nrq_reg\" 1 3 1 0
-set_location "\TPS_ADC:bSAR_SEQ:cnt_enable\" 2 1 0 3
-set_location "\TPS_ADC:bSAR_SEQ:nrq_reg\" 1 3 0 2
-set_location "\TPS_ADC:bSAR_SEQ:state_1\" 1 3 0 1
-set_location "\TPS_ADC:soc_out\" 1 3 0 0
+set_location "\TPS_ADC:bSAR_SEQ:ChannelCounter\" 2 1 7
+set_location "\TPS_ADC:bSAR_SEQ:CtrlReg\" 2 0 6
+set_location "\TPS_ADC:bSAR_SEQ:EOCSts\" 3 1 3
+set_location "\TPS_ADC:bSAR_SEQ:bus_clk_nrq_reg\" 2 0 1 0
+set_location "\TPS_ADC:bSAR_SEQ:cnt_enable\" 2 0 1 1
+set_location "\TPS_ADC:bSAR_SEQ:nrq_reg\" 2 0 0 2
+set_location "\TPS_ADC:bSAR_SEQ:state_1\" 2 0 0 1
+set_location "\TPS_ADC:soc_out\" 2 0 0 0
 set_location "\Timer:TimerHW\" timercell -1 -1 1
-set_location "\UART_1:BUART:counter_load_not\" 2 0 1 1
-set_location "\UART_1:BUART:pollcount_0\" 1 1 0 1
-set_location "\UART_1:BUART:pollcount_1\" 1 1 0 0
-set_location "\UART_1:BUART:rx_address_detected\" 1 4 0 1
-set_location "\UART_1:BUART:rx_bitclk_enable\" 1 1 0 3
-set_location "\UART_1:BUART:rx_counter_load\" 1 2 1 3
-set_location "\UART_1:BUART:rx_last\" 1 0 1 3
-set_location "\UART_1:BUART:rx_load_fifo\" 1 0 0 1
-set_location "\UART_1:BUART:rx_postpoll\" 1 1 0 2
-set_location "\UART_1:BUART:rx_state_0\" 1 0 0 0
-set_location "\UART_1:BUART:rx_state_2\" 1 0 1 0
-set_location "\UART_1:BUART:rx_state_3\" 1 0 0 2
-set_location "\UART_1:BUART:rx_state_stop1_reg\" 1 0 1 2
-set_location "\UART_1:BUART:rx_status_3\" 1 0 0 3
-set_location "\UART_1:BUART:rx_status_4\" 1 2 0 3
-set_location "\UART_1:BUART:rx_status_5\" 1 0 1 1
-set_location "\UART_1:BUART:sRX:RxBitCounter\" 1 1 7
-set_location "\UART_1:BUART:sRX:RxShifter:u0\" 1 1 2
-set_location "\UART_1:BUART:sRX:RxSts\" 1 2 4
-set_location "\UART_1:BUART:sTX:TxShifter:u0\" 2 1 2
-set_location "\UART_1:BUART:sTX:TxSts\" 2 0 4
-set_location "\UART_1:BUART:sTX:sCLOCK:TxBitClkGen\" 2 0 2
-set_location "\UART_1:BUART:tx_bitclk\" 2 1 0 1
-set_location "\UART_1:BUART:tx_state_0\" 2 0 1 0
-set_location "\UART_1:BUART:tx_state_1\" 2 0 0 2
-set_location "\UART_1:BUART:tx_state_2\" 2 0 0 0
-set_location "\UART_1:BUART:tx_status_0\" 2 0 0 1
-set_location "\UART_1:BUART:tx_status_2\" 2 0 1 2
-set_location "\UART_1:BUART:txn\" 2 1 0 0
-set_location "__ONE__" 1 3 1 3
+set_location "\UART:BUART:counter_load_not\" 0 3 0 2
+set_location "\UART:BUART:pollcount_0\" 1 1 0 1
+set_location "\UART:BUART:pollcount_1\" 1 1 0 0
+set_location "\UART:BUART:rx_address_detected\" 1 0 1 1
+set_location "\UART:BUART:rx_bitclk_enable\" 1 2 0 3
+set_location "\UART:BUART:rx_counter_load\" 1 1 0 3
+set_location "\UART:BUART:rx_last\" 1 0 1 3
+set_location "\UART:BUART:rx_load_fifo\" 1 0 0 1
+set_location "\UART:BUART:rx_postpoll\" 1 1 0 2
+set_location "\UART:BUART:rx_state_0\" 1 0 0 0
+set_location "\UART:BUART:rx_state_2\" 1 0 1 0
+set_location "\UART:BUART:rx_state_3\" 1 0 0 2
+set_location "\UART:BUART:rx_state_stop1_reg\" 1 0 1 2
+set_location "\UART:BUART:rx_status_3\" 1 0 0 3
+set_location "\UART:BUART:rx_status_4\" 2 0 1 2
+set_location "\UART:BUART:rx_status_5\" 1 1 1 0
+set_location "\UART:BUART:sRX:RxBitCounter\" 1 0 7
+set_location "\UART:BUART:sRX:RxShifter:u0\" 1 1 2
+set_location "\UART:BUART:sRX:RxSts\" 1 1 4
+set_location "\UART:BUART:sTX:TxShifter:u0\" 0 2 2
+set_location "\UART:BUART:sTX:TxSts\" 2 2 4
+set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 0 3 2
+set_location "\UART:BUART:tx_bitclk\" 0 2 1 3
+set_location "\UART:BUART:tx_state_0\" 0 2 0 0
+set_location "\UART:BUART:tx_state_1\" 0 2 0 1
+set_location "\UART:BUART:tx_state_2\" 1 2 0 0
+set_location "\UART:BUART:tx_status_0\" 1 2 0 1
+set_location "\UART:BUART:tx_status_2\" 2 0 1 3
+set_location "\UART:BUART:txn\" 0 2 1 0
+set_location "__ONE__" 1 2 0 2

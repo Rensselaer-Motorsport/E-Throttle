@@ -1,0 +1,1849 @@
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.code	16
+  12              		.file	"Camera.c"
+  13              		.section	.debug_abbrev,"",%progbits
+  14              	.Ldebug_abbrev0:
+  15              		.section	.debug_info,"",%progbits
+  16              	.Ldebug_info0:
+  17              		.section	.debug_line,"",%progbits
+  18              	.Ldebug_line0:
+  19 0000 F6000000 		.text
+  19      02005600 
+  19      00000201 
+  19      FB0E0D00 
+  19      01010101 
+  20              	.Ltext0:
+  21              		.cfi_sections	.debug_frame
+  22              		.comm	Blob1,16,4
+  23              		.comm	Blob2,16,4
+  24              		.comm	Blob3,16,4
+  25              		.comm	Blob4,16,4
+  26              		.comm	IRsensorAddress,1,1
+  27              		.comm	IRslaveAddress,1,1
+  28              		.comm	data_buf,16,4
+  29              		.comm	i,4,4
+  30              		.comm	s,4,4
+  31              		.comm	blobcount,1,1
+  32              		.section	.text.Write_2bytes,"ax",%progbits
+  33              		.align	2
+  34              		.global	Write_2bytes
+  35              		.code	16
+  36              		.thumb_func
+  37              		.type	Write_2bytes, %function
+  38              	Write_2bytes:
+  39              	.LFB20:
+  40              		.file 1 ".\\Camera.c"
+   1:.\Camera.c    **** /* ========================================
+   2:.\Camera.c    ****  *
+   3:.\Camera.c    ****  * The following firmware was ported by Cypress Semiconductor
+   4:.\Camera.c    ****  * PVision library for interaction with the Pixart sensor on a WiiMote
+   5:.\Camera.c    ****  * This work was derived from Kako's excellent Japanese website
+   6:.\Camera.c    ****  * http://www.kako.com/neta/2007-001/2007-001.html
+   7:.\Camera.c    ****  * Steve Hobley 2009 - www.stephenhobley.com
+   8:.\Camera.c    ****  * 
+   9:.\Camera.c    ****  * This work is licensed under a Creative Commons Attribution 3.0 Unported License.
+  10:.\Camera.c    ****  * 
+  11:.\Camera.c    ****  * http://creativecommons.org/licenses/by/3.0/deed.en_US
+  12:.\Camera.c    ****  * 
+  13:.\Camera.c    ****  * You are free to:
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 2
+
+
+  14:.\Camera.c    ****  * -To Share — to copy, distribute and transmit the work 
+  15:.\Camera.c    ****  * -To Remix — to adapt the work 
+  16:.\Camera.c    ****  * -To make commercial use of the work
+  17:.\Camera.c    ****  *
+  18:.\Camera.c    ****  * ========================================
+  19:.\Camera.c    ****  */
+  20:.\Camera.c    **** 
+  21:.\Camera.c    **** /******************************************************************************
+  22:.\Camera.c    **** * Includes
+  23:.\Camera.c    **** ******************************************************************************/
+  24:.\Camera.c    **** #include "Camera.h"
+  25:.\Camera.c    **** 
+  26:.\Camera.c    **** /******************************************************************************
+  27:.\Camera.c    **** * Private methods
+  28:.\Camera.c    **** ******************************************************************************/
+  29:.\Camera.c    **** void Write_2bytes(uint8 d1, uint8 d2)
+  30:.\Camera.c    **** {
+  41              		.loc 1 30 0
+  42              		.cfi_startproc
+  43 0000 80B5     		push	{r7, lr}
+  44              	.LCFI0:
+  45              		.cfi_def_cfa_offset 8
+  46              		.cfi_offset 7, -8
+  47              		.cfi_offset 14, -4
+  48 0002 84B0     		sub	sp, sp, #16
+  49              	.LCFI1:
+  50              		.cfi_def_cfa_offset 24
+  51 0004 00AF     		add	r7, sp, #0
+  52              	.LCFI2:
+  53              		.cfi_def_cfa_register 7
+  54 0006 0A1C     		mov	r2, r1
+  55 0008 FB1D     		add	r3, r7, #7
+  56 000a 011C     		add	r1, r0, #0
+  57 000c 1970     		strb	r1, [r3]
+  58 000e BB1D     		add	r3, r7, #6
+  59 0010 1A70     		strb	r2, [r3]
+  31:.\Camera.c    **** 	uint32 status = I2CM_I2C_MSTR_NO_ERROR;
+  60              		.loc 1 31 0
+  61 0012 0023     		mov	r3, #0
+  62 0014 FB60     		str	r3, [r7, #12]
+  32:.\Camera.c    **** 	
+  33:.\Camera.c    **** 	status = I2CM_I2CMasterSendStart(IRslaveAddress, 0);
+  63              		.loc 1 33 0
+  64 0016 1E4B     		ldr	r3, .L12
+  65 0018 1B78     		ldrb	r3, [r3]
+  66 001a 181C     		mov	r0, r3
+  67 001c 0021     		mov	r1, #0
+  68 001e FFF7FEFF 		bl	I2CM_I2CMasterSendStart
+  69 0022 031C     		mov	r3, r0
+  70 0024 FB60     		str	r3, [r7, #12]
+  34:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+  71              		.loc 1 34 0
+  72 0026 FB68     		ldr	r3, [r7, #12]
+  73 0028 002B     		cmp	r3, #0
+  74 002a 27D1     		bne	.L8
+  75              	.L2:
+  35:.\Camera.c    **** 	{return;}
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 3
+
+
+  36:.\Camera.c    **** 	CyDelay(1);
+  76              		.loc 1 36 0
+  77 002c 0120     		mov	r0, #1
+  78 002e FFF7FEFF 		bl	CyDelay
+  37:.\Camera.c    ****     status = I2CM_I2CMasterWriteByte(d1);
+  79              		.loc 1 37 0
+  80 0032 FB1D     		add	r3, r7, #7
+  81 0034 1B78     		ldrb	r3, [r3]
+  82 0036 181C     		mov	r0, r3
+  83 0038 FFF7FEFF 		bl	I2CM_I2CMasterWriteByte
+  84 003c 031C     		mov	r3, r0
+  85 003e FB60     		str	r3, [r7, #12]
+  38:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+  86              		.loc 1 38 0
+  87 0040 FB68     		ldr	r3, [r7, #12]
+  88 0042 002B     		cmp	r3, #0
+  89 0044 1CD1     		bne	.L9
+  90              	.L4:
+  39:.\Camera.c    **** 	{return;}
+  40:.\Camera.c    **** 	CyDelay(1);
+  91              		.loc 1 40 0
+  92 0046 0120     		mov	r0, #1
+  93 0048 FFF7FEFF 		bl	CyDelay
+  41:.\Camera.c    **** 	status = I2CM_I2CMasterWriteByte(d2);
+  94              		.loc 1 41 0
+  95 004c BB1D     		add	r3, r7, #6
+  96 004e 1B78     		ldrb	r3, [r3]
+  97 0050 181C     		mov	r0, r3
+  98 0052 FFF7FEFF 		bl	I2CM_I2CMasterWriteByte
+  99 0056 031C     		mov	r3, r0
+ 100 0058 FB60     		str	r3, [r7, #12]
+  42:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 101              		.loc 1 42 0
+ 102 005a FB68     		ldr	r3, [r7, #12]
+ 103 005c 002B     		cmp	r3, #0
+ 104 005e 11D1     		bne	.L10
+ 105              	.L5:
+  43:.\Camera.c    **** 	{return;}
+  44:.\Camera.c    **** 	CyDelay(1);
+ 106              		.loc 1 44 0
+ 107 0060 0120     		mov	r0, #1
+ 108 0062 FFF7FEFF 		bl	CyDelay
+  45:.\Camera.c    ****     status = I2CM_I2CMasterSendStop();
+ 109              		.loc 1 45 0
+ 110 0066 FFF7FEFF 		bl	I2CM_I2CMasterSendStop
+ 111 006a 031C     		mov	r3, r0
+ 112 006c FB60     		str	r3, [r7, #12]
+  46:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 113              		.loc 1 46 0
+ 114 006e FB68     		ldr	r3, [r7, #12]
+ 115 0070 002B     		cmp	r3, #0
+ 116 0072 09D1     		bne	.L11
+ 117              	.L6:
+  47:.\Camera.c    **** 	{return;}
+  48:.\Camera.c    **** 	CyDelay(1);
+ 118              		.loc 1 48 0
+ 119 0074 0120     		mov	r0, #1
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 4
+
+
+ 120 0076 FFF7FEFF 		bl	CyDelay
+ 121 007a 06E0     		b	.L7
+ 122              	.L8:
+ 123              		.loc 1 35 0
+ 124 007c C046     		mov	r8, r8
+ 125 007e 04E0     		b	.L7
+ 126              	.L9:
+ 127              		.loc 1 39 0
+ 128 0080 C046     		mov	r8, r8
+ 129 0082 02E0     		b	.L7
+ 130              	.L10:
+ 131              		.loc 1 43 0
+ 132 0084 C046     		mov	r8, r8
+ 133 0086 00E0     		b	.L7
+ 134              	.L11:
+ 135              		.loc 1 47 0
+ 136 0088 C046     		mov	r8, r8
+ 137              	.L7:
+  49:.\Camera.c    **** }
+ 138              		.loc 1 49 0
+ 139 008a BD46     		mov	sp, r7
+ 140 008c 04B0     		add	sp, sp, #16
+ 141              		@ sp needed for prologue
+ 142 008e 80BD     		pop	{r7, pc}
+ 143              	.L13:
+ 144              		.align	2
+ 145              	.L12:
+ 146 0090 00000000 		.word	IRslaveAddress
+ 147              		.cfi_endproc
+ 148              	.LFE20:
+ 149              		.size	Write_2bytes, .-Write_2bytes
+ 150              		.section	.text.Camera,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	Camera
+ 153              		.code	16
+ 154              		.thumb_func
+ 155              		.type	Camera, %function
+ 156              	Camera:
+ 157              	.LFB21:
+  50:.\Camera.c    **** 
+  51:.\Camera.c    **** 
+  52:.\Camera.c    **** /******************************************************************************
+  53:.\Camera.c    **** * Constructor
+  54:.\Camera.c    **** ******************************************************************************/
+  55:.\Camera.c    **** void Camera(void)
+  56:.\Camera.c    **** {
+ 158              		.loc 1 56 0
+ 159              		.cfi_startproc
+ 160 0000 80B5     		push	{r7, lr}
+ 161              	.LCFI3:
+ 162              		.cfi_def_cfa_offset 8
+ 163              		.cfi_offset 7, -8
+ 164              		.cfi_offset 14, -4
+ 165 0002 00AF     		add	r7, sp, #0
+ 166              	.LCFI4:
+ 167              		.cfi_def_cfa_register 7
+  57:.\Camera.c    **** 	
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 5
+
+
+  58:.\Camera.c    **** }
+ 168              		.loc 1 58 0
+ 169 0004 BD46     		mov	sp, r7
+ 170              		@ sp needed for prologue
+ 171 0006 80BD     		pop	{r7, pc}
+ 172              		.cfi_endproc
+ 173              	.LFE21:
+ 174              		.size	Camera, .-Camera
+ 175              		.section	.text.Camera_init,"ax",%progbits
+ 176              		.align	2
+ 177              		.global	Camera_init
+ 178              		.code	16
+ 179              		.thumb_func
+ 180              		.type	Camera_init, %function
+ 181              	Camera_init:
+ 182              	.LFB22:
+  59:.\Camera.c    **** 
+  60:.\Camera.c    **** /******************************************************************************
+  61:.\Camera.c    **** * Public methods
+  62:.\Camera.c    **** ******************************************************************************/
+  63:.\Camera.c    **** // init the PVision sensor
+  64:.\Camera.c    **** void Camera_init(void)
+  65:.\Camera.c    **** {
+ 183              		.loc 1 65 0
+ 184              		.cfi_startproc
+ 185 0000 80B5     		push	{r7, lr}
+ 186              	.LCFI5:
+ 187              		.cfi_def_cfa_offset 8
+ 188              		.cfi_offset 7, -8
+ 189              		.cfi_offset 14, -4
+ 190 0002 00AF     		add	r7, sp, #0
+ 191              	.LCFI6:
+ 192              		.cfi_def_cfa_register 7
+  66:.\Camera.c    ****     Blob1.number = 1;
+ 193              		.loc 1 66 0
+ 194 0004 254B     		ldr	r3, .L18
+ 195 0006 0122     		mov	r2, #1
+ 196 0008 1A73     		strb	r2, [r3, #12]
+  67:.\Camera.c    **** 	Blob2.number = 2;
+ 197              		.loc 1 67 0
+ 198 000a 254B     		ldr	r3, .L18+4
+ 199 000c 0222     		mov	r2, #2
+ 200 000e 1A73     		strb	r2, [r3, #12]
+  68:.\Camera.c    **** 	Blob3.number = 3;
+ 201              		.loc 1 68 0
+ 202 0010 244B     		ldr	r3, .L18+8
+ 203 0012 0322     		mov	r2, #3
+ 204 0014 1A73     		strb	r2, [r3, #12]
+  69:.\Camera.c    **** 	Blob4.number = 4;
+ 205              		.loc 1 69 0
+ 206 0016 244B     		ldr	r3, .L18+12
+ 207 0018 0422     		mov	r2, #4
+ 208 001a 1A73     		strb	r2, [r3, #12]
+  70:.\Camera.c    **** 	
+  71:.\Camera.c    **** 	IRsensorAddress = 0xB0;
+ 209              		.loc 1 71 0
+ 210 001c 234A     		ldr	r2, .L18+16
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 6
+
+
+ 211 001e 5023     		mov	r3, #80
+ 212 0020 5B42     		neg	r3, r3
+ 213 0022 1370     		strb	r3, [r2]
+  72:.\Camera.c    ****     IRslaveAddress = IRsensorAddress >> 1;			// This results in 0x21 as the address to pass to TWI
+ 214              		.loc 1 72 0
+ 215 0024 214B     		ldr	r3, .L18+16
+ 216 0026 1B78     		ldrb	r3, [r3]
+ 217 0028 5B08     		lsr	r3, r3, #1
+ 218 002a DAB2     		uxtb	r2, r3
+ 219 002c 204B     		ldr	r3, .L18+20
+ 220 002e 1A70     		strb	r2, [r3]
+  73:.\Camera.c    **** 	
+  74:.\Camera.c    **** 	I2CM_sda_SetDriveMode(I2CM_sda_DM_RES_UP);
+ 221              		.loc 1 74 0
+ 222 0030 0220     		mov	r0, #2
+ 223 0032 FFF7FEFF 		bl	I2CM_sda_SetDriveMode
+  75:.\Camera.c    **** 	I2CM_scl_SetDriveMode(I2CM_scl_DM_RES_UP);
+ 224              		.loc 1 75 0
+ 225 0036 0220     		mov	r0, #2
+ 226 0038 FFF7FEFF 		bl	I2CM_scl_SetDriveMode
+  76:.\Camera.c    **** 	
+  77:.\Camera.c    ****     // IR sensor initialize
+  78:.\Camera.c    ****     Write_2bytes(0x30,0x01); CyDelay(10);
+ 227              		.loc 1 78 0
+ 228 003c 3020     		mov	r0, #48
+ 229 003e 0121     		mov	r1, #1
+ 230 0040 FFF7FEFF 		bl	Write_2bytes
+ 231 0044 0A20     		mov	r0, #10
+ 232 0046 FFF7FEFF 		bl	CyDelay
+  79:.\Camera.c    ****     Write_2bytes(0x30,0x08); CyDelay(10);
+ 233              		.loc 1 79 0
+ 234 004a 3020     		mov	r0, #48
+ 235 004c 0821     		mov	r1, #8
+ 236 004e FFF7FEFF 		bl	Write_2bytes
+ 237 0052 0A20     		mov	r0, #10
+ 238 0054 FFF7FEFF 		bl	CyDelay
+  80:.\Camera.c    ****     Write_2bytes(0x06,0x90); CyDelay(10);
+ 239              		.loc 1 80 0
+ 240 0058 0620     		mov	r0, #6
+ 241 005a 9021     		mov	r1, #144
+ 242 005c FFF7FEFF 		bl	Write_2bytes
+ 243 0060 0A20     		mov	r0, #10
+ 244 0062 FFF7FEFF 		bl	CyDelay
+  81:.\Camera.c    ****     Write_2bytes(0x08,0xC0); CyDelay(10);
+ 245              		.loc 1 81 0
+ 246 0066 0820     		mov	r0, #8
+ 247 0068 C021     		mov	r1, #192
+ 248 006a FFF7FEFF 		bl	Write_2bytes
+ 249 006e 0A20     		mov	r0, #10
+ 250 0070 FFF7FEFF 		bl	CyDelay
+  82:.\Camera.c    ****     Write_2bytes(0x1A,0x40); CyDelay(10);
+ 251              		.loc 1 82 0
+ 252 0074 1A20     		mov	r0, #26
+ 253 0076 4021     		mov	r1, #64
+ 254 0078 FFF7FEFF 		bl	Write_2bytes
+ 255 007c 0A20     		mov	r0, #10
+ 256 007e FFF7FEFF 		bl	CyDelay
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 7
+
+
+  83:.\Camera.c    ****     Write_2bytes(0x33,0x33); CyDelay(10);
+ 257              		.loc 1 83 0
+ 258 0082 3320     		mov	r0, #51
+ 259 0084 3321     		mov	r1, #51
+ 260 0086 FFF7FEFF 		bl	Write_2bytes
+ 261 008a 0A20     		mov	r0, #10
+ 262 008c FFF7FEFF 		bl	CyDelay
+  84:.\Camera.c    ****     CyDelay(100);
+ 263              		.loc 1 84 0
+ 264 0090 6420     		mov	r0, #100
+ 265 0092 FFF7FEFF 		bl	CyDelay
+  85:.\Camera.c    **** }
+ 266              		.loc 1 85 0
+ 267 0096 BD46     		mov	sp, r7
+ 268              		@ sp needed for prologue
+ 269 0098 80BD     		pop	{r7, pc}
+ 270              	.L19:
+ 271 009a C046     		.align	2
+ 272              	.L18:
+ 273 009c 00000000 		.word	Blob1
+ 274 00a0 00000000 		.word	Blob2
+ 275 00a4 00000000 		.word	Blob3
+ 276 00a8 00000000 		.word	Blob4
+ 277 00ac 00000000 		.word	IRsensorAddress
+ 278 00b0 00000000 		.word	IRslaveAddress
+ 279              		.cfi_endproc
+ 280              	.LFE22:
+ 281              		.size	Camera_init, .-Camera_init
+ 282              		.section	.text.Camera_read,"ax",%progbits
+ 283              		.align	2
+ 284              		.global	Camera_read
+ 285              		.code	16
+ 286              		.thumb_func
+ 287              		.type	Camera_read, %function
+ 288              	Camera_read:
+ 289              	.LFB23:
+  86:.\Camera.c    **** 
+  87:.\Camera.c    **** uint8 Camera_read(void)
+  88:.\Camera.c    **** {
+ 290              		.loc 1 88 0
+ 291              		.cfi_startproc
+ 292 0000 90B5     		push	{r4, r7, lr}
+ 293              	.LCFI7:
+ 294              		.cfi_def_cfa_offset 12
+ 295              		.cfi_offset 4, -12
+ 296              		.cfi_offset 7, -8
+ 297              		.cfi_offset 14, -4
+ 298 0002 87B0     		sub	sp, sp, #28
+ 299              	.LCFI8:
+ 300              		.cfi_def_cfa_offset 40
+ 301 0004 00AF     		add	r7, sp, #0
+ 302              	.LCFI9:
+ 303              		.cfi_def_cfa_register 7
+  89:.\Camera.c    ****     uint32 status = I2CM_I2C_MSTR_NO_ERROR;
+ 304              		.loc 1 89 0
+ 305 0006 0023     		mov	r3, #0
+ 306 0008 7B61     		str	r3, [r7, #20]
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 8
+
+
+  90:.\Camera.c    **** 	uint8 rxdata[16] = {0};
+ 307              		.loc 1 90 0
+ 308 000a 3B1D     		add	r3, r7, #4
+ 309 000c 0022     		mov	r2, #0
+ 310 000e 1A60     		str	r2, [r3]
+ 311 0010 0433     		add	r3, r3, #4
+ 312 0012 0022     		mov	r2, #0
+ 313 0014 1A60     		str	r2, [r3]
+ 314 0016 0433     		add	r3, r3, #4
+ 315 0018 0022     		mov	r2, #0
+ 316 001a 1A60     		str	r2, [r3]
+ 317 001c 0433     		add	r3, r3, #4
+ 318 001e 0022     		mov	r2, #0
+ 319 0020 1A60     		str	r2, [r3]
+ 320 0022 0433     		add	r3, r3, #4
+  91:.\Camera.c    **** 	
+  92:.\Camera.c    **** 	I2CM_I2CMasterClearStatus();
+ 321              		.loc 1 92 0
+ 322 0024 FFF7FEFF 		bl	I2CM_I2CMasterClearStatus
+  93:.\Camera.c    **** 	
+  94:.\Camera.c    **** 	//IR sensor read
+  95:.\Camera.c    ****     status = I2CM_I2CMasterSendStart(IRslaveAddress, 0);
+ 323              		.loc 1 95 0
+ 324 0028 A14B     		ldr	r3, .L35
+ 325 002a 1B78     		ldrb	r3, [r3]
+ 326 002c 181C     		mov	r0, r3
+ 327 002e 0021     		mov	r1, #0
+ 328 0030 FFF7FEFF 		bl	I2CM_I2CMasterSendStart
+ 329 0034 031C     		mov	r3, r0
+ 330 0036 7B61     		str	r3, [r7, #20]
+  96:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 331              		.loc 1 96 0
+ 332 0038 7B69     		ldr	r3, [r7, #20]
+ 333 003a 002B     		cmp	r3, #0
+ 334 003c 01D0     		beq	.L21
+  97:.\Camera.c    **** 	{return 0;}
+ 335              		.loc 1 97 0
+ 336 003e 0023     		mov	r3, #0
+ 337 0040 31E1     		b	.L22
+ 338              	.L21:
+  98:.\Camera.c    **** 	
+  99:.\Camera.c    ****     status = I2CM_I2CMasterWriteByte(0x36);
+ 339              		.loc 1 99 0
+ 340 0042 3620     		mov	r0, #54
+ 341 0044 FFF7FEFF 		bl	I2CM_I2CMasterWriteByte
+ 342 0048 031C     		mov	r3, r0
+ 343 004a 7B61     		str	r3, [r7, #20]
+ 100:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 344              		.loc 1 100 0
+ 345 004c 7B69     		ldr	r3, [r7, #20]
+ 346 004e 002B     		cmp	r3, #0
+ 347 0050 01D0     		beq	.L23
+ 101:.\Camera.c    **** 	{return 0;}
+ 348              		.loc 1 101 0
+ 349 0052 0023     		mov	r3, #0
+ 350 0054 27E1     		b	.L22
+ 351              	.L23:
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 9
+
+
+ 102:.\Camera.c    **** 	
+ 103:.\Camera.c    ****     status = I2CM_I2CMasterSendStop();
+ 352              		.loc 1 103 0
+ 353 0056 FFF7FEFF 		bl	I2CM_I2CMasterSendStop
+ 354 005a 031C     		mov	r3, r0
+ 355 005c 7B61     		str	r3, [r7, #20]
+ 104:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 356              		.loc 1 104 0
+ 357 005e 7B69     		ldr	r3, [r7, #20]
+ 358 0060 002B     		cmp	r3, #0
+ 359 0062 01D0     		beq	.L24
+ 105:.\Camera.c    **** 	{return 0;}
+ 360              		.loc 1 105 0
+ 361 0064 0023     		mov	r3, #0
+ 362 0066 1EE1     		b	.L22
+ 363              	.L24:
+ 106:.\Camera.c    **** 	
+ 107:.\Camera.c    **** 	CyDelayUs(10);
+ 364              		.loc 1 107 0
+ 365 0068 0A20     		mov	r0, #10
+ 366 006a FFF7FEFF 		bl	CyDelayUs
+ 108:.\Camera.c    **** 	
+ 109:.\Camera.c    **** 	status = I2CM_I2CMasterReadBuf(IRslaveAddress, &rxdata[0], 16, I2CM_I2C_MODE_COMPLETE_XFER);
+ 367              		.loc 1 109 0
+ 368 006e 904B     		ldr	r3, .L35
+ 369 0070 1B78     		ldrb	r3, [r3]
+ 370 0072 1A1C     		mov	r2, r3
+ 371 0074 3B1D     		add	r3, r7, #4
+ 372 0076 101C     		mov	r0, r2
+ 373 0078 191C     		mov	r1, r3
+ 374 007a 1022     		mov	r2, #16
+ 375 007c 0023     		mov	r3, #0
+ 376 007e FFF7FEFF 		bl	I2CM_I2CMasterReadBuf
+ 377 0082 031C     		mov	r3, r0
+ 378 0084 7B61     		str	r3, [r7, #20]
+ 110:.\Camera.c    **** 	if (status != I2CM_I2C_MSTR_NO_ERROR)
+ 379              		.loc 1 110 0
+ 380 0086 7B69     		ldr	r3, [r7, #20]
+ 381 0088 002B     		cmp	r3, #0
+ 382 008a 01D0     		beq	.L25
+ 111:.\Camera.c    **** 	{return 0;}
+ 383              		.loc 1 111 0
+ 384 008c 0023     		mov	r3, #0
+ 385 008e 0AE1     		b	.L22
+ 386              	.L25:
+ 112:.\Camera.c    **** 	
+ 113:.\Camera.c    **** 	while(I2CM_I2CMasterStatus() != I2CM_I2C_MSTAT_RD_CMPLT);
+ 387              		.loc 1 113 0
+ 388 0090 FFF7FEFF 		bl	I2CM_I2CMasterStatus
+ 389 0094 031C     		mov	r3, r0
+ 390 0096 012B     		cmp	r3, #1
+ 391 0098 FAD1     		bne	.L25
+ 114:.\Camera.c    **** 	
+ 115:.\Camera.c    ****     for (i=0; i<16; i++)
+ 392              		.loc 1 115 0
+ 393 009a 864B     		ldr	r3, .L35+4
+ 394 009c 0022     		mov	r2, #0
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 10
+
+
+ 395 009e 1A60     		str	r2, [r3]
+ 396 00a0 11E0     		b	.L26
+ 397              	.L27:
+ 116:.\Camera.c    ****     {
+ 117:.\Camera.c    **** 		data_buf[i]=0;
+ 398              		.loc 1 117 0
+ 399 00a2 844B     		ldr	r3, .L35+4
+ 400 00a4 1B68     		ldr	r3, [r3]
+ 401 00a6 844A     		ldr	r2, .L35+8
+ 402 00a8 0021     		mov	r1, #0
+ 403 00aa D154     		strb	r1, [r2, r3]
+ 118:.\Camera.c    **** 		data_buf[i] = rxdata[i];
+ 404              		.loc 1 118 0
+ 405 00ac 814B     		ldr	r3, .L35+4
+ 406 00ae 1A68     		ldr	r2, [r3]
+ 407 00b0 804B     		ldr	r3, .L35+4
+ 408 00b2 1B68     		ldr	r3, [r3]
+ 409 00b4 391D     		add	r1, r7, #4
+ 410 00b6 C95C     		ldrb	r1, [r1, r3]
+ 411 00b8 7F4B     		ldr	r3, .L35+8
+ 412 00ba 9954     		strb	r1, [r3, r2]
+ 413              		.loc 1 115 0
+ 414 00bc 7D4B     		ldr	r3, .L35+4
+ 415 00be 1B68     		ldr	r3, [r3]
+ 416 00c0 5A1C     		add	r2, r3, #1
+ 417 00c2 7C4B     		ldr	r3, .L35+4
+ 418 00c4 1A60     		str	r2, [r3]
+ 419              	.L26:
+ 420 00c6 7B4B     		ldr	r3, .L35+4
+ 421 00c8 1B68     		ldr	r3, [r3]
+ 422 00ca 0F2B     		cmp	r3, #15
+ 423 00cc E9DD     		ble	.L27
+ 119:.\Camera.c    ****     }
+ 120:.\Camera.c    **** 
+ 121:.\Camera.c    ****     blobcount = 0;
+ 424              		.loc 1 121 0
+ 425 00ce 7B4B     		ldr	r3, .L35+12
+ 426 00d0 0022     		mov	r2, #0
+ 427 00d2 1A70     		strb	r2, [r3]
+ 122:.\Camera.c    **** 
+ 123:.\Camera.c    ****     Blob1.X = data_buf[1];
+ 428              		.loc 1 123 0
+ 429 00d4 784B     		ldr	r3, .L35+8
+ 430 00d6 5B78     		ldrb	r3, [r3, #1]
+ 431 00d8 1A1C     		mov	r2, r3
+ 432 00da 794B     		ldr	r3, .L35+16
+ 433 00dc 1A60     		str	r2, [r3]
+ 124:.\Camera.c    ****     Blob1.Y = data_buf[2];
+ 434              		.loc 1 124 0
+ 435 00de 764B     		ldr	r3, .L35+8
+ 436 00e0 9B78     		ldrb	r3, [r3, #2]
+ 437 00e2 1A1C     		mov	r2, r3
+ 438 00e4 764B     		ldr	r3, .L35+16
+ 439 00e6 5A60     		str	r2, [r3, #4]
+ 125:.\Camera.c    ****     s   = data_buf[3];
+ 440              		.loc 1 125 0
+ 441 00e8 734B     		ldr	r3, .L35+8
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 11
+
+
+ 442 00ea DB78     		ldrb	r3, [r3, #3]
+ 443 00ec 1A1C     		mov	r2, r3
+ 444 00ee 754B     		ldr	r3, .L35+20
+ 445 00f0 1A60     		str	r2, [r3]
+ 126:.\Camera.c    ****     Blob1.X += (s & 0x30) <<4;
+ 446              		.loc 1 126 0
+ 447 00f2 734B     		ldr	r3, .L35+16
+ 448 00f4 1A68     		ldr	r2, [r3]
+ 449 00f6 734B     		ldr	r3, .L35+20
+ 450 00f8 1968     		ldr	r1, [r3]
+ 451 00fa 3023     		mov	r3, #48
+ 452 00fc 0B40     		and	r3, r3, r1
+ 453 00fe 1B01     		lsl	r3, r3, #4
+ 454 0100 D218     		add	r2, r2, r3
+ 455 0102 6F4B     		ldr	r3, .L35+16
+ 456 0104 1A60     		str	r2, [r3]
+ 127:.\Camera.c    ****     Blob1.Y += (s & 0xC0) <<2;
+ 457              		.loc 1 127 0
+ 458 0106 6E4B     		ldr	r3, .L35+16
+ 459 0108 5A68     		ldr	r2, [r3, #4]
+ 460 010a 6E4B     		ldr	r3, .L35+20
+ 461 010c 1968     		ldr	r1, [r3]
+ 462 010e C023     		mov	r3, #192
+ 463 0110 0B40     		and	r3, r3, r1
+ 464 0112 9B00     		lsl	r3, r3, #2
+ 465 0114 D218     		add	r2, r2, r3
+ 466 0116 6A4B     		ldr	r3, .L35+16
+ 467 0118 5A60     		str	r2, [r3, #4]
+ 128:.\Camera.c    ****     Blob1.Size = (s & 0x0F);
+ 468              		.loc 1 128 0
+ 469 011a 6A4B     		ldr	r3, .L35+20
+ 470 011c 1A68     		ldr	r2, [r3]
+ 471 011e 0F23     		mov	r3, #15
+ 472 0120 1A40     		and	r2, r2, r3
+ 473 0122 674B     		ldr	r3, .L35+16
+ 474 0124 9A60     		str	r2, [r3, #8]
+ 129:.\Camera.c    **** 
+ 130:.\Camera.c    ****     // At the moment we're using the size of the blob to determine if one is detected, either X,Y, 
+ 131:.\Camera.c    ****     blobcount |= (Blob1.Size < 15)? BLOB1 : 0;
+ 475              		.loc 1 131 0
+ 476 0126 664B     		ldr	r3, .L35+16
+ 477 0128 9B68     		ldr	r3, [r3, #8]
+ 478 012a 0E22     		mov	r2, #14
+ 479 012c D80F     		lsr	r0, r3, #31
+ 480 012e D117     		asr	r1, r2, #31
+ 481 0130 041C     		mov	r4, r0
+ 482 0132 9A42     		cmp	r2, r3
+ 483 0134 4C41     		adc	r4, r4, r1
+ 484 0136 221C     		mov	r2, r4
+ 485 0138 604B     		ldr	r3, .L35+12
+ 486 013a 1B78     		ldrb	r3, [r3]
+ 487 013c 1343     		orr	r3, r3, r2
+ 488 013e DBB2     		uxtb	r3, r3
+ 489 0140 DAB2     		uxtb	r2, r3
+ 490 0142 5E4B     		ldr	r3, .L35+12
+ 491 0144 1A70     		strb	r2, [r3]
+ 132:.\Camera.c    **** 
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 12
+
+
+ 133:.\Camera.c    ****     Blob2.X = data_buf[4];
+ 492              		.loc 1 133 0
+ 493 0146 5C4B     		ldr	r3, .L35+8
+ 494 0148 1B79     		ldrb	r3, [r3, #4]
+ 495 014a 1A1C     		mov	r2, r3
+ 496 014c 5E4B     		ldr	r3, .L35+24
+ 497 014e 1A60     		str	r2, [r3]
+ 134:.\Camera.c    ****     Blob2.Y = data_buf[5];
+ 498              		.loc 1 134 0
+ 499 0150 594B     		ldr	r3, .L35+8
+ 500 0152 5B79     		ldrb	r3, [r3, #5]
+ 501 0154 1A1C     		mov	r2, r3
+ 502 0156 5C4B     		ldr	r3, .L35+24
+ 503 0158 5A60     		str	r2, [r3, #4]
+ 135:.\Camera.c    ****     s   = data_buf[6];
+ 504              		.loc 1 135 0
+ 505 015a 574B     		ldr	r3, .L35+8
+ 506 015c 9B79     		ldrb	r3, [r3, #6]
+ 507 015e 1A1C     		mov	r2, r3
+ 508 0160 584B     		ldr	r3, .L35+20
+ 509 0162 1A60     		str	r2, [r3]
+ 136:.\Camera.c    ****     Blob2.X += (s & 0x30) <<4;
+ 510              		.loc 1 136 0
+ 511 0164 584B     		ldr	r3, .L35+24
+ 512 0166 1A68     		ldr	r2, [r3]
+ 513 0168 564B     		ldr	r3, .L35+20
+ 514 016a 1968     		ldr	r1, [r3]
+ 515 016c 3023     		mov	r3, #48
+ 516 016e 0B40     		and	r3, r3, r1
+ 517 0170 1B01     		lsl	r3, r3, #4
+ 518 0172 D218     		add	r2, r2, r3
+ 519 0174 544B     		ldr	r3, .L35+24
+ 520 0176 1A60     		str	r2, [r3]
+ 137:.\Camera.c    ****     Blob2.Y += (s & 0xC0) <<2;
+ 521              		.loc 1 137 0
+ 522 0178 534B     		ldr	r3, .L35+24
+ 523 017a 5A68     		ldr	r2, [r3, #4]
+ 524 017c 514B     		ldr	r3, .L35+20
+ 525 017e 1968     		ldr	r1, [r3]
+ 526 0180 C023     		mov	r3, #192
+ 527 0182 0B40     		and	r3, r3, r1
+ 528 0184 9B00     		lsl	r3, r3, #2
+ 529 0186 D218     		add	r2, r2, r3
+ 530 0188 4F4B     		ldr	r3, .L35+24
+ 531 018a 5A60     		str	r2, [r3, #4]
+ 138:.\Camera.c    ****     Blob2.Size = (s & 0x0F);
+ 532              		.loc 1 138 0
+ 533 018c 4D4B     		ldr	r3, .L35+20
+ 534 018e 1A68     		ldr	r2, [r3]
+ 535 0190 0F23     		mov	r3, #15
+ 536 0192 1A40     		and	r2, r2, r3
+ 537 0194 4C4B     		ldr	r3, .L35+24
+ 538 0196 9A60     		str	r2, [r3, #8]
+ 139:.\Camera.c    **** 
+ 140:.\Camera.c    ****     blobcount |= (Blob2.Size < 15)? BLOB2 : 0;
+ 539              		.loc 1 140 0
+ 540 0198 4B4B     		ldr	r3, .L35+24
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 13
+
+
+ 541 019a 9B68     		ldr	r3, [r3, #8]
+ 542 019c 0E2B     		cmp	r3, #14
+ 543 019e 01DC     		bgt	.L28
+ 544 01a0 0223     		mov	r3, #2
+ 545 01a2 00E0     		b	.L29
+ 546              	.L28:
+ 547 01a4 0023     		mov	r3, #0
+ 548              	.L29:
+ 549 01a6 454A     		ldr	r2, .L35+12
+ 550 01a8 1278     		ldrb	r2, [r2]
+ 551 01aa 111C     		mov	r1, r2
+ 552 01ac 1A1C     		add	r2, r3, #0
+ 553 01ae 0B1C     		add	r3, r1, #0
+ 554 01b0 1343     		orr	r3, r3, r2
+ 555 01b2 DBB2     		uxtb	r3, r3
+ 556 01b4 DAB2     		uxtb	r2, r3
+ 557 01b6 414B     		ldr	r3, .L35+12
+ 558 01b8 1A70     		strb	r2, [r3]
+ 141:.\Camera.c    **** 
+ 142:.\Camera.c    ****     Blob3.X = data_buf[7];
+ 559              		.loc 1 142 0
+ 560 01ba 3F4B     		ldr	r3, .L35+8
+ 561 01bc DB79     		ldrb	r3, [r3, #7]
+ 562 01be 1A1C     		mov	r2, r3
+ 563 01c0 424B     		ldr	r3, .L35+28
+ 564 01c2 1A60     		str	r2, [r3]
+ 143:.\Camera.c    ****     Blob3.Y = data_buf[8];
+ 565              		.loc 1 143 0
+ 566 01c4 3C4B     		ldr	r3, .L35+8
+ 567 01c6 1B7A     		ldrb	r3, [r3, #8]
+ 568 01c8 1A1C     		mov	r2, r3
+ 569 01ca 404B     		ldr	r3, .L35+28
+ 570 01cc 5A60     		str	r2, [r3, #4]
+ 144:.\Camera.c    ****     s   = data_buf[9];
+ 571              		.loc 1 144 0
+ 572 01ce 3A4B     		ldr	r3, .L35+8
+ 573 01d0 5B7A     		ldrb	r3, [r3, #9]
+ 574 01d2 1A1C     		mov	r2, r3
+ 575 01d4 3B4B     		ldr	r3, .L35+20
+ 576 01d6 1A60     		str	r2, [r3]
+ 145:.\Camera.c    ****     Blob3.X += (s & 0x30) <<4;
+ 577              		.loc 1 145 0
+ 578 01d8 3C4B     		ldr	r3, .L35+28
+ 579 01da 1A68     		ldr	r2, [r3]
+ 580 01dc 394B     		ldr	r3, .L35+20
+ 581 01de 1968     		ldr	r1, [r3]
+ 582 01e0 3023     		mov	r3, #48
+ 583 01e2 0B40     		and	r3, r3, r1
+ 584 01e4 1B01     		lsl	r3, r3, #4
+ 585 01e6 D218     		add	r2, r2, r3
+ 586 01e8 384B     		ldr	r3, .L35+28
+ 587 01ea 1A60     		str	r2, [r3]
+ 146:.\Camera.c    ****     Blob3.Y += (s & 0xC0) <<2;
+ 588              		.loc 1 146 0
+ 589 01ec 374B     		ldr	r3, .L35+28
+ 590 01ee 5A68     		ldr	r2, [r3, #4]
+ 591 01f0 344B     		ldr	r3, .L35+20
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 14
+
+
+ 592 01f2 1968     		ldr	r1, [r3]
+ 593 01f4 C023     		mov	r3, #192
+ 594 01f6 0B40     		and	r3, r3, r1
+ 595 01f8 9B00     		lsl	r3, r3, #2
+ 596 01fa D218     		add	r2, r2, r3
+ 597 01fc 334B     		ldr	r3, .L35+28
+ 598 01fe 5A60     		str	r2, [r3, #4]
+ 147:.\Camera.c    ****     Blob3.Size = (s & 0x0F);
+ 599              		.loc 1 147 0
+ 600 0200 304B     		ldr	r3, .L35+20
+ 601 0202 1A68     		ldr	r2, [r3]
+ 602 0204 0F23     		mov	r3, #15
+ 603 0206 1A40     		and	r2, r2, r3
+ 604 0208 304B     		ldr	r3, .L35+28
+ 605 020a 9A60     		str	r2, [r3, #8]
+ 148:.\Camera.c    **** 
+ 149:.\Camera.c    ****     blobcount |= (Blob3.Size < 15)? BLOB3 : 0;
+ 606              		.loc 1 149 0
+ 607 020c 2F4B     		ldr	r3, .L35+28
+ 608 020e 9B68     		ldr	r3, [r3, #8]
+ 609 0210 0E2B     		cmp	r3, #14
+ 610 0212 01DC     		bgt	.L30
+ 611 0214 0423     		mov	r3, #4
+ 612 0216 00E0     		b	.L31
+ 613              	.L30:
+ 614 0218 0023     		mov	r3, #0
+ 615              	.L31:
+ 616 021a 284A     		ldr	r2, .L35+12
+ 617 021c 1278     		ldrb	r2, [r2]
+ 618 021e 111C     		mov	r1, r2
+ 619 0220 1A1C     		add	r2, r3, #0
+ 620 0222 0B1C     		add	r3, r1, #0
+ 621 0224 1343     		orr	r3, r3, r2
+ 622 0226 DBB2     		uxtb	r3, r3
+ 623 0228 DAB2     		uxtb	r2, r3
+ 624 022a 244B     		ldr	r3, .L35+12
+ 625 022c 1A70     		strb	r2, [r3]
+ 150:.\Camera.c    **** 
+ 151:.\Camera.c    ****     Blob4.X = data_buf[10];
+ 626              		.loc 1 151 0
+ 627 022e 224B     		ldr	r3, .L35+8
+ 628 0230 9B7A     		ldrb	r3, [r3, #10]
+ 629 0232 1A1C     		mov	r2, r3
+ 630 0234 264B     		ldr	r3, .L35+32
+ 631 0236 1A60     		str	r2, [r3]
+ 152:.\Camera.c    ****     Blob4.Y = data_buf[11];
+ 632              		.loc 1 152 0
+ 633 0238 1F4B     		ldr	r3, .L35+8
+ 634 023a DB7A     		ldrb	r3, [r3, #11]
+ 635 023c 1A1C     		mov	r2, r3
+ 636 023e 244B     		ldr	r3, .L35+32
+ 637 0240 5A60     		str	r2, [r3, #4]
+ 153:.\Camera.c    ****     s   = data_buf[12];
+ 638              		.loc 1 153 0
+ 639 0242 1D4B     		ldr	r3, .L35+8
+ 640 0244 1B7B     		ldrb	r3, [r3, #12]
+ 641 0246 1A1C     		mov	r2, r3
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 15
+
+
+ 642 0248 1E4B     		ldr	r3, .L35+20
+ 643 024a 1A60     		str	r2, [r3]
+ 154:.\Camera.c    ****     Blob4.X += (s & 0x30) <<4;
+ 644              		.loc 1 154 0
+ 645 024c 204B     		ldr	r3, .L35+32
+ 646 024e 1A68     		ldr	r2, [r3]
+ 647 0250 1C4B     		ldr	r3, .L35+20
+ 648 0252 1968     		ldr	r1, [r3]
+ 649 0254 3023     		mov	r3, #48
+ 650 0256 0B40     		and	r3, r3, r1
+ 651 0258 1B01     		lsl	r3, r3, #4
+ 652 025a D218     		add	r2, r2, r3
+ 653 025c 1C4B     		ldr	r3, .L35+32
+ 654 025e 1A60     		str	r2, [r3]
+ 155:.\Camera.c    ****     Blob4.Y += (s & 0xC0) <<2;
+ 655              		.loc 1 155 0
+ 656 0260 1B4B     		ldr	r3, .L35+32
+ 657 0262 5A68     		ldr	r2, [r3, #4]
+ 658 0264 174B     		ldr	r3, .L35+20
+ 659 0266 1968     		ldr	r1, [r3]
+ 660 0268 C023     		mov	r3, #192
+ 661 026a 0B40     		and	r3, r3, r1
+ 662 026c 9B00     		lsl	r3, r3, #2
+ 663 026e D218     		add	r2, r2, r3
+ 664 0270 174B     		ldr	r3, .L35+32
+ 665 0272 5A60     		str	r2, [r3, #4]
+ 156:.\Camera.c    ****     Blob4.Size = (s & 0x0F);
+ 666              		.loc 1 156 0
+ 667 0274 134B     		ldr	r3, .L35+20
+ 668 0276 1A68     		ldr	r2, [r3]
+ 669 0278 0F23     		mov	r3, #15
+ 670 027a 1A40     		and	r2, r2, r3
+ 671 027c 144B     		ldr	r3, .L35+32
+ 672 027e 9A60     		str	r2, [r3, #8]
+ 157:.\Camera.c    **** 
+ 158:.\Camera.c    ****     blobcount |= (Blob4.Size < 15)? BLOB4 : 0;
+ 673              		.loc 1 158 0
+ 674 0280 134B     		ldr	r3, .L35+32
+ 675 0282 9B68     		ldr	r3, [r3, #8]
+ 676 0284 0E2B     		cmp	r3, #14
+ 677 0286 01DC     		bgt	.L32
+ 678 0288 0823     		mov	r3, #8
+ 679 028a 00E0     		b	.L33
+ 680              	.L32:
+ 681 028c 0023     		mov	r3, #0
+ 682              	.L33:
+ 683 028e 0B4A     		ldr	r2, .L35+12
+ 684 0290 1278     		ldrb	r2, [r2]
+ 685 0292 111C     		mov	r1, r2
+ 686 0294 1A1C     		add	r2, r3, #0
+ 687 0296 0B1C     		add	r3, r1, #0
+ 688 0298 1343     		orr	r3, r3, r2
+ 689 029a DBB2     		uxtb	r3, r3
+ 690 029c DAB2     		uxtb	r2, r3
+ 691 029e 074B     		ldr	r3, .L35+12
+ 692 02a0 1A70     		strb	r2, [r3]
+ 159:.\Camera.c    **** 
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 16
+
+
+ 160:.\Camera.c    ****     return blobcount;
+ 693              		.loc 1 160 0
+ 694 02a2 064B     		ldr	r3, .L35+12
+ 695 02a4 1B78     		ldrb	r3, [r3]
+ 696              	.L22:
+ 161:.\Camera.c    **** }
+ 697              		.loc 1 161 0
+ 698 02a6 181C     		mov	r0, r3
+ 699 02a8 BD46     		mov	sp, r7
+ 700 02aa 07B0     		add	sp, sp, #28
+ 701              		@ sp needed for prologue
+ 702 02ac 90BD     		pop	{r4, r7, pc}
+ 703              	.L36:
+ 704 02ae C046     		.align	2
+ 705              	.L35:
+ 706 02b0 00000000 		.word	IRslaveAddress
+ 707 02b4 00000000 		.word	i
+ 708 02b8 00000000 		.word	data_buf
+ 709 02bc 00000000 		.word	blobcount
+ 710 02c0 00000000 		.word	Blob1
+ 711 02c4 00000000 		.word	s
+ 712 02c8 00000000 		.word	Blob2
+ 713 02cc 00000000 		.word	Blob3
+ 714 02d0 00000000 		.word	Blob4
+ 715              		.cfi_endproc
+ 716              	.LFE23:
+ 717              		.size	Camera_read, .-Camera_read
+ 718              		.text
+ 719              	.Letext0:
+ 720              		.section	.debug_loc,"",%progbits
+ 721              	.Ldebug_loc0:
+ 722              	.LLST0:
+ 723 0000 00000000 		.4byte	.LFB20
+ 724 0004 02000000 		.4byte	.LCFI0
+ 725 0008 0100     		.2byte	0x1
+ 726 000a 5D       		.byte	0x5d
+ 727 000b 02000000 		.4byte	.LCFI0
+ 728 000f 04000000 		.4byte	.LCFI1
+ 729 0013 0200     		.2byte	0x2
+ 730 0015 7D       		.byte	0x7d
+ 731 0016 08       		.sleb128 8
+ 732 0017 04000000 		.4byte	.LCFI1
+ 733 001b 06000000 		.4byte	.LCFI2
+ 734 001f 0200     		.2byte	0x2
+ 735 0021 7D       		.byte	0x7d
+ 736 0022 18       		.sleb128 24
+ 737 0023 06000000 		.4byte	.LCFI2
+ 738 0027 94000000 		.4byte	.LFE20
+ 739 002b 0200     		.2byte	0x2
+ 740 002d 77       		.byte	0x77
+ 741 002e 18       		.sleb128 24
+ 742 002f 00000000 		.4byte	0x0
+ 743 0033 00000000 		.4byte	0x0
+ 744              	.LLST1:
+ 745 0037 00000000 		.4byte	.LFB21
+ 746 003b 02000000 		.4byte	.LCFI3
+ 747 003f 0100     		.2byte	0x1
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 17
+
+
+ 748 0041 5D       		.byte	0x5d
+ 749 0042 02000000 		.4byte	.LCFI3
+ 750 0046 04000000 		.4byte	.LCFI4
+ 751 004a 0200     		.2byte	0x2
+ 752 004c 7D       		.byte	0x7d
+ 753 004d 08       		.sleb128 8
+ 754 004e 04000000 		.4byte	.LCFI4
+ 755 0052 08000000 		.4byte	.LFE21
+ 756 0056 0200     		.2byte	0x2
+ 757 0058 77       		.byte	0x77
+ 758 0059 08       		.sleb128 8
+ 759 005a 00000000 		.4byte	0x0
+ 760 005e 00000000 		.4byte	0x0
+ 761              	.LLST2:
+ 762 0062 00000000 		.4byte	.LFB22
+ 763 0066 02000000 		.4byte	.LCFI5
+ 764 006a 0100     		.2byte	0x1
+ 765 006c 5D       		.byte	0x5d
+ 766 006d 02000000 		.4byte	.LCFI5
+ 767 0071 04000000 		.4byte	.LCFI6
+ 768 0075 0200     		.2byte	0x2
+ 769 0077 7D       		.byte	0x7d
+ 770 0078 08       		.sleb128 8
+ 771 0079 04000000 		.4byte	.LCFI6
+ 772 007d B4000000 		.4byte	.LFE22
+ 773 0081 0200     		.2byte	0x2
+ 774 0083 77       		.byte	0x77
+ 775 0084 08       		.sleb128 8
+ 776 0085 00000000 		.4byte	0x0
+ 777 0089 00000000 		.4byte	0x0
+ 778              	.LLST3:
+ 779 008d 00000000 		.4byte	.LFB23
+ 780 0091 02000000 		.4byte	.LCFI7
+ 781 0095 0100     		.2byte	0x1
+ 782 0097 5D       		.byte	0x5d
+ 783 0098 02000000 		.4byte	.LCFI7
+ 784 009c 04000000 		.4byte	.LCFI8
+ 785 00a0 0200     		.2byte	0x2
+ 786 00a2 7D       		.byte	0x7d
+ 787 00a3 0C       		.sleb128 12
+ 788 00a4 04000000 		.4byte	.LCFI8
+ 789 00a8 06000000 		.4byte	.LCFI9
+ 790 00ac 0200     		.2byte	0x2
+ 791 00ae 7D       		.byte	0x7d
+ 792 00af 28       		.sleb128 40
+ 793 00b0 06000000 		.4byte	.LCFI9
+ 794 00b4 D4020000 		.4byte	.LFE23
+ 795 00b8 0200     		.2byte	0x2
+ 796 00ba 77       		.byte	0x77
+ 797 00bb 28       		.sleb128 40
+ 798 00bc 00000000 		.4byte	0x0
+ 799 00c0 00000000 		.4byte	0x0
+ 800              		.file 2 "./Generated_Source/PSoC4/cytypes.h"
+ 801              		.file 3 ".\\/Camera.h"
+ 802              		.section	.debug_info
+ 803 0000 41020000 		.4byte	0x241
+ 804 0004 0200     		.2byte	0x2
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 18
+
+
+ 805 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 806 000a 04       		.byte	0x4
+ 807 000b 01       		.uleb128 0x1
+ 808 000c 49010000 		.4byte	.LASF28
+ 809 0010 01       		.byte	0x1
+ 810 0011 32010000 		.4byte	.LASF29
+ 811 0015 66000000 		.4byte	.LASF30
+ 812 0019 00000000 		.4byte	0x0
+ 813 001d 00000000 		.4byte	0x0
+ 814 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 815 0025 00000000 		.4byte	.Ldebug_line0
+ 816 0029 02       		.uleb128 0x2
+ 817 002a 01       		.byte	0x1
+ 818 002b 06       		.byte	0x6
+ 819 002c 89010000 		.4byte	.LASF0
+ 820 0030 02       		.uleb128 0x2
+ 821 0031 01       		.byte	0x1
+ 822 0032 08       		.byte	0x8
+ 823 0033 DA000000 		.4byte	.LASF1
+ 824 0037 02       		.uleb128 0x2
+ 825 0038 02       		.byte	0x2
+ 826 0039 05       		.byte	0x5
+ 827 003a 6A010000 		.4byte	.LASF2
+ 828 003e 02       		.uleb128 0x2
+ 829 003f 02       		.byte	0x2
+ 830 0040 07       		.byte	0x7
+ 831 0041 2D000000 		.4byte	.LASF3
+ 832 0045 02       		.uleb128 0x2
+ 833 0046 04       		.byte	0x4
+ 834 0047 05       		.byte	0x5
+ 835 0048 80010000 		.4byte	.LASF4
+ 836 004c 02       		.uleb128 0x2
+ 837 004d 04       		.byte	0x4
+ 838 004e 07       		.byte	0x7
+ 839 004f C2000000 		.4byte	.LASF5
+ 840 0053 02       		.uleb128 0x2
+ 841 0054 08       		.byte	0x8
+ 842 0055 05       		.byte	0x5
+ 843 0056 00000000 		.4byte	.LASF6
+ 844 005a 02       		.uleb128 0x2
+ 845 005b 08       		.byte	0x8
+ 846 005c 07       		.byte	0x7
+ 847 005d 1B010000 		.4byte	.LASF7
+ 848 0061 03       		.uleb128 0x3
+ 849 0062 04       		.byte	0x4
+ 850 0063 05       		.byte	0x5
+ 851 0064 696E7400 		.ascii	"int\000"
+ 852 0068 02       		.uleb128 0x2
+ 853 0069 04       		.byte	0x4
+ 854 006a 07       		.byte	0x7
+ 855 006b 0E010000 		.4byte	.LASF8
+ 856 006f 04       		.uleb128 0x4
+ 857 0070 D4000000 		.4byte	.LASF9
+ 858 0074 02       		.byte	0x2
+ 859 0075 4C       		.byte	0x4c
+ 860 0076 30000000 		.4byte	0x30
+ 861 007a 04       		.uleb128 0x4
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 19
+
+
+ 862 007b 07010000 		.4byte	.LASF10
+ 863 007f 02       		.byte	0x2
+ 864 0080 4E       		.byte	0x4e
+ 865 0081 4C000000 		.4byte	0x4c
+ 866 0085 02       		.uleb128 0x2
+ 867 0086 04       		.byte	0x4
+ 868 0087 04       		.byte	0x4
+ 869 0088 60000000 		.4byte	.LASF11
+ 870 008c 02       		.uleb128 0x2
+ 871 008d 08       		.byte	0x8
+ 872 008e 04       		.byte	0x4
+ 873 008f E8000000 		.4byte	.LASF12
+ 874 0093 02       		.uleb128 0x2
+ 875 0094 01       		.byte	0x1
+ 876 0095 08       		.byte	0x8
+ 877 0096 55010000 		.4byte	.LASF13
+ 878 009a 05       		.uleb128 0x5
+ 879 009b 04       		.byte	0x4
+ 880 009c 07       		.byte	0x7
+ 881 009d 06       		.uleb128 0x6
+ 882 009e 5B000000 		.4byte	.LASF31
+ 883 00a2 10       		.byte	0x10
+ 884 00a3 03       		.byte	0x3
+ 885 00a4 22       		.byte	0x22
+ 886 00a5 DE000000 		.4byte	0xde
+ 887 00a9 07       		.uleb128 0x7
+ 888 00aa 5800     		.ascii	"X\000"
+ 889 00ac 03       		.byte	0x3
+ 890 00ad 23       		.byte	0x23
+ 891 00ae 61000000 		.4byte	0x61
+ 892 00b2 02       		.byte	0x2
+ 893 00b3 23       		.byte	0x23
+ 894 00b4 00       		.uleb128 0x0
+ 895 00b5 07       		.uleb128 0x7
+ 896 00b6 5900     		.ascii	"Y\000"
+ 897 00b8 03       		.byte	0x3
+ 898 00b9 24       		.byte	0x24
+ 899 00ba 61000000 		.4byte	0x61
+ 900 00be 02       		.byte	0x2
+ 901 00bf 23       		.byte	0x23
+ 902 00c0 04       		.uleb128 0x4
+ 903 00c1 08       		.uleb128 0x8
+ 904 00c2 3D010000 		.4byte	.LASF14
+ 905 00c6 03       		.byte	0x3
+ 906 00c7 25       		.byte	0x25
+ 907 00c8 61000000 		.4byte	0x61
+ 908 00cc 02       		.byte	0x2
+ 909 00cd 23       		.byte	0x23
+ 910 00ce 08       		.uleb128 0x8
+ 911 00cf 08       		.uleb128 0x8
+ 912 00d0 42010000 		.4byte	.LASF15
+ 913 00d4 03       		.byte	0x3
+ 914 00d5 26       		.byte	0x26
+ 915 00d6 6F000000 		.4byte	0x6f
+ 916 00da 02       		.byte	0x2
+ 917 00db 23       		.byte	0x23
+ 918 00dc 0C       		.uleb128 0xc
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 20
+
+
+ 919 00dd 00       		.byte	0x0
+ 920 00de 09       		.uleb128 0x9
+ 921 00df 01       		.byte	0x1
+ 922 00e0 40000000 		.4byte	.LASF32
+ 923 00e4 01       		.byte	0x1
+ 924 00e5 1D       		.byte	0x1d
+ 925 00e6 01       		.byte	0x1
+ 926 00e7 00000000 		.4byte	.LFB20
+ 927 00eb 94000000 		.4byte	.LFE20
+ 928 00ef 00000000 		.4byte	.LLST0
+ 929 00f3 20010000 		.4byte	0x120
+ 930 00f7 0A       		.uleb128 0xa
+ 931 00f8 643100   		.ascii	"d1\000"
+ 932 00fb 01       		.byte	0x1
+ 933 00fc 1D       		.byte	0x1d
+ 934 00fd 6F000000 		.4byte	0x6f
+ 935 0101 02       		.byte	0x2
+ 936 0102 91       		.byte	0x91
+ 937 0103 6F       		.sleb128 -17
+ 938 0104 0A       		.uleb128 0xa
+ 939 0105 643200   		.ascii	"d2\000"
+ 940 0108 01       		.byte	0x1
+ 941 0109 1D       		.byte	0x1d
+ 942 010a 6F000000 		.4byte	0x6f
+ 943 010e 02       		.byte	0x2
+ 944 010f 91       		.byte	0x91
+ 945 0110 6E       		.sleb128 -18
+ 946 0111 0B       		.uleb128 0xb
+ 947 0112 4D000000 		.4byte	.LASF18
+ 948 0116 01       		.byte	0x1
+ 949 0117 1F       		.byte	0x1f
+ 950 0118 7A000000 		.4byte	0x7a
+ 951 011c 02       		.byte	0x2
+ 952 011d 91       		.byte	0x91
+ 953 011e 74       		.sleb128 -12
+ 954 011f 00       		.byte	0x0
+ 955 0120 0C       		.uleb128 0xc
+ 956 0121 01       		.byte	0x1
+ 957 0122 0E000000 		.4byte	.LASF16
+ 958 0126 01       		.byte	0x1
+ 959 0127 37       		.byte	0x37
+ 960 0128 01       		.byte	0x1
+ 961 0129 00000000 		.4byte	.LFB21
+ 962 012d 08000000 		.4byte	.LFE21
+ 963 0131 37000000 		.4byte	.LLST1
+ 964 0135 0C       		.uleb128 0xc
+ 965 0136 01       		.byte	0x1
+ 966 0137 74010000 		.4byte	.LASF17
+ 967 013b 01       		.byte	0x1
+ 968 013c 40       		.byte	0x40
+ 969 013d 01       		.byte	0x1
+ 970 013e 00000000 		.4byte	.LFB22
+ 971 0142 B4000000 		.4byte	.LFE22
+ 972 0146 62000000 		.4byte	.LLST2
+ 973 014a 0D       		.uleb128 0xd
+ 974 014b 01       		.byte	0x1
+ 975 014c AC000000 		.4byte	.LASF33
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 21
+
+
+ 976 0150 01       		.byte	0x1
+ 977 0151 57       		.byte	0x57
+ 978 0152 01       		.byte	0x1
+ 979 0153 6F000000 		.4byte	0x6f
+ 980 0157 00000000 		.4byte	.LFB23
+ 981 015b D4020000 		.4byte	.LFE23
+ 982 015f 8D000000 		.4byte	.LLST3
+ 983 0163 84010000 		.4byte	0x184
+ 984 0167 0B       		.uleb128 0xb
+ 985 0168 4D000000 		.4byte	.LASF18
+ 986 016c 01       		.byte	0x1
+ 987 016d 59       		.byte	0x59
+ 988 016e 7A000000 		.4byte	0x7a
+ 989 0172 02       		.byte	0x2
+ 990 0173 91       		.byte	0x91
+ 991 0174 6C       		.sleb128 -20
+ 992 0175 0B       		.uleb128 0xb
+ 993 0176 54000000 		.4byte	.LASF19
+ 994 017a 01       		.byte	0x1
+ 995 017b 5A       		.byte	0x5a
+ 996 017c 84010000 		.4byte	0x184
+ 997 0180 02       		.byte	0x2
+ 998 0181 91       		.byte	0x91
+ 999 0182 5C       		.sleb128 -36
+ 1000 0183 00       		.byte	0x0
+ 1001 0184 0E       		.uleb128 0xe
+ 1002 0185 6F000000 		.4byte	0x6f
+ 1003 0189 94010000 		.4byte	0x194
+ 1004 018d 0F       		.uleb128 0xf
+ 1005 018e 9A000000 		.4byte	0x9a
+ 1006 0192 0F       		.byte	0xf
+ 1007 0193 00       		.byte	0x0
+ 1008 0194 10       		.uleb128 0x10
+ 1009 0195 EF000000 		.4byte	.LASF20
+ 1010 0199 03       		.byte	0x3
+ 1011 019a 27       		.byte	0x27
+ 1012 019b 9D000000 		.4byte	0x9d
+ 1013 019f 01       		.byte	0x1
+ 1014 01a0 05       		.byte	0x5
+ 1015 01a1 03       		.byte	0x3
+ 1016 01a2 00000000 		.4byte	Blob1
+ 1017 01a6 10       		.uleb128 0x10
+ 1018 01a7 F5000000 		.4byte	.LASF21
+ 1019 01ab 03       		.byte	0x3
+ 1020 01ac 27       		.byte	0x27
+ 1021 01ad 9D000000 		.4byte	0x9d
+ 1022 01b1 01       		.byte	0x1
+ 1023 01b2 05       		.byte	0x5
+ 1024 01b3 03       		.byte	0x3
+ 1025 01b4 00000000 		.4byte	Blob2
+ 1026 01b8 10       		.uleb128 0x10
+ 1027 01b9 FB000000 		.4byte	.LASF22
+ 1028 01bd 03       		.byte	0x3
+ 1029 01be 27       		.byte	0x27
+ 1030 01bf 9D000000 		.4byte	0x9d
+ 1031 01c3 01       		.byte	0x1
+ 1032 01c4 05       		.byte	0x5
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 22
+
+
+ 1033 01c5 03       		.byte	0x3
+ 1034 01c6 00000000 		.4byte	Blob3
+ 1035 01ca 10       		.uleb128 0x10
+ 1036 01cb 01010000 		.4byte	.LASF23
+ 1037 01cf 03       		.byte	0x3
+ 1038 01d0 27       		.byte	0x27
+ 1039 01d1 9D000000 		.4byte	0x9d
+ 1040 01d5 01       		.byte	0x1
+ 1041 01d6 05       		.byte	0x5
+ 1042 01d7 03       		.byte	0x3
+ 1043 01d8 00000000 		.4byte	Blob4
+ 1044 01dc 10       		.uleb128 0x10
+ 1045 01dd 5A010000 		.4byte	.LASF24
+ 1046 01e1 03       		.byte	0x3
+ 1047 01e2 2E       		.byte	0x2e
+ 1048 01e3 6F000000 		.4byte	0x6f
+ 1049 01e7 01       		.byte	0x1
+ 1050 01e8 05       		.byte	0x5
+ 1051 01e9 03       		.byte	0x3
+ 1052 01ea 00000000 		.4byte	IRsensorAddress
+ 1053 01ee 10       		.uleb128 0x10
+ 1054 01ef 15000000 		.4byte	.LASF25
+ 1055 01f3 03       		.byte	0x3
+ 1056 01f4 2F       		.byte	0x2f
+ 1057 01f5 6F000000 		.4byte	0x6f
+ 1058 01f9 01       		.byte	0x1
+ 1059 01fa 05       		.byte	0x5
+ 1060 01fb 03       		.byte	0x3
+ 1061 01fc 00000000 		.4byte	IRslaveAddress
+ 1062 0200 10       		.uleb128 0x10
+ 1063 0201 24000000 		.4byte	.LASF26
+ 1064 0205 03       		.byte	0x3
+ 1065 0206 30       		.byte	0x30
+ 1066 0207 84010000 		.4byte	0x184
+ 1067 020b 01       		.byte	0x1
+ 1068 020c 05       		.byte	0x5
+ 1069 020d 03       		.byte	0x3
+ 1070 020e 00000000 		.4byte	data_buf
+ 1071 0212 11       		.uleb128 0x11
+ 1072 0213 6900     		.ascii	"i\000"
+ 1073 0215 03       		.byte	0x3
+ 1074 0216 31       		.byte	0x31
+ 1075 0217 61000000 		.4byte	0x61
+ 1076 021b 01       		.byte	0x1
+ 1077 021c 05       		.byte	0x5
+ 1078 021d 03       		.byte	0x3
+ 1079 021e 00000000 		.4byte	i
+ 1080 0222 11       		.uleb128 0x11
+ 1081 0223 7300     		.ascii	"s\000"
+ 1082 0225 03       		.byte	0x3
+ 1083 0226 32       		.byte	0x32
+ 1084 0227 61000000 		.4byte	0x61
+ 1085 022b 01       		.byte	0x1
+ 1086 022c 05       		.byte	0x5
+ 1087 022d 03       		.byte	0x3
+ 1088 022e 00000000 		.4byte	s
+ 1089 0232 10       		.uleb128 0x10
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 23
+
+
+ 1090 0233 B8000000 		.4byte	.LASF27
+ 1091 0237 03       		.byte	0x3
+ 1092 0238 35       		.byte	0x35
+ 1093 0239 6F000000 		.4byte	0x6f
+ 1094 023d 01       		.byte	0x1
+ 1095 023e 05       		.byte	0x5
+ 1096 023f 03       		.byte	0x3
+ 1097 0240 00000000 		.4byte	blobcount
+ 1098 0244 00       		.byte	0x0
+ 1099              		.section	.debug_abbrev
+ 1100 0000 01       		.uleb128 0x1
+ 1101 0001 11       		.uleb128 0x11
+ 1102 0002 01       		.byte	0x1
+ 1103 0003 25       		.uleb128 0x25
+ 1104 0004 0E       		.uleb128 0xe
+ 1105 0005 13       		.uleb128 0x13
+ 1106 0006 0B       		.uleb128 0xb
+ 1107 0007 03       		.uleb128 0x3
+ 1108 0008 0E       		.uleb128 0xe
+ 1109 0009 1B       		.uleb128 0x1b
+ 1110 000a 0E       		.uleb128 0xe
+ 1111 000b 11       		.uleb128 0x11
+ 1112 000c 01       		.uleb128 0x1
+ 1113 000d 52       		.uleb128 0x52
+ 1114 000e 01       		.uleb128 0x1
+ 1115 000f 55       		.uleb128 0x55
+ 1116 0010 06       		.uleb128 0x6
+ 1117 0011 10       		.uleb128 0x10
+ 1118 0012 06       		.uleb128 0x6
+ 1119 0013 00       		.byte	0x0
+ 1120 0014 00       		.byte	0x0
+ 1121 0015 02       		.uleb128 0x2
+ 1122 0016 24       		.uleb128 0x24
+ 1123 0017 00       		.byte	0x0
+ 1124 0018 0B       		.uleb128 0xb
+ 1125 0019 0B       		.uleb128 0xb
+ 1126 001a 3E       		.uleb128 0x3e
+ 1127 001b 0B       		.uleb128 0xb
+ 1128 001c 03       		.uleb128 0x3
+ 1129 001d 0E       		.uleb128 0xe
+ 1130 001e 00       		.byte	0x0
+ 1131 001f 00       		.byte	0x0
+ 1132 0020 03       		.uleb128 0x3
+ 1133 0021 24       		.uleb128 0x24
+ 1134 0022 00       		.byte	0x0
+ 1135 0023 0B       		.uleb128 0xb
+ 1136 0024 0B       		.uleb128 0xb
+ 1137 0025 3E       		.uleb128 0x3e
+ 1138 0026 0B       		.uleb128 0xb
+ 1139 0027 03       		.uleb128 0x3
+ 1140 0028 08       		.uleb128 0x8
+ 1141 0029 00       		.byte	0x0
+ 1142 002a 00       		.byte	0x0
+ 1143 002b 04       		.uleb128 0x4
+ 1144 002c 16       		.uleb128 0x16
+ 1145 002d 00       		.byte	0x0
+ 1146 002e 03       		.uleb128 0x3
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 24
+
+
+ 1147 002f 0E       		.uleb128 0xe
+ 1148 0030 3A       		.uleb128 0x3a
+ 1149 0031 0B       		.uleb128 0xb
+ 1150 0032 3B       		.uleb128 0x3b
+ 1151 0033 0B       		.uleb128 0xb
+ 1152 0034 49       		.uleb128 0x49
+ 1153 0035 13       		.uleb128 0x13
+ 1154 0036 00       		.byte	0x0
+ 1155 0037 00       		.byte	0x0
+ 1156 0038 05       		.uleb128 0x5
+ 1157 0039 24       		.uleb128 0x24
+ 1158 003a 00       		.byte	0x0
+ 1159 003b 0B       		.uleb128 0xb
+ 1160 003c 0B       		.uleb128 0xb
+ 1161 003d 3E       		.uleb128 0x3e
+ 1162 003e 0B       		.uleb128 0xb
+ 1163 003f 00       		.byte	0x0
+ 1164 0040 00       		.byte	0x0
+ 1165 0041 06       		.uleb128 0x6
+ 1166 0042 13       		.uleb128 0x13
+ 1167 0043 01       		.byte	0x1
+ 1168 0044 03       		.uleb128 0x3
+ 1169 0045 0E       		.uleb128 0xe
+ 1170 0046 0B       		.uleb128 0xb
+ 1171 0047 0B       		.uleb128 0xb
+ 1172 0048 3A       		.uleb128 0x3a
+ 1173 0049 0B       		.uleb128 0xb
+ 1174 004a 3B       		.uleb128 0x3b
+ 1175 004b 0B       		.uleb128 0xb
+ 1176 004c 01       		.uleb128 0x1
+ 1177 004d 13       		.uleb128 0x13
+ 1178 004e 00       		.byte	0x0
+ 1179 004f 00       		.byte	0x0
+ 1180 0050 07       		.uleb128 0x7
+ 1181 0051 0D       		.uleb128 0xd
+ 1182 0052 00       		.byte	0x0
+ 1183 0053 03       		.uleb128 0x3
+ 1184 0054 08       		.uleb128 0x8
+ 1185 0055 3A       		.uleb128 0x3a
+ 1186 0056 0B       		.uleb128 0xb
+ 1187 0057 3B       		.uleb128 0x3b
+ 1188 0058 0B       		.uleb128 0xb
+ 1189 0059 49       		.uleb128 0x49
+ 1190 005a 13       		.uleb128 0x13
+ 1191 005b 38       		.uleb128 0x38
+ 1192 005c 0A       		.uleb128 0xa
+ 1193 005d 00       		.byte	0x0
+ 1194 005e 00       		.byte	0x0
+ 1195 005f 08       		.uleb128 0x8
+ 1196 0060 0D       		.uleb128 0xd
+ 1197 0061 00       		.byte	0x0
+ 1198 0062 03       		.uleb128 0x3
+ 1199 0063 0E       		.uleb128 0xe
+ 1200 0064 3A       		.uleb128 0x3a
+ 1201 0065 0B       		.uleb128 0xb
+ 1202 0066 3B       		.uleb128 0x3b
+ 1203 0067 0B       		.uleb128 0xb
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 25
+
+
+ 1204 0068 49       		.uleb128 0x49
+ 1205 0069 13       		.uleb128 0x13
+ 1206 006a 38       		.uleb128 0x38
+ 1207 006b 0A       		.uleb128 0xa
+ 1208 006c 00       		.byte	0x0
+ 1209 006d 00       		.byte	0x0
+ 1210 006e 09       		.uleb128 0x9
+ 1211 006f 2E       		.uleb128 0x2e
+ 1212 0070 01       		.byte	0x1
+ 1213 0071 3F       		.uleb128 0x3f
+ 1214 0072 0C       		.uleb128 0xc
+ 1215 0073 03       		.uleb128 0x3
+ 1216 0074 0E       		.uleb128 0xe
+ 1217 0075 3A       		.uleb128 0x3a
+ 1218 0076 0B       		.uleb128 0xb
+ 1219 0077 3B       		.uleb128 0x3b
+ 1220 0078 0B       		.uleb128 0xb
+ 1221 0079 27       		.uleb128 0x27
+ 1222 007a 0C       		.uleb128 0xc
+ 1223 007b 11       		.uleb128 0x11
+ 1224 007c 01       		.uleb128 0x1
+ 1225 007d 12       		.uleb128 0x12
+ 1226 007e 01       		.uleb128 0x1
+ 1227 007f 40       		.uleb128 0x40
+ 1228 0080 06       		.uleb128 0x6
+ 1229 0081 01       		.uleb128 0x1
+ 1230 0082 13       		.uleb128 0x13
+ 1231 0083 00       		.byte	0x0
+ 1232 0084 00       		.byte	0x0
+ 1233 0085 0A       		.uleb128 0xa
+ 1234 0086 05       		.uleb128 0x5
+ 1235 0087 00       		.byte	0x0
+ 1236 0088 03       		.uleb128 0x3
+ 1237 0089 08       		.uleb128 0x8
+ 1238 008a 3A       		.uleb128 0x3a
+ 1239 008b 0B       		.uleb128 0xb
+ 1240 008c 3B       		.uleb128 0x3b
+ 1241 008d 0B       		.uleb128 0xb
+ 1242 008e 49       		.uleb128 0x49
+ 1243 008f 13       		.uleb128 0x13
+ 1244 0090 02       		.uleb128 0x2
+ 1245 0091 0A       		.uleb128 0xa
+ 1246 0092 00       		.byte	0x0
+ 1247 0093 00       		.byte	0x0
+ 1248 0094 0B       		.uleb128 0xb
+ 1249 0095 34       		.uleb128 0x34
+ 1250 0096 00       		.byte	0x0
+ 1251 0097 03       		.uleb128 0x3
+ 1252 0098 0E       		.uleb128 0xe
+ 1253 0099 3A       		.uleb128 0x3a
+ 1254 009a 0B       		.uleb128 0xb
+ 1255 009b 3B       		.uleb128 0x3b
+ 1256 009c 0B       		.uleb128 0xb
+ 1257 009d 49       		.uleb128 0x49
+ 1258 009e 13       		.uleb128 0x13
+ 1259 009f 02       		.uleb128 0x2
+ 1260 00a0 0A       		.uleb128 0xa
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 26
+
+
+ 1261 00a1 00       		.byte	0x0
+ 1262 00a2 00       		.byte	0x0
+ 1263 00a3 0C       		.uleb128 0xc
+ 1264 00a4 2E       		.uleb128 0x2e
+ 1265 00a5 00       		.byte	0x0
+ 1266 00a6 3F       		.uleb128 0x3f
+ 1267 00a7 0C       		.uleb128 0xc
+ 1268 00a8 03       		.uleb128 0x3
+ 1269 00a9 0E       		.uleb128 0xe
+ 1270 00aa 3A       		.uleb128 0x3a
+ 1271 00ab 0B       		.uleb128 0xb
+ 1272 00ac 3B       		.uleb128 0x3b
+ 1273 00ad 0B       		.uleb128 0xb
+ 1274 00ae 27       		.uleb128 0x27
+ 1275 00af 0C       		.uleb128 0xc
+ 1276 00b0 11       		.uleb128 0x11
+ 1277 00b1 01       		.uleb128 0x1
+ 1278 00b2 12       		.uleb128 0x12
+ 1279 00b3 01       		.uleb128 0x1
+ 1280 00b4 40       		.uleb128 0x40
+ 1281 00b5 06       		.uleb128 0x6
+ 1282 00b6 00       		.byte	0x0
+ 1283 00b7 00       		.byte	0x0
+ 1284 00b8 0D       		.uleb128 0xd
+ 1285 00b9 2E       		.uleb128 0x2e
+ 1286 00ba 01       		.byte	0x1
+ 1287 00bb 3F       		.uleb128 0x3f
+ 1288 00bc 0C       		.uleb128 0xc
+ 1289 00bd 03       		.uleb128 0x3
+ 1290 00be 0E       		.uleb128 0xe
+ 1291 00bf 3A       		.uleb128 0x3a
+ 1292 00c0 0B       		.uleb128 0xb
+ 1293 00c1 3B       		.uleb128 0x3b
+ 1294 00c2 0B       		.uleb128 0xb
+ 1295 00c3 27       		.uleb128 0x27
+ 1296 00c4 0C       		.uleb128 0xc
+ 1297 00c5 49       		.uleb128 0x49
+ 1298 00c6 13       		.uleb128 0x13
+ 1299 00c7 11       		.uleb128 0x11
+ 1300 00c8 01       		.uleb128 0x1
+ 1301 00c9 12       		.uleb128 0x12
+ 1302 00ca 01       		.uleb128 0x1
+ 1303 00cb 40       		.uleb128 0x40
+ 1304 00cc 06       		.uleb128 0x6
+ 1305 00cd 01       		.uleb128 0x1
+ 1306 00ce 13       		.uleb128 0x13
+ 1307 00cf 00       		.byte	0x0
+ 1308 00d0 00       		.byte	0x0
+ 1309 00d1 0E       		.uleb128 0xe
+ 1310 00d2 01       		.uleb128 0x1
+ 1311 00d3 01       		.byte	0x1
+ 1312 00d4 49       		.uleb128 0x49
+ 1313 00d5 13       		.uleb128 0x13
+ 1314 00d6 01       		.uleb128 0x1
+ 1315 00d7 13       		.uleb128 0x13
+ 1316 00d8 00       		.byte	0x0
+ 1317 00d9 00       		.byte	0x0
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 27
+
+
+ 1318 00da 0F       		.uleb128 0xf
+ 1319 00db 21       		.uleb128 0x21
+ 1320 00dc 00       		.byte	0x0
+ 1321 00dd 49       		.uleb128 0x49
+ 1322 00de 13       		.uleb128 0x13
+ 1323 00df 2F       		.uleb128 0x2f
+ 1324 00e0 0B       		.uleb128 0xb
+ 1325 00e1 00       		.byte	0x0
+ 1326 00e2 00       		.byte	0x0
+ 1327 00e3 10       		.uleb128 0x10
+ 1328 00e4 34       		.uleb128 0x34
+ 1329 00e5 00       		.byte	0x0
+ 1330 00e6 03       		.uleb128 0x3
+ 1331 00e7 0E       		.uleb128 0xe
+ 1332 00e8 3A       		.uleb128 0x3a
+ 1333 00e9 0B       		.uleb128 0xb
+ 1334 00ea 3B       		.uleb128 0x3b
+ 1335 00eb 0B       		.uleb128 0xb
+ 1336 00ec 49       		.uleb128 0x49
+ 1337 00ed 13       		.uleb128 0x13
+ 1338 00ee 3F       		.uleb128 0x3f
+ 1339 00ef 0C       		.uleb128 0xc
+ 1340 00f0 02       		.uleb128 0x2
+ 1341 00f1 0A       		.uleb128 0xa
+ 1342 00f2 00       		.byte	0x0
+ 1343 00f3 00       		.byte	0x0
+ 1344 00f4 11       		.uleb128 0x11
+ 1345 00f5 34       		.uleb128 0x34
+ 1346 00f6 00       		.byte	0x0
+ 1347 00f7 03       		.uleb128 0x3
+ 1348 00f8 08       		.uleb128 0x8
+ 1349 00f9 3A       		.uleb128 0x3a
+ 1350 00fa 0B       		.uleb128 0xb
+ 1351 00fb 3B       		.uleb128 0x3b
+ 1352 00fc 0B       		.uleb128 0xb
+ 1353 00fd 49       		.uleb128 0x49
+ 1354 00fe 13       		.uleb128 0x13
+ 1355 00ff 3F       		.uleb128 0x3f
+ 1356 0100 0C       		.uleb128 0xc
+ 1357 0101 02       		.uleb128 0x2
+ 1358 0102 0A       		.uleb128 0xa
+ 1359 0103 00       		.byte	0x0
+ 1360 0104 00       		.byte	0x0
+ 1361 0105 00       		.byte	0x0
+ 1362              		.section	.debug_pubnames,"",%progbits
+ 1363 0000 C0000000 		.4byte	0xc0
+ 1364 0004 0200     		.2byte	0x2
+ 1365 0006 00000000 		.4byte	.Ldebug_info0
+ 1366 000a 45020000 		.4byte	0x245
+ 1367 000e DE000000 		.4byte	0xde
+ 1368 0012 57726974 		.ascii	"Write_2bytes\000"
+ 1368      655F3262 
+ 1368      79746573 
+ 1368      00
+ 1369 001f 20010000 		.4byte	0x120
+ 1370 0023 43616D65 		.ascii	"Camera\000"
+ 1370      726100
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 28
+
+
+ 1371 002a 35010000 		.4byte	0x135
+ 1372 002e 43616D65 		.ascii	"Camera_init\000"
+ 1372      72615F69 
+ 1372      6E697400 
+ 1373 003a 4A010000 		.4byte	0x14a
+ 1374 003e 43616D65 		.ascii	"Camera_read\000"
+ 1374      72615F72 
+ 1374      65616400 
+ 1375 004a 94010000 		.4byte	0x194
+ 1376 004e 426C6F62 		.ascii	"Blob1\000"
+ 1376      3100
+ 1377 0054 A6010000 		.4byte	0x1a6
+ 1378 0058 426C6F62 		.ascii	"Blob2\000"
+ 1378      3200
+ 1379 005e B8010000 		.4byte	0x1b8
+ 1380 0062 426C6F62 		.ascii	"Blob3\000"
+ 1380      3300
+ 1381 0068 CA010000 		.4byte	0x1ca
+ 1382 006c 426C6F62 		.ascii	"Blob4\000"
+ 1382      3400
+ 1383 0072 DC010000 		.4byte	0x1dc
+ 1384 0076 49527365 		.ascii	"IRsensorAddress\000"
+ 1384      6E736F72 
+ 1384      41646472 
+ 1384      65737300 
+ 1385 0086 EE010000 		.4byte	0x1ee
+ 1386 008a 4952736C 		.ascii	"IRslaveAddress\000"
+ 1386      61766541 
+ 1386      64647265 
+ 1386      737300
+ 1387 0099 00020000 		.4byte	0x200
+ 1388 009d 64617461 		.ascii	"data_buf\000"
+ 1388      5F627566 
+ 1388      00
+ 1389 00a6 12020000 		.4byte	0x212
+ 1390 00aa 6900     		.ascii	"i\000"
+ 1391 00ac 22020000 		.4byte	0x222
+ 1392 00b0 7300     		.ascii	"s\000"
+ 1393 00b2 32020000 		.4byte	0x232
+ 1394 00b6 626C6F62 		.ascii	"blobcount\000"
+ 1394      636F756E 
+ 1394      7400
+ 1395 00c0 00000000 		.4byte	0x0
+ 1396              		.section	.debug_aranges,"",%progbits
+ 1397 0000 34000000 		.4byte	0x34
+ 1398 0004 0200     		.2byte	0x2
+ 1399 0006 00000000 		.4byte	.Ldebug_info0
+ 1400 000a 04       		.byte	0x4
+ 1401 000b 00       		.byte	0x0
+ 1402 000c 0000     		.2byte	0x0
+ 1403 000e 0000     		.2byte	0x0
+ 1404 0010 00000000 		.4byte	.LFB20
+ 1405 0014 94000000 		.4byte	.LFE20-.LFB20
+ 1406 0018 00000000 		.4byte	.LFB21
+ 1407 001c 08000000 		.4byte	.LFE21-.LFB21
+ 1408 0020 00000000 		.4byte	.LFB22
+ 1409 0024 B4000000 		.4byte	.LFE22-.LFB22
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 29
+
+
+ 1410 0028 00000000 		.4byte	.LFB23
+ 1411 002c D4020000 		.4byte	.LFE23-.LFB23
+ 1412 0030 00000000 		.4byte	0x0
+ 1413 0034 00000000 		.4byte	0x0
+ 1414              		.section	.debug_ranges,"",%progbits
+ 1415              	.Ldebug_ranges0:
+ 1416 0000 00000000 		.4byte	.Ltext0
+ 1417 0004 00000000 		.4byte	.Letext0
+ 1418 0008 00000000 		.4byte	.LFB20
+ 1419 000c 94000000 		.4byte	.LFE20
+ 1420 0010 00000000 		.4byte	.LFB21
+ 1421 0014 08000000 		.4byte	.LFE21
+ 1422 0018 00000000 		.4byte	.LFB22
+ 1423 001c B4000000 		.4byte	.LFE22
+ 1424 0020 00000000 		.4byte	.LFB23
+ 1425 0024 D4020000 		.4byte	.LFE23
+ 1426 0028 00000000 		.4byte	0x0
+ 1427 002c 00000000 		.4byte	0x0
+ 1428              		.section	.debug_str,"MS",%progbits,1
+ 1429              	.LASF6:
+ 1430 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1430      206C6F6E 
+ 1430      6720696E 
+ 1430      7400
+ 1431              	.LASF16:
+ 1432 000e 43616D65 		.ascii	"Camera\000"
+ 1432      726100
+ 1433              	.LASF25:
+ 1434 0015 4952736C 		.ascii	"IRslaveAddress\000"
+ 1434      61766541 
+ 1434      64647265 
+ 1434      737300
+ 1435              	.LASF26:
+ 1436 0024 64617461 		.ascii	"data_buf\000"
+ 1436      5F627566 
+ 1436      00
+ 1437              	.LASF3:
+ 1438 002d 73686F72 		.ascii	"short unsigned int\000"
+ 1438      7420756E 
+ 1438      7369676E 
+ 1438      65642069 
+ 1438      6E7400
+ 1439              	.LASF32:
+ 1440 0040 57726974 		.ascii	"Write_2bytes\000"
+ 1440      655F3262 
+ 1440      79746573 
+ 1440      00
+ 1441              	.LASF18:
+ 1442 004d 73746174 		.ascii	"status\000"
+ 1442      757300
+ 1443              	.LASF19:
+ 1444 0054 72786461 		.ascii	"rxdata\000"
+ 1444      746100
+ 1445              	.LASF31:
+ 1446 005b 426C6F62 		.ascii	"Blob\000"
+ 1446      00
+ 1447              	.LASF11:
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 30
+
+
+ 1448 0060 666C6F61 		.ascii	"float\000"
+ 1448      7400
+ 1449              	.LASF30:
+ 1450 0066 433A5C6D 		.ascii	"C:\\myProjects\\Hobby\\100_day_100_projects\\Mine\\"
+ 1450      7950726F 
+ 1450      6A656374 
+ 1450      735C486F 
+ 1450      6262795C 
+ 1451 0094 50536F43 		.ascii	"PSoC_Eye\\PSoC_Eye.cydsn\000"
+ 1451      5F457965 
+ 1451      5C50536F 
+ 1451      435F4579 
+ 1451      652E6379 
+ 1452              	.LASF33:
+ 1453 00ac 43616D65 		.ascii	"Camera_read\000"
+ 1453      72615F72 
+ 1453      65616400 
+ 1454              	.LASF27:
+ 1455 00b8 626C6F62 		.ascii	"blobcount\000"
+ 1455      636F756E 
+ 1455      7400
+ 1456              	.LASF5:
+ 1457 00c2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1457      20756E73 
+ 1457      69676E65 
+ 1457      6420696E 
+ 1457      7400
+ 1458              	.LASF9:
+ 1459 00d4 75696E74 		.ascii	"uint8\000"
+ 1459      3800
+ 1460              	.LASF1:
+ 1461 00da 756E7369 		.ascii	"unsigned char\000"
+ 1461      676E6564 
+ 1461      20636861 
+ 1461      7200
+ 1462              	.LASF12:
+ 1463 00e8 646F7562 		.ascii	"double\000"
+ 1463      6C6500
+ 1464              	.LASF20:
+ 1465 00ef 426C6F62 		.ascii	"Blob1\000"
+ 1465      3100
+ 1466              	.LASF21:
+ 1467 00f5 426C6F62 		.ascii	"Blob2\000"
+ 1467      3200
+ 1468              	.LASF22:
+ 1469 00fb 426C6F62 		.ascii	"Blob3\000"
+ 1469      3300
+ 1470              	.LASF23:
+ 1471 0101 426C6F62 		.ascii	"Blob4\000"
+ 1471      3400
+ 1472              	.LASF10:
+ 1473 0107 75696E74 		.ascii	"uint32\000"
+ 1473      333200
+ 1474              	.LASF8:
+ 1475 010e 756E7369 		.ascii	"unsigned int\000"
+ 1475      676E6564 
+ 1475      20696E74 
+ARM GAS  C:\Users\srvs\AppData\Local\Temp\ccZfANit.s 			page 31
+
+
+ 1475      00
+ 1476              	.LASF7:
+ 1477 011b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1477      206C6F6E 
+ 1477      6720756E 
+ 1477      7369676E 
+ 1477      65642069 
+ 1478              	.LASF29:
+ 1479 0132 2E5C4361 		.ascii	".\\Camera.c\000"
+ 1479      6D657261 
+ 1479      2E6300
+ 1480              	.LASF14:
+ 1481 013d 53697A65 		.ascii	"Size\000"
+ 1481      00
+ 1482              	.LASF15:
+ 1483 0142 6E756D62 		.ascii	"number\000"
+ 1483      657200
+ 1484              	.LASF28:
+ 1485 0149 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 1485      4320342E 
+ 1485      342E3100 
+ 1486              	.LASF13:
+ 1487 0155 63686172 		.ascii	"char\000"
+ 1487      00
+ 1488              	.LASF24:
+ 1489 015a 49527365 		.ascii	"IRsensorAddress\000"
+ 1489      6E736F72 
+ 1489      41646472 
+ 1489      65737300 
+ 1490              	.LASF2:
+ 1491 016a 73686F72 		.ascii	"short int\000"
+ 1491      7420696E 
+ 1491      7400
+ 1492              	.LASF17:
+ 1493 0174 43616D65 		.ascii	"Camera_init\000"
+ 1493      72615F69 
+ 1493      6E697400 
+ 1494              	.LASF4:
+ 1495 0180 6C6F6E67 		.ascii	"long int\000"
+ 1495      20696E74 
+ 1495      00
+ 1496              	.LASF0:
+ 1497 0189 7369676E 		.ascii	"signed char\000"
+ 1497      65642063 
+ 1497      68617200 
+ 1498              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

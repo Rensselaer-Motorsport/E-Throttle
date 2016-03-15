@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
   29:.\Generated_Source\PSoC5/APPS_ADC.c **** 
   30:.\Generated_Source\PSoC5/APPS_ADC.c **** 
   31:.\Generated_Source\PSoC5/APPS_ADC.c **** /****************************************************************************
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/APPS_ADC.c **** * Function Name: APPS_ADC_Disable()
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
   58:.\Generated_Source\PSoC5/APPS_ADC.c **** 
   59:.\Generated_Source\PSoC5/APPS_ADC.c ****     (void) CyDmaChDisable(APPS_ADC_finalChan);
   55              		.loc 1 59 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 3
 
 
   56 0020 7078     		ldrb	r0, [r6, #1]	@ zero_extendqisi2
@@ -136,7 +136,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
   66              	.L3:
   67              		.align	2
   68              	.L2:
-  69 0030 71640040 		.word	1073767537
+  69 0030 7B640040 		.word	1073767547
   70 0034 00000000 		.word	.LANCHOR0
   71 0038 00000000 		.word	.LANCHOR1
   72              		.cfi_endproc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
   85              		@ args = 0, pretend = 0, frame = 0
   86              		@ frame_needed = 0, uses_anonymous_args = 0
   87 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 4
 
 
   88              		.cfi_def_cfa_offset 8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  129              		.thumb_func
  130              		.type	APPS_ADC_Enable, %function
  131              	APPS_ADC_Enable:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 5
 
 
  132              	.LFB2:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  132:.\Generated_Source\PSoC5/APPS_ADC.c ****     
  133:.\Generated_Source\PSoC5/APPS_ADC.c ****     /* Provides initialization procedure for the TempBuf DMA
  134:.\Generated_Source\PSoC5/APPS_ADC.c ****     * Configure this Td as follows:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 6
 
 
  135:.\Generated_Source\PSoC5/APPS_ADC.c ****     *  - The TD is looping on itself
@@ -339,7 +339,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  173 0030 2E1D     		adds	r6, r5, #4
  174 0032 B6B2     		uxth	r6, r6
  175 0034 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 176 0036 45F6A231 		movw	r1, #23458
+ 176 0036 45F6A031 		movw	r1, #23456
  177 003a 3246     		mov	r2, r6
  178 003c FFF7FEFF 		bl	CyDmaTdSetAddress
  179              	.LVL12:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  156:.\Generated_Source\PSoC5/APPS_ADC.c ****     * Configure this Td as follows:
  157:.\Generated_Source\PSoC5/APPS_ADC.c ****     *  - The TD is looping on itself
  158:.\Generated_Source\PSoC5/APPS_ADC.c ****     *  - Increment the source and destination address
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 7
 
 
  159:.\Generated_Source\PSoC5/APPS_ADC.c ****     */
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  178:.\Generated_Source\PSoC5/APPS_ADC.c ****     (void) CyDmaChEnable(APPS_ADC_finalChan, 1u);
  220              		.loc 1 178 0
  221 0080 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 8
 
 
  222 0082 0121     		movs	r1, #1
@@ -468,8 +468,8 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  253 00b4 00000000 		.word	.LANCHOR0
  254 00b8 00000000 		.word	.LANCHOR1
  255 00bc 00000000 		.word	APPS_ADC_finalArray
- 256 00c0 93640040 		.word	1073767571
- 257 00c4 71640040 		.word	1073767537
+ 256 00c0 9C640040 		.word	1073767580
+ 257 00c4 7B640040 		.word	1073767547
  258 00c8 80E200E0 		.word	-536812928
  259              		.cfi_endproc
  260              	.LFE2:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  263              		.align	2
  264              		.global	APPS_ADC_Start
  265              		.thumb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 9
 
 
  266              		.thumb_func
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  289              	.L13:
  223:.\Generated_Source\PSoC5/APPS_ADC.c ****     }
  224:.\Generated_Source\PSoC5/APPS_ADC.c **** 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 10
 
 
  225:.\Generated_Source\PSoC5/APPS_ADC.c ****     APPS_ADC_Enable();
@@ -558,7 +558,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  301              		.align	2
  302              	.L14:
  303 0020 00000000 		.word	.LANCHOR0
- 304 0024 62640040 		.word	1073767522
+ 304 0024 6F640040 		.word	1073767535
  305              		.cfi_endproc
  306              	.LFE3:
  307              		.size	APPS_ADC_Start, .-APPS_ADC_Start
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  253:.\Generated_Source\PSoC5/APPS_ADC.c **** {
  316              		.loc 1 253 0
  317              		.cfi_startproc
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 11
 
 
  318              		@ args = 0, pretend = 0, frame = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  342              		.loc 1 283 0
  343              		.cfi_startproc
  344              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 12
 
 
  345              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -675,7 +675,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  353              	.L19:
  354              		.align	2
  355              	.L18:
- 356 000c 71640040 		.word	1073767537
+ 356 000c 7B640040 		.word	1073767547
  357              		.cfi_endproc
  358              	.LFE5:
  359              		.size	APPS_ADC_StartConvert, .-APPS_ADC_StartConvert
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  315:.\Generated_Source\PSoC5/APPS_ADC.c ****     *  input (Hardware trigger).
  316:.\Generated_Source\PSoC5/APPS_ADC.c ****     *
  317:.\Generated_Source\PSoC5/APPS_ADC.c ****     * Reentrant:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 13
 
 
  318:.\Generated_Source\PSoC5/APPS_ADC.c ****     *  No.
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  349:.\Generated_Source\PSoC5/APPS_ADC.c **** *
  350:.\Generated_Source\PSoC5/APPS_ADC.c **** * Side Effects:
  351:.\Generated_Source\PSoC5/APPS_ADC.c **** *  This function reads the end of conversion status, which is cleared on read
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 14
 
 
  352:.\Generated_Source\PSoC5/APPS_ADC.c **** *
@@ -822,7 +822,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  413              	.L26:
  414 0012 00BF     		.align	2
  415              	.L25:
- 416 0014 62640040 		.word	1073767522
+ 416 0014 6F640040 		.word	1073767535
  417              		.cfi_endproc
  418              	.LFE7:
  419              		.size	APPS_ADC_IsEndConversion, .-APPS_ADC_IsEndConversion
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  369:.\Generated_Source\PSoC5/APPS_ADC.c **** 
  370:.\Generated_Source\PSoC5/APPS_ADC.c **** /*******************************************************************************
  371:.\Generated_Source\PSoC5/APPS_ADC.c **** * Function Name: APPS_ADC_GetResult16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 15
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 15
 
 
  372:.\Generated_Source\PSoC5/APPS_ADC.c **** ********************************************************************************
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  459              	APPS_ADC_GetAdcResult:
  460              	.LFB9:
  395:.\Generated_Source\PSoC5/APPS_ADC.c **** 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 16
 
 
  396:.\Generated_Source\PSoC5/APPS_ADC.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  426:.\Generated_Source\PSoC5/APPS_ADC.c **** *
  427:.\Generated_Source\PSoC5/APPS_ADC.c **** * Summary:
  428:.\Generated_Source\PSoC5/APPS_ADC.c **** *  Sets the ADC offset which is used by the functions _CountsTo_uVolts(),
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 17
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 17
 
 
  429:.\Generated_Source\PSoC5/APPS_ADC.c **** *  _CountsTo_mVolts() and _CountsTo_Volts() to substract the offset from the
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  457:.\Generated_Source\PSoC5/APPS_ADC.c **** *
  458:.\Generated_Source\PSoC5/APPS_ADC.c **** * Summary:
  459:.\Generated_Source\PSoC5/APPS_ADC.c **** *  Sets the Relution of the SAR.
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 18
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 18
 
 
  460:.\Generated_Source\PSoC5/APPS_ADC.c **** *  This function does not affect the actual conversion with PSoC5 ES1 silicon.
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  531              		.thumb_func
  532              		.type	APPS_ADC_SetGain, %function
  533              	APPS_ADC_SetGain:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 19
 
 
  534              	.LFB12:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  521:.\Generated_Source\PSoC5/APPS_ADC.c **** 
  522:.\Generated_Source\PSoC5/APPS_ADC.c **** 
  523:.\Generated_Source\PSoC5/APPS_ADC.c **** /*******************************************************************************
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 20
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 20
 
 
  524:.\Generated_Source\PSoC5/APPS_ADC.c **** * Function Name: APPS_ADC_SetScaledGain
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  554:.\Generated_Source\PSoC5/APPS_ADC.c **** /*******************************************************************************
  555:.\Generated_Source\PSoC5/APPS_ADC.c **** * Function Name: APPS_ADC_CountsTo_mVolts
  556:.\Generated_Source\PSoC5/APPS_ADC.c **** ********************************************************************************
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 21
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 21
 
 
  557:.\Generated_Source\PSoC5/APPS_ADC.c **** *
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  586:.\Generated_Source\PSoC5/APPS_ADC.c **** *
  587:.\Generated_Source\PSoC5/APPS_ADC.c **** * Parameters:
  588:.\Generated_Source\PSoC5/APPS_ADC.c **** *  adcCounts: Result from the ADC conversion
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 22
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 22
 
 
  589:.\Generated_Source\PSoC5/APPS_ADC.c **** *
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  618:.\Generated_Source\PSoC5/APPS_ADC.c **** *
  619:.\Generated_Source\PSoC5/APPS_ADC.c **** * Side Effects:
  620:.\Generated_Source\PSoC5/APPS_ADC.c **** *  None.
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 23
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 23
 
 
  621:.\Generated_Source\PSoC5/APPS_ADC.c **** *
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  680              		.type	APPS_ADC_initVar, %object
  681              		.size	APPS_ADC_initVar, 4
  682              	APPS_ADC_initVar:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 24
 
 
  683 0008 00000000 		.space	4
@@ -1400,45 +1400,45 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  699 000b 01       		.uleb128 0x1
  700 000c 52000000 		.4byte	.LASF80
  701 0010 01       		.byte	0x1
- 702 0011 50040000 		.4byte	.LASF81
- 703 0015 CE000000 		.4byte	.LASF82
+ 702 0011 4A040000 		.4byte	.LASF81
+ 703 0015 64020000 		.4byte	.LASF82
  704 0019 00000000 		.4byte	.Ldebug_ranges0+0
  705 001d 00000000 		.4byte	0
  706 0021 00000000 		.4byte	.Ldebug_line0
  707 0025 02       		.uleb128 0x2
  708 0026 01       		.byte	0x1
  709 0027 06       		.byte	0x6
- 710 0028 DA010000 		.4byte	.LASF0
+ 710 0028 92010000 		.4byte	.LASF0
  711 002c 02       		.uleb128 0x2
  712 002d 01       		.byte	0x1
  713 002e 08       		.byte	0x8
- 714 002f C4040000 		.4byte	.LASF1
+ 714 002f BE040000 		.4byte	.LASF1
  715 0033 02       		.uleb128 0x2
  716 0034 02       		.byte	0x2
  717 0035 05       		.byte	0x5
- 718 0036 E5040000 		.4byte	.LASF2
+ 718 0036 DF040000 		.4byte	.LASF2
  719 003a 02       		.uleb128 0x2
  720 003b 02       		.byte	0x2
  721 003c 07       		.byte	0x7
- 722 003d 2E030000 		.4byte	.LASF3
+ 722 003d 28030000 		.4byte	.LASF3
  723 0041 02       		.uleb128 0x2
  724 0042 04       		.byte	0x4
  725 0043 05       		.byte	0x5
- 726 0044 60020000 		.4byte	.LASF4
+ 726 0044 18020000 		.4byte	.LASF4
  727 0048 02       		.uleb128 0x2
  728 0049 04       		.byte	0x4
  729 004a 07       		.byte	0x7
- 730 004b 05030000 		.4byte	.LASF5
+ 730 004b FF020000 		.4byte	.LASF5
  731 004f 02       		.uleb128 0x2
  732 0050 08       		.byte	0x8
  733 0051 05       		.byte	0x5
- 734 0052 CC010000 		.4byte	.LASF6
+ 734 0052 84010000 		.4byte	.LASF6
  735 0056 02       		.uleb128 0x2
  736 0057 08       		.byte	0x8
  737 0058 07       		.byte	0x7
- 738 0059 65010000 		.4byte	.LASF7
+ 738 0059 1D010000 		.4byte	.LASF7
  739 005d 03       		.uleb128 0x3
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 25
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 25
 
 
  740 005e 04       		.byte	0x4
@@ -1447,9 +1447,9 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  743 0064 02       		.uleb128 0x2
  744 0065 04       		.byte	0x4
  745 0066 07       		.byte	0x7
- 746 0067 DC020000 		.4byte	.LASF8
+ 746 0067 D6020000 		.4byte	.LASF8
  747 006b 04       		.uleb128 0x4
- 748 006c 86020000 		.4byte	.LASF9
+ 748 006c 3E020000 		.4byte	.LASF9
  749 0070 02       		.byte	0x2
  750 0071 B4       		.byte	0xb4
  751 0072 2C000000 		.4byte	0x2c
@@ -1459,46 +1459,46 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  755 007c B5       		.byte	0xb5
  756 007d 3A000000 		.4byte	0x3a
  757 0081 04       		.uleb128 0x4
- 758 0082 A5020000 		.4byte	.LASF11
+ 758 0082 5D020000 		.4byte	.LASF11
  759 0086 02       		.byte	0x2
  760 0087 B6       		.byte	0xb6
  761 0088 48000000 		.4byte	0x48
  762 008c 04       		.uleb128 0x4
- 763 008d 02060000 		.4byte	.LASF12
+ 763 008d FC050000 		.4byte	.LASF12
  764 0091 02       		.byte	0x2
  765 0092 B8       		.byte	0xb8
  766 0093 33000000 		.4byte	0x33
  767 0097 04       		.uleb128 0x4
- 768 0098 FE010000 		.4byte	.LASF13
+ 768 0098 B6010000 		.4byte	.LASF13
  769 009c 02       		.byte	0x2
  770 009d B9       		.byte	0xb9
  771 009e 41000000 		.4byte	0x41
  772 00a2 04       		.uleb128 0x4
- 773 00a3 C5030000 		.4byte	.LASF14
+ 773 00a3 BF030000 		.4byte	.LASF14
  774 00a7 02       		.byte	0x2
  775 00a8 BA       		.byte	0xba
  776 00a9 AD000000 		.4byte	0xad
  777 00ad 02       		.uleb128 0x2
  778 00ae 04       		.byte	0x4
  779 00af 04       		.byte	0x4
- 780 00b0 4A040000 		.4byte	.LASF15
+ 780 00b0 44040000 		.4byte	.LASF15
  781 00b4 02       		.uleb128 0x2
  782 00b5 08       		.byte	0x8
  783 00b6 04       		.byte	0x4
- 784 00b7 8C020000 		.4byte	.LASF16
+ 784 00b7 44020000 		.4byte	.LASF16
  785 00bb 02       		.uleb128 0x2
  786 00bc 01       		.byte	0x1
  787 00bd 08       		.byte	0x8
- 788 00be 34050000 		.4byte	.LASF17
+ 788 00be 2E050000 		.4byte	.LASF17
  789 00c2 05       		.uleb128 0x5
- 790 00c3 1C060000 		.4byte	.LASF18
+ 790 00c3 16060000 		.4byte	.LASF18
  791 00c7 02       		.byte	0x2
  792 00c8 5601     		.2byte	0x156
  793 00ca 48000000 		.4byte	0x48
  794 00ce 05       		.uleb128 0x5
- 795 00cf A8040000 		.4byte	.LASF19
+ 795 00cf A2040000 		.4byte	.LASF19
  796 00d3 02       		.byte	0x2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 26
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 26
 
 
  797 00d4 5E01     		.2byte	0x15e
@@ -1506,14 +1506,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  799 00da 06       		.uleb128 0x6
  800 00db 6B000000 		.4byte	0x6b
  801 00df 05       		.uleb128 0x5
- 802 00e0 A6030000 		.4byte	.LASF20
+ 802 00e0 A0030000 		.4byte	.LASF20
  803 00e4 02       		.byte	0x2
  804 00e5 6001     		.2byte	0x160
  805 00e7 EB000000 		.4byte	0xeb
  806 00eb 06       		.uleb128 0x6
  807 00ec 81000000 		.4byte	0x81
  808 00f0 05       		.uleb128 0x5
- 809 00f1 39050000 		.4byte	.LASF21
+ 809 00f1 33050000 		.4byte	.LASF21
  810 00f5 02       		.byte	0x2
  811 00f6 7001     		.2byte	0x170
  812 00f8 FC000000 		.4byte	0xfc
@@ -1524,9 +1524,9 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  817 0103 02       		.uleb128 0x2
  818 0104 04       		.byte	0x4
  819 0105 07       		.byte	0x7
- 820 0106 CD030000 		.4byte	.LASF22
+ 820 0106 C7030000 		.4byte	.LASF22
  821 010a 09       		.uleb128 0x9
- 822 010b 1B020000 		.4byte	.LASF23
+ 822 010b D3010000 		.4byte	.LASF23
  823 010f 01       		.byte	0x1
  824 0110 33       		.byte	0x33
  825 0111 00000000 		.4byte	.LFB0
@@ -1548,7 +1548,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  841 013f EC050000 		.4byte	0x5ec
  842 0143 00       		.byte	0
  843 0144 09       		.uleb128 0x9
- 844 0145 7C010000 		.4byte	.LASF24
+ 844 0145 34010000 		.4byte	.LASF24
  845 0149 01       		.byte	0x1
  846 014a 53       		.byte	0x53
  847 014b 00000000 		.4byte	.LFB1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  851 0155 BE010000 		.4byte	0x1be
  852 0159 0B       		.uleb128 0xb
  853 015a 12000000 		.4byte	.LVL4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 27
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 27
 
 
  854 015e FD050000 		.4byte	0x5fd
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  908 01aa 45060000 		.4byte	0x645
  909 01ae 0D       		.uleb128 0xd
  910 01af 32000000 		.4byte	.LVL7
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 28
 
 
  911 01b3 56060000 		.4byte	0x656
@@ -1630,7 +1630,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  917 01bc 00       		.byte	0
  918 01bd 00       		.byte	0
  919 01be 09       		.uleb128 0x9
- 920 01bf CA050000 		.4byte	.LASF25
+ 920 01bf C4050000 		.4byte	.LASF25
  921 01c3 01       		.byte	0x1
  922 01c4 7B       		.byte	0x7b
  923 01c5 00000000 		.4byte	.LFB2
@@ -1639,13 +1639,13 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  926 01ce 9C       		.byte	0x9c
  927 01cf CA020000 		.4byte	0x2ca
  928 01d3 0E       		.uleb128 0xe
- 929 01d4 9F050000 		.4byte	.LASF26
+ 929 01d4 99050000 		.4byte	.LASF26
  930 01d8 01       		.byte	0x1
  931 01d9 7D       		.byte	0x7d
  932 01da 6B000000 		.4byte	0x6b
  933 01de 00000000 		.4byte	.LLST0
  934 01e2 0F       		.uleb128 0xf
- 935 01e3 5B050000 		.4byte	.LASF27
+ 935 01e3 55050000 		.4byte	.LASF27
  936 01e7 01       		.byte	0x1
  937 01e8 7F       		.byte	0x7f
  938 01e9 CA020000 		.4byte	0x2ca
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  965 0225 00       		.byte	0
  966 0226 0B       		.uleb128 0xb
  967 0227 40000000 		.4byte	.LVL12
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 29
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 29
 
 
  968 022b AB060000 		.4byte	0x6ab
@@ -1694,7 +1694,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  978 023b 51       		.byte	0x51
  979 023c 03       		.uleb128 0x3
  980 023d 0A       		.byte	0xa
- 981 023e A25B     		.2byte	0x5ba2
+ 981 023e A05B     		.2byte	0x5ba0
  982 0240 00       		.byte	0
  983 0241 0A       		.uleb128 0xa
  984 0242 48000000 		.4byte	.LVL13
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1022 0289 78000000 		.4byte	.LVL17
  1023 028d CA060000 		.4byte	0x6ca
  1024 0291 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 30
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 30
 
 
  1025 0292 80000000 		.4byte	.LVL18
@@ -1775,7 +1775,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1056 02d8 01       		.byte	0x1
  1057 02d9 00       		.byte	0
  1058 02da 09       		.uleb128 0x9
- 1059 02db DA050000 		.4byte	.LASF28
+ 1059 02db D4050000 		.4byte	.LASF28
  1060 02df 01       		.byte	0x1
  1061 02e0 D9       		.byte	0xd9
  1062 02e1 00000000 		.4byte	.LFB3
@@ -1794,11 +1794,11 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1075 0306 1A070000 		.4byte	0x71a
  1076 030a 00       		.byte	0
  1077 030b 09       		.uleb128 0x9
- 1078 030c 05050000 		.4byte	.LASF29
+ 1078 030c FF040000 		.4byte	.LASF29
  1079 0310 01       		.byte	0x1
  1080 0311 FC       		.byte	0xfc
  1081 0312 00000000 		.4byte	.LFB4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 31
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 31
 
 
  1082 0316 0C000000 		.4byte	.LFE4-.LFB4
@@ -1813,7 +1813,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1091 032e 0A010000 		.4byte	0x10a
  1092 0332 00       		.byte	0
  1093 0333 12       		.uleb128 0x12
- 1094 0334 4F010000 		.4byte	.LASF83
+ 1094 0334 07010000 		.4byte	.LASF83
  1095 0338 01       		.byte	0x1
  1096 0339 1A01     		.2byte	0x11a
  1097 033b 00000000 		.4byte	.LFB5
@@ -1821,7 +1821,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1099 0343 01       		.uleb128 0x1
  1100 0344 9C       		.byte	0x9c
  1101 0345 13       		.uleb128 0x13
- 1102 0346 4B020000 		.4byte	.LASF30
+ 1102 0346 03020000 		.4byte	.LASF30
  1103 034a 01       		.byte	0x1
  1104 034b 4101     		.2byte	0x141
  1105 034d 00000000 		.4byte	.LFB6
@@ -1834,7 +1834,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1112 0360 28070000 		.4byte	0x728
  1113 0364 00       		.byte	0
  1114 0365 14       		.uleb128 0x14
- 1115 0366 AC030000 		.4byte	.LASF32
+ 1115 0366 A6030000 		.4byte	.LASF32
  1116 036a 01       		.byte	0x1
  1117 036b 6501     		.2byte	0x165
  1118 036d 81000000 		.4byte	0x81
@@ -1844,13 +1844,13 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1122 037a 9C       		.byte	0x9c
  1123 037b 9E030000 		.4byte	0x39e
  1124 037f 15       		.uleb128 0x15
- 1125 0380 D4020000 		.4byte	.LASF34
+ 1125 0380 CE020000 		.4byte	.LASF34
  1126 0384 01       		.byte	0x1
  1127 0385 6501     		.2byte	0x165
  1128 0387 6B000000 		.4byte	0x6b
  1129 038b 13000000 		.4byte	.LLST1
  1130 038f 16       		.uleb128 0x16
- 1131 0390 C3050000 		.4byte	.LASF31
+ 1131 0390 BD050000 		.4byte	.LASF31
  1132 0394 01       		.byte	0x1
  1133 0395 6701     		.2byte	0x167
  1134 0397 6B000000 		.4byte	0x6b
@@ -1858,10 +1858,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1136 039c 53       		.byte	0x53
  1137 039d 00       		.byte	0
  1138 039e 14       		.uleb128 0x14
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 32
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 32
 
 
- 1139 039f 46050000 		.4byte	.LASF33
+ 1139 039f 40050000 		.4byte	.LASF33
  1140 03a3 01       		.byte	0x1
  1141 03a4 8701     		.2byte	0x187
  1142 03a6 8C000000 		.4byte	0x8c
@@ -1871,14 +1871,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1146 03b3 9C       		.byte	0x9c
  1147 03b4 C9030000 		.4byte	0x3c9
  1148 03b8 15       		.uleb128 0x15
- 1149 03b9 2F050000 		.4byte	.LASF35
+ 1149 03b9 29050000 		.4byte	.LASF35
  1150 03bd 01       		.byte	0x1
  1151 03be 8701     		.2byte	0x187
  1152 03c0 76000000 		.4byte	0x76
  1153 03c4 34000000 		.4byte	.LLST2
  1154 03c8 00       		.byte	0
  1155 03c9 14       		.uleb128 0x14
- 1156 03ca EF040000 		.4byte	.LASF36
+ 1156 03ca E9040000 		.4byte	.LASF36
  1157 03ce 01       		.byte	0x1
  1158 03cf A101     		.2byte	0x1a1
  1159 03d1 8C000000 		.4byte	0x8c
@@ -1892,7 +1892,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1167 03e8 2F070000 		.4byte	0x72f
  1168 03ec 00       		.byte	0
  1169 03ed 13       		.uleb128 0x13
- 1170 03ee D2040000 		.4byte	.LASF37
+ 1170 03ee CC040000 		.4byte	.LASF37
  1171 03f2 01       		.byte	0x1
  1172 03f3 C001     		.2byte	0x1c0
  1173 03f5 00000000 		.4byte	.LFB10
@@ -1901,7 +1901,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1176 03fe 9C       		.byte	0x9c
  1177 03ff 25040000 		.4byte	0x425
  1178 0403 15       		.uleb128 0x15
- 1179 0404 6E050000 		.4byte	.LASF38
+ 1179 0404 68050000 		.4byte	.LASF38
  1180 0408 01       		.byte	0x1
  1181 0409 C001     		.2byte	0x1c0
  1182 040b 97000000 		.4byte	0x97
@@ -1918,11 +1918,11 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1193 0422 50       		.byte	0x50
  1194 0423 00       		.byte	0
  1195 0424 00       		.byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 33
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 33
 
 
  1196 0425 13       		.uleb128 0x13
- 1197 0426 7D030000 		.4byte	.LASF39
+ 1197 0426 77030000 		.4byte	.LASF39
  1198 042a 01       		.byte	0x1
  1199 042b EB01     		.2byte	0x1eb
  1200 042d 00000000 		.4byte	.LFB11
@@ -1931,7 +1931,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1203 0436 9C       		.byte	0x9c
  1204 0437 55040000 		.4byte	0x455
  1205 043b 15       		.uleb128 0x15
- 1206 043c 24050000 		.4byte	.LASF40
+ 1206 043c 1E050000 		.4byte	.LASF40
  1207 0440 01       		.byte	0x1
  1208 0441 EB01     		.2byte	0x1eb
  1209 0443 6B000000 		.4byte	0x6b
@@ -1941,7 +1941,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1213 0450 4B070000 		.4byte	0x74b
  1214 0454 00       		.byte	0
  1215 0455 13       		.uleb128 0x13
- 1216 0456 13050000 		.4byte	.LASF41
+ 1216 0456 0D050000 		.4byte	.LASF41
  1217 045a 01       		.byte	0x1
  1218 045b 0502     		.2byte	0x205
  1219 045d 00000000 		.4byte	.LFB12
@@ -1968,7 +1968,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1240 048b 00       		.byte	0
  1241 048c 00       		.byte	0
  1242 048d 13       		.uleb128 0x13
- 1243 048e 91040000 		.4byte	.LASF43
+ 1243 048e 8B040000 		.4byte	.LASF43
  1244 0492 01       		.byte	0x1
  1245 0493 2402     		.2byte	0x224
  1246 0495 00000000 		.4byte	.LFB13
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1250 049f C5040000 		.4byte	0x4c5
  1251 04a3 15       		.uleb128 0x15
  1252 04a4 34000000 		.4byte	.LASF42
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 34
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 34
 
 
  1253 04a8 01       		.byte	0x1
@@ -1998,7 +1998,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1267 04c3 00       		.byte	0
  1268 04c4 00       		.byte	0
  1269 04c5 14       		.uleb128 0x14
- 1270 04c6 03040000 		.4byte	.LASF44
+ 1270 04c6 FD030000 		.4byte	.LASF44
  1271 04ca 01       		.byte	0x1
  1272 04cb 3E02     		.2byte	0x23e
  1273 04cd 97000000 		.4byte	0x97
@@ -2008,7 +2008,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1277 04da 9C       		.byte	0x9c
  1278 04db F9040000 		.4byte	0x4f9
  1279 04df 15       		.uleb128 0x15
- 1280 04e0 75050000 		.4byte	.LASF45
+ 1280 04e0 6F050000 		.4byte	.LASF45
  1281 04e4 01       		.byte	0x1
  1282 04e5 3E02     		.2byte	0x23e
  1283 04e7 8C000000 		.4byte	0x8c
@@ -2018,7 +2018,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1287 04f4 7E070000 		.4byte	0x77e
  1288 04f8 00       		.byte	0
  1289 04f9 14       		.uleb128 0x14
- 1290 04fa B3010000 		.4byte	.LASF46
+ 1290 04fa 6B010000 		.4byte	.LASF46
  1291 04fe 01       		.byte	0x1
  1292 04ff 5802     		.2byte	0x258
  1293 0501 97000000 		.4byte	0x97
@@ -2028,7 +2028,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1297 050e 9C       		.byte	0x9c
  1298 050f 2D050000 		.4byte	0x52d
  1299 0513 15       		.uleb128 0x15
- 1300 0514 75050000 		.4byte	.LASF45
+ 1300 0514 6F050000 		.4byte	.LASF45
  1301 0518 01       		.byte	0x1
  1302 0519 5802     		.2byte	0x258
  1303 051b 8C000000 		.4byte	0x8c
@@ -2038,10 +2038,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1307 0528 93070000 		.4byte	0x793
  1308 052c 00       		.byte	0
  1309 052d 14       		.uleb128 0x14
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 35
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 35
 
 
- 1310 052e E6010000 		.4byte	.LASF47
+ 1310 052e 9E010000 		.4byte	.LASF47
  1311 0532 01       		.byte	0x1
  1312 0533 7202     		.2byte	0x272
  1313 0535 A2000000 		.4byte	0xa2
@@ -2051,7 +2051,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1317 0542 9C       		.byte	0x9c
  1318 0543 61050000 		.4byte	0x561
  1319 0547 15       		.uleb128 0x15
- 1320 0548 75050000 		.4byte	.LASF45
+ 1320 0548 6F050000 		.4byte	.LASF45
  1321 054c 01       		.byte	0x1
  1322 054d 7202     		.2byte	0x272
  1323 054f 8C000000 		.4byte	0x8c
@@ -2061,7 +2061,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1327 055c A8070000 		.4byte	0x7a8
  1328 0560 00       		.byte	0
  1329 0561 0F       		.uleb128 0xf
- 1330 0562 94030000 		.4byte	.LASF48
+ 1330 0562 8E030000 		.4byte	.LASF48
  1331 0566 01       		.byte	0x1
  1332 0567 19       		.byte	0x19
  1333 0568 6B000000 		.4byte	0x6b
@@ -2069,7 +2069,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1335 056d 03       		.byte	0x3
  1336 056e 00000000 		.4byte	APPS_ADC_tempChan
  1337 0572 0F       		.uleb128 0xf
- 1338 0573 25060000 		.4byte	.LASF49
+ 1338 0573 1F060000 		.4byte	.LASF49
  1339 0577 01       		.byte	0x1
  1340 0578 1A       		.byte	0x1a
  1341 0579 6B000000 		.4byte	0x6b
@@ -2077,7 +2077,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1343 057e 03       		.byte	0x3
  1344 057f 01000000 		.4byte	APPS_ADC_finalChan
  1345 0583 0F       		.uleb128 0xf
- 1346 0584 5C030000 		.4byte	.LASF50
+ 1346 0584 56030000 		.4byte	.LASF50
  1347 0588 01       		.byte	0x1
  1348 0589 1B       		.byte	0x1b
  1349 058a 6B000000 		.4byte	0x6b
@@ -2085,7 +2085,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1351 058f 03       		.byte	0x3
  1352 0590 00000000 		.4byte	APPS_ADC_tempTD
  1353 0594 0F       		.uleb128 0xf
- 1354 0595 A2010000 		.4byte	.LASF51
+ 1354 0595 5A010000 		.4byte	.LASF51
  1355 0599 01       		.byte	0x1
  1356 059a 1C       		.byte	0x1c
  1357 059b 6B000000 		.4byte	0x6b
@@ -2093,12 +2093,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1359 05a0 03       		.byte	0x3
  1360 05a1 01000000 		.4byte	APPS_ADC_finalTD
  1361 05a5 17       		.uleb128 0x17
- 1362 05a6 AC020000 		.4byte	.LASF52
+ 1362 05a6 A6020000 		.4byte	.LASF52
  1363 05aa 03       		.byte	0x3
  1364 05ab 5B       		.byte	0x5b
  1365 05ac B0050000 		.4byte	0x5b0
  1366 05b0 06       		.uleb128 0x6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 36
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 36
 
 
  1367 05b1 8C000000 		.4byte	0x8c
@@ -2111,7 +2111,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1374 05c1 03       		.byte	0x3
  1375 05c2 00000000 		.4byte	APPS_ADC_finalArray
  1376 05c6 18       		.uleb128 0x18
- 1377 05c7 6C030000 		.4byte	.LASF54
+ 1377 05c7 66030000 		.4byte	.LASF54
  1378 05cb 01       		.byte	0x1
  1379 05cc 18       		.byte	0x18
  1380 05cd 81000000 		.4byte	0x81
@@ -2119,7 +2119,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1382 05d2 03       		.byte	0x3
  1383 05d3 00000000 		.4byte	APPS_ADC_initVar
  1384 05d7 19       		.uleb128 0x19
- 1385 05d8 16010000 		.4byte	.LASF55
+ 1385 05d8 CE000000 		.4byte	.LASF55
  1386 05dc 04       		.byte	0x4
  1387 05dd 2B       		.byte	0x2b
  1388 05de C2000000 		.4byte	0xc2
@@ -2128,7 +2128,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1391 05e7 6B000000 		.4byte	0x6b
  1392 05eb 00       		.byte	0
  1393 05ec 1B       		.uleb128 0x1b
- 1394 05ed 35010000 		.4byte	.LASF58
+ 1394 05ed ED000000 		.4byte	.LASF58
  1395 05f1 04       		.byte	0x4
  1396 05f2 3A       		.byte	0x3a
  1397 05f3 FD050000 		.4byte	0x5fd
@@ -2136,7 +2136,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1399 05f8 6B000000 		.4byte	0x6b
  1400 05fc 00       		.byte	0
  1401 05fd 19       		.uleb128 0x19
- 1402 05fe 2C020000 		.4byte	.LASF56
+ 1402 05fe E4010000 		.4byte	.LASF56
  1403 0602 05       		.byte	0x5
  1404 0603 1E       		.byte	0x1e
  1405 0604 6B000000 		.4byte	0x6b
@@ -2151,14 +2151,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1414 061c 76000000 		.4byte	0x76
  1415 0620 00       		.byte	0
  1416 0621 19       		.uleb128 0x19
- 1417 0622 7F050000 		.4byte	.LASF57
+ 1417 0622 79050000 		.4byte	.LASF57
  1418 0626 06       		.byte	0x6
  1419 0627 1E       		.byte	0x1e
  1420 0628 6B000000 		.4byte	0x6b
  1421 062c 45060000 		.4byte	0x645
  1422 0630 1A       		.uleb128 0x1a
  1423 0631 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 37
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 37
 
 
  1424 0635 1A       		.uleb128 0x1a
@@ -2169,7 +2169,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1429 0640 76000000 		.4byte	0x76
  1430 0644 00       		.byte	0
  1431 0645 1B       		.uleb128 0x1b
- 1432 0646 AD040000 		.4byte	.LASF59
+ 1432 0646 A7040000 		.4byte	.LASF59
  1433 064a 07       		.byte	0x7
  1434 064b 1D       		.byte	0x1d
  1435 064c 56060000 		.4byte	0x656
@@ -2177,7 +2177,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1437 0651 F0000000 		.4byte	0xf0
  1438 0655 00       		.byte	0
  1439 0656 1B       		.uleb128 0x1b
- 1440 0657 E9050000 		.4byte	.LASF60
+ 1440 0657 E3050000 		.4byte	.LASF60
  1441 065b 07       		.byte	0x7
  1442 065c 20       		.byte	0x20
  1443 065d 67060000 		.4byte	0x667
@@ -2185,7 +2185,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1445 0662 6B000000 		.4byte	0x6b
  1446 0666 00       		.byte	0
  1447 0667 19       		.uleb128 0x19
- 1448 0668 1C040000 		.4byte	.LASF61
+ 1448 0668 16040000 		.4byte	.LASF61
  1449 066c 04       		.byte	0x4
  1450 066d 2C       		.byte	0x2c
  1451 066e C2000000 		.4byte	0xc2
@@ -2194,12 +2194,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1454 0677 6B000000 		.4byte	0x6b
  1455 067b 00       		.byte	0
  1456 067c 1C       		.uleb128 0x1c
- 1457 067d 25010000 		.4byte	.LASF66
+ 1457 067d DD000000 		.4byte	.LASF66
  1458 0681 04       		.byte	0x4
  1459 0682 39       		.byte	0x39
  1460 0683 6B000000 		.4byte	0x6b
  1461 0687 19       		.uleb128 0x19
- 1462 0688 8A010000 		.4byte	.LASF62
+ 1462 0688 42010000 		.4byte	.LASF62
  1463 068c 04       		.byte	0x4
  1464 068d 3C       		.byte	0x3c
  1465 068e C2000000 		.4byte	0xc2
@@ -2214,11 +2214,11 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1474 06a6 6B000000 		.4byte	0x6b
  1475 06aa 00       		.byte	0
  1476 06ab 19       		.uleb128 0x19
- 1477 06ac D6030000 		.4byte	.LASF63
+ 1477 06ac D0030000 		.4byte	.LASF63
  1478 06b0 04       		.byte	0x4
  1479 06b1 40       		.byte	0x40
  1480 06b2 C2000000 		.4byte	0xc2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 38
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 38
 
 
  1481 06b6 CA060000 		.4byte	0x6ca
@@ -2230,7 +2230,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1487 06c5 76000000 		.4byte	0x76
  1488 06c9 00       		.byte	0
  1489 06ca 19       		.uleb128 0x19
- 1490 06cb 08060000 		.4byte	.LASF64
+ 1490 06cb 02060000 		.4byte	.LASF64
  1491 06cf 04       		.byte	0x4
  1492 06d0 30       		.byte	0x30
  1493 06d1 C2000000 		.4byte	0xc2
@@ -2241,7 +2241,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1498 06df 6B000000 		.4byte	0x6b
  1499 06e3 00       		.byte	0
  1500 06e4 19       		.uleb128 0x19
- 1501 06e5 41010000 		.4byte	.LASF65
+ 1501 06e5 F9000000 		.4byte	.LASF65
  1502 06e9 04       		.byte	0x4
  1503 06ea 2A       		.byte	0x2a
  1504 06eb C2000000 		.4byte	0xc2
@@ -2252,7 +2252,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1509 06f9 6B000000 		.4byte	0x6b
  1510 06fd 00       		.byte	0
  1511 06fe 1C       		.uleb128 0x1c
- 1512 06ff 17030000 		.4byte	.LASF67
+ 1512 06ff 11030000 		.4byte	.LASF67
  1513 0703 08       		.byte	0x8
  1514 0704 7E       		.byte	0x7e
  1515 0705 6B000000 		.4byte	0x6b
@@ -2265,11 +2265,11 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1522 0715 6B000000 		.4byte	0x6b
  1523 0719 00       		.byte	0
  1524 071a 1D       		.uleb128 0x1d
- 1525 071b B0050000 		.4byte	.LASF69
+ 1525 071b AA050000 		.4byte	.LASF69
  1526 071f 03       		.byte	0x3
  1527 0720 34       		.byte	0x34
  1528 0721 1D       		.uleb128 0x1d
- 1529 0722 93020000 		.4byte	.LASF70
+ 1529 0722 4B020000 		.4byte	.LASF70
  1530 0726 03       		.byte	0x3
  1531 0727 35       		.byte	0x35
  1532 0728 1D       		.uleb128 0x1d
@@ -2277,15 +2277,15 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1534 072d 03       		.byte	0x3
  1535 072e D2       		.byte	0xd2
  1536 072f 1C       		.uleb128 0x1c
- 1537 0730 31040000 		.4byte	.LASF72
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 39
+ 1537 0730 2B040000 		.4byte	.LASF72
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 39
 
 
  1538 0734 03       		.byte	0x3
  1539 0735 3B       		.byte	0x3b
  1540 0736 8C000000 		.4byte	0x8c
  1541 073a 1B       		.uleb128 0x1b
- 1542 073b 04020000 		.4byte	.LASF73
+ 1542 073b BC010000 		.4byte	.LASF73
  1543 073f 03       		.byte	0x3
  1544 0740 3D       		.byte	0x3d
  1545 0741 4B070000 		.4byte	0x74b
@@ -2293,7 +2293,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1547 0746 8C000000 		.4byte	0x8c
  1548 074a 00       		.byte	0
  1549 074b 1B       		.uleb128 0x1b
- 1550 074c 41030000 		.4byte	.LASF74
+ 1550 074c 3B030000 		.4byte	.LASF74
  1551 0750 03       		.byte	0x3
  1552 0751 37       		.byte	0x37
  1553 0752 5C070000 		.4byte	0x75c
@@ -2301,7 +2301,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1555 0757 6B000000 		.4byte	0x6b
  1556 075b 00       		.byte	0
  1557 075c 1B       		.uleb128 0x1b
- 1558 075d BF020000 		.4byte	.LASF75
+ 1558 075d B9020000 		.4byte	.LASF75
  1559 0761 03       		.byte	0x3
  1560 0762 50       		.byte	0x50
  1561 0763 6D070000 		.4byte	0x76d
@@ -2309,7 +2309,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1563 0768 8C000000 		.4byte	0x8c
  1564 076c 00       		.byte	0
  1565 076d 1B       		.uleb128 0x1b
- 1566 076e E8030000 		.4byte	.LASF76
+ 1566 076e E2030000 		.4byte	.LASF76
  1567 0772 03       		.byte	0x3
  1568 0773 3E       		.byte	0x3e
  1569 0774 7E070000 		.4byte	0x77e
@@ -2317,7 +2317,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1571 0779 97000000 		.4byte	0x97
  1572 077d 00       		.byte	0
  1573 077e 19       		.uleb128 0x19
- 1574 077f 74040000 		.4byte	.LASF77
+ 1574 077f 6E040000 		.4byte	.LASF77
  1575 0783 03       		.byte	0x3
  1576 0784 3F       		.byte	0x3f
  1577 0785 8C000000 		.4byte	0x8c
@@ -2326,7 +2326,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1580 078e 8C000000 		.4byte	0x8c
  1581 0792 00       		.byte	0
  1582 0793 19       		.uleb128 0x19
- 1583 0794 69020000 		.4byte	.LASF78
+ 1583 0794 21020000 		.4byte	.LASF78
  1584 0798 03       		.byte	0x3
  1585 0799 40       		.byte	0x40
  1586 079a 97000000 		.4byte	0x97
@@ -2335,10 +2335,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1589 07a3 8C000000 		.4byte	0x8c
  1590 07a7 00       		.byte	0
  1591 07a8 1E       		.uleb128 0x1e
- 1592 07a9 E9020000 		.4byte	.LASF79
+ 1592 07a9 E3020000 		.4byte	.LASF79
  1593 07ad 03       		.byte	0x3
  1594 07ae 41       		.byte	0x41
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 40
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 40
 
 
  1595 07af A2000000 		.4byte	0xa2
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1649 002f 0B       		.uleb128 0xb
  1650 0030 3B       		.uleb128 0x3b
  1651 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 41
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 41
 
 
  1652 0032 49       		.uleb128 0x49
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1706 0068 01       		.uleb128 0x1
  1707 0069 12       		.uleb128 0x12
  1708 006a 06       		.uleb128 0x6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 42
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 42
 
 
  1709 006b 40       		.uleb128 0x40
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1763 00ab 0B       		.uleb128 0xb
  1764 00ac 49       		.uleb128 0x49
  1765 00ad 13       		.uleb128 0x13
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 43
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 43
 
 
  1766 00ae 02       		.uleb128 0x2
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1820 00e4 40       		.uleb128 0x40
  1821 00e5 18       		.uleb128 0x18
  1822 00e6 9742     		.uleb128 0x2117
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 44
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 44
 
 
  1823 00e8 19       		.uleb128 0x19
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1877 0120 00       		.byte	0
  1878 0121 15       		.uleb128 0x15
  1879 0122 05       		.uleb128 0x5
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 45
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 45
 
 
  1880 0123 00       		.byte	0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1934 0159 49       		.uleb128 0x49
  1935 015a 13       		.uleb128 0x13
  1936 015b 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 46
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 46
 
 
  1937 015c 19       		.uleb128 0x19
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  1991 0192 00       		.byte	0
  1992 0193 3F       		.uleb128 0x3f
  1993 0194 19       		.uleb128 0x19
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 47
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 47
 
 
  1994 0195 03       		.uleb128 0x3
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2048 0000 8C000000 		.4byte	.LVL20
  2049 0004 99000000 		.4byte	.LVL21-1
  2050 0008 0100     		.2byte	0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 48
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 48
 
 
  2051 000a 50       		.byte	0x50
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2105 008c 01       		.uleb128 0x1
  2106 008d 50       		.byte	0x50
  2107 008e 9F       		.byte	0x9f
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 49
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 49
 
 
  2108 008f 00000000 		.4byte	0
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2162 0111 50       		.byte	0x50
  2163 0112 9F       		.byte	0x9f
  2164 0113 00000000 		.4byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 50
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 50
 
 
  2165 0117 00000000 		.4byte	0
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2219 008c 08000000 		.4byte	.LFE15-.LFB15
  2220 0090 00000000 		.4byte	.LFB16
  2221 0094 08000000 		.4byte	.LFE16-.LFB16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 51
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 51
 
 
  2222 0098 00000000 		.4byte	0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2268 0014 41505053 		.ascii	"APPS_ADC_SAR_StopConvert\000"
  2268      5F414443 
  2268      5F534152 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 52
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 52
 
 
  2268      5F53746F 
@@ -3091,426 +3091,426 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 1
  2278      74696F6E 
  2278      2D736563 
  2278      74696F6E 
- 2279              	.LASF82:
- 2280 00ce 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
- 2280      73657273 
- 2280      5C6D6974 
- 2280      6368656C 
- 2280      6C5C446F 
- 2281 00fb 2D546872 		.ascii	"-Throttle\\E-Throttle.cydsn\000"
- 2281      6F74746C 
- 2281      655C452D 
- 2281      5468726F 
- 2281      74746C65 
- 2282              	.LASF55:
- 2283 0116 4379446D 		.ascii	"CyDmaChDisable\000"
- 2283      61436844 
- 2283      69736162 
- 2283      6C6500
- 2284              	.LASF66:
- 2285 0125 4379446D 		.ascii	"CyDmaTdAllocate\000"
- 2285      61546441 
- 2285      6C6C6F63 
- 2285      61746500 
- 2286              	.LASF58:
- 2287 0135 4379446D 		.ascii	"CyDmaTdFree\000"
- 2287      61546446 
- 2287      72656500 
- 2288              	.LASF65:
- 2289 0141 4379446D 		.ascii	"CyDmaChEnable\000"
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 53
+ 2279              	.LASF55:
+ 2280 00ce 4379446D 		.ascii	"CyDmaChDisable\000"
+ 2280      61436844 
+ 2280      69736162 
+ 2280      6C6500
+ 2281              	.LASF66:
+ 2282 00dd 4379446D 		.ascii	"CyDmaTdAllocate\000"
+ 2282      61546441 
+ 2282      6C6C6F63 
+ 2282      61746500 
+ 2283              	.LASF58:
+ 2284 00ed 4379446D 		.ascii	"CyDmaTdFree\000"
+ 2284      61546446 
+ 2284      72656500 
+ 2285              	.LASF65:
+ 2286 00f9 4379446D 		.ascii	"CyDmaChEnable\000"
+ 2286      61436845 
+ 2286      6E61626C 
+ 2286      6500
+ 2287              	.LASF83:
+ 2288 0107 41505053 		.ascii	"APPS_ADC_StartConvert\000"
+ 2288      5F414443 
+ 2288      5F537461 
+ 2288      7274436F 
+ 2288      6E766572 
+ 2289              	.LASF7:
+ 2290 011d 6C6F6E67 		.ascii	"long long unsigned int\000"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 53
 
 
- 2289      61436845 
- 2289      6E61626C 
- 2289      6500
- 2290              	.LASF83:
- 2291 014f 41505053 		.ascii	"APPS_ADC_StartConvert\000"
- 2291      5F414443 
- 2291      5F537461 
- 2291      7274436F 
- 2291      6E766572 
- 2292              	.LASF7:
- 2293 0165 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2293      206C6F6E 
- 2293      6720756E 
- 2293      7369676E 
- 2293      65642069 
- 2294              	.LASF24:
- 2295 017c 41505053 		.ascii	"APPS_ADC_Init\000"
- 2295      5F414443 
- 2295      5F496E69 
- 2295      7400
- 2296              	.LASF62:
- 2297 018a 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
- 2297      61546453 
- 2297      6574436F 
- 2297      6E666967 
- 2297      75726174 
- 2298              	.LASF51:
- 2299 01a2 41505053 		.ascii	"APPS_ADC_finalTD\000"
- 2299      5F414443 
- 2299      5F66696E 
- 2299      616C5444 
- 2299      00
- 2300              	.LASF46:
- 2301 01b3 41505053 		.ascii	"APPS_ADC_CountsTo_uVolts\000"
- 2301      5F414443 
- 2301      5F436F75 
- 2301      6E747354 
- 2301      6F5F7556 
- 2302              	.LASF6:
- 2303 01cc 6C6F6E67 		.ascii	"long long int\000"
- 2303      206C6F6E 
- 2303      6720696E 
- 2303      7400
- 2304              	.LASF0:
- 2305 01da 7369676E 		.ascii	"signed char\000"
- 2305      65642063 
- 2305      68617200 
- 2306              	.LASF47:
- 2307 01e6 41505053 		.ascii	"APPS_ADC_CountsTo_Volts\000"
- 2307      5F414443 
- 2307      5F436F75 
- 2307      6E747354 
- 2307      6F5F566F 
- 2308              	.LASF13:
- 2309 01fe 696E7433 		.ascii	"int32\000"
- 2309      3200
- 2310              	.LASF73:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 54
+ 2290      206C6F6E 
+ 2290      6720756E 
+ 2290      7369676E 
+ 2290      65642069 
+ 2291              	.LASF24:
+ 2292 0134 41505053 		.ascii	"APPS_ADC_Init\000"
+ 2292      5F414443 
+ 2292      5F496E69 
+ 2292      7400
+ 2293              	.LASF62:
+ 2294 0142 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
+ 2294      61546453 
+ 2294      6574436F 
+ 2294      6E666967 
+ 2294      75726174 
+ 2295              	.LASF51:
+ 2296 015a 41505053 		.ascii	"APPS_ADC_finalTD\000"
+ 2296      5F414443 
+ 2296      5F66696E 
+ 2296      616C5444 
+ 2296      00
+ 2297              	.LASF46:
+ 2298 016b 41505053 		.ascii	"APPS_ADC_CountsTo_uVolts\000"
+ 2298      5F414443 
+ 2298      5F436F75 
+ 2298      6E747354 
+ 2298      6F5F7556 
+ 2299              	.LASF6:
+ 2300 0184 6C6F6E67 		.ascii	"long long int\000"
+ 2300      206C6F6E 
+ 2300      6720696E 
+ 2300      7400
+ 2301              	.LASF0:
+ 2302 0192 7369676E 		.ascii	"signed char\000"
+ 2302      65642063 
+ 2302      68617200 
+ 2303              	.LASF47:
+ 2304 019e 41505053 		.ascii	"APPS_ADC_CountsTo_Volts\000"
+ 2304      5F414443 
+ 2304      5F436F75 
+ 2304      6E747354 
+ 2304      6F5F566F 
+ 2305              	.LASF13:
+ 2306 01b6 696E7433 		.ascii	"int32\000"
+ 2306      3200
+ 2307              	.LASF73:
+ 2308 01bc 41505053 		.ascii	"APPS_ADC_SAR_SetOffset\000"
+ 2308      5F414443 
+ 2308      5F534152 
+ 2308      5F536574 
+ 2308      4F666673 
+ 2309              	.LASF23:
+ 2310 01d3 41505053 		.ascii	"APPS_ADC_Disable\000"
+ 2310      5F414443 
+ 2310      5F446973 
+ 2310      61626C65 
+ 2310      00
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 54
 
 
- 2311 0204 41505053 		.ascii	"APPS_ADC_SAR_SetOffset\000"
- 2311      5F414443 
- 2311      5F534152 
- 2311      5F536574 
- 2311      4F666673 
- 2312              	.LASF23:
- 2313 021b 41505053 		.ascii	"APPS_ADC_Disable\000"
- 2313      5F414443 
- 2313      5F446973 
- 2313      61626C65 
- 2313      00
- 2314              	.LASF56:
- 2315 022c 41505053 		.ascii	"APPS_ADC_TempBuf_DmaInitialize\000"
- 2315      5F414443 
- 2315      5F54656D 
- 2315      70427566 
- 2315      5F446D61 
- 2316              	.LASF30:
- 2317 024b 41505053 		.ascii	"APPS_ADC_StopConvert\000"
- 2317      5F414443 
- 2317      5F53746F 
- 2317      70436F6E 
- 2317      76657274 
- 2318              	.LASF4:
- 2319 0260 6C6F6E67 		.ascii	"long int\000"
- 2319      20696E74 
- 2319      00
- 2320              	.LASF78:
- 2321 0269 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_uVolts\000"
- 2321      5F414443 
- 2321      5F534152 
- 2321      5F436F75 
- 2321      6E747354 
- 2322              	.LASF9:
- 2323 0286 75696E74 		.ascii	"uint8\000"
- 2323      3800
- 2324              	.LASF16:
- 2325 028c 646F7562 		.ascii	"double\000"
- 2325      6C6500
- 2326              	.LASF70:
- 2327 0293 41505053 		.ascii	"APPS_ADC_SAR_Stop\000"
- 2327      5F414443 
- 2327      5F534152 
- 2327      5F53746F 
- 2327      7000
- 2328              	.LASF11:
- 2329 02a5 75696E74 		.ascii	"uint32\000"
- 2329      333200
+ 2311              	.LASF56:
+ 2312 01e4 41505053 		.ascii	"APPS_ADC_TempBuf_DmaInitialize\000"
+ 2312      5F414443 
+ 2312      5F54656D 
+ 2312      70427566 
+ 2312      5F446D61 
+ 2313              	.LASF30:
+ 2314 0203 41505053 		.ascii	"APPS_ADC_StopConvert\000"
+ 2314      5F414443 
+ 2314      5F53746F 
+ 2314      70436F6E 
+ 2314      76657274 
+ 2315              	.LASF4:
+ 2316 0218 6C6F6E67 		.ascii	"long int\000"
+ 2316      20696E74 
+ 2316      00
+ 2317              	.LASF78:
+ 2318 0221 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_uVolts\000"
+ 2318      5F414443 
+ 2318      5F534152 
+ 2318      5F436F75 
+ 2318      6E747354 
+ 2319              	.LASF9:
+ 2320 023e 75696E74 		.ascii	"uint8\000"
+ 2320      3800
+ 2321              	.LASF16:
+ 2322 0244 646F7562 		.ascii	"double\000"
+ 2322      6C6500
+ 2323              	.LASF70:
+ 2324 024b 41505053 		.ascii	"APPS_ADC_SAR_Stop\000"
+ 2324      5F414443 
+ 2324      5F534152 
+ 2324      5F53746F 
+ 2324      7000
+ 2325              	.LASF11:
+ 2326 025d 75696E74 		.ascii	"uint32\000"
+ 2326      333200
+ 2327              	.LASF82:
+ 2328 0264 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\P"
+ 2328      73657273 
+ 2328      5C6D6974 
+ 2328      6368656C 
+ 2328      6C5C446F 
+ 2329 0291 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
+ 2329      452D5468 
+ 2329      726F7474 
+ 2329      6C652E63 
+ 2329      7964736E 
  2330              	.LASF52:
- 2331 02ac 41505053 		.ascii	"APPS_ADC_SAR_shift\000"
+ 2331 02a6 41505053 		.ascii	"APPS_ADC_SAR_shift\000"
  2331      5F414443 
  2331      5F534152 
  2331      5F736869 
  2331      667400
  2332              	.LASF75:
- 2333 02bf 41505053 		.ascii	"APPS_ADC_SAR_SetGain\000"
+ 2333 02b9 41505053 		.ascii	"APPS_ADC_SAR_SetGain\000"
  2333      5F414443 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 55
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 55
 
 
  2333      5F534152 
  2333      5F536574 
  2333      4761696E 
  2334              	.LASF34:
- 2335 02d4 7265744D 		.ascii	"retMode\000"
+ 2335 02ce 7265744D 		.ascii	"retMode\000"
  2335      6F646500 
  2336              	.LASF8:
- 2337 02dc 756E7369 		.ascii	"unsigned int\000"
+ 2337 02d6 756E7369 		.ascii	"unsigned int\000"
  2337      676E6564 
  2337      20696E74 
  2337      00
  2338              	.LASF79:
- 2339 02e9 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_Volts\000"
+ 2339 02e3 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_Volts\000"
  2339      5F414443 
  2339      5F534152 
  2339      5F436F75 
  2339      6E747354 
  2340              	.LASF5:
- 2341 0305 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2341 02ff 6C6F6E67 		.ascii	"long unsigned int\000"
  2341      20756E73 
  2341      69676E65 
  2341      6420696E 
  2341      7400
  2342              	.LASF67:
- 2343 0317 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 2343 0311 4379456E 		.ascii	"CyEnterCriticalSection\000"
  2343      74657243 
  2343      72697469 
  2343      63616C53 
  2343      65637469 
  2344              	.LASF3:
- 2345 032e 73686F72 		.ascii	"short unsigned int\000"
+ 2345 0328 73686F72 		.ascii	"short unsigned int\000"
  2345      7420756E 
  2345      7369676E 
  2345      65642069 
  2345      6E7400
  2346              	.LASF74:
- 2347 0341 41505053 		.ascii	"APPS_ADC_SAR_SetResolution\000"
+ 2347 033b 41505053 		.ascii	"APPS_ADC_SAR_SetResolution\000"
  2347      5F414443 
  2347      5F534152 
  2347      5F536574 
  2347      5265736F 
  2348              	.LASF50:
- 2349 035c 41505053 		.ascii	"APPS_ADC_tempTD\000"
+ 2349 0356 41505053 		.ascii	"APPS_ADC_tempTD\000"
  2349      5F414443 
  2349      5F74656D 
  2349      70544400 
  2350              	.LASF54:
- 2351 036c 41505053 		.ascii	"APPS_ADC_initVar\000"
+ 2351 0366 41505053 		.ascii	"APPS_ADC_initVar\000"
  2351      5F414443 
  2351      5F696E69 
  2351      74566172 
  2351      00
  2352              	.LASF39:
- 2353 037d 41505053 		.ascii	"APPS_ADC_SetResolution\000"
+ 2353 0377 41505053 		.ascii	"APPS_ADC_SetResolution\000"
  2353      5F414443 
  2353      5F536574 
  2353      5265736F 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 56
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 56
 
 
  2353      6C757469 
  2354              	.LASF48:
- 2355 0394 41505053 		.ascii	"APPS_ADC_tempChan\000"
+ 2355 038e 41505053 		.ascii	"APPS_ADC_tempChan\000"
  2355      5F414443 
  2355      5F74656D 
  2355      70436861 
  2355      6E00
  2356              	.LASF20:
- 2357 03a6 72656733 		.ascii	"reg32\000"
+ 2357 03a0 72656733 		.ascii	"reg32\000"
  2357      3200
  2358              	.LASF32:
- 2359 03ac 41505053 		.ascii	"APPS_ADC_IsEndConversion\000"
+ 2359 03a6 41505053 		.ascii	"APPS_ADC_IsEndConversion\000"
  2359      5F414443 
  2359      5F497345 
  2359      6E64436F 
  2359      6E766572 
  2360              	.LASF14:
- 2361 03c5 666C6F61 		.ascii	"float32\000"
+ 2361 03bf 666C6F61 		.ascii	"float32\000"
  2361      74333200 
  2362              	.LASF22:
- 2363 03cd 73697A65 		.ascii	"sizetype\000"
+ 2363 03c7 73697A65 		.ascii	"sizetype\000"
  2363      74797065 
  2363      00
  2364              	.LASF63:
- 2365 03d6 4379446D 		.ascii	"CyDmaTdSetAddress\000"
+ 2365 03d0 4379446D 		.ascii	"CyDmaTdSetAddress\000"
  2365      61546453 
  2365      65744164 
  2365      64726573 
  2365      7300
  2366              	.LASF76:
- 2367 03e8 41505053 		.ascii	"APPS_ADC_SAR_SetScaledGain\000"
+ 2367 03e2 41505053 		.ascii	"APPS_ADC_SAR_SetScaledGain\000"
  2367      5F414443 
  2367      5F534152 
  2367      5F536574 
  2367      5363616C 
  2368              	.LASF44:
- 2369 0403 41505053 		.ascii	"APPS_ADC_CountsTo_mVolts\000"
+ 2369 03fd 41505053 		.ascii	"APPS_ADC_CountsTo_mVolts\000"
  2369      5F414443 
  2369      5F436F75 
  2369      6E747354 
  2369      6F5F6D56 
  2370              	.LASF61:
- 2371 041c 4379446D 		.ascii	"CyDmaClearPendingDrq\000"
+ 2371 0416 4379446D 		.ascii	"CyDmaClearPendingDrq\000"
  2371      61436C65 
  2371      61725065 
  2371      6E64696E 
  2371      67447271 
  2372              	.LASF72:
- 2373 0431 41505053 		.ascii	"APPS_ADC_SAR_GetResult16\000"
+ 2373 042b 41505053 		.ascii	"APPS_ADC_SAR_GetResult16\000"
  2373      5F414443 
  2373      5F534152 
  2373      5F476574 
  2373      52657375 
  2374              	.LASF15:
- 2375 044a 666C6F61 		.ascii	"float\000"
+ 2375 0444 666C6F61 		.ascii	"float\000"
  2375      7400
  2376              	.LASF81:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 57
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 57
 
 
- 2377 0450 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\APPS_ADC.c\000"
+ 2377 044a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\APPS_ADC.c\000"
  2377      6E657261 
  2377      7465645F 
  2377      536F7572 
  2377      63655C50 
  2378              	.LASF77:
- 2379 0474 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_mVolts\000"
+ 2379 046e 41505053 		.ascii	"APPS_ADC_SAR_CountsTo_mVolts\000"
  2379      5F414443 
  2379      5F534152 
  2379      5F436F75 
  2379      6E747354 
  2380              	.LASF43:
- 2381 0491 41505053 		.ascii	"APPS_ADC_SetScaledGain\000"
+ 2381 048b 41505053 		.ascii	"APPS_ADC_SetScaledGain\000"
  2381      5F414443 
  2381      5F536574 
  2381      5363616C 
  2381      65644761 
  2382              	.LASF19:
- 2383 04a8 72656738 		.ascii	"reg8\000"
+ 2383 04a2 72656738 		.ascii	"reg8\000"
  2383      00
  2384              	.LASF59:
- 2385 04ad 41505053 		.ascii	"APPS_ADC_IRQ_SetVector\000"
+ 2385 04a7 41505053 		.ascii	"APPS_ADC_IRQ_SetVector\000"
  2385      5F414443 
  2385      5F495251 
  2385      5F536574 
  2385      56656374 
  2386              	.LASF1:
- 2387 04c4 756E7369 		.ascii	"unsigned char\000"
+ 2387 04be 756E7369 		.ascii	"unsigned char\000"
  2387      676E6564 
  2387      20636861 
  2387      7200
  2388              	.LASF37:
- 2389 04d2 41505053 		.ascii	"APPS_ADC_SetOffset\000"
+ 2389 04cc 41505053 		.ascii	"APPS_ADC_SetOffset\000"
  2389      5F414443 
  2389      5F536574 
  2389      4F666673 
  2389      657400
  2390              	.LASF2:
- 2391 04e5 73686F72 		.ascii	"short int\000"
+ 2391 04df 73686F72 		.ascii	"short int\000"
  2391      7420696E 
  2391      7400
  2392              	.LASF36:
- 2393 04ef 41505053 		.ascii	"APPS_ADC_GetAdcResult\000"
+ 2393 04e9 41505053 		.ascii	"APPS_ADC_GetAdcResult\000"
  2393      5F414443 
  2393      5F476574 
  2393      41646352 
  2393      6573756C 
  2394              	.LASF29:
- 2395 0505 41505053 		.ascii	"APPS_ADC_Stop\000"
+ 2395 04ff 41505053 		.ascii	"APPS_ADC_Stop\000"
  2395      5F414443 
  2395      5F53746F 
  2395      7000
  2396              	.LASF41:
- 2397 0513 41505053 		.ascii	"APPS_ADC_SetGain\000"
+ 2397 050d 41505053 		.ascii	"APPS_ADC_SetGain\000"
  2397      5F414443 
  2397      5F536574 
  2397      4761696E 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 58
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 58
 
 
  2397      00
  2398              	.LASF40:
- 2399 0524 7265736F 		.ascii	"resolution\000"
+ 2399 051e 7265736F 		.ascii	"resolution\000"
  2399      6C757469 
  2399      6F6E00
  2400              	.LASF35:
- 2401 052f 6368616E 		.ascii	"chan\000"
+ 2401 0529 6368616E 		.ascii	"chan\000"
  2401      00
  2402              	.LASF17:
- 2403 0534 63686172 		.ascii	"char\000"
+ 2403 052e 63686172 		.ascii	"char\000"
  2403      00
  2404              	.LASF21:
- 2405 0539 63796973 		.ascii	"cyisraddress\000"
+ 2405 0533 63796973 		.ascii	"cyisraddress\000"
  2405      72616464 
  2405      72657373 
  2405      00
  2406              	.LASF33:
- 2407 0546 41505053 		.ascii	"APPS_ADC_GetResult16\000"
+ 2407 0540 41505053 		.ascii	"APPS_ADC_GetResult16\000"
  2407      5F414443 
  2407      5F476574 
  2407      52657375 
  2407      6C743136 
  2408              	.LASF27:
- 2409 055b 41505053 		.ascii	"APPS_ADC_tempArray\000"
+ 2409 0555 41505053 		.ascii	"APPS_ADC_tempArray\000"
  2409      5F414443 
  2409      5F74656D 
  2409      70417272 
  2409      617900
  2410              	.LASF38:
- 2411 056e 6F666673 		.ascii	"offset\000"
+ 2411 0568 6F666673 		.ascii	"offset\000"
  2411      657400
  2412              	.LASF45:
- 2413 0575 61646343 		.ascii	"adcCounts\000"
+ 2413 056f 61646343 		.ascii	"adcCounts\000"
  2413      6F756E74 
  2413      7300
  2414              	.LASF57:
- 2415 057f 41505053 		.ascii	"APPS_ADC_FinalBuf_DmaInitialize\000"
+ 2415 0579 41505053 		.ascii	"APPS_ADC_FinalBuf_DmaInitialize\000"
  2415      5F414443 
  2415      5F46696E 
  2415      616C4275 
  2415      665F446D 
  2416              	.LASF26:
- 2417 059f 656E6162 		.ascii	"enableInterrupts\000"
+ 2417 0599 656E6162 		.ascii	"enableInterrupts\000"
  2417      6C65496E 
  2417      74657272 
  2417      75707473 
  2417      00
  2418              	.LASF69:
- 2419 05b0 41505053 		.ascii	"APPS_ADC_SAR_Start\000"
+ 2419 05aa 41505053 		.ascii	"APPS_ADC_SAR_Start\000"
  2419      5F414443 
  2419      5F534152 
  2419      5F537461 
  2419      727400
  2420              	.LASF31:
- 2421 05c3 73746174 		.ascii	"status\000"
+ 2421 05bd 73746174 		.ascii	"status\000"
  2421      757300
  2422              	.LASF25:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccpmVq8j.s 			page 59
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\cc4nb1iD.s 			page 59
 
 
- 2423 05ca 41505053 		.ascii	"APPS_ADC_Enable\000"
+ 2423 05c4 41505053 		.ascii	"APPS_ADC_Enable\000"
  2423      5F414443 
  2423      5F456E61 
  2423      626C6500 
  2424              	.LASF28:
- 2425 05da 41505053 		.ascii	"APPS_ADC_Start\000"
+ 2425 05d4 41505053 		.ascii	"APPS_ADC_Start\000"
  2425      5F414443 
  2425      5F537461 
  2425      727400
  2426              	.LASF60:
- 2427 05e9 41505053 		.ascii	"APPS_ADC_IRQ_SetPriority\000"
+ 2427 05e3 41505053 		.ascii	"APPS_ADC_IRQ_SetPriority\000"
  2427      5F414443 
  2427      5F495251 
  2427      5F536574 
  2427      5072696F 
  2428              	.LASF12:
- 2429 0602 696E7431 		.ascii	"int16\000"
+ 2429 05fc 696E7431 		.ascii	"int16\000"
  2429      3600
  2430              	.LASF64:
- 2431 0608 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
+ 2431 0602 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
  2431      61436853 
  2431      6574496E 
  2431      69746961 
  2431      6C546400 
  2432              	.LASF18:
- 2433 061c 63797374 		.ascii	"cystatus\000"
+ 2433 0616 63797374 		.ascii	"cystatus\000"
  2433      61747573 
  2433      00
  2434              	.LASF49:
- 2435 0625 41505053 		.ascii	"APPS_ADC_finalChan\000"
+ 2435 061f 41505053 		.ascii	"APPS_ADC_finalChan\000"
  2435      5F414443 
  2435      5F66696E 
  2435      616C4368 

@@ -1,0 +1,58 @@
+--------------- Build Started: 07/04/2013 11:46:03 Project: PSoC_Eye, Configuration: ARM GCC 4.4.1 Debug ---------------
+cydsfit.exe "-.appdatapath" "C:\Users\srvs\AppData\Local\Cypress Semiconductor\PSoC Creator\2.2" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\myProjects\Hobby\100_day_100_projects\Mine\PSoC_Eye\PSoC_Eye.cydsn\PSoC_Eye.cyprj" "-d" "CY8C4245AXI-483" "-s" "C:\myProjects\Hobby\100_day_100_projects\Mine\PSoC_Eye\PSoC_Eye.cydsn\Generated_Source\PSoC4" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=LE"
+Elaborating Design...
+HDL Generation ...
+Synthesis ...
+Place and Route ...
+Tech mapping ...
+Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
+Analog Placement ...
+Analog Routing ...
+Analog Code Generation ...
+Digital Placement ...
+Digital Routing ...
+Bitstream Generation ...
+Static timing analysis ...
+API Generation ...
+Dependency Generation ...
+Clean Temporary Files ...
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\main.lst -ffunction-sections -c .\main.c -o .\CortexM0\ARM_GCC_441\Debug\main.o
+.\main.c: In function 'main':
+.\main.c:101: warning: unused variable 'cnt'
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\Camera.lst -ffunction-sections -c .\Camera.c -o .\CortexM0\ARM_GCC_441\Debug\Camera.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\PAN.lst -ffunction-sections -c .\Generated_Source\PSoC4\PAN.c -o .\CortexM0\ARM_GCC_441\Debug\PAN.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\PAN_PM.lst -ffunction-sections -c .\Generated_Source\PSoC4\PAN_PM.c -o .\CortexM0\ARM_GCC_441\Debug\PAN_PM.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\TILT.lst -ffunction-sections -c .\Generated_Source\PSoC4\TILT.c -o .\CortexM0\ARM_GCC_441\Debug\TILT.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\TILT_PM.lst -ffunction-sections -c .\Generated_Source\PSoC4\TILT_PM.c -o .\CortexM0\ARM_GCC_441\Debug\TILT_PM.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\H100.lst -ffunction-sections -c .\Generated_Source\PSoC4\H100.c -o .\CortexM0\ARM_GCC_441\Debug\H100.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\PAN_O.lst -ffunction-sections -c .\Generated_Source\PSoC4\PAN_O.c -o .\CortexM0\ARM_GCC_441\Debug\PAN_O.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\TILT_O.lst -ffunction-sections -c .\Generated_Source\PSoC4\TILT_O.c -o .\CortexM0\ARM_GCC_441\Debug\TILT_O.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\Cm0Start.lst -ffunction-sections -c .\Generated_Source\PSoC4\Cm0Start.c -o .\CortexM0\ARM_GCC_441\Debug\Cm0Start.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\core_cm0.lst -ffunction-sections -c .\Generated_Source\PSoC4\core_cm0.c -o .\CortexM0\ARM_GCC_441\Debug\core_cm0.o
+arm-none-eabi-as.exe -I. -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -g -alh=.\CortexM0\ARM_GCC_441\Debug/CyBootAsmGnu.lst -o .\CortexM0\ARM_GCC_441\Debug\CyBootAsmGnu.o .\Generated_Source\PSoC4\CyBootAsmGnu.s
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\CyFlash.lst -ffunction-sections -c .\Generated_Source\PSoC4\CyFlash.c -o .\CortexM0\ARM_GCC_441\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\CyLib.lst -ffunction-sections -c .\Generated_Source\PSoC4\CyLib.c -o .\CortexM0\ARM_GCC_441\Debug\CyLib.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\cyPm.lst -ffunction-sections -c .\Generated_Source\PSoC4\cyPm.c -o .\CortexM0\ARM_GCC_441\Debug\cyPm.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\cyutils.lst -ffunction-sections -c .\Generated_Source\PSoC4\cyutils.c -o .\CortexM0\ARM_GCC_441\Debug\cyutils.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_INT.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_I2C_INT.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_INT.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_I2C.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_I2C.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_BOOT.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_I2C_BOOT.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_BOOT.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_MASTER.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_I2C_MASTER.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_MASTER.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_PM.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_PM.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_PM.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_BOOT.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_BOOT.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_BOOT.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_SCB_IRQ.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_SCB_IRQ.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_SCB_IRQ.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_SCBCLK.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_SCBCLK.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_SCBCLK.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_scl.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_scl.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_scl.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\I2CM_sda.lst -ffunction-sections -c .\Generated_Source\PSoC4\I2CM_sda.c -o .\CortexM0\ARM_GCC_441\Debug\I2CM_sda.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\RESET.lst -ffunction-sections -c .\Generated_Source\PSoC4\RESET.c -o .\CortexM0\ARM_GCC_441\Debug\RESET.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\CLOCK.lst -ffunction-sections -c .\Generated_Source\PSoC4\CLOCK.c -o .\CortexM0\ARM_GCC_441\Debug\CLOCK.o
+arm-none-eabi-gcc.exe -I. -Wno-main -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_441\Debug\cyfitter_cfg.lst -ffunction-sections -c .\Generated_Source\PSoC4\cyfitter_cfg.c -o .\CortexM0\ARM_GCC_441\Debug\cyfitter_cfg.o
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.a .\CortexM0\ARM_GCC_441\Debug\PAN.o .\CortexM0\ARM_GCC_441\Debug\PAN_PM.o .\CortexM0\ARM_GCC_441\Debug\TILT.o .\CortexM0\ARM_GCC_441\Debug\TILT_PM.o .\CortexM0\ARM_GCC_441\Debug\H100.o .\CortexM0\ARM_GCC_441\Debug\PAN_O.o .\CortexM0\ARM_GCC_441\Debug\TILT_O.o .\CortexM0\ARM_GCC_441\Debug\core_cm0.o .\CortexM0\ARM_GCC_441\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_441\Debug\CyFlash.o .\CortexM0\ARM_GCC_441\Debug\CyLib.o .\CortexM0\ARM_GCC_441\Debug\cyPm.o .\CortexM0\ARM_GCC_441\Debug\cyutils.o .\CortexM0\ARM_GCC_441\Debug\I2CM.o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_INT.o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C.o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_BOOT.o .\CortexM0\ARM_GCC_441\Debug\I2CM_I2C_MASTER.o .\CortexM0\ARM_GCC_441\Debug\I2CM_PM.o .\CortexM0\ARM_GCC_441\Debug\I2CM_BOOT.o .\CortexM0\ARM_GCC_441\Debug\I2CM_SCB_IRQ.o .\CortexM0\ARM_GCC_441\Debug\I2CM_SCBCLK.o .\CortexM0\ARM_GCC_441\Debug\I2CM_scl.o .\CortexM0\ARM_GCC_441\Debug\I2CM_sda.o .\CortexM0\ARM_GCC_441\Debug\RESET.o .\CortexM0\ARM_GCC_441\Debug\CLOCK.o .\CortexM0\ARM_GCC_441\Debug\cyfitter_cfg.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.a
+arm-none-eabi-gcc.exe -mthumb -march=armv6-m -T .\Generated_Source\PSoC4\cm0gcc.ld -g -Wl,-Map,.\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.map -Wl,--gc-sections -Wl,--start-group -o .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.elf .\CortexM0\ARM_GCC_441\Debug\main.o .\CortexM0\ARM_GCC_441\Debug\Camera.o .\CortexM0\ARM_GCC_441\Debug\Cm0Start.o .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.a "C:\Program Files (x86)\Cypress\PSoC Creator\2.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_441\Debug\CyComponentLibrary.a" -Wl,--end-group
+arm-none-eabi-objcopy.exe -O ihex .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.elf .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.ihx
+cyhextool -o .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.hex -f .\CortexM0\ARM_GCC_441\Debug\PSoC_Eye.ihx -prot .\Generated_Source\PSoC4\protect.hex -id 4C81193 -a EEPROM=90200000:0,PROGRAM=00000000:8000,CONFIG=80000000:1000,PROTECT=90400000:40 -meta 1101 -chipProt 01
+Flash used: 7512 of 32768 bytes (22.9 %).
+SRAM used: 380 of 4096 bytes (9.3 %).
+--------------- Build Succeeded: 07/04/2013 11:46:31 ---------------

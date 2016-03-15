@@ -1,4 +1,4 @@
---------------- Rebuild Started: 01/17/2016 23:01:38 Project: Test-Project, Configuration: ARM GCC 4.8.4 Debug ---------------
+--------------- Rebuild Started: 03/14/2016 16:16:32 Project: Misc-Tests, Configuration: ARM GCC 4.8.4 Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\cyfitter_cfg.o"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\cymetadata.o"
@@ -15,32 +15,36 @@ Deleting file ".\CortexM3\ARM_GCC_484\Debug\CyLib.o"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\cyPm.o"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\CySpc.o"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\cyutils.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\Pot_1.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_PM.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_INT.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_AMux.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_Ext_CP_Clk.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_IRQ.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_theACLK.o"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\Test-Project.hex"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\Test-Project.elf"
-Deleting file ".\CortexM3\ARM_GCC_484\Debug\Test-Project.map"
-Deleting file ".\Test-Project.cycdx"
-Deleting file ".\Test-Project.svd"
-Deleting file ".\Test-Project.rpt"
-Deleting file ".\Test-Project_timing.html"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\SERVO_OUT.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\PWM.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\PWM_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\Clock_1.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\POT.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_PM.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_INT.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_AMux.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_Ext_CP_Clk.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_IRQ.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\ADC_theACLK.o"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\Misc-Tests.hex"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\Misc-Tests.elf"
+Deleting file ".\CortexM3\ARM_GCC_484\Debug\Misc-Tests.map"
+Deleting file ".\Misc-Tests.cycdx"
+Deleting file ".\Misc-Tests.svd"
+Deleting file ".\Misc-Tests.rpt"
+Deleting file ".\Misc-Tests_timing.html"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\.deps\C_FILE.P"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\.deps\ARM_C_FILE.P"
 Deleting file ".\CortexM3\ARM_GCC_484\Debug\.deps\GNU_ARM_ASM_FILE.P"
-cydsfit.exe -.appdatapath "C:\Users\mitchell\AppData\Local\Cypress Semiconductor\PSoC Creator\3.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\mitchell\Documents\fsae\E-Throttle\E-Throttle\Test-Project.cydsn\Test-Project.cyprj -d CY8C5888LTI-LP097 -s C:\Users\mitchell\Documents\fsae\E-Throttle\E-Throttle\Test-Project.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit.exe -.appdatapath "C:\Users\mitchell\AppData\Local\Cypress Semiconductor\PSoC Creator\3.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\mitchell\Documents\fsae\E-Throttle\PSoC\Misc-Tests.cydsn\Misc-Tests.cyprj -d CY8C5888LTI-LP097 -s C:\Users\mitchell\Documents\fsae\E-Throttle\PSoC\Misc-Tests.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 HDL Generation ...
 Synthesis ...
 Place and Route ...
 Tech mapping ...
 Analog Placement ...
-Info: apr.M0002: Analog signal "\ADC_DelSig:Net_690\" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
 Analog Routing ...
 Analog Code Generation ...
 Digital Placement ...
@@ -51,6 +55,10 @@ API Generation ...
 Dependency Generation ...
 Clean Temporary Files ...
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\main.c -o .\CortexM3\ARM_GCC_484\Debug\main.o
+.\main.c: In function 'main':
+.\main.c:34:9: warning: unused variable 'mycount' [-Wunused-variable]
+     int mycount = 0;
+         ^
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/cyfitter_cfg.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\cyfitter_cfg.c -o .\CortexM3\ARM_GCC_484\Debug\cyfitter_cfg.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/cymetadata.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\cymetadata.c -o .\CortexM3\ARM_GCC_484\Debug\cymetadata.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/UART_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\UART_1.c -o .\CortexM3\ARM_GCC_484\Debug\UART_1.o
@@ -66,19 +74,23 @@ arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\P
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/cyPm.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\cyPm.c -o .\CortexM3\ARM_GCC_484\Debug\cyPm.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/CySpc.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\CySpc.c -o .\CortexM3\ARM_GCC_484\Debug\CySpc.o
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/cyutils.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\cyutils.c -o .\CortexM3\ARM_GCC_484\Debug\cyutils.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/Pot_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\Pot_1.c -o .\CortexM3\ARM_GCC_484\Debug\Pot_1.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_PM.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_PM.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_INT.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_INT.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_INT.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_AMux.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_AMux.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_AMux.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_Ext_CP_Clk.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_Ext_CP_Clk.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_Ext_CP_Clk.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_IRQ.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_IRQ.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_IRQ.o
-arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_DelSig_theACLK.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_DelSig_theACLK.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_theACLK.o
-arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_484\Debug\Test-Project.a .\CortexM3\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_484\Debug\UART_1.o .\CortexM3\ARM_GCC_484\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_484\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_484\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_484\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_484\Debug\CyDmac.o .\CortexM3\ARM_GCC_484\Debug\CyFlash.o .\CortexM3\ARM_GCC_484\Debug\CyLib.o .\CortexM3\ARM_GCC_484\Debug\cyPm.o .\CortexM3\ARM_GCC_484\Debug\CySpc.o .\CortexM3\ARM_GCC_484\Debug\cyutils.o .\CortexM3\ARM_GCC_484\Debug\Pot_1.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_PM.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_INT.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_AMux.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_Ext_CP_Clk.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_IRQ.o .\CortexM3\ARM_GCC_484\Debug\ADC_DelSig_theACLK.o
-arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_484\Debug\Test-Project.a
-arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_484\Debug\Test-Project.elf .\CortexM3\ARM_GCC_484\Debug\main.o .\CortexM3\ARM_GCC_484\Debug\cymetadata.o .\CortexM3\ARM_GCC_484\Debug\Cm3Start.o .\CortexM3\ARM_GCC_484\Debug\Test-Project.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_484\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -Wl,-Map,.\CortexM3\ARM_GCC_484\Debug/Test-Project.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
-cyelftool.exe -C C:\Users\mitchell\Documents\fsae\E-Throttle\E-Throttle\Test-Project.cydsn\CortexM3\ARM_GCC_484\Debug\Test-Project.elf --flash_row_size 256 --flash_size 262144
-cyelftool.exe -S C:\Users\mitchell\Documents\fsae\E-Throttle\E-Throttle\Test-Project.cydsn\CortexM3\ARM_GCC_484\Debug\Test-Project.elf
-Flash used: 3584 of 262144 bytes (1.4 %).
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/SERVO_OUT.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\SERVO_OUT.c -o .\CortexM3\ARM_GCC_484\Debug\SERVO_OUT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/PWM.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\PWM.c -o .\CortexM3\ARM_GCC_484\Debug\PWM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/PWM_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\PWM_PM.c -o .\CortexM3\ARM_GCC_484\Debug\PWM_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/Clock_1.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\Clock_1.c -o .\CortexM3\ARM_GCC_484\Debug\Clock_1.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/POT.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\POT.c -o .\CortexM3\ARM_GCC_484\Debug\POT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC.c -o .\CortexM3\ARM_GCC_484\Debug\ADC.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_PM.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_PM.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_PM.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_INT.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_INT.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_INT.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_AMux.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_AMux.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_AMux.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_Ext_CP_Clk.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_Ext_CP_Clk.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_Ext_CP_Clk.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_IRQ.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_IRQ.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_IRQ.o
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_484\Debug/ADC_theACLK.lst -g -D DEBUG -Wall -ffunction-sections -Og -c .\Generated_Source\PSoC5\ADC_theACLK.c -o .\CortexM3\ARM_GCC_484\Debug\ADC_theACLK.o
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_484\Debug\Misc-Tests.a .\CortexM3\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_484\Debug\UART_1.o .\CortexM3\ARM_GCC_484\Debug\UART_1_PM.o .\CortexM3\ARM_GCC_484\Debug\UART_1_INT.o .\CortexM3\ARM_GCC_484\Debug\UART_1_BOOT.o .\CortexM3\ARM_GCC_484\Debug\UART_1_IntClock.o .\CortexM3\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_484\Debug\CyDmac.o .\CortexM3\ARM_GCC_484\Debug\CyFlash.o .\CortexM3\ARM_GCC_484\Debug\CyLib.o .\CortexM3\ARM_GCC_484\Debug\cyPm.o .\CortexM3\ARM_GCC_484\Debug\CySpc.o .\CortexM3\ARM_GCC_484\Debug\cyutils.o .\CortexM3\ARM_GCC_484\Debug\SERVO_OUT.o .\CortexM3\ARM_GCC_484\Debug\PWM.o .\CortexM3\ARM_GCC_484\Debug\PWM_PM.o .\CortexM3\ARM_GCC_484\Debug\Clock_1.o .\CortexM3\ARM_GCC_484\Debug\POT.o .\CortexM3\ARM_GCC_484\Debug\ADC.o .\CortexM3\ARM_GCC_484\Debug\ADC_PM.o .\CortexM3\ARM_GCC_484\Debug\ADC_INT.o .\CortexM3\ARM_GCC_484\Debug\ADC_AMux.o .\CortexM3\ARM_GCC_484\Debug\ADC_Ext_CP_Clk.o .\CortexM3\ARM_GCC_484\Debug\ADC_IRQ.o .\CortexM3\ARM_GCC_484\Debug\ADC_theACLK.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_484\Debug\Misc-Tests.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_484\Debug\Misc-Tests.elf .\CortexM3\ARM_GCC_484\Debug\main.o .\CortexM3\ARM_GCC_484\Debug\cymetadata.o .\CortexM3\ARM_GCC_484\Debug\Cm3Start.o .\CortexM3\ARM_GCC_484\Debug\Misc-Tests.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_484\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -Wl,-Map,.\CortexM3\ARM_GCC_484\Debug/Misc-Tests.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
+cyelftool.exe -C C:\Users\mitchell\Documents\fsae\E-Throttle\PSoC\Misc-Tests.cydsn\CortexM3\ARM_GCC_484\Debug\Misc-Tests.elf --flash_row_size 256 --flash_size 262144
+cyelftool.exe -S C:\Users\mitchell\Documents\fsae\E-Throttle\PSoC\Misc-Tests.cydsn\CortexM3\ARM_GCC_484\Debug\Misc-Tests.elf
+Flash used: 5120 of 262144 bytes (2.0 %).
 SRAM used: 2509 of 65536 bytes (3.8 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 01/17/2016 23:01:56 ---------------
+--------------- Rebuild Succeeded: 03/14/2016 16:16:53 ---------------

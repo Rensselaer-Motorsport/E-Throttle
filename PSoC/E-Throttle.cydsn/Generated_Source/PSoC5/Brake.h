@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Brake.h  
+* File Name: BRAKE.h  
 * Version 2.10
 *
 * Description:
@@ -14,13 +14,13 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_Brake_H) /* Pins Brake_H */
-#define CY_PINS_Brake_H
+#if !defined(CY_PINS_BRAKE_H) /* Pins BRAKE_H */
+#define CY_PINS_BRAKE_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
 #include "cypins.h"
-#include "Brake_aliases.h"
+#include "BRAKE_aliases.h"
 
 /* Check to see if required defines such as CY_PSOC5A are available */
 /* They are defined starting with cy_boot v3.0 */
@@ -30,18 +30,18 @@
 
 /* APIs are not generated for P15[7:6] */
 #if !(CY_PSOC5A &&\
-	 Brake__PORT == 15 && ((Brake__MASK & 0xC0) != 0))
+	 BRAKE__PORT == 15 && ((BRAKE__MASK & 0xC0) != 0))
 
 
 /***************************************
 *        Function Prototypes             
 ***************************************/    
 
-void    Brake_Write(uint8 value) ;
-void    Brake_SetDriveMode(uint8 mode) ;
-uint8   Brake_ReadDataReg(void) ;
-uint8   Brake_Read(void) ;
-uint8   Brake_ClearInterrupt(void) ;
+void    BRAKE_Write(uint8 value) ;
+void    BRAKE_SetDriveMode(uint8 mode) ;
+uint8   BRAKE_ReadDataReg(void) ;
+uint8   BRAKE_Read(void) ;
+uint8   BRAKE_ClearInterrupt(void) ;
 
 
 /***************************************
@@ -49,19 +49,19 @@ uint8   Brake_ClearInterrupt(void) ;
 ***************************************/
 
 /* Drive Modes */
-#define Brake_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define Brake_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define Brake_DM_RES_UP          PIN_DM_RES_UP
-#define Brake_DM_RES_DWN         PIN_DM_RES_DWN
-#define Brake_DM_OD_LO           PIN_DM_OD_LO
-#define Brake_DM_OD_HI           PIN_DM_OD_HI
-#define Brake_DM_STRONG          PIN_DM_STRONG
-#define Brake_DM_RES_UPDWN       PIN_DM_RES_UPDWN
+#define BRAKE_DM_ALG_HIZ         PIN_DM_ALG_HIZ
+#define BRAKE_DM_DIG_HIZ         PIN_DM_DIG_HIZ
+#define BRAKE_DM_RES_UP          PIN_DM_RES_UP
+#define BRAKE_DM_RES_DWN         PIN_DM_RES_DWN
+#define BRAKE_DM_OD_LO           PIN_DM_OD_LO
+#define BRAKE_DM_OD_HI           PIN_DM_OD_HI
+#define BRAKE_DM_STRONG          PIN_DM_STRONG
+#define BRAKE_DM_RES_UPDWN       PIN_DM_RES_UPDWN
 
 /* Digital Port Constants */
-#define Brake_MASK               Brake__MASK
-#define Brake_SHIFT              Brake__SHIFT
-#define Brake_WIDTH              1u
+#define BRAKE_MASK               BRAKE__MASK
+#define BRAKE_SHIFT              BRAKE__SHIFT
+#define BRAKE_WIDTH              1u
 
 
 /***************************************
@@ -70,61 +70,61 @@ uint8   Brake_ClearInterrupt(void) ;
 
 /* Main Port Registers */
 /* Pin State */
-#define Brake_PS                     (* (reg8 *) Brake__PS)
+#define BRAKE_PS                     (* (reg8 *) BRAKE__PS)
 /* Data Register */
-#define Brake_DR                     (* (reg8 *) Brake__DR)
+#define BRAKE_DR                     (* (reg8 *) BRAKE__DR)
 /* Port Number */
-#define Brake_PRT_NUM                (* (reg8 *) Brake__PRT) 
+#define BRAKE_PRT_NUM                (* (reg8 *) BRAKE__PRT) 
 /* Connect to Analog Globals */                                                  
-#define Brake_AG                     (* (reg8 *) Brake__AG)                       
+#define BRAKE_AG                     (* (reg8 *) BRAKE__AG)                       
 /* Analog MUX bux enable */
-#define Brake_AMUX                   (* (reg8 *) Brake__AMUX) 
+#define BRAKE_AMUX                   (* (reg8 *) BRAKE__AMUX) 
 /* Bidirectional Enable */                                                        
-#define Brake_BIE                    (* (reg8 *) Brake__BIE)
+#define BRAKE_BIE                    (* (reg8 *) BRAKE__BIE)
 /* Bit-mask for Aliased Register Access */
-#define Brake_BIT_MASK               (* (reg8 *) Brake__BIT_MASK)
+#define BRAKE_BIT_MASK               (* (reg8 *) BRAKE__BIT_MASK)
 /* Bypass Enable */
-#define Brake_BYP                    (* (reg8 *) Brake__BYP)
+#define BRAKE_BYP                    (* (reg8 *) BRAKE__BYP)
 /* Port wide control signals */                                                   
-#define Brake_CTL                    (* (reg8 *) Brake__CTL)
+#define BRAKE_CTL                    (* (reg8 *) BRAKE__CTL)
 /* Drive Modes */
-#define Brake_DM0                    (* (reg8 *) Brake__DM0) 
-#define Brake_DM1                    (* (reg8 *) Brake__DM1)
-#define Brake_DM2                    (* (reg8 *) Brake__DM2) 
+#define BRAKE_DM0                    (* (reg8 *) BRAKE__DM0) 
+#define BRAKE_DM1                    (* (reg8 *) BRAKE__DM1)
+#define BRAKE_DM2                    (* (reg8 *) BRAKE__DM2) 
 /* Input Buffer Disable Override */
-#define Brake_INP_DIS                (* (reg8 *) Brake__INP_DIS)
+#define BRAKE_INP_DIS                (* (reg8 *) BRAKE__INP_DIS)
 /* LCD Common or Segment Drive */
-#define Brake_LCD_COM_SEG            (* (reg8 *) Brake__LCD_COM_SEG)
+#define BRAKE_LCD_COM_SEG            (* (reg8 *) BRAKE__LCD_COM_SEG)
 /* Enable Segment LCD */
-#define Brake_LCD_EN                 (* (reg8 *) Brake__LCD_EN)
+#define BRAKE_LCD_EN                 (* (reg8 *) BRAKE__LCD_EN)
 /* Slew Rate Control */
-#define Brake_SLW                    (* (reg8 *) Brake__SLW)
+#define BRAKE_SLW                    (* (reg8 *) BRAKE__SLW)
 
 /* DSI Port Registers */
 /* Global DSI Select Register */
-#define Brake_PRTDSI__CAPS_SEL       (* (reg8 *) Brake__PRTDSI__CAPS_SEL) 
+#define BRAKE_PRTDSI__CAPS_SEL       (* (reg8 *) BRAKE__PRTDSI__CAPS_SEL) 
 /* Double Sync Enable */
-#define Brake_PRTDSI__DBL_SYNC_IN    (* (reg8 *) Brake__PRTDSI__DBL_SYNC_IN) 
+#define BRAKE_PRTDSI__DBL_SYNC_IN    (* (reg8 *) BRAKE__PRTDSI__DBL_SYNC_IN) 
 /* Output Enable Select Drive Strength */
-#define Brake_PRTDSI__OE_SEL0        (* (reg8 *) Brake__PRTDSI__OE_SEL0) 
-#define Brake_PRTDSI__OE_SEL1        (* (reg8 *) Brake__PRTDSI__OE_SEL1) 
+#define BRAKE_PRTDSI__OE_SEL0        (* (reg8 *) BRAKE__PRTDSI__OE_SEL0) 
+#define BRAKE_PRTDSI__OE_SEL1        (* (reg8 *) BRAKE__PRTDSI__OE_SEL1) 
 /* Port Pin Output Select Registers */
-#define Brake_PRTDSI__OUT_SEL0       (* (reg8 *) Brake__PRTDSI__OUT_SEL0) 
-#define Brake_PRTDSI__OUT_SEL1       (* (reg8 *) Brake__PRTDSI__OUT_SEL1) 
+#define BRAKE_PRTDSI__OUT_SEL0       (* (reg8 *) BRAKE__PRTDSI__OUT_SEL0) 
+#define BRAKE_PRTDSI__OUT_SEL1       (* (reg8 *) BRAKE__PRTDSI__OUT_SEL1) 
 /* Sync Output Enable Registers */
-#define Brake_PRTDSI__SYNC_OUT       (* (reg8 *) Brake__PRTDSI__SYNC_OUT) 
+#define BRAKE_PRTDSI__SYNC_OUT       (* (reg8 *) BRAKE__PRTDSI__SYNC_OUT) 
 
 
-#if defined(Brake__INTSTAT)  /* Interrupt Registers */
+#if defined(BRAKE__INTSTAT)  /* Interrupt Registers */
 
-    #define Brake_INTSTAT                (* (reg8 *) Brake__INTSTAT)
-    #define Brake_SNAP                   (* (reg8 *) Brake__SNAP)
+    #define BRAKE_INTSTAT                (* (reg8 *) BRAKE__INTSTAT)
+    #define BRAKE_SNAP                   (* (reg8 *) BRAKE__SNAP)
 
 #endif /* Interrupt Registers */
 
 #endif /* CY_PSOC5A... */
 
-#endif /*  CY_PINS_Brake_H */
+#endif /*  CY_PINS_BRAKE_H */
 
 
 /* [] END OF FILE */

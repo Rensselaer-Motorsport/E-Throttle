@@ -172,10 +172,10 @@ void Timer_Wakeup(void)        ;
 #define Timer_INIT_CAPTURE_MODE       ((uint8)((uint8)0u << Timer_CTRL_CAP_MODE_SHIFT))
 #define Timer_INIT_TRIGGER_MODE       ((uint8)((uint8)0u << Timer_CTRL_TRIG_MODE_SHIFT))
 #if (Timer_UsingFixedFunction)
-    #define Timer_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_STATUS_TC_INT_MASK_SHIFT)) | \
+    #define Timer_INIT_INTERRUPT_MODE (((uint8)((uint8)1u << Timer_STATUS_TC_INT_MASK_SHIFT)) | \
                                                   ((uint8)((uint8)0 << Timer_STATUS_CAPTURE_INT_MASK_SHIFT)))
 #else
-    #define Timer_INIT_INTERRUPT_MODE (((uint8)((uint8)0u << Timer_STATUS_TC_INT_MASK_SHIFT)) | \
+    #define Timer_INIT_INTERRUPT_MODE (((uint8)((uint8)1u << Timer_STATUS_TC_INT_MASK_SHIFT)) | \
                                                  ((uint8)((uint8)0 << Timer_STATUS_CAPTURE_INT_MASK_SHIFT)) | \
                                                  ((uint8)((uint8)0 << Timer_STATUS_FIFOFULL_INT_MASK_SHIFT)))
 #endif /* (Timer_UsingFixedFunction) */

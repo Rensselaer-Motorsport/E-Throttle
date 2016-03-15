@@ -199,6 +199,16 @@ unsigned char brakeErrorCheck(float brake, float tps) {
 }
 
 /*
+parameter:  percent_open - How much the throttle body should be open
+effect:     Writes compare for the PWM component which determins the
+            throttle actuator position.
+*/
+void writeToServo(float percent_open) {
+    uint16 compare = (uint16)(1000 + (percent_open * 1000.0));
+    SERVO_PWM_WriteCompare(compare);
+}
+
+/*
 effect:     Stops the e-throttle system in case of an error.
             Shuts down power to the throttle actuator until 
             TPS signal is < 5%

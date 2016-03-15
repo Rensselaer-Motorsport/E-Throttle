@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
   29:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
   30:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** /*******************************************************************************
   31:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Function Name: BRAKE_ADC_theACLK_Start
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
   55:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
   56:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
   57:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Summary:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 3
 
 
   58:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  Stops the clock and returns immediately. This API does not require the
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
   81:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
   82:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** /*******************************************************************************
   83:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Function Name: BRAKE_ADC_theACLK_StopBlock
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 4
 
 
   84:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** ********************************************************************************
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  116:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** #endif /* BRAKE_ADC_theACLK__CFG3 */
  117:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
  118:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         /* Clear mask of bus clock. */
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 5
 
 
  119:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  136:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         CY_SET_REG16(BRAKE_ADC_theACLK_DIV_PTR, oldDivider);
  148              		.loc 1 136 0
  149 0058 FF33     		adds	r3, r3, #255
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 6
 
 
  150 005a 1980     		strh	r1, [r3]	@ movhi
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  160:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     {
  161:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         BRAKE_ADC_theACLK_CLKSTBY &= (uint8)(~BRAKE_ADC_theACLK_CLKSTBY_MASK);
  181              		.loc 1 161 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 7
 
 
  182 0002 064B     		ldr	r3, .L16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  189:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
  190:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  None
  191:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 8
 
 
  192:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *******************************************************************************/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  246:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  247:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
  248:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 9
 
 
  249:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                     /* Wait for clock to be disabled */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  213              		@ link register save eliminated.
  299:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     return CY_GET_REG16(BRAKE_ADC_theACLK_DIV_PTR);
  214              		.loc 1 299 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 10
 
 
  215 0000 014B     		ldr	r3, .L19
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  235              		.loc 1 333 0
  236              		.cfi_startproc
  237              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 11
 
 
  238              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  362:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
  363:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
  364:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *  None
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 12
 
 
  365:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  388:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** uint8 BRAKE_ADC_theACLK_GetModeRegister(void) 
  389:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** {
  295              		.loc 1 389 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 13
 
 
  296              		.cfi_startproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  419:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** void BRAKE_ADC_theACLK_SetSourceRegister(uint8 clkSource) 
  420:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** {
  421:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     uint16 currDiv = BRAKE_ADC_theACLK_GetDividerRegister();
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 14
 
 
  422:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****     uint8 oldSrc = BRAKE_ADC_theACLK_GetSourceRegister();
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  329              		.loc 1 467 0
  330 0004 00F00700 		and	r0, r0, #7
  331 0008 7047     		bx	lr
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 15
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 15
 
 
  332              	.L32:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  205:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         if ((currSrc == (uint8)CYCLK_SRC_SEL_CLK_SYNC_D) && ((oldDivider == 0u) || (clkDivider == 0
  380              		.loc 1 205 0 is_stmt 0 discriminator 1
  381 0020 00B1     		cbz	r0, .L36
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 16
 
 
  382 0022 84B9     		cbnz	r4, .L35
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  426 005c 00F07F00 		and	r0, r0, #127
  427 0060 1070     		strb	r0, [r2]
  243:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****                 if (((BRAKE_ADC_theACLK_MOD_SRC & CYCLK_SYNC) == 0u) || (clkDivider == 0u))
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 17
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 17
 
 
  428              		.loc 1 243 0
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  472 00a6 00E0     		b	.L42
  473              	.L44:
  474 00a8 0122     		movs	r2, #1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 18
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 18
 
 
  475              	.L42:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  523              	.LVL19:
  524 0000 38B5     		push	{r3, r4, r5, lr}
  525              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 19
 
 
  526              		.cfi_offset 3, -16
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  568 0034 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
  438:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c ****         BRAKE_ADC_theACLK_MOD_SRC =
  569              		.loc 1 438 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 20
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 20
 
 
  570 0036 02F0F802 		and	r2, r2, #248
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  485:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
  486:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *   produces a 10ns delay.
  487:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 21
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 21
 
 
  488:.\Generated_Source\PSoC5/BRAKE_ADC_theACLK.c **** * Returns:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  631              		.loc 1 514 0
  632              		.cfi_startproc
  633              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 22
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 22
 
 
  634              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1288,48 +1288,48 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  656 0006 00000000 		.4byte	.Ldebug_abbrev0
  657 000a 04       		.byte	0x4
  658 000b 01       		.uleb128 0x1
- 659 000c 35010000 		.4byte	.LASF40
+ 659 000c ED000000 		.4byte	.LASF40
  660 0010 01       		.byte	0x1
- 661 0011 2B020000 		.4byte	.LASF41
- 662 0015 00000000 		.4byte	.LASF42
+ 661 0011 E3010000 		.4byte	.LASF41
+ 662 0015 26020000 		.4byte	.LASF42
  663 0019 00000000 		.4byte	.Ldebug_ranges0+0
  664 001d 00000000 		.4byte	0
  665 0021 00000000 		.4byte	.Ldebug_line0
  666 0025 02       		.uleb128 0x2
  667 0026 01       		.byte	0x1
  668 0027 06       		.byte	0x6
- 669 0028 90020000 		.4byte	.LASF0
+ 669 0028 8A020000 		.4byte	.LASF0
  670 002c 02       		.uleb128 0x2
  671 002d 01       		.byte	0x1
  672 002e 08       		.byte	0x8
- 673 002f 76020000 		.4byte	.LASF1
+ 673 002f 70020000 		.4byte	.LASF1
  674 0033 02       		.uleb128 0x2
  675 0034 02       		.byte	0x2
  676 0035 05       		.byte	0x5
- 677 0036 7A000000 		.4byte	.LASF2
+ 677 0036 32000000 		.4byte	.LASF2
  678 003a 02       		.uleb128 0x2
  679 003b 02       		.byte	0x2
  680 003c 07       		.byte	0x7
- 681 003d C0020000 		.4byte	.LASF3
+ 681 003d BA020000 		.4byte	.LASF3
  682 0041 02       		.uleb128 0x2
  683 0042 04       		.byte	0x4
  684 0043 05       		.byte	0x5
- 685 0044 B9010000 		.4byte	.LASF4
+ 685 0044 71010000 		.4byte	.LASF4
  686 0048 02       		.uleb128 0x2
  687 0049 04       		.byte	0x4
  688 004a 07       		.byte	0x7
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 23
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 23
 
 
- 689 004b 0E030000 		.4byte	.LASF5
+ 689 004b 08030000 		.4byte	.LASF5
  690 004f 02       		.uleb128 0x2
  691 0050 08       		.byte	0x8
  692 0051 05       		.byte	0x5
- 693 0052 27010000 		.4byte	.LASF6
+ 693 0052 DF000000 		.4byte	.LASF6
  694 0056 02       		.uleb128 0x2
  695 0057 08       		.byte	0x8
  696 0058 07       		.byte	0x7
- 697 0059 9C020000 		.4byte	.LASF7
+ 697 0059 96020000 		.4byte	.LASF7
  698 005d 03       		.uleb128 0x3
  699 005e 04       		.byte	0x4
  700 005f 05       		.byte	0x5
@@ -1337,48 +1337,48 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  702 0064 02       		.uleb128 0x2
  703 0065 04       		.byte	0x4
  704 0066 07       		.byte	0x7
- 705 0067 B3020000 		.4byte	.LASF8
+ 705 0067 AD020000 		.4byte	.LASF8
  706 006b 04       		.uleb128 0x4
- 707 006c ED000000 		.4byte	.LASF9
+ 707 006c A5000000 		.4byte	.LASF9
  708 0070 02       		.byte	0x2
  709 0071 B4       		.byte	0xb4
  710 0072 2C000000 		.4byte	0x2c
  711 0076 04       		.uleb128 0x4
- 712 0077 A9000000 		.4byte	.LASF10
+ 712 0077 61000000 		.4byte	.LASF10
  713 007b 02       		.byte	0x2
  714 007c B5       		.byte	0xb5
  715 007d 3A000000 		.4byte	0x3a
  716 0081 02       		.uleb128 0x2
  717 0082 04       		.byte	0x4
  718 0083 04       		.byte	0x4
- 719 0084 21010000 		.4byte	.LASF11
+ 719 0084 D9000000 		.4byte	.LASF11
  720 0088 02       		.uleb128 0x2
  721 0089 08       		.byte	0x8
  722 008a 04       		.byte	0x4
- 723 008b 20030000 		.4byte	.LASF12
+ 723 008b 1A030000 		.4byte	.LASF12
  724 008f 02       		.uleb128 0x2
  725 0090 01       		.byte	0x1
  726 0091 08       		.byte	0x8
- 727 0092 D3020000 		.4byte	.LASF13
+ 727 0092 CD020000 		.4byte	.LASF13
  728 0096 05       		.uleb128 0x5
- 729 0097 09030000 		.4byte	.LASF14
+ 729 0097 03030000 		.4byte	.LASF14
  730 009b 02       		.byte	0x2
  731 009c 5E01     		.2byte	0x15e
  732 009e A2000000 		.4byte	0xa2
  733 00a2 06       		.uleb128 0x6
  734 00a3 6B000000 		.4byte	0x6b
  735 00a7 05       		.uleb128 0x5
- 736 00a8 50000000 		.4byte	.LASF15
+ 736 00a8 08000000 		.4byte	.LASF15
  737 00ac 02       		.byte	0x2
  738 00ad 5F01     		.2byte	0x15f
  739 00af B3000000 		.4byte	0xb3
  740 00b3 06       		.uleb128 0x6
  741 00b4 76000000 		.4byte	0x76
  742 00b8 07       		.uleb128 0x7
- 743 00b9 D5000000 		.4byte	.LASF16
+ 743 00b9 8D000000 		.4byte	.LASF16
  744 00bd 01       		.byte	0x1
  745 00be 2D       		.byte	0x2d
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 24
 
 
  746 00bf 00000000 		.4byte	.LFB0
@@ -1386,7 +1386,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  748 00c7 01       		.uleb128 0x1
  749 00c8 9C       		.byte	0x9c
  750 00c9 07       		.uleb128 0x7
- 751 00ca 94030000 		.4byte	.LASF17
+ 751 00ca 8E030000 		.4byte	.LASF17
  752 00ce 01       		.byte	0x1
  753 00cf 47       		.byte	0x47
  754 00d0 00000000 		.4byte	.LFB1
@@ -1394,7 +1394,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  756 00d8 01       		.uleb128 0x1
  757 00d9 9C       		.byte	0x9c
  758 00da 08       		.uleb128 0x8
- 759 00db E2020000 		.4byte	.LASF18
+ 759 00db DC020000 		.4byte	.LASF18
  760 00df 01       		.byte	0x1
  761 00e0 64       		.byte	0x64
  762 00e1 00000000 		.4byte	.LFB2
@@ -1406,7 +1406,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  768 00f0 0A000000 		.4byte	.LBB2
  769 00f4 66000000 		.4byte	.LBE2-.LBB2
  770 00f8 0A       		.uleb128 0xa
- 771 00f9 FE020000 		.4byte	.LASF30
+ 771 00f9 F8020000 		.4byte	.LASF30
  772 00fd 01       		.byte	0x1
  773 00fe 69       		.byte	0x69
  774 00ff 76000000 		.4byte	0x76
@@ -1414,7 +1414,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  776 0107 00       		.byte	0
  777 0108 00       		.byte	0
  778 0109 08       		.uleb128 0x8
- 779 010a 53030000 		.4byte	.LASF19
+ 779 010a 4D030000 		.4byte	.LASF19
  780 010e 01       		.byte	0x1
  781 010f 9D       		.byte	0x9d
  782 0110 00000000 		.4byte	.LFB3
@@ -1423,7 +1423,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  785 0119 9C       		.byte	0x9c
  786 011a 2C010000 		.4byte	0x12c
  787 011e 0B       		.uleb128 0xb
- 788 011f 5F020000 		.4byte	.LASF21
+ 788 011f 17020000 		.4byte	.LASF21
  789 0123 01       		.byte	0x1
  790 0124 9D       		.byte	0x9d
  791 0125 6B000000 		.4byte	0x6b
@@ -1431,19 +1431,19 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  793 012a 50       		.byte	0x50
  794 012b 00       		.byte	0
  795 012c 0C       		.uleb128 0xc
- 796 012d B0000000 		.4byte	.LASF24
+ 796 012d 68000000 		.4byte	.LASF24
  797 0131 01       		.byte	0x1
  798 0132 2901     		.2byte	0x129
  799 0134 76000000 		.4byte	0x76
  800 0138 00000000 		.4byte	.LFB5
  801 013c 0C000000 		.4byte	.LFE5-.LFB5
  802 0140 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 25
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 25
 
 
  803 0141 9C       		.byte	0x9c
  804 0142 0D       		.uleb128 0xd
- 805 0143 72030000 		.4byte	.LASF20
+ 805 0143 6C030000 		.4byte	.LASF20
  806 0147 01       		.byte	0x1
  807 0148 4C01     		.2byte	0x14c
  808 014a 00000000 		.4byte	.LFB6
@@ -1452,14 +1452,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  811 0153 9C       		.byte	0x9c
  812 0154 69010000 		.4byte	0x169
  813 0158 0E       		.uleb128 0xe
- 814 0159 84020000 		.4byte	.LASF22
+ 814 0159 7E020000 		.4byte	.LASF22
  815 015d 01       		.byte	0x1
  816 015e 4C01     		.2byte	0x14c
  817 0160 6B000000 		.4byte	0x6b
  818 0164 13000000 		.4byte	.LLST1
  819 0168 00       		.byte	0
  820 0169 0D       		.uleb128 0xd
- 821 016a 56000000 		.4byte	.LASF23
+ 821 016a 0E000000 		.4byte	.LASF23
  822 016e 01       		.byte	0x1
  823 016f 6F01     		.2byte	0x16f
  824 0171 00000000 		.4byte	.LFB7
@@ -1468,14 +1468,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  827 017a 9C       		.byte	0x9c
  828 017b 90010000 		.4byte	0x190
  829 017f 0E       		.uleb128 0xe
- 830 0180 84020000 		.4byte	.LASF22
+ 830 0180 7E020000 		.4byte	.LASF22
  831 0184 01       		.byte	0x1
  832 0185 6F01     		.2byte	0x16f
  833 0187 6B000000 		.4byte	0x6b
  834 018b 34000000 		.4byte	.LLST2
  835 018f 00       		.byte	0
  836 0190 0C       		.uleb128 0xc
- 837 0191 C2010000 		.4byte	.LASF25
+ 837 0191 7A010000 		.4byte	.LASF25
  838 0195 01       		.byte	0x1
  839 0196 8401     		.2byte	0x184
  840 0198 6B000000 		.4byte	0x6b
@@ -1484,7 +1484,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  843 01a4 01       		.uleb128 0x1
  844 01a5 9C       		.byte	0x9c
  845 01a6 0C       		.uleb128 0xc
- 846 01a7 2F030000 		.4byte	.LASF26
+ 846 01a7 29030000 		.4byte	.LASF26
  847 01ab 01       		.byte	0x1
  848 01ac D001     		.2byte	0x1d0
  849 01ae 6B000000 		.4byte	0x6b
@@ -1493,43 +1493,43 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  852 01ba 01       		.uleb128 0x1
  853 01bb 9C       		.byte	0x9c
  854 01bc 08       		.uleb128 0x8
- 855 01bd 84000000 		.4byte	.LASF27
+ 855 01bd 3C000000 		.4byte	.LASF27
  856 01c1 01       		.byte	0x1
  857 01c2 C1       		.byte	0xc1
  858 01c3 00000000 		.4byte	.LFB4
  859 01c7 E4000000 		.4byte	.LFE4-.LFB4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 26
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 26
 
 
  860 01cb 01       		.uleb128 0x1
  861 01cc 9C       		.byte	0x9c
  862 01cd 2F020000 		.4byte	0x22f
  863 01d1 0F       		.uleb128 0xf
- 864 01d2 F3000000 		.4byte	.LASF28
+ 864 01d2 AB000000 		.4byte	.LASF28
  865 01d6 01       		.byte	0x1
  866 01d7 C1       		.byte	0xc1
  867 01d8 76000000 		.4byte	0x76
  868 01dc 55000000 		.4byte	.LLST3
  869 01e0 0F       		.uleb128 0xf
- 870 01e1 B1010000 		.4byte	.LASF29
+ 870 01e1 69010000 		.4byte	.LASF29
  871 01e5 01       		.byte	0x1
  872 01e6 C1       		.byte	0xc1
  873 01e7 6B000000 		.4byte	0x6b
  874 01eb 76000000 		.4byte	.LLST4
  875 01ef 0A       		.uleb128 0xa
- 876 01f0 27030000 		.4byte	.LASF31
+ 876 01f0 21030000 		.4byte	.LASF31
  877 01f4 01       		.byte	0x1
  878 01f5 C4       		.byte	0xc4
  879 01f6 6B000000 		.4byte	0x6b
  880 01fa 97000000 		.4byte	.LLST5
  881 01fe 0A       		.uleb128 0xa
- 882 01ff 6E020000 		.4byte	.LASF32
+ 882 01ff 68020000 		.4byte	.LASF32
  883 0203 01       		.byte	0x1
  884 0204 C6       		.byte	0xc6
  885 0205 6B000000 		.4byte	0x6b
  886 0209 AA000000 		.4byte	.LLST6
  887 020d 0A       		.uleb128 0xa
- 888 020e FE020000 		.4byte	.LASF30
+ 888 020e F8020000 		.4byte	.LASF30
  889 0212 01       		.byte	0x1
  890 0213 C7       		.byte	0xc7
  891 0214 76000000 		.4byte	0x76
@@ -1542,7 +1542,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  898 022a 2C010000 		.4byte	0x12c
  899 022e 00       		.byte	0
  900 022f 0D       		.uleb128 0xd
- 901 0230 07020000 		.4byte	.LASF33
+ 901 0230 BF010000 		.4byte	.LASF33
  902 0234 01       		.byte	0x1
  903 0235 A301     		.2byte	0x1a3
  904 0237 00000000 		.4byte	.LFB9
@@ -1551,14 +1551,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  907 0240 9C       		.byte	0x9c
  908 0241 86020000 		.4byte	0x286
  909 0245 0E       		.uleb128 0xe
- 910 0246 D8020000 		.4byte	.LASF34
+ 910 0246 D2020000 		.4byte	.LASF34
  911 024a 01       		.byte	0x1
  912 024b A301     		.2byte	0x1a3
  913 024d 6B000000 		.4byte	0x6b
  914 0251 E6000000 		.4byte	.LLST8
  915 0255 11       		.uleb128 0x11
- 916 0256 48000000 		.4byte	.LASF35
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 27
+ 916 0256 00000000 		.4byte	.LASF35
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 27
 
 
  917 025a 01       		.byte	0x1
@@ -1566,7 +1566,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  919 025d 76000000 		.4byte	0x76
  920 0261 07010000 		.4byte	.LLST9
  921 0265 12       		.uleb128 0x12
- 922 0266 58020000 		.4byte	.LASF36
+ 922 0266 10020000 		.4byte	.LASF36
  923 026a 01       		.byte	0x1
  924 026b A601     		.2byte	0x1a6
  925 026d 6B000000 		.4byte	0x6b
@@ -1580,7 +1580,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  933 0281 A6010000 		.4byte	0x1a6
  934 0285 00       		.byte	0
  935 0286 0D       		.uleb128 0xd
- 936 0287 E4010000 		.4byte	.LASF37
+ 936 0287 9C010000 		.4byte	.LASF37
  937 028b 01       		.byte	0x1
  938 028c EC01     		.2byte	0x1ec
  939 028e 00000000 		.4byte	.LFB11
@@ -1589,14 +1589,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  942 0297 9C       		.byte	0x9c
  943 0298 AD020000 		.4byte	0x2ad
  944 029c 0E       		.uleb128 0xe
- 945 029d 65020000 		.4byte	.LASF38
+ 945 029d 1D020000 		.4byte	.LASF38
  946 02a1 01       		.byte	0x1
  947 02a2 EC01     		.2byte	0x1ec
  948 02a4 6B000000 		.4byte	0x6b
  949 02a8 25010000 		.4byte	.LLST10
  950 02ac 00       		.byte	0
  951 02ad 0C       		.uleb128 0xc
- 952 02ae FE000000 		.4byte	.LASF39
+ 952 02ae B6000000 		.4byte	.LASF39
  953 02b2 01       		.byte	0x1
  954 02b3 0102     		.2byte	0x201
  955 02b5 6B000000 		.4byte	0x6b
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  971 0008 0E       		.uleb128 0xe
  972 0009 1B       		.uleb128 0x1b
  973 000a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 28
 
 
  974 000b 55       		.uleb128 0x55
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1028 0041 00       		.byte	0
  1029 0042 00       		.byte	0
  1030 0043 06       		.uleb128 0x6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 29
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 29
 
 
  1031 0044 35       		.uleb128 0x35
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1085 007c 09       		.uleb128 0x9
  1086 007d 0B       		.uleb128 0xb
  1087 007e 01       		.byte	0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 30
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 30
 
 
  1088 007f 11       		.uleb128 0x11
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1142 00b5 06       		.uleb128 0x6
  1143 00b6 40       		.uleb128 0x40
  1144 00b7 18       		.uleb128 0x18
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 31
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 31
 
 
  1145 00b8 9742     		.uleb128 0x2117
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1199 00f0 13       		.uleb128 0x13
  1200 00f1 02       		.uleb128 0x2
  1201 00f2 17       		.uleb128 0x17
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 32
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 32
 
 
  1202 00f3 00       		.byte	0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1256 001b 0100     		.2byte	0x1
  1257 001d 50       		.byte	0x50
  1258 001e 08000000 		.4byte	.LVL4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 33
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 33
 
 
  1259 0022 14000000 		.4byte	.LFE6
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1313 00a1 51       		.byte	0x51
  1314 00a2 00000000 		.4byte	0
  1315 00a6 00000000 		.4byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 34
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 34
 
 
  1316              	.LLST6:
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1370 0138 0400     		.2byte	0x4
  1371 013a F3       		.byte	0xf3
  1372 013b 01       		.uleb128 0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 35
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 35
 
 
  1373 013c 50       		.byte	0x50
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1427 0030 00000000 		.4byte	.LFB7
  1428 0034 18000000 		.4byte	.LFE7
  1429 0038 00000000 		.4byte	.LFB8
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 36
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 36
 
 
  1430 003c 10000000 		.4byte	.LFE8
@@ -2121,229 +2121,229 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 1
  1445      00000201 
  1445      FB0E0D00 
  1445      01010101 
- 1446              	.LASF42:
- 1447 0000 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
- 1447      73657273 
- 1447      5C6D6974 
- 1447      6368656C 
- 1447      6C5C446F 
- 1448 002d 2D546872 		.ascii	"-Throttle\\E-Throttle.cydsn\000"
- 1448      6F74746C 
- 1448      655C452D 
- 1448      5468726F 
- 1448      74746C65 
- 1449              	.LASF35:
- 1450 0048 63757272 		.ascii	"currDiv\000"
- 1450      44697600 
- 1451              	.LASF15:
- 1452 0050 72656731 		.ascii	"reg16\000"
- 1452      3600
- 1453              	.LASF23:
- 1454 0056 4252414B 		.ascii	"BRAKE_ADC_theACLK_ClearModeRegister\000"
- 1454      455F4144 
- 1454      435F7468 
- 1454      6541434C 
- 1454      4B5F436C 
- 1455              	.LASF2:
- 1456 007a 73686F72 		.ascii	"short int\000"
- 1456      7420696E 
- 1456      7400
- 1457              	.LASF27:
- 1458 0084 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetDividerRegister\000"
- 1458      455F4144 
- 1458      435F7468 
- 1458      6541434C 
- 1458      4B5F5365 
- 1459              	.LASF10:
- 1460 00a9 75696E74 		.ascii	"uint16\000"
- 1460      313600
- 1461              	.LASF24:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 37
+ 1446              	.LASF35:
+ 1447 0000 63757272 		.ascii	"currDiv\000"
+ 1447      44697600 
+ 1448              	.LASF15:
+ 1449 0008 72656731 		.ascii	"reg16\000"
+ 1449      3600
+ 1450              	.LASF23:
+ 1451 000e 4252414B 		.ascii	"BRAKE_ADC_theACLK_ClearModeRegister\000"
+ 1451      455F4144 
+ 1451      435F7468 
+ 1451      6541434C 
+ 1451      4B5F436C 
+ 1452              	.LASF2:
+ 1453 0032 73686F72 		.ascii	"short int\000"
+ 1453      7420696E 
+ 1453      7400
+ 1454              	.LASF27:
+ 1455 003c 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetDividerRegister\000"
+ 1455      455F4144 
+ 1455      435F7468 
+ 1455      6541434C 
+ 1455      4B5F5365 
+ 1456              	.LASF10:
+ 1457 0061 75696E74 		.ascii	"uint16\000"
+ 1457      313600
+ 1458              	.LASF24:
+ 1459 0068 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetDividerRegister\000"
+ 1459      455F4144 
+ 1459      435F7468 
+ 1459      6541434C 
+ 1459      4B5F4765 
+ 1460              	.LASF16:
+ 1461 008d 4252414B 		.ascii	"BRAKE_ADC_theACLK_Start\000"
+ 1461      455F4144 
+ 1461      435F7468 
+ 1461      6541434C 
+ 1461      4B5F5374 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 37
 
 
- 1462 00b0 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetDividerRegister\000"
- 1462      455F4144 
- 1462      435F7468 
- 1462      6541434C 
- 1462      4B5F4765 
- 1463              	.LASF16:
- 1464 00d5 4252414B 		.ascii	"BRAKE_ADC_theACLK_Start\000"
- 1464      455F4144 
- 1464      435F7468 
- 1464      6541434C 
- 1464      4B5F5374 
- 1465              	.LASF9:
- 1466 00ed 75696E74 		.ascii	"uint8\000"
- 1466      3800
- 1467              	.LASF28:
- 1468 00f3 636C6B44 		.ascii	"clkDivider\000"
- 1468      69766964 
- 1468      657200
- 1469              	.LASF39:
- 1470 00fe 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetPhaseRegister\000"
- 1470      455F4144 
- 1470      435F7468 
- 1470      6541434C 
- 1470      4B5F4765 
- 1471              	.LASF11:
- 1472 0121 666C6F61 		.ascii	"float\000"
- 1472      7400
- 1473              	.LASF6:
- 1474 0127 6C6F6E67 		.ascii	"long long int\000"
- 1474      206C6F6E 
- 1474      6720696E 
- 1474      7400
- 1475              	.LASF40:
- 1476 0135 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 1476      4320342E 
- 1476      382E3420 
- 1476      32303134 
- 1476      30353236 
- 1477 0168 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
- 1477      20726576 
- 1477      6973696F 
- 1477      6E203231 
- 1477      31333538 
- 1478 019b 67202D66 		.ascii	"g -ffunction-sections\000"
- 1478      66756E63 
- 1478      74696F6E 
- 1478      2D736563 
- 1478      74696F6E 
- 1479              	.LASF29:
- 1480 01b1 72657374 		.ascii	"restart\000"
- 1480      61727400 
- 1481              	.LASF4:
- 1482 01b9 6C6F6E67 		.ascii	"long int\000"
- 1482      20696E74 
- 1482      00
- 1483              	.LASF25:
- 1484 01c2 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetModeRegister\000"
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 38
+ 1462              	.LASF9:
+ 1463 00a5 75696E74 		.ascii	"uint8\000"
+ 1463      3800
+ 1464              	.LASF28:
+ 1465 00ab 636C6B44 		.ascii	"clkDivider\000"
+ 1465      69766964 
+ 1465      657200
+ 1466              	.LASF39:
+ 1467 00b6 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetPhaseRegister\000"
+ 1467      455F4144 
+ 1467      435F7468 
+ 1467      6541434C 
+ 1467      4B5F4765 
+ 1468              	.LASF11:
+ 1469 00d9 666C6F61 		.ascii	"float\000"
+ 1469      7400
+ 1470              	.LASF6:
+ 1471 00df 6C6F6E67 		.ascii	"long long int\000"
+ 1471      206C6F6E 
+ 1471      6720696E 
+ 1471      7400
+ 1472              	.LASF40:
+ 1473 00ed 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1473      4320342E 
+ 1473      382E3420 
+ 1473      32303134 
+ 1473      30353236 
+ 1474 0120 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 1474      20726576 
+ 1474      6973696F 
+ 1474      6E203231 
+ 1474      31333538 
+ 1475 0153 67202D66 		.ascii	"g -ffunction-sections\000"
+ 1475      66756E63 
+ 1475      74696F6E 
+ 1475      2D736563 
+ 1475      74696F6E 
+ 1476              	.LASF29:
+ 1477 0169 72657374 		.ascii	"restart\000"
+ 1477      61727400 
+ 1478              	.LASF4:
+ 1479 0171 6C6F6E67 		.ascii	"long int\000"
+ 1479      20696E74 
+ 1479      00
+ 1480              	.LASF25:
+ 1481 017a 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetModeRegister\000"
+ 1481      455F4144 
+ 1481      435F7468 
+ 1481      6541434C 
+ 1481      4B5F4765 
+ 1482              	.LASF37:
+ 1483 019c 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetPhaseRegister\000"
+ 1483      455F4144 
+ 1483      435F7468 
+ 1483      6541434C 
+ 1483      4B5F5365 
+ 1484              	.LASF33:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 38
 
 
- 1484      455F4144 
- 1484      435F7468 
- 1484      6541434C 
- 1484      4B5F4765 
- 1485              	.LASF37:
- 1486 01e4 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetPhaseRegister\000"
- 1486      455F4144 
- 1486      435F7468 
- 1486      6541434C 
- 1486      4B5F5365 
- 1487              	.LASF33:
- 1488 0207 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetSourceRegister\000"
- 1488      455F4144 
- 1488      435F7468 
- 1488      6541434C 
- 1488      4B5F5365 
- 1489              	.LASF41:
- 1490 022b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\BRAKE_ADC_theACLK.c\000"
- 1490      6E657261 
- 1490      7465645F 
- 1490      536F7572 
- 1490      63655C50 
- 1491              	.LASF36:
- 1492 0258 6F6C6453 		.ascii	"oldSrc\000"
- 1492      726300
- 1493              	.LASF21:
- 1494 025f 73746174 		.ascii	"state\000"
- 1494      6500
- 1495              	.LASF38:
- 1496 0265 636C6B50 		.ascii	"clkPhase\000"
- 1496      68617365 
- 1496      00
+ 1485 01bf 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetSourceRegister\000"
+ 1485      455F4144 
+ 1485      435F7468 
+ 1485      6541434C 
+ 1485      4B5F5365 
+ 1486              	.LASF41:
+ 1487 01e3 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\BRAKE_ADC_theACLK.c\000"
+ 1487      6E657261 
+ 1487      7465645F 
+ 1487      536F7572 
+ 1487      63655C50 
+ 1488              	.LASF36:
+ 1489 0210 6F6C6453 		.ascii	"oldSrc\000"
+ 1489      726300
+ 1490              	.LASF21:
+ 1491 0217 73746174 		.ascii	"state\000"
+ 1491      6500
+ 1492              	.LASF38:
+ 1493 021d 636C6B50 		.ascii	"clkPhase\000"
+ 1493      68617365 
+ 1493      00
+ 1494              	.LASF42:
+ 1495 0226 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\P"
+ 1495      73657273 
+ 1495      5C6D6974 
+ 1495      6368656C 
+ 1495      6C5C446F 
+ 1496 0253 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
+ 1496      452D5468 
+ 1496      726F7474 
+ 1496      6C652E63 
+ 1496      7964736E 
  1497              	.LASF32:
- 1498 026e 63757272 		.ascii	"currSrc\000"
+ 1498 0268 63757272 		.ascii	"currSrc\000"
  1498      53726300 
  1499              	.LASF1:
- 1500 0276 756E7369 		.ascii	"unsigned char\000"
+ 1500 0270 756E7369 		.ascii	"unsigned char\000"
  1500      676E6564 
  1500      20636861 
  1500      7200
  1501              	.LASF22:
- 1502 0284 6D6F6465 		.ascii	"modeBitMask\000"
+ 1502 027e 6D6F6465 		.ascii	"modeBitMask\000"
  1502      4269744D 
  1502      61736B00 
  1503              	.LASF0:
- 1504 0290 7369676E 		.ascii	"signed char\000"
+ 1504 028a 7369676E 		.ascii	"signed char\000"
  1504      65642063 
  1504      68617200 
  1505              	.LASF7:
- 1506 029c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1506 0296 6C6F6E67 		.ascii	"long long unsigned int\000"
  1506      206C6F6E 
  1506      6720756E 
  1506      7369676E 
  1506      65642069 
  1507              	.LASF8:
- 1508 02b3 756E7369 		.ascii	"unsigned int\000"
+ 1508 02ad 756E7369 		.ascii	"unsigned int\000"
  1508      676E6564 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 39
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 39
 
 
  1508      20696E74 
  1508      00
  1509              	.LASF3:
- 1510 02c0 73686F72 		.ascii	"short unsigned int\000"
+ 1510 02ba 73686F72 		.ascii	"short unsigned int\000"
  1510      7420756E 
  1510      7369676E 
  1510      65642069 
  1510      6E7400
  1511              	.LASF13:
- 1512 02d3 63686172 		.ascii	"char\000"
+ 1512 02cd 63686172 		.ascii	"char\000"
  1512      00
  1513              	.LASF34:
- 1514 02d8 636C6B53 		.ascii	"clkSource\000"
+ 1514 02d2 636C6B53 		.ascii	"clkSource\000"
  1514      6F757263 
  1514      6500
  1515              	.LASF18:
- 1516 02e2 4252414B 		.ascii	"BRAKE_ADC_theACLK_StopBlock\000"
+ 1516 02dc 4252414B 		.ascii	"BRAKE_ADC_theACLK_StopBlock\000"
  1516      455F4144 
  1516      435F7468 
  1516      6541434C 
  1516      4B5F5374 
  1517              	.LASF30:
- 1518 02fe 6F6C6444 		.ascii	"oldDivider\000"
+ 1518 02f8 6F6C6444 		.ascii	"oldDivider\000"
  1518      69766964 
  1518      657200
  1519              	.LASF14:
- 1520 0309 72656738 		.ascii	"reg8\000"
+ 1520 0303 72656738 		.ascii	"reg8\000"
  1520      00
  1521              	.LASF5:
- 1522 030e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1522 0308 6C6F6E67 		.ascii	"long unsigned int\000"
  1522      20756E73 
  1522      69676E65 
  1522      6420696E 
  1522      7400
  1523              	.LASF12:
- 1524 0320 646F7562 		.ascii	"double\000"
+ 1524 031a 646F7562 		.ascii	"double\000"
  1524      6C6500
  1525              	.LASF31:
- 1526 0327 656E6162 		.ascii	"enabled\000"
+ 1526 0321 656E6162 		.ascii	"enabled\000"
  1526      6C656400 
  1527              	.LASF26:
- 1528 032f 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetSourceRegister\000"
+ 1528 0329 4252414B 		.ascii	"BRAKE_ADC_theACLK_GetSourceRegister\000"
  1528      455F4144 
  1528      435F7468 
  1528      6541434C 
  1528      4B5F4765 
  1529              	.LASF19:
- 1530 0353 4252414B 		.ascii	"BRAKE_ADC_theACLK_StandbyPower\000"
+ 1530 034d 4252414B 		.ascii	"BRAKE_ADC_theACLK_StandbyPower\000"
  1530      455F4144 
  1530      435F7468 
  1530      6541434C 
  1530      4B5F5374 
  1531              	.LASF20:
- 1532 0372 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetModeRegister\000"
+ 1532 036c 4252414B 		.ascii	"BRAKE_ADC_theACLK_SetModeRegister\000"
  1532      455F4144 
  1532      435F7468 
  1532      6541434C 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccscpJHc.s 			page 40
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccbAQFE7.s 			page 40
 
 
  1532      4B5F5365 
  1533              	.LASF17:
- 1534 0394 4252414B 		.ascii	"BRAKE_ADC_theACLK_Stop\000"
+ 1534 038e 4252414B 		.ascii	"BRAKE_ADC_theACLK_Stop\000"
  1534      455F4144 
  1534      435F7468 
  1534      6541434C 

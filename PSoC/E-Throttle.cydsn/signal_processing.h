@@ -43,7 +43,6 @@
 
     /* Struct Declaration */
     typedef struct Error_Buffer {
-        /* TODO:   Figure out error buffer timing */
         struct Queue * error_queue;
         float TPS_APPS_sum, TPS_APPS_avg, percent_brake_errs;
         int num_brake_errs, size, total_time;
@@ -59,6 +58,7 @@
     unsigned char localImplausibility(float, float);
     unsigned char globalImplausibility(float, float, float, Error_Buffer *);
     unsigned char brakeErrorCheck(float, float);
+    void writeToServo(float);
     void handleError(); /* TODO: Implement handleError */
 
 #endif

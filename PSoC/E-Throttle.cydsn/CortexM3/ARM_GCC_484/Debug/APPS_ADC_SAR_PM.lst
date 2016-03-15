@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
   29:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** 
   30:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** /*******************************************************************************
   31:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** * Function Name: APPS_ADC_SAR_SaveConfig
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
   47              		@ frame_needed = 0, uses_anonymous_args = 0
   48              		@ link register save eliminated.
   49 0000 7047     		bx	lr
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 3
 
 
   50              		.cfi_endproc
@@ -171,14 +171,14 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
   70              		.loc 1 92 0
   71 0002 0C4B     		ldr	r3, .L8
   72 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  73 0006 13F0020F 		tst	r3, #2
+  73 0006 13F0010F 		tst	r3, #1
   74 000a 0ED0     		beq	.L4
   93:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c ****     {
   94:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c ****         if((APPS_ADC_SAR_SAR_CSR0_REG & APPS_ADC_SAR_SAR_SOF_START_CONV) != 0u)
   75              		.loc 1 94 0
   76 000c 0A4B     		ldr	r3, .L8+4
   77 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 4
 
 
   78 0010 13F0010F 		tst	r3, #1
@@ -220,7 +220,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  102 0032 00BF     		.align	2
  103              	.L8:
  104 0034 AB430040 		.word	1073759147
- 105 0038 08590040 		.word	1073764616
+ 105 0038 00590040 		.word	1073764608
  106 003c 00000000 		.word	.LANCHOR0
  107              		.cfi_endproc
  108              	.LFE2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  109:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** 
  110:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** 
  111:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** /*******************************************************************************
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 5
 
 
  112:.\Generated_Source\PSoC5/APPS_ADC_SAR_PM.c **** * Function Name: APPS_ADC_SAR_Wakeup
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  143              	.L13:
  144              		.align	2
  145              	.L12:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 6
 
 
  146 001c 00000000 		.word	.LANCHOR0
@@ -323,48 +323,48 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  165 0006 00000000 		.4byte	.Ldebug_abbrev0
  166 000a 04       		.byte	0x4
  167 000b 01       		.uleb128 0x1
- 168 000c 3A010000 		.4byte	.LASF22
+ 168 000c 72010000 		.4byte	.LASF22
  169 0010 01       		.byte	0x1
  170 0011 00000000 		.4byte	.LASF23
- 171 0015 C9010000 		.4byte	.LASF24
+ 171 0015 2B000000 		.4byte	.LASF24
  172 0019 00000000 		.4byte	.Ldebug_ranges0+0
  173 001d 00000000 		.4byte	0
  174 0021 00000000 		.4byte	.Ldebug_line0
  175 0025 02       		.uleb128 0x2
  176 0026 01       		.byte	0x1
  177 0027 06       		.byte	0x6
- 178 0028 2C020000 		.4byte	.LASF0
+ 178 0028 26020000 		.4byte	.LASF0
  179 002c 02       		.uleb128 0x2
  180 002d 01       		.byte	0x1
  181 002e 08       		.byte	0x8
- 182 002f 8B000000 		.4byte	.LASF1
+ 182 002f CD000000 		.4byte	.LASF1
  183 0033 02       		.uleb128 0x2
  184 0034 02       		.byte	0x2
  185 0035 05       		.byte	0x5
- 186 0036 F1000000 		.4byte	.LASF2
+ 186 0036 01020000 		.4byte	.LASF2
  187 003a 02       		.uleb128 0x2
  188 003b 02       		.byte	0x2
  189 003c 07       		.byte	0x7
- 190 003d B0000000 		.4byte	.LASF3
+ 190 003d F2000000 		.4byte	.LASF3
  191 0041 02       		.uleb128 0x2
  192 0042 04       		.byte	0x4
  193 0043 05       		.byte	0x5
- 194 0044 17020000 		.4byte	.LASF4
+ 194 0044 11020000 		.4byte	.LASF4
  195 0048 02       		.uleb128 0x2
  196 0049 04       		.byte	0x4
  197 004a 07       		.byte	0x7
- 198 004b 9E000000 		.4byte	.LASF5
+ 198 004b E0000000 		.4byte	.LASF5
  199 004f 02       		.uleb128 0x2
  200 0050 08       		.byte	0x8
  201 0051 05       		.byte	0x5
- 202 0052 B6010000 		.4byte	.LASF6
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 7
+ 202 0052 EE010000 		.4byte	.LASF6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 7
 
 
  203 0056 02       		.uleb128 0x2
  204 0057 08       		.byte	0x8
  205 0058 07       		.byte	0x7
- 206 0059 23010000 		.4byte	.LASF7
+ 206 0059 5B010000 		.4byte	.LASF7
  207 005d 03       		.uleb128 0x3
  208 005e 04       		.byte	0x4
  209 005f 05       		.byte	0x5
@@ -372,26 +372,26 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  211 0064 02       		.uleb128 0x2
  212 0065 04       		.byte	0x4
  213 0066 07       		.byte	0x7
- 214 0067 16010000 		.4byte	.LASF8
+ 214 0067 4E010000 		.4byte	.LASF8
  215 006b 04       		.uleb128 0x4
- 216 006c 11020000 		.4byte	.LASF12
+ 216 006c 0B020000 		.4byte	.LASF12
  217 0070 02       		.byte	0x2
  218 0071 B4       		.byte	0xb4
  219 0072 2C000000 		.4byte	0x2c
  220 0076 02       		.uleb128 0x2
  221 0077 04       		.byte	0x4
  222 0078 04       		.byte	0x4
- 223 0079 6B000000 		.4byte	.LASF9
+ 223 0079 AD000000 		.4byte	.LASF9
  224 007d 02       		.uleb128 0x2
  225 007e 08       		.byte	0x8
  226 007f 04       		.byte	0x4
- 227 0080 EA000000 		.4byte	.LASF10
+ 227 0080 2C010000 		.4byte	.LASF10
  228 0084 02       		.uleb128 0x2
  229 0085 01       		.byte	0x1
  230 0086 08       		.byte	0x8
- 231 0087 C4010000 		.4byte	.LASF11
+ 231 0087 FC010000 		.4byte	.LASF11
  232 008b 05       		.uleb128 0x5
- 233 008c 99000000 		.4byte	.LASF13
+ 233 008c DB000000 		.4byte	.LASF13
  234 0090 02       		.byte	0x2
  235 0091 5E01     		.2byte	0x15e
  236 0093 97000000 		.4byte	0x97
@@ -403,22 +403,22 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  242 009f 2A       		.byte	0x2a
  243 00a0 B1000000 		.4byte	0xb1
  244 00a4 08       		.uleb128 0x8
- 245 00a5 20020000 		.4byte	.LASF25
+ 245 00a5 1A020000 		.4byte	.LASF25
  246 00a9 03       		.byte	0x3
  247 00aa 2C       		.byte	0x2c
  248 00ab 6B000000 		.4byte	0x6b
  249 00af 00       		.byte	0
  250 00b0 00       		.byte	0
  251 00b1 04       		.uleb128 0x4
- 252 00b2 4A020000 		.4byte	.LASF14
+ 252 00b2 44020000 		.4byte	.LASF14
  253 00b6 03       		.byte	0x3
  254 00b7 2D       		.byte	0x2d
  255 00b8 9C000000 		.4byte	0x9c
  256 00bc 09       		.uleb128 0x9
- 257 00bd 2B000000 		.4byte	.LASF15
+ 257 00bd 6D000000 		.4byte	.LASF15
  258 00c1 01       		.byte	0x1
  259 00c2 2C       		.byte	0x2c
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 8
 
 
  260 00c3 00000000 		.4byte	.LFB0
@@ -426,7 +426,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  262 00cb 01       		.uleb128 0x1
  263 00cc 9C       		.byte	0x9c
  264 00cd 09       		.uleb128 0x9
- 265 00ce FB000000 		.4byte	.LASF16
+ 265 00ce 33010000 		.4byte	.LASF16
  266 00d2 01       		.byte	0x1
  267 00d3 40       		.byte	0x40
  268 00d4 00000000 		.4byte	.LFB1
@@ -434,7 +434,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  270 00dc 01       		.uleb128 0x1
  271 00dd 9C       		.byte	0x9c
  272 00de 0A       		.uleb128 0xa
- 273 00df C3000000 		.4byte	.LASF17
+ 273 00df 05010000 		.4byte	.LASF17
  274 00e3 01       		.byte	0x1
  275 00e4 5A       		.byte	0x5a
  276 00e5 00000000 		.4byte	.LFB2
@@ -447,7 +447,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  283 00f8 36010000 		.4byte	0x136
  284 00fc 00       		.byte	0
  285 00fd 0A       		.uleb128 0xa
- 286 00fe D6000000 		.4byte	.LASF18
+ 286 00fe 18010000 		.4byte	.LASF18
  287 0102 01       		.byte	0x1
  288 0103 84       		.byte	0x84
  289 0104 00000000 		.4byte	.LFB3
@@ -463,7 +463,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  299 0120 44010000 		.4byte	0x144
  300 0124 00       		.byte	0
  301 0125 0C       		.uleb128 0xc
- 302 0126 43000000 		.4byte	.LASF26
+ 302 0126 85000000 		.4byte	.LASF26
  303 012a 01       		.byte	0x1
  304 012b 18       		.byte	0x18
  305 012c B1000000 		.4byte	0xb1
@@ -471,18 +471,18 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  307 0131 03       		.byte	0x3
  308 0132 00000000 		.4byte	APPS_ADC_SAR_backup
  309 0136 0D       		.uleb128 0xd
- 310 0137 38020000 		.4byte	.LASF19
+ 310 0137 32020000 		.4byte	.LASF19
  311 013b 03       		.byte	0x3
  312 013c 35       		.byte	0x35
  313 013d 0D       		.uleb128 0xd
- 314 013e 57000000 		.4byte	.LASF20
+ 314 013e 99000000 		.4byte	.LASF20
  315 0142 03       		.byte	0x3
  316 0143 44       		.byte	0x44
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 9
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 9
 
 
  317 0144 0D       		.uleb128 0xd
- 318 0145 71000000 		.4byte	.LASF21
+ 318 0145 B3000000 		.4byte	.LASF21
  319 0149 03       		.byte	0x3
  320 014a D1       		.byte	0xd1
  321 014b 00       		.byte	0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  371 002f 0B       		.uleb128 0xb
  372 0030 3B       		.uleb128 0x3b
  373 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 10
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 10
 
 
  374 0032 49       		.uleb128 0x49
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  428 0068 00       		.byte	0
  429 0069 3F       		.uleb128 0x3f
  430 006a 19       		.uleb128 0x19
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 11
 
 
  431 006b 03       		.uleb128 0x3
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  485 00a5 00       		.byte	0
  486 00a6 03       		.uleb128 0x3
  487 00a7 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 12
 
 
  488 00a8 3A       		.uleb128 0x3a
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  542 0018 00000000 		.4byte	.LFB3
  543 001c 20000000 		.4byte	.LFE3
  544 0020 00000000 		.4byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 13
 
 
  545 0024 00000000 		.4byte	0
@@ -735,153 +735,153 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 1
  550      7465645F 
  550      536F7572 
  550      63655C50 
- 551              	.LASF15:
- 552 002b 41505053 		.ascii	"APPS_ADC_SAR_SaveConfig\000"
- 552      5F414443 
- 552      5F534152 
- 552      5F536176 
- 552      65436F6E 
- 553              	.LASF26:
- 554 0043 41505053 		.ascii	"APPS_ADC_SAR_backup\000"
- 554      5F414443 
- 554      5F534152 
- 554      5F626163 
- 554      6B757000 
- 555              	.LASF20:
- 556 0057 41505053 		.ascii	"APPS_ADC_SAR_Enable\000"
- 556      5F414443 
- 556      5F534152 
- 556      5F456E61 
- 556      626C6500 
- 557              	.LASF9:
- 558 006b 666C6F61 		.ascii	"float\000"
- 558      7400
- 559              	.LASF21:
- 560 0071 41505053 		.ascii	"APPS_ADC_SAR_StartConvert\000"
- 560      5F414443 
- 560      5F534152 
- 560      5F537461 
- 560      7274436F 
- 561              	.LASF1:
- 562 008b 756E7369 		.ascii	"unsigned char\000"
- 562      676E6564 
- 562      20636861 
- 562      7200
- 563              	.LASF13:
- 564 0099 72656738 		.ascii	"reg8\000"
- 564      00
- 565              	.LASF5:
- 566 009e 6C6F6E67 		.ascii	"long unsigned int\000"
- 566      20756E73 
- 566      69676E65 
- 566      6420696E 
- 566      7400
- 567              	.LASF3:
- 568 00b0 73686F72 		.ascii	"short unsigned int\000"
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 14
+ 551              	.LASF24:
+ 552 002b 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\P"
+ 552      73657273 
+ 552      5C6D6974 
+ 552      6368656C 
+ 552      6C5C446F 
+ 553 0058 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
+ 553      452D5468 
+ 553      726F7474 
+ 553      6C652E63 
+ 553      7964736E 
+ 554              	.LASF15:
+ 555 006d 41505053 		.ascii	"APPS_ADC_SAR_SaveConfig\000"
+ 555      5F414443 
+ 555      5F534152 
+ 555      5F536176 
+ 555      65436F6E 
+ 556              	.LASF26:
+ 557 0085 41505053 		.ascii	"APPS_ADC_SAR_backup\000"
+ 557      5F414443 
+ 557      5F534152 
+ 557      5F626163 
+ 557      6B757000 
+ 558              	.LASF20:
+ 559 0099 41505053 		.ascii	"APPS_ADC_SAR_Enable\000"
+ 559      5F414443 
+ 559      5F534152 
+ 559      5F456E61 
+ 559      626C6500 
+ 560              	.LASF9:
+ 561 00ad 666C6F61 		.ascii	"float\000"
+ 561      7400
+ 562              	.LASF21:
+ 563 00b3 41505053 		.ascii	"APPS_ADC_SAR_StartConvert\000"
+ 563      5F414443 
+ 563      5F534152 
+ 563      5F537461 
+ 563      7274436F 
+ 564              	.LASF1:
+ 565 00cd 756E7369 		.ascii	"unsigned char\000"
+ 565      676E6564 
+ 565      20636861 
+ 565      7200
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 14
 
 
- 568      7420756E 
- 568      7369676E 
- 568      65642069 
- 568      6E7400
- 569              	.LASF17:
- 570 00c3 41505053 		.ascii	"APPS_ADC_SAR_Sleep\000"
- 570      5F414443 
- 570      5F534152 
- 570      5F536C65 
- 570      657000
- 571              	.LASF18:
- 572 00d6 41505053 		.ascii	"APPS_ADC_SAR_Wakeup\000"
- 572      5F414443 
- 572      5F534152 
- 572      5F57616B 
- 572      65757000 
- 573              	.LASF10:
- 574 00ea 646F7562 		.ascii	"double\000"
- 574      6C6500
- 575              	.LASF2:
- 576 00f1 73686F72 		.ascii	"short int\000"
- 576      7420696E 
- 576      7400
- 577              	.LASF16:
- 578 00fb 41505053 		.ascii	"APPS_ADC_SAR_RestoreConfig\000"
- 578      5F414443 
- 578      5F534152 
- 578      5F526573 
- 578      746F7265 
- 579              	.LASF8:
- 580 0116 756E7369 		.ascii	"unsigned int\000"
- 580      676E6564 
- 580      20696E74 
- 580      00
- 581              	.LASF7:
- 582 0123 6C6F6E67 		.ascii	"long long unsigned int\000"
- 582      206C6F6E 
- 582      6720756E 
- 582      7369676E 
- 582      65642069 
- 583              	.LASF22:
- 584 013a 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
- 584      4320342E 
- 584      382E3420 
- 584      32303134 
- 584      30353236 
- 585 016d 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
- 585      20726576 
- 585      6973696F 
- 585      6E203231 
- 585      31333538 
- 586 01a0 67202D66 		.ascii	"g -ffunction-sections\000"
- 586      66756E63 
- 586      74696F6E 
- 586      2D736563 
- 586      74696F6E 
- 587              	.LASF6:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFvS6RM.s 			page 15
+ 566              	.LASF13:
+ 567 00db 72656738 		.ascii	"reg8\000"
+ 567      00
+ 568              	.LASF5:
+ 569 00e0 6C6F6E67 		.ascii	"long unsigned int\000"
+ 569      20756E73 
+ 569      69676E65 
+ 569      6420696E 
+ 569      7400
+ 570              	.LASF3:
+ 571 00f2 73686F72 		.ascii	"short unsigned int\000"
+ 571      7420756E 
+ 571      7369676E 
+ 571      65642069 
+ 571      6E7400
+ 572              	.LASF17:
+ 573 0105 41505053 		.ascii	"APPS_ADC_SAR_Sleep\000"
+ 573      5F414443 
+ 573      5F534152 
+ 573      5F536C65 
+ 573      657000
+ 574              	.LASF18:
+ 575 0118 41505053 		.ascii	"APPS_ADC_SAR_Wakeup\000"
+ 575      5F414443 
+ 575      5F534152 
+ 575      5F57616B 
+ 575      65757000 
+ 576              	.LASF10:
+ 577 012c 646F7562 		.ascii	"double\000"
+ 577      6C6500
+ 578              	.LASF16:
+ 579 0133 41505053 		.ascii	"APPS_ADC_SAR_RestoreConfig\000"
+ 579      5F414443 
+ 579      5F534152 
+ 579      5F526573 
+ 579      746F7265 
+ 580              	.LASF8:
+ 581 014e 756E7369 		.ascii	"unsigned int\000"
+ 581      676E6564 
+ 581      20696E74 
+ 581      00
+ 582              	.LASF7:
+ 583 015b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 583      206C6F6E 
+ 583      6720756E 
+ 583      7369676E 
+ 583      65642069 
+ 584              	.LASF22:
+ 585 0172 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 585      4320342E 
+ 585      382E3420 
+ 585      32303134 
+ 585      30353236 
+ 586 01a5 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 586      20726576 
+ 586      6973696F 
+ 586      6E203231 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccieePMj.s 			page 15
 
 
- 588 01b6 6C6F6E67 		.ascii	"long long int\000"
- 588      206C6F6E 
- 588      6720696E 
- 588      7400
- 589              	.LASF11:
- 590 01c4 63686172 		.ascii	"char\000"
- 590      00
- 591              	.LASF24:
- 592 01c9 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\fsae\\E-Throttle\\E"
- 592      73657273 
- 592      5C6D6974 
- 592      6368656C 
- 592      6C5C446F 
- 593 01f6 2D546872 		.ascii	"-Throttle\\E-Throttle.cydsn\000"
- 593      6F74746C 
- 593      655C452D 
- 593      5468726F 
- 593      74746C65 
+ 586      31333538 
+ 587 01d8 67202D66 		.ascii	"g -ffunction-sections\000"
+ 587      66756E63 
+ 587      74696F6E 
+ 587      2D736563 
+ 587      74696F6E 
+ 588              	.LASF6:
+ 589 01ee 6C6F6E67 		.ascii	"long long int\000"
+ 589      206C6F6E 
+ 589      6720696E 
+ 589      7400
+ 590              	.LASF11:
+ 591 01fc 63686172 		.ascii	"char\000"
+ 591      00
+ 592              	.LASF2:
+ 593 0201 73686F72 		.ascii	"short int\000"
+ 593      7420696E 
+ 593      7400
  594              	.LASF12:
- 595 0211 75696E74 		.ascii	"uint8\000"
+ 595 020b 75696E74 		.ascii	"uint8\000"
  595      3800
  596              	.LASF4:
- 597 0217 6C6F6E67 		.ascii	"long int\000"
+ 597 0211 6C6F6E67 		.ascii	"long int\000"
  597      20696E74 
  597      00
  598              	.LASF25:
- 599 0220 656E6162 		.ascii	"enableState\000"
+ 599 021a 656E6162 		.ascii	"enableState\000"
  599      6C655374 
  599      61746500 
  600              	.LASF0:
- 601 022c 7369676E 		.ascii	"signed char\000"
+ 601 0226 7369676E 		.ascii	"signed char\000"
  601      65642063 
  601      68617200 
  602              	.LASF19:
- 603 0238 41505053 		.ascii	"APPS_ADC_SAR_Stop\000"
+ 603 0232 41505053 		.ascii	"APPS_ADC_SAR_Stop\000"
  603      5F414443 
  603      5F534152 
  603      5F53746F 
  603      7000
  604              	.LASF14:
- 605 024a 41505053 		.ascii	"APPS_ADC_SAR_BACKUP_STRUCT\000"
+ 605 0244 41505053 		.ascii	"APPS_ADC_SAR_BACKUP_STRUCT\000"
  605      5F414443 
  605      5F534152 
  605      5F424143 

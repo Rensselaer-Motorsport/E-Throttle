@@ -6,7 +6,7 @@
 
 #Build Date:         May  8 2015 09:27:37
 
-#File Generated:     Jan 17 2016 23:32:11
+#File Generated:     Mar 14 2016 17:27:30
 
 #Purpose:            
 
@@ -14,7 +14,7 @@
 
 #***************************************************************************
 
-Executing : C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\bin/sjplacer.exe --proj-name Test-Project --netlist-vh2 Test-Project_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/arch/p35_udb4x6.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/dsiconn.cydata --pins-file pins_68-QFN.xml --lib-file Test-Project_p.lib --sdc-file Test-Project.sdc --io-pcf Test-Project.pci --outdir .
+Executing : C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\bin/sjplacer.exe --proj-name Misc-Tests --netlist-vh2 Misc-Tests_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/arch/p35_udb4x6.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/psoc5/psoc5lp/dsiconn.cydata --pins-file pins_68-QFN.xml --lib-file Misc-Tests_p.lib --sdc-file Misc-Tests.sdc --io-pcf Misc-Tests.pci --outdir .
 
 		Softjin Techologies Placer, Version 1.1
 
@@ -22,18 +22,18 @@ Build Date : May  8 2015	08:51:53
 
 D2004: Option and Settings Summary
 =============================================================
-Netlist vh2 file          - Test-Project_p.vh2
+Netlist vh2 file          - Misc-Tests_p.vh2
 Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/arch/p35_udb4x6.ark
 Package                   - 
 Defparam file             - 
-SDC file                  - Test-Project.sdc
+SDC file                  - Misc-Tests.sdc
 Output directory          - .
-Timing library            - Test-Project_p.lib
-IO Placement file         - Test-Project.pci
+Timing library            - Misc-Tests_p.lib
+IO Placement file         - Misc-Tests.pci
 
 D2050: Starting reading inputs for placer
 =============================================================
-D2065: Reading netlist file : "Test-Project_p.vh2"
+D2065: Reading netlist file : "Misc-Tests_p.vh2"
 D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\3.2\PSoC Creator\dev/arch/p35_udb4x6.ark"
 D2051: Reading of inputs for placer completed successfully
 
@@ -55,7 +55,7 @@ Design Statistics after Packing
 Device Utilization Summary after Packing
     Macrocells                  :	25/192
     UDBS                        :	4/24
-    IOs                         :	3/72
+    IOs                         :	4/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,18 +79,20 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 11
-Clock: ADC_DelSig_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_theACLK   | Frequency: N/A       | Target:   1.8 MHz
-Clock: ADC_DelSig_theACLK(fixed-function) | Frequency: N/A       | Target:   1.8 MHz
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.8 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.8 MHz
+Clock: Clock_1              | Frequency: N/A       | Target:   1.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
 Clock: CyBUS_CLK            | Frequency:  59.2 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: UART_1_IntClock      | Frequency:  57.2 MHz | Target:   0.9 MHz
-Clock: \ADC_DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -102,23 +104,25 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 11
-Clock: ADC_DelSig_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_theACLK   | Frequency: N/A       | Target:   1.8 MHz
-Clock: ADC_DelSig_theACLK(fixed-function) | Frequency: N/A       | Target:   1.8 MHz
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.8 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.8 MHz
+Clock: Clock_1              | Frequency: N/A       | Target:   1.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
 Clock: CyBUS_CLK            | Frequency:   1.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
 Clock: UART_1_IntClock      | Frequency:   1.4 MHz | Target:   0.9 MHz
-Clock: \ADC_DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 0.2 (sec)
+D2088: Phase 7, elapsed time : 0.1 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	9
@@ -128,11 +132,11 @@ Final Design Statistics
     Number of Status            	:	2
     Number of SyncCells         	:	0
     Number of count7cells       	:	1
-    Number of IOs       	:	3
+    Number of IOs       	:	4
 
 Device Utilization Summary
     Macrocells                  :	25/192
-    IOs                         :	3/72
+    IOs                         :	4/72
 
 
 
@@ -148,18 +152,20 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 11
-Clock: ADC_DelSig_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_theACLK   | Frequency: N/A       | Target:   1.8 MHz
-Clock: ADC_DelSig_theACLK(fixed-function) | Frequency: N/A       | Target:   1.8 MHz
-Clock: CyBUS_CLK            | Frequency:   1.5 MHz | Target:  24.0 MHz
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.8 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.8 MHz
+Clock: Clock_1              | Frequency: N/A       | Target:   1.0 MHz
+Clock: Clock_1(fixed-function) | Frequency: N/A       | Target:   1.0 MHz
+Clock: CyBUS_CLK            | Frequency:   1.4 MHz | Target:  24.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: UART_1_IntClock      | Frequency:   1.5 MHz | Target:   0.9 MHz
-Clock: \ADC_DelSig:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
+Clock: UART_1_IntClock      | Frequency:   1.4 MHz | Target:   0.9 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -170,5 +176,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 0.8 sec.
+I2076: Total run-time: 0.7 sec.
 
