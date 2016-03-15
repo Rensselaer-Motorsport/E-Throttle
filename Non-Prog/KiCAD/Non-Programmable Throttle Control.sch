@@ -1,0 +1,404 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:Non-Programmable Throttle Control-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L LM2902N U1
+U 1 1 56BF9354
+P 2650 1450
+F 0 "U1" H 2700 1650 50  0000 C CNN
+F 1 "LM324ADR" H 2800 1250 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2600 1550 50  0001 C CNN
+F 3 "" H 2700 1650 50  0000 C CNN
+	1    2650 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM2902N U1
+U 2 1 56BF93C3
+P 2650 2250
+F 0 "U1" H 2700 2450 50  0000 C CNN
+F 1 "LM324ADR" H 2800 2050 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2600 2350 50  0001 C CNN
+F 3 "" H 2700 2450 50  0000 C CNN
+	2    2650 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L LM2902N U1
+U 3 1 56BF9438
+P 3950 1950
+F 0 "U1" H 4000 2150 50  0000 C CNN
+F 1 "LM324ADR" H 4100 1750 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 3900 2050 50  0001 C CNN
+F 3 "" H 4000 2150 50  0000 C CNN
+	3    3950 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 56BF9794
+P 1900 2550
+F 0 "R3" V 1980 2550 50  0000 C CNN
+F 1 "R" V 1900 2550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 1830 2550 50  0001 C CNN
+F 3 "" H 1900 2550 50  0000 C CNN
+	1    1900 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 56BF9875
+P 1900 1900
+F 0 "R2" V 1980 1900 50  0000 C CNN
+F 1 "R" V 1900 1900 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 1830 1900 50  0001 C CNN
+F 3 "" H 1900 1900 50  0000 C CNN
+	1    1900 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 56BF98C8
+P 1900 1250
+F 0 "R1" V 1980 1250 50  0000 C CNN
+F 1 "R" V 1900 1250 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 1830 1250 50  0001 C CNN
+F 3 "" H 1900 1250 50  0000 C CNN
+	1    1900 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R5
+U 1 1 56BFA520
+P 3350 2050
+F 0 "R5" V 3430 2050 50  0000 C CNN
+F 1 "1k" V 3350 2050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 3280 2050 50  0001 C CNN
+F 3 "" H 3350 2050 50  0000 C CNN
+	1    3350 2050
+	-1   0    0    1   
+$EndComp
+$Comp
+L LM555N U2
+U 1 1 56BFBF5F
+P 6200 1850
+F 0 "U2" H 5800 2200 50  0000 L CNN
+F 1 "LM555N" H 5800 1500 50  0000 L CNN
+F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 6200 1850 50  0001 C CNN
+F 3 "" H 6200 1850 50  0000 C CNN
+	1    6200 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C1
+U 1 1 56BFC4E0
+P 5550 2450
+F 0 "C1" H 5575 2550 50  0000 L CNN
+F 1 "C" H 5575 2350 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5588 2300 50  0001 C CNN
+F 3 "" H 5550 2450 50  0000 C CNN
+	1    5550 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 56BFD5FE
+P 3350 1650
+F 0 "R4" V 3430 1650 50  0000 C CNN
+F 1 "1k" V 3350 1650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 3280 1650 50  0001 C CNN
+F 3 "" H 3350 1650 50  0000 C CNN
+	1    3350 1650
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R7
+U 1 1 56BFFF72
+P 3500 1300
+F 0 "R7" V 3580 1300 50  0000 C CNN
+F 1 "1k" V 3500 1300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 3430 1300 50  0001 C CNN
+F 3 "" H 3500 1300 50  0000 C CNN
+	1    3500 1300
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R6
+U 1 1 56BFFFBD
+P 3500 2300
+F 0 "R6" V 3580 2300 50  0000 C CNN
+F 1 "2.2k" V 3500 2300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 3430 2300 50  0001 C CNN
+F 3 "" H 3500 2300 50  0000 C CNN
+	1    3500 2300
+	-1   0    0    1   
+$EndComp
+$Comp
+L D_Schottky_x2_Serial_AKC D1
+U 1 1 56C111A0
+P 4550 2250
+F 0 "D1" V 4650 2150 50  0000 C CNN
+F 1 "DA3X101F0L" V 4750 1950 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 4550 2250 50  0001 C CNN
+F 3 "" H 4550 2250 50  0000 C CNN
+	1    4550 2250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R8
+U 1 1 56C115CD
+P 4350 2350
+F 0 "R8" V 4430 2350 50  0000 C CNN
+F 1 "R" V 4350 2350 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4280 2350 50  0001 C CNN
+F 3 "" H 4350 2350 50  0000 C CNN
+	1    4350 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L CONN_01X06 P1
+U 1 1 56C136C0
+P 1200 1850
+F 0 "P1" H 1200 2200 50  0000 C CNN
+F 1 "CONN_01X06" V 1300 1850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 1200 1850 50  0001 C CNN
+F 3 "" H 1200 1850 50  0000 C CNN
+	1    1200 1850
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2250 1950 2550 1950
+Wire Wire Line
+	2250 1050 2250 1950
+Wire Wire Line
+	3050 2700 3050 1750
+Wire Wire Line
+	3050 1750 2550 1750
+Wire Wire Line
+	2550 2700 2550 2550
+Wire Wire Line
+	1700 1050 1900 1050
+Wire Wire Line
+	1900 1050 2250 1050
+Wire Wire Line
+	2250 1050 2550 1050
+Wire Wire Line
+	2550 1050 3500 1050
+Wire Wire Line
+	3500 1050 3850 1050
+Wire Wire Line
+	3850 1050 6200 1050
+Wire Wire Line
+	6200 1050 6850 1050
+Wire Wire Line
+	2550 1150 2550 1050
+Wire Wire Line
+	1900 2050 1900 2350
+Wire Wire Line
+	1900 2350 1900 2400
+Wire Wire Line
+	1900 2350 2350 2350
+Connection ~ 1900 2350
+Wire Wire Line
+	1900 1550 2350 1550
+Connection ~ 2550 1050
+Wire Wire Line
+	2950 1450 3350 1450
+Wire Wire Line
+	2950 2250 3350 2250
+Connection ~ 1900 2700
+Wire Wire Line
+	1700 1050 1700 1900
+Connection ~ 1900 1050
+Wire Wire Line
+	1750 2150 2350 2150
+Connection ~ 2550 2700
+Wire Wire Line
+	1900 1400 1900 1550
+Wire Wire Line
+	1900 1550 1900 1750
+Connection ~ 1900 1550
+Wire Wire Line
+	1900 1100 1900 1050
+Wire Wire Line
+	2350 1350 2050 1350
+Wire Wire Line
+	2050 1350 2050 1650
+Wire Wire Line
+	2050 1650 1750 1650
+Wire Wire Line
+	1750 1650 1750 2000
+Wire Wire Line
+	3350 2250 3350 2200
+Wire Wire Line
+	3350 1800 3350 1850
+Wire Wire Line
+	3350 1850 3350 1900
+Wire Wire Line
+	3350 1450 3350 1500
+Wire Wire Line
+	6200 2700 6200 2250
+Wire Wire Line
+	6200 1050 6200 1450
+Connection ~ 3850 1050
+Connection ~ 3850 2700
+Wire Wire Line
+	3850 1650 3850 1050
+Wire Wire Line
+	3850 2700 3850 2250
+Wire Wire Line
+	3350 1850 3650 1850
+Connection ~ 3350 1850
+Wire Wire Line
+	3500 1450 3500 1550
+Wire Wire Line
+	3500 1550 3500 2050
+Wire Wire Line
+	3500 2050 3500 2150
+Connection ~ 3500 1050
+Wire Wire Line
+	3500 2450 3500 2700
+Connection ~ 3500 2700
+Wire Wire Line
+	3650 2050 3600 2050
+Wire Wire Line
+	3600 2050 3500 2050
+Connection ~ 3500 2050
+Wire Wire Line
+	4250 1950 4350 1950
+Wire Wire Line
+	4350 1950 4550 1950
+Connection ~ 2250 1050
+Connection ~ 3050 2700
+Wire Wire Line
+	4750 2250 5550 2250
+Wire Wire Line
+	5550 2250 6800 2250
+Wire Wire Line
+	4350 2500 4350 2600
+Wire Wire Line
+	4350 2600 4550 2600
+Wire Wire Line
+	4550 2600 4550 2550
+Wire Wire Line
+	4350 2200 4350 1950
+Connection ~ 4350 1950
+Wire Wire Line
+	6800 2250 6800 2050
+Wire Wire Line
+	6800 2050 6700 2050
+Wire Wire Line
+	3500 1150 3500 1050
+Wire Wire Line
+	5550 2300 5550 2250
+Connection ~ 5550 2250
+Wire Wire Line
+	5550 2600 5550 2700
+Connection ~ 5550 2700
+Wire Wire Line
+	5700 2050 5700 2350
+Wire Wire Line
+	5700 2350 6850 2350
+Wire Wire Line
+	6850 2350 6850 1050
+Connection ~ 6200 1050
+Wire Wire Line
+	4500 1650 5700 1650
+Wire Wire Line
+	1600 1700 1600 950 
+Wire Wire Line
+	1600 950  4500 950 
+Wire Wire Line
+	1500 850  1500 1800
+Wire Wire Line
+	1500 850  6950 850 
+Wire Wire Line
+	6950 850  6950 1650
+Wire Wire Line
+	6950 1650 6700 1650
+Wire Wire Line
+	6700 1850 6950 1850
+Wire Wire Line
+	6950 1850 6950 2800
+Wire Wire Line
+	6950 2800 3600 2800
+Wire Wire Line
+	3600 2800 3600 2050
+Connection ~ 3600 2050
+Wire Wire Line
+	4500 950  4500 1650
+Wire Wire Line
+	1500 1800 1400 1800
+Wire Wire Line
+	1400 2100 1750 2100
+Wire Wire Line
+	1750 2000 1400 2000
+Wire Wire Line
+	1750 2100 1750 2150
+Wire Wire Line
+	1400 1700 1600 1700
+Wire Wire Line
+	1700 1900 1400 1900
+Wire Wire Line
+	1400 1600 1650 1600
+Wire Wire Line
+	1650 1600 1650 2700
+Wire Wire Line
+	1650 2700 1900 2700
+Wire Wire Line
+	1900 2700 2550 2700
+Wire Wire Line
+	2550 2700 3050 2700
+Wire Wire Line
+	3050 2700 3500 2700
+Wire Wire Line
+	3500 2700 3850 2700
+Wire Wire Line
+	3850 2700 5550 2700
+Wire Wire Line
+	5550 2700 6200 2700
+Text Notes 2250 4200 0    60   ~ 0
+RPI FSAE\nNon-Programmable\nElectronic Throttle Safety Interlock System\n\nRevised: 2/20/2016\n\nPinout:\n1-Input 1 (Brake Press/TPS)\n2-Input 2 (Brake Press/TPS)\n3-VCC\n4-Output\n5-Connection to car start button\n6-Ground
+$EndSCHEMATC
