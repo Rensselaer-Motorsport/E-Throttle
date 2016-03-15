@@ -18,6 +18,15 @@ def printNum(num):
     print ('               ', end='\r')
     print ('{0:.2f}'.format(num), end='\r')
 
+def waitForPad(serial_in):
+    num_pad_bytes = 0
+    while(True):
+        if num_pad_bytes == 4:
+            return True
+        if ord(serial_in.read()) == 0xFF:
+            num_pad_bytes += 1
+        else:
+            num_pad_bytes = 0
 
 s = serial.Serial(port='COM5', baudrate=115200)
 pad_0 = -1
@@ -25,8 +34,11 @@ pad_1 = -2
 pad_2 = -3
 
 while(True):
+    waitForPad(s)
     nextVal = nextInt(s)
+    print (nextVal)
+    waitForPad(s)
+
     #nextVal /= 40.95
     # if not((nextVal == pad_0) or (nextVal == pad_1) or (nextVal == pad_2)):
     #     printNum(nextVal)
-    print (nextVal)
