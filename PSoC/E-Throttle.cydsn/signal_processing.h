@@ -59,6 +59,9 @@
     unsigned char globalImplausibility(float, float, float, Error_Buffer *);
     unsigned char brakeErrorCheck(float, float);
     void writeToServo(float);
+    void writeOutCounts(uint16, uint16, uint16, uint16, uint16);
+    void writeOutPercents(float, float, float, float, float);
+    void writeOutInt(char *);
     void handleError(); /* TODO: Implement handleError */
 
 #endif

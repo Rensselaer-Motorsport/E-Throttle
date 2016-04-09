@@ -1,5 +1,5 @@
 -- Project:   E-Throttle
--- Generated: 03/15/2016 04:31:28
+-- Generated: 03/16/2016 16:59:25
 -- PSoC Creator  3.2 SP1
 
 ENTITY \E-Throttle\ IS
@@ -38,7 +38,6 @@ ARCHITECTURE __DEFAULT__ OF \E-Throttle\ IS
     SIGNAL Net_1822 : bit;
     ATTRIBUTE global_signal OF Net_1822 : SIGNAL IS true;
     SIGNAL Net_1822_local : bit;
-    SIGNAL Net_205 : bit;
     SIGNAL Net_209 : bit;
     SIGNAL Net_284 : bit;
     ATTRIBUTE global_signal OF Net_284 : SIGNAL IS true;
@@ -308,6 +307,7 @@ ARCHITECTURE __DEFAULT__ OF \E-Throttle\ IS
     SIGNAL \TPS_ADC:nrq\ : bit;
     SIGNAL \TPS_ADC:soc_out\ : bit;
     SIGNAL \Timer:Net_261\ : bit;
+    SIGNAL \Timer:Net_51\ : bit;
     SIGNAL \Timer:Net_57\ : bit;
     SIGNAL \UART:BUART:counter_load_not\ : bit;
     SIGNAL \UART:BUART:pollcount_0\ : bit;
@@ -3160,7 +3160,7 @@ BEGIN
             cy_registers => "")
         PORT MAP(
             clock => \ClockBlock.dclk_glb_ff_3__sig\,
-            kill => Net_205,
+            kill => open,
             enable => __ONE__,
             capture => open,
             timer_reset => open,
@@ -4492,7 +4492,7 @@ BEGIN
             enable => __ONE__,
             capture => open,
             timer_reset => open,
-            tc => Net_205,
+            tc => \Timer:Net_51\,
             cmp => \Timer:Net_261\,
             irq => \Timer:Net_57\);
 

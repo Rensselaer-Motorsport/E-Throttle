@@ -25,7 +25,7 @@ return:     A percentage of the maximum possible count
 */
 float convertToPercent(uint16 count, sensor type) {
     /* TODO:    check bounds on these percents,
-                expecially the BRAKE case (sigdel
+                expecially the BRAKE case (delsig
                 ADC gave a little over MAX_BRAKE_COUNT
                 in prelim. test)
     */
@@ -40,7 +40,7 @@ float convertToPercent(uint16 count, sensor type) {
         case BRAKE:
             percent = (float) count / MAX_BRAKE_COUNT;
         default:
-            percent = 0.0;
+            percent = fERROR;
     }
     return percent * 100.0;
 }
@@ -218,4 +218,58 @@ void handleError() {
     /* TODO: Implement */
 }
 
+/*
+parameters: apps0 - ADC count for APPS_0
+            apps1 - ADC count for APPS_1
+            tps0  - ADC count for TPS_0
+            tps1  - ADC count for TPS_1
+            brake - ADC count for Brake Encoder
+effect:     Writes the count values, preceded by a pad, to the
+            UART tx pin. The pad will be the sensor name 
+            (i.e. apps0) and sent using UART_PutString
+*/
+void writeOutCounts(uint16 apps0, uint16 apps1, 
+                    uint16 tps0, uint16 tps1, 
+                    uint16 brake) {
+    union {
+        char str[4];
+        int num;
+    } sens_value;
+    
+    UART_PutString("apps0");
+    sens_value.num = (int)apps0;
+    writeOutInt(sens_value.str);
+    UART_PutString("apps1");
+    sens_value.num = (int)apps1;
+    writeOutInt(sens_value.str);
+    UART_PutString("tps0");
+    sens_value.num = (int)tps0;
+    writeOutInt(sens_value.str);
+    UART_PutString("tps1");
+    sens_value.num = (int)tps1;
+    writeOutInt(sens_value.str);
+    UART_PutString("brake");
+    sens_value.num = (int)brake;
+    writeOutInt(sens_value.str);
+}
+                    
+void writeOutPercents(float apps0, float apps1, 
+                      float tps0, float tps1, 
+                      float brake) {
+                        
+}
+                    
+/*
+parameter:  str_rep - A 4 byte char array representation of an
+                      integer
+effect:     Writes 4 bytes to UART tx pin in canonical order
+*/
+void writeOutInt(char * str_rep) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        UART_PutChar(str_rep[i]);
+    }
+}
+    
+    
 /* [] END OF FILE */
