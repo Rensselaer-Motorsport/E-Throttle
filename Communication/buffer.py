@@ -1,3 +1,7 @@
+'''
+Just for testing purposes, very ugly/hacky
+'''
+
 from __future__ import print_function
 import serial
 
@@ -28,17 +32,11 @@ def waitForPad(serial_in):
         else:
             num_pad_bytes = 0
 
-s = serial.Serial(port='COM5', baudrate=115200)
-pad_0 = -1
-pad_1 = -2
-pad_2 = -3
+def waitForSens(sensName, serial_in):
+    assert(len(sensName) == 4)
+    bytes_in = ['a','a','a','a']
+    count = 0
 
-while(True):
-    waitForPad(s)
-    nextVal = nextInt(s)
-    print (nextVal)
-    waitForPad(s)
-
-    #nextVal /= 40.95
-    # if not((nextVal == pad_0) or (nextVal == pad_1) or (nextVal == pad_2)):
-    #     printNum(nextVal)
+    while (not(''.join[s] == sensName)):
+        bytes_in[count] = serial_in.read()
+        count %= count+1
