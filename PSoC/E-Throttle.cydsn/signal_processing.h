@@ -19,6 +19,7 @@
     /* Imports */
     #include <cytypes.h>
     #include "queue.h"
+    #include "global_constants.h"
     #include <math.h>
 
     /* Constant Definitions */
@@ -33,13 +34,6 @@
     #define TP_ERR_CUTOFF 10.0 /* should be 10.0 by rule IC1.15.2 */
     #define BRAKE_ERR_CUTOFF 90.0 /* percentage of brake implausibilities
                                      during the previous second to warrant a shut-off */
-
-    /* Enumerations */
-    typedef enum sensor {
-        TPS,
-        APPS,
-        BRAKE
-    } sensor;
 
     /* Struct Declaration */
     typedef struct Error_Buffer {

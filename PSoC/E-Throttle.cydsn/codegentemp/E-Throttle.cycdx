@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="Timer" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="TimerHW" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="Timer_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG">
+  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Timer" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TimerHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="Timer_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
       <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." />
     </register>
-    <register name="Timer_CONTROL" address="0x40004F0C" bitWidth="8" desc="TMRx.CFG0">
+    <register name="Timer_CONTROL" address="0x40004F0C" bitWidth="8" desc="TMRx.CFG0" hidden="false">
       <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." />
       <field name="MODE" from="1" to="1" access="RW" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)">
         <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
@@ -25,7 +28,7 @@
       </field>
       <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" />
     </register>
-    <register name="Timer_CONTROL2" address="0x40004F0D" bitWidth="8" desc="TMRx.CFG1">
+    <register name="Timer_CONTROL2" address="0x40004F0D" bitWidth="8" desc="TMRx.CFG1" hidden="false">
       <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" />
       <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
         <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
@@ -36,7 +39,7 @@
       <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." />
       <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." />
     </register>
-    <register name="Timer_CONTROL3_" address="0x40004F0E" bitWidth="8" desc="TMRx.CFG2">
+    <register name="Timer_CONTROL3_" address="0x40004F0E" bitWidth="8" desc="TMRx.CFG2" hidden="false">
       <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ">
         <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
         <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
@@ -54,30 +57,24 @@
       </field>
       <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." />
     </register>
-    <register name="Timer_PERIOD" address="0x40004F10" bitWidth="16" desc="TMRx.PER0 - Assigned Period" />
-    <register name="Timer_COUNTER" address="0x40004F12" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" />
+    <register name="Timer_PERIOD" address="0x40004F10" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
+    <register name="Timer_COUNTER" address="0x40004F12" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" hidden="false" />
   </block>
-  <block name="Tx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Rx_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="BRAKE" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="UART" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
-    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="TX_UART_TX_DATA" address="0x40006449" bitWidth="8" desc="TX Data Register" />
-    <register name="TX_UART_TX_STATUS" address="0x40006467" bitWidth="8" desc="TX status register">
+  <block name="UART" BASE="0x0" SIZE="0x0" desc="UART" visible="true" hidden="false">
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="TX_UART_TX_DATA" address="0x4000644B" bitWidth="8" desc="TX Data Register" hidden="false" />
+    <register name="TX_UART_TX_STATUS" address="0x40006468" bitWidth="8" desc="TX status register" hidden="false">
       <field name="UART_TX_STS_COMPLETE" from="0" to="0" access="R" resetVal="" desc="" />
       <field name="UART_TX_STS_FIFO_EMPTY" from="1" to="1" access="R" resetVal="" desc="" />
       <field name="UART_TX_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="" />
       <field name="UART_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" />
     </register>
-    <register name="RX_UART_RX_ADDRESS1" address="0x40006528" bitWidth="8" desc="RX Address1 Register" />
-    <register name="RX_UART_RX_ADDRESS2" address="0x40006538" bitWidth="8" desc="RX Address2 Register" />
-    <register name="RX_UART_RX_DATA" address="0x40006548" bitWidth="8" desc="RX Data Register" />
-    <register name="RX_UART_RX_STATUS" address="0x40006568" bitWidth="8" desc="RX status register">
+    <register name="RX_UART_RX_ADDRESS1" address="0x40006528" bitWidth="8" desc="RX Address1 Register" hidden="false" />
+    <register name="RX_UART_RX_ADDRESS2" address="0x40006538" bitWidth="8" desc="RX Address2 Register" hidden="false" />
+    <register name="RX_UART_RX_DATA" address="0x40006548" bitWidth="8" desc="RX Data Register" hidden="false" />
+    <register name="RX_UART_RX_STATUS" address="0x40006564" bitWidth="8" desc="RX status register" hidden="false">
       <field name="UART_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
       <field name="UART_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
       <field name="UART_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" />
@@ -87,31 +84,33 @@
       <field name="UART_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
     </register>
   </block>
-  <block name="BRAKE_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="Ext_CP_Clk" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_noconnect_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="DSM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vRef_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="AMux" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="DEC" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="Clock_VirtualMux" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="BRAKE_ADC_DSM_DEC_PM_ACT_CFG" address="0x400043AA" bitWidth="8" desc="Decimator Active mode Power Register">
+  <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="BRAKE_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Ext_CP_Clk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="DSM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="AMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="DEC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Clock_VirtualMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="BRAKE_ADC_DSM_DEC_PM_ACT_CFG" address="0x400043AA" bitWidth="8" desc="Decimator Active mode Power Register" hidden="false">
       <field name="en_dsm_channel" from="4" to="4" access="RW" resetVal="" desc="Enable delta-sigma modulator ADC channel. Note: set the appropriate enables in the analog interface prior to setting this global enable for the channel.">
         <value name="Disable_DSM_Channel" value="0" desc="Disable power to DSM channel." />
         <value name="Enable_DSM_Channel" value="1" desc="Enable power to DSM channel." />
@@ -121,7 +120,7 @@
         <value name="EN_DEC" value="1" desc="Enable power to Decimator." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_DEC_PM_STBY_CFG" address="0x400043BA" bitWidth="8" desc="Decimator Alternate Active mode Power Register">
+    <register name="BRAKE_ADC_DSM_DEC_PM_STBY_CFG" address="0x400043BA" bitWidth="8" desc="Decimator Alternate Active mode Power Register" hidden="false">
       <field name="en_dsm_channel" from="4" to="4" access="RW" resetVal="" desc="Enable delta-sigma modulator ADC channel. Note: set the appropriate enables in the analog interface prior to setting this global enable for the channel.">
         <value name="Disable_DSM_Channel" value="0" desc="Disable power to DSM channel." />
         <value name="Enable_DSM_Channel" value="1" desc="Enable power to DSM channel during Standby power mode." />
@@ -131,7 +130,7 @@
         <value name="EN_DEC" value="1" desc="Enable power to Decimator during Standby power mode." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DEC_CR" address="0x40004E00" bitWidth="8" desc="Decimator Control Register">
+    <register name="BRAKE_ADC_DEC_CR" address="0x40004E00" bitWidth="8" desc="Decimator Control Register" hidden="false">
       <field name="sta_en" from="7" to="7" access="RW" resetVal="" desc="Controls saturation logic in the Post Processing filter. When enabled, the resulting outputs of the Post Processing filter are held to the most positive or negative values, rather then wrapping around. Conversion results are unpredictable if this bit is changed while the Post Processing filter is running. This bit is ignored if FIR_EN, OCOR_EN and GCOR_EN are all 0.">
         <value name="SAT_DIS" value="0" desc="No saturation control." />
         <value name="SAT_EN" value="1" desc="Saturation Control Enabled." />
@@ -163,7 +162,7 @@
         <value name="DEC_START" value="1" desc="Initiate a conversion." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DEC_SR" address="0x40004E01" bitWidth="8" desc="Decimator Status Register">
+    <register name="BRAKE_ADC_DEC_SR" address="0x40004E01" bitWidth="8" desc="Decimator Status Register" hidden="false">
       <field name="coreclk_disable" from="5" to="5" access="RW" resetVal="" desc="This bit when set high disables (gates off) the clock to the entire core of the block (adc_clk). This includes all FFs except those used for the AHB interface and CSRs. When disabled (set high) the AHB interface to the CSR is still fully functional. This bit is ANDed with the primary input signal cic_clk_en to control the clock gate. cic_clk_en must be high and CoreCLK_Disable must be low for the clock to run.">
         <value name="CORECLK_DISABLE_LOW" value="0" desc="Core Clock is Enabled." />
         <value name="CORECLK_DISABLE_HIGH" value="1" desc="Core Clock is Disabled." />
@@ -189,50 +188,50 @@
         <value name="CONV_COMP" value="1" desc="Conversion not completed since last clear." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DEC_SHIFT1" address="0x40004E02" bitWidth="8" desc="Decimator Shift Register">
+    <register name="BRAKE_ADC_DEC_SHIFT1" address="0x40004E02" bitWidth="8" desc="Decimator Shift Register" hidden="false">
       <field name="shift1" from="4" to="0" access="RW" resetVal="" desc="Value for left shift amount of modulator input data. 0 = no shift, 1 = left shift by 1 bit, .... up to the max supported 31." />
     </register>
-    <register name="BRAKE_ADC_DEC_SHIFT2" address="0x40004E03" bitWidth="8" desc="Decimator Shift Register">
+    <register name="BRAKE_ADC_DEC_SHIFT2" address="0x40004E03" bitWidth="8" desc="Decimator Shift Register" hidden="false">
       <field name="shift2" from="3" to="0" access="RW" resetVal="" desc="Value for the amount of right shift for the output of the CIC filter prior to entering the Post Processor. Functional values range from 0 to 15, 0 = no shift." />
     </register>
-    <register name="BRAKE_ADC_DEC_DR2" address="0x40004E04" bitWidth="8" desc="Decimator Decimation Rate (2) Register">
+    <register name="BRAKE_ADC_DEC_DR2" address="0x40004E04" bitWidth="8" desc="Decimator Decimation Rate (2) Register" hidden="false">
       <field name="dr2_low" from="7" to="0" access="RW" resetVal="" desc="FIR Filter decimation ratio bits [7:0] (of [9:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_DR2H" address="0x40004E05" bitWidth="8" desc="Decimator Decimation Rate and Overflow Correction Register">
+    <register name="BRAKE_ADC_DEC_DR2H" address="0x40004E05" bitWidth="8" desc="Decimator Decimation Rate and Overflow Correction Register" hidden="false">
       <field name="of_width" from="7" to="3" access="RW" resetVal="" desc="Occupying the top 5 bits of this register is the Overflow Correction Bit-Width field (it is unrelated to the DR2). This field both enables and sets the bit width of the Overflow Correction logic in the CIC core." />
       <field name="dr2_high" from="1" to="0" access="RW" resetVal="" desc="FIR Filter decimation ratio bits [9:8] (of [9:0]). See description in DR2 register." />
     </register>
-    <register name="BRAKE_ADC_DEC_DR1" address="0x40004E06" bitWidth="8" desc="Decimator Decimation Rate (1) Register">
+    <register name="BRAKE_ADC_DEC_DR1" address="0x40004E06" bitWidth="8" desc="Decimator Decimation Rate (1) Register" hidden="false">
       <field name="dr1" from="7" to="0" access="RW" resetVal="" desc="CIC Filter decimation rate." />
     </register>
-    <register name="BRAKE_ADC_DEC_OCOR" address="0x40004E08" bitWidth="8" desc="Decimator Offset Correction Coefficient (Low Byte) Register">
+    <register name="BRAKE_ADC_DEC_OCOR" address="0x40004E08" bitWidth="8" desc="Decimator Offset Correction Coefficient (Low Byte) Register" hidden="false">
       <field name="ocor_low" from="7" to="0" access="RW" resetVal="" desc="Offset correction coefficient bits [7:0] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_OCORM" address="0x40004E09" bitWidth="8" desc="Decimator Offset Correction Coefficient (Middle Byte) Register">
+    <register name="BRAKE_ADC_DEC_OCORM" address="0x40004E09" bitWidth="8" desc="Decimator Offset Correction Coefficient (Middle Byte) Register" hidden="false">
       <field name="ocor_mid" from="7" to="0" access="RW" resetVal="" desc="Offset correction coefficient bits [15:8] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_OCORH" address="0x40004E0A" bitWidth="8" desc="Decimator Offset Correction Coefficient (High Byte) Register">
+    <register name="BRAKE_ADC_DEC_OCORH" address="0x40004E0A" bitWidth="8" desc="Decimator Offset Correction Coefficient (High Byte) Register" hidden="false">
       <field name="ocor_high" from="7" to="0" access="RW" resetVal="" desc="Offset correction coefficient bits [23:16] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_GCOR" address="0x40004E0C" bitWidth="8" desc="Decimator Gain Correction Coefficient (Low Byte) Register">
+    <register name="BRAKE_ADC_DEC_GCOR" address="0x40004E0C" bitWidth="8" desc="Decimator Gain Correction Coefficient (Low Byte) Register" hidden="false">
       <field name="gcor_low" from="7" to="0" access="RW" resetVal="" desc="Gain correction coefficient bits [7:0] (of [15:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_GCORH" address="0x40004E0D" bitWidth="8" desc="Decimator Gain Correction Coefficient (High Byte) Register">
+    <register name="BRAKE_ADC_DEC_GCORH" address="0x40004E0D" bitWidth="8" desc="Decimator Gain Correction Coefficient (High Byte) Register" hidden="false">
       <field name="gcor_high" from="7" to="0" access="RW" resetVal="" desc="Gain correction coefficient bits [15:8] (of [15:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_GVAL" address="0x40004E0E" bitWidth="8" desc="Decimator Gain Correction Size Register">
+    <register name="BRAKE_ADC_DEC_GVAL" address="0x40004E0E" bitWidth="8" desc="Decimator Gain Correction Size Register" hidden="false">
       <field name="gval" from="3" to="0" access="RW" resetVal="" desc="Number of valid bits minus one in Gain Coefficient registers GCORH and GCOR." />
     </register>
-    <register name="BRAKE_ADC_DEC_OUTSAMP" address="0x40004E10" bitWidth="8" desc="Decimator Output Data Sample (Low Byte) Register">
+    <register name="BRAKE_ADC_DEC_OUTSAMP" address="0x40004E10" bitWidth="8" desc="Decimator Output Data Sample (Low Byte) Register" hidden="false">
       <field name="samp_low" from="7" to="0" access="R" resetVal="" desc="Low order byte of the filter conversion result, bits [7:0] (of [23:0]) --- Or if the out_align bit is set it contains bits [15:8] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_OUTSAMPM" address="0x40004E11" bitWidth="8" desc="Decimator Output Data Sample (Middle Byte) Register">
+    <register name="BRAKE_ADC_DEC_OUTSAMPM" address="0x40004E11" bitWidth="8" desc="Decimator Output Data Sample (Middle Byte) Register" hidden="false">
       <field name="samp_mid" from="7" to="0" access="R" resetVal="" desc="Middle order byte of the filter conversion result, bits [15:8] (of [23:0]) --- Or if the out_align bit is set it contains bits [23:16] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_OUTSAMPH" address="0x40004E12" bitWidth="8" desc="Decimator Output Data Sample (High Byte) Register">
+    <register name="BRAKE_ADC_DEC_OUTSAMPH" address="0x40004E12" bitWidth="8" desc="Decimator Output Data Sample (High Byte) Register" hidden="false">
       <field name="samp_high" from="7" to="0" access="R" resetVal="" desc="High order byte of the filter conversion result, bits [23:16] (of [23:0])." />
     </register>
-    <register name="BRAKE_ADC_DEC_COHER" address="0x40004E14" bitWidth="8" desc="Decimator Coherency Register">
+    <register name="BRAKE_ADC_DEC_COHER" address="0x40004E14" bitWidth="8" desc="Decimator Coherency Register" hidden="false">
       <field name="gcor_key" from="5" to="4" access="RW" resetVal="" desc="Sets the Key Coherency Byte of the GCOR/GCORH/GVAL field.">
         <value name="GCOR_KEY_OFF" value="0" desc="Gain Coefficient Coherency checking off." />
         <value name="GCOR_KEY_LOW" value="1" desc="Key Byte is low byte (GCOR)." />
@@ -252,7 +251,7 @@
         <value name="SAMP_KEY_HIGH" value="11" desc="Key Byte is high byte (OUTSAMPH)." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR0" address="0x40005880" bitWidth="8" desc="Delta Sigma Modulator Control Register 0">
+    <register name="BRAKE_ADC_DSM_CR0" address="0x40005880" bitWidth="8" desc="Delta Sigma Modulator Control Register 0" hidden="false">
       <field name="nonov" from="3" to="2" access="RW" resetVal="" desc="Non overlap delay of clock phases.">
         <value name="NONOV_LOW" value="0" desc="low (1.57ns, typ)." />
         <value name="NONOV_MEDIUM" value="1" desc="medium (3.54ns, typ)." />
@@ -266,7 +265,7 @@
         <value name="QLEV_9_ALSO" value="11" desc="9 level quantization." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR1" address="0x40005881" bitWidth="8" desc="Delta Sigma Modulator Control Register 1">
+    <register name="BRAKE_ADC_DSM_CR1" address="0x40005881" bitWidth="8" desc="Delta Sigma Modulator Control Register 1" hidden="false">
       <field name="dpmode" from="6" to="6" access="RW" resetVal="" desc="Datapath mode.">
         <value name="DPMODE_NORMAL" value="0" desc="normal." />
         <value name="DPMODE_LOWOFFSET" value="1" desc="low offset." />
@@ -274,7 +273,7 @@
       <field name="oden" from="5" to="5" access="RW" resetVal="" desc="Overload detect scheme enable." />
       <field name="odet_th" from="4" to="0" access="RW" resetVal="" desc="Overload detection threshold. If the number of continuous 1s or 0s coming out of quantizer exceeds this number overload detection flag is set." />
     </register>
-    <register name="BRAKE_ADC_DSM_CR2" address="0x40005882" bitWidth="8" desc="Delta Sigma Modulator Control Register 2">
+    <register name="BRAKE_ADC_DSM_CR2" address="0x40005882" bitWidth="8" desc="Delta Sigma Modulator Control Register 2" hidden="false">
       <field name="mx_reset" from="7" to="7" access="RW" resetVal="" desc="select DSM reset source.">
         <value name="MXSELRESET_0" value="0" desc="Select Decimator for reset source." />
         <value name="MXSELRESET_1" value="1" desc="Select UDB for reset source." />
@@ -306,7 +305,7 @@
         <value name="FCHOP_DIV256" value="111" desc="Fclock/256." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR3" address="0x40005883" bitWidth="8" desc="Delta Sigma Modulator Control Register 3">
+    <register name="BRAKE_ADC_DSM_CR3" address="0x40005883" bitWidth="8" desc="Delta Sigma Modulator Control Register 3" hidden="false">
       <field name="sign" from="7" to="7" access="RW" resetVal="" desc="Invert sign of input.">
         <value name="SIGN_NONINVERT" value="0" desc="keep original polarity for the input." />
         <value name="SIGN_INVERT" value="1" desc="Invert sign of input (use when trying to chop once and then average the offset value out)." />
@@ -338,7 +337,7 @@
         <value name="MX_MODBITIN_0xF_RSVD" value="1111" desc="Reserved." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR4" address="0x40005884" bitWidth="8" desc="Delta Sigma Modulator Control Register 4">
+    <register name="BRAKE_ADC_DSM_CR4" address="0x40005884" bitWidth="8" desc="Delta Sigma Modulator Control Register 4" hidden="false">
       <field name="fcap1_en" from="7" to="7" access="RW" resetVal="" desc="Enable/Disable Capacitance path meant for DFT (Design for Testability) of the first integrator's integrating capacitance path.">
         <value name="FCAP1_EN_DISABLE" value="0" desc="Disable the DFT 100fF capacitance path." />
         <value name="FCAP1_EN_ENABLE" value="1" desc="Enable the DFT 100fF capacitance path." />
@@ -355,7 +354,7 @@
         <value name="FCAP1_BIT6" value="1000000" desc="fcap[6] set -&gt; +6400 fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR5" address="0x40005885" bitWidth="8" desc="Delta Sigma Modulator Control Register 5">
+    <register name="BRAKE_ADC_DSM_CR5" address="0x40005885" bitWidth="8" desc="Delta Sigma Modulator Control Register 5" hidden="false">
       <field name="ipcap1_en" from="7" to="7" access="RW" resetVal="" desc="Enable/Disable Capacitance path meant for DFT (Design for Testability) of the first integrator's input sampling path.">
         <value name="IPCAP1_EN_DISABLE" value="0" desc="Disable the DFT 100fF capacitance path." />
         <value name="IPCAP1_EN_ENABLE" value="1" desc="Enable the DFT 100fF capacitance path." />
@@ -372,7 +371,7 @@
         <value name="IPCAP1_BIT6" value="1000000" desc="ipcap[6] set -&gt; +6400 fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR6" address="0x40005886" bitWidth="8" desc="Delta Sigma Modulator Control Register 6">
+    <register name="BRAKE_ADC_DSM_CR6" address="0x40005886" bitWidth="8" desc="Delta Sigma Modulator Control Register 6" hidden="false">
       <field name="daccap_en" from="6" to="6" access="RW" resetVal="" desc="Enable/Disable Capacitance path meant for DFT (Design for Testability) of the DAC Reference sampling path.">
         <value name="DACCAP_EN_DISABLE" value="0" desc="Disable the DFT 12fF capacitance path." />
         <value name="DACCAP_EN_ENABLE" value="1" desc="Enable the DFT 12fF capacitance path." />
@@ -386,7 +385,7 @@
         <value name="DACCAP_BIT5" value="100000" desc="daccap[5] set -&gt; add 400*8= +3200 fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR7" address="0x40005887" bitWidth="8" desc="Delta Sigma Modulator Control Register 7">
+    <register name="BRAKE_ADC_DSM_CR7" address="0x40005887" bitWidth="8" desc="Delta Sigma Modulator Control Register 7" hidden="false">
       <field name="fcap2_en" from="7" to="7" access="RW" resetVal="" desc="Enable/Disable additional 50fF capacitance path in the second integrators integrating capacitance path.">
         <value name="FCAP2_EN_DISABLE" value="0" desc="Disable the additional 50fF capacitance path." />
         <value name="FCAP2_EN_ENABLE" value="1" desc="Enable the additional 50fF capacitance path." />
@@ -406,7 +405,7 @@
       <field name="rescap_en" from="3" to="3" access="RW" resetVal="" desc="Reserved. The resonator loop feature has been disabled in the design; programming these bits does not produce any change in the ADC outcome." />
       <field name="rescap" from="2" to="0" access="RW" resetVal="" desc="Reserved. The resonator loop feature has been disabled in the design; programming these bits does not produce any change in the ADC outcome." />
     </register>
-    <register name="BRAKE_ADC_DSM_CR8" address="0x40005888" bitWidth="8" desc="Delta Sigma Modulator Control Register 8">
+    <register name="BRAKE_ADC_DSM_CR8" address="0x40005888" bitWidth="8" desc="Delta Sigma Modulator Control Register 8" hidden="false">
       <field name="ipcap2_en" from="7" to="7" access="RW" resetVal="" desc="Enable/Disable additional 50fF capacitance path in the second integrator's input sampling path.">
         <value name="IPCAP2_EN_DISABLE" value="0" desc="Disable the additional 50fF capacitance path." />
         <value name="IPCAP2_EN_ENABLE" value="1" desc="Enable the additional 50fF capacitance path." />
@@ -440,7 +439,7 @@
         <value name="FCAP2_750FEMPTO" value="1111" desc="750fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR9" address="0x40005889" bitWidth="8" desc="Delta Sigma Modulator Control Register 9">
+    <register name="BRAKE_ADC_DSM_CR9" address="0x40005889" bitWidth="8" desc="Delta Sigma Modulator Control Register 9" hidden="false">
       <field name="ipcap3_en" from="7" to="7" access="RW" resetVal="" desc="Enable/Disable additional 50fF capacitance path in the second integrator's input sampling path.">
         <value name="IPCAP3_EN_DISABLE" value="0" desc="Disable the additional 50fF capacitance path." />
         <value name="IPCAP3_EN_ENABLE" value="1" desc="Enable the additional 50fF capacitance path." />
@@ -474,7 +473,7 @@
         <value name="FCAP3_1500FEMPTO" value="1111" desc="1500fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR10" address="0x4000588A" bitWidth="8" desc="Delta Sigma Modulator Control Register 10">
+    <register name="BRAKE_ADC_DSM_CR10" address="0x4000588A" bitWidth="8" desc="Delta Sigma Modulator Control Register 10" hidden="false">
       <field name="sumcap1_en" from="7" to="7" access="RW" resetVal="" desc="Enabling/Disabling the the additional 50fF capacitance path that lies between first integrator output and summer input (feed-forward) path.">
         <value name="SUMCAP1_EN_DISABLE" value="0" desc="Disable the additional 50fF capacitance path." />
         <value name="SUMCAP1_EN_ENABLE" value="1" desc="Enable the additional 50fF capacitance path." />
@@ -504,7 +503,7 @@
         <value name="SUMCAP2_350FEMPTO" value="111" desc="350fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR11" address="0x4000588B" bitWidth="8" desc="Delta Sigma Modulator Control Register 11">
+    <register name="BRAKE_ADC_DSM_CR11" address="0x4000588B" bitWidth="8" desc="Delta Sigma Modulator Control Register 11" hidden="false">
       <field name="sumcap3_en" from="7" to="7" access="RW" resetVal="" desc="Enabling/Disabling the additional 50fF path that lies between the third integrator output and summer input (feed-forward) path.">
         <value name="SUMCAP3_EN_DISABLE" value="0" desc="Disable the additional 50fF capacitance path." />
         <value name="SUMCAP3_EN_ENABLE" value="1" desc="Enable the additional 50fF capacitance path." />
@@ -538,7 +537,7 @@
         <value name="SUMCAPFB_750FEMPTO" value="1111" desc="750fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR12" address="0x4000588C" bitWidth="8" desc="Delta Sigma Modulator Control Register 12">
+    <register name="BRAKE_ADC_DSM_CR12" address="0x4000588C" bitWidth="8" desc="Delta Sigma Modulator Control Register 12" hidden="false">
       <field name="sumcapfb_en" from="6" to="6" access="RW" resetVal="" desc="Enabling/Disabling the DFT path that lies on the feedback path of the active summer.">
         <value name="SUMCAPFB_EN_DISABLE" value="0" desc="Disable the DFT 50fF capacitance path." />
         <value name="SUMCAPFB_EN_ENABLE" value="1" desc="Enable the DFT 50fF capacitance path." />
@@ -582,8 +581,8 @@
         <value name="SUMCAPIN_1550FEMPTO" value="11111" desc="1550fF." />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR13" address="0x4000588D" bitWidth="8" desc="Delta Sigma Modulator Control Register 13" />
-    <register name="BRAKE_ADC_DSM_CR14" address="0x4000588E" bitWidth="8" desc="Delta Sigma Modulator Control Register 14">
+    <register name="BRAKE_ADC_DSM_CR13" address="0x4000588D" bitWidth="8" desc="Delta Sigma Modulator Control Register 13" hidden="false" />
+    <register name="BRAKE_ADC_DSM_CR14" address="0x4000588E" bitWidth="8" desc="Delta Sigma Modulator Control Register 14" hidden="false">
       <field name="opamp1_bw" from="7" to="4" access="RW" resetVal="" desc="First Stage Opamp Bandwidth Control (Risk Mitigation not for User control). Table gives value for Modulator input bw[3:0].">
         <value name="OPAMP1_BW_0x0" value="0000" desc="(default)" />
         <value name="OPAMP1_BW_0x1" value="0001" desc="(used with 1.5X power)" />
@@ -613,7 +612,7 @@
         <value name="POWER1_7" value="111" desc="2.5X (1.5mA)" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR15" address="0x4000588F" bitWidth="8" desc="Delta Sigma Modulator Control Register 15">
+    <register name="BRAKE_ADC_DSM_CR15" address="0x4000588F" bitWidth="8" desc="Delta Sigma Modulator Control Register 15" hidden="false">
       <field name="power_comp" from="5" to="4" access="RW" resetVal="" desc="The power control for the quantizer block.">
         <value name="POWER_COMP_VERYLOW" value="00" desc="very low (2.2uA)" />
         <value name="POWER_COMP_NORMAL" value="01" desc="Normal (8.6uA)" />
@@ -631,7 +630,7 @@
         <value name="POWER2_3_HIGH_7" value="111" desc="HIGH (68uA)" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR16" address="0x40005890" bitWidth="8" desc="Delta Sigma Modulator Control Register 16">
+    <register name="BRAKE_ADC_DSM_CR16" address="0x40005890" bitWidth="8" desc="Delta Sigma Modulator Control Register 16" hidden="false">
       <field name="power_sum" from="6" to="4" access="RW" resetVal="" desc="The power control for the summer block.">
         <value name="POWER_SUM_LOW" value="000" desc="LOW (4uA)" />
         <value name="POWER_SUM_MEDIUM" value="001" desc="MEDIUM (17uA)" />
@@ -657,7 +656,7 @@
         <value name="CP_PWRCTL_7" value="111" desc="Reserved" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CR17" address="0x40005891" bitWidth="8" desc="Delta Sigma Modulator Control Register 17">
+    <register name="BRAKE_ADC_DSM_CR17" address="0x40005891" bitWidth="8" desc="Delta Sigma Modulator Control Register 17" hidden="false">
       <field name="pwr_ctrl_vref_inn" from="7" to="6" access="RW" resetVal="" desc="Power control modes for REFBUF1 (the reference buffer that connects ADC reference to the negative input MUX of the channel).">
         <value name="PWR_CTRL_VREF_INN_LOW" value="00" desc="VREF Buffer (Input mux path) is operating in Low Power (26uA) mode" />
         <value name="PWR_CTRL_VREF_INN_MEDIUM" value="01" desc="VREF Buffer (Input mux path) is operating in Medium Power (32uA) mode" />
@@ -685,7 +684,7 @@
         <value name="EN_BUF_VREF_1" value="01" desc="The Internal Reference Voltage Buffer is NOT powered down" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_REF0" address="0x40005892" bitWidth="8" desc="Delta Sigma Modulator Reference Register 0">
+    <register name="BRAKE_ADC_DSM_REF0" address="0x40005892" bitWidth="8" desc="Delta Sigma Modulator Reference Register 0" hidden="false">
       <field name="vcmsel" from="7" to="6" access="RW" resetVal="" desc="Output common mode selection for modulator">
         <value name="VCMSEL_0" value="0" desc="No selection is made for VCM" />
         <value name="VCMSEL_1" value="1" desc="0.8V from bandgap trim buffer is being selected as VCM (output common mode) for the DSM opamps" />
@@ -712,13 +711,13 @@
         <value name="REFMUX_7" value="111" desc="N/A" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_REF1" address="0x40005893" bitWidth="8" desc="Delta Sigma Modulator Reference Register 1">
+    <register name="BRAKE_ADC_DSM_REF1" address="0x40005893" bitWidth="8" desc="Delta Sigma Modulator Reference Register 1" hidden="false">
       <field name="dac_gnd_sel" from="0" to="0" access="RW" resetVal="" desc="Selects DSM Reference DAC Capacitor Ground.">
         <value name="DSM_DAC_GND_SEL_INT" value="0" desc="select DSM internal vssa" />
         <value name="DSM_DAC_GND_SEL_EXT" value="1" desc="select external ground (AGL6)" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_REF2" address="0x40005894" bitWidth="8" desc="Delta Sigma Modulator Reference Register 2">
+    <register name="BRAKE_ADC_DSM_REF2" address="0x40005894" bitWidth="8" desc="Delta Sigma Modulator Reference Register 2" hidden="false">
       <field name="s7_en" from="7" to="7" access="RW" resetVal="" desc="If Set, closes the S7 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s6_en" from="6" to="6" access="RW" resetVal="" desc="If Set, closes the S6 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s5_en" from="5" to="5" access="RW" resetVal="" desc="If Set, closes the S5 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
@@ -728,7 +727,7 @@
       <field name="s1_en" from="1" to="1" access="RW" resetVal="" desc="If Set, closes the S1 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s0_en" from="0" to="0" access="RW" resetVal="" desc="If Set, closes the S0 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
     </register>
-    <register name="BRAKE_ADC_DSM_REF3" address="0x40005895" bitWidth="8" desc="Delta Sigma Modulator Reference Register 3">
+    <register name="BRAKE_ADC_DSM_REF3" address="0x40005895" bitWidth="8" desc="Delta Sigma Modulator Reference Register 3" hidden="false">
       <field name="s13_en" from="5" to="5" access="RW" resetVal="" desc="If Set, closes the S13 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s12_en" from="4" to="4" access="RW" resetVal="" desc="If Set, closes the S12 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s11_en" from="3" to="3" access="RW" resetVal="" desc="If Set, closes the S11 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
@@ -736,7 +735,7 @@
       <field name="s9_en" from="1" to="1" access="RW" resetVal="" desc="If Set, closes the S9 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
       <field name="s8_en" from="0" to="0" access="RW" resetVal="" desc="If Set, closes the S8 switch in figure Sigma Delta Channel Analog Reference Selection in the DSM chapter; See sub-section Analog Reference Options for the Sigma Delta Channel." />
     </register>
-    <register name="BRAKE_ADC_DSM_DEM0" address="0x40005896" bitWidth="8" desc="Delta Sigma Modulator Dynamic Element Matching Register 0">
+    <register name="BRAKE_ADC_DSM_DEM0" address="0x40005896" bitWidth="8" desc="Delta Sigma Modulator Dynamic Element Matching Register 0" hidden="false">
       <field name="demtest_src" from="4" to="4" access="RW" resetVal="" desc="Select demtest source.">
         <value name="DEMTEST_SRC_REG" value="0" desc="ANAIF register source selected - DSM#_DEM1.demtest[7:0]." />
         <value name="DEMTEST_SRC_UDB" value="1" desc="UDB array source selected - dsi_anaif_dft[7:0]." />
@@ -758,10 +757,10 @@
         <value name="EN_SCRAMBLER0_ENABLE" value="1" desc="Enable Scrambler 0" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_DEM1" address="0x40005897" bitWidth="8" desc="Delta Sigma Modulator Dynamic Element Matching Register 1">
+    <register name="BRAKE_ADC_DSM_DEM1" address="0x40005897" bitWidth="8" desc="Delta Sigma Modulator Dynamic Element Matching Register 1" hidden="false">
       <field name="demtest" from="7" to="0" access="RW" resetVal="" desc="Register control for the DAC unit elements inside the first integrator. This can be used when bit DSM.DEM0[3], adc_test_en, is set. If the adc_test_en is not set the the control logic inside the modulator determines how the DAC unit elements are controlled. This is meant for static testing purposes." />
     </register>
-    <register name="BRAKE_ADC_DSM_TST0" address="0x40005898" bitWidth="8" desc="Delta Sigma Modulator Test Register 0">
+    <register name="BRAKE_ADC_DSM_TST0" address="0x40005898" bitWidth="8" desc="Delta Sigma Modulator Test Register 0" hidden="false">
       <field name="dig_test_sel" from="6" to="4" access="RW" resetVal="" desc="To test various digital outputs to digital muxes (for DFT).">
         <value name="DIG_TEST_SEL_0" value="000" desc="test_dig_out = vhi" />
         <value name="DIG_TEST_SEL_1" value="001" desc="test_dig_out = hi" />
@@ -791,8 +790,8 @@
         <value name="REFSEL_CTRL_15" value="1111" desc="Not a valid selection" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_TST1" address="0x40005899" bitWidth="8" desc="Delta Sigma Modulator Test Register 1" />
-    <register name="BRAKE_ADC_DSM_BUF0" address="0x4000589A" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 0">
+    <register name="BRAKE_ADC_DSM_TST1" address="0x40005899" bitWidth="8" desc="Delta Sigma Modulator Test Register 1" hidden="false" />
+    <register name="BRAKE_ADC_DSM_BUF0" address="0x4000589A" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 0" hidden="false">
       <field name="rail_rail_en" from="2" to="2" access="RW" resetVal="" desc="Selects Rail-to-Rail Mode.">
         <value name="RAIL_RAIL_EN_DISABLE" value="0" desc="Level shifted mode" />
         <value name="RAIL_RAIL_EN_ENABLE" value="1" desc="Rail-to-Rail mode" />
@@ -806,7 +805,7 @@
         <value name="ENABLE_P_1" value="1" desc="enable positive half of buffer" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_BUF1" address="0x4000589B" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 1">
+    <register name="BRAKE_ADC_DSM_BUF1" address="0x4000589B" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 1" hidden="false">
       <field name="gain" from="3" to="2" access="RW" resetVal="" desc="Gain settings of 1,2,4,8 are supported.">
         <value name="GAIN_1X" value="00" desc="1x" />
         <value name="GAIN_2X" value="01" desc="2x" />
@@ -822,14 +821,14 @@
         <value name="ENABLE_N_1" value="1" desc="enable negat half of buffer" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_BUF2" address="0x4000589C" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 2">
+    <register name="BRAKE_ADC_DSM_BUF2" address="0x4000589C" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 2" hidden="false">
       <field name="add_extra_rc" from="1" to="1" access="RW" resetVal="" desc="If enabled an additional RC is included at the output of the buffer differentially, to lower noise at the expense of settling else normal settling. See s8hizbuf BROS for more information." />
       <field name="lowpower_en" from="0" to="0" access="RW" resetVal="" desc="Enables the lower power mode of operation. The normal power mode implies 600uA typical current consumption per opamp in the buffer. See s8hizbuf BROS for more information.">
         <value name="LOWPOWER_EN_NORMAL" value="0" desc="Input buffer operated in normal power mode" />
         <value name="LOWPOWER_EN_LOW" value="1" desc="Input buffer operated in low (1/4th of normal power) power mode" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_BUF3" address="0x4000589D" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 3">
+    <register name="BRAKE_ADC_DSM_BUF3" address="0x4000589D" bitWidth="8" desc="Delta Sigma Modulator Buffer Register 3" hidden="false">
       <field name="buf_chop_en" from="3" to="3" access="RW" resetVal="" desc="Enable/ Disable Chopping of the input buffer (TYPE A or B as selected in DSM_BUF0 register).">
         <value name="BUF_CHOP_EN_0" value="0" desc="Disable Chopping of the input buffer" />
         <value name="BUF_CHOP_EN_1" value="1" desc="Enable Chopping of the input buffer" />
@@ -845,7 +844,7 @@
         <value name="BUF_FCHOP_7" value="111" desc="chopping frequency is fs/256" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_MISC" address="0x4000589E" bitWidth="8" desc="Delta Sigma Modulator Miscallaneous Register">
+    <register name="BRAKE_ADC_DSM_MISC" address="0x4000589E" bitWidth="8" desc="Delta Sigma Modulator Miscallaneous Register" hidden="false">
       <field name="swvn_src" from="3" to="3" access="RW" resetVal="" desc="negative input routing control source.">
         <value name="DSM_SWVN_SRC_REG" value="0" desc="ANAIF DSM routing registers" />
         <value name="DSM_SWVN_SRC_UDB" value="1" desc="UDB" />
@@ -859,7 +858,7 @@
         <value name="SEL_ICLK_CP_INTERNAL" value="1" desc="Internal Charge Pump Clock selected" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_CLK" address="0x40005B07" bitWidth="8" desc="Delta Sigma Modulator Clock Selection Register">
+    <register name="BRAKE_ADC_DSM_CLK" address="0x40005B07" bitWidth="8" desc="Delta Sigma Modulator Clock Selection Register" hidden="false">
       <field name="bypass_sync" from="4" to="4" access="RW" resetVal="" desc="Bypass Synchronization">
         <value name="BYPASS_SYNC_0" value="0" desc="Synchronization not bypassed (Synchronization enabled)" />
         <value name="BYPASS_SYNC_1" value="1" desc="Synchronization bypassed (Synchronization disabled)" />
@@ -879,10 +878,10 @@
         <value name="MX_CLK_7" value="111" desc="Reserved" />
       </field>
     </register>
-    <register name="BRAKE_ADC_DSM_OUT0" address="0x40005B88" bitWidth="8" desc="Delta Sigma Modulator Output Register 0">
+    <register name="BRAKE_ADC_DSM_OUT0" address="0x40005B88" bitWidth="8" desc="Delta Sigma Modulator Output Register 0" hidden="false">
       <field name="dout" from="7" to="0" access="RW" resetVal="" desc="DSM output." />
     </register>
-    <register name="BRAKE_ADC_DSM_OUT1" address="0x40005B89" bitWidth="8" desc="Delta Sigma Modulator Output Register 1">
+    <register name="BRAKE_ADC_DSM_OUT1" address="0x40005B89" bitWidth="8" desc="Delta Sigma Modulator Output Register 1" hidden="false">
       <field name="ovdcause" from="5" to="5" access="RW" resetVal="" desc="Overload Cause">
         <value name="OVDCAUSE_0" value="0" desc="0s overload" />
         <value name="OVDCAUSE_1" value="1" desc="1s overload" />
@@ -908,126 +907,128 @@
       </field>
     </register>
   </block>
-  <block name="TPS_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="APPS_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="BusClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="FinalBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="TempBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="APPS_ADC_SAR" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true">
-      <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="vRef_Vdda_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <register name="SAR_TR0" address="0x40004614" bitWidth="8" desc="SAR trim register" />
-      <register name="SAR_CSR0" address="0x40005900" bitWidth="8" desc="SAR status and control register 0" />
-      <register name="SAR_CSR1" address="0x40005901" bitWidth="8" desc="SAR status and control register 1" />
-      <register name="SAR_CSR2" address="0x40005902" bitWidth="8" desc="SAR status and control register 2" />
-      <register name="SAR_CSR3" address="0x40005903" bitWidth="8" desc="SAR status and control register 3" />
-      <register name="SAR_CSR4" address="0x40005904" bitWidth="8" desc="SAR status and control register 4" />
-      <register name="SAR_CSR5" address="0x40005905" bitWidth="8" desc="SAR status and control register 5" />
-      <register name="SAR_CSR6" address="0x40005906" bitWidth="8" desc="SAR status and control register 6" />
-      <register name="SAR_SW0" address="0x40005B20" bitWidth="8" desc="SAR Analog Routing Register 0" />
-      <register name="SAR_SW2" address="0x40005B22" bitWidth="8" desc="SAR Analog Routing Register 2" />
-      <register name="SAR_SW3" address="0x40005B23" bitWidth="8" desc="SAR Analog Routing Register 3" />
-      <register name="SAR_SW4" address="0x40005B24" bitWidth="8" desc="SAR Analog Routing Register 4" />
-      <register name="SAR_SW6" address="0x40005B26" bitWidth="8" desc="SAR Analog Routing Register 6" />
-      <register name="SAR_CLK" address="0x40005B27" bitWidth="8" desc="SAR Clock Selection Register" />
-      <register name="SAR_WRK" address="0x40005BA0" bitWidth="16" desc="SAR working register" />
+  <block name="BRAKE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="TPS_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="APPS_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="BusClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="FinalBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TempBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="APPS_ADC_SAR" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
+      <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="vRef_Vdda_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <register name="SAR_TR0" address="0x40004614" bitWidth="8" desc="SAR trim register" hidden="false" />
+      <register name="SAR_CSR0" address="0x40005900" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
+      <register name="SAR_CSR1" address="0x40005901" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
+      <register name="SAR_CSR2" address="0x40005902" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
+      <register name="SAR_CSR3" address="0x40005903" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
+      <register name="SAR_CSR4" address="0x40005904" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
+      <register name="SAR_CSR5" address="0x40005905" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
+      <register name="SAR_CSR6" address="0x40005906" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
+      <register name="SAR_SW0" address="0x40005B20" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
+      <register name="SAR_SW2" address="0x40005B22" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
+      <register name="SAR_SW3" address="0x40005B23" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
+      <register name="SAR_SW4" address="0x40005B24" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
+      <register name="SAR_SW6" address="0x40005B26" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
+      <register name="SAR_CLK" address="0x40005B27" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
+      <register name="SAR_WRK" address="0x40005BA0" bitWidth="16" desc="SAR working register" hidden="false" />
     </block>
-    <block name="AMuxHw_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="bSAR_SEQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="AMuxHw_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="bSAR_SEQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="TPS_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="BusClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="FinalBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="TempBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="TPS_ADC_SAR" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true">
-      <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="vRef_Vdda_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-      <register name="SAR_TR0" address="0x40004616" bitWidth="8" desc="SAR trim register" />
-      <register name="SAR_CSR0" address="0x40005908" bitWidth="8" desc="SAR status and control register 0" />
-      <register name="SAR_CSR1" address="0x40005909" bitWidth="8" desc="SAR status and control register 1" />
-      <register name="SAR_CSR2" address="0x4000590A" bitWidth="8" desc="SAR status and control register 2" />
-      <register name="SAR_CSR3" address="0x4000590B" bitWidth="8" desc="SAR status and control register 3" />
-      <register name="SAR_CSR4" address="0x4000590C" bitWidth="8" desc="SAR status and control register 4" />
-      <register name="SAR_CSR5" address="0x4000590D" bitWidth="8" desc="SAR status and control register 5" />
-      <register name="SAR_CSR6" address="0x4000590E" bitWidth="8" desc="SAR status and control register 6" />
-      <register name="SAR_SW0" address="0x40005B28" bitWidth="8" desc="SAR Analog Routing Register 0" />
-      <register name="SAR_SW2" address="0x40005B2A" bitWidth="8" desc="SAR Analog Routing Register 2" />
-      <register name="SAR_SW3" address="0x40005B2B" bitWidth="8" desc="SAR Analog Routing Register 3" />
-      <register name="SAR_SW4" address="0x40005B2C" bitWidth="8" desc="SAR Analog Routing Register 4" />
-      <register name="SAR_SW6" address="0x40005B2E" bitWidth="8" desc="SAR Analog Routing Register 6" />
-      <register name="SAR_CLK" address="0x40005B2F" bitWidth="8" desc="SAR Clock Selection Register" />
-      <register name="SAR_WRK" address="0x40005BA2" bitWidth="16" desc="SAR working register" />
+  <block name="TPS_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="or_internal" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="BusClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="FinalBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TempBuf" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TPS_ADC_SAR" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
+      <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="vRef_Vdda_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+      <register name="SAR_TR0" address="0x40004616" bitWidth="8" desc="SAR trim register" hidden="false" />
+      <register name="SAR_CSR0" address="0x40005908" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
+      <register name="SAR_CSR1" address="0x40005909" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
+      <register name="SAR_CSR2" address="0x4000590A" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
+      <register name="SAR_CSR3" address="0x4000590B" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
+      <register name="SAR_CSR4" address="0x4000590C" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
+      <register name="SAR_CSR5" address="0x4000590D" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
+      <register name="SAR_CSR6" address="0x4000590E" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
+      <register name="SAR_SW0" address="0x40005B28" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
+      <register name="SAR_SW2" address="0x40005B2A" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
+      <register name="SAR_SW3" address="0x40005B2B" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
+      <register name="SAR_SW4" address="0x40005B2C" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
+      <register name="SAR_SW6" address="0x40005B2E" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
+      <register name="SAR_CLK" address="0x40005B2F" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
+      <register name="SAR_WRK" address="0x40005BA2" bitWidth="16" desc="SAR working register" hidden="false" />
     </block>
-    <block name="AMuxHw_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="bSAR_SEQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="AMuxHw_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IntClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="bSAR_SEQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="TPS_0" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="APPS_0" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SERVO_OUT" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="pwm_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="APPS_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SERVO_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="SERVO_PWM_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG">
+  <block name="TPS_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="APPS_0" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SERVO_OUT" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="pwm_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="APPS_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SERVO_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="SERVO_PWM_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
       <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." />
     </register>
-    <register name="SERVO_PWM_CONTROL" address="0x40004F00" bitWidth="8" desc="TMRx.CFG0">
+    <register name="SERVO_PWM_CONTROL" address="0x40004F00" bitWidth="8" desc="TMRx.CFG0" hidden="false">
       <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." />
       <field name="MODE" from="1" to="1" access="R" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)">
         <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
@@ -1042,7 +1043,7 @@
       </field>
       <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" />
     </register>
-    <register name="SERVO_PWM_CONTROL2" address="0x40004F01" bitWidth="8" desc="TMRx.CFG1">
+    <register name="SERVO_PWM_CONTROL2" address="0x40004F01" bitWidth="8" desc="TMRx.CFG1" hidden="false">
       <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" />
       <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
         <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
@@ -1053,7 +1054,7 @@
       <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." />
       <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." />
     </register>
-    <register name="SERVO_PWM_CONTROL3_" address="0x40004F02" bitWidth="8" desc="TMRx.CFG2">
+    <register name="SERVO_PWM_CONTROL3_" address="0x40004F02" bitWidth="8" desc="TMRx.CFG2" hidden="false">
       <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ">
         <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
         <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
@@ -1071,7 +1072,7 @@
       </field>
       <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." />
     </register>
-    <register name="SERVO_PWM_PERIOD" address="0x40004F04" bitWidth="16" desc="TMRx.PER0 - Assigned Period" />
-    <register name="SERVO_PWM_COMPARE" address="0x40004F06" bitWidth="16" desc="TMRx.CNT_CMP0 - Assigned Compare Value" />
+    <register name="SERVO_PWM_PERIOD" address="0x40004F04" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
+    <register name="SERVO_PWM_COMPARE" address="0x40004F06" bitWidth="16" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
   </block>
 </blockRegMap>

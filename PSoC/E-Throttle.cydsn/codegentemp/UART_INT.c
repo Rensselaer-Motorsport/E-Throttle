@@ -15,6 +15,7 @@
 #include "UART.h"
 
 
+
 /***************************************
 * Custom Declarations
 ***************************************/
@@ -65,6 +66,10 @@
         uint8 int_en;
     #endif /* (CY_PSOC3) */
 
+    #ifdef UART_RXISR_ENTRY_CALLBACK
+        UART_RXISR_EntryCallback();
+    #endif /* UART_RXISR_ENTRY_CALLBACK */
+
         /* User code required at start of ISR */
         /* `#START UART_RXISR_START` */
 
@@ -97,6 +102,10 @@
                 /* `#START UART_RXISR_ERROR` */
 
                 /* `#END` */
+                
+            #ifdef UART_RXISR_ERROR_CALLBACK
+                UART_RXISR_ERROR_Callback();
+            #endif /* UART_RXISR_ERROR_CALLBACK */
             }
             
             if((readStatus & UART_RX_STS_FIFO_NOTEMPTY) != 0u)
@@ -170,11 +179,15 @@
 
         /* `#END` */
 
+    #ifdef UART_RXISR_EXIT_CALLBACK
+        UART_RXISR_ExitCallback();
+    #endif /* UART_RXISR_EXIT_CALLBACK */
+
     #if(CY_PSOC3)
         EA = int_en;
     #endif /* (CY_PSOC3) */
     }
-
+    
 #endif /* (UART_RX_INTERRUPT_ENABLED && (UART_RX_ENABLED || UART_HD_ENABLED)) */
 
 
@@ -206,6 +219,10 @@
         uint8 int_en;
     #endif /* (CY_PSOC3) */
 
+    #ifdef UART_TXISR_ENTRY_CALLBACK
+        UART_TXISR_EntryCallback();
+    #endif /* UART_TXISR_ENTRY_CALLBACK */
+
         /* User code required at start of ISR */
         /* `#START UART_TXISR_START` */
 
@@ -236,11 +253,14 @@
 
         /* `#END` */
 
+    #ifdef UART_TXISR_EXIT_CALLBACK
+        UART_TXISR_ExitCallback();
+    #endif /* UART_TXISR_EXIT_CALLBACK */
+
     #if(CY_PSOC3)
         EA = int_en;
     #endif /* (CY_PSOC3) */
-    }
-
+   }
 #endif /* (UART_TX_INTERRUPT_ENABLED && UART_TX_ENABLED) */
 
 

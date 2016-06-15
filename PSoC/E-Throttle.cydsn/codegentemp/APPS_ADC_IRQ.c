@@ -20,6 +20,7 @@
 #include <CyLib.h>
 #include <APPS_ADC_IRQ.h>
 
+
 #if !defined(APPS_ADC_IRQ__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
@@ -158,6 +159,10 @@ void APPS_ADC_IRQ_Stop(void)
 *******************************************************************************/
 CY_ISR(APPS_ADC_IRQ_Interrupt)
 {
+    #ifdef APPS_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+        APPS_ADC_IRQ_Interrupt_InterruptCallback();
+    #endif /* APPS_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
+
     /*  Place your Interrupt code here. */
     /* `#START APPS_ADC_IRQ_Interrupt` */
 

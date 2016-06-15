@@ -2,7 +2,7 @@
 --	Conversion of E-Throttle.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Mar 15 04:31:12 2016
+--	Tue Jun 14 21:39:44 2016
 --
 
 USE cypress.cypress.all;
@@ -726,6 +726,7 @@ SIGNAL \Timer:Net_51\ : bit;
 SIGNAL \Timer:Net_261\ : bit;
 SIGNAL \Timer:Net_57\ : bit;
 SIGNAL Net_433 : bit;
+SIGNAL Net_434 : bit;
 SIGNAL \Timer:Net_102\ : bit;
 SIGNAL tmpOE__Tx_1_net_0 : bit;
 SIGNAL Net_334 : bit;
@@ -2119,6 +2120,7 @@ TPS_0:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2188,6 +2190,7 @@ TPS_1:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2445,6 +2448,7 @@ APPS_0:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2514,6 +2518,7 @@ APPS_1:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2549,7 +2554,7 @@ APPS_1:cy_psoc3_pins_v1_10
 \SERVO_PWM:PWMHW\:cy_psoc3_timer_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(clock=>Net_1822,
-		kill=>Net_205,
+		kill=>zero,
 		enable=>one,
 		capture=>zero,
 		timer_reset=>zero,
@@ -2593,6 +2598,7 @@ SERVO_OUT:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2652,7 +2658,7 @@ timer_clock:cy_clock_v1_0
 		enable=>one,
 		capture=>zero,
 		timer_reset=>zero,
-		tc=>Net_205,
+		tc=>\Timer:Net_51\,
 		compare=>\Timer:Net_261\,
 		interrupt=>\Timer:Net_57\);
 Tx_1:cy_psoc3_pins_v1_10
@@ -2692,6 +2698,7 @@ Tx_1:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2761,6 +2768,7 @@ Rx_1:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',
@@ -2798,7 +2806,7 @@ Rx_1:cy_psoc3_pins_v1_10
 		id=>"b0162966-0060-4af5-82d1-fcb491ad7619/be0a0e37-ad17-42ca-b5a1-1a654d736358",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"2170138888.88889",
+		period=>"1085069444.44444",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>\UART:Net_9\,
@@ -3239,6 +3247,7 @@ BRAKE:cy_psoc3_pins_v1_10
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
+		sio_vohsel=>"",
 		slew_rate=>"0",
 		spanning=>'0',
 		sw_only=>'0',

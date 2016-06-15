@@ -18,6 +18,7 @@
 #include "TPS_ADC.h"
 
 
+
 /******************************************************************************
 * Custom Declarations and Variables
 * - add user inlcude files, prototypes and variables between the following
@@ -26,7 +27,6 @@
 /* `#START SEQ_ADC_SYS_VAR`  */
 
 /* `#END`  */
-
 
 #if(TPS_ADC_IRQ_REMOVE == 0u)
 
@@ -50,6 +50,11 @@
     ******************************************************************************/
     CY_ISR( TPS_ADC_ISR )
     {
+        #ifdef TPS_ADC_ISR_INTERRUPT_CALLBACK
+            TPS_ADC_ISR_InterruptCallback();
+        #endif /* TPS_ADC_ISR_INTERRUPT_CALLBACK */
+        
+        
         /************************************************************************
         *  Custom Code
         *  - add user ISR code between the following #START and #END tags
@@ -57,7 +62,6 @@
           /* `#START MAIN_SEQ_ADC_ISR`  */
 
           /* `#END`  */
-
     }
 
 #endif   /* End TPS_ADC_IRQ_REMOVE */

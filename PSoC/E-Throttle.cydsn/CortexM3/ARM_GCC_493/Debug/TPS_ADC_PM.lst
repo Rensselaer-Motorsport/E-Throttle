@@ -1,0 +1,935 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"TPS_ADC_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.TPS_ADC_Sleep,"ax",%progbits
+  19              		.align	2
+  20              		.global	TPS_ADC_Sleep
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	TPS_ADC_Sleep, %function
+  24              	TPS_ADC_Sleep:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\TPS_ADC_PM.c"
+   1:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * File Name: TPS_ADC_PM.c
+   3:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Version 2.0
+   4:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+   5:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  This file contains the setup, control and status commands to support
+   7:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  component operations in low power mode.
+   8:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+   9:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Note:
+  10:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  11:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Copyright 2012-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  18:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** #include "TPS_ADC.h"
+  19:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** #include "TPS_ADC_SAR.h"
+  20:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** #if(TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL)
+  21:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #include "TPS_ADC_IntClock.h"
+  22:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** #endif   /* TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL */
+  23:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  24:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  25:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** /*******************************************************************************
+  26:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Function Name: TPS_ADC_Sleep
+  27:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** ********************************************************************************
+  28:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  29:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Summary:
+  30:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  Stops the ADC operation and saves the configuration registers and component
+  31:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  enable state. Should be called just prior to entering sleep
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  33:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Parameters:
+  34:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  35:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  36:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Return:
+  37:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  38:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  39:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Side Effects:
+  40:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  41:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  42:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Reentrant:
+  43:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  No.
+  44:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  45:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *******************************************************************************/
+  46:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** void TPS_ADC_Sleep(void)
+  47:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** {
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  48:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_SAR_Stop();
+  35              		.loc 1 48 0
+  36 0002 FFF7FEFF 		bl	TPS_ADC_SAR_Stop
+  37              	.LVL0:
+  49:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_SAR_Sleep();
+  38              		.loc 1 49 0
+  39 0006 FFF7FEFF 		bl	TPS_ADC_SAR_Sleep
+  40              	.LVL1:
+  50:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_Disable();
+  41              		.loc 1 50 0
+  42 000a FFF7FEFF 		bl	TPS_ADC_Disable
+  43              	.LVL2:
+  51:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  52:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #if(TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL)
+  53:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****         TPS_ADC_IntClock_Stop();
+  44              		.loc 1 53 0
+  45 000e FFF7FEFF 		bl	TPS_ADC_IntClock_Stop
+  46              	.LVL3:
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE0:
+  50              		.size	TPS_ADC_Sleep, .-TPS_ADC_Sleep
+  51              		.section	.text.TPS_ADC_Wakeup,"ax",%progbits
+  52              		.align	2
+  53              		.global	TPS_ADC_Wakeup
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	TPS_ADC_Wakeup, %function
+  57              	TPS_ADC_Wakeup:
+  58              	.LFB1:
+  54:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #endif   /* TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL */
+  55:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** }
+  56:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 3
+
+
+  57:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  58:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** /*******************************************************************************
+  59:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Function Name: TPS_ADC_Wakeup
+  60:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** ********************************************************************************
+  61:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  62:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Summary:
+  63:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  Restores the component enable state and configuration registers. This should
+  64:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  be called just after awaking from sleep mode
+  65:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  66:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Parameters:
+  67:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  68:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  69:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Return:
+  70:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  71:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  72:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Side Effects:
+  73:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+  74:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  75:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Reentrant:
+  76:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  No.
+  77:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+  78:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *******************************************************************************/
+  79:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** void TPS_ADC_Wakeup(void)
+  80:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** {
+  59              		.loc 1 80 0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 3, -8
+  66              		.cfi_offset 14, -4
+  81:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_SAR_Wakeup();
+  67              		.loc 1 81 0
+  68 0002 FFF7FEFF 		bl	TPS_ADC_SAR_Wakeup
+  69              	.LVL4:
+  82:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_SAR_Enable();
+  70              		.loc 1 82 0
+  71 0006 FFF7FEFF 		bl	TPS_ADC_SAR_Enable
+  72              	.LVL5:
+  83:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  84:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #if(TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL)
+  85:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****         TPS_ADC_IntClock_Start();
+  73              		.loc 1 85 0
+  74 000a FFF7FEFF 		bl	TPS_ADC_IntClock_Start
+  75              	.LVL6:
+  86:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #endif   /* TPS_ADC_CLOCK_SOURCE == TPS_ADC_CLOCK_INTERNAL */
+  87:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  88:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     /* The block is ready to use 10 us after the SAR enable signal is set high. */
+  89:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     CyDelayUs(10u);
+  76              		.loc 1 89 0
+  77 000e 0A20     		movs	r0, #10
+  78 0010 FFF7FEFF 		bl	CyDelayUs
+  79              	.LVL7:
+  90:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     
+  91:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     TPS_ADC_Enable();
+  80              		.loc 1 91 0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 4
+
+
+  81 0014 FFF7FEFF 		bl	TPS_ADC_Enable
+  82              	.LVL8:
+  92:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  93:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #if(TPS_ADC_SAMPLE_MODE == TPS_ADC_SAMPLE_MODE_FREE_RUNNING)
+  94:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****         TPS_ADC_SAR_StartConvert();
+  95:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     #endif /* (TPS_ADC_SAMPLE_MODE == TPS_ADC_SAMPLE_MODE_FREE_RUNNING) */
+  96:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+  97:.\Generated_Source\PSoC5/TPS_ADC_PM.c ****     (void) CY_GET_REG8(TPS_ADC_STATUS_PTR);
+  83              		.loc 1 97 0
+  84 0018 014B     		ldr	r3, .L5
+  85 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  86 001c 08BD     		pop	{r3, pc}
+  87              	.L6:
+  88 001e 00BF     		.align	2
+  89              	.L5:
+  90 0020 60640040 		.word	1073767520
+  91              		.cfi_endproc
+  92              	.LFE1:
+  93              		.size	TPS_ADC_Wakeup, .-TPS_ADC_Wakeup
+  94              		.section	.text.TPS_ADC_SaveConfig,"ax",%progbits
+  95              		.align	2
+  96              		.global	TPS_ADC_SaveConfig
+  97              		.thumb
+  98              		.thumb_func
+  99              		.type	TPS_ADC_SaveConfig, %function
+ 100              	TPS_ADC_SaveConfig:
+ 101              	.LFB2:
+  98:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** }
+  99:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ 100:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ 101:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** /*******************************************************************************
+ 102:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Function Name: TPS_ADC_SaveConfig
+ 103:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** ********************************************************************************
+ 104:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 105:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Summary:
+ 106:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  Save the current configuration of ADC non-retention registers
+ 107:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 108:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Parameters:
+ 109:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 110:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 111:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Return:
+ 112:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 113:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 114:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Side Effects:
+ 115:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 116:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 117:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Reentrant:
+ 118:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  No.
+ 119:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 120:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *******************************************************************************/
+ 121:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** void TPS_ADC_SaveConfig(void)
+ 122:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** {
+ 102              		.loc 1 122 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              		@ link register save eliminated.
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 5
+
+
+ 107 0000 7047     		bx	lr
+ 108              		.cfi_endproc
+ 109              	.LFE2:
+ 110              		.size	TPS_ADC_SaveConfig, .-TPS_ADC_SaveConfig
+ 111 0002 00BF     		.section	.text.TPS_ADC_RestoreConfig,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	TPS_ADC_RestoreConfig
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.type	TPS_ADC_RestoreConfig, %function
+ 117              	TPS_ADC_RestoreConfig:
+ 118              	.LFB3:
+ 123:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ 124:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** }
+ 125:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ 126:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** 
+ 127:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** /*******************************************************************************
+ 128:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Function Name: TPS_ADC_RestoreConfig
+ 129:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** ********************************************************************************
+ 130:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 131:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Summary:
+ 132:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  Restores the configuration of ADC non-retention registers
+ 133:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 134:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Parameters:
+ 135:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 136:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 137:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Return:
+ 138:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 139:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 140:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Side Effects:
+ 141:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  None.
+ 142:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 143:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** * Reentrant:
+ 144:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *  No.
+ 145:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *
+ 146:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** *******************************************************************************/
+ 147:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** void TPS_ADC_RestoreConfig(void)
+ 148:.\Generated_Source\PSoC5/TPS_ADC_PM.c **** {
+ 119              		.loc 1 148 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 7047     		bx	lr
+ 125              		.cfi_endproc
+ 126              	.LFE3:
+ 127              		.size	TPS_ADC_RestoreConfig, .-TPS_ADC_RestoreConfig
+ 128 0002 00BF     		.text
+ 129              	.Letext0:
+ 130              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 131              		.file 3 ".\\Generated_Source\\PSoC5\\TPS_ADC_SAR.h"
+ 132              		.file 4 ".\\Generated_Source\\PSoC5\\TPS_ADC.h"
+ 133              		.file 5 ".\\Generated_Source\\PSoC5\\TPS_ADC_IntClock.h"
+ 134              		.file 6 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 135              		.section	.debug_info,"",%progbits
+ 136              	.Ldebug_info0:
+ 137 0000 9D010000 		.4byte	0x19d
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 6
+
+
+ 138 0004 0400     		.2byte	0x4
+ 139 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 140 000a 04       		.byte	0x4
+ 141 000b 01       		.uleb128 0x1
+ 142 000c F3000000 		.4byte	.LASF28
+ 143 0010 01       		.byte	0x1
+ 144 0011 53020000 		.4byte	.LASF29
+ 145 0015 6F000000 		.4byte	.LASF30
+ 146 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 147 001d 00000000 		.4byte	0
+ 148 0021 00000000 		.4byte	.Ldebug_line0
+ 149 0025 02       		.uleb128 0x2
+ 150 0026 01       		.byte	0x1
+ 151 0027 06       		.byte	0x6
+ 152 0028 47020000 		.4byte	.LASF0
+ 153 002c 02       		.uleb128 0x2
+ 154 002d 01       		.byte	0x1
+ 155 002e 08       		.byte	0x8
+ 156 002f 61000000 		.4byte	.LASF1
+ 157 0033 02       		.uleb128 0x2
+ 158 0034 02       		.byte	0x2
+ 159 0035 05       		.byte	0x5
+ 160 0036 13020000 		.4byte	.LASF2
+ 161 003a 02       		.uleb128 0x2
+ 162 003b 02       		.byte	0x2
+ 163 003c 07       		.byte	0x7
+ 164 003d 38000000 		.4byte	.LASF3
+ 165 0041 02       		.uleb128 0x2
+ 166 0042 04       		.byte	0x4
+ 167 0043 05       		.byte	0x5
+ 168 0044 30020000 		.4byte	.LASF4
+ 169 0048 02       		.uleb128 0x2
+ 170 0049 04       		.byte	0x4
+ 171 004a 07       		.byte	0x7
+ 172 004b B6000000 		.4byte	.LASF5
+ 173 004f 02       		.uleb128 0x2
+ 174 0050 08       		.byte	0x8
+ 175 0051 05       		.byte	0x5
+ 176 0052 E7010000 		.4byte	.LASF6
+ 177 0056 02       		.uleb128 0x2
+ 178 0057 08       		.byte	0x8
+ 179 0058 07       		.byte	0x7
+ 180 0059 8E010000 		.4byte	.LASF7
+ 181 005d 03       		.uleb128 0x3
+ 182 005e 04       		.byte	0x4
+ 183 005f 05       		.byte	0x5
+ 184 0060 696E7400 		.ascii	"int\000"
+ 185 0064 02       		.uleb128 0x2
+ 186 0065 04       		.byte	0x4
+ 187 0066 07       		.byte	0x7
+ 188 0067 81010000 		.4byte	.LASF8
+ 189 006b 04       		.uleb128 0x4
+ 190 006c C8000000 		.4byte	.LASF9
+ 191 0070 02       		.byte	0x2
+ 192 0071 B4       		.byte	0xb4
+ 193 0072 2C000000 		.4byte	0x2c
+ 194 0076 04       		.uleb128 0x4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 7
+
+
+ 195 0077 D5000000 		.4byte	.LASF10
+ 196 007b 02       		.byte	0x2
+ 197 007c B5       		.byte	0xb5
+ 198 007d 3A000000 		.4byte	0x3a
+ 199 0081 02       		.uleb128 0x2
+ 200 0082 04       		.byte	0x4
+ 201 0083 04       		.byte	0x4
+ 202 0084 5B000000 		.4byte	.LASF11
+ 203 0088 02       		.uleb128 0x2
+ 204 0089 08       		.byte	0x8
+ 205 008a 04       		.byte	0x4
+ 206 008b CE000000 		.4byte	.LASF12
+ 207 008f 02       		.uleb128 0x2
+ 208 0090 01       		.byte	0x1
+ 209 0091 08       		.byte	0x8
+ 210 0092 FF010000 		.4byte	.LASF13
+ 211 0096 05       		.uleb128 0x5
+ 212 0097 B1000000 		.4byte	.LASF14
+ 213 009b 02       		.byte	0x2
+ 214 009c 5E01     		.2byte	0x15e
+ 215 009e A2000000 		.4byte	0xa2
+ 216 00a2 06       		.uleb128 0x6
+ 217 00a3 6B000000 		.4byte	0x6b
+ 218 00a7 02       		.uleb128 0x2
+ 219 00a8 04       		.byte	0x4
+ 220 00a9 07       		.byte	0x7
+ 221 00aa DE010000 		.4byte	.LASF15
+ 222 00ae 07       		.uleb128 0x7
+ 223 00af 39020000 		.4byte	.LASF16
+ 224 00b3 01       		.byte	0x1
+ 225 00b4 2E       		.byte	0x2e
+ 226 00b5 00000000 		.4byte	.LFB0
+ 227 00b9 14000000 		.4byte	.LFE0-.LFB0
+ 228 00bd 01       		.uleb128 0x1
+ 229 00be 9C       		.byte	0x9c
+ 230 00bf E8000000 		.4byte	0xe8
+ 231 00c3 08       		.uleb128 0x8
+ 232 00c4 06000000 		.4byte	.LVL0
+ 233 00c8 57010000 		.4byte	0x157
+ 234 00cc 08       		.uleb128 0x8
+ 235 00cd 0A000000 		.4byte	.LVL1
+ 236 00d1 5E010000 		.4byte	0x15e
+ 237 00d5 08       		.uleb128 0x8
+ 238 00d6 0E000000 		.4byte	.LVL2
+ 239 00da 65010000 		.4byte	0x165
+ 240 00de 08       		.uleb128 0x8
+ 241 00df 12000000 		.4byte	.LVL3
+ 242 00e3 6C010000 		.4byte	0x16c
+ 243 00e7 00       		.byte	0
+ 244 00e8 07       		.uleb128 0x7
+ 245 00e9 29000000 		.4byte	.LASF17
+ 246 00ed 01       		.byte	0x1
+ 247 00ee 4F       		.byte	0x4f
+ 248 00ef 00000000 		.4byte	.LFB1
+ 249 00f3 24000000 		.4byte	.LFE1-.LFB1
+ 250 00f7 01       		.uleb128 0x1
+ 251 00f8 9C       		.byte	0x9c
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 8
+
+
+ 252 00f9 35010000 		.4byte	0x135
+ 253 00fd 08       		.uleb128 0x8
+ 254 00fe 06000000 		.4byte	.LVL4
+ 255 0102 73010000 		.4byte	0x173
+ 256 0106 08       		.uleb128 0x8
+ 257 0107 0A000000 		.4byte	.LVL5
+ 258 010b 7A010000 		.4byte	0x17a
+ 259 010f 08       		.uleb128 0x8
+ 260 0110 0E000000 		.4byte	.LVL6
+ 261 0114 81010000 		.4byte	0x181
+ 262 0118 09       		.uleb128 0x9
+ 263 0119 14000000 		.4byte	.LVL7
+ 264 011d 88010000 		.4byte	0x188
+ 265 0121 2B010000 		.4byte	0x12b
+ 266 0125 0A       		.uleb128 0xa
+ 267 0126 01       		.uleb128 0x1
+ 268 0127 50       		.byte	0x50
+ 269 0128 01       		.uleb128 0x1
+ 270 0129 3A       		.byte	0x3a
+ 271 012a 00       		.byte	0
+ 272 012b 08       		.uleb128 0x8
+ 273 012c 18000000 		.4byte	.LVL8
+ 274 0130 99010000 		.4byte	0x199
+ 275 0134 00       		.byte	0
+ 276 0135 0B       		.uleb128 0xb
+ 277 0136 1D020000 		.4byte	.LASF18
+ 278 013a 01       		.byte	0x1
+ 279 013b 79       		.byte	0x79
+ 280 013c 00000000 		.4byte	.LFB2
+ 281 0140 02000000 		.4byte	.LFE2-.LFB2
+ 282 0144 01       		.uleb128 0x1
+ 283 0145 9C       		.byte	0x9c
+ 284 0146 0B       		.uleb128 0xb
+ 285 0147 00000000 		.4byte	.LASF19
+ 286 014b 01       		.byte	0x1
+ 287 014c 93       		.byte	0x93
+ 288 014d 00000000 		.4byte	.LFB3
+ 289 0151 02000000 		.4byte	.LFE3-.LFB3
+ 290 0155 01       		.uleb128 0x1
+ 291 0156 9C       		.byte	0x9c
+ 292 0157 0C       		.uleb128 0xc
+ 293 0158 CD010000 		.4byte	.LASF20
+ 294 015c 03       		.byte	0x3
+ 295 015d 35       		.byte	0x35
+ 296 015e 0C       		.uleb128 0xc
+ 297 015f BB010000 		.4byte	.LASF21
+ 298 0163 03       		.byte	0x3
+ 299 0164 48       		.byte	0x48
+ 300 0165 0C       		.uleb128 0xc
+ 301 0166 4B000000 		.4byte	.LASF22
+ 302 016a 04       		.byte	0x4
+ 303 016b 30       		.byte	0x30
+ 304 016c 0C       		.uleb128 0xc
+ 305 016d A5010000 		.4byte	.LASF23
+ 306 0171 05       		.byte	0x5
+ 307 0172 28       		.byte	0x28
+ 308 0173 0C       		.uleb128 0xc
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 9
+
+
+ 309 0174 79020000 		.4byte	.LASF24
+ 310 0178 03       		.byte	0x3
+ 311 0179 49       		.byte	0x49
+ 312 017a 0C       		.uleb128 0xc
+ 313 017b 16000000 		.4byte	.LASF25
+ 314 017f 03       		.byte	0x3
+ 315 0180 44       		.byte	0x44
+ 316 0181 0C       		.uleb128 0xc
+ 317 0182 DC000000 		.4byte	.LASF26
+ 318 0186 05       		.byte	0x5
+ 319 0187 27       		.byte	0x27
+ 320 0188 0D       		.uleb128 0xd
+ 321 0189 F5010000 		.4byte	.LASF31
+ 322 018d 06       		.byte	0x6
+ 323 018e 78       		.byte	0x78
+ 324 018f 99010000 		.4byte	0x199
+ 325 0193 0E       		.uleb128 0xe
+ 326 0194 76000000 		.4byte	0x76
+ 327 0198 00       		.byte	0
+ 328 0199 0C       		.uleb128 0xc
+ 329 019a 04020000 		.4byte	.LASF27
+ 330 019e 04       		.byte	0x4
+ 331 019f 2F       		.byte	0x2f
+ 332 01a0 00       		.byte	0
+ 333              		.section	.debug_abbrev,"",%progbits
+ 334              	.Ldebug_abbrev0:
+ 335 0000 01       		.uleb128 0x1
+ 336 0001 11       		.uleb128 0x11
+ 337 0002 01       		.byte	0x1
+ 338 0003 25       		.uleb128 0x25
+ 339 0004 0E       		.uleb128 0xe
+ 340 0005 13       		.uleb128 0x13
+ 341 0006 0B       		.uleb128 0xb
+ 342 0007 03       		.uleb128 0x3
+ 343 0008 0E       		.uleb128 0xe
+ 344 0009 1B       		.uleb128 0x1b
+ 345 000a 0E       		.uleb128 0xe
+ 346 000b 55       		.uleb128 0x55
+ 347 000c 17       		.uleb128 0x17
+ 348 000d 11       		.uleb128 0x11
+ 349 000e 01       		.uleb128 0x1
+ 350 000f 10       		.uleb128 0x10
+ 351 0010 17       		.uleb128 0x17
+ 352 0011 00       		.byte	0
+ 353 0012 00       		.byte	0
+ 354 0013 02       		.uleb128 0x2
+ 355 0014 24       		.uleb128 0x24
+ 356 0015 00       		.byte	0
+ 357 0016 0B       		.uleb128 0xb
+ 358 0017 0B       		.uleb128 0xb
+ 359 0018 3E       		.uleb128 0x3e
+ 360 0019 0B       		.uleb128 0xb
+ 361 001a 03       		.uleb128 0x3
+ 362 001b 0E       		.uleb128 0xe
+ 363 001c 00       		.byte	0
+ 364 001d 00       		.byte	0
+ 365 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 10
+
+
+ 366 001f 24       		.uleb128 0x24
+ 367 0020 00       		.byte	0
+ 368 0021 0B       		.uleb128 0xb
+ 369 0022 0B       		.uleb128 0xb
+ 370 0023 3E       		.uleb128 0x3e
+ 371 0024 0B       		.uleb128 0xb
+ 372 0025 03       		.uleb128 0x3
+ 373 0026 08       		.uleb128 0x8
+ 374 0027 00       		.byte	0
+ 375 0028 00       		.byte	0
+ 376 0029 04       		.uleb128 0x4
+ 377 002a 16       		.uleb128 0x16
+ 378 002b 00       		.byte	0
+ 379 002c 03       		.uleb128 0x3
+ 380 002d 0E       		.uleb128 0xe
+ 381 002e 3A       		.uleb128 0x3a
+ 382 002f 0B       		.uleb128 0xb
+ 383 0030 3B       		.uleb128 0x3b
+ 384 0031 0B       		.uleb128 0xb
+ 385 0032 49       		.uleb128 0x49
+ 386 0033 13       		.uleb128 0x13
+ 387 0034 00       		.byte	0
+ 388 0035 00       		.byte	0
+ 389 0036 05       		.uleb128 0x5
+ 390 0037 16       		.uleb128 0x16
+ 391 0038 00       		.byte	0
+ 392 0039 03       		.uleb128 0x3
+ 393 003a 0E       		.uleb128 0xe
+ 394 003b 3A       		.uleb128 0x3a
+ 395 003c 0B       		.uleb128 0xb
+ 396 003d 3B       		.uleb128 0x3b
+ 397 003e 05       		.uleb128 0x5
+ 398 003f 49       		.uleb128 0x49
+ 399 0040 13       		.uleb128 0x13
+ 400 0041 00       		.byte	0
+ 401 0042 00       		.byte	0
+ 402 0043 06       		.uleb128 0x6
+ 403 0044 35       		.uleb128 0x35
+ 404 0045 00       		.byte	0
+ 405 0046 49       		.uleb128 0x49
+ 406 0047 13       		.uleb128 0x13
+ 407 0048 00       		.byte	0
+ 408 0049 00       		.byte	0
+ 409 004a 07       		.uleb128 0x7
+ 410 004b 2E       		.uleb128 0x2e
+ 411 004c 01       		.byte	0x1
+ 412 004d 3F       		.uleb128 0x3f
+ 413 004e 19       		.uleb128 0x19
+ 414 004f 03       		.uleb128 0x3
+ 415 0050 0E       		.uleb128 0xe
+ 416 0051 3A       		.uleb128 0x3a
+ 417 0052 0B       		.uleb128 0xb
+ 418 0053 3B       		.uleb128 0x3b
+ 419 0054 0B       		.uleb128 0xb
+ 420 0055 27       		.uleb128 0x27
+ 421 0056 19       		.uleb128 0x19
+ 422 0057 11       		.uleb128 0x11
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 11
+
+
+ 423 0058 01       		.uleb128 0x1
+ 424 0059 12       		.uleb128 0x12
+ 425 005a 06       		.uleb128 0x6
+ 426 005b 40       		.uleb128 0x40
+ 427 005c 18       		.uleb128 0x18
+ 428 005d 9742     		.uleb128 0x2117
+ 429 005f 19       		.uleb128 0x19
+ 430 0060 01       		.uleb128 0x1
+ 431 0061 13       		.uleb128 0x13
+ 432 0062 00       		.byte	0
+ 433 0063 00       		.byte	0
+ 434 0064 08       		.uleb128 0x8
+ 435 0065 898201   		.uleb128 0x4109
+ 436 0068 00       		.byte	0
+ 437 0069 11       		.uleb128 0x11
+ 438 006a 01       		.uleb128 0x1
+ 439 006b 31       		.uleb128 0x31
+ 440 006c 13       		.uleb128 0x13
+ 441 006d 00       		.byte	0
+ 442 006e 00       		.byte	0
+ 443 006f 09       		.uleb128 0x9
+ 444 0070 898201   		.uleb128 0x4109
+ 445 0073 01       		.byte	0x1
+ 446 0074 11       		.uleb128 0x11
+ 447 0075 01       		.uleb128 0x1
+ 448 0076 31       		.uleb128 0x31
+ 449 0077 13       		.uleb128 0x13
+ 450 0078 01       		.uleb128 0x1
+ 451 0079 13       		.uleb128 0x13
+ 452 007a 00       		.byte	0
+ 453 007b 00       		.byte	0
+ 454 007c 0A       		.uleb128 0xa
+ 455 007d 8A8201   		.uleb128 0x410a
+ 456 0080 00       		.byte	0
+ 457 0081 02       		.uleb128 0x2
+ 458 0082 18       		.uleb128 0x18
+ 459 0083 9142     		.uleb128 0x2111
+ 460 0085 18       		.uleb128 0x18
+ 461 0086 00       		.byte	0
+ 462 0087 00       		.byte	0
+ 463 0088 0B       		.uleb128 0xb
+ 464 0089 2E       		.uleb128 0x2e
+ 465 008a 00       		.byte	0
+ 466 008b 3F       		.uleb128 0x3f
+ 467 008c 19       		.uleb128 0x19
+ 468 008d 03       		.uleb128 0x3
+ 469 008e 0E       		.uleb128 0xe
+ 470 008f 3A       		.uleb128 0x3a
+ 471 0090 0B       		.uleb128 0xb
+ 472 0091 3B       		.uleb128 0x3b
+ 473 0092 0B       		.uleb128 0xb
+ 474 0093 27       		.uleb128 0x27
+ 475 0094 19       		.uleb128 0x19
+ 476 0095 11       		.uleb128 0x11
+ 477 0096 01       		.uleb128 0x1
+ 478 0097 12       		.uleb128 0x12
+ 479 0098 06       		.uleb128 0x6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 12
+
+
+ 480 0099 40       		.uleb128 0x40
+ 481 009a 18       		.uleb128 0x18
+ 482 009b 9742     		.uleb128 0x2117
+ 483 009d 19       		.uleb128 0x19
+ 484 009e 00       		.byte	0
+ 485 009f 00       		.byte	0
+ 486 00a0 0C       		.uleb128 0xc
+ 487 00a1 2E       		.uleb128 0x2e
+ 488 00a2 00       		.byte	0
+ 489 00a3 3F       		.uleb128 0x3f
+ 490 00a4 19       		.uleb128 0x19
+ 491 00a5 03       		.uleb128 0x3
+ 492 00a6 0E       		.uleb128 0xe
+ 493 00a7 3A       		.uleb128 0x3a
+ 494 00a8 0B       		.uleb128 0xb
+ 495 00a9 3B       		.uleb128 0x3b
+ 496 00aa 0B       		.uleb128 0xb
+ 497 00ab 27       		.uleb128 0x27
+ 498 00ac 19       		.uleb128 0x19
+ 499 00ad 3C       		.uleb128 0x3c
+ 500 00ae 19       		.uleb128 0x19
+ 501 00af 00       		.byte	0
+ 502 00b0 00       		.byte	0
+ 503 00b1 0D       		.uleb128 0xd
+ 504 00b2 2E       		.uleb128 0x2e
+ 505 00b3 01       		.byte	0x1
+ 506 00b4 3F       		.uleb128 0x3f
+ 507 00b5 19       		.uleb128 0x19
+ 508 00b6 03       		.uleb128 0x3
+ 509 00b7 0E       		.uleb128 0xe
+ 510 00b8 3A       		.uleb128 0x3a
+ 511 00b9 0B       		.uleb128 0xb
+ 512 00ba 3B       		.uleb128 0x3b
+ 513 00bb 0B       		.uleb128 0xb
+ 514 00bc 27       		.uleb128 0x27
+ 515 00bd 19       		.uleb128 0x19
+ 516 00be 3C       		.uleb128 0x3c
+ 517 00bf 19       		.uleb128 0x19
+ 518 00c0 01       		.uleb128 0x1
+ 519 00c1 13       		.uleb128 0x13
+ 520 00c2 00       		.byte	0
+ 521 00c3 00       		.byte	0
+ 522 00c4 0E       		.uleb128 0xe
+ 523 00c5 05       		.uleb128 0x5
+ 524 00c6 00       		.byte	0
+ 525 00c7 49       		.uleb128 0x49
+ 526 00c8 13       		.uleb128 0x13
+ 527 00c9 00       		.byte	0
+ 528 00ca 00       		.byte	0
+ 529 00cb 00       		.byte	0
+ 530              		.section	.debug_aranges,"",%progbits
+ 531 0000 34000000 		.4byte	0x34
+ 532 0004 0200     		.2byte	0x2
+ 533 0006 00000000 		.4byte	.Ldebug_info0
+ 534 000a 04       		.byte	0x4
+ 535 000b 00       		.byte	0
+ 536 000c 0000     		.2byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 13
+
+
+ 537 000e 0000     		.2byte	0
+ 538 0010 00000000 		.4byte	.LFB0
+ 539 0014 14000000 		.4byte	.LFE0-.LFB0
+ 540 0018 00000000 		.4byte	.LFB1
+ 541 001c 24000000 		.4byte	.LFE1-.LFB1
+ 542 0020 00000000 		.4byte	.LFB2
+ 543 0024 02000000 		.4byte	.LFE2-.LFB2
+ 544 0028 00000000 		.4byte	.LFB3
+ 545 002c 02000000 		.4byte	.LFE3-.LFB3
+ 546 0030 00000000 		.4byte	0
+ 547 0034 00000000 		.4byte	0
+ 548              		.section	.debug_ranges,"",%progbits
+ 549              	.Ldebug_ranges0:
+ 550 0000 00000000 		.4byte	.LFB0
+ 551 0004 14000000 		.4byte	.LFE0
+ 552 0008 00000000 		.4byte	.LFB1
+ 553 000c 24000000 		.4byte	.LFE1
+ 554 0010 00000000 		.4byte	.LFB2
+ 555 0014 02000000 		.4byte	.LFE2
+ 556 0018 00000000 		.4byte	.LFB3
+ 557 001c 02000000 		.4byte	.LFE3
+ 558 0020 00000000 		.4byte	0
+ 559 0024 00000000 		.4byte	0
+ 560              		.section	.debug_line,"",%progbits
+ 561              	.Ldebug_line0:
+ 562 0000 D7000000 		.section	.debug_str,"MS",%progbits,1
+ 562      02008800 
+ 562      00000201 
+ 562      FB0E0D00 
+ 562      01010101 
+ 563              	.LASF19:
+ 564 0000 5450535F 		.ascii	"TPS_ADC_RestoreConfig\000"
+ 564      4144435F 
+ 564      52657374 
+ 564      6F726543 
+ 564      6F6E6669 
+ 565              	.LASF25:
+ 566 0016 5450535F 		.ascii	"TPS_ADC_SAR_Enable\000"
+ 566      4144435F 
+ 566      5341525F 
+ 566      456E6162 
+ 566      6C6500
+ 567              	.LASF17:
+ 568 0029 5450535F 		.ascii	"TPS_ADC_Wakeup\000"
+ 568      4144435F 
+ 568      57616B65 
+ 568      757000
+ 569              	.LASF3:
+ 570 0038 73686F72 		.ascii	"short unsigned int\000"
+ 570      7420756E 
+ 570      7369676E 
+ 570      65642069 
+ 570      6E7400
+ 571              	.LASF22:
+ 572 004b 5450535F 		.ascii	"TPS_ADC_Disable\000"
+ 572      4144435F 
+ 572      44697361 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 14
+
+
+ 572      626C6500 
+ 573              	.LASF11:
+ 574 005b 666C6F61 		.ascii	"float\000"
+ 574      7400
+ 575              	.LASF1:
+ 576 0061 756E7369 		.ascii	"unsigned char\000"
+ 576      676E6564 
+ 576      20636861 
+ 576      7200
+ 577              	.LASF30:
+ 578 006f 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\FSAE\\E-Throttle\\P"
+ 578      73657273 
+ 578      5C6D6974 
+ 578      6368656C 
+ 578      6C5C446F 
+ 579 009c 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
+ 579      452D5468 
+ 579      726F7474 
+ 579      6C652E63 
+ 579      7964736E 
+ 580              	.LASF14:
+ 581 00b1 72656738 		.ascii	"reg8\000"
+ 581      00
+ 582              	.LASF5:
+ 583 00b6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 583      20756E73 
+ 583      69676E65 
+ 583      6420696E 
+ 583      7400
+ 584              	.LASF9:
+ 585 00c8 75696E74 		.ascii	"uint8\000"
+ 585      3800
+ 586              	.LASF12:
+ 587 00ce 646F7562 		.ascii	"double\000"
+ 587      6C6500
+ 588              	.LASF10:
+ 589 00d5 75696E74 		.ascii	"uint16\000"
+ 589      313600
+ 590              	.LASF26:
+ 591 00dc 5450535F 		.ascii	"TPS_ADC_IntClock_Start\000"
+ 591      4144435F 
+ 591      496E7443 
+ 591      6C6F636B 
+ 591      5F537461 
+ 592              	.LASF28:
+ 593 00f3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 593      4320342E 
+ 593      392E3320 
+ 593      32303135 
+ 593      30333033 
+ 594 0126 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 594      20726576 
+ 594      6973696F 
+ 594      6E203232 
+ 594      31323230 
+ 595 0159 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 595      66756E63 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 15
+
+
+ 595      74696F6E 
+ 595      2D736563 
+ 595      74696F6E 
+ 596              	.LASF8:
+ 597 0181 756E7369 		.ascii	"unsigned int\000"
+ 597      676E6564 
+ 597      20696E74 
+ 597      00
+ 598              	.LASF7:
+ 599 018e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 599      206C6F6E 
+ 599      6720756E 
+ 599      7369676E 
+ 599      65642069 
+ 600              	.LASF23:
+ 601 01a5 5450535F 		.ascii	"TPS_ADC_IntClock_Stop\000"
+ 601      4144435F 
+ 601      496E7443 
+ 601      6C6F636B 
+ 601      5F53746F 
+ 602              	.LASF21:
+ 603 01bb 5450535F 		.ascii	"TPS_ADC_SAR_Sleep\000"
+ 603      4144435F 
+ 603      5341525F 
+ 603      536C6565 
+ 603      7000
+ 604              	.LASF20:
+ 605 01cd 5450535F 		.ascii	"TPS_ADC_SAR_Stop\000"
+ 605      4144435F 
+ 605      5341525F 
+ 605      53746F70 
+ 605      00
+ 606              	.LASF15:
+ 607 01de 73697A65 		.ascii	"sizetype\000"
+ 607      74797065 
+ 607      00
+ 608              	.LASF6:
+ 609 01e7 6C6F6E67 		.ascii	"long long int\000"
+ 609      206C6F6E 
+ 609      6720696E 
+ 609      7400
+ 610              	.LASF31:
+ 611 01f5 43794465 		.ascii	"CyDelayUs\000"
+ 611      6C617955 
+ 611      7300
+ 612              	.LASF13:
+ 613 01ff 63686172 		.ascii	"char\000"
+ 613      00
+ 614              	.LASF27:
+ 615 0204 5450535F 		.ascii	"TPS_ADC_Enable\000"
+ 615      4144435F 
+ 615      456E6162 
+ 615      6C6500
+ 616              	.LASF2:
+ 617 0213 73686F72 		.ascii	"short int\000"
+ 617      7420696E 
+ 617      7400
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNbJJcV.s 			page 16
+
+
+ 618              	.LASF18:
+ 619 021d 5450535F 		.ascii	"TPS_ADC_SaveConfig\000"
+ 619      4144435F 
+ 619      53617665 
+ 619      436F6E66 
+ 619      696700
+ 620              	.LASF4:
+ 621 0230 6C6F6E67 		.ascii	"long int\000"
+ 621      20696E74 
+ 621      00
+ 622              	.LASF16:
+ 623 0239 5450535F 		.ascii	"TPS_ADC_Sleep\000"
+ 623      4144435F 
+ 623      536C6565 
+ 623      7000
+ 624              	.LASF0:
+ 625 0247 7369676E 		.ascii	"signed char\000"
+ 625      65642063 
+ 625      68617200 
+ 626              	.LASF29:
+ 627 0253 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\TPS_ADC_PM.c\000"
+ 627      6E657261 
+ 627      7465645F 
+ 627      536F7572 
+ 627      63655C50 
+ 628              	.LASF24:
+ 629 0279 5450535F 		.ascii	"TPS_ADC_SAR_Wakeup\000"
+ 629      4144435F 
+ 629      5341525F 
+ 629      57616B65 
+ 629      757000
+ 630              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

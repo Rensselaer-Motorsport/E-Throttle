@@ -39,6 +39,7 @@ float convertToPercent(uint16 count, sensor type) {
             break;
         case BRAKE:
             percent = (float) count / MAX_BRAKE_COUNT;
+            break;
         default:
             percent = 0.0;
     }

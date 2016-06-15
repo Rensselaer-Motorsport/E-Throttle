@@ -18,6 +18,7 @@
 #include "BRAKE_ADC.h"
 
 
+
 /*******************************************************************************
 * Custom Declarations and Variables
 * - add user include files, prototypes and variables between the following
@@ -26,7 +27,6 @@
 /* `#START ADC_SYS_VAR`  */
 
 /* `#END`  */
-
 
 #if(BRAKE_ADC_IRQ_REMOVE == 0u)
 
@@ -50,6 +50,11 @@
     *****************************************************************************/
     CY_ISR( BRAKE_ADC_ISR1)
     {
+        #ifdef BRAKE_ADC_ISR1_ENTRY_CALLBACK
+            BRAKE_ADC_ISR1_EntryCallback();
+        #endif /* BRAKE_ADC_ISR1_ENTRY_CALLBACK */
+        
+
         /**************************************************************************
         *  Custom Code
         *  - add user ISR code between the following #START and #END tags
@@ -57,7 +62,7 @@
         /* `#START MAIN_ADC_ISR1`  */
 
         /* `#END`  */
-
+        
         /* Stop the conversion if conversion mode is single sample and resolution
         *  is above 16 bits.
         */
@@ -70,6 +75,9 @@
             BRAKE_ADC_convDone = BRAKE_ADC_DEC_CONV_DONE;
         #endif /* Single sample conversion mode with resolution above 16 bits */
 
+        #ifdef BRAKE_ADC_ISR1_EXIT_CALLBACK
+            BRAKE_ADC_ISR1_ExitCallback();
+        #endif /* BRAKE_ADC_ISR1_EXIT_CALLBACK */
     }
 
 
@@ -92,6 +100,11 @@
     *****************************************************************************/
     CY_ISR( BRAKE_ADC_ISR2)
     {
+        #ifdef BRAKE_ADC_ISR2_ENTRY_CALLBACK
+            BRAKE_ADC_ISR2_EntryCallback();
+        #endif /* BRAKE_ADC_ISR2_ENTRY_CALLBACK */
+        
+        
         /***************************************************************************
         *  Custom Code
         *  - add user ISR code between the following #START and #END tags
@@ -112,6 +125,9 @@
             BRAKE_ADC_convDone = BRAKE_ADC_DEC_CONV_DONE;
         #endif /* Single sample conversion mode with resolution above 16 bits */
 
+        #ifdef BRAKE_ADC_ISR2_EXIT_CALLBACK
+            BRAKE_ADC_ISR2_ExitCallback();
+        #endif /* BRAKE_ADC_ISR2_EXIT_CALLBACK */
     }
 
 
@@ -134,6 +150,11 @@
     *****************************************************************************/
     CY_ISR( BRAKE_ADC_ISR3)
     {
+        #ifdef BRAKE_ADC_ISR3_ENTRY_CALLBACK
+            BRAKE_ADC_ISR3_EntryCallback();
+        #endif /* BRAKE_ADC_ISR3_ENTRY_CALLBACK */        
+
+        
         /***************************************************************************
         *  Custom Code
         *  - add user ISR code between the following #START and #END tags
@@ -141,7 +162,7 @@
         /* `#START MAIN_ADC_ISR3`  */
 
         /* `#END`  */
-
+        
         /* Stop the conversion if conversion mode is set to single sample and
         *  resolution is above 16 bits.
         */
@@ -153,6 +174,10 @@
 			*/
             BRAKE_ADC_convDone = BRAKE_ADC_DEC_CONV_DONE;
         #endif /* Single sample conversion mode with resolution above 16 bits */
+
+        #ifdef BRAKE_ADC_ISR3_EXIT_CALLBACK
+            BRAKE_ADC_ISR3_ExitCallback();
+        #endif /* BRAKE_ADC_ISR3_EXIT_CALLBACK */        
     }
 
 
@@ -175,6 +200,11 @@
     *****************************************************************************/
     CY_ISR( BRAKE_ADC_ISR4)
     {
+        #ifdef BRAKE_ADC_ISR4_ENTRY_CALLBACK
+            BRAKE_ADC_ISR4_EntryCallback();
+        #endif /* BRAKE_ADC_ISR4_ENTRY_CALLBACK */            
+
+        
         /***************************************************************************
         *  Custom Code
         *  - add user ISR code between the following #START and #END tags
@@ -194,6 +224,10 @@
 			*/
             BRAKE_ADC_convDone = BRAKE_ADC_DEC_CONV_DONE;
         #endif /* Single sample conversion mode with resolution above 16 bits */
+        
+        #ifdef BRAKE_ADC_ISR4_EXIT_CALLBACK
+            BRAKE_ADC_ISR4_ExitCallback();
+        #endif /* BRAKE_ADC_ISR4_EXIT_CALLBACK */            
     }
 
 #endif   /* End BRAKE_ADC_IRQ_REMOVE */

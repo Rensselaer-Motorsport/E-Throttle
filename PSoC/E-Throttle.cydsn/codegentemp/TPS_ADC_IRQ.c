@@ -20,6 +20,7 @@
 #include <CyLib.h>
 #include <TPS_ADC_IRQ.h>
 
+
 #if !defined(TPS_ADC_IRQ__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
@@ -158,6 +159,10 @@ void TPS_ADC_IRQ_Stop(void)
 *******************************************************************************/
 CY_ISR(TPS_ADC_IRQ_Interrupt)
 {
+    #ifdef TPS_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+        TPS_ADC_IRQ_Interrupt_InterruptCallback();
+    #endif /* TPS_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
+
     /*  Place your Interrupt code here. */
     /* `#START TPS_ADC_IRQ_Interrupt` */
 

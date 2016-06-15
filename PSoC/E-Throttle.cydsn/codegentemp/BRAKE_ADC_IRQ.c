@@ -20,6 +20,7 @@
 #include <CyLib.h>
 #include <BRAKE_ADC_IRQ.h>
 
+
 #if !defined(BRAKE_ADC_IRQ__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
@@ -158,6 +159,10 @@ void BRAKE_ADC_IRQ_Stop(void)
 *******************************************************************************/
 CY_ISR(BRAKE_ADC_IRQ_Interrupt)
 {
+    #ifdef BRAKE_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+        BRAKE_ADC_IRQ_Interrupt_InterruptCallback();
+    #endif /* BRAKE_ADC_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
+
     /*  Place your Interrupt code here. */
     /* `#START BRAKE_ADC_IRQ_Interrupt` */
 
