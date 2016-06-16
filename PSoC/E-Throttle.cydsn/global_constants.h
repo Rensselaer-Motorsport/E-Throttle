@@ -17,7 +17,11 @@
     typedef enum sensor {
         TPS,
         APPS,
-        BRAKE
+        BRAKE,
+        TPS0,
+        TPS1,
+        APPS0,
+        APPS1
     } sensor;
 
 #endif

@@ -19,12 +19,19 @@ effect:     Sends percent over UART labeled as coming from sensor
             sens
 */
 void send_pot_data(sensor sens, float percent) {
+    output_pad();
     switch (sens) {
-        case TPS:
+        case TPS0:
             UART_PutString("TPS0");
             break;
-        case APPS:
+        case TPS1:
+            UART_PutString("TPS1");
+            break;
+        case APPS0:
             UART_PutString("APS0");
+            break;
+        case APPS1:
+            UART_PutString("APS1");
             break;
         case BRAKE:
             UART_PutString("BRAK");
@@ -32,6 +39,7 @@ void send_pot_data(sensor sens, float percent) {
         default:
             UART_PutString("ERRR");
     }
+    // output pad at beginning and end of output_int
     output_int((int)percent * 100);
 }
 
