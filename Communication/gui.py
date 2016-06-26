@@ -1,8 +1,9 @@
 '''
-This is just for testing purposes, it's pretty ugly and hacky
+    This is just for testing purposes, it's pretty ugly and hacky
 '''
 
 import sys, time, random
+from read_serial import throttleReader
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -41,19 +42,22 @@ class GUI_window(QMainWindow):
         self.brake_val_label.resize(40, 10)
 
         self.label_map = {}
-        self.label_map['TPSA'] = self.tps1_val_label
-        self.label_map['TPSB'] = self.tps2_val_label
-        self.label_map['APPA'] = self.apps1_val_label
-        self.label_map['APPB'] = self.apps2_val_label
+        self.label_map['TPS0'] = self.tps1_val_label
+        self.label_map['TPS1'] = self.tps2_val_label
+        self.label_map['APS0'] = self.apps1_val_label
+        self.label_map['APS1'] = self.apps2_val_label
         self.label_map['BRAK'] = self.brake_val_label
 
         self.start_threads()
-
+        self.move(100, 100)
         self.show()
 
-    def update_vals(self, update_map):
-        for s in update_map.keys():
-            self.label_map[s].setText(str(update_map[s]))
+    def update_vals(self, update):
+        ''' Updates the value of one of the labels
+            Param: update: ((String, Int)) new sensor label value pair
+            Return: None
+        '''
+        self.label_map[update[0]].setText(str(float(update[1])/100.0))
 
     # def update_text(self, i):
     #     self.tps1_val_label.setText(str(i['a']))
@@ -62,40 +66,43 @@ class GUI_window(QMainWindow):
         self.threads = []              # this will keep a reference to threads
         thread = ReadSerialThread(self)    # create a thread
         thread.trigger.connect(self.update_vals)  # connect to it's signal
-        # thread.setup(i)            # just setting up a parameter
         thread.start()             # start the thread
         self.threads.append(thread) # keep a reference
 
 
-
 class ReadSerialThread(QThread):
-    trigger = pyqtSignal(dict)
+    trigger = pyqtSignal(tuple)
 
     def __init__(self, parent=None):
+        ''' Constructs a QThread that reads and processes input from the PSoC
+            board
+        '''
         super(ReadSerialThread, self).__init__(parent)
+        self.reader = throttleReader('COM4')
 
     def run(self):
+        ''' Main thread, will wait for a pad, then parse the input (sensor label
+            and value) and send it to the GUI.
+            Return: None
+        '''
         count = 0
         while True:
-            time.sleep(0.005)
+            self.reader.wait_for_pad()
             self.trigger.emit(self.get_updates())
+            # time.sleep(0.01)
 
     def get_updates(self):
-        updates = {}
-        updates['TPSA'] = int(10*random.random())
-        updates['TPSB'] = int(10*random.random())
-        updates['APPA'] = int(10*random.random())
-        updates['APPB'] = int(10*random.random())
-        updates['BRAK'] = int(10*random.random())
-        return updates
+        ''' Places the sensor label/value pair into a tuple and returns that
+            Return: ((String, Int))
+        '''
+        sens = self.reader.get_sensor()
+        val = self.reader.get_int()
+        return (sens, val)
 
 
 def main():
     app = QApplication(sys.argv)
     mw = GUI_window()
-    # thread = AThread()
-    # thread.finished.connect(app.exit)
-    # thread.start()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':

@@ -56,12 +56,10 @@ void output_int(int target_num) {
     
     byte_overlap.num = target_num;
     
-    output_pad();
     UART_PutChar(byte_overlap.str[0]);
     UART_PutChar(byte_overlap.str[1]);
     UART_PutChar(byte_overlap.str[2]);
     UART_PutChar(byte_overlap.str[3]);
-    output_pad();
 }
 
 /*

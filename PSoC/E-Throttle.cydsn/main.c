@@ -23,6 +23,10 @@ void commTest() {
     sensors[2] = &apps0;
     sensors[3] = &apps1;
     sensors[4] = &brake;
+    int i;
+    for (i = 0; i < 5; ++i) {
+        *sensors[i] = 0;
+    }
     
     for (;;) {
         int i;
@@ -37,12 +41,18 @@ void commTest() {
         send_pot_data(APPS0, apps0);
         send_pot_data(APPS1, apps1);
         send_pot_data(BRAKE, brake);
+        CyDelay(50);
     }
 }
 
 int main()
 {
+    UART_Start();
     commTest();
+//    for(;;) {
+//        UART_PutChar('A');
+//    }
+    return 0;
 //    CyGlobalIntEnable; /* Enable global interrupts. */
 //    
 //    uint16 apps0_count, apps1_count, tps0_count, tps1_count, brake_count;
