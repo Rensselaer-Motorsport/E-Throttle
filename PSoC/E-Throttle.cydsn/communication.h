@@ -1,12 +1,13 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
+    A collection of functions that are used
+    to communicate between the PSoC board
+    and outside computers.
+
+    Author: Mitchell Mellone (mellom3@rpi.edu)
+
+    Copyright (c) 2015 Rensselaer Motorsport
+    Distributed under the MIT License.
+    See "LICENSE" for more information.
  * ========================================
 */
 

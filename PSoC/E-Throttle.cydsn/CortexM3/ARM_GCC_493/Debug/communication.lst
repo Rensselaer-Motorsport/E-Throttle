@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 1
 
 
    1              		.syntax unified
@@ -28,59 +28,60 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
   25              	.LFB64:
   26              		.file 1 ".\\communication.c"
    1:.\communication.c **** /* ========================================
-   2:.\communication.c ****  *
-   3:.\communication.c ****  * Copyright YOUR COMPANY, THE YEAR
-   4:.\communication.c ****  * All Rights Reserved
-   5:.\communication.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
-   6:.\communication.c ****  *
-   7:.\communication.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
-   8:.\communication.c ****  * WHICH IS THE PROPERTY OF your company.
-   9:.\communication.c ****  *
-  10:.\communication.c ****  * ========================================
-  11:.\communication.c **** */
-  12:.\communication.c **** 
-  13:.\communication.c **** #include "communication.h"
-  14:.\communication.c **** 
-  15:.\communication.c **** /*
-  16:.\communication.c **** parameters: sens - The sensor, defined in "global_constants.h"
-  17:.\communication.c ****             percent - The percentage the potentiometer is open
-  18:.\communication.c **** effect:     Sends percent over UART labeled as coming from sensor
-  19:.\communication.c ****             sens
-  20:.\communication.c **** */
-  21:.\communication.c **** void send_pot_data(sensor sens, float percent) {
-  22:.\communication.c ****     output_pad();
-  23:.\communication.c ****     switch (sens) {
-  24:.\communication.c ****         case TPS0:
-  25:.\communication.c ****             UART_PutString("TPS0");
-  26:.\communication.c ****             break;
-  27:.\communication.c ****         case TPS1:
-  28:.\communication.c ****             UART_PutString("TPS1");
-  29:.\communication.c ****             break;
-  30:.\communication.c ****         case APPS0:
-  31:.\communication.c ****             UART_PutString("APS0");
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 2
+   2:.\communication.c ****     A collection of functions that are used
+   3:.\communication.c ****     to communicate between the PSoC board
+   4:.\communication.c ****     and outside computers.
+   5:.\communication.c **** 
+   6:.\communication.c ****     Author: Mitchell Mellone (mellom3@rpi.edu)
+   7:.\communication.c **** 
+   8:.\communication.c ****     Copyright (c) 2015 Rensselaer Motorsport
+   9:.\communication.c ****     Distributed under the MIT License.
+  10:.\communication.c ****     See "LICENSE" for more information.
+  11:.\communication.c ****  * ========================================
+  12:.\communication.c **** */
+  13:.\communication.c **** 
+  14:.\communication.c **** #include "communication.h"
+  15:.\communication.c **** 
+  16:.\communication.c **** /*
+  17:.\communication.c **** parameters: sens - The sensor, defined in "global_constants.h"
+  18:.\communication.c ****             percent - The percentage the potentiometer is open
+  19:.\communication.c **** effect:     Sends percent over UART labeled as coming from sensor
+  20:.\communication.c ****             sens
+  21:.\communication.c **** */
+  22:.\communication.c **** void send_pot_data(sensor sens, float percent) {
+  23:.\communication.c ****     output_pad();
+  24:.\communication.c ****     switch (sens) {
+  25:.\communication.c ****         case TPS0:
+  26:.\communication.c ****             UART_PutString("TPS0");
+  27:.\communication.c ****             break;
+  28:.\communication.c ****         case TPS1:
+  29:.\communication.c ****             UART_PutString("TPS1");
+  30:.\communication.c ****             break;
+  31:.\communication.c ****         case APPS0:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 2
 
 
-  32:.\communication.c ****             break;
-  33:.\communication.c ****         case APPS1:
-  34:.\communication.c ****             UART_PutString("APS1");
-  35:.\communication.c ****             break;
-  36:.\communication.c ****         case BRAKE:
-  37:.\communication.c ****             UART_PutString("BRAK");
-  38:.\communication.c ****             break;
-  39:.\communication.c ****         default:
-  40:.\communication.c ****             UART_PutString("ERRR");
-  41:.\communication.c ****     }
-  42:.\communication.c ****     // output pad at beginning and end of output_int
-  43:.\communication.c ****     output_int((int)percent * 100);
-  44:.\communication.c **** }
-  45:.\communication.c **** 
-  46:.\communication.c **** /*
-  47:.\communication.c **** parameters: target_num - The number to be sent over UART
-  48:.\communication.c **** effect:     Sends num over UART as 4 separate bytes
-  49:.\communication.c **** */
-  50:.\communication.c **** void output_int(int target_num) {
-  27              		.loc 1 50 0
+  32:.\communication.c ****             UART_PutString("APS0");
+  33:.\communication.c ****             break;
+  34:.\communication.c ****         case APPS1:
+  35:.\communication.c ****             UART_PutString("APS1");
+  36:.\communication.c ****             break;
+  37:.\communication.c ****         case BRAKE:
+  38:.\communication.c ****             UART_PutString("BRAK");
+  39:.\communication.c ****             break;
+  40:.\communication.c ****         default:
+  41:.\communication.c ****             UART_PutString("ERRR");
+  42:.\communication.c ****     }
+  43:.\communication.c ****     // output pad at beginning and end of output_int
+  44:.\communication.c ****     output_int((int)percent * 100);
+  45:.\communication.c **** }
+  46:.\communication.c **** 
+  47:.\communication.c **** /*
+  48:.\communication.c **** parameters: target_num - The number to be sent over UART
+  49:.\communication.c **** effect:     Sends num over UART as 4 separate bytes
+  50:.\communication.c **** */
+  51:.\communication.c **** void output_int(int target_num) {
+  27              		.loc 1 51 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -90,37 +91,37 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
   34              		.cfi_offset 4, -8
   35              		.cfi_offset 14, -4
   36 0002 0446     		mov	r4, r0
-  51:.\communication.c ****     // Create union to access each byte of number separately
-  52:.\communication.c ****     union {
-  53:.\communication.c ****         char str[4];
-  54:.\communication.c ****         int num;
-  55:.\communication.c ****     } byte_overlap;
-  56:.\communication.c ****     
-  57:.\communication.c ****     byte_overlap.num = target_num;
-  58:.\communication.c ****     
-  59:.\communication.c ****     UART_PutChar(byte_overlap.str[0]);
-  37              		.loc 1 59 0
+  52:.\communication.c ****     // Create union to access each byte of number separately
+  53:.\communication.c ****     union {
+  54:.\communication.c ****         char str[4];
+  55:.\communication.c ****         int num;
+  56:.\communication.c ****     } byte_overlap;
+  57:.\communication.c ****     
+  58:.\communication.c ****     byte_overlap.num = target_num;
+  59:.\communication.c ****     
+  60:.\communication.c ****     UART_PutChar(byte_overlap.str[0]);
+  37              		.loc 1 60 0
   38 0004 C0B2     		uxtb	r0, r0
   39              	.LVL1:
   40 0006 FFF7FEFF 		bl	UART_PutChar
   41              	.LVL2:
-  60:.\communication.c ****     UART_PutChar(byte_overlap.str[1]);
-  42              		.loc 1 60 0
+  61:.\communication.c ****     UART_PutChar(byte_overlap.str[1]);
+  42              		.loc 1 61 0
   43 000a C4F30720 		ubfx	r0, r4, #8, #8
   44 000e FFF7FEFF 		bl	UART_PutChar
   45              	.LVL3:
-  61:.\communication.c ****     UART_PutChar(byte_overlap.str[2]);
-  46              		.loc 1 61 0
+  62:.\communication.c ****     UART_PutChar(byte_overlap.str[2]);
+  46              		.loc 1 62 0
   47 0012 C4F30740 		ubfx	r0, r4, #16, #8
   48 0016 FFF7FEFF 		bl	UART_PutChar
   49              	.LVL4:
-  62:.\communication.c ****     UART_PutChar(byte_overlap.str[3]);
-  50              		.loc 1 62 0
+  63:.\communication.c ****     UART_PutChar(byte_overlap.str[3]);
+  50              		.loc 1 63 0
   51 001a 200E     		lsrs	r0, r4, #24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 3
+
+
   52 001c FFF7FEFF 		bl	UART_PutChar
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 3
-
-
   53              	.LVL5:
   54 0020 10BD     		pop	{r4, pc}
   55              		.cfi_endproc
@@ -134,13 +135,13 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
   63              		.type	output_pad, %function
   64              	output_pad:
   65              	.LFB65:
-  63:.\communication.c **** }
-  64:.\communication.c **** 
-  65:.\communication.c **** /*
-  66:.\communication.c **** effect:     Sends 4 bytes of all 1s over uart (0xFFFFFFFF)
-  67:.\communication.c **** */
-  68:.\communication.c **** void output_pad() {
-  66              		.loc 1 68 0
+  64:.\communication.c **** }
+  65:.\communication.c **** 
+  66:.\communication.c **** /*
+  67:.\communication.c **** effect:     Sends 4 bytes of all 1s over uart (0xFFFFFFFF)
+  68:.\communication.c **** */
+  69:.\communication.c **** void output_pad() {
+  66              		.loc 1 69 0
   67              		.cfi_startproc
   68              		@ args = 0, pretend = 0, frame = 0
   69              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -149,38 +150,38 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
   72              		.cfi_offset 4, -8
   73              		.cfi_offset 14, -4
   74              	.LVL6:
-  69:.\communication.c ****     int i; 
-  70:.\communication.c ****     for (i = 0; i < 4; i++) {
-  75              		.loc 1 70 0
+  70:.\communication.c ****     int i; 
+  71:.\communication.c ****     for (i = 0; i < 4; i++) {
+  75              		.loc 1 71 0
   76 0002 0024     		movs	r4, #0
   77 0004 03E0     		b	.L4
   78              	.LVL7:
   79              	.L5:
-  71:.\communication.c ****         UART_PutChar(0xFF);
-  80              		.loc 1 71 0 discriminator 3
+  72:.\communication.c ****         UART_PutChar(0xFF);
+  80              		.loc 1 72 0 discriminator 3
   81 0006 FF20     		movs	r0, #255
   82 0008 FFF7FEFF 		bl	UART_PutChar
   83              	.LVL8:
-  70:.\communication.c ****         UART_PutChar(0xFF);
-  84              		.loc 1 70 0 discriminator 3
+  71:.\communication.c ****         UART_PutChar(0xFF);
+  84              		.loc 1 71 0 discriminator 3
   85 000c 0134     		adds	r4, r4, #1
   86              	.LVL9:
   87              	.L4:
-  70:.\communication.c ****         UART_PutChar(0xFF);
-  88              		.loc 1 70 0 is_stmt 0 discriminator 1
+  71:.\communication.c ****         UART_PutChar(0xFF);
+  88              		.loc 1 71 0 is_stmt 0 discriminator 1
   89 000e 032C     		cmp	r4, #3
   90 0010 F9DD     		ble	.L5
-  72:.\communication.c ****     }
-  73:.\communication.c **** }
-  91              		.loc 1 73 0 is_stmt 1
+  73:.\communication.c ****     }
+  74:.\communication.c **** }
+  91              		.loc 1 74 0 is_stmt 1
   92 0012 10BD     		pop	{r4, pc}
   93              		.cfi_endproc
   94              	.LFE65:
   95              		.size	output_pad, .-output_pad
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 4
+
+
   96              		.global	__aeabi_f2iz
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 4
-
-
   97              		.section	.text.send_pot_data,"ax",%progbits
   98              		.align	2
   99              		.global	send_pot_data
@@ -189,8 +190,8 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  102              		.type	send_pot_data, %function
  103              	send_pot_data:
  104              	.LFB63:
-  21:.\communication.c ****     output_pad();
- 105              		.loc 1 21 0
+  22:.\communication.c ****     output_pad();
+ 105              		.loc 1 22 0
  106              		.cfi_startproc
  107              		@ args = 0, pretend = 0, frame = 0
  108              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -203,12 +204,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  115              		.cfi_offset 14, -4
  116 0002 0446     		mov	r4, r0
  117 0004 0D46     		mov	r5, r1
-  22:.\communication.c ****     switch (sens) {
- 118              		.loc 1 22 0
+  23:.\communication.c ****     switch (sens) {
+ 118              		.loc 1 23 0
  119 0006 FFF7FEFF 		bl	output_pad
  120              	.LVL11:
-  23:.\communication.c ****         case TPS0:
- 121              		.loc 1 23 0
+  24:.\communication.c ****         case TPS0:
+ 121              		.loc 1 24 0
  122 000a A01E     		subs	r0, r4, #2
  123 000c 0428     		cmp	r0, #4
  124 000e 18D8     		bhi	.L8
@@ -221,62 +222,62 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  131 0018 0F       		.byte	(.L14-.L10)/2
  132 0019 00       		.p2align 1
  133              	.L11:
-  25:.\communication.c ****             break;
- 134              		.loc 1 25 0
+  26:.\communication.c ****             break;
+ 134              		.loc 1 26 0
  135 001a 1048     		ldr	r0, .L17
  136 001c FFF7FEFF 		bl	UART_PutString
  137              	.LVL12:
-  26:.\communication.c ****         case TPS1:
- 138              		.loc 1 26 0
+  27:.\communication.c ****         case TPS1:
+ 138              		.loc 1 27 0
  139 0020 12E0     		b	.L15
  140              	.L12:
-  28:.\communication.c ****             break;
- 141              		.loc 1 28 0
+  29:.\communication.c ****             break;
+ 141              		.loc 1 29 0
  142 0022 0F48     		ldr	r0, .L17+4
  143 0024 FFF7FEFF 		bl	UART_PutString
  144              	.LVL13:
-  29:.\communication.c ****         case APPS0:
- 145              		.loc 1 29 0
+  30:.\communication.c ****         case APPS0:
+ 145              		.loc 1 30 0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 5
+
+
  146 0028 0EE0     		b	.L15
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 5
-
-
  147              	.L13:
-  31:.\communication.c ****             break;
- 148              		.loc 1 31 0
+  32:.\communication.c ****             break;
+ 148              		.loc 1 32 0
  149 002a 0E48     		ldr	r0, .L17+8
  150 002c FFF7FEFF 		bl	UART_PutString
  151              	.LVL14:
-  32:.\communication.c ****         case APPS1:
- 152              		.loc 1 32 0
+  33:.\communication.c ****         case APPS1:
+ 152              		.loc 1 33 0
  153 0030 0AE0     		b	.L15
  154              	.L14:
-  34:.\communication.c ****             break;
- 155              		.loc 1 34 0
+  35:.\communication.c ****             break;
+ 155              		.loc 1 35 0
  156 0032 0D48     		ldr	r0, .L17+12
  157 0034 FFF7FEFF 		bl	UART_PutString
  158              	.LVL15:
-  35:.\communication.c ****         case BRAKE:
- 159              		.loc 1 35 0
+  36:.\communication.c ****         case BRAKE:
+ 159              		.loc 1 36 0
  160 0038 06E0     		b	.L15
  161              	.L9:
-  37:.\communication.c ****             break;
- 162              		.loc 1 37 0
+  38:.\communication.c ****             break;
+ 162              		.loc 1 38 0
  163 003a 0C48     		ldr	r0, .L17+16
  164 003c FFF7FEFF 		bl	UART_PutString
  165              	.LVL16:
-  38:.\communication.c ****         default:
- 166              		.loc 1 38 0
+  39:.\communication.c ****         default:
+ 166              		.loc 1 39 0
  167 0040 02E0     		b	.L15
  168              	.L8:
-  40:.\communication.c ****     }
- 169              		.loc 1 40 0
+  41:.\communication.c ****     }
+ 169              		.loc 1 41 0
  170 0042 0B48     		ldr	r0, .L17+20
  171 0044 FFF7FEFF 		bl	UART_PutString
  172              	.LVL17:
  173              	.L15:
-  43:.\communication.c **** }
- 174              		.loc 1 43 0
+  44:.\communication.c **** }
+ 174              		.loc 1 44 0
  175 0048 2846     		mov	r0, r5
  176 004a FFF7FEFF 		bl	__aeabi_f2iz
  177              	.LVL18:
@@ -297,10 +298,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  192 0070 28000000 		.word	.LC5
  193              		.cfi_endproc
  194              	.LFE63:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 6
+
+
  195              		.size	send_pot_data, .-send_pot_data
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 6
-
-
  196              		.section	.rodata.str1.4,"aMS",%progbits,1
  197              		.align	2
  198              	.LC0:
@@ -356,11 +357,11 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  242 002d EA010000 		.4byte	.LASF11
  243 0031 01       		.byte	0x1
  244 0032 02       		.byte	0x2
- 245 0033 11       		.byte	0x11
+ 245 0033 22       		.byte	0x22
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 7
+
+
  246 0034 63000000 		.4byte	0x63
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 7
-
-
  247 0038 04       		.uleb128 0x4
  248 0039 54505300 		.ascii	"TPS\000"
  249 003d 00       		.sleb128 0
@@ -386,16 +387,16 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  269 0063 06       		.uleb128 0x6
  270 0064 EA010000 		.4byte	.LASF11
  271 0068 02       		.byte	0x2
- 272 0069 19       		.byte	0x19
+ 272 0069 2A       		.byte	0x2a
  273 006a 2C000000 		.4byte	0x2c
  274 006e 02       		.uleb128 0x2
  275 006f 01       		.byte	0x1
- 276 0070 06       		.byte	0x6
- 277 0071 1E020000 		.4byte	.LASF7
+ 276 0070 08       		.byte	0x8
+ 277 0071 31000000 		.4byte	.LASF7
  278 0075 02       		.uleb128 0x2
  279 0076 01       		.byte	0x1
- 280 0077 08       		.byte	0x8
- 281 0078 31000000 		.4byte	.LASF8
+ 280 0077 06       		.byte	0x6
+ 281 0078 1E020000 		.4byte	.LASF8
  282 007c 02       		.uleb128 0x2
  283 007d 02       		.byte	0x2
  284 007e 05       		.byte	0x5
@@ -417,10 +418,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  300 009d 04       		.byte	0x4
  301 009e 07       		.byte	0x7
  302 009f 87000000 		.4byte	.LASF14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 8
+
+
  303 00a3 02       		.uleb128 0x2
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 8
-
-
  304 00a4 08       		.byte	0x8
  305 00a5 05       		.byte	0x5
  306 00a6 D7010000 		.4byte	.LASF15
@@ -445,7 +446,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  325 00cb 2B000000 		.4byte	.LASF19
  326 00cf 05       		.byte	0x5
  327 00d0 B4       		.byte	0xb4
- 328 00d1 75000000 		.4byte	0x75
+ 328 00d1 6E000000 		.4byte	0x6e
  329 00d5 02       		.uleb128 0x2
  330 00d6 08       		.byte	0x8
  331 00d7 04       		.byte	0x4
@@ -466,7 +467,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  346 00f5 08       		.uleb128 0x8
  347 00f6 06000000 		.4byte	.LASF24
  348 00fa 01       		.byte	0x1
- 349 00fb 32       		.byte	0x32
+ 349 00fb 33       		.byte	0x33
  350 00fc 00000000 		.4byte	.LFB64
  351 0100 22000000 		.4byte	.LFE64-.LFB64
  352 0104 01       		.uleb128 0x1
@@ -475,32 +476,32 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  355 010a 09       		.uleb128 0x9
  356 010b 78010000 		.4byte	.LASF26
  357 010f 01       		.byte	0x1
- 358 0110 32       		.byte	0x32
+ 358 0110 33       		.byte	0x33
  359 0111 B1000000 		.4byte	0xb1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 9
+
+
  360 0115 00000000 		.4byte	.LLST0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 9
-
-
  361 0119 0A       		.uleb128 0xa
  362 011a 04       		.byte	0x4
  363 011b 01       		.byte	0x1
- 364 011c 34       		.byte	0x34
+ 364 011c 35       		.byte	0x35
  365 011d 38010000 		.4byte	0x138
  366 0121 0B       		.uleb128 0xb
  367 0122 73747200 		.ascii	"str\000"
  368 0126 01       		.byte	0x1
- 369 0127 35       		.byte	0x35
+ 369 0127 36       		.byte	0x36
  370 0128 9E010000 		.4byte	0x19e
  371 012c 0B       		.uleb128 0xb
  372 012d 6E756D00 		.ascii	"num\000"
  373 0131 01       		.byte	0x1
- 374 0132 36       		.byte	0x36
+ 374 0132 37       		.byte	0x37
  375 0133 B1000000 		.4byte	0xb1
  376 0137 00       		.byte	0
  377 0138 0C       		.uleb128 0xc
  378 0139 FB010000 		.4byte	.LASF34
  379 013d 01       		.byte	0x1
- 380 013e 37       		.byte	0x37
+ 380 013e 38       		.byte	0x38
  381 013f 19010000 		.4byte	0x119
  382 0143 0D       		.uleb128 0xd
  383 0144 0A000000 		.4byte	.LVL2
@@ -537,10 +538,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  414 017e 0E       		.uleb128 0xe
  415 017f 01       		.uleb128 0x1
  416 0180 50       		.byte	0x50
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 10
+
+
  417 0181 08       		.uleb128 0x8
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 10
-
-
  418 0182 74       		.byte	0x74
  419 0183 00       		.sleb128 0
  420 0184 09       		.byte	0x9
@@ -573,7 +574,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  447 01ae 12       		.uleb128 0x12
  448 01af D2000000 		.4byte	.LASF35
  449 01b3 01       		.byte	0x1
- 450 01b4 44       		.byte	0x44
+ 450 01b4 45       		.byte	0x45
  451 01b5 00000000 		.4byte	.LFB65
  452 01b9 14000000 		.4byte	.LFE65-.LFB65
  453 01bd 01       		.uleb128 0x1
@@ -582,7 +583,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  456 01c3 13       		.uleb128 0x13
  457 01c4 6900     		.ascii	"i\000"
  458 01c6 01       		.byte	0x1
- 459 01c7 45       		.byte	0x45
+ 459 01c7 46       		.byte	0x46
  460 01c8 B1000000 		.4byte	0xb1
  461 01cc 1E000000 		.4byte	.LLST1
  462 01d0 0F       		.uleb128 0xf
@@ -597,12 +598,12 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  471 01df 00       		.byte	0
  472 01e0 00       		.byte	0
  473 01e1 14       		.uleb128 0x14
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 11
+
+
  474 01e2 A6010000 		.4byte	.LASF25
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 11
-
-
  475 01e6 01       		.byte	0x1
- 476 01e7 15       		.byte	0x15
+ 476 01e7 16       		.byte	0x16
  477 01e8 00000000 		.4byte	.LFB63
  478 01ec 74000000 		.4byte	.LFE63-.LFB63
  479 01f0 01       		.uleb128 0x1
@@ -611,13 +612,13 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  482 01f6 09       		.uleb128 0x9
  483 01f7 C9010000 		.4byte	.LASF27
  484 01fb 01       		.byte	0x1
- 485 01fc 15       		.byte	0x15
+ 485 01fc 16       		.byte	0x16
  486 01fd 63000000 		.4byte	0x63
  487 0201 3D000000 		.4byte	.LLST2
  488 0205 09       		.uleb128 0x9
  489 0206 08020000 		.4byte	.LASF28
  490 020a 01       		.byte	0x1
- 491 020b 15       		.byte	0x15
+ 491 020b 16       		.byte	0x16
  492 020c 25000000 		.4byte	0x25
  493 0210 5E000000 		.4byte	.LLST3
  494 0214 15       		.uleb128 0x15
@@ -657,10 +658,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  528 025d 10000000 		.4byte	.LC2
  529 0261 00       		.byte	0
  530 0262 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 12
+
+
  531 0263 38000000 		.4byte	.LVL15
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 12
-
-
  532 0267 D3020000 		.4byte	0x2d3
  533 026b 79020000 		.4byte	0x279
  534 026f 0E       		.uleb128 0xe
@@ -717,10 +718,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  585 02d9 8B       		.byte	0x8b
  586 02da E4020000 		.4byte	0x2e4
  587 02de 19       		.uleb128 0x19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 13
+
+
  588 02df E4020000 		.4byte	0x2e4
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 13
-
-
  589 02e3 00       		.byte	0
  590 02e4 1A       		.uleb128 0x1a
  591 02e5 04       		.byte	0x4
@@ -777,10 +778,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  642 002c 00       		.byte	0
  643 002d 04       		.uleb128 0x4
  644 002e 28       		.uleb128 0x28
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 14
+
+
  645 002f 00       		.byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 14
-
-
  646 0030 03       		.uleb128 0x3
  647 0031 08       		.uleb128 0x8
  648 0032 1C       		.uleb128 0x1c
@@ -837,10 +838,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  699 0065 01       		.uleb128 0x1
  700 0066 12       		.uleb128 0x12
  701 0067 06       		.uleb128 0x6
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 15
+
+
  702 0068 40       		.uleb128 0x40
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 15
-
-
  703 0069 18       		.uleb128 0x18
  704 006a 9742     		.uleb128 0x2117
  705 006c 19       		.uleb128 0x19
@@ -897,10 +898,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  756 009f 3A       		.uleb128 0x3a
  757 00a0 0B       		.uleb128 0xb
  758 00a1 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 16
+
+
  759 00a2 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 16
-
-
  760 00a3 49       		.uleb128 0x49
  761 00a4 13       		.uleb128 0x13
  762 00a5 00       		.byte	0
@@ -957,10 +958,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  813 00df 01       		.byte	0x1
  814 00e0 3F       		.uleb128 0x3f
  815 00e1 19       		.uleb128 0x19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 17
+
+
  816 00e2 03       		.uleb128 0x3
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 17
-
-
  817 00e3 0E       		.uleb128 0xe
  818 00e4 3A       		.uleb128 0x3a
  819 00e5 0B       		.uleb128 0xb
@@ -1017,10 +1018,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  870 011a 01       		.uleb128 0x1
  871 011b 13       		.uleb128 0x13
  872 011c 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 18
+
+
  873 011d 00       		.byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 18
-
-
  874 011e 15       		.uleb128 0x15
  875 011f 898201   		.uleb128 0x4109
  876 0122 00       		.byte	0
@@ -1077,10 +1078,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  927 0155 05       		.uleb128 0x5
  928 0156 00       		.byte	0
  929 0157 49       		.uleb128 0x49
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 19
+
+
  930 0158 13       		.uleb128 0x13
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 19
-
-
  931 0159 00       		.byte	0
  932 015a 00       		.byte	0
  933 015b 1A       		.uleb128 0x1a
@@ -1137,10 +1138,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  984 0053 01       		.uleb128 0x1
  985 0054 50       		.byte	0x50
  986 0055 9F       		.byte	0x9f
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 20
+
+
  987 0056 00000000 		.4byte	0
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 20
-
-
  988 005a 00000000 		.4byte	0
  989              	.LLST3:
  990 005e 00000000 		.4byte	.LVL10
@@ -1197,10 +1198,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  1037      01010101 
  1038              	.LASF1:
  1039 0000 4252414B 		.ascii	"BRAKE\000"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 21
+
+
  1039      4500
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 21
-
-
  1040              	.LASF24:
  1041 0006 6F757470 		.ascii	"output_int\000"
  1041      75745F69 
@@ -1221,7 +1222,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  1050              	.LASF19:
  1051 002b 75696E74 		.ascii	"uint8\000"
  1051      3800
- 1052              	.LASF8:
+ 1052              	.LASF7:
  1053 0031 756E7369 		.ascii	"unsigned char\000"
  1053      676E6564 
  1053      20636861 
@@ -1257,10 +1258,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  1064      52784275 
  1064      66666572 
  1064      00
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 22
+
+
  1065              	.LASF20:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 22
-
-
  1066 00b9 646F7562 		.ascii	"double\000"
  1066      6C6500
  1067              	.LASF32:
@@ -1317,10 +1318,10 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  1086      6100
  1087              	.LASF18:
  1088 01b4 696E7433 		.ascii	"int32_t\000"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccN2g2J6.s 			page 23
+
+
  1088      325F7400 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 23
-
-
  1089              	.LASF29:
  1090 01bc 55415254 		.ascii	"UART_PutChar\000"
  1090      5F507574 
@@ -1363,7 +1364,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccvHXzzY.s 			page 1
  1110 0215 6C6F6E67 		.ascii	"long int\000"
  1110      20696E74 
  1110      00
- 1111              	.LASF7:
+ 1111              	.LASF8:
  1112 021e 7369676E 		.ascii	"signed char\000"
  1112      65642063 
  1112      68617200 

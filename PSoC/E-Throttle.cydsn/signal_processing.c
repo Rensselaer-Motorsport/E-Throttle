@@ -1,11 +1,9 @@
- /* ========================================
+/* ========================================
     A collection of functions that do the brunt
     of the I/O processing and calculation work
     needed for the E-Throttle.
 
     Author: Mitchell Mellone (mellom3@rpi.edu)
-    Date Created: 12/28/15
-    Most Recent Modification: 12/30/15
 
     Copyright (c) 2015 Rensselaer Motorsport
     Distributed under the MIT License.
@@ -55,7 +53,7 @@ return:     ERROR if there is an implausibility,
             The average of the sensors otherwise
 */
 float average(float s0, float s1) {
-    if(localImplausibility(s0, s1) == ERROR) {
+    if(localImplausibility(s0, s1)) {
         return fERROR;
     }
     return ((s0 + s1) / 2.0);
@@ -73,7 +71,7 @@ return:     ERROR if there is an implausibility, the next
 */
 float nextThrottlePosition(float requested_pos, float curr_pos,
                            float prev_request, float brake_pos, Error_Buffer * errs) {
-    if (globalImplausibility(curr_pos, prev_request, brake_pos, errs) == ERROR) {
+    if (globalImplausibility(curr_pos, prev_request, brake_pos, errs)) {
         return fERROR;
     }
     return requested_pos;
@@ -130,7 +128,7 @@ parameter:  tps0 - tps0 count
             brake - brake count
 return:     ERROR if any of the signals show open/short circuit signals
 */
-unsigned char signalCheck(uint16 tps0, uint16 tps1, uint16 apps0, uint16 apps1, uint16 brake) {
+int signalCheck(uint16 tps0, uint16 tps1, uint16 apps0, uint16 apps1, uint16 brake) {
     if (tps0 == OPEN_SHORT_CIRCUIT || tps1 == OPEN_SHORT_CIRCUIT ||
         apps0 == OPEN_SHORT_CIRCUIT || apps1 == OPEN_SHORT_CIRCUIT ||
         brake == OPEN_SHORT_CIRCUIT) {
@@ -143,16 +141,16 @@ unsigned char signalCheck(uint16 tps0, uint16 tps1, uint16 apps0, uint16 apps1, 
 /*
 parameter:  sens_0 - The first sensor (% open, 0.0-100.0)
             sens_1 - The second sensor (% open, 0.0-100.0)
-return:     ERROR if sens_0 and sens_1 differ by more than 10% (percent difference)
-                OR pull-down resistor shows open circuit
-            NO_ERROR otherwise
+return:     TRUE if sens_0 and sens_1 differ by more than 10% (percent difference)
+                OR pull-down resistor shows open circuit !!TODO - implement 2nd part!!
+            FALSE otherwise
 */
-unsigned char localImplausibility(float sens_0, float sens_1) {
+bool localImplausibility(float sens_0, float sens_1) {
     float diff = fabs(sens_1 - sens_0);
     if (diff < 0.10) {
-        return NO_ERROR;
+        return FALSE;
     } else {
-        return ERROR;
+        return TRUE;
     }
 }
 
@@ -164,10 +162,9 @@ effect:     Checks to make average error between current and
             expected TPS reading has not been greater than 10%
             for > 1 sec, and that the brake and is not above a
             desired threshold for a certain amount of time.
-return:     ERROR if there is an error, a non-error output
-            otherwise
+return:     TRUE if there is an error, FALSE otherwise
 */
-unsigned char globalImplausibility(float curr_tps, float expected_tps,
+bool globalImplausibility(float curr_tps, float expected_tps,
                             float brake, Error_Buffer * eb) {
     float tp_err = fabs(curr_tps - expected_tps);
     unsigned char brake_err = brakeErrorCheck(brake, curr_tps);
@@ -188,7 +185,7 @@ parameter:  brake - The current brake position reading (% open, 0.0-100.0)
 return:     BRAKE_ERROR If the brake is applied above a given throttle threshold
             BRAKE_GOOD If there is no current brake implausibility
 */
-unsigned char brakeErrorCheck(float brake, float tps) {
+bool brakeErrorCheck(float brake, float tps) {
     /* TODO: Find and program a valid relationship. I just put in some 
              simple numbers
     */

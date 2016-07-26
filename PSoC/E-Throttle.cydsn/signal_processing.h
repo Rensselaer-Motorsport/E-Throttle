@@ -4,8 +4,6 @@
     needed for the E-Throttle.
 
     Author: Mitchell Mellone (mellom3@rpi.edu)
-    Date Created: 12/27/15
-    Most Recent Modification: 12/30/15
 
     Copyright (c) 2015 Rensselaer Motorsport
     Distributed under the MIT License.
@@ -35,10 +33,10 @@
     float nextThrottlePosition(float, float, float, float, Error_Buffer*);
     Error_Buffer * createErrorBuffer();
     void updateErrorBuffer(Error_Buffer *, unsigned char, float);
-    unsigned char signalCheck(uint16, uint16, uint16, uint16, uint16);
-    unsigned char localImplausibility(float, float);
-    unsigned char globalImplausibility(float, float, float, Error_Buffer *);
-    unsigned char brakeErrorCheck(float, float);
+    int signalCheck(uint16, uint16, uint16, uint16, uint16);
+    bool localImplausibility(float, float);
+    bool globalImplausibility(float, float, float, Error_Buffer *);
+    bool brakeErrorCheck(float, float);
     void writeToServo(float);
     void handleError(); /* TODO: Implement handleError */
 

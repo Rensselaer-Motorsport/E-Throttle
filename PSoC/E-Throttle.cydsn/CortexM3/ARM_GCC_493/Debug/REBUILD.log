@@ -1,4 +1,4 @@
---------------- Rebuild Started: 06/14/2016 21:39:32 Project: E-Throttle, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Rebuild Started: 07/25/2016 19:53:17 Project: E-Throttle, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\main.o"
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\signal_processing.o"
 Deleting file ".\CortexM3\ARM_GCC_493\Debug\queue.o"
@@ -279,6 +279,6 @@ arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_493\Debug\E-Throttle.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\E-Throttle.elf .\CortexM3\ARM_GCC_493\Debug\main.o .\CortexM3\ARM_GCC_493\Debug\signal_processing.o .\CortexM3\ARM_GCC_493\Debug\queue.o .\CortexM3\ARM_GCC_493\Debug\communication.o .\CortexM3\ARM_GCC_493\Debug\cymetadata.o .\CortexM3\ARM_GCC_493\Debug\Cm3Start.o .\CortexM3\ARM_GCC_493\Debug\E-Throttle.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_493\Debug/E-Throttle.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -Wl,--end-group
 cyelftool.exe -C C:\Users\mitchell\Documents\FSAE\E-Throttle\PSoC\E-Throttle.cydsn\CortexM3\ARM_GCC_493\Debug\E-Throttle.elf --flash_row_size 256 --flash_size 262144
 cyelftool.exe -S C:\Users\mitchell\Documents\FSAE\E-Throttle\PSoC\E-Throttle.cydsn\CortexM3\ARM_GCC_493\Debug\E-Throttle.elf
-Flash used: 10752 of 262144 bytes (4.1 %).
+Flash used: 12288 of 262144 bytes (4.7 %).
 SRAM used: 2717 of 65536 bytes (4.1 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Rebuild Succeeded: 06/14/2016 21:40:27 ---------------
+--------------- Rebuild Succeeded: 07/25/2016 19:55:52 ---------------

@@ -3,8 +3,6 @@
     list.
 
     Author: Mitchell Mellone (mellom3@rpi.edu)
-    Date Created: 12/30/15
-    Most Recent Modification: 12/30/15
 
     Copyright (c) 2015 Rensselaer Motorsport
     Distributed under the MIT License.

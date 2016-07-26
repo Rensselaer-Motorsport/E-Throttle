@@ -3,8 +3,6 @@
     list.
 
     Author: Mitchell Mellone (mellom3@rpi.edu)
-    Date Created: 12/30/15
-    Most Recent Modification: 12/30/15
 
     Copyright (c) 2015 Rensselaer Motorsport
     Distributed under the MIT License.
@@ -18,10 +16,7 @@
     /* Imports */
     #include <stdlib.h>
     #include "project.h"
-    
-    /* Constant Definitions */
-    #define BRAKE_ERROR 1 /* This should remain 1 */
-    #define BRAKE_GOOD 0 /* This should remain 0 */
+    #include "global_constants.h"
 
     /* NODE Struct Initialization */
     typedef struct Node {
