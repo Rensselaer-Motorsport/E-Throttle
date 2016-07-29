@@ -29,13 +29,14 @@ int simulatePot(int prev_count, int max_count) {
     
     /* make sure the value stays within 15%-85% max range so
        that errors can always be simulated */
-    if (next_count < (int)((double)max_count * 15.0) ) {
+    if (next_count < (int)((double)max_count * 0.15) ) {
         return 0;
-    } else if (next_count > max_count - (int)((double)max_count * 15.0)) {
+    } else if (next_count > max_count - (int)((double)max_count * 0.15)) {
         return max_count-1;
     } else {
         return next_count;
     }
+//    return (prev_count + 1) % max_count;
 }
 
 /* takes in a current count value and produces one > 10% away
@@ -96,8 +97,7 @@ int main()
 //        }
         
         /* SIMULATED POTS */
-        apps0_count = apps1_count = simulatePot(apps0_count, MAX_APPS_COUNT);
-        tps0_count = tps1_count = simulatePot(tps0_count, MAX_TPS_COUNT);
+        apps0_count = apps1_count = tps0_count = tps1_count = simulatePot(apps0_count, MAX_APPS_COUNT);
         
         /* Check for open or short circuit signals */
         if (signalCheck(tps0_count, tps1_count, apps0_count, apps1_count, brake_count) == ERROR) {
@@ -111,6 +111,14 @@ int main()
         tps1_percent = convertToPercent(tps1_count, TPS);
         brake_percent = convertToPercent(brake_count, BRAKE);
         
+        
+        /* Communicate current state of sensors */
+        send_pot_data(APPS0, apps0_percent);
+        send_pot_data(APPS1, apps1_percent);
+        send_pot_data(TPS0, tps0_percent);
+        send_pot_data(TPS1, tps1_percent);
+        send_pot_data(BRAKE, brake_percent);
+        
         /* Average and check for local errors */
         apps_avg = average(apps0_percent, apps1_percent);
         tps_avg = average(tps0_percent, tps1_percent);
@@ -119,13 +127,15 @@ int main()
         }
         
         /* Get next throttle position */
-        int next_throttle_pos = 
-            nextThrottlePosition(apps_avg, tps_avg, prev_throttle_pos, brake_percent, err_buff);
-        if (next_throttle_pos == fERROR) {
-            handleError();
-        }
+//        int next_throttle_pos = 
+//            nextThrottlePosition(apps_avg, tps_avg, prev_throttle_pos, brake_percent, err_buff);
+//        if (next_throttle_pos == fERROR) {
+//            handleError();
+//        }
             
         /* TODO: Figure out how to write value to servo out */
+        
+        CyDelay(50);
     }
 }
 

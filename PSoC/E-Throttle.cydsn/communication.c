@@ -41,7 +41,7 @@ void send_pot_data(sensor sens, float percent) {
             UART_PutString("ERRR");
     }
     // output pad at beginning and end of output_int
-    output_int((int)percent * 100);
+    output_int((int)(percent * 100.0));
 }
 
 /*

@@ -10,6 +10,7 @@ class throttleReader():
             Return: None
         '''
         self.s = serial.Serial(baudrate=115200, port=comm_port)
+        self.s.flush()
         self.padbytes = 0 # Number of 'pad bytes' (0xff) that were read in a row
 
 
