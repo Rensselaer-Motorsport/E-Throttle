@@ -20,7 +20,7 @@
 
     /* NODE Struct Initialization */
     typedef struct Node {
-        unsigned char brake_error;
+        bool brake_error;
         float TPS_APPS_error;
         uint32 time_count;
         struct Node * next;
@@ -33,7 +33,7 @@
 
     /* Function Declarations */
     Queue * createQueue();
-    void enqueue(Queue *, unsigned char, float, int);
+    void enqueue(Queue *, bool, float, int);
     Node * dequeue(Queue *);
     uint32 headTime(Queue *);
 

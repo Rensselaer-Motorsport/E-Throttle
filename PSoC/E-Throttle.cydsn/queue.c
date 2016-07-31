@@ -33,22 +33,18 @@ parameter:  val - The value to add to the queue
 effect:     Creates and adds a tail to the back of Queue q
 modifies:   back & (front if (back == NULL))
 */
-void enqueue(Queue * q, unsigned char brake_stat, float TPS_APPS_err, int time) {
+void enqueue(Queue * q, bool brake_err, float TPS_APPS_err, int time) {
+    Node *temp = (Node *)malloc(sizeof(Node));
+    temp->next = NULL;
+    temp->brake_error = brake_err;
+    temp->TPS_APPS_error = TPS_APPS_err;
+    temp->time_count = time;
     if (q->tail == NULL) {
         /* Queue is empty */
-        q->tail = (Node *)malloc(sizeof(Node));
-        q->tail->next = NULL;
-        q->tail->brake_error = brake_stat;
-        q->tail->TPS_APPS_error = TPS_APPS_err;
-        q->tail->time_count = time;
+        q->tail = temp;
         q->head = q->tail;
     } else {
         /* Queue is not empty */
-        Node *temp = (Node *)malloc(sizeof(Node));
-        temp->next = NULL;
-        temp->brake_error = brake_stat;
-        temp->TPS_APPS_error = TPS_APPS_err;
-        temp->time_count = time;
         q->tail->next = temp;
         q->tail = temp;
     }

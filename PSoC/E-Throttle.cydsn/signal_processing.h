@@ -32,7 +32,7 @@
     float average(float, float);
     float nextThrottlePosition(float, float, float, float, Error_Buffer*);
     Error_Buffer * createErrorBuffer();
-    void updateErrorBuffer(Error_Buffer *, unsigned char, float);
+    void updateErrorBuffer(Error_Buffer *, bool, float);
     int signalCheck(uint16, uint16, uint16, uint16, uint16);
     bool localImplausibility(float, float);
     bool globalImplausibility(float, float, float, Error_Buffer *);

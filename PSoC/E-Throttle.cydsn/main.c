@@ -15,24 +15,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TRUE 1
-#define FALSE 0
-
 /* returns a simulated count value based off of previous pot
 count 
 */
 int simulatePot(int prev_count, int max_count) {
-    int increase = rand() % 2; /* boolean value */
-    int mag = rand() % (max_count / 100); /* allow a maximum movement of 1 percent */
+    int increase = rand() % 10;
+    int mag = rand() % (max_count / 500); /* allow a maximum movement of 1 percent */
     
-    int next_count = increase ? prev_count + mag : prev_count - mag;
+    int next_count = (increase > 4) ? prev_count + mag : prev_count - mag;
     
     /* make sure the value stays within 15%-85% max range so
        that errors can always be simulated */
     if (next_count < (int)((double)max_count * 0.15) ) {
-        return 0;
-    } else if (next_count > max_count - (int)((double)max_count * 0.15)) {
-        return max_count-1;
+        return (int)((double)max_count * 0.15);
+    } else if (next_count > (int)((double)max_count * 0.85) ) {
+        return (int)((double)max_count * 0.85);
     } else {
         return next_count;
     }
@@ -53,28 +50,28 @@ int main()
     CyGlobalIntEnable; /* Enable global interrupts. */
     
     srand(time(0)); /* seed random number generator */
-
     
+    /* Declarations */
     uint16 apps0_count, apps1_count, tps0_count, tps1_count, brake_count;
     float apps0_percent, apps1_percent, tps0_percent, tps1_percent, brake_percent;
     float apps_avg, tps_avg, prev_throttle_pos;
+    bool first_run;
     
-
     /* Initializations */
     Error_Buffer * err_buff = createErrorBuffer();
     Timer_Start();
-    APPS_ADC_Start();
-    TPS_ADC_Start();
-    BRAKE_ADC_Start();
-    APPS_ADC_StartConvert();
-    TPS_ADC_StartConvert();
-    BRAKE_ADC_StartConvert();
-    prev_throttle_pos = 0.0;
+//    APPS_ADC_Start();
+//    TPS_ADC_Start();
+//    BRAKE_ADC_Start();
+//    APPS_ADC_StartConvert();
+//    TPS_ADC_StartConvert();
+//    BRAKE_ADC_StartConvert();
+    first_run = TRUE;
     
     /* initialize counts for simulation */
     apps0_count = apps1_count = MAX_APPS_COUNT / 2;
     tps0_count = tps1_count = MAX_TPS_COUNT / 2;
-    brake_count = 0; /* keep at 0 for the first set of tests */
+    brake_count = 10; /* keep a little bit above zero to avoid tripping an error */
 
     for(;;)
     {
@@ -110,8 +107,7 @@ int main()
         tps0_percent = convertToPercent(tps0_count, TPS);
         tps1_percent = convertToPercent(tps1_count, TPS);
         brake_percent = convertToPercent(brake_count, BRAKE);
-        
-        
+             
         /* Communicate current state of sensors */
         send_pot_data(APPS0, apps0_percent);
         send_pot_data(APPS1, apps1_percent);
@@ -122,16 +118,22 @@ int main()
         /* Average and check for local errors */
         apps_avg = average(apps0_percent, apps1_percent);
         tps_avg = average(tps0_percent, tps1_percent);
+        if (first_run) {
+            prev_throttle_pos = tps_avg;
+        }
         if (apps_avg == fERROR || tps_avg == fERROR) {
+            for (;;) { UART_PutString("ERRA"); CyDelay(1000); } /* notify tester in case of error */
             handleError();
         }
         
         /* Get next throttle position */
-//        int next_throttle_pos = 
-//            nextThrottlePosition(apps_avg, tps_avg, prev_throttle_pos, brake_percent, err_buff);
-//        if (next_throttle_pos == fERROR) {
-//            handleError();
-//        }
+        int next_throttle_pos = 
+            nextThrottlePosition(apps_avg, tps_avg, prev_throttle_pos, brake_percent, err_buff);
+        if (next_throttle_pos == fERROR) {
+            for (;;) { UART_PutString("ERRB"); CyDelay(1000); } /* notify tester in case of error */
+            handleError();
+        }
+        prev_throttle_pos = next_throttle_pos;
             
         /* TODO: Figure out how to write value to servo out */
         

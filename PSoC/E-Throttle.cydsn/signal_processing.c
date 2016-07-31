@@ -88,6 +88,7 @@ Error_Buffer * createErrorBuffer() {
     eb->TPS_APPS_sum = 0.0;
     eb->percent_brake_errs = 0.0;
     eb->size = 0;
+    eb->total_time = 0;
     return eb;
 }
 
@@ -98,17 +99,17 @@ effect:     Adds the new error to the start of the queue
             Removes the least recent error
             Updates the sum and average accordingly
 */
-void updateErrorBuffer(Error_Buffer * eb, unsigned char brake_err, float TPS_APPS_err) {
+void updateErrorBuffer(Error_Buffer * eb, bool brake_err, float TPS_APPS_err) {
     Queue * q = eb->error_queue;
     int elap_time = Timer_ReadCounter();
     Timer_Stop();
     Timer_Start(); /* Reset the timer */
     enqueue(q, brake_err, TPS_APPS_err, elap_time);
-    eb->num_brake_errs += brake_err; /* +1 if = BRAKE_ERROR, +0 if = BRAKE_GOOD */
+    eb->num_brake_errs += brake_err ? 1 : 0; /* +1 if brake_err = TRUE, else +0 */
     eb->TPS_APPS_sum += TPS_APPS_err;
     eb->size++;
     eb->total_time += elap_time;
-    while (elap_time > TIMER_FREQ) {
+    while (eb->total_time > TIMER_FREQ) {
         /* Delete all error values that happened more than one sec ago */
         Node * toRemove = dequeue(q);
         eb->num_brake_errs -= toRemove->brake_error;
@@ -116,8 +117,8 @@ void updateErrorBuffer(Error_Buffer * eb, unsigned char brake_err, float TPS_APP
         eb->size--;
         eb->total_time -= toRemove->time_count;
     }
-    eb->TPS_APPS_avg = eb->TPS_APPS_sum / ((float)eb->size);
-    eb->percent_brake_errs = ((float)eb->num_brake_errs) / ((float)eb->size);
+    eb->TPS_APPS_avg = (eb->size == 0) ? 0.0 : eb->TPS_APPS_sum / ((float)eb->size);
+    eb->percent_brake_errs = (eb->size == 0) ? 0.0 : ((float)eb->num_brake_errs) / ((float)eb->size);
 }
 
 /*
@@ -167,15 +168,15 @@ return:     TRUE if there is an error, FALSE otherwise
 bool globalImplausibility(float curr_tps, float expected_tps,
                             float brake, Error_Buffer * eb) {
     float tp_err = fabs(curr_tps - expected_tps);
-    unsigned char brake_err = brakeErrorCheck(brake, curr_tps);
+    bool brake_err = brakeErrorCheck(brake, curr_tps);
     
     updateErrorBuffer(eb, brake_err, tp_err);
     
     if (eb->TPS_APPS_avg > TP_ERR_CUTOFF
             || eb->percent_brake_errs > BRAKE_ERR_CUTOFF) {
-        return ERROR;
+        return TRUE;
     } else {
-        return NO_ERROR;
+        return FALSE;
     }
 }
                             
@@ -190,9 +191,9 @@ bool brakeErrorCheck(float brake, float tps) {
              simple numbers
     */
     if (brake > 5.0 && tps > 10.0) {
-        return BRAKE_ERROR;
+        return TRUE;
     } else {
-        return BRAKE_GOOD;
+        return FALSE;
     }
 }
 
