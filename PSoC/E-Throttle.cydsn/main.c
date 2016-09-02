@@ -3,7 +3,7 @@
 
     Author: Mitchell Mellone (mellom3@rpi.edu)
 
-    Copyright (c) 2015 Rensselaer Motorsport
+    Copyright (c) 2016 Rensselaer Motorsport
     Distributed under the MIT License.
     See "LICENSE" for more information.
  * ========================================
@@ -59,7 +59,7 @@ int main()
     
     /* Initializations */
     Error_Buffer * err_buff = createErrorBuffer();
-    Timer_Start();
+    //Timer_Start();
 //    APPS_ADC_Start();
 //    TPS_ADC_Start();
 //    BRAKE_ADC_Start();

@@ -1,0 +1,1399 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"communication.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.output_int,"ax",%progbits
+  19              		.align	2
+  20              		.global	output_int
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	output_int, %function
+  24              	output_int:
+  25              	.LFB64:
+  26              		.file 1 ".\\communication.c"
+   1:.\communication.c **** /* ========================================
+   2:.\communication.c ****     A collection of functions that are used
+   3:.\communication.c ****     to communicate between the PSoC board
+   4:.\communication.c ****     and outside computers.
+   5:.\communication.c **** 
+   6:.\communication.c ****     Author: Mitchell Mellone (mellom3@rpi.edu)
+   7:.\communication.c **** 
+   8:.\communication.c ****     Copyright (c) 2015 Rensselaer Motorsport
+   9:.\communication.c ****     Distributed under the MIT License.
+  10:.\communication.c ****     See "LICENSE" for more information.
+  11:.\communication.c ****  * ========================================
+  12:.\communication.c **** */
+  13:.\communication.c **** 
+  14:.\communication.c **** #include "communication.h"
+  15:.\communication.c **** 
+  16:.\communication.c **** /*
+  17:.\communication.c **** parameters: sens - The sensor, defined in "global_constants.h"
+  18:.\communication.c ****             percent - The percentage the potentiometer is open
+  19:.\communication.c **** effect:     Sends percent over UART labeled as coming from sensor
+  20:.\communication.c ****             sens
+  21:.\communication.c **** */
+  22:.\communication.c **** void send_pot_data(sensor sens, float percent) {
+  23:.\communication.c ****     output_pad();
+  24:.\communication.c ****     switch (sens) {
+  25:.\communication.c ****         case TPS0:
+  26:.\communication.c ****             UART_PutString("TPS0");
+  27:.\communication.c ****             break;
+  28:.\communication.c ****         case TPS1:
+  29:.\communication.c ****             UART_PutString("TPS1");
+  30:.\communication.c ****             break;
+  31:.\communication.c ****         case APPS0:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 2
+
+
+  32:.\communication.c ****             UART_PutString("APS0");
+  33:.\communication.c ****             break;
+  34:.\communication.c ****         case APPS1:
+  35:.\communication.c ****             UART_PutString("APS1");
+  36:.\communication.c ****             break;
+  37:.\communication.c ****         case BRAKE:
+  38:.\communication.c ****             UART_PutString("BRAK");
+  39:.\communication.c ****             break;
+  40:.\communication.c ****         default:
+  41:.\communication.c ****             UART_PutString("ERRR");
+  42:.\communication.c ****     }
+  43:.\communication.c ****     // output pad at beginning and end of output_int
+  44:.\communication.c ****     output_int((int)(percent * 100.0));
+  45:.\communication.c **** }
+  46:.\communication.c **** 
+  47:.\communication.c **** /*
+  48:.\communication.c **** parameters: target_num - The number to be sent over UART
+  49:.\communication.c **** effect:     Sends num over UART as 4 separate bytes
+  50:.\communication.c **** */
+  51:.\communication.c **** void output_int(int target_num) {
+  27              		.loc 1 51 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 0446     		mov	r4, r0
+  52:.\communication.c ****     // Create union to access each byte of number separately
+  53:.\communication.c ****     union {
+  54:.\communication.c ****         char str[4];
+  55:.\communication.c ****         int num;
+  56:.\communication.c ****     } byte_overlap;
+  57:.\communication.c ****     
+  58:.\communication.c ****     byte_overlap.num = target_num;
+  59:.\communication.c ****     
+  60:.\communication.c ****     UART_PutChar(byte_overlap.str[0]);
+  37              		.loc 1 60 0
+  38 0004 C0B2     		uxtb	r0, r0
+  39              	.LVL1:
+  40 0006 FFF7FEFF 		bl	UART_PutChar
+  41              	.LVL2:
+  61:.\communication.c ****     UART_PutChar(byte_overlap.str[1]);
+  42              		.loc 1 61 0
+  43 000a C4F30720 		ubfx	r0, r4, #8, #8
+  44 000e FFF7FEFF 		bl	UART_PutChar
+  45              	.LVL3:
+  62:.\communication.c ****     UART_PutChar(byte_overlap.str[2]);
+  46              		.loc 1 62 0
+  47 0012 C4F30740 		ubfx	r0, r4, #16, #8
+  48 0016 FFF7FEFF 		bl	UART_PutChar
+  49              	.LVL4:
+  63:.\communication.c ****     UART_PutChar(byte_overlap.str[3]);
+  50              		.loc 1 63 0
+  51 001a 200E     		lsrs	r0, r4, #24
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 3
+
+
+  52 001c FFF7FEFF 		bl	UART_PutChar
+  53              	.LVL5:
+  54 0020 10BD     		pop	{r4, pc}
+  55              		.cfi_endproc
+  56              	.LFE64:
+  57              		.size	output_int, .-output_int
+  58 0022 00BF     		.section	.text.output_pad,"ax",%progbits
+  59              		.align	2
+  60              		.global	output_pad
+  61              		.thumb
+  62              		.thumb_func
+  63              		.type	output_pad, %function
+  64              	output_pad:
+  65              	.LFB65:
+  64:.\communication.c **** }
+  65:.\communication.c **** 
+  66:.\communication.c **** /*
+  67:.\communication.c **** effect:     Sends 4 bytes of all 1s over uart (0xFFFFFFFF)
+  68:.\communication.c **** */
+  69:.\communication.c **** void output_pad() {
+  66              		.loc 1 69 0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70 0000 10B5     		push	{r4, lr}
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 4, -8
+  73              		.cfi_offset 14, -4
+  74              	.LVL6:
+  70:.\communication.c ****     int i; 
+  71:.\communication.c ****     for (i = 0; i < 4; i++) {
+  75              		.loc 1 71 0
+  76 0002 0024     		movs	r4, #0
+  77 0004 03E0     		b	.L4
+  78              	.LVL7:
+  79              	.L5:
+  72:.\communication.c ****         UART_PutChar(0xFF);
+  80              		.loc 1 72 0 discriminator 3
+  81 0006 FF20     		movs	r0, #255
+  82 0008 FFF7FEFF 		bl	UART_PutChar
+  83              	.LVL8:
+  71:.\communication.c ****         UART_PutChar(0xFF);
+  84              		.loc 1 71 0 discriminator 3
+  85 000c 0134     		adds	r4, r4, #1
+  86              	.LVL9:
+  87              	.L4:
+  71:.\communication.c ****         UART_PutChar(0xFF);
+  88              		.loc 1 71 0 is_stmt 0 discriminator 1
+  89 000e 032C     		cmp	r4, #3
+  90 0010 F9DD     		ble	.L5
+  73:.\communication.c ****     }
+  74:.\communication.c **** }
+  91              		.loc 1 74 0 is_stmt 1
+  92 0012 10BD     		pop	{r4, pc}
+  93              		.cfi_endproc
+  94              	.LFE65:
+  95              		.size	output_pad, .-output_pad
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 4
+
+
+  96              		.global	__aeabi_f2d
+  97              		.global	__aeabi_dmul
+  98              		.global	__aeabi_d2iz
+  99              		.section	.text.send_pot_data,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	send_pot_data
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.type	send_pot_data, %function
+ 105              	send_pot_data:
+ 106              	.LFB63:
+  22:.\communication.c ****     output_pad();
+ 107              		.loc 1 22 0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111              	.LVL10:
+ 112 0000 38B5     		push	{r3, r4, r5, lr}
+ 113              		.cfi_def_cfa_offset 16
+ 114              		.cfi_offset 3, -16
+ 115              		.cfi_offset 4, -12
+ 116              		.cfi_offset 5, -8
+ 117              		.cfi_offset 14, -4
+ 118 0002 0446     		mov	r4, r0
+ 119 0004 0D46     		mov	r5, r1
+  23:.\communication.c ****     switch (sens) {
+ 120              		.loc 1 23 0
+ 121 0006 FFF7FEFF 		bl	output_pad
+ 122              	.LVL11:
+  24:.\communication.c ****         case TPS0:
+ 123              		.loc 1 24 0
+ 124 000a A01E     		subs	r0, r4, #2
+ 125 000c 0428     		cmp	r0, #4
+ 126 000e 18D8     		bhi	.L8
+ 127 0010 DFE800F0 		tbb	[pc, r0]
+ 128              	.L10:
+ 129 0014 13       		.byte	(.L9-.L10)/2
+ 130 0015 03       		.byte	(.L11-.L10)/2
+ 131 0016 07       		.byte	(.L12-.L10)/2
+ 132 0017 0B       		.byte	(.L13-.L10)/2
+ 133 0018 0F       		.byte	(.L14-.L10)/2
+ 134 0019 00       		.p2align 1
+ 135              	.L11:
+  26:.\communication.c ****             break;
+ 136              		.loc 1 26 0
+ 137 001a 1148     		ldr	r0, .L17
+ 138 001c FFF7FEFF 		bl	UART_PutString
+ 139              	.LVL12:
+  27:.\communication.c ****         case TPS1:
+ 140              		.loc 1 27 0
+ 141 0020 12E0     		b	.L15
+ 142              	.L12:
+  29:.\communication.c ****             break;
+ 143              		.loc 1 29 0
+ 144 0022 1048     		ldr	r0, .L17+4
+ 145 0024 FFF7FEFF 		bl	UART_PutString
+ 146              	.LVL13:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 5
+
+
+  30:.\communication.c ****         case APPS0:
+ 147              		.loc 1 30 0
+ 148 0028 0EE0     		b	.L15
+ 149              	.L13:
+  32:.\communication.c ****             break;
+ 150              		.loc 1 32 0
+ 151 002a 0F48     		ldr	r0, .L17+8
+ 152 002c FFF7FEFF 		bl	UART_PutString
+ 153              	.LVL14:
+  33:.\communication.c ****         case APPS1:
+ 154              		.loc 1 33 0
+ 155 0030 0AE0     		b	.L15
+ 156              	.L14:
+  35:.\communication.c ****             break;
+ 157              		.loc 1 35 0
+ 158 0032 0E48     		ldr	r0, .L17+12
+ 159 0034 FFF7FEFF 		bl	UART_PutString
+ 160              	.LVL15:
+  36:.\communication.c ****         case BRAKE:
+ 161              		.loc 1 36 0
+ 162 0038 06E0     		b	.L15
+ 163              	.L9:
+  38:.\communication.c ****             break;
+ 164              		.loc 1 38 0
+ 165 003a 0D48     		ldr	r0, .L17+16
+ 166 003c FFF7FEFF 		bl	UART_PutString
+ 167              	.LVL16:
+  39:.\communication.c ****         default:
+ 168              		.loc 1 39 0
+ 169 0040 02E0     		b	.L15
+ 170              	.L8:
+  41:.\communication.c ****     }
+ 171              		.loc 1 41 0
+ 172 0042 0C48     		ldr	r0, .L17+20
+ 173 0044 FFF7FEFF 		bl	UART_PutString
+ 174              	.LVL17:
+ 175              	.L15:
+  44:.\communication.c **** }
+ 176              		.loc 1 44 0
+ 177 0048 2846     		mov	r0, r5
+ 178 004a FFF7FEFF 		bl	__aeabi_f2d
+ 179              	.LVL18:
+ 180 004e 0022     		movs	r2, #0
+ 181 0050 094B     		ldr	r3, .L17+24
+ 182 0052 FFF7FEFF 		bl	__aeabi_dmul
+ 183              	.LVL19:
+ 184 0056 FFF7FEFF 		bl	__aeabi_d2iz
+ 185              	.LVL20:
+ 186 005a FFF7FEFF 		bl	output_int
+ 187              	.LVL21:
+ 188 005e 38BD     		pop	{r3, r4, r5, pc}
+ 189              	.LVL22:
+ 190              	.L18:
+ 191              		.align	2
+ 192              	.L17:
+ 193 0060 00000000 		.word	.LC0
+ 194 0064 08000000 		.word	.LC1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 6
+
+
+ 195 0068 10000000 		.word	.LC2
+ 196 006c 18000000 		.word	.LC3
+ 197 0070 20000000 		.word	.LC4
+ 198 0074 28000000 		.word	.LC5
+ 199 0078 00005940 		.word	1079574528
+ 200              		.cfi_endproc
+ 201              	.LFE63:
+ 202              		.size	send_pot_data, .-send_pot_data
+ 203              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 204              		.align	2
+ 205              	.LC0:
+ 206 0000 54505330 		.ascii	"TPS0\000"
+ 206      00
+ 207 0005 000000   		.space	3
+ 208              	.LC1:
+ 209 0008 54505331 		.ascii	"TPS1\000"
+ 209      00
+ 210 000d 000000   		.space	3
+ 211              	.LC2:
+ 212 0010 41505330 		.ascii	"APS0\000"
+ 212      00
+ 213 0015 000000   		.space	3
+ 214              	.LC3:
+ 215 0018 41505331 		.ascii	"APS1\000"
+ 215      00
+ 216 001d 000000   		.space	3
+ 217              	.LC4:
+ 218 0020 4252414B 		.ascii	"BRAK\000"
+ 218      00
+ 219 0025 000000   		.space	3
+ 220              	.LC5:
+ 221 0028 45525252 		.ascii	"ERRR\000"
+ 221      00
+ 222 002d 000000   		.text
+ 223              	.Letext0:
+ 224              		.file 2 ".\\global_constants.h"
+ 225              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 226              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 227              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 228              		.file 6 "Generated_Source\\PSoC5/UART.h"
+ 229              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 230              		.section	.debug_info,"",%progbits
+ 231              	.Ldebug_info0:
+ 232 0000 EE020000 		.4byte	0x2ee
+ 233 0004 0400     		.2byte	0x4
+ 234 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 235 000a 04       		.byte	0x4
+ 236 000b 01       		.uleb128 0x1
+ 237 000c DC000000 		.4byte	.LASF31
+ 238 0010 01       		.byte	0x1
+ 239 0011 BF000000 		.4byte	.LASF32
+ 240 0015 25000000 		.4byte	.LASF33
+ 241 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 242 001d 00000000 		.4byte	0
+ 243 0021 00000000 		.4byte	.Ldebug_line0
+ 244 0025 02       		.uleb128 0x2
+ 245 0026 04       		.byte	0x4
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 7
+
+
+ 246 0027 04       		.byte	0x4
+ 247 0028 66000000 		.4byte	.LASF6
+ 248 002c 03       		.uleb128 0x3
+ 249 002d E9010000 		.4byte	.LASF11
+ 250 0031 01       		.byte	0x1
+ 251 0032 02       		.byte	0x2
+ 252 0033 22       		.byte	0x22
+ 253 0034 63000000 		.4byte	0x63
+ 254 0038 04       		.uleb128 0x4
+ 255 0039 54505300 		.ascii	"TPS\000"
+ 256 003d 00       		.sleb128 0
+ 257 003e 05       		.uleb128 0x5
+ 258 003f 0F020000 		.4byte	.LASF0
+ 259 0043 01       		.sleb128 1
+ 260 0044 05       		.uleb128 0x5
+ 261 0045 00000000 		.4byte	.LASF1
+ 262 0049 02       		.sleb128 2
+ 263 004a 05       		.uleb128 0x5
+ 264 004b 1B000000 		.4byte	.LASF2
+ 265 004f 03       		.sleb128 3
+ 266 0050 05       		.uleb128 0x5
+ 267 0051 20000000 		.4byte	.LASF3
+ 268 0055 04       		.sleb128 4
+ 269 0056 05       		.uleb128 0x5
+ 270 0057 99010000 		.4byte	.LASF4
+ 271 005b 05       		.sleb128 5
+ 272 005c 05       		.uleb128 0x5
+ 273 005d 9F010000 		.4byte	.LASF5
+ 274 0061 06       		.sleb128 6
+ 275 0062 00       		.byte	0
+ 276 0063 06       		.uleb128 0x6
+ 277 0064 E9010000 		.4byte	.LASF11
+ 278 0068 02       		.byte	0x2
+ 279 0069 2A       		.byte	0x2a
+ 280 006a 2C000000 		.4byte	0x2c
+ 281 006e 02       		.uleb128 0x2
+ 282 006f 01       		.byte	0x1
+ 283 0070 08       		.byte	0x8
+ 284 0071 72000000 		.4byte	.LASF7
+ 285 0075 02       		.uleb128 0x2
+ 286 0076 01       		.byte	0x1
+ 287 0077 06       		.byte	0x6
+ 288 0078 1D020000 		.4byte	.LASF8
+ 289 007c 02       		.uleb128 0x2
+ 290 007d 02       		.byte	0x2
+ 291 007e 05       		.byte	0x5
+ 292 007f F0010000 		.4byte	.LASF9
+ 293 0083 02       		.uleb128 0x2
+ 294 0084 02       		.byte	0x2
+ 295 0085 07       		.byte	0x7
+ 296 0086 98000000 		.4byte	.LASF10
+ 297 008a 06       		.uleb128 0x6
+ 298 008b 11000000 		.4byte	.LASF12
+ 299 008f 03       		.byte	0x3
+ 300 0090 3F       		.byte	0x3f
+ 301 0091 95000000 		.4byte	0x95
+ 302 0095 02       		.uleb128 0x2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 8
+
+
+ 303 0096 04       		.byte	0x4
+ 304 0097 05       		.byte	0x5
+ 305 0098 14020000 		.4byte	.LASF13
+ 306 009c 02       		.uleb128 0x2
+ 307 009d 04       		.byte	0x4
+ 308 009e 07       		.byte	0x7
+ 309 009f 86000000 		.4byte	.LASF14
+ 310 00a3 02       		.uleb128 0x2
+ 311 00a4 08       		.byte	0x8
+ 312 00a5 05       		.byte	0x5
+ 313 00a6 D6010000 		.4byte	.LASF15
+ 314 00aa 02       		.uleb128 0x2
+ 315 00ab 08       		.byte	0x8
+ 316 00ac 07       		.byte	0x7
+ 317 00ad 82010000 		.4byte	.LASF16
+ 318 00b1 07       		.uleb128 0x7
+ 319 00b2 04       		.byte	0x4
+ 320 00b3 05       		.byte	0x5
+ 321 00b4 696E7400 		.ascii	"int\000"
+ 322 00b8 02       		.uleb128 0x2
+ 323 00b9 04       		.byte	0x4
+ 324 00ba 07       		.byte	0x7
+ 325 00bb 6A010000 		.4byte	.LASF17
+ 326 00bf 06       		.uleb128 0x6
+ 327 00c0 B3010000 		.4byte	.LASF18
+ 328 00c4 04       		.byte	0x4
+ 329 00c5 2C       		.byte	0x2c
+ 330 00c6 8A000000 		.4byte	0x8a
+ 331 00ca 08       		.uleb128 0x8
+ 332 00cb 6C000000 		.4byte	.LASF19
+ 333 00cf 05       		.byte	0x5
+ 334 00d0 9201     		.2byte	0x192
+ 335 00d2 6E000000 		.4byte	0x6e
+ 336 00d6 02       		.uleb128 0x2
+ 337 00d7 08       		.byte	0x8
+ 338 00d8 04       		.byte	0x4
+ 339 00d9 B8000000 		.4byte	.LASF20
+ 340 00dd 08       		.uleb128 0x8
+ 341 00de 80000000 		.4byte	.LASF21
+ 342 00e2 05       		.byte	0x5
+ 343 00e3 A301     		.2byte	0x1a3
+ 344 00e5 E9000000 		.4byte	0xe9
+ 345 00e9 02       		.uleb128 0x2
+ 346 00ea 01       		.byte	0x1
+ 347 00eb 08       		.byte	0x8
+ 348 00ec E4010000 		.4byte	.LASF22
+ 349 00f0 02       		.uleb128 0x2
+ 350 00f1 04       		.byte	0x4
+ 351 00f2 07       		.byte	0x7
+ 352 00f3 CD010000 		.4byte	.LASF23
+ 353 00f7 09       		.uleb128 0x9
+ 354 00f8 06000000 		.4byte	.LASF24
+ 355 00fc 01       		.byte	0x1
+ 356 00fd 33       		.byte	0x33
+ 357 00fe 00000000 		.4byte	.LFB64
+ 358 0102 22000000 		.4byte	.LFE64-.LFB64
+ 359 0106 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 9
+
+
+ 360 0107 9C       		.byte	0x9c
+ 361 0108 A0010000 		.4byte	0x1a0
+ 362 010c 0A       		.uleb128 0xa
+ 363 010d 77010000 		.4byte	.LASF26
+ 364 0111 01       		.byte	0x1
+ 365 0112 33       		.byte	0x33
+ 366 0113 B1000000 		.4byte	0xb1
+ 367 0117 00000000 		.4byte	.LLST0
+ 368 011b 0B       		.uleb128 0xb
+ 369 011c 04       		.byte	0x4
+ 370 011d 01       		.byte	0x1
+ 371 011e 35       		.byte	0x35
+ 372 011f 3A010000 		.4byte	0x13a
+ 373 0123 0C       		.uleb128 0xc
+ 374 0124 73747200 		.ascii	"str\000"
+ 375 0128 01       		.byte	0x1
+ 376 0129 36       		.byte	0x36
+ 377 012a A0010000 		.4byte	0x1a0
+ 378 012e 0C       		.uleb128 0xc
+ 379 012f 6E756D00 		.ascii	"num\000"
+ 380 0133 01       		.byte	0x1
+ 381 0134 37       		.byte	0x37
+ 382 0135 B1000000 		.4byte	0xb1
+ 383 0139 00       		.byte	0
+ 384 013a 0D       		.uleb128 0xd
+ 385 013b FA010000 		.4byte	.LASF34
+ 386 013f 01       		.byte	0x1
+ 387 0140 38       		.byte	0x38
+ 388 0141 1B010000 		.4byte	0x11b
+ 389 0145 0E       		.uleb128 0xe
+ 390 0146 0A000000 		.4byte	.LVL2
+ 391 014a C4020000 		.4byte	0x2c4
+ 392 014e 59010000 		.4byte	0x159
+ 393 0152 0F       		.uleb128 0xf
+ 394 0153 01       		.uleb128 0x1
+ 395 0154 50       		.byte	0x50
+ 396 0155 02       		.uleb128 0x2
+ 397 0156 74       		.byte	0x74
+ 398 0157 00       		.sleb128 0
+ 399 0158 00       		.byte	0
+ 400 0159 0E       		.uleb128 0xe
+ 401 015a 12000000 		.4byte	.LVL3
+ 402 015e C4020000 		.4byte	0x2c4
+ 403 0162 73010000 		.4byte	0x173
+ 404 0166 0F       		.uleb128 0xf
+ 405 0167 01       		.uleb128 0x1
+ 406 0168 50       		.byte	0x50
+ 407 0169 08       		.uleb128 0x8
+ 408 016a 74       		.byte	0x74
+ 409 016b 00       		.sleb128 0
+ 410 016c 09       		.byte	0x9
+ 411 016d F4       		.byte	0xf4
+ 412 016e 24       		.byte	0x24
+ 413 016f 09       		.byte	0x9
+ 414 0170 FC       		.byte	0xfc
+ 415 0171 25       		.byte	0x25
+ 416 0172 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 10
+
+
+ 417 0173 0E       		.uleb128 0xe
+ 418 0174 1A000000 		.4byte	.LVL4
+ 419 0178 C4020000 		.4byte	0x2c4
+ 420 017c 8D010000 		.4byte	0x18d
+ 421 0180 0F       		.uleb128 0xf
+ 422 0181 01       		.uleb128 0x1
+ 423 0182 50       		.byte	0x50
+ 424 0183 08       		.uleb128 0x8
+ 425 0184 74       		.byte	0x74
+ 426 0185 00       		.sleb128 0
+ 427 0186 09       		.byte	0x9
+ 428 0187 EC       		.byte	0xec
+ 429 0188 24       		.byte	0x24
+ 430 0189 09       		.byte	0x9
+ 431 018a FC       		.byte	0xfc
+ 432 018b 25       		.byte	0x25
+ 433 018c 00       		.byte	0
+ 434 018d 10       		.uleb128 0x10
+ 435 018e 20000000 		.4byte	.LVL5
+ 436 0192 C4020000 		.4byte	0x2c4
+ 437 0196 0F       		.uleb128 0xf
+ 438 0197 01       		.uleb128 0x1
+ 439 0198 50       		.byte	0x50
+ 440 0199 04       		.uleb128 0x4
+ 441 019a 74       		.byte	0x74
+ 442 019b 00       		.sleb128 0
+ 443 019c 48       		.byte	0x48
+ 444 019d 25       		.byte	0x25
+ 445 019e 00       		.byte	0
+ 446 019f 00       		.byte	0
+ 447 01a0 11       		.uleb128 0x11
+ 448 01a1 E9000000 		.4byte	0xe9
+ 449 01a5 B0010000 		.4byte	0x1b0
+ 450 01a9 12       		.uleb128 0x12
+ 451 01aa F0000000 		.4byte	0xf0
+ 452 01ae 03       		.byte	0x3
+ 453 01af 00       		.byte	0
+ 454 01b0 13       		.uleb128 0x13
+ 455 01b1 D1000000 		.4byte	.LASF35
+ 456 01b5 01       		.byte	0x1
+ 457 01b6 45       		.byte	0x45
+ 458 01b7 00000000 		.4byte	.LFB65
+ 459 01bb 14000000 		.4byte	.LFE65-.LFB65
+ 460 01bf 01       		.uleb128 0x1
+ 461 01c0 9C       		.byte	0x9c
+ 462 01c1 E3010000 		.4byte	0x1e3
+ 463 01c5 14       		.uleb128 0x14
+ 464 01c6 6900     		.ascii	"i\000"
+ 465 01c8 01       		.byte	0x1
+ 466 01c9 46       		.byte	0x46
+ 467 01ca B1000000 		.4byte	0xb1
+ 468 01ce 1E000000 		.4byte	.LLST1
+ 469 01d2 10       		.uleb128 0x10
+ 470 01d3 0C000000 		.4byte	.LVL8
+ 471 01d7 C4020000 		.4byte	0x2c4
+ 472 01db 0F       		.uleb128 0xf
+ 473 01dc 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 11
+
+
+ 474 01dd 50       		.byte	0x50
+ 475 01de 02       		.uleb128 0x2
+ 476 01df 09       		.byte	0x9
+ 477 01e0 FF       		.byte	0xff
+ 478 01e1 00       		.byte	0
+ 479 01e2 00       		.byte	0
+ 480 01e3 15       		.uleb128 0x15
+ 481 01e4 A5010000 		.4byte	.LASF25
+ 482 01e8 01       		.byte	0x1
+ 483 01e9 16       		.byte	0x16
+ 484 01ea 00000000 		.4byte	.LFB63
+ 485 01ee 7C000000 		.4byte	.LFE63-.LFB63
+ 486 01f2 01       		.uleb128 0x1
+ 487 01f3 9C       		.byte	0x9c
+ 488 01f4 B3020000 		.4byte	0x2b3
+ 489 01f8 0A       		.uleb128 0xa
+ 490 01f9 C8010000 		.4byte	.LASF27
+ 491 01fd 01       		.byte	0x1
+ 492 01fe 16       		.byte	0x16
+ 493 01ff 63000000 		.4byte	0x63
+ 494 0203 3D000000 		.4byte	.LLST2
+ 495 0207 0A       		.uleb128 0xa
+ 496 0208 07020000 		.4byte	.LASF28
+ 497 020c 01       		.byte	0x1
+ 498 020d 16       		.byte	0x16
+ 499 020e 25000000 		.4byte	0x25
+ 500 0212 5E000000 		.4byte	.LLST3
+ 501 0216 16       		.uleb128 0x16
+ 502 0217 0A000000 		.4byte	.LVL11
+ 503 021b B0010000 		.4byte	0x1b0
+ 504 021f 0E       		.uleb128 0xe
+ 505 0220 20000000 		.4byte	.LVL12
+ 506 0224 D5020000 		.4byte	0x2d5
+ 507 0228 36020000 		.4byte	0x236
+ 508 022c 0F       		.uleb128 0xf
+ 509 022d 01       		.uleb128 0x1
+ 510 022e 50       		.byte	0x50
+ 511 022f 05       		.uleb128 0x5
+ 512 0230 03       		.byte	0x3
+ 513 0231 00000000 		.4byte	.LC0
+ 514 0235 00       		.byte	0
+ 515 0236 0E       		.uleb128 0xe
+ 516 0237 28000000 		.4byte	.LVL13
+ 517 023b D5020000 		.4byte	0x2d5
+ 518 023f 4D020000 		.4byte	0x24d
+ 519 0243 0F       		.uleb128 0xf
+ 520 0244 01       		.uleb128 0x1
+ 521 0245 50       		.byte	0x50
+ 522 0246 05       		.uleb128 0x5
+ 523 0247 03       		.byte	0x3
+ 524 0248 08000000 		.4byte	.LC1
+ 525 024c 00       		.byte	0
+ 526 024d 0E       		.uleb128 0xe
+ 527 024e 30000000 		.4byte	.LVL14
+ 528 0252 D5020000 		.4byte	0x2d5
+ 529 0256 64020000 		.4byte	0x264
+ 530 025a 0F       		.uleb128 0xf
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 12
+
+
+ 531 025b 01       		.uleb128 0x1
+ 532 025c 50       		.byte	0x50
+ 533 025d 05       		.uleb128 0x5
+ 534 025e 03       		.byte	0x3
+ 535 025f 10000000 		.4byte	.LC2
+ 536 0263 00       		.byte	0
+ 537 0264 0E       		.uleb128 0xe
+ 538 0265 38000000 		.4byte	.LVL15
+ 539 0269 D5020000 		.4byte	0x2d5
+ 540 026d 7B020000 		.4byte	0x27b
+ 541 0271 0F       		.uleb128 0xf
+ 542 0272 01       		.uleb128 0x1
+ 543 0273 50       		.byte	0x50
+ 544 0274 05       		.uleb128 0x5
+ 545 0275 03       		.byte	0x3
+ 546 0276 18000000 		.4byte	.LC3
+ 547 027a 00       		.byte	0
+ 548 027b 0E       		.uleb128 0xe
+ 549 027c 40000000 		.4byte	.LVL16
+ 550 0280 D5020000 		.4byte	0x2d5
+ 551 0284 92020000 		.4byte	0x292
+ 552 0288 0F       		.uleb128 0xf
+ 553 0289 01       		.uleb128 0x1
+ 554 028a 50       		.byte	0x50
+ 555 028b 05       		.uleb128 0x5
+ 556 028c 03       		.byte	0x3
+ 557 028d 20000000 		.4byte	.LC4
+ 558 0291 00       		.byte	0
+ 559 0292 0E       		.uleb128 0xe
+ 560 0293 48000000 		.4byte	.LVL17
+ 561 0297 D5020000 		.4byte	0x2d5
+ 562 029b A9020000 		.4byte	0x2a9
+ 563 029f 0F       		.uleb128 0xf
+ 564 02a0 01       		.uleb128 0x1
+ 565 02a1 50       		.byte	0x50
+ 566 02a2 05       		.uleb128 0x5
+ 567 02a3 03       		.byte	0x3
+ 568 02a4 28000000 		.4byte	.LC5
+ 569 02a8 00       		.byte	0
+ 570 02a9 16       		.uleb128 0x16
+ 571 02aa 5E000000 		.4byte	.LVL21
+ 572 02ae F7000000 		.4byte	0xf7
+ 573 02b2 00       		.byte	0
+ 574 02b3 17       		.uleb128 0x17
+ 575 02b4 AB000000 		.4byte	.LASF36
+ 576 02b8 07       		.byte	0x7
+ 577 02b9 9606     		.2byte	0x696
+ 578 02bb BF020000 		.4byte	0x2bf
+ 579 02bf 18       		.uleb128 0x18
+ 580 02c0 BF000000 		.4byte	0xbf
+ 581 02c4 19       		.uleb128 0x19
+ 582 02c5 BB010000 		.4byte	.LASF29
+ 583 02c9 06       		.byte	0x6
+ 584 02ca 8A       		.byte	0x8a
+ 585 02cb D5020000 		.4byte	0x2d5
+ 586 02cf 1A       		.uleb128 0x1a
+ 587 02d0 CA000000 		.4byte	0xca
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 13
+
+
+ 588 02d4 00       		.byte	0
+ 589 02d5 19       		.uleb128 0x19
+ 590 02d6 29020000 		.4byte	.LASF30
+ 591 02da 06       		.byte	0x6
+ 592 02db 8B       		.byte	0x8b
+ 593 02dc E6020000 		.4byte	0x2e6
+ 594 02e0 1A       		.uleb128 0x1a
+ 595 02e1 E6020000 		.4byte	0x2e6
+ 596 02e5 00       		.byte	0
+ 597 02e6 1B       		.uleb128 0x1b
+ 598 02e7 04       		.byte	0x4
+ 599 02e8 EC020000 		.4byte	0x2ec
+ 600 02ec 1C       		.uleb128 0x1c
+ 601 02ed DD000000 		.4byte	0xdd
+ 602 02f1 00       		.byte	0
+ 603              		.section	.debug_abbrev,"",%progbits
+ 604              	.Ldebug_abbrev0:
+ 605 0000 01       		.uleb128 0x1
+ 606 0001 11       		.uleb128 0x11
+ 607 0002 01       		.byte	0x1
+ 608 0003 25       		.uleb128 0x25
+ 609 0004 0E       		.uleb128 0xe
+ 610 0005 13       		.uleb128 0x13
+ 611 0006 0B       		.uleb128 0xb
+ 612 0007 03       		.uleb128 0x3
+ 613 0008 0E       		.uleb128 0xe
+ 614 0009 1B       		.uleb128 0x1b
+ 615 000a 0E       		.uleb128 0xe
+ 616 000b 55       		.uleb128 0x55
+ 617 000c 17       		.uleb128 0x17
+ 618 000d 11       		.uleb128 0x11
+ 619 000e 01       		.uleb128 0x1
+ 620 000f 10       		.uleb128 0x10
+ 621 0010 17       		.uleb128 0x17
+ 622 0011 00       		.byte	0
+ 623 0012 00       		.byte	0
+ 624 0013 02       		.uleb128 0x2
+ 625 0014 24       		.uleb128 0x24
+ 626 0015 00       		.byte	0
+ 627 0016 0B       		.uleb128 0xb
+ 628 0017 0B       		.uleb128 0xb
+ 629 0018 3E       		.uleb128 0x3e
+ 630 0019 0B       		.uleb128 0xb
+ 631 001a 03       		.uleb128 0x3
+ 632 001b 0E       		.uleb128 0xe
+ 633 001c 00       		.byte	0
+ 634 001d 00       		.byte	0
+ 635 001e 03       		.uleb128 0x3
+ 636 001f 04       		.uleb128 0x4
+ 637 0020 01       		.byte	0x1
+ 638 0021 03       		.uleb128 0x3
+ 639 0022 0E       		.uleb128 0xe
+ 640 0023 0B       		.uleb128 0xb
+ 641 0024 0B       		.uleb128 0xb
+ 642 0025 3A       		.uleb128 0x3a
+ 643 0026 0B       		.uleb128 0xb
+ 644 0027 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 14
+
+
+ 645 0028 0B       		.uleb128 0xb
+ 646 0029 01       		.uleb128 0x1
+ 647 002a 13       		.uleb128 0x13
+ 648 002b 00       		.byte	0
+ 649 002c 00       		.byte	0
+ 650 002d 04       		.uleb128 0x4
+ 651 002e 28       		.uleb128 0x28
+ 652 002f 00       		.byte	0
+ 653 0030 03       		.uleb128 0x3
+ 654 0031 08       		.uleb128 0x8
+ 655 0032 1C       		.uleb128 0x1c
+ 656 0033 0D       		.uleb128 0xd
+ 657 0034 00       		.byte	0
+ 658 0035 00       		.byte	0
+ 659 0036 05       		.uleb128 0x5
+ 660 0037 28       		.uleb128 0x28
+ 661 0038 00       		.byte	0
+ 662 0039 03       		.uleb128 0x3
+ 663 003a 0E       		.uleb128 0xe
+ 664 003b 1C       		.uleb128 0x1c
+ 665 003c 0D       		.uleb128 0xd
+ 666 003d 00       		.byte	0
+ 667 003e 00       		.byte	0
+ 668 003f 06       		.uleb128 0x6
+ 669 0040 16       		.uleb128 0x16
+ 670 0041 00       		.byte	0
+ 671 0042 03       		.uleb128 0x3
+ 672 0043 0E       		.uleb128 0xe
+ 673 0044 3A       		.uleb128 0x3a
+ 674 0045 0B       		.uleb128 0xb
+ 675 0046 3B       		.uleb128 0x3b
+ 676 0047 0B       		.uleb128 0xb
+ 677 0048 49       		.uleb128 0x49
+ 678 0049 13       		.uleb128 0x13
+ 679 004a 00       		.byte	0
+ 680 004b 00       		.byte	0
+ 681 004c 07       		.uleb128 0x7
+ 682 004d 24       		.uleb128 0x24
+ 683 004e 00       		.byte	0
+ 684 004f 0B       		.uleb128 0xb
+ 685 0050 0B       		.uleb128 0xb
+ 686 0051 3E       		.uleb128 0x3e
+ 687 0052 0B       		.uleb128 0xb
+ 688 0053 03       		.uleb128 0x3
+ 689 0054 08       		.uleb128 0x8
+ 690 0055 00       		.byte	0
+ 691 0056 00       		.byte	0
+ 692 0057 08       		.uleb128 0x8
+ 693 0058 16       		.uleb128 0x16
+ 694 0059 00       		.byte	0
+ 695 005a 03       		.uleb128 0x3
+ 696 005b 0E       		.uleb128 0xe
+ 697 005c 3A       		.uleb128 0x3a
+ 698 005d 0B       		.uleb128 0xb
+ 699 005e 3B       		.uleb128 0x3b
+ 700 005f 05       		.uleb128 0x5
+ 701 0060 49       		.uleb128 0x49
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 15
+
+
+ 702 0061 13       		.uleb128 0x13
+ 703 0062 00       		.byte	0
+ 704 0063 00       		.byte	0
+ 705 0064 09       		.uleb128 0x9
+ 706 0065 2E       		.uleb128 0x2e
+ 707 0066 01       		.byte	0x1
+ 708 0067 3F       		.uleb128 0x3f
+ 709 0068 19       		.uleb128 0x19
+ 710 0069 03       		.uleb128 0x3
+ 711 006a 0E       		.uleb128 0xe
+ 712 006b 3A       		.uleb128 0x3a
+ 713 006c 0B       		.uleb128 0xb
+ 714 006d 3B       		.uleb128 0x3b
+ 715 006e 0B       		.uleb128 0xb
+ 716 006f 27       		.uleb128 0x27
+ 717 0070 19       		.uleb128 0x19
+ 718 0071 11       		.uleb128 0x11
+ 719 0072 01       		.uleb128 0x1
+ 720 0073 12       		.uleb128 0x12
+ 721 0074 06       		.uleb128 0x6
+ 722 0075 40       		.uleb128 0x40
+ 723 0076 18       		.uleb128 0x18
+ 724 0077 9742     		.uleb128 0x2117
+ 725 0079 19       		.uleb128 0x19
+ 726 007a 01       		.uleb128 0x1
+ 727 007b 13       		.uleb128 0x13
+ 728 007c 00       		.byte	0
+ 729 007d 00       		.byte	0
+ 730 007e 0A       		.uleb128 0xa
+ 731 007f 05       		.uleb128 0x5
+ 732 0080 00       		.byte	0
+ 733 0081 03       		.uleb128 0x3
+ 734 0082 0E       		.uleb128 0xe
+ 735 0083 3A       		.uleb128 0x3a
+ 736 0084 0B       		.uleb128 0xb
+ 737 0085 3B       		.uleb128 0x3b
+ 738 0086 0B       		.uleb128 0xb
+ 739 0087 49       		.uleb128 0x49
+ 740 0088 13       		.uleb128 0x13
+ 741 0089 02       		.uleb128 0x2
+ 742 008a 17       		.uleb128 0x17
+ 743 008b 00       		.byte	0
+ 744 008c 00       		.byte	0
+ 745 008d 0B       		.uleb128 0xb
+ 746 008e 17       		.uleb128 0x17
+ 747 008f 01       		.byte	0x1
+ 748 0090 0B       		.uleb128 0xb
+ 749 0091 0B       		.uleb128 0xb
+ 750 0092 3A       		.uleb128 0x3a
+ 751 0093 0B       		.uleb128 0xb
+ 752 0094 3B       		.uleb128 0x3b
+ 753 0095 0B       		.uleb128 0xb
+ 754 0096 01       		.uleb128 0x1
+ 755 0097 13       		.uleb128 0x13
+ 756 0098 00       		.byte	0
+ 757 0099 00       		.byte	0
+ 758 009a 0C       		.uleb128 0xc
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 16
+
+
+ 759 009b 0D       		.uleb128 0xd
+ 760 009c 00       		.byte	0
+ 761 009d 03       		.uleb128 0x3
+ 762 009e 08       		.uleb128 0x8
+ 763 009f 3A       		.uleb128 0x3a
+ 764 00a0 0B       		.uleb128 0xb
+ 765 00a1 3B       		.uleb128 0x3b
+ 766 00a2 0B       		.uleb128 0xb
+ 767 00a3 49       		.uleb128 0x49
+ 768 00a4 13       		.uleb128 0x13
+ 769 00a5 00       		.byte	0
+ 770 00a6 00       		.byte	0
+ 771 00a7 0D       		.uleb128 0xd
+ 772 00a8 34       		.uleb128 0x34
+ 773 00a9 00       		.byte	0
+ 774 00aa 03       		.uleb128 0x3
+ 775 00ab 0E       		.uleb128 0xe
+ 776 00ac 3A       		.uleb128 0x3a
+ 777 00ad 0B       		.uleb128 0xb
+ 778 00ae 3B       		.uleb128 0x3b
+ 779 00af 0B       		.uleb128 0xb
+ 780 00b0 49       		.uleb128 0x49
+ 781 00b1 13       		.uleb128 0x13
+ 782 00b2 00       		.byte	0
+ 783 00b3 00       		.byte	0
+ 784 00b4 0E       		.uleb128 0xe
+ 785 00b5 898201   		.uleb128 0x4109
+ 786 00b8 01       		.byte	0x1
+ 787 00b9 11       		.uleb128 0x11
+ 788 00ba 01       		.uleb128 0x1
+ 789 00bb 31       		.uleb128 0x31
+ 790 00bc 13       		.uleb128 0x13
+ 791 00bd 01       		.uleb128 0x1
+ 792 00be 13       		.uleb128 0x13
+ 793 00bf 00       		.byte	0
+ 794 00c0 00       		.byte	0
+ 795 00c1 0F       		.uleb128 0xf
+ 796 00c2 8A8201   		.uleb128 0x410a
+ 797 00c5 00       		.byte	0
+ 798 00c6 02       		.uleb128 0x2
+ 799 00c7 18       		.uleb128 0x18
+ 800 00c8 9142     		.uleb128 0x2111
+ 801 00ca 18       		.uleb128 0x18
+ 802 00cb 00       		.byte	0
+ 803 00cc 00       		.byte	0
+ 804 00cd 10       		.uleb128 0x10
+ 805 00ce 898201   		.uleb128 0x4109
+ 806 00d1 01       		.byte	0x1
+ 807 00d2 11       		.uleb128 0x11
+ 808 00d3 01       		.uleb128 0x1
+ 809 00d4 31       		.uleb128 0x31
+ 810 00d5 13       		.uleb128 0x13
+ 811 00d6 00       		.byte	0
+ 812 00d7 00       		.byte	0
+ 813 00d8 11       		.uleb128 0x11
+ 814 00d9 01       		.uleb128 0x1
+ 815 00da 01       		.byte	0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 17
+
+
+ 816 00db 49       		.uleb128 0x49
+ 817 00dc 13       		.uleb128 0x13
+ 818 00dd 01       		.uleb128 0x1
+ 819 00de 13       		.uleb128 0x13
+ 820 00df 00       		.byte	0
+ 821 00e0 00       		.byte	0
+ 822 00e1 12       		.uleb128 0x12
+ 823 00e2 21       		.uleb128 0x21
+ 824 00e3 00       		.byte	0
+ 825 00e4 49       		.uleb128 0x49
+ 826 00e5 13       		.uleb128 0x13
+ 827 00e6 2F       		.uleb128 0x2f
+ 828 00e7 0B       		.uleb128 0xb
+ 829 00e8 00       		.byte	0
+ 830 00e9 00       		.byte	0
+ 831 00ea 13       		.uleb128 0x13
+ 832 00eb 2E       		.uleb128 0x2e
+ 833 00ec 01       		.byte	0x1
+ 834 00ed 3F       		.uleb128 0x3f
+ 835 00ee 19       		.uleb128 0x19
+ 836 00ef 03       		.uleb128 0x3
+ 837 00f0 0E       		.uleb128 0xe
+ 838 00f1 3A       		.uleb128 0x3a
+ 839 00f2 0B       		.uleb128 0xb
+ 840 00f3 3B       		.uleb128 0x3b
+ 841 00f4 0B       		.uleb128 0xb
+ 842 00f5 11       		.uleb128 0x11
+ 843 00f6 01       		.uleb128 0x1
+ 844 00f7 12       		.uleb128 0x12
+ 845 00f8 06       		.uleb128 0x6
+ 846 00f9 40       		.uleb128 0x40
+ 847 00fa 18       		.uleb128 0x18
+ 848 00fb 9742     		.uleb128 0x2117
+ 849 00fd 19       		.uleb128 0x19
+ 850 00fe 01       		.uleb128 0x1
+ 851 00ff 13       		.uleb128 0x13
+ 852 0100 00       		.byte	0
+ 853 0101 00       		.byte	0
+ 854 0102 14       		.uleb128 0x14
+ 855 0103 34       		.uleb128 0x34
+ 856 0104 00       		.byte	0
+ 857 0105 03       		.uleb128 0x3
+ 858 0106 08       		.uleb128 0x8
+ 859 0107 3A       		.uleb128 0x3a
+ 860 0108 0B       		.uleb128 0xb
+ 861 0109 3B       		.uleb128 0x3b
+ 862 010a 0B       		.uleb128 0xb
+ 863 010b 49       		.uleb128 0x49
+ 864 010c 13       		.uleb128 0x13
+ 865 010d 02       		.uleb128 0x2
+ 866 010e 17       		.uleb128 0x17
+ 867 010f 00       		.byte	0
+ 868 0110 00       		.byte	0
+ 869 0111 15       		.uleb128 0x15
+ 870 0112 2E       		.uleb128 0x2e
+ 871 0113 01       		.byte	0x1
+ 872 0114 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 18
+
+
+ 873 0115 19       		.uleb128 0x19
+ 874 0116 03       		.uleb128 0x3
+ 875 0117 0E       		.uleb128 0xe
+ 876 0118 3A       		.uleb128 0x3a
+ 877 0119 0B       		.uleb128 0xb
+ 878 011a 3B       		.uleb128 0x3b
+ 879 011b 0B       		.uleb128 0xb
+ 880 011c 27       		.uleb128 0x27
+ 881 011d 19       		.uleb128 0x19
+ 882 011e 11       		.uleb128 0x11
+ 883 011f 01       		.uleb128 0x1
+ 884 0120 12       		.uleb128 0x12
+ 885 0121 06       		.uleb128 0x6
+ 886 0122 40       		.uleb128 0x40
+ 887 0123 18       		.uleb128 0x18
+ 888 0124 9642     		.uleb128 0x2116
+ 889 0126 19       		.uleb128 0x19
+ 890 0127 01       		.uleb128 0x1
+ 891 0128 13       		.uleb128 0x13
+ 892 0129 00       		.byte	0
+ 893 012a 00       		.byte	0
+ 894 012b 16       		.uleb128 0x16
+ 895 012c 898201   		.uleb128 0x4109
+ 896 012f 00       		.byte	0
+ 897 0130 11       		.uleb128 0x11
+ 898 0131 01       		.uleb128 0x1
+ 899 0132 31       		.uleb128 0x31
+ 900 0133 13       		.uleb128 0x13
+ 901 0134 00       		.byte	0
+ 902 0135 00       		.byte	0
+ 903 0136 17       		.uleb128 0x17
+ 904 0137 34       		.uleb128 0x34
+ 905 0138 00       		.byte	0
+ 906 0139 03       		.uleb128 0x3
+ 907 013a 0E       		.uleb128 0xe
+ 908 013b 3A       		.uleb128 0x3a
+ 909 013c 0B       		.uleb128 0xb
+ 910 013d 3B       		.uleb128 0x3b
+ 911 013e 05       		.uleb128 0x5
+ 912 013f 49       		.uleb128 0x49
+ 913 0140 13       		.uleb128 0x13
+ 914 0141 3F       		.uleb128 0x3f
+ 915 0142 19       		.uleb128 0x19
+ 916 0143 3C       		.uleb128 0x3c
+ 917 0144 19       		.uleb128 0x19
+ 918 0145 00       		.byte	0
+ 919 0146 00       		.byte	0
+ 920 0147 18       		.uleb128 0x18
+ 921 0148 35       		.uleb128 0x35
+ 922 0149 00       		.byte	0
+ 923 014a 49       		.uleb128 0x49
+ 924 014b 13       		.uleb128 0x13
+ 925 014c 00       		.byte	0
+ 926 014d 00       		.byte	0
+ 927 014e 19       		.uleb128 0x19
+ 928 014f 2E       		.uleb128 0x2e
+ 929 0150 01       		.byte	0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 19
+
+
+ 930 0151 3F       		.uleb128 0x3f
+ 931 0152 19       		.uleb128 0x19
+ 932 0153 03       		.uleb128 0x3
+ 933 0154 0E       		.uleb128 0xe
+ 934 0155 3A       		.uleb128 0x3a
+ 935 0156 0B       		.uleb128 0xb
+ 936 0157 3B       		.uleb128 0x3b
+ 937 0158 0B       		.uleb128 0xb
+ 938 0159 27       		.uleb128 0x27
+ 939 015a 19       		.uleb128 0x19
+ 940 015b 3C       		.uleb128 0x3c
+ 941 015c 19       		.uleb128 0x19
+ 942 015d 01       		.uleb128 0x1
+ 943 015e 13       		.uleb128 0x13
+ 944 015f 00       		.byte	0
+ 945 0160 00       		.byte	0
+ 946 0161 1A       		.uleb128 0x1a
+ 947 0162 05       		.uleb128 0x5
+ 948 0163 00       		.byte	0
+ 949 0164 49       		.uleb128 0x49
+ 950 0165 13       		.uleb128 0x13
+ 951 0166 00       		.byte	0
+ 952 0167 00       		.byte	0
+ 953 0168 1B       		.uleb128 0x1b
+ 954 0169 0F       		.uleb128 0xf
+ 955 016a 00       		.byte	0
+ 956 016b 0B       		.uleb128 0xb
+ 957 016c 0B       		.uleb128 0xb
+ 958 016d 49       		.uleb128 0x49
+ 959 016e 13       		.uleb128 0x13
+ 960 016f 00       		.byte	0
+ 961 0170 00       		.byte	0
+ 962 0171 1C       		.uleb128 0x1c
+ 963 0172 26       		.uleb128 0x26
+ 964 0173 00       		.byte	0
+ 965 0174 49       		.uleb128 0x49
+ 966 0175 13       		.uleb128 0x13
+ 967 0176 00       		.byte	0
+ 968 0177 00       		.byte	0
+ 969 0178 00       		.byte	0
+ 970              		.section	.debug_loc,"",%progbits
+ 971              	.Ldebug_loc0:
+ 972              	.LLST0:
+ 973 0000 00000000 		.4byte	.LVL0
+ 974 0004 06000000 		.4byte	.LVL1
+ 975 0008 0100     		.2byte	0x1
+ 976 000a 50       		.byte	0x50
+ 977 000b 06000000 		.4byte	.LVL1
+ 978 000f 22000000 		.4byte	.LFE64
+ 979 0013 0100     		.2byte	0x1
+ 980 0015 54       		.byte	0x54
+ 981 0016 00000000 		.4byte	0
+ 982 001a 00000000 		.4byte	0
+ 983              	.LLST1:
+ 984 001e 02000000 		.4byte	.LVL6
+ 985 0022 06000000 		.4byte	.LVL7
+ 986 0026 0200     		.2byte	0x2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 20
+
+
+ 987 0028 30       		.byte	0x30
+ 988 0029 9F       		.byte	0x9f
+ 989 002a 06000000 		.4byte	.LVL7
+ 990 002e 14000000 		.4byte	.LFE65
+ 991 0032 0100     		.2byte	0x1
+ 992 0034 54       		.byte	0x54
+ 993 0035 00000000 		.4byte	0
+ 994 0039 00000000 		.4byte	0
+ 995              	.LLST2:
+ 996 003d 00000000 		.4byte	.LVL10
+ 997 0041 09000000 		.4byte	.LVL11-1
+ 998 0045 0100     		.2byte	0x1
+ 999 0047 50       		.byte	0x50
+ 1000 0048 09000000 		.4byte	.LVL11-1
+ 1001 004c 7C000000 		.4byte	.LFE63
+ 1002 0050 0400     		.2byte	0x4
+ 1003 0052 F3       		.byte	0xf3
+ 1004 0053 01       		.uleb128 0x1
+ 1005 0054 50       		.byte	0x50
+ 1006 0055 9F       		.byte	0x9f
+ 1007 0056 00000000 		.4byte	0
+ 1008 005a 00000000 		.4byte	0
+ 1009              	.LLST3:
+ 1010 005e 00000000 		.4byte	.LVL10
+ 1011 0062 09000000 		.4byte	.LVL11-1
+ 1012 0066 0100     		.2byte	0x1
+ 1013 0068 51       		.byte	0x51
+ 1014 0069 09000000 		.4byte	.LVL11-1
+ 1015 006d 60000000 		.4byte	.LVL22
+ 1016 0071 0100     		.2byte	0x1
+ 1017 0073 55       		.byte	0x55
+ 1018 0074 60000000 		.4byte	.LVL22
+ 1019 0078 7C000000 		.4byte	.LFE63
+ 1020 007c 0600     		.2byte	0x6
+ 1021 007e F3       		.byte	0xf3
+ 1022 007f 03       		.uleb128 0x3
+ 1023 0080 F5       		.byte	0xf5
+ 1024 0081 01       		.uleb128 0x1
+ 1025 0082 25       		.uleb128 0x25
+ 1026 0083 9F       		.byte	0x9f
+ 1027 0084 00000000 		.4byte	0
+ 1028 0088 00000000 		.4byte	0
+ 1029              		.section	.debug_aranges,"",%progbits
+ 1030 0000 2C000000 		.4byte	0x2c
+ 1031 0004 0200     		.2byte	0x2
+ 1032 0006 00000000 		.4byte	.Ldebug_info0
+ 1033 000a 04       		.byte	0x4
+ 1034 000b 00       		.byte	0
+ 1035 000c 0000     		.2byte	0
+ 1036 000e 0000     		.2byte	0
+ 1037 0010 00000000 		.4byte	.LFB64
+ 1038 0014 22000000 		.4byte	.LFE64-.LFB64
+ 1039 0018 00000000 		.4byte	.LFB65
+ 1040 001c 14000000 		.4byte	.LFE65-.LFB65
+ 1041 0020 00000000 		.4byte	.LFB63
+ 1042 0024 7C000000 		.4byte	.LFE63-.LFB63
+ 1043 0028 00000000 		.4byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 21
+
+
+ 1044 002c 00000000 		.4byte	0
+ 1045              		.section	.debug_ranges,"",%progbits
+ 1046              	.Ldebug_ranges0:
+ 1047 0000 00000000 		.4byte	.LFB64
+ 1048 0004 22000000 		.4byte	.LFE64
+ 1049 0008 00000000 		.4byte	.LFB65
+ 1050 000c 14000000 		.4byte	.LFE65
+ 1051 0010 00000000 		.4byte	.LFB63
+ 1052 0014 7C000000 		.4byte	.LFE63
+ 1053 0018 00000000 		.4byte	0
+ 1054 001c 00000000 		.4byte	0
+ 1055              		.section	.debug_line,"",%progbits
+ 1056              	.Ldebug_line0:
+ 1057 0000 CF010000 		.section	.debug_str,"MS",%progbits,1
+ 1057      02007401 
+ 1057      00000201 
+ 1057      FB0E0D00 
+ 1057      01010101 
+ 1058              	.LASF1:
+ 1059 0000 4252414B 		.ascii	"BRAKE\000"
+ 1059      4500
+ 1060              	.LASF24:
+ 1061 0006 6F757470 		.ascii	"output_int\000"
+ 1061      75745F69 
+ 1061      6E7400
+ 1062              	.LASF12:
+ 1063 0011 5F5F696E 		.ascii	"__int32_t\000"
+ 1063      7433325F 
+ 1063      7400
+ 1064              	.LASF2:
+ 1065 001b 54505330 		.ascii	"TPS0\000"
+ 1065      00
+ 1066              	.LASF3:
+ 1067 0020 54505331 		.ascii	"TPS1\000"
+ 1067      00
+ 1068              	.LASF33:
+ 1069 0025 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\FSAE\\E-Throttle\\P"
+ 1069      73657273 
+ 1069      5C6D6974 
+ 1069      6368656C 
+ 1069      6C5C446F 
+ 1070 0052 536F435C 		.ascii	"SoC\\TimerTest.cydsn\000"
+ 1070      54696D65 
+ 1070      72546573 
+ 1070      742E6379 
+ 1070      64736E00 
+ 1071              	.LASF6:
+ 1072 0066 666C6F61 		.ascii	"float\000"
+ 1072      7400
+ 1073              	.LASF19:
+ 1074 006c 75696E74 		.ascii	"uint8\000"
+ 1074      3800
+ 1075              	.LASF7:
+ 1076 0072 756E7369 		.ascii	"unsigned char\000"
+ 1076      676E6564 
+ 1076      20636861 
+ 1076      7200
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 22
+
+
+ 1077              	.LASF21:
+ 1078 0080 63686172 		.ascii	"char8\000"
+ 1078      3800
+ 1079              	.LASF14:
+ 1080 0086 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1080      20756E73 
+ 1080      69676E65 
+ 1080      6420696E 
+ 1080      7400
+ 1081              	.LASF10:
+ 1082 0098 73686F72 		.ascii	"short unsigned int\000"
+ 1082      7420756E 
+ 1082      7369676E 
+ 1082      65642069 
+ 1082      6E7400
+ 1083              	.LASF36:
+ 1084 00ab 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1084      52784275 
+ 1084      66666572 
+ 1084      00
+ 1085              	.LASF20:
+ 1086 00b8 646F7562 		.ascii	"double\000"
+ 1086      6C6500
+ 1087              	.LASF32:
+ 1088 00bf 2E5C636F 		.ascii	".\\communication.c\000"
+ 1088      6D6D756E 
+ 1088      69636174 
+ 1088      696F6E2E 
+ 1088      6300
+ 1089              	.LASF35:
+ 1090 00d1 6F757470 		.ascii	"output_pad\000"
+ 1090      75745F70 
+ 1090      616400
+ 1091              	.LASF31:
+ 1092 00dc 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1092      4320342E 
+ 1092      392E3320 
+ 1092      32303135 
+ 1092      30333033 
+ 1093 010f 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1093      20726576 
+ 1093      6973696F 
+ 1093      6E203232 
+ 1093      31323230 
+ 1094 0142 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1094      66756E63 
+ 1094      74696F6E 
+ 1094      2D736563 
+ 1094      74696F6E 
+ 1095              	.LASF17:
+ 1096 016a 756E7369 		.ascii	"unsigned int\000"
+ 1096      676E6564 
+ 1096      20696E74 
+ 1096      00
+ 1097              	.LASF26:
+ 1098 0177 74617267 		.ascii	"target_num\000"
+ 1098      65745F6E 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 23
+
+
+ 1098      756D00
+ 1099              	.LASF16:
+ 1100 0182 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1100      206C6F6E 
+ 1100      6720756E 
+ 1100      7369676E 
+ 1100      65642069 
+ 1101              	.LASF4:
+ 1102 0199 41505053 		.ascii	"APPS0\000"
+ 1102      3000
+ 1103              	.LASF5:
+ 1104 019f 41505053 		.ascii	"APPS1\000"
+ 1104      3100
+ 1105              	.LASF25:
+ 1106 01a5 73656E64 		.ascii	"send_pot_data\000"
+ 1106      5F706F74 
+ 1106      5F646174 
+ 1106      6100
+ 1107              	.LASF18:
+ 1108 01b3 696E7433 		.ascii	"int32_t\000"
+ 1108      325F7400 
+ 1109              	.LASF29:
+ 1110 01bb 55415254 		.ascii	"UART_PutChar\000"
+ 1110      5F507574 
+ 1110      43686172 
+ 1110      00
+ 1111              	.LASF27:
+ 1112 01c8 73656E73 		.ascii	"sens\000"
+ 1112      00
+ 1113              	.LASF23:
+ 1114 01cd 73697A65 		.ascii	"sizetype\000"
+ 1114      74797065 
+ 1114      00
+ 1115              	.LASF15:
+ 1116 01d6 6C6F6E67 		.ascii	"long long int\000"
+ 1116      206C6F6E 
+ 1116      6720696E 
+ 1116      7400
+ 1117              	.LASF22:
+ 1118 01e4 63686172 		.ascii	"char\000"
+ 1118      00
+ 1119              	.LASF11:
+ 1120 01e9 73656E73 		.ascii	"sensor\000"
+ 1120      6F7200
+ 1121              	.LASF9:
+ 1122 01f0 73686F72 		.ascii	"short int\000"
+ 1122      7420696E 
+ 1122      7400
+ 1123              	.LASF34:
+ 1124 01fa 62797465 		.ascii	"byte_overlap\000"
+ 1124      5F6F7665 
+ 1124      726C6170 
+ 1124      00
+ 1125              	.LASF28:
+ 1126 0207 70657263 		.ascii	"percent\000"
+ 1126      656E7400 
+ 1127              	.LASF0:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccNwtBnI.s 			page 24
+
+
+ 1128 020f 41505053 		.ascii	"APPS\000"
+ 1128      00
+ 1129              	.LASF13:
+ 1130 0214 6C6F6E67 		.ascii	"long int\000"
+ 1130      20696E74 
+ 1130      00
+ 1131              	.LASF8:
+ 1132 021d 7369676E 		.ascii	"signed char\000"
+ 1132      65642063 
+ 1132      68617200 
+ 1133              	.LASF30:
+ 1134 0229 55415254 		.ascii	"UART_PutString\000"
+ 1134      5F507574 
+ 1134      53747269 
+ 1134      6E6700
+ 1135              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

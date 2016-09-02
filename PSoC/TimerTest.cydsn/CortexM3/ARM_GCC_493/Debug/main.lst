@@ -1,0 +1,899 @@
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.main,"ax",%progbits
+  19              		.align	2
+  20              		.global	main
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	main, %function
+  24              	main:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** #include "communication.h"
+  14:.\main.c      **** 
+  15:.\main.c      **** int main()
+  16:.\main.c      **** {
+  27              		.loc 1 16 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 38B5     		push	{r3, r4, r5, lr}
+  32              		.cfi_def_cfa_offset 16
+  33              		.cfi_offset 3, -16
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  17:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  37              		.loc 1 17 0
+  38              	@ 17 ".\main.c" 1
+  39 0002 62B6     		CPSIE   i
+  40              	@ 0 "" 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 2
+
+
+  18:.\main.c      ****     UART_Start();
+  41              		.loc 1 18 0
+  42              		.thumb
+  43 0004 FFF7FEFF 		bl	UART_Start
+  44              	.LVL0:
+  45              	.L3:
+  46              	.LBB2:
+  19:.\main.c      **** 
+  20:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  21:.\main.c      **** 
+  22:.\main.c      ****     for(;;)
+  23:.\main.c      ****     {
+  24:.\main.c      ****         Timer_1_WriteCounter(Timer_1_ReadPeriod());
+  47              		.loc 1 24 0 discriminator 1
+  48 0008 FFF7FEFF 		bl	Timer_1_ReadPeriod
+  49              	.LVL1:
+  50 000c FFF7FEFF 		bl	Timer_1_WriteCounter
+  51              	.LVL2:
+  25:.\main.c      ****         Timer_1_Start();
+  52              		.loc 1 25 0 discriminator 1
+  53 0010 FFF7FEFF 		bl	Timer_1_Start
+  54              	.LVL3:
+  26:.\main.c      ****         //Timer_1_Init();
+  27:.\main.c      ****         int count = Timer_1_ReadCounter();
+  55              		.loc 1 27 0 discriminator 1
+  56 0014 FFF7FEFF 		bl	Timer_1_ReadCounter
+  57              	.LVL4:
+  58 0018 0446     		mov	r4, r0
+  59              	.LVL5:
+  28:.\main.c      ****         int start = count;
+  29:.\main.c      ****         //output_pad();
+  30:.\main.c      ****         //output_int(count);
+  31:.\main.c      ****         
+  32:.\main.c      ****         CyDelay(1000);
+  60              		.loc 1 32 0 discriminator 1
+  61 001a 4FF47A70 		mov	r0, #1000
+  62              	.LVL6:
+  63 001e FFF7FEFF 		bl	CyDelay
+  64              	.LVL7:
+  33:.\main.c      ****         
+  34:.\main.c      ****         count = Timer_1_ReadCounter();
+  65              		.loc 1 34 0 discriminator 1
+  66 0022 FFF7FEFF 		bl	Timer_1_ReadCounter
+  67              	.LVL8:
+  68 0026 0546     		mov	r5, r0
+  69              	.LVL9:
+  35:.\main.c      ****         int stop = count;
+  36:.\main.c      ****         //output_pad();
+  37:.\main.c      ****         //output_int(count);
+  38:.\main.c      ****         output_pad();
+  70              		.loc 1 38 0 discriminator 1
+  71 0028 FFF7FEFF 		bl	output_pad
+  72              	.LVL10:
+  39:.\main.c      ****         output_int((start - stop) / 32);
+  73              		.loc 1 39 0 discriminator 1
+  74 002c 601B     		subs	r0, r4, r5
+  75 002e 00D5     		bpl	.L2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 3
+
+
+  76 0030 1F30     		adds	r0, r0, #31
+  77              	.L2:
+  78 0032 4011     		asrs	r0, r0, #5
+  79 0034 FFF7FEFF 		bl	output_int
+  80              	.LVL11:
+  40:.\main.c      ****         //output_pad();
+  41:.\main.c      ****         //output_int(999999999);
+  42:.\main.c      ****         Timer_1_Stop();
+  81              		.loc 1 42 0 discriminator 1
+  82 0038 FFF7FEFF 		bl	Timer_1_Stop
+  83              	.LVL12:
+  84              	.LBE2:
+  43:.\main.c      ****     }
+  85              		.loc 1 43 0 discriminator 1
+  86 003c E4E7     		b	.L3
+  87              		.cfi_endproc
+  88              	.LFE63:
+  89              		.size	main, .-main
+  90 003e 00BF     		.text
+  91              	.Letext0:
+  92              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  93              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+  94              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+  95              		.file 5 "Generated_Source\\PSoC5/Timer_1.h"
+  96              		.file 6 "Generated_Source\\PSoC5/CyLib.h"
+  97              		.file 7 ".\\communication.h"
+  98              		.file 8 "Generated_Source\\PSoC5/UART.h"
+  99              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
+ 100              		.section	.debug_info,"",%progbits
+ 101              	.Ldebug_info0:
+ 102 0000 E9010000 		.4byte	0x1e9
+ 103 0004 0400     		.2byte	0x4
+ 104 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 105 000a 04       		.byte	0x4
+ 106 000b 01       		.uleb128 0x1
+ 107 000c F6000000 		.4byte	.LASF28
+ 108 0010 01       		.byte	0x1
+ 109 0011 7E000000 		.4byte	.LASF29
+ 110 0015 29000000 		.4byte	.LASF30
+ 111 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 112 001d 00000000 		.4byte	0
+ 113 0021 00000000 		.4byte	.Ldebug_line0
+ 114 0025 02       		.uleb128 0x2
+ 115 0026 01       		.byte	0x1
+ 116 0027 06       		.byte	0x6
+ 117 0028 19020000 		.4byte	.LASF0
+ 118 002c 02       		.uleb128 0x2
+ 119 002d 01       		.byte	0x1
+ 120 002e 08       		.byte	0x8
+ 121 002f 70000000 		.4byte	.LASF1
+ 122 0033 02       		.uleb128 0x2
+ 123 0034 02       		.byte	0x2
+ 124 0035 05       		.byte	0x5
+ 125 0036 06020000 		.4byte	.LASF2
+ 126 003a 02       		.uleb128 0x2
+ 127 003b 02       		.byte	0x2
+ 128 003c 07       		.byte	0x7
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 4
+
+
+ 129 003d AC000000 		.4byte	.LASF3
+ 130 0041 03       		.uleb128 0x3
+ 131 0042 19000000 		.4byte	.LASF9
+ 132 0046 02       		.byte	0x2
+ 133 0047 3F       		.byte	0x3f
+ 134 0048 4C000000 		.4byte	0x4c
+ 135 004c 02       		.uleb128 0x2
+ 136 004d 04       		.byte	0x4
+ 137 004e 05       		.byte	0x5
+ 138 004f 10020000 		.4byte	.LASF4
+ 139 0053 02       		.uleb128 0x2
+ 140 0054 04       		.byte	0x4
+ 141 0055 07       		.byte	0x7
+ 142 0056 9A000000 		.4byte	.LASF5
+ 143 005a 02       		.uleb128 0x2
+ 144 005b 08       		.byte	0x8
+ 145 005c 05       		.byte	0x5
+ 146 005d D9010000 		.4byte	.LASF6
+ 147 0061 02       		.uleb128 0x2
+ 148 0062 08       		.byte	0x8
+ 149 0063 07       		.byte	0x7
+ 150 0064 9C010000 		.4byte	.LASF7
+ 151 0068 04       		.uleb128 0x4
+ 152 0069 04       		.byte	0x4
+ 153 006a 05       		.byte	0x5
+ 154 006b 696E7400 		.ascii	"int\000"
+ 155 006f 02       		.uleb128 0x2
+ 156 0070 04       		.byte	0x4
+ 157 0071 07       		.byte	0x7
+ 158 0072 84010000 		.4byte	.LASF8
+ 159 0076 03       		.uleb128 0x3
+ 160 0077 C8010000 		.4byte	.LASF10
+ 161 007b 03       		.byte	0x3
+ 162 007c 2C       		.byte	0x2c
+ 163 007d 41000000 		.4byte	0x41
+ 164 0081 05       		.uleb128 0x5
+ 165 0082 E8000000 		.4byte	.LASF11
+ 166 0086 04       		.byte	0x4
+ 167 0087 9301     		.2byte	0x193
+ 168 0089 3A000000 		.4byte	0x3a
+ 169 008d 05       		.uleb128 0x5
+ 170 008e EF000000 		.4byte	.LASF12
+ 171 0092 04       		.byte	0x4
+ 172 0093 9401     		.2byte	0x194
+ 173 0095 53000000 		.4byte	0x53
+ 174 0099 02       		.uleb128 0x2
+ 175 009a 04       		.byte	0x4
+ 176 009b 04       		.byte	0x4
+ 177 009c 6A000000 		.4byte	.LASF13
+ 178 00a0 02       		.uleb128 0x2
+ 179 00a1 08       		.byte	0x8
+ 180 00a2 04       		.byte	0x4
+ 181 00a3 DC000000 		.4byte	.LASF14
+ 182 00a7 02       		.uleb128 0x2
+ 183 00a8 01       		.byte	0x1
+ 184 00a9 08       		.byte	0x8
+ 185 00aa E7010000 		.4byte	.LASF15
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 5
+
+
+ 186 00ae 02       		.uleb128 0x2
+ 187 00af 04       		.byte	0x4
+ 188 00b0 07       		.byte	0x7
+ 189 00b1 D0010000 		.4byte	.LASF16
+ 190 00b5 06       		.uleb128 0x6
+ 191 00b6 E3000000 		.4byte	.LASF31
+ 192 00ba 01       		.byte	0x1
+ 193 00bb 0F       		.byte	0xf
+ 194 00bc 68000000 		.4byte	0x68
+ 195 00c0 00000000 		.4byte	.LFB63
+ 196 00c4 3E000000 		.4byte	.LFE63-.LFB63
+ 197 00c8 01       		.uleb128 0x1
+ 198 00c9 9C       		.byte	0x9c
+ 199 00ca 70010000 		.4byte	0x170
+ 200 00ce 07       		.uleb128 0x7
+ 201 00cf 08000000 		.4byte	.LBB2
+ 202 00d3 34000000 		.4byte	.LBE2-.LBB2
+ 203 00d7 66010000 		.4byte	0x166
+ 204 00db 08       		.uleb128 0x8
+ 205 00dc 00020000 		.4byte	.LASF17
+ 206 00e0 01       		.byte	0x1
+ 207 00e1 1B       		.byte	0x1b
+ 208 00e2 68000000 		.4byte	0x68
+ 209 00e6 00000000 		.4byte	.LLST0
+ 210 00ea 08       		.uleb128 0x8
+ 211 00eb 23000000 		.4byte	.LASF18
+ 212 00ef 01       		.byte	0x1
+ 213 00f0 1C       		.byte	0x1c
+ 214 00f1 68000000 		.4byte	0x68
+ 215 00f5 34000000 		.4byte	.LLST1
+ 216 00f9 08       		.uleb128 0x8
+ 217 00fa CA000000 		.4byte	.LASF19
+ 218 00fe 01       		.byte	0x1
+ 219 00ff 23       		.byte	0x23
+ 220 0100 68000000 		.4byte	0x68
+ 221 0104 52000000 		.4byte	.LLST2
+ 222 0108 09       		.uleb128 0x9
+ 223 0109 0C000000 		.4byte	.LVL1
+ 224 010d 81010000 		.4byte	0x181
+ 225 0111 09       		.uleb128 0x9
+ 226 0112 10000000 		.4byte	.LVL2
+ 227 0116 8C010000 		.4byte	0x18c
+ 228 011a 09       		.uleb128 0x9
+ 229 011b 14000000 		.4byte	.LVL3
+ 230 011f 9D010000 		.4byte	0x19d
+ 231 0123 09       		.uleb128 0x9
+ 232 0124 18000000 		.4byte	.LVL4
+ 233 0128 A4010000 		.4byte	0x1a4
+ 234 012c 0A       		.uleb128 0xa
+ 235 012d 22000000 		.4byte	.LVL7
+ 236 0131 AF010000 		.4byte	0x1af
+ 237 0135 41010000 		.4byte	0x141
+ 238 0139 0B       		.uleb128 0xb
+ 239 013a 01       		.uleb128 0x1
+ 240 013b 50       		.byte	0x50
+ 241 013c 03       		.uleb128 0x3
+ 242 013d 0A       		.byte	0xa
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 6
+
+
+ 243 013e E803     		.2byte	0x3e8
+ 244 0140 00       		.byte	0
+ 245 0141 09       		.uleb128 0x9
+ 246 0142 26000000 		.4byte	.LVL8
+ 247 0146 A4010000 		.4byte	0x1a4
+ 248 014a 09       		.uleb128 0x9
+ 249 014b 2C000000 		.4byte	.LVL10
+ 250 014f C0010000 		.4byte	0x1c0
+ 251 0153 09       		.uleb128 0x9
+ 252 0154 38000000 		.4byte	.LVL11
+ 253 0158 CD010000 		.4byte	0x1cd
+ 254 015c 09       		.uleb128 0x9
+ 255 015d 3C000000 		.4byte	.LVL12
+ 256 0161 DE010000 		.4byte	0x1de
+ 257 0165 00       		.byte	0
+ 258 0166 09       		.uleb128 0x9
+ 259 0167 08000000 		.4byte	.LVL0
+ 260 016b E5010000 		.4byte	0x1e5
+ 261 016f 00       		.byte	0
+ 262 0170 0C       		.uleb128 0xc
+ 263 0171 CF000000 		.4byte	.LASF32
+ 264 0175 09       		.byte	0x9
+ 265 0176 9606     		.2byte	0x696
+ 266 0178 7C010000 		.4byte	0x17c
+ 267 017c 0D       		.uleb128 0xd
+ 268 017d 76000000 		.4byte	0x76
+ 269 0181 0E       		.uleb128 0xe
+ 270 0182 87000000 		.4byte	.LASF20
+ 271 0186 05       		.byte	0x5
+ 272 0187 67       		.byte	0x67
+ 273 0188 81000000 		.4byte	0x81
+ 274 018c 0F       		.uleb128 0xf
+ 275 018d B3010000 		.4byte	.LASF22
+ 276 0191 05       		.byte	0x5
+ 277 0192 6A       		.byte	0x6a
+ 278 0193 9D010000 		.4byte	0x19d
+ 279 0197 10       		.uleb128 0x10
+ 280 0198 81000000 		.4byte	0x81
+ 281 019c 00       		.byte	0
+ 282 019d 11       		.uleb128 0x11
+ 283 019e 00000000 		.4byte	.LASF25
+ 284 01a2 05       		.byte	0x5
+ 285 01a3 5A       		.byte	0x5a
+ 286 01a4 0E       		.uleb128 0xe
+ 287 01a5 EC010000 		.4byte	.LASF21
+ 288 01a9 05       		.byte	0x5
+ 289 01aa 69       		.byte	0x69
+ 290 01ab 81000000 		.4byte	0x81
+ 291 01af 0F       		.uleb128 0xf
+ 292 01b0 32020000 		.4byte	.LASF23
+ 293 01b4 06       		.byte	0x6
+ 294 01b5 76       		.byte	0x76
+ 295 01b6 C0010000 		.4byte	0x1c0
+ 296 01ba 10       		.uleb128 0x10
+ 297 01bb 8D000000 		.4byte	0x8d
+ 298 01bf 00       		.byte	0
+ 299 01c0 12       		.uleb128 0x12
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 7
+
+
+ 300 01c1 91010000 		.4byte	.LASF33
+ 301 01c5 07       		.byte	0x7
+ 302 01c6 16       		.byte	0x16
+ 303 01c7 CD010000 		.4byte	0x1cd
+ 304 01cb 13       		.uleb128 0x13
+ 305 01cc 00       		.byte	0
+ 306 01cd 0F       		.uleb128 0xf
+ 307 01ce 0E000000 		.4byte	.LASF24
+ 308 01d2 07       		.byte	0x7
+ 309 01d3 15       		.byte	0x15
+ 310 01d4 DE010000 		.4byte	0x1de
+ 311 01d8 10       		.uleb128 0x10
+ 312 01d9 68000000 		.4byte	0x68
+ 313 01dd 00       		.byte	0
+ 314 01de 11       		.uleb128 0x11
+ 315 01df 25020000 		.4byte	.LASF26
+ 316 01e3 05       		.byte	0x5
+ 317 01e4 5B       		.byte	0x5b
+ 318 01e5 11       		.uleb128 0x11
+ 319 01e6 BF000000 		.4byte	.LASF27
+ 320 01ea 08       		.byte	0x8
+ 321 01eb 54       		.byte	0x54
+ 322 01ec 00       		.byte	0
+ 323              		.section	.debug_abbrev,"",%progbits
+ 324              	.Ldebug_abbrev0:
+ 325 0000 01       		.uleb128 0x1
+ 326 0001 11       		.uleb128 0x11
+ 327 0002 01       		.byte	0x1
+ 328 0003 25       		.uleb128 0x25
+ 329 0004 0E       		.uleb128 0xe
+ 330 0005 13       		.uleb128 0x13
+ 331 0006 0B       		.uleb128 0xb
+ 332 0007 03       		.uleb128 0x3
+ 333 0008 0E       		.uleb128 0xe
+ 334 0009 1B       		.uleb128 0x1b
+ 335 000a 0E       		.uleb128 0xe
+ 336 000b 55       		.uleb128 0x55
+ 337 000c 17       		.uleb128 0x17
+ 338 000d 11       		.uleb128 0x11
+ 339 000e 01       		.uleb128 0x1
+ 340 000f 10       		.uleb128 0x10
+ 341 0010 17       		.uleb128 0x17
+ 342 0011 00       		.byte	0
+ 343 0012 00       		.byte	0
+ 344 0013 02       		.uleb128 0x2
+ 345 0014 24       		.uleb128 0x24
+ 346 0015 00       		.byte	0
+ 347 0016 0B       		.uleb128 0xb
+ 348 0017 0B       		.uleb128 0xb
+ 349 0018 3E       		.uleb128 0x3e
+ 350 0019 0B       		.uleb128 0xb
+ 351 001a 03       		.uleb128 0x3
+ 352 001b 0E       		.uleb128 0xe
+ 353 001c 00       		.byte	0
+ 354 001d 00       		.byte	0
+ 355 001e 03       		.uleb128 0x3
+ 356 001f 16       		.uleb128 0x16
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 8
+
+
+ 357 0020 00       		.byte	0
+ 358 0021 03       		.uleb128 0x3
+ 359 0022 0E       		.uleb128 0xe
+ 360 0023 3A       		.uleb128 0x3a
+ 361 0024 0B       		.uleb128 0xb
+ 362 0025 3B       		.uleb128 0x3b
+ 363 0026 0B       		.uleb128 0xb
+ 364 0027 49       		.uleb128 0x49
+ 365 0028 13       		.uleb128 0x13
+ 366 0029 00       		.byte	0
+ 367 002a 00       		.byte	0
+ 368 002b 04       		.uleb128 0x4
+ 369 002c 24       		.uleb128 0x24
+ 370 002d 00       		.byte	0
+ 371 002e 0B       		.uleb128 0xb
+ 372 002f 0B       		.uleb128 0xb
+ 373 0030 3E       		.uleb128 0x3e
+ 374 0031 0B       		.uleb128 0xb
+ 375 0032 03       		.uleb128 0x3
+ 376 0033 08       		.uleb128 0x8
+ 377 0034 00       		.byte	0
+ 378 0035 00       		.byte	0
+ 379 0036 05       		.uleb128 0x5
+ 380 0037 16       		.uleb128 0x16
+ 381 0038 00       		.byte	0
+ 382 0039 03       		.uleb128 0x3
+ 383 003a 0E       		.uleb128 0xe
+ 384 003b 3A       		.uleb128 0x3a
+ 385 003c 0B       		.uleb128 0xb
+ 386 003d 3B       		.uleb128 0x3b
+ 387 003e 05       		.uleb128 0x5
+ 388 003f 49       		.uleb128 0x49
+ 389 0040 13       		.uleb128 0x13
+ 390 0041 00       		.byte	0
+ 391 0042 00       		.byte	0
+ 392 0043 06       		.uleb128 0x6
+ 393 0044 2E       		.uleb128 0x2e
+ 394 0045 01       		.byte	0x1
+ 395 0046 3F       		.uleb128 0x3f
+ 396 0047 19       		.uleb128 0x19
+ 397 0048 03       		.uleb128 0x3
+ 398 0049 0E       		.uleb128 0xe
+ 399 004a 3A       		.uleb128 0x3a
+ 400 004b 0B       		.uleb128 0xb
+ 401 004c 3B       		.uleb128 0x3b
+ 402 004d 0B       		.uleb128 0xb
+ 403 004e 49       		.uleb128 0x49
+ 404 004f 13       		.uleb128 0x13
+ 405 0050 11       		.uleb128 0x11
+ 406 0051 01       		.uleb128 0x1
+ 407 0052 12       		.uleb128 0x12
+ 408 0053 06       		.uleb128 0x6
+ 409 0054 40       		.uleb128 0x40
+ 410 0055 18       		.uleb128 0x18
+ 411 0056 9742     		.uleb128 0x2117
+ 412 0058 19       		.uleb128 0x19
+ 413 0059 01       		.uleb128 0x1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 9
+
+
+ 414 005a 13       		.uleb128 0x13
+ 415 005b 00       		.byte	0
+ 416 005c 00       		.byte	0
+ 417 005d 07       		.uleb128 0x7
+ 418 005e 0B       		.uleb128 0xb
+ 419 005f 01       		.byte	0x1
+ 420 0060 11       		.uleb128 0x11
+ 421 0061 01       		.uleb128 0x1
+ 422 0062 12       		.uleb128 0x12
+ 423 0063 06       		.uleb128 0x6
+ 424 0064 01       		.uleb128 0x1
+ 425 0065 13       		.uleb128 0x13
+ 426 0066 00       		.byte	0
+ 427 0067 00       		.byte	0
+ 428 0068 08       		.uleb128 0x8
+ 429 0069 34       		.uleb128 0x34
+ 430 006a 00       		.byte	0
+ 431 006b 03       		.uleb128 0x3
+ 432 006c 0E       		.uleb128 0xe
+ 433 006d 3A       		.uleb128 0x3a
+ 434 006e 0B       		.uleb128 0xb
+ 435 006f 3B       		.uleb128 0x3b
+ 436 0070 0B       		.uleb128 0xb
+ 437 0071 49       		.uleb128 0x49
+ 438 0072 13       		.uleb128 0x13
+ 439 0073 02       		.uleb128 0x2
+ 440 0074 17       		.uleb128 0x17
+ 441 0075 00       		.byte	0
+ 442 0076 00       		.byte	0
+ 443 0077 09       		.uleb128 0x9
+ 444 0078 898201   		.uleb128 0x4109
+ 445 007b 00       		.byte	0
+ 446 007c 11       		.uleb128 0x11
+ 447 007d 01       		.uleb128 0x1
+ 448 007e 31       		.uleb128 0x31
+ 449 007f 13       		.uleb128 0x13
+ 450 0080 00       		.byte	0
+ 451 0081 00       		.byte	0
+ 452 0082 0A       		.uleb128 0xa
+ 453 0083 898201   		.uleb128 0x4109
+ 454 0086 01       		.byte	0x1
+ 455 0087 11       		.uleb128 0x11
+ 456 0088 01       		.uleb128 0x1
+ 457 0089 31       		.uleb128 0x31
+ 458 008a 13       		.uleb128 0x13
+ 459 008b 01       		.uleb128 0x1
+ 460 008c 13       		.uleb128 0x13
+ 461 008d 00       		.byte	0
+ 462 008e 00       		.byte	0
+ 463 008f 0B       		.uleb128 0xb
+ 464 0090 8A8201   		.uleb128 0x410a
+ 465 0093 00       		.byte	0
+ 466 0094 02       		.uleb128 0x2
+ 467 0095 18       		.uleb128 0x18
+ 468 0096 9142     		.uleb128 0x2111
+ 469 0098 18       		.uleb128 0x18
+ 470 0099 00       		.byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 10
+
+
+ 471 009a 00       		.byte	0
+ 472 009b 0C       		.uleb128 0xc
+ 473 009c 34       		.uleb128 0x34
+ 474 009d 00       		.byte	0
+ 475 009e 03       		.uleb128 0x3
+ 476 009f 0E       		.uleb128 0xe
+ 477 00a0 3A       		.uleb128 0x3a
+ 478 00a1 0B       		.uleb128 0xb
+ 479 00a2 3B       		.uleb128 0x3b
+ 480 00a3 05       		.uleb128 0x5
+ 481 00a4 49       		.uleb128 0x49
+ 482 00a5 13       		.uleb128 0x13
+ 483 00a6 3F       		.uleb128 0x3f
+ 484 00a7 19       		.uleb128 0x19
+ 485 00a8 3C       		.uleb128 0x3c
+ 486 00a9 19       		.uleb128 0x19
+ 487 00aa 00       		.byte	0
+ 488 00ab 00       		.byte	0
+ 489 00ac 0D       		.uleb128 0xd
+ 490 00ad 35       		.uleb128 0x35
+ 491 00ae 00       		.byte	0
+ 492 00af 49       		.uleb128 0x49
+ 493 00b0 13       		.uleb128 0x13
+ 494 00b1 00       		.byte	0
+ 495 00b2 00       		.byte	0
+ 496 00b3 0E       		.uleb128 0xe
+ 497 00b4 2E       		.uleb128 0x2e
+ 498 00b5 00       		.byte	0
+ 499 00b6 3F       		.uleb128 0x3f
+ 500 00b7 19       		.uleb128 0x19
+ 501 00b8 03       		.uleb128 0x3
+ 502 00b9 0E       		.uleb128 0xe
+ 503 00ba 3A       		.uleb128 0x3a
+ 504 00bb 0B       		.uleb128 0xb
+ 505 00bc 3B       		.uleb128 0x3b
+ 506 00bd 0B       		.uleb128 0xb
+ 507 00be 27       		.uleb128 0x27
+ 508 00bf 19       		.uleb128 0x19
+ 509 00c0 49       		.uleb128 0x49
+ 510 00c1 13       		.uleb128 0x13
+ 511 00c2 3C       		.uleb128 0x3c
+ 512 00c3 19       		.uleb128 0x19
+ 513 00c4 00       		.byte	0
+ 514 00c5 00       		.byte	0
+ 515 00c6 0F       		.uleb128 0xf
+ 516 00c7 2E       		.uleb128 0x2e
+ 517 00c8 01       		.byte	0x1
+ 518 00c9 3F       		.uleb128 0x3f
+ 519 00ca 19       		.uleb128 0x19
+ 520 00cb 03       		.uleb128 0x3
+ 521 00cc 0E       		.uleb128 0xe
+ 522 00cd 3A       		.uleb128 0x3a
+ 523 00ce 0B       		.uleb128 0xb
+ 524 00cf 3B       		.uleb128 0x3b
+ 525 00d0 0B       		.uleb128 0xb
+ 526 00d1 27       		.uleb128 0x27
+ 527 00d2 19       		.uleb128 0x19
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 11
+
+
+ 528 00d3 3C       		.uleb128 0x3c
+ 529 00d4 19       		.uleb128 0x19
+ 530 00d5 01       		.uleb128 0x1
+ 531 00d6 13       		.uleb128 0x13
+ 532 00d7 00       		.byte	0
+ 533 00d8 00       		.byte	0
+ 534 00d9 10       		.uleb128 0x10
+ 535 00da 05       		.uleb128 0x5
+ 536 00db 00       		.byte	0
+ 537 00dc 49       		.uleb128 0x49
+ 538 00dd 13       		.uleb128 0x13
+ 539 00de 00       		.byte	0
+ 540 00df 00       		.byte	0
+ 541 00e0 11       		.uleb128 0x11
+ 542 00e1 2E       		.uleb128 0x2e
+ 543 00e2 00       		.byte	0
+ 544 00e3 3F       		.uleb128 0x3f
+ 545 00e4 19       		.uleb128 0x19
+ 546 00e5 03       		.uleb128 0x3
+ 547 00e6 0E       		.uleb128 0xe
+ 548 00e7 3A       		.uleb128 0x3a
+ 549 00e8 0B       		.uleb128 0xb
+ 550 00e9 3B       		.uleb128 0x3b
+ 551 00ea 0B       		.uleb128 0xb
+ 552 00eb 27       		.uleb128 0x27
+ 553 00ec 19       		.uleb128 0x19
+ 554 00ed 3C       		.uleb128 0x3c
+ 555 00ee 19       		.uleb128 0x19
+ 556 00ef 00       		.byte	0
+ 557 00f0 00       		.byte	0
+ 558 00f1 12       		.uleb128 0x12
+ 559 00f2 2E       		.uleb128 0x2e
+ 560 00f3 01       		.byte	0x1
+ 561 00f4 3F       		.uleb128 0x3f
+ 562 00f5 19       		.uleb128 0x19
+ 563 00f6 03       		.uleb128 0x3
+ 564 00f7 0E       		.uleb128 0xe
+ 565 00f8 3A       		.uleb128 0x3a
+ 566 00f9 0B       		.uleb128 0xb
+ 567 00fa 3B       		.uleb128 0x3b
+ 568 00fb 0B       		.uleb128 0xb
+ 569 00fc 3C       		.uleb128 0x3c
+ 570 00fd 19       		.uleb128 0x19
+ 571 00fe 01       		.uleb128 0x1
+ 572 00ff 13       		.uleb128 0x13
+ 573 0100 00       		.byte	0
+ 574 0101 00       		.byte	0
+ 575 0102 13       		.uleb128 0x13
+ 576 0103 18       		.uleb128 0x18
+ 577 0104 00       		.byte	0
+ 578 0105 00       		.byte	0
+ 579 0106 00       		.byte	0
+ 580 0107 00       		.byte	0
+ 581              		.section	.debug_loc,"",%progbits
+ 582              	.Ldebug_loc0:
+ 583              	.LLST0:
+ 584 0000 1A000000 		.4byte	.LVL5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 12
+
+
+ 585 0004 1E000000 		.4byte	.LVL6
+ 586 0008 0100     		.2byte	0x1
+ 587 000a 50       		.byte	0x50
+ 588 000b 1E000000 		.4byte	.LVL6
+ 589 000f 28000000 		.4byte	.LVL9
+ 590 0013 0100     		.2byte	0x1
+ 591 0015 54       		.byte	0x54
+ 592 0016 28000000 		.4byte	.LVL9
+ 593 001a 2B000000 		.4byte	.LVL10-1
+ 594 001e 0100     		.2byte	0x1
+ 595 0020 50       		.byte	0x50
+ 596 0021 2B000000 		.4byte	.LVL10-1
+ 597 0025 3E000000 		.4byte	.LFE63
+ 598 0029 0100     		.2byte	0x1
+ 599 002b 55       		.byte	0x55
+ 600 002c 00000000 		.4byte	0
+ 601 0030 00000000 		.4byte	0
+ 602              	.LLST1:
+ 603 0034 1A000000 		.4byte	.LVL5
+ 604 0038 1E000000 		.4byte	.LVL6
+ 605 003c 0100     		.2byte	0x1
+ 606 003e 50       		.byte	0x50
+ 607 003f 1E000000 		.4byte	.LVL6
+ 608 0043 3E000000 		.4byte	.LFE63
+ 609 0047 0100     		.2byte	0x1
+ 610 0049 54       		.byte	0x54
+ 611 004a 00000000 		.4byte	0
+ 612 004e 00000000 		.4byte	0
+ 613              	.LLST2:
+ 614 0052 28000000 		.4byte	.LVL9
+ 615 0056 2B000000 		.4byte	.LVL10-1
+ 616 005a 0100     		.2byte	0x1
+ 617 005c 50       		.byte	0x50
+ 618 005d 2B000000 		.4byte	.LVL10-1
+ 619 0061 3E000000 		.4byte	.LFE63
+ 620 0065 0100     		.2byte	0x1
+ 621 0067 55       		.byte	0x55
+ 622 0068 00000000 		.4byte	0
+ 623 006c 00000000 		.4byte	0
+ 624              		.section	.debug_aranges,"",%progbits
+ 625 0000 1C000000 		.4byte	0x1c
+ 626 0004 0200     		.2byte	0x2
+ 627 0006 00000000 		.4byte	.Ldebug_info0
+ 628 000a 04       		.byte	0x4
+ 629 000b 00       		.byte	0
+ 630 000c 0000     		.2byte	0
+ 631 000e 0000     		.2byte	0
+ 632 0010 00000000 		.4byte	.LFB63
+ 633 0014 3E000000 		.4byte	.LFE63-.LFB63
+ 634 0018 00000000 		.4byte	0
+ 635 001c 00000000 		.4byte	0
+ 636              		.section	.debug_ranges,"",%progbits
+ 637              	.Ldebug_ranges0:
+ 638 0000 00000000 		.4byte	.LFB63
+ 639 0004 3E000000 		.4byte	.LFE63
+ 640 0008 00000000 		.4byte	0
+ 641 000c 00000000 		.4byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 13
+
+
+ 642              		.section	.debug_line,"",%progbits
+ 643              	.Ldebug_line0:
+ 644 0000 C4010000 		.section	.debug_str,"MS",%progbits,1
+ 644      02008001 
+ 644      00000201 
+ 644      FB0E0D00 
+ 644      01010101 
+ 645              	.LASF25:
+ 646 0000 54696D65 		.ascii	"Timer_1_Start\000"
+ 646      725F315F 
+ 646      53746172 
+ 646      7400
+ 647              	.LASF24:
+ 648 000e 6F757470 		.ascii	"output_int\000"
+ 648      75745F69 
+ 648      6E7400
+ 649              	.LASF9:
+ 650 0019 5F5F696E 		.ascii	"__int32_t\000"
+ 650      7433325F 
+ 650      7400
+ 651              	.LASF18:
+ 652 0023 73746172 		.ascii	"start\000"
+ 652      7400
+ 653              	.LASF30:
+ 654 0029 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\FSAE\\E-Throttle\\P"
+ 654      73657273 
+ 654      5C6D6974 
+ 654      6368656C 
+ 654      6C5C446F 
+ 655 0056 536F435C 		.ascii	"SoC\\TimerTest.cydsn\000"
+ 655      54696D65 
+ 655      72546573 
+ 655      742E6379 
+ 655      64736E00 
+ 656              	.LASF13:
+ 657 006a 666C6F61 		.ascii	"float\000"
+ 657      7400
+ 658              	.LASF1:
+ 659 0070 756E7369 		.ascii	"unsigned char\000"
+ 659      676E6564 
+ 659      20636861 
+ 659      7200
+ 660              	.LASF29:
+ 661 007e 2E5C6D61 		.ascii	".\\main.c\000"
+ 661      696E2E63 
+ 661      00
+ 662              	.LASF20:
+ 663 0087 54696D65 		.ascii	"Timer_1_ReadPeriod\000"
+ 663      725F315F 
+ 663      52656164 
+ 663      50657269 
+ 663      6F6400
+ 664              	.LASF5:
+ 665 009a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 665      20756E73 
+ 665      69676E65 
+ 665      6420696E 
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 14
+
+
+ 665      7400
+ 666              	.LASF3:
+ 667 00ac 73686F72 		.ascii	"short unsigned int\000"
+ 667      7420756E 
+ 667      7369676E 
+ 667      65642069 
+ 667      6E7400
+ 668              	.LASF27:
+ 669 00bf 55415254 		.ascii	"UART_Start\000"
+ 669      5F537461 
+ 669      727400
+ 670              	.LASF19:
+ 671 00ca 73746F70 		.ascii	"stop\000"
+ 671      00
+ 672              	.LASF32:
+ 673 00cf 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 673      52784275 
+ 673      66666572 
+ 673      00
+ 674              	.LASF14:
+ 675 00dc 646F7562 		.ascii	"double\000"
+ 675      6C6500
+ 676              	.LASF31:
+ 677 00e3 6D61696E 		.ascii	"main\000"
+ 677      00
+ 678              	.LASF11:
+ 679 00e8 75696E74 		.ascii	"uint16\000"
+ 679      313600
+ 680              	.LASF12:
+ 681 00ef 75696E74 		.ascii	"uint32\000"
+ 681      333200
+ 682              	.LASF28:
+ 683 00f6 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 683      4320342E 
+ 683      392E3320 
+ 683      32303135 
+ 683      30333033 
+ 684 0129 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 684      20726576 
+ 684      6973696F 
+ 684      6E203232 
+ 684      31323230 
+ 685 015c 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 685      66756E63 
+ 685      74696F6E 
+ 685      2D736563 
+ 685      74696F6E 
+ 686              	.LASF8:
+ 687 0184 756E7369 		.ascii	"unsigned int\000"
+ 687      676E6564 
+ 687      20696E74 
+ 687      00
+ 688              	.LASF33:
+ 689 0191 6F757470 		.ascii	"output_pad\000"
+ 689      75745F70 
+ 689      616400
+ 690              	.LASF7:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccojHx63.s 			page 15
+
+
+ 691 019c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 691      206C6F6E 
+ 691      6720756E 
+ 691      7369676E 
+ 691      65642069 
+ 692              	.LASF22:
+ 693 01b3 54696D65 		.ascii	"Timer_1_WriteCounter\000"
+ 693      725F315F 
+ 693      57726974 
+ 693      65436F75 
+ 693      6E746572 
+ 694              	.LASF10:
+ 695 01c8 696E7433 		.ascii	"int32_t\000"
+ 695      325F7400 
+ 696              	.LASF16:
+ 697 01d0 73697A65 		.ascii	"sizetype\000"
+ 697      74797065 
+ 697      00
+ 698              	.LASF6:
+ 699 01d9 6C6F6E67 		.ascii	"long long int\000"
+ 699      206C6F6E 
+ 699      6720696E 
+ 699      7400
+ 700              	.LASF15:
+ 701 01e7 63686172 		.ascii	"char\000"
+ 701      00
+ 702              	.LASF21:
+ 703 01ec 54696D65 		.ascii	"Timer_1_ReadCounter\000"
+ 703      725F315F 
+ 703      52656164 
+ 703      436F756E 
+ 703      74657200 
+ 704              	.LASF17:
+ 705 0200 636F756E 		.ascii	"count\000"
+ 705      7400
+ 706              	.LASF2:
+ 707 0206 73686F72 		.ascii	"short int\000"
+ 707      7420696E 
+ 707      7400
+ 708              	.LASF4:
+ 709 0210 6C6F6E67 		.ascii	"long int\000"
+ 709      20696E74 
+ 709      00
+ 710              	.LASF0:
+ 711 0219 7369676E 		.ascii	"signed char\000"
+ 711      65642063 
+ 711      68617200 
+ 712              	.LASF26:
+ 713 0225 54696D65 		.ascii	"Timer_1_Stop\000"
+ 713      725F315F 
+ 713      53746F70 
+ 713      00
+ 714              	.LASF23:
+ 715 0232 43794465 		.ascii	"CyDelay\000"
+ 715      6C617900 
+ 716              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

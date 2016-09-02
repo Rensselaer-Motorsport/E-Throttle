@@ -1,0 +1,47 @@
+# TimerTest
+# 2016-08-28 18:25:10Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "Rx_1(0)" iocell 12 6
+set_io "Tx_1(0)" iocell 12 7
+set_location "\Timer_1:TimerUDB:status_tc\" 1 3 0 0
+set_location "Net_25" 1 1 1 3
+set_location "\UART:BUART:counter_load_not\" 1 1 1 1
+set_location "\UART:BUART:tx_status_0\" 1 1 1 2
+set_location "\UART:BUART:tx_status_2\" 0 1 1 1
+set_location "\UART:BUART:rx_counter_load\" 0 3 1 0
+set_location "\UART:BUART:rx_postpoll\" 0 0 0 1
+set_location "\UART:BUART:rx_status_4\" 0 3 0 2
+set_location "\UART:BUART:rx_status_5\" 0 3 0 1
+set_location "\Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 1 3 6
+set_location "\Timer_1:TimerUDB:rstSts:stsreg\" 1 3 4
+set_location "\Timer_1:TimerUDB:sT16:timerdp:u0\" 0 3 2
+set_location "\Timer_1:TimerUDB:sT16:timerdp:u1\" 1 3 2
+set_location "\UART:BUART:sTX:TxShifter:u0\" 1 1 2
+set_location "\UART:BUART:sTX:sCLOCK:TxBitClkGen\" 1 0 2
+set_location "\UART:BUART:sTX:TxSts\" 1 1 4
+set_location "\UART:BUART:sRX:RxShifter:u0\" 0 0 2
+set_location "\UART:BUART:sRX:RxBitCounter\" 0 0 7
+set_location "\UART:BUART:sRX:RxSts\" 0 3 4
+set_location "\UART:BUART:txn\" 1 1 0 0
+set_location "\UART:BUART:tx_state_1\" 1 1 0 1
+set_location "\UART:BUART:tx_state_0\" 1 1 1 0
+set_location "\UART:BUART:tx_state_2\" 0 1 0 0
+set_location "\UART:BUART:tx_bitclk\" 0 1 0 1
+set_location "\UART:BUART:tx_ctrl_mark_last\" 0 3 0 3
+set_location "\UART:BUART:rx_state_0\" 0 0 0 0
+set_location "\UART:BUART:rx_load_fifo\" 0 0 1 1
+set_location "\UART:BUART:rx_state_3\" 0 0 0 2
+set_location "\UART:BUART:rx_state_2\" 0 0 1 0
+set_location "\UART:BUART:rx_bitclk_enable\" 0 1 1 2
+set_location "\UART:BUART:rx_state_stop1_reg\" 0 3 0 0
+set_location "\UART:BUART:pollcount_1\" 0 1 1 0
+set_location "\UART:BUART:pollcount_0\" 0 1 0 2
+set_location "\UART:BUART:rx_status_3\" 0 0 1 2
+set_location "\UART:BUART:rx_last\" 0 0 0 3

@@ -24,7 +24,7 @@
     typedef struct Error_Buffer {
         struct Queue * error_queue;
         float TPS_APPS_sum, TPS_APPS_avg, percent_brake_errs;
-        int num_brake_errs, size, total_time;
+        int num_brake_errs, size, total_time, start_cnt;
     } Error_Buffer;
 
     /* Function Declarations */

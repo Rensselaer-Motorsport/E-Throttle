@@ -25,7 +25,7 @@
     #define BRAKE_ERROR 1 /* This should remain 1 */
     #define BRAKE_GOOD 0 /* This should remain 0 */
     #define NO_ERROR 1 /* must be different from ERROR */
-    #define TIMER_FREQ 32000 /* 75 kHz */
+    #define TIMER_FREQ 32000 /* 32 kHz */
     #define TP_ERR_CUTOFF 10.0 /* should be 10.0 by rule IC1.15.2 */
     #define BRAKE_ERR_CUTOFF 90.0 /* percentage of brake implausibilities
                                      during the previous second to warrant a shut-off */

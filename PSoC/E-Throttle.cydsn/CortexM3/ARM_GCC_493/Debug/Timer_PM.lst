@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
   29:.\Generated_Source\PSoC5/Timer_PM.c **** *     Save the current user configuration
   30:.\Generated_Source\PSoC5/Timer_PM.c **** *
   31:.\Generated_Source\PSoC5/Timer_PM.c **** * Parameters:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Timer_PM.c **** *  void
@@ -78,28 +78,52 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
-  31              		@ link register save eliminated.
-  32 0000 7047     		bx	lr
-  33              		.cfi_endproc
-  34              	.LFE0:
-  35              		.size	Timer_SaveConfig, .-Timer_SaveConfig
-  36 0002 00BF     		.section	.text.Timer_RestoreConfig,"ax",%progbits
-  37              		.align	2
-  38              		.global	Timer_RestoreConfig
-  39              		.thumb
-  40              		.thumb_func
-  41              		.type	Timer_RestoreConfig, %function
-  42              	Timer_RestoreConfig:
-  43              	.LFB1:
+  31 0000 10B5     		push	{r4, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 4, -8
+  34              		.cfi_offset 14, -4
   45:.\Generated_Source\PSoC5/Timer_PM.c ****     #if (!Timer_UsingFixedFunction)
   46:.\Generated_Source\PSoC5/Timer_PM.c ****         Timer_backup.TimerUdb = Timer_ReadCounter();
+  35              		.loc 1 46 0
+  36 0002 FFF7FEFF 		bl	Timer_ReadCounter
+  37              	.LVL0:
+  38 0006 044C     		ldr	r4, .L3
+  39 0008 6080     		strh	r0, [r4, #2]	@ movhi
   47:.\Generated_Source\PSoC5/Timer_PM.c ****         Timer_backup.InterruptMaskValue = Timer_STATUS_MASK;
+  40              		.loc 1 47 0
+  41 000a 044B     		ldr	r3, .L3+4
+  42 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  43 000e 2371     		strb	r3, [r4, #4]
   48:.\Generated_Source\PSoC5/Timer_PM.c ****         #if (Timer_UsingHWCaptureCounter)
   49:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_backup.TimerCaptureCounter = Timer_ReadCaptureCount();
   50:.\Generated_Source\PSoC5/Timer_PM.c ****         #endif /* Back Up capture counter register  */
   51:.\Generated_Source\PSoC5/Timer_PM.c **** 
   52:.\Generated_Source\PSoC5/Timer_PM.c ****         #if(!Timer_UDB_CONTROL_REG_REMOVED)
   53:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_backup.TimerControlRegister = Timer_ReadControlRegister();
+  44              		.loc 1 53 0
+  45 0010 FFF7FEFF 		bl	Timer_ReadControlRegister
+  46              	.LVL1:
+  47 0014 6071     		strb	r0, [r4, #5]
+  48 0016 10BD     		pop	{r4, pc}
+  49              	.L4:
+  50              		.align	2
+  51              	.L3:
+  52 0018 00000000 		.word	.LANCHOR0
+  53 001c 89640040 		.word	1073767561
+  54              		.cfi_endproc
+  55              	.LFE0:
+  56              		.size	Timer_SaveConfig, .-Timer_SaveConfig
+  57              		.section	.text.Timer_RestoreConfig,"ax",%progbits
+  58              		.align	2
+  59              		.global	Timer_RestoreConfig
+  60              		.thumb
+  61              		.thumb_func
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 3
+
+
+  62              		.type	Timer_RestoreConfig, %function
+  63              	Timer_RestoreConfig:
+  64              	.LFB1:
   54:.\Generated_Source\PSoC5/Timer_PM.c ****         #endif /* Backup the enable state of the Timer component */
   55:.\Generated_Source\PSoC5/Timer_PM.c ****     #endif /* Backup non retention registers in UDB implementation. All fixed function registers ar
   56:.\Generated_Source\PSoC5/Timer_PM.c **** }
@@ -118,9 +142,6 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
   69:.\Generated_Source\PSoC5/Timer_PM.c **** * Return:
   70:.\Generated_Source\PSoC5/Timer_PM.c **** *  void
   71:.\Generated_Source\PSoC5/Timer_PM.c **** *
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 3
-
-
   72:.\Generated_Source\PSoC5/Timer_PM.c **** * Global variables:
   73:.\Generated_Source\PSoC5/Timer_PM.c **** *  Timer_backup:  Variables of this global structure are used to
   74:.\Generated_Source\PSoC5/Timer_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
@@ -128,33 +149,57 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
   76:.\Generated_Source\PSoC5/Timer_PM.c **** *******************************************************************************/
   77:.\Generated_Source\PSoC5/Timer_PM.c **** void Timer_RestoreConfig(void) 
   78:.\Generated_Source\PSoC5/Timer_PM.c **** {   
-  44              		.loc 1 78 0
-  45              		.cfi_startproc
-  46              		@ args = 0, pretend = 0, frame = 0
-  47              		@ frame_needed = 0, uses_anonymous_args = 0
-  48              		@ link register save eliminated.
-  49 0000 7047     		bx	lr
-  50              		.cfi_endproc
-  51              	.LFE1:
-  52              		.size	Timer_RestoreConfig, .-Timer_RestoreConfig
-  53 0002 00BF     		.section	.text.Timer_Sleep,"ax",%progbits
-  54              		.align	2
-  55              		.global	Timer_Sleep
-  56              		.thumb
-  57              		.thumb_func
-  58              		.type	Timer_Sleep, %function
-  59              	Timer_Sleep:
-  60              	.LFB2:
+  65              		.loc 1 78 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 0
+  68              		@ frame_needed = 0, uses_anonymous_args = 0
+  69 0000 10B5     		push	{r4, lr}
+  70              		.cfi_def_cfa_offset 8
+  71              		.cfi_offset 4, -8
+  72              		.cfi_offset 14, -4
   79:.\Generated_Source\PSoC5/Timer_PM.c ****     #if (!Timer_UsingFixedFunction)
   80:.\Generated_Source\PSoC5/Timer_PM.c **** 
   81:.\Generated_Source\PSoC5/Timer_PM.c ****         Timer_WriteCounter(Timer_backup.TimerUdb);
+  73              		.loc 1 81 0
+  74 0002 054C     		ldr	r4, .L7
+  75 0004 6088     		ldrh	r0, [r4, #2]
+  76 0006 FFF7FEFF 		bl	Timer_WriteCounter
+  77              	.LVL2:
   82:.\Generated_Source\PSoC5/Timer_PM.c ****         Timer_STATUS_MASK =Timer_backup.InterruptMaskValue;
+  78              		.loc 1 82 0
+  79 000a 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
+  80 000c 034B     		ldr	r3, .L7+4
+  81 000e 1A70     		strb	r2, [r3]
   83:.\Generated_Source\PSoC5/Timer_PM.c ****         #if (Timer_UsingHWCaptureCounter)
   84:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_SetCaptureCount(Timer_backup.TimerCaptureCounter);
   85:.\Generated_Source\PSoC5/Timer_PM.c ****         #endif /* Restore Capture counter register*/
   86:.\Generated_Source\PSoC5/Timer_PM.c **** 
   87:.\Generated_Source\PSoC5/Timer_PM.c ****         #if(!Timer_UDB_CONTROL_REG_REMOVED)
   88:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_WriteControlRegister(Timer_backup.TimerControlRegister);
+  82              		.loc 1 88 0
+  83 0010 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 4
+
+
+  84 0012 FFF7FEFF 		bl	Timer_WriteControlRegister
+  85              	.LVL3:
+  86 0016 10BD     		pop	{r4, pc}
+  87              	.L8:
+  88              		.align	2
+  89              	.L7:
+  90 0018 00000000 		.word	.LANCHOR0
+  91 001c 89640040 		.word	1073767561
+  92              		.cfi_endproc
+  93              	.LFE1:
+  94              		.size	Timer_RestoreConfig, .-Timer_RestoreConfig
+  95              		.section	.text.Timer_Sleep,"ax",%progbits
+  96              		.align	2
+  97              		.global	Timer_Sleep
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.type	Timer_Sleep, %function
+ 101              	Timer_Sleep:
+ 102              	.LFB2:
   89:.\Generated_Source\PSoC5/Timer_PM.c ****         #endif /* Restore the enable state of the Timer component */
   90:.\Generated_Source\PSoC5/Timer_PM.c ****     #endif /* Restore non retention registers in the UDB implementation only */
   91:.\Generated_Source\PSoC5/Timer_PM.c **** }
@@ -178,74 +223,73 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
  109:.\Generated_Source\PSoC5/Timer_PM.c **** *  enable state of the block before entering sleep mode.
  110:.\Generated_Source\PSoC5/Timer_PM.c **** *
  111:.\Generated_Source\PSoC5/Timer_PM.c **** *******************************************************************************/
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 4
-
-
  112:.\Generated_Source\PSoC5/Timer_PM.c **** void Timer_Sleep(void) 
  113:.\Generated_Source\PSoC5/Timer_PM.c **** {
-  61              		.loc 1 113 0
-  62              		.cfi_startproc
-  63              		@ args = 0, pretend = 0, frame = 0
-  64              		@ frame_needed = 0, uses_anonymous_args = 0
-  65              		.loc 1 113 0
-  66 0000 08B5     		push	{r3, lr}
-  67              		.cfi_def_cfa_offset 8
-  68              		.cfi_offset 3, -8
-  69              		.cfi_offset 14, -4
+ 103              		.loc 1 113 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 08B5     		push	{r3, lr}
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 3, -8
+ 110              		.cfi_offset 14, -4
  114:.\Generated_Source\PSoC5/Timer_PM.c ****     #if(!Timer_UDB_CONTROL_REG_REMOVED)
  115:.\Generated_Source\PSoC5/Timer_PM.c ****         /* Save Counter's enable state */
  116:.\Generated_Source\PSoC5/Timer_PM.c ****         if(Timer_CTRL_ENABLE == (Timer_CONTROL & Timer_CTRL_ENABLE))
-  70              		.loc 1 116 0
-  71 0002 074B     		ldr	r3, .L7
-  72 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  73 0006 13F0010F 		tst	r3, #1
-  74 000a 03D0     		beq	.L4
+ 111              		.loc 1 116 0
+ 112 0002 084B     		ldr	r3, .L13
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 5
+
+
+ 113 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 114 0006 13F0800F 		tst	r3, #128
+ 115 000a 03D0     		beq	.L10
  117:.\Generated_Source\PSoC5/Timer_PM.c ****         {
  118:.\Generated_Source\PSoC5/Timer_PM.c ****             /* Timer is enabled */
  119:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_backup.TimerEnableState = 1u;
-  75              		.loc 1 119 0
-  76 000c 0122     		movs	r2, #1
-  77 000e 054B     		ldr	r3, .L7+4
-  78 0010 1A70     		strb	r2, [r3]
-  79 0012 02E0     		b	.L5
-  80              	.L4:
+ 116              		.loc 1 119 0
+ 117 000c 0122     		movs	r2, #1
+ 118 000e 064B     		ldr	r3, .L13+4
+ 119 0010 1A70     		strb	r2, [r3]
+ 120 0012 02E0     		b	.L11
+ 121              	.L10:
  120:.\Generated_Source\PSoC5/Timer_PM.c ****         }
  121:.\Generated_Source\PSoC5/Timer_PM.c ****         else
  122:.\Generated_Source\PSoC5/Timer_PM.c ****         {
  123:.\Generated_Source\PSoC5/Timer_PM.c ****             /* Timer is disabled */
  124:.\Generated_Source\PSoC5/Timer_PM.c ****             Timer_backup.TimerEnableState = 0u;
-  81              		.loc 1 124 0
-  82 0014 0022     		movs	r2, #0
-  83 0016 034B     		ldr	r3, .L7+4
-  84 0018 1A70     		strb	r2, [r3]
-  85              	.L5:
+ 122              		.loc 1 124 0
+ 123 0014 0022     		movs	r2, #0
+ 124 0016 044B     		ldr	r3, .L13+4
+ 125 0018 1A70     		strb	r2, [r3]
+ 126              	.L11:
  125:.\Generated_Source\PSoC5/Timer_PM.c ****         }
  126:.\Generated_Source\PSoC5/Timer_PM.c ****     #endif /* Back up enable state from the Timer control register */
  127:.\Generated_Source\PSoC5/Timer_PM.c ****     Timer_Stop();
-  86              		.loc 1 127 0
-  87 001a FFF7FEFF 		bl	Timer_Stop
-  88              	.LVL0:
-  89 001e 08BD     		pop	{r3, pc}
-  90              	.L8:
-  91              		.align	2
-  92              	.L7:
-  93 0020 0C4F0040 		.word	1073762060
-  94 0024 00000000 		.word	.LANCHOR0
-  95              		.cfi_endproc
-  96              	.LFE2:
-  97              		.size	Timer_Sleep, .-Timer_Sleep
-  98              		.section	.text.Timer_Wakeup,"ax",%progbits
-  99              		.align	2
- 100              		.global	Timer_Wakeup
- 101              		.thumb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 5
-
-
- 102              		.thumb_func
- 103              		.type	Timer_Wakeup, %function
- 104              	Timer_Wakeup:
- 105              	.LFB3:
+ 127              		.loc 1 127 0
+ 128 001a FFF7FEFF 		bl	Timer_Stop
+ 129              	.LVL4:
  128:.\Generated_Source\PSoC5/Timer_PM.c ****     Timer_SaveConfig();
+ 130              		.loc 1 128 0
+ 131 001e FFF7FEFF 		bl	Timer_SaveConfig
+ 132              	.LVL5:
+ 133 0022 08BD     		pop	{r3, pc}
+ 134              	.L14:
+ 135              		.align	2
+ 136              	.L13:
+ 137 0024 78640040 		.word	1073767544
+ 138 0028 00000000 		.word	.LANCHOR0
+ 139              		.cfi_endproc
+ 140              	.LFE2:
+ 141              		.size	Timer_Sleep, .-Timer_Sleep
+ 142              		.section	.text.Timer_Wakeup,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	Timer_Wakeup
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.type	Timer_Wakeup, %function
+ 148              	Timer_Wakeup:
+ 149              	.LFB3:
  129:.\Generated_Source\PSoC5/Timer_PM.c **** }
  130:.\Generated_Source\PSoC5/Timer_PM.c **** 
  131:.\Generated_Source\PSoC5/Timer_PM.c **** 
@@ -254,6 +298,9 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
  134:.\Generated_Source\PSoC5/Timer_PM.c **** ********************************************************************************
  135:.\Generated_Source\PSoC5/Timer_PM.c **** *
  136:.\Generated_Source\PSoC5/Timer_PM.c **** * Summary:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 6
+
+
  137:.\Generated_Source\PSoC5/Timer_PM.c **** *  Restores and enables the user configuration
  138:.\Generated_Source\PSoC5/Timer_PM.c **** *
  139:.\Generated_Source\PSoC5/Timer_PM.c **** * Parameters:
@@ -269,608 +316,754 @@ ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 1
  149:.\Generated_Source\PSoC5/Timer_PM.c **** *******************************************************************************/
  150:.\Generated_Source\PSoC5/Timer_PM.c **** void Timer_Wakeup(void) 
  151:.\Generated_Source\PSoC5/Timer_PM.c **** {
- 106              		.loc 1 151 0
- 107              		.cfi_startproc
- 108              		@ args = 0, pretend = 0, frame = 0
- 109              		@ frame_needed = 0, uses_anonymous_args = 0
- 110 0000 08B5     		push	{r3, lr}
- 111              		.cfi_def_cfa_offset 8
- 112              		.cfi_offset 3, -8
- 113              		.cfi_offset 14, -4
+ 150              		.loc 1 151 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154 0000 08B5     		push	{r3, lr}
+ 155              		.cfi_def_cfa_offset 8
+ 156              		.cfi_offset 3, -8
+ 157              		.cfi_offset 14, -4
  152:.\Generated_Source\PSoC5/Timer_PM.c ****     Timer_RestoreConfig();
+ 158              		.loc 1 152 0
+ 159 0002 FFF7FEFF 		bl	Timer_RestoreConfig
+ 160              	.LVL6:
  153:.\Generated_Source\PSoC5/Timer_PM.c ****     #if(!Timer_UDB_CONTROL_REG_REMOVED)
  154:.\Generated_Source\PSoC5/Timer_PM.c ****         if(Timer_backup.TimerEnableState == 1u)
- 114              		.loc 1 154 0
- 115 0002 034B     		ldr	r3, .L12
- 116 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 117 0006 012B     		cmp	r3, #1
- 118 0008 01D1     		bne	.L9
+ 161              		.loc 1 154 0
+ 162 0006 034B     		ldr	r3, .L18
+ 163 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 164 000a 012B     		cmp	r3, #1
+ 165 000c 01D1     		bne	.L15
  155:.\Generated_Source\PSoC5/Timer_PM.c ****         {     /* Enable Timer's operation */
  156:.\Generated_Source\PSoC5/Timer_PM.c ****                 Timer_Enable();
- 119              		.loc 1 156 0
- 120 000a FFF7FEFF 		bl	Timer_Enable
- 121              	.LVL1:
- 122              	.L9:
- 123 000e 08BD     		pop	{r3, pc}
- 124              	.L13:
- 125              		.align	2
- 126              	.L12:
- 127 0010 00000000 		.word	.LANCHOR0
- 128              		.cfi_endproc
- 129              	.LFE3:
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 6
+ 166              		.loc 1 156 0
+ 167 000e FFF7FEFF 		bl	Timer_Enable
+ 168              	.LVL7:
+ 169              	.L15:
+ 170 0012 08BD     		pop	{r3, pc}
+ 171              	.L19:
+ 172              		.align	2
+ 173              	.L18:
+ 174 0014 00000000 		.word	.LANCHOR0
+ 175              		.cfi_endproc
+ 176              	.LFE3:
+ 177              		.size	Timer_Wakeup, .-Timer_Wakeup
+ 178              		.bss
+ 179              		.align	2
+ 180              		.set	.LANCHOR0,. + 0
+ 181              		.type	Timer_backup, %object
+ 182              		.size	Timer_backup, 6
+ 183              	Timer_backup:
+ 184 0000 00000000 		.space	6
+ 184      0000
+ 185 0006 0000     		.text
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 7
 
 
- 130              		.size	Timer_Wakeup, .-Timer_Wakeup
- 131              		.bss
- 132              		.align	2
- 133              		.set	.LANCHOR0,. + 0
- 134              		.type	Timer_backup, %object
- 135              		.size	Timer_backup, 1
- 136              	Timer_backup:
- 137 0000 00       		.space	1
- 138 0001 000000   		.text
- 139              	.Letext0:
- 140              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
- 141              		.file 3 ".\\Generated_Source\\PSoC5\\Timer.h"
- 142              		.section	.debug_info,"",%progbits
- 143              	.Ldebug_info0:
- 144 0000 3F010000 		.4byte	0x13f
- 145 0004 0400     		.2byte	0x4
- 146 0006 00000000 		.4byte	.Ldebug_abbrev0
- 147 000a 04       		.byte	0x4
- 148 000b 01       		.uleb128 0x1
- 149 000c 6D000000 		.4byte	.LASF22
- 150 0010 01       		.byte	0x1
- 151 0011 2E010000 		.4byte	.LASF23
- 152 0015 85010000 		.4byte	.LASF24
- 153 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 154 001d 00000000 		.4byte	0
- 155 0021 00000000 		.4byte	.Ldebug_line0
- 156 0025 02       		.uleb128 0x2
- 157 0026 01       		.byte	0x1
- 158 0027 06       		.byte	0x6
- 159 0028 79010000 		.4byte	.LASF0
- 160 002c 02       		.uleb128 0x2
- 161 002d 01       		.byte	0x1
- 162 002e 08       		.byte	0x8
- 163 002f 0C010000 		.4byte	.LASF1
- 164 0033 02       		.uleb128 0x2
- 165 0034 02       		.byte	0x2
- 166 0035 05       		.byte	0x5
- 167 0036 ED010000 		.4byte	.LASF2
- 168 003a 02       		.uleb128 0x2
- 169 003b 02       		.byte	0x2
- 170 003c 07       		.byte	0x7
- 171 003d 66010000 		.4byte	.LASF3
- 172 0041 02       		.uleb128 0x2
- 173 0042 04       		.byte	0x4
- 174 0043 05       		.byte	0x5
- 175 0044 25010000 		.4byte	.LASF4
- 176 0048 02       		.uleb128 0x2
- 177 0049 04       		.byte	0x4
- 178 004a 07       		.byte	0x7
- 179 004b 3F000000 		.4byte	.LASF5
- 180 004f 02       		.uleb128 0x2
- 181 0050 08       		.byte	0x8
- 182 0051 05       		.byte	0x5
- 183 0052 00000000 		.4byte	.LASF6
- 184 0056 02       		.uleb128 0x2
- 185 0057 08       		.byte	0x8
- 186 0058 07       		.byte	0x7
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 7
+ 186              	.Letext0:
+ 187              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 188              		.file 3 ".\\Generated_Source\\PSoC5\\Timer.h"
+ 189              		.section	.debug_info,"",%progbits
+ 190              	.Ldebug_info0:
+ 191 0000 E6010000 		.4byte	0x1e6
+ 192 0004 0400     		.2byte	0x4
+ 193 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 194 000a 04       		.byte	0x4
+ 195 000b 01       		.uleb128 0x1
+ 196 000c 67010000 		.4byte	.LASF31
+ 197 0010 01       		.byte	0x1
+ 198 0011 52020000 		.4byte	.LASF32
+ 199 0015 82000000 		.4byte	.LASF33
+ 200 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 201 001d 00000000 		.4byte	0
+ 202 0021 00000000 		.4byte	.Ldebug_line0
+ 203 0025 02       		.uleb128 0x2
+ 204 0026 01       		.byte	0x1
+ 205 0027 06       		.byte	0x6
+ 206 0028 76020000 		.4byte	.LASF0
+ 207 002c 02       		.uleb128 0x2
+ 208 002d 01       		.byte	0x1
+ 209 002e 08       		.byte	0x8
+ 210 002f 74000000 		.4byte	.LASF1
+ 211 0033 02       		.uleb128 0x2
+ 212 0034 02       		.byte	0x2
+ 213 0035 05       		.byte	0x5
+ 214 0036 11020000 		.4byte	.LASF2
+ 215 003a 02       		.uleb128 0x2
+ 216 003b 02       		.byte	0x2
+ 217 003c 07       		.byte	0x7
+ 218 003d 23000000 		.4byte	.LASF3
+ 219 0041 02       		.uleb128 0x2
+ 220 0042 04       		.byte	0x4
+ 221 0043 05       		.byte	0x5
+ 222 0044 49020000 		.4byte	.LASF4
+ 223 0048 02       		.uleb128 0x2
+ 224 0049 04       		.byte	0x4
+ 225 004a 07       		.byte	0x7
+ 226 004b E2000000 		.4byte	.LASF5
+ 227 004f 02       		.uleb128 0x2
+ 228 0050 08       		.byte	0x8
+ 229 0051 05       		.byte	0x5
+ 230 0052 FE010000 		.4byte	.LASF6
+ 231 0056 02       		.uleb128 0x2
+ 232 0057 08       		.byte	0x8
+ 233 0058 07       		.byte	0x7
+ 234 0059 50010000 		.4byte	.LASF7
+ 235 005d 03       		.uleb128 0x3
+ 236 005e 04       		.byte	0x4
+ 237 005f 05       		.byte	0x5
+ 238 0060 696E7400 		.ascii	"int\000"
+ 239 0064 02       		.uleb128 0x2
+ 240 0065 04       		.byte	0x4
+ 241 0066 07       		.byte	0x7
+ 242 0067 43010000 		.4byte	.LASF8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 8
 
 
- 187 0059 51000000 		.4byte	.LASF7
- 188 005d 03       		.uleb128 0x3
- 189 005e 04       		.byte	0x4
- 190 005f 05       		.byte	0x5
- 191 0060 696E7400 		.ascii	"int\000"
- 192 0064 02       		.uleb128 0x2
- 193 0065 04       		.byte	0x4
- 194 0066 07       		.byte	0x7
- 195 0067 1F000000 		.4byte	.LASF8
- 196 006b 04       		.uleb128 0x4
- 197 006c 39000000 		.4byte	.LASF12
- 198 0070 02       		.byte	0x2
- 199 0071 B4       		.byte	0xb4
- 200 0072 2C000000 		.4byte	0x2c
- 201 0076 02       		.uleb128 0x2
- 202 0077 04       		.byte	0x4
- 203 0078 04       		.byte	0x4
- 204 0079 D4010000 		.4byte	.LASF9
- 205 007d 02       		.uleb128 0x2
- 206 007e 08       		.byte	0x8
- 207 007f 04       		.byte	0x4
- 208 0080 5F010000 		.4byte	.LASF10
- 209 0084 02       		.uleb128 0x2
- 210 0085 01       		.byte	0x1
- 211 0086 08       		.byte	0x8
- 212 0087 68000000 		.4byte	.LASF11
- 213 008b 05       		.uleb128 0x5
- 214 008c F7010000 		.4byte	.LASF13
- 215 0090 02       		.byte	0x2
- 216 0091 5E01     		.2byte	0x15e
- 217 0093 97000000 		.4byte	0x97
- 218 0097 06       		.uleb128 0x6
- 219 0098 6B000000 		.4byte	0x6b
- 220 009c 02       		.uleb128 0x2
- 221 009d 04       		.byte	0x4
- 222 009e 07       		.byte	0x7
- 223 009f 1C020000 		.4byte	.LASF14
- 224 00a3 07       		.uleb128 0x7
- 225 00a4 01       		.byte	0x1
- 226 00a5 03       		.byte	0x3
- 227 00a6 43       		.byte	0x43
- 228 00a7 B8000000 		.4byte	0xb8
- 229 00ab 08       		.uleb128 0x8
- 230 00ac FB000000 		.4byte	.LASF25
- 231 00b0 03       		.byte	0x3
- 232 00b1 45       		.byte	0x45
- 233 00b2 6B000000 		.4byte	0x6b
- 234 00b6 00       		.byte	0
- 235 00b7 00       		.byte	0
- 236 00b8 04       		.uleb128 0x4
- 237 00b9 DA010000 		.4byte	.LASF15
- 238 00bd 03       		.byte	0x3
- 239 00be 53       		.byte	0x53
- 240 00bf A3000000 		.4byte	0xa3
- 241 00c3 09       		.uleb128 0x9
- 242 00c4 0E000000 		.4byte	.LASF16
- 243 00c8 01       		.byte	0x1
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 8
+ 243 006b 04       		.uleb128 0x4
+ 244 006c F4000000 		.4byte	.LASF9
+ 245 0070 02       		.byte	0x2
+ 246 0071 B4       		.byte	0xb4
+ 247 0072 2C000000 		.4byte	0x2c
+ 248 0076 04       		.uleb128 0x4
+ 249 0077 22010000 		.4byte	.LASF10
+ 250 007b 02       		.byte	0x2
+ 251 007c B5       		.byte	0xb5
+ 252 007d 3A000000 		.4byte	0x3a
+ 253 0081 02       		.uleb128 0x2
+ 254 0082 04       		.byte	0x4
+ 255 0083 04       		.byte	0x4
+ 256 0084 5B000000 		.4byte	.LASF11
+ 257 0088 02       		.uleb128 0x2
+ 258 0089 08       		.byte	0x8
+ 259 008a 04       		.byte	0x4
+ 260 008b 1B010000 		.4byte	.LASF12
+ 261 008f 02       		.uleb128 0x2
+ 262 0090 01       		.byte	0x1
+ 263 0091 08       		.byte	0x8
+ 264 0092 0C020000 		.4byte	.LASF13
+ 265 0096 05       		.uleb128 0x5
+ 266 0097 C4000000 		.4byte	.LASF14
+ 267 009b 02       		.byte	0x2
+ 268 009c 5E01     		.2byte	0x15e
+ 269 009e A2000000 		.4byte	0xa2
+ 270 00a2 06       		.uleb128 0x6
+ 271 00a3 6B000000 		.4byte	0x6b
+ 272 00a7 02       		.uleb128 0x2
+ 273 00a8 04       		.byte	0x4
+ 274 00a9 07       		.byte	0x7
+ 275 00aa F5010000 		.4byte	.LASF15
+ 276 00ae 07       		.uleb128 0x7
+ 277 00af 06       		.byte	0x6
+ 278 00b0 03       		.byte	0x3
+ 279 00b1 43       		.byte	0x43
+ 280 00b2 E7000000 		.4byte	0xe7
+ 281 00b6 08       		.uleb128 0x8
+ 282 00b7 00000000 		.4byte	.LASF16
+ 283 00bb 03       		.byte	0x3
+ 284 00bc 45       		.byte	0x45
+ 285 00bd 6B000000 		.4byte	0x6b
+ 286 00c1 00       		.byte	0
+ 287 00c2 08       		.uleb128 0x8
+ 288 00c3 47000000 		.4byte	.LASF17
+ 289 00c7 03       		.byte	0x3
+ 290 00c8 48       		.byte	0x48
+ 291 00c9 76000000 		.4byte	0x76
+ 292 00cd 02       		.byte	0x2
+ 293 00ce 08       		.uleb128 0x8
+ 294 00cf 82020000 		.4byte	.LASF18
+ 295 00d3 03       		.byte	0x3
+ 296 00d4 49       		.byte	0x49
+ 297 00d5 6B000000 		.4byte	0x6b
+ 298 00d9 04       		.byte	0x4
+ 299 00da 08       		.uleb128 0x8
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 9
 
 
- 244 00c9 2B       		.byte	0x2b
- 245 00ca 00000000 		.4byte	.LFB0
- 246 00ce 02000000 		.4byte	.LFE0-.LFB0
- 247 00d2 01       		.uleb128 0x1
- 248 00d3 9C       		.byte	0x9c
- 249 00d4 09       		.uleb128 0x9
- 250 00d5 FC010000 		.4byte	.LASF17
- 251 00d9 01       		.byte	0x1
- 252 00da 4D       		.byte	0x4d
- 253 00db 00000000 		.4byte	.LFB1
- 254 00df 02000000 		.4byte	.LFE1-.LFB1
- 255 00e3 01       		.uleb128 0x1
- 256 00e4 9C       		.byte	0x9c
- 257 00e5 0A       		.uleb128 0xa
- 258 00e6 10020000 		.4byte	.LASF18
- 259 00ea 01       		.byte	0x1
- 260 00eb 70       		.byte	0x70
- 261 00ec 00000000 		.4byte	.LFB2
- 262 00f0 28000000 		.4byte	.LFE2-.LFB2
- 263 00f4 01       		.uleb128 0x1
- 264 00f5 9C       		.byte	0x9c
- 265 00f6 04010000 		.4byte	0x104
- 266 00fa 0B       		.uleb128 0xb
- 267 00fb 1E000000 		.4byte	.LVL0
- 268 00ff 34010000 		.4byte	0x134
- 269 0103 00       		.byte	0
- 270 0104 0A       		.uleb128 0xa
- 271 0105 52010000 		.4byte	.LASF19
- 272 0109 01       		.byte	0x1
- 273 010a 96       		.byte	0x96
- 274 010b 00000000 		.4byte	.LFB3
- 275 010f 14000000 		.4byte	.LFE3-.LFB3
- 276 0113 01       		.uleb128 0x1
- 277 0114 9C       		.byte	0x9c
- 278 0115 23010000 		.4byte	0x123
- 279 0119 0B       		.uleb128 0xb
- 280 011a 0E000000 		.4byte	.LVL1
- 281 011e 3B010000 		.4byte	0x13b
- 282 0122 00       		.byte	0
- 283 0123 0C       		.uleb128 0xc
- 284 0124 2C000000 		.4byte	.LASF26
- 285 0128 01       		.byte	0x1
- 286 0129 15       		.byte	0x15
- 287 012a B8000000 		.4byte	0xb8
- 288 012e 05       		.uleb128 0x5
- 289 012f 03       		.byte	0x3
- 290 0130 00000000 		.4byte	Timer_backup
- 291 0134 0D       		.uleb128 0xd
- 292 0135 1A010000 		.4byte	.LASF20
- 293 0139 03       		.byte	0x3
- 294 013a 5B       		.byte	0x5b
- 295 013b 0D       		.uleb128 0xd
- 296 013c C7010000 		.4byte	.LASF21
- 297 0140 03       		.byte	0x3
- 298 0141 8B       		.byte	0x8b
- 299 0142 00       		.byte	0
- 300              		.section	.debug_abbrev,"",%progbits
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 9
+ 300 00db 95020000 		.4byte	.LASF19
+ 301 00df 03       		.byte	0x3
+ 302 00e0 4F       		.byte	0x4f
+ 303 00e1 6B000000 		.4byte	0x6b
+ 304 00e5 05       		.byte	0x5
+ 305 00e6 00       		.byte	0
+ 306 00e7 04       		.uleb128 0x4
+ 307 00e8 61000000 		.4byte	.LASF20
+ 308 00ec 03       		.byte	0x3
+ 309 00ed 53       		.byte	0x53
+ 310 00ee AE000000 		.4byte	0xae
+ 311 00f2 09       		.uleb128 0x9
+ 312 00f3 36000000 		.4byte	.LASF21
+ 313 00f7 01       		.byte	0x1
+ 314 00f8 2B       		.byte	0x2b
+ 315 00f9 00000000 		.4byte	.LFB0
+ 316 00fd 20000000 		.4byte	.LFE0-.LFB0
+ 317 0101 01       		.uleb128 0x1
+ 318 0102 9C       		.byte	0x9c
+ 319 0103 1A010000 		.4byte	0x11a
+ 320 0107 0A       		.uleb128 0xa
+ 321 0108 06000000 		.4byte	.LVL0
+ 322 010c A3010000 		.4byte	0x1a3
+ 323 0110 0A       		.uleb128 0xa
+ 324 0111 14000000 		.4byte	.LVL1
+ 325 0115 AE010000 		.4byte	0x1ae
+ 326 0119 00       		.byte	0
+ 327 011a 09       		.uleb128 0x9
+ 328 011b FA000000 		.4byte	.LASF22
+ 329 011f 01       		.byte	0x1
+ 330 0120 4D       		.byte	0x4d
+ 331 0121 00000000 		.4byte	.LFB1
+ 332 0125 20000000 		.4byte	.LFE1-.LFB1
+ 333 0129 01       		.uleb128 0x1
+ 334 012a 9C       		.byte	0x9c
+ 335 012b 42010000 		.4byte	0x142
+ 336 012f 0A       		.uleb128 0xa
+ 337 0130 0A000000 		.4byte	.LVL2
+ 338 0134 B9010000 		.4byte	0x1b9
+ 339 0138 0A       		.uleb128 0xa
+ 340 0139 16000000 		.4byte	.LVL3
+ 341 013d CA010000 		.4byte	0x1ca
+ 342 0141 00       		.byte	0
+ 343 0142 09       		.uleb128 0x9
+ 344 0143 D6000000 		.4byte	.LASF23
+ 345 0147 01       		.byte	0x1
+ 346 0148 70       		.byte	0x70
+ 347 0149 00000000 		.4byte	.LFB2
+ 348 014d 2C000000 		.4byte	.LFE2-.LFB2
+ 349 0151 01       		.uleb128 0x1
+ 350 0152 9C       		.byte	0x9c
+ 351 0153 6A010000 		.4byte	0x16a
+ 352 0157 0A       		.uleb128 0xa
+ 353 0158 1E000000 		.4byte	.LVL4
+ 354 015c DB010000 		.4byte	0x1db
+ 355 0160 0A       		.uleb128 0xa
+ 356 0161 22000000 		.4byte	.LVL5
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 10
 
 
- 301              	.Ldebug_abbrev0:
- 302 0000 01       		.uleb128 0x1
- 303 0001 11       		.uleb128 0x11
- 304 0002 01       		.byte	0x1
- 305 0003 25       		.uleb128 0x25
- 306 0004 0E       		.uleb128 0xe
- 307 0005 13       		.uleb128 0x13
- 308 0006 0B       		.uleb128 0xb
- 309 0007 03       		.uleb128 0x3
- 310 0008 0E       		.uleb128 0xe
- 311 0009 1B       		.uleb128 0x1b
- 312 000a 0E       		.uleb128 0xe
- 313 000b 55       		.uleb128 0x55
- 314 000c 17       		.uleb128 0x17
- 315 000d 11       		.uleb128 0x11
- 316 000e 01       		.uleb128 0x1
- 317 000f 10       		.uleb128 0x10
- 318 0010 17       		.uleb128 0x17
- 319 0011 00       		.byte	0
- 320 0012 00       		.byte	0
- 321 0013 02       		.uleb128 0x2
- 322 0014 24       		.uleb128 0x24
- 323 0015 00       		.byte	0
- 324 0016 0B       		.uleb128 0xb
- 325 0017 0B       		.uleb128 0xb
- 326 0018 3E       		.uleb128 0x3e
- 327 0019 0B       		.uleb128 0xb
- 328 001a 03       		.uleb128 0x3
- 329 001b 0E       		.uleb128 0xe
- 330 001c 00       		.byte	0
- 331 001d 00       		.byte	0
- 332 001e 03       		.uleb128 0x3
- 333 001f 24       		.uleb128 0x24
- 334 0020 00       		.byte	0
- 335 0021 0B       		.uleb128 0xb
- 336 0022 0B       		.uleb128 0xb
- 337 0023 3E       		.uleb128 0x3e
- 338 0024 0B       		.uleb128 0xb
- 339 0025 03       		.uleb128 0x3
- 340 0026 08       		.uleb128 0x8
- 341 0027 00       		.byte	0
- 342 0028 00       		.byte	0
- 343 0029 04       		.uleb128 0x4
- 344 002a 16       		.uleb128 0x16
- 345 002b 00       		.byte	0
- 346 002c 03       		.uleb128 0x3
- 347 002d 0E       		.uleb128 0xe
- 348 002e 3A       		.uleb128 0x3a
- 349 002f 0B       		.uleb128 0xb
- 350 0030 3B       		.uleb128 0x3b
- 351 0031 0B       		.uleb128 0xb
- 352 0032 49       		.uleb128 0x49
- 353 0033 13       		.uleb128 0x13
- 354 0034 00       		.byte	0
- 355 0035 00       		.byte	0
- 356 0036 05       		.uleb128 0x5
- 357 0037 16       		.uleb128 0x16
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 10
+ 357 0165 F2000000 		.4byte	0xf2
+ 358 0169 00       		.byte	0
+ 359 016a 09       		.uleb128 0x9
+ 360 016b 0E010000 		.4byte	.LASF24
+ 361 016f 01       		.byte	0x1
+ 362 0170 96       		.byte	0x96
+ 363 0171 00000000 		.4byte	.LFB3
+ 364 0175 18000000 		.4byte	.LFE3-.LFB3
+ 365 0179 01       		.uleb128 0x1
+ 366 017a 9C       		.byte	0x9c
+ 367 017b 92010000 		.4byte	0x192
+ 368 017f 0A       		.uleb128 0xa
+ 369 0180 06000000 		.4byte	.LVL6
+ 370 0184 1A010000 		.4byte	0x11a
+ 371 0188 0A       		.uleb128 0xa
+ 372 0189 12000000 		.4byte	.LVL7
+ 373 018d E2010000 		.4byte	0x1e2
+ 374 0191 00       		.byte	0
+ 375 0192 0B       		.uleb128 0xb
+ 376 0193 C9000000 		.4byte	.LASF34
+ 377 0197 01       		.byte	0x1
+ 378 0198 15       		.byte	0x15
+ 379 0199 E7000000 		.4byte	0xe7
+ 380 019d 05       		.uleb128 0x5
+ 381 019e 03       		.byte	0x3
+ 382 019f 00000000 		.4byte	Timer_backup
+ 383 01a3 0C       		.uleb128 0xc
+ 384 01a4 11000000 		.4byte	.LASF25
+ 385 01a8 03       		.byte	0x3
+ 386 01a9 69       		.byte	0x69
+ 387 01aa 76000000 		.4byte	0x76
+ 388 01ae 0C       		.uleb128 0xc
+ 389 01af 29010000 		.4byte	.LASF26
+ 390 01b3 03       		.byte	0x3
+ 391 01b4 63       		.byte	0x63
+ 392 01b5 6B000000 		.4byte	0x6b
+ 393 01b9 0D       		.uleb128 0xd
+ 394 01ba 36020000 		.4byte	.LASF27
+ 395 01be 03       		.byte	0x3
+ 396 01bf 6A       		.byte	0x6a
+ 397 01c0 CA010000 		.4byte	0x1ca
+ 398 01c4 0E       		.uleb128 0xe
+ 399 01c5 76000000 		.4byte	0x76
+ 400 01c9 00       		.byte	0
+ 401 01ca 0D       		.uleb128 0xd
+ 402 01cb 1B020000 		.4byte	.LASF28
+ 403 01cf 03       		.byte	0x3
+ 404 01d0 64       		.byte	0x64
+ 405 01d1 DB010000 		.4byte	0x1db
+ 406 01d5 0E       		.uleb128 0xe
+ 407 01d6 6B000000 		.4byte	0x6b
+ 408 01da 00       		.byte	0
+ 409 01db 0F       		.uleb128 0xf
+ 410 01dc 50000000 		.4byte	.LASF29
+ 411 01e0 03       		.byte	0x3
+ 412 01e1 5B       		.byte	0x5b
+ 413 01e2 0F       		.uleb128 0xf
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 11
 
 
- 358 0038 00       		.byte	0
- 359 0039 03       		.uleb128 0x3
- 360 003a 0E       		.uleb128 0xe
- 361 003b 3A       		.uleb128 0x3a
- 362 003c 0B       		.uleb128 0xb
- 363 003d 3B       		.uleb128 0x3b
- 364 003e 05       		.uleb128 0x5
- 365 003f 49       		.uleb128 0x49
- 366 0040 13       		.uleb128 0x13
- 367 0041 00       		.byte	0
- 368 0042 00       		.byte	0
- 369 0043 06       		.uleb128 0x6
- 370 0044 35       		.uleb128 0x35
- 371 0045 00       		.byte	0
- 372 0046 49       		.uleb128 0x49
- 373 0047 13       		.uleb128 0x13
- 374 0048 00       		.byte	0
- 375 0049 00       		.byte	0
- 376 004a 07       		.uleb128 0x7
- 377 004b 13       		.uleb128 0x13
- 378 004c 01       		.byte	0x1
- 379 004d 0B       		.uleb128 0xb
- 380 004e 0B       		.uleb128 0xb
- 381 004f 3A       		.uleb128 0x3a
- 382 0050 0B       		.uleb128 0xb
- 383 0051 3B       		.uleb128 0x3b
- 384 0052 0B       		.uleb128 0xb
- 385 0053 01       		.uleb128 0x1
- 386 0054 13       		.uleb128 0x13
- 387 0055 00       		.byte	0
- 388 0056 00       		.byte	0
- 389 0057 08       		.uleb128 0x8
- 390 0058 0D       		.uleb128 0xd
- 391 0059 00       		.byte	0
- 392 005a 03       		.uleb128 0x3
- 393 005b 0E       		.uleb128 0xe
- 394 005c 3A       		.uleb128 0x3a
- 395 005d 0B       		.uleb128 0xb
- 396 005e 3B       		.uleb128 0x3b
- 397 005f 0B       		.uleb128 0xb
- 398 0060 49       		.uleb128 0x49
- 399 0061 13       		.uleb128 0x13
- 400 0062 38       		.uleb128 0x38
- 401 0063 0B       		.uleb128 0xb
- 402 0064 00       		.byte	0
- 403 0065 00       		.byte	0
- 404 0066 09       		.uleb128 0x9
- 405 0067 2E       		.uleb128 0x2e
- 406 0068 00       		.byte	0
- 407 0069 3F       		.uleb128 0x3f
- 408 006a 19       		.uleb128 0x19
- 409 006b 03       		.uleb128 0x3
- 410 006c 0E       		.uleb128 0xe
- 411 006d 3A       		.uleb128 0x3a
- 412 006e 0B       		.uleb128 0xb
- 413 006f 3B       		.uleb128 0x3b
- 414 0070 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 11
+ 414 01e3 AA020000 		.4byte	.LASF30
+ 415 01e7 03       		.byte	0x3
+ 416 01e8 8B       		.byte	0x8b
+ 417 01e9 00       		.byte	0
+ 418              		.section	.debug_abbrev,"",%progbits
+ 419              	.Ldebug_abbrev0:
+ 420 0000 01       		.uleb128 0x1
+ 421 0001 11       		.uleb128 0x11
+ 422 0002 01       		.byte	0x1
+ 423 0003 25       		.uleb128 0x25
+ 424 0004 0E       		.uleb128 0xe
+ 425 0005 13       		.uleb128 0x13
+ 426 0006 0B       		.uleb128 0xb
+ 427 0007 03       		.uleb128 0x3
+ 428 0008 0E       		.uleb128 0xe
+ 429 0009 1B       		.uleb128 0x1b
+ 430 000a 0E       		.uleb128 0xe
+ 431 000b 55       		.uleb128 0x55
+ 432 000c 17       		.uleb128 0x17
+ 433 000d 11       		.uleb128 0x11
+ 434 000e 01       		.uleb128 0x1
+ 435 000f 10       		.uleb128 0x10
+ 436 0010 17       		.uleb128 0x17
+ 437 0011 00       		.byte	0
+ 438 0012 00       		.byte	0
+ 439 0013 02       		.uleb128 0x2
+ 440 0014 24       		.uleb128 0x24
+ 441 0015 00       		.byte	0
+ 442 0016 0B       		.uleb128 0xb
+ 443 0017 0B       		.uleb128 0xb
+ 444 0018 3E       		.uleb128 0x3e
+ 445 0019 0B       		.uleb128 0xb
+ 446 001a 03       		.uleb128 0x3
+ 447 001b 0E       		.uleb128 0xe
+ 448 001c 00       		.byte	0
+ 449 001d 00       		.byte	0
+ 450 001e 03       		.uleb128 0x3
+ 451 001f 24       		.uleb128 0x24
+ 452 0020 00       		.byte	0
+ 453 0021 0B       		.uleb128 0xb
+ 454 0022 0B       		.uleb128 0xb
+ 455 0023 3E       		.uleb128 0x3e
+ 456 0024 0B       		.uleb128 0xb
+ 457 0025 03       		.uleb128 0x3
+ 458 0026 08       		.uleb128 0x8
+ 459 0027 00       		.byte	0
+ 460 0028 00       		.byte	0
+ 461 0029 04       		.uleb128 0x4
+ 462 002a 16       		.uleb128 0x16
+ 463 002b 00       		.byte	0
+ 464 002c 03       		.uleb128 0x3
+ 465 002d 0E       		.uleb128 0xe
+ 466 002e 3A       		.uleb128 0x3a
+ 467 002f 0B       		.uleb128 0xb
+ 468 0030 3B       		.uleb128 0x3b
+ 469 0031 0B       		.uleb128 0xb
+ 470 0032 49       		.uleb128 0x49
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 12
 
 
- 415 0071 27       		.uleb128 0x27
- 416 0072 19       		.uleb128 0x19
- 417 0073 11       		.uleb128 0x11
- 418 0074 01       		.uleb128 0x1
- 419 0075 12       		.uleb128 0x12
- 420 0076 06       		.uleb128 0x6
- 421 0077 40       		.uleb128 0x40
- 422 0078 18       		.uleb128 0x18
- 423 0079 9742     		.uleb128 0x2117
- 424 007b 19       		.uleb128 0x19
- 425 007c 00       		.byte	0
- 426 007d 00       		.byte	0
- 427 007e 0A       		.uleb128 0xa
- 428 007f 2E       		.uleb128 0x2e
- 429 0080 01       		.byte	0x1
- 430 0081 3F       		.uleb128 0x3f
- 431 0082 19       		.uleb128 0x19
- 432 0083 03       		.uleb128 0x3
- 433 0084 0E       		.uleb128 0xe
- 434 0085 3A       		.uleb128 0x3a
- 435 0086 0B       		.uleb128 0xb
- 436 0087 3B       		.uleb128 0x3b
- 437 0088 0B       		.uleb128 0xb
- 438 0089 27       		.uleb128 0x27
- 439 008a 19       		.uleb128 0x19
- 440 008b 11       		.uleb128 0x11
- 441 008c 01       		.uleb128 0x1
- 442 008d 12       		.uleb128 0x12
- 443 008e 06       		.uleb128 0x6
- 444 008f 40       		.uleb128 0x40
- 445 0090 18       		.uleb128 0x18
- 446 0091 9742     		.uleb128 0x2117
- 447 0093 19       		.uleb128 0x19
- 448 0094 01       		.uleb128 0x1
- 449 0095 13       		.uleb128 0x13
- 450 0096 00       		.byte	0
- 451 0097 00       		.byte	0
- 452 0098 0B       		.uleb128 0xb
- 453 0099 898201   		.uleb128 0x4109
- 454 009c 00       		.byte	0
- 455 009d 11       		.uleb128 0x11
- 456 009e 01       		.uleb128 0x1
- 457 009f 31       		.uleb128 0x31
- 458 00a0 13       		.uleb128 0x13
- 459 00a1 00       		.byte	0
- 460 00a2 00       		.byte	0
- 461 00a3 0C       		.uleb128 0xc
- 462 00a4 34       		.uleb128 0x34
- 463 00a5 00       		.byte	0
- 464 00a6 03       		.uleb128 0x3
- 465 00a7 0E       		.uleb128 0xe
- 466 00a8 3A       		.uleb128 0x3a
- 467 00a9 0B       		.uleb128 0xb
- 468 00aa 3B       		.uleb128 0x3b
- 469 00ab 0B       		.uleb128 0xb
- 470 00ac 49       		.uleb128 0x49
- 471 00ad 13       		.uleb128 0x13
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 12
+ 471 0033 13       		.uleb128 0x13
+ 472 0034 00       		.byte	0
+ 473 0035 00       		.byte	0
+ 474 0036 05       		.uleb128 0x5
+ 475 0037 16       		.uleb128 0x16
+ 476 0038 00       		.byte	0
+ 477 0039 03       		.uleb128 0x3
+ 478 003a 0E       		.uleb128 0xe
+ 479 003b 3A       		.uleb128 0x3a
+ 480 003c 0B       		.uleb128 0xb
+ 481 003d 3B       		.uleb128 0x3b
+ 482 003e 05       		.uleb128 0x5
+ 483 003f 49       		.uleb128 0x49
+ 484 0040 13       		.uleb128 0x13
+ 485 0041 00       		.byte	0
+ 486 0042 00       		.byte	0
+ 487 0043 06       		.uleb128 0x6
+ 488 0044 35       		.uleb128 0x35
+ 489 0045 00       		.byte	0
+ 490 0046 49       		.uleb128 0x49
+ 491 0047 13       		.uleb128 0x13
+ 492 0048 00       		.byte	0
+ 493 0049 00       		.byte	0
+ 494 004a 07       		.uleb128 0x7
+ 495 004b 13       		.uleb128 0x13
+ 496 004c 01       		.byte	0x1
+ 497 004d 0B       		.uleb128 0xb
+ 498 004e 0B       		.uleb128 0xb
+ 499 004f 3A       		.uleb128 0x3a
+ 500 0050 0B       		.uleb128 0xb
+ 501 0051 3B       		.uleb128 0x3b
+ 502 0052 0B       		.uleb128 0xb
+ 503 0053 01       		.uleb128 0x1
+ 504 0054 13       		.uleb128 0x13
+ 505 0055 00       		.byte	0
+ 506 0056 00       		.byte	0
+ 507 0057 08       		.uleb128 0x8
+ 508 0058 0D       		.uleb128 0xd
+ 509 0059 00       		.byte	0
+ 510 005a 03       		.uleb128 0x3
+ 511 005b 0E       		.uleb128 0xe
+ 512 005c 3A       		.uleb128 0x3a
+ 513 005d 0B       		.uleb128 0xb
+ 514 005e 3B       		.uleb128 0x3b
+ 515 005f 0B       		.uleb128 0xb
+ 516 0060 49       		.uleb128 0x49
+ 517 0061 13       		.uleb128 0x13
+ 518 0062 38       		.uleb128 0x38
+ 519 0063 0B       		.uleb128 0xb
+ 520 0064 00       		.byte	0
+ 521 0065 00       		.byte	0
+ 522 0066 09       		.uleb128 0x9
+ 523 0067 2E       		.uleb128 0x2e
+ 524 0068 01       		.byte	0x1
+ 525 0069 3F       		.uleb128 0x3f
+ 526 006a 19       		.uleb128 0x19
+ 527 006b 03       		.uleb128 0x3
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 13
 
 
- 472 00ae 02       		.uleb128 0x2
- 473 00af 18       		.uleb128 0x18
- 474 00b0 00       		.byte	0
- 475 00b1 00       		.byte	0
- 476 00b2 0D       		.uleb128 0xd
- 477 00b3 2E       		.uleb128 0x2e
- 478 00b4 00       		.byte	0
- 479 00b5 3F       		.uleb128 0x3f
- 480 00b6 19       		.uleb128 0x19
- 481 00b7 03       		.uleb128 0x3
- 482 00b8 0E       		.uleb128 0xe
- 483 00b9 3A       		.uleb128 0x3a
- 484 00ba 0B       		.uleb128 0xb
- 485 00bb 3B       		.uleb128 0x3b
- 486 00bc 0B       		.uleb128 0xb
- 487 00bd 27       		.uleb128 0x27
- 488 00be 19       		.uleb128 0x19
- 489 00bf 3C       		.uleb128 0x3c
- 490 00c0 19       		.uleb128 0x19
- 491 00c1 00       		.byte	0
- 492 00c2 00       		.byte	0
- 493 00c3 00       		.byte	0
- 494              		.section	.debug_aranges,"",%progbits
- 495 0000 34000000 		.4byte	0x34
- 496 0004 0200     		.2byte	0x2
- 497 0006 00000000 		.4byte	.Ldebug_info0
- 498 000a 04       		.byte	0x4
- 499 000b 00       		.byte	0
- 500 000c 0000     		.2byte	0
- 501 000e 0000     		.2byte	0
- 502 0010 00000000 		.4byte	.LFB0
- 503 0014 02000000 		.4byte	.LFE0-.LFB0
- 504 0018 00000000 		.4byte	.LFB1
- 505 001c 02000000 		.4byte	.LFE1-.LFB1
- 506 0020 00000000 		.4byte	.LFB2
- 507 0024 28000000 		.4byte	.LFE2-.LFB2
- 508 0028 00000000 		.4byte	.LFB3
- 509 002c 14000000 		.4byte	.LFE3-.LFB3
- 510 0030 00000000 		.4byte	0
- 511 0034 00000000 		.4byte	0
- 512              		.section	.debug_ranges,"",%progbits
- 513              	.Ldebug_ranges0:
- 514 0000 00000000 		.4byte	.LFB0
- 515 0004 02000000 		.4byte	.LFE0
- 516 0008 00000000 		.4byte	.LFB1
- 517 000c 02000000 		.4byte	.LFE1
- 518 0010 00000000 		.4byte	.LFB2
- 519 0014 28000000 		.4byte	.LFE2
- 520 0018 00000000 		.4byte	.LFB3
- 521 001c 14000000 		.4byte	.LFE3
- 522 0020 00000000 		.4byte	0
- 523 0024 00000000 		.4byte	0
- 524              		.section	.debug_line,"",%progbits
- 525              	.Ldebug_line0:
- 526 0000 9E000000 		.section	.debug_str,"MS",%progbits,1
- 526      02005200 
- 526      00000201 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 13
+ 528 006c 0E       		.uleb128 0xe
+ 529 006d 3A       		.uleb128 0x3a
+ 530 006e 0B       		.uleb128 0xb
+ 531 006f 3B       		.uleb128 0x3b
+ 532 0070 0B       		.uleb128 0xb
+ 533 0071 27       		.uleb128 0x27
+ 534 0072 19       		.uleb128 0x19
+ 535 0073 11       		.uleb128 0x11
+ 536 0074 01       		.uleb128 0x1
+ 537 0075 12       		.uleb128 0x12
+ 538 0076 06       		.uleb128 0x6
+ 539 0077 40       		.uleb128 0x40
+ 540 0078 18       		.uleb128 0x18
+ 541 0079 9742     		.uleb128 0x2117
+ 542 007b 19       		.uleb128 0x19
+ 543 007c 01       		.uleb128 0x1
+ 544 007d 13       		.uleb128 0x13
+ 545 007e 00       		.byte	0
+ 546 007f 00       		.byte	0
+ 547 0080 0A       		.uleb128 0xa
+ 548 0081 898201   		.uleb128 0x4109
+ 549 0084 00       		.byte	0
+ 550 0085 11       		.uleb128 0x11
+ 551 0086 01       		.uleb128 0x1
+ 552 0087 31       		.uleb128 0x31
+ 553 0088 13       		.uleb128 0x13
+ 554 0089 00       		.byte	0
+ 555 008a 00       		.byte	0
+ 556 008b 0B       		.uleb128 0xb
+ 557 008c 34       		.uleb128 0x34
+ 558 008d 00       		.byte	0
+ 559 008e 03       		.uleb128 0x3
+ 560 008f 0E       		.uleb128 0xe
+ 561 0090 3A       		.uleb128 0x3a
+ 562 0091 0B       		.uleb128 0xb
+ 563 0092 3B       		.uleb128 0x3b
+ 564 0093 0B       		.uleb128 0xb
+ 565 0094 49       		.uleb128 0x49
+ 566 0095 13       		.uleb128 0x13
+ 567 0096 02       		.uleb128 0x2
+ 568 0097 18       		.uleb128 0x18
+ 569 0098 00       		.byte	0
+ 570 0099 00       		.byte	0
+ 571 009a 0C       		.uleb128 0xc
+ 572 009b 2E       		.uleb128 0x2e
+ 573 009c 00       		.byte	0
+ 574 009d 3F       		.uleb128 0x3f
+ 575 009e 19       		.uleb128 0x19
+ 576 009f 03       		.uleb128 0x3
+ 577 00a0 0E       		.uleb128 0xe
+ 578 00a1 3A       		.uleb128 0x3a
+ 579 00a2 0B       		.uleb128 0xb
+ 580 00a3 3B       		.uleb128 0x3b
+ 581 00a4 0B       		.uleb128 0xb
+ 582 00a5 27       		.uleb128 0x27
+ 583 00a6 19       		.uleb128 0x19
+ 584 00a7 49       		.uleb128 0x49
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 14
 
 
- 526      FB0E0D00 
- 526      01010101 
- 527              	.LASF6:
- 528 0000 6C6F6E67 		.ascii	"long long int\000"
- 528      206C6F6E 
- 528      6720696E 
- 528      7400
- 529              	.LASF16:
- 530 000e 54696D65 		.ascii	"Timer_SaveConfig\000"
- 530      725F5361 
- 530      7665436F 
- 530      6E666967 
- 530      00
- 531              	.LASF8:
- 532 001f 756E7369 		.ascii	"unsigned int\000"
- 532      676E6564 
- 532      20696E74 
- 532      00
- 533              	.LASF26:
- 534 002c 54696D65 		.ascii	"Timer_backup\000"
- 534      725F6261 
- 534      636B7570 
- 534      00
- 535              	.LASF12:
- 536 0039 75696E74 		.ascii	"uint8\000"
- 536      3800
- 537              	.LASF5:
- 538 003f 6C6F6E67 		.ascii	"long unsigned int\000"
- 538      20756E73 
- 538      69676E65 
- 538      6420696E 
- 538      7400
- 539              	.LASF7:
- 540 0051 6C6F6E67 		.ascii	"long long unsigned int\000"
- 540      206C6F6E 
- 540      6720756E 
- 540      7369676E 
- 540      65642069 
- 541              	.LASF11:
- 542 0068 63686172 		.ascii	"char\000"
- 542      00
- 543              	.LASF22:
- 544 006d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
- 544      4320342E 
- 544      392E3320 
- 544      32303135 
- 544      30333033 
- 545 00a0 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
- 545      20726576 
- 545      6973696F 
- 545      6E203232 
- 545      31323230 
- 546 00d3 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 546      66756E63 
- 546      74696F6E 
- 546      2D736563 
- 546      74696F6E 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 14
+ 585 00a8 13       		.uleb128 0x13
+ 586 00a9 3C       		.uleb128 0x3c
+ 587 00aa 19       		.uleb128 0x19
+ 588 00ab 00       		.byte	0
+ 589 00ac 00       		.byte	0
+ 590 00ad 0D       		.uleb128 0xd
+ 591 00ae 2E       		.uleb128 0x2e
+ 592 00af 01       		.byte	0x1
+ 593 00b0 3F       		.uleb128 0x3f
+ 594 00b1 19       		.uleb128 0x19
+ 595 00b2 03       		.uleb128 0x3
+ 596 00b3 0E       		.uleb128 0xe
+ 597 00b4 3A       		.uleb128 0x3a
+ 598 00b5 0B       		.uleb128 0xb
+ 599 00b6 3B       		.uleb128 0x3b
+ 600 00b7 0B       		.uleb128 0xb
+ 601 00b8 27       		.uleb128 0x27
+ 602 00b9 19       		.uleb128 0x19
+ 603 00ba 3C       		.uleb128 0x3c
+ 604 00bb 19       		.uleb128 0x19
+ 605 00bc 01       		.uleb128 0x1
+ 606 00bd 13       		.uleb128 0x13
+ 607 00be 00       		.byte	0
+ 608 00bf 00       		.byte	0
+ 609 00c0 0E       		.uleb128 0xe
+ 610 00c1 05       		.uleb128 0x5
+ 611 00c2 00       		.byte	0
+ 612 00c3 49       		.uleb128 0x49
+ 613 00c4 13       		.uleb128 0x13
+ 614 00c5 00       		.byte	0
+ 615 00c6 00       		.byte	0
+ 616 00c7 0F       		.uleb128 0xf
+ 617 00c8 2E       		.uleb128 0x2e
+ 618 00c9 00       		.byte	0
+ 619 00ca 3F       		.uleb128 0x3f
+ 620 00cb 19       		.uleb128 0x19
+ 621 00cc 03       		.uleb128 0x3
+ 622 00cd 0E       		.uleb128 0xe
+ 623 00ce 3A       		.uleb128 0x3a
+ 624 00cf 0B       		.uleb128 0xb
+ 625 00d0 3B       		.uleb128 0x3b
+ 626 00d1 0B       		.uleb128 0xb
+ 627 00d2 27       		.uleb128 0x27
+ 628 00d3 19       		.uleb128 0x19
+ 629 00d4 3C       		.uleb128 0x3c
+ 630 00d5 19       		.uleb128 0x19
+ 631 00d6 00       		.byte	0
+ 632 00d7 00       		.byte	0
+ 633 00d8 00       		.byte	0
+ 634              		.section	.debug_aranges,"",%progbits
+ 635 0000 34000000 		.4byte	0x34
+ 636 0004 0200     		.2byte	0x2
+ 637 0006 00000000 		.4byte	.Ldebug_info0
+ 638 000a 04       		.byte	0x4
+ 639 000b 00       		.byte	0
+ 640 000c 0000     		.2byte	0
+ 641 000e 0000     		.2byte	0
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 15
 
 
- 547              	.LASF25:
- 548 00fb 54696D65 		.ascii	"TimerEnableState\000"
- 548      72456E61 
- 548      626C6553 
- 548      74617465 
- 548      00
- 549              	.LASF1:
- 550 010c 756E7369 		.ascii	"unsigned char\000"
- 550      676E6564 
- 550      20636861 
- 550      7200
- 551              	.LASF20:
- 552 011a 54696D65 		.ascii	"Timer_Stop\000"
- 552      725F5374 
- 552      6F7000
- 553              	.LASF4:
- 554 0125 6C6F6E67 		.ascii	"long int\000"
- 554      20696E74 
- 554      00
- 555              	.LASF23:
- 556 012e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Timer_PM.c\000"
- 556      6E657261 
- 556      7465645F 
- 556      536F7572 
- 556      63655C50 
- 557              	.LASF19:
- 558 0152 54696D65 		.ascii	"Timer_Wakeup\000"
- 558      725F5761 
- 558      6B657570 
- 558      00
- 559              	.LASF10:
- 560 015f 646F7562 		.ascii	"double\000"
- 560      6C6500
- 561              	.LASF3:
- 562 0166 73686F72 		.ascii	"short unsigned int\000"
- 562      7420756E 
- 562      7369676E 
- 562      65642069 
- 562      6E7400
- 563              	.LASF0:
- 564 0179 7369676E 		.ascii	"signed char\000"
- 564      65642063 
- 564      68617200 
- 565              	.LASF24:
- 566 0185 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\FSAE\\E-Throttle\\P"
- 566      73657273 
- 566      5C6D6974 
- 566      6368656C 
- 566      6C5C446F 
- 567 01b2 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
- 567      452D5468 
- 567      726F7474 
- 567      6C652E63 
- 567      7964736E 
- 568              	.LASF21:
- 569 01c7 54696D65 		.ascii	"Timer_Enable\000"
- 569      725F456E 
-ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccO4oUfi.s 			page 15
+ 642 0010 00000000 		.4byte	.LFB0
+ 643 0014 20000000 		.4byte	.LFE0-.LFB0
+ 644 0018 00000000 		.4byte	.LFB1
+ 645 001c 20000000 		.4byte	.LFE1-.LFB1
+ 646 0020 00000000 		.4byte	.LFB2
+ 647 0024 2C000000 		.4byte	.LFE2-.LFB2
+ 648 0028 00000000 		.4byte	.LFB3
+ 649 002c 18000000 		.4byte	.LFE3-.LFB3
+ 650 0030 00000000 		.4byte	0
+ 651 0034 00000000 		.4byte	0
+ 652              		.section	.debug_ranges,"",%progbits
+ 653              	.Ldebug_ranges0:
+ 654 0000 00000000 		.4byte	.LFB0
+ 655 0004 20000000 		.4byte	.LFE0
+ 656 0008 00000000 		.4byte	.LFB1
+ 657 000c 20000000 		.4byte	.LFE1
+ 658 0010 00000000 		.4byte	.LFB2
+ 659 0014 2C000000 		.4byte	.LFE2
+ 660 0018 00000000 		.4byte	.LFB3
+ 661 001c 18000000 		.4byte	.LFE3
+ 662 0020 00000000 		.4byte	0
+ 663 0024 00000000 		.4byte	0
+ 664              		.section	.debug_line,"",%progbits
+ 665              	.Ldebug_line0:
+ 666 0000 A5000000 		.section	.debug_str,"MS",%progbits,1
+ 666      02005200 
+ 666      00000201 
+ 666      FB0E0D00 
+ 666      01010101 
+ 667              	.LASF16:
+ 668 0000 54696D65 		.ascii	"TimerEnableState\000"
+ 668      72456E61 
+ 668      626C6553 
+ 668      74617465 
+ 668      00
+ 669              	.LASF25:
+ 670 0011 54696D65 		.ascii	"Timer_ReadCounter\000"
+ 670      725F5265 
+ 670      6164436F 
+ 670      756E7465 
+ 670      7200
+ 671              	.LASF3:
+ 672 0023 73686F72 		.ascii	"short unsigned int\000"
+ 672      7420756E 
+ 672      7369676E 
+ 672      65642069 
+ 672      6E7400
+ 673              	.LASF21:
+ 674 0036 54696D65 		.ascii	"Timer_SaveConfig\000"
+ 674      725F5361 
+ 674      7665436F 
+ 674      6E666967 
+ 674      00
+ 675              	.LASF17:
+ 676 0047 54696D65 		.ascii	"TimerUdb\000"
+ 676      72556462 
+ 676      00
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 16
 
 
- 569      61626C65 
- 569      00
- 570              	.LASF9:
- 571 01d4 666C6F61 		.ascii	"float\000"
- 571      7400
- 572              	.LASF15:
- 573 01da 54696D65 		.ascii	"Timer_backupStruct\000"
- 573      725F6261 
- 573      636B7570 
- 573      53747275 
- 573      637400
- 574              	.LASF2:
- 575 01ed 73686F72 		.ascii	"short int\000"
- 575      7420696E 
- 575      7400
- 576              	.LASF13:
- 577 01f7 72656738 		.ascii	"reg8\000"
- 577      00
- 578              	.LASF17:
- 579 01fc 54696D65 		.ascii	"Timer_RestoreConfig\000"
- 579      725F5265 
- 579      73746F72 
- 579      65436F6E 
- 579      66696700 
- 580              	.LASF18:
- 581 0210 54696D65 		.ascii	"Timer_Sleep\000"
- 581      725F536C 
- 581      65657000 
- 582              	.LASF14:
- 583 021c 73697A65 		.ascii	"sizetype\000"
- 583      74797065 
- 583      00
- 584              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
+ 677              	.LASF29:
+ 678 0050 54696D65 		.ascii	"Timer_Stop\000"
+ 678      725F5374 
+ 678      6F7000
+ 679              	.LASF11:
+ 680 005b 666C6F61 		.ascii	"float\000"
+ 680      7400
+ 681              	.LASF20:
+ 682 0061 54696D65 		.ascii	"Timer_backupStruct\000"
+ 682      725F6261 
+ 682      636B7570 
+ 682      53747275 
+ 682      637400
+ 683              	.LASF1:
+ 684 0074 756E7369 		.ascii	"unsigned char\000"
+ 684      676E6564 
+ 684      20636861 
+ 684      7200
+ 685              	.LASF33:
+ 686 0082 433A5C55 		.ascii	"C:\\Users\\mitchell\\Documents\\FSAE\\E-Throttle\\P"
+ 686      73657273 
+ 686      5C6D6974 
+ 686      6368656C 
+ 686      6C5C446F 
+ 687 00af 536F435C 		.ascii	"SoC\\E-Throttle.cydsn\000"
+ 687      452D5468 
+ 687      726F7474 
+ 687      6C652E63 
+ 687      7964736E 
+ 688              	.LASF14:
+ 689 00c4 72656738 		.ascii	"reg8\000"
+ 689      00
+ 690              	.LASF34:
+ 691 00c9 54696D65 		.ascii	"Timer_backup\000"
+ 691      725F6261 
+ 691      636B7570 
+ 691      00
+ 692              	.LASF23:
+ 693 00d6 54696D65 		.ascii	"Timer_Sleep\000"
+ 693      725F536C 
+ 693      65657000 
+ 694              	.LASF5:
+ 695 00e2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 695      20756E73 
+ 695      69676E65 
+ 695      6420696E 
+ 695      7400
+ 696              	.LASF9:
+ 697 00f4 75696E74 		.ascii	"uint8\000"
+ 697      3800
+ 698              	.LASF22:
+ 699 00fa 54696D65 		.ascii	"Timer_RestoreConfig\000"
+ 699      725F5265 
+ 699      73746F72 
+ 699      65436F6E 
+ 699      66696700 
+ 700              	.LASF24:
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 17
+
+
+ 701 010e 54696D65 		.ascii	"Timer_Wakeup\000"
+ 701      725F5761 
+ 701      6B657570 
+ 701      00
+ 702              	.LASF12:
+ 703 011b 646F7562 		.ascii	"double\000"
+ 703      6C6500
+ 704              	.LASF10:
+ 705 0122 75696E74 		.ascii	"uint16\000"
+ 705      313600
+ 706              	.LASF26:
+ 707 0129 54696D65 		.ascii	"Timer_ReadControlRegister\000"
+ 707      725F5265 
+ 707      6164436F 
+ 707      6E74726F 
+ 707      6C526567 
+ 708              	.LASF8:
+ 709 0143 756E7369 		.ascii	"unsigned int\000"
+ 709      676E6564 
+ 709      20696E74 
+ 709      00
+ 710              	.LASF7:
+ 711 0150 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 711      206C6F6E 
+ 711      6720756E 
+ 711      7369676E 
+ 711      65642069 
+ 712              	.LASF31:
+ 713 0167 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 713      4320342E 
+ 713      392E3320 
+ 713      32303135 
+ 713      30333033 
+ 714 019a 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 714      20726576 
+ 714      6973696F 
+ 714      6E203232 
+ 714      31323230 
+ 715 01cd 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 715      66756E63 
+ 715      74696F6E 
+ 715      2D736563 
+ 715      74696F6E 
+ 716              	.LASF15:
+ 717 01f5 73697A65 		.ascii	"sizetype\000"
+ 717      74797065 
+ 717      00
+ 718              	.LASF6:
+ 719 01fe 6C6F6E67 		.ascii	"long long int\000"
+ 719      206C6F6E 
+ 719      6720696E 
+ 719      7400
+ 720              	.LASF13:
+ 721 020c 63686172 		.ascii	"char\000"
+ 721      00
+ 722              	.LASF2:
+ 723 0211 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\mitchell\AppData\Local\Temp\ccFmsVHg.s 			page 18
+
+
+ 723      7420696E 
+ 723      7400
+ 724              	.LASF28:
+ 725 021b 54696D65 		.ascii	"Timer_WriteControlRegister\000"
+ 725      725F5772 
+ 725      69746543 
+ 725      6F6E7472 
+ 725      6F6C5265 
+ 726              	.LASF27:
+ 727 0236 54696D65 		.ascii	"Timer_WriteCounter\000"
+ 727      725F5772 
+ 727      69746543 
+ 727      6F756E74 
+ 727      657200
+ 728              	.LASF4:
+ 729 0249 6C6F6E67 		.ascii	"long int\000"
+ 729      20696E74 
+ 729      00
+ 730              	.LASF32:
+ 731 0252 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Timer_PM.c\000"
+ 731      6E657261 
+ 731      7465645F 
+ 731      536F7572 
+ 731      63655C50 
+ 732              	.LASF0:
+ 733 0276 7369676E 		.ascii	"signed char\000"
+ 733      65642063 
+ 733      68617200 
+ 734              	.LASF18:
+ 735 0282 496E7465 		.ascii	"InterruptMaskValue\000"
+ 735      72727570 
+ 735      744D6173 
+ 735      6B56616C 
+ 735      756500
+ 736              	.LASF19:
+ 737 0295 54696D65 		.ascii	"TimerControlRegister\000"
+ 737      72436F6E 
+ 737      74726F6C 
+ 737      52656769 
+ 737      73746572 
+ 738              	.LASF30:
+ 739 02aa 54696D65 		.ascii	"Timer_Enable\000"
+ 739      725F456E 
+ 739      61626C65 
+ 739      00
+ 740              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

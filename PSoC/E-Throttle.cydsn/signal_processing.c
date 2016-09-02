@@ -89,6 +89,10 @@ Error_Buffer * createErrorBuffer() {
     eb->percent_brake_errs = 0.0;
     eb->size = 0;
     eb->total_time = 0;
+    Timer_Stop();
+    Timer_WriteCounter(Timer_ReadPeriod());  /* Needed to reset timer */
+    Timer_Start(); /* Reset the timer */
+    eb->start_cnt = Timer_ReadCounter();
     return eb;
 }
 
@@ -101,9 +105,11 @@ effect:     Adds the new error to the start of the queue
 */
 void updateErrorBuffer(Error_Buffer * eb, bool brake_err, float TPS_APPS_err) {
     Queue * q = eb->error_queue;
-    int elap_time = Timer_ReadCounter();
+    int elap_time = eb->start_cnt - Timer_ReadCounter(); /* Clock ticks since the last timer reset */
     Timer_Stop();
+    Timer_WriteCounter(Timer_ReadPeriod());  /* Needed to reset timer counter */
     Timer_Start(); /* Reset the timer */
+    eb->start_cnt = Timer_ReadCounter();
     enqueue(q, brake_err, TPS_APPS_err, elap_time);
     eb->num_brake_errs += brake_err ? 1 : 0; /* +1 if brake_err = TRUE, else +0 */
     eb->TPS_APPS_sum += TPS_APPS_err;
